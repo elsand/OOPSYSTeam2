@@ -1,8 +1,12 @@
 ###############################################################################
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
-* text=auto
+* text auto
 
+*.sln text eol=crlf
+*.vb text eol=crlf
+*.resx text eol=crlf
+*.vbproj text eol=crlf
 ###############################################################################
 # Set default behavior for command prompt diff.
 #
@@ -22,9 +26,9 @@
 # these files as binary and thus will always conflict and require user
 # intervention with every merge. To do so, just uncomment the entries below
 ###############################################################################
-#*.sln       merge=binary
+*.sln       merge=binary
 #*.csproj    merge=binary
-#*.vbproj    merge=binary
+*.vbproj    merge=binary
 #*.vcxproj   merge=binary
 #*.vcproj    merge=binary
 #*.dbproj    merge=binary
