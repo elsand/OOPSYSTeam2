@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Hangman.frmAbout" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAgAAASAAAAAAAACEAABCgAAAAAIAAACACAAQAAA=</HashCode>
+      <FileName>frmAbout.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.frmBase" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQwCAAQICCwAQAAQAASgAAmCRgDAQFAAAYqAgAAEAlg=</HashCode>
+      <FileName>frmBase.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.frmGame" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAggBAFRECAAFAsICQTBZYAiAEACIAAAAgCgwgFEEEA=</HashCode>
+      <FileName>frmGame.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.frmHighscore" Collapsed="true">
+    <Position X="5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAFACIAAEAAAACgAIAiAAAAAABAAEAAAAAAgAA=</HashCode>
+      <FileName>frmHighscore.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.frmIntro" Collapsed="true">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAASAAIAAAAACAIAACAAIAIAgABAAAKABAAAg=</HashCode>
+      <FileName>frmIntro.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMAudio" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAgAAAAABIAAAAAAAAAAAAAACAAACAAQAAEA=</HashCode>
+      <FileName>HMAudio.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMctlAnswer" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAEAAACAQIACAAAAgEAAAAMACgAAAAA=</HashCode>
+      <FileName>HMctlAnswer.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMctlBody" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAACCgABAAAAAKEAAACAABAAAAIBAAAAAAAAAA=</HashCode>
+      <FileName>HMctlBody.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMctlButton" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAIACAQAAAAAACAABACADAAAAAAIAAAAAACAAA=</HashCode>
+      <FileName>HMctlButton.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMHighscore" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QgAgAgAgAAAAICAAAAAAQAAAAAAAARAAAAACAAIAACg=</HashCode>
+      <FileName>HMHighscore.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMHighscoreSerializable" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HMHighscoreSerializable.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMImageUtils" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>HMImageUtils.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMLetter" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACACAACAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>HMLetter.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.HMWordList" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAABAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>HMWordList.vb</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Hangman.My.MyApplication" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Module Name="Hangman.My.Resources.Resources" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAgAAEAAAQAAOAAAKAhEACEAQAAAEEAIAAgAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Module>
+  <Font Name="Segoe UI Semibold" Size="8.25" />
+</ClassDiagram>
