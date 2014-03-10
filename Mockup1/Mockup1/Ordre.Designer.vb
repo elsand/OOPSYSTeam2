@@ -22,88 +22,59 @@ Partial Class Ordre
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.Button8 = New System.Windows.Forms.Button()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.Button9 = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Label12 = New System.Windows.Forms.Label()
-        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
-        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
         Me.Label13 = New System.Windows.Forms.Label()
+        Me.ComboBox4 = New System.Windows.Forms.ComboBox()
+        Me.Button9 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Button10 = New System.Windows.Forms.Button()
+        Me.Label16 = New System.Windows.Forms.Label()
+        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.Label15 = New System.Windows.Forms.Label()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.ComboBox5 = New System.Windows.Forms.ComboBox()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Label15 = New System.Windows.Forms.Label()
-        Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox5 = New System.Windows.Forms.CheckBox()
-        Me.CheckBox6 = New System.Windows.Forms.CheckBox()
-        Me.Label16 = New System.Windows.Forms.Label()
-        Me.Button10 = New System.Windows.Forms.Button()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.Button16 = New System.Windows.Forms.Button()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'Button1
-        '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(89, 30)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(163, 39)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Administrasjon"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Button2
-        '
-        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button2.Location = New System.Drawing.Point(447, 30)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(200, 39)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Logistikk"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.Location = New System.Drawing.Point(826, 30)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(205, 39)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Ordre"
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'GroupBox1
         '
@@ -123,133 +94,152 @@ Partial Class Ordre
         Me.GroupBox1.Controls.Add(Me.TextBox2)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.TextBox3)
-        Me.GroupBox1.Location = New System.Drawing.Point(89, 151)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 127)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(267, 475)
+        Me.GroupBox1.Size = New System.Drawing.Size(242, 533)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Kunde"
         '
-        'TextBox1
+        'Button6
         '
-        Me.TextBox1.Location = New System.Drawing.Point(25, 59)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(184, 20)
-        Me.TextBox1.TabIndex = 4
+        Me.Button6.Location = New System.Drawing.Point(19, 414)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(203, 23)
+        Me.Button6.TabIndex = 19
+        Me.Button6.Text = "Oppdater kunde"
+        Me.Button6.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'CheckBox1
         '
-        Me.TextBox2.Location = New System.Drawing.Point(25, 107)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(184, 20)
-        Me.TextBox2.TabIndex = 5
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(19, 288)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(108, 17)
+        Me.CheckBox1.TabIndex = 18
+        Me.CheckBox1.Text = "Rabatt storkunde"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
-        'TextBox3
+        'Button5
         '
-        Me.TextBox3.Location = New System.Drawing.Point(25, 153)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(184, 20)
-        Me.TextBox3.TabIndex = 6
+        Me.Button5.Location = New System.Drawing.Point(19, 385)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(203, 23)
+        Me.Button5.TabIndex = 17
+        Me.Button5.Text = "Registrer kunde"
+        Me.Button5.UseVisualStyleBackColor = True
         '
-        'Label1
+        'Button4
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(22, 43)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(33, 13)
-        Me.Label1.TabIndex = 7
-        Me.Label1.Text = "Navn"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(22, 91)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(37, 13)
-        Me.Label2.TabIndex = 8
-        Me.Label2.Text = "E-post"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(22, 137)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(43, 13)
-        Me.Label3.TabIndex = 9
-        Me.Label3.Text = "Telefon"
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(22, 235)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(65, 13)
-        Me.Label4.TabIndex = 10
-        Me.Label4.Text = "Postnummer"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(106, 235)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(48, 13)
-        Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Poststed"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.Location = New System.Drawing.Point(25, 251)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(43, 20)
-        Me.TextBox4.TabIndex = 12
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(109, 251)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(100, 20)
-        Me.TextBox5.TabIndex = 13
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(25, 201)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(184, 20)
-        Me.TextBox6.TabIndex = 14
+        Me.Button4.Location = New System.Drawing.Point(19, 356)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(203, 23)
+        Me.Button4.TabIndex = 16
+        Me.Button4.Text = "Søk kunde"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(22, 185)
+        Me.Label6.Location = New System.Drawing.Point(16, 184)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(45, 13)
         Me.Label6.TabIndex = 15
         Me.Label6.Text = "Adresse"
         '
-        'Button4
+        'TextBox6
         '
-        Me.Button4.Location = New System.Drawing.Point(25, 357)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(184, 23)
-        Me.Button4.TabIndex = 16
-        Me.Button4.Text = "Søk kunde"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.TextBox6.Location = New System.Drawing.Point(19, 200)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox6.TabIndex = 14
         '
-        'Button5
+        'TextBox5
         '
-        Me.Button5.Location = New System.Drawing.Point(25, 396)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(184, 23)
-        Me.Button5.TabIndex = 17
-        Me.Button5.Text = "Registrer kunde"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.TextBox5.Location = New System.Drawing.Point(103, 250)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(119, 20)
+        Me.TextBox5.TabIndex = 13
+        '
+        'TextBox4
+        '
+        Me.TextBox4.Location = New System.Drawing.Point(19, 250)
+        Me.TextBox4.Name = "TextBox4"
+        Me.TextBox4.Size = New System.Drawing.Size(43, 20)
+        Me.TextBox4.TabIndex = 12
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(100, 234)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(48, 13)
+        Me.Label5.TabIndex = 11
+        Me.Label5.Text = "Poststed"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(16, 42)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(33, 13)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Navn"
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(16, 234)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(65, 13)
+        Me.Label4.TabIndex = 10
+        Me.Label4.Text = "Postnummer"
+        '
+        'TextBox1
+        '
+        Me.TextBox1.Location = New System.Drawing.Point(19, 58)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox1.TabIndex = 4
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(16, 136)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(43, 13)
+        Me.Label3.TabIndex = 9
+        Me.Label3.Text = "Telefon"
+        '
+        'TextBox2
+        '
+        Me.TextBox2.Location = New System.Drawing.Point(19, 106)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox2.TabIndex = 5
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(16, 90)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(37, 13)
+        Me.Label2.TabIndex = 8
+        Me.Label2.Text = "E-post"
+        '
+        'TextBox3
+        '
+        Me.TextBox3.Location = New System.Drawing.Point(19, 152)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox3.TabIndex = 6
         '
         'ComboBox1
         '
         Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(27, 58)
+        Me.ComboBox1.Location = New System.Drawing.Point(19, 58)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(184, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(203, 21)
         Me.ComboBox1.TabIndex = 4
         '
         'GroupBox2
@@ -266,121 +256,109 @@ Partial Class Ordre
         Me.GroupBox2.Controls.Add(Me.ComboBox2)
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Controls.Add(Me.ComboBox1)
-        Me.GroupBox2.Location = New System.Drawing.Point(417, 151)
+        Me.GroupBox2.Location = New System.Drawing.Point(303, 127)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(267, 475)
+        Me.GroupBox2.Size = New System.Drawing.Size(242, 533)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Registrer ordre"
         '
-        'Label7
+        'Label13
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(27, 42)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(38, 13)
-        Me.Label7.TabIndex = 5
-        Me.Label7.Text = "Kunde"
+        Me.Label13.AutoSize = True
+        Me.Label13.Location = New System.Drawing.Point(16, 137)
+        Me.Label13.Name = "Label13"
+        Me.Label13.Size = New System.Drawing.Size(93, 13)
+        Me.Label13.TabIndex = 15
+        Me.Label13.Text = "Kaker ferdig tilmålt"
         '
-        'ComboBox2
+        'ComboBox4
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(27, 107)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(184, 21)
-        Me.ComboBox2.TabIndex = 6
+        Me.ComboBox4.FormattingEnabled = True
+        Me.ComboBox4.Location = New System.Drawing.Point(19, 153)
+        Me.ComboBox4.Name = "ComboBox4"
+        Me.ComboBox4.Size = New System.Drawing.Size(203, 21)
+        Me.ComboBox4.TabIndex = 14
         '
-        'Label8
+        'Button9
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(27, 91)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(65, 13)
-        Me.Label8.TabIndex = 7
-        Me.Label8.Text = "Ingredienser"
+        Me.Button9.Location = New System.Drawing.Point(19, 415)
+        Me.Button9.Name = "Button9"
+        Me.Button9.Size = New System.Drawing.Size(203, 23)
+        Me.Button9.TabIndex = 13
+        Me.Button9.Text = "Avbryt"
+        Me.Button9.UseVisualStyleBackColor = True
         '
-        'ListBox1
+        'Button8
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(30, 201)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(181, 95)
-        Me.ListBox1.TabIndex = 8
+        Me.Button8.Location = New System.Drawing.Point(19, 386)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(203, 23)
+        Me.Button8.TabIndex = 12
+        Me.Button8.Text = "Registrer som faktura"
+        Me.Button8.UseVisualStyleBackColor = True
         '
-        'Label9
+        'Button7
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(24, 185)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(76, 13)
-        Me.Label9.TabIndex = 9
-        Me.Label9.Text = "Valgte produkt"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(25, 289)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(108, 17)
-        Me.CheckBox1.TabIndex = 18
-        Me.CheckBox1.Text = "Rabatt storkunde"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
-        'Button6
-        '
-        Me.Button6.Location = New System.Drawing.Point(25, 434)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(184, 23)
-        Me.Button6.TabIndex = 19
-        Me.Button6.Text = "Oppdater kunde"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button7.Location = New System.Drawing.Point(19, 357)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(203, 23)
+        Me.Button7.TabIndex = 11
+        Me.Button7.Text = "Registrer som kontantbetaling"
+        Me.Button7.UseVisualStyleBackColor = True
         '
         'Label10
         '
         Me.Label10.AutoSize = True
         Me.Label10.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label10.Location = New System.Drawing.Point(32, 326)
+        Me.Label10.Location = New System.Drawing.Point(16, 326)
         Me.Label10.Name = "Label10"
         Me.Label10.Size = New System.Drawing.Size(72, 13)
         Me.Label10.TabIndex = 10
         Me.Label10.Text = "Sum ordre: "
         '
-        'Button7
+        'Label9
         '
-        Me.Button7.Location = New System.Drawing.Point(27, 357)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(181, 23)
-        Me.Button7.TabIndex = 11
-        Me.Button7.Text = "Registrer som kontantbetaling"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(16, 185)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(76, 13)
+        Me.Label9.TabIndex = 9
+        Me.Label9.Text = "Valgte produkt"
         '
-        'Button8
+        'ListBox1
         '
-        Me.Button8.Location = New System.Drawing.Point(27, 396)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(181, 23)
-        Me.Button8.TabIndex = 12
-        Me.Button8.Text = "Registrer som faktura"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(19, 201)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(203, 108)
+        Me.ListBox1.TabIndex = 8
         '
-        'Label11
+        'Label8
         '
-        Me.Label11.AutoSize = True
-        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label11.Location = New System.Drawing.Point(93, 84)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(481, 46)
-        Me.Label11.TabIndex = 6
-        Me.Label11.Text = "Velkommen <ansattnavn>"
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(16, 91)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(65, 13)
+        Me.Label8.TabIndex = 7
+        Me.Label8.Text = "Ingredienser"
         '
-        'Button9
+        'ComboBox2
         '
-        Me.Button9.Location = New System.Drawing.Point(27, 434)
-        Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(181, 23)
-        Me.Button9.TabIndex = 13
-        Me.Button9.Text = "Avbryt"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(19, 106)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(203, 21)
+        Me.ComboBox2.TabIndex = 6
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(16, 42)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(38, 13)
+        Me.Label7.TabIndex = 5
+        Me.Label7.Text = "Kunde"
         '
         'GroupBox3
         '
@@ -397,51 +375,101 @@ Partial Class Ordre
         Me.GroupBox3.Controls.Add(Me.ComboBox5)
         Me.GroupBox3.Controls.Add(Me.ComboBox3)
         Me.GroupBox3.Controls.Add(Me.Label12)
-        Me.GroupBox3.Location = New System.Drawing.Point(764, 151)
+        Me.GroupBox3.Location = New System.Drawing.Point(603, 127)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(267, 475)
+        Me.GroupBox3.Size = New System.Drawing.Size(242, 533)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Registrering av abonnementsavtaler"
         '
-        'Label12
+        'Button10
         '
-        Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(29, 91)
-        Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(71, 13)
-        Me.Label12.TabIndex = 0
-        Me.Label12.Text = "Pakkeløsning"
+        Me.Button10.Location = New System.Drawing.Point(22, 415)
+        Me.Button10.Name = "Button10"
+        Me.Button10.Size = New System.Drawing.Size(203, 23)
+        Me.Button10.TabIndex = 17
+        Me.Button10.Text = "Registrer abonnementsavtale"
+        Me.Button10.UseVisualStyleBackColor = True
         '
-        'ComboBox3
+        'Label16
         '
-        Me.ComboBox3.FormattingEnabled = True
-        Me.ComboBox3.Location = New System.Drawing.Point(32, 107)
-        Me.ComboBox3.Name = "ComboBox3"
-        Me.ComboBox3.Size = New System.Drawing.Size(185, 21)
-        Me.ComboBox3.TabIndex = 1
+        Me.Label16.AutoSize = True
+        Me.Label16.Location = New System.Drawing.Point(19, 185)
+        Me.Label16.Name = "Label16"
+        Me.Label16.Size = New System.Drawing.Size(144, 13)
+        Me.Label16.TabIndex = 16
+        Me.Label16.Text = "Utkjøring på valgte ukedager"
         '
-        'ComboBox4
+        'CheckBox6
         '
-        Me.ComboBox4.FormattingEnabled = True
-        Me.ComboBox4.Location = New System.Drawing.Point(30, 153)
-        Me.ComboBox4.Name = "ComboBox4"
-        Me.ComboBox4.Size = New System.Drawing.Size(178, 21)
-        Me.ComboBox4.TabIndex = 14
+        Me.CheckBox6.AutoSize = True
+        Me.CheckBox6.Location = New System.Drawing.Point(22, 293)
+        Me.CheckBox6.Name = "CheckBox6"
+        Me.CheckBox6.Size = New System.Drawing.Size(59, 17)
+        Me.CheckBox6.TabIndex = 15
+        Me.CheckBox6.Text = "Fredag"
+        Me.CheckBox6.UseVisualStyleBackColor = True
         '
-        'Label13
+        'CheckBox5
         '
-        Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(27, 137)
-        Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(93, 13)
-        Me.Label13.TabIndex = 15
-        Me.Label13.Text = "Kaker ferdig tilmålt"
+        Me.CheckBox5.AutoSize = True
+        Me.CheckBox5.Location = New System.Drawing.Point(22, 270)
+        Me.CheckBox5.Name = "CheckBox5"
+        Me.CheckBox5.Size = New System.Drawing.Size(65, 17)
+        Me.CheckBox5.TabIndex = 14
+        Me.CheckBox5.Text = "Torsdag"
+        Me.CheckBox5.UseVisualStyleBackColor = True
+        '
+        'CheckBox4
+        '
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Location = New System.Drawing.Point(22, 247)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.Size = New System.Drawing.Size(63, 17)
+        Me.CheckBox4.TabIndex = 13
+        Me.CheckBox4.Text = "Onsdag"
+        Me.CheckBox4.UseVisualStyleBackColor = True
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(22, 224)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.Size = New System.Drawing.Size(61, 17)
+        Me.CheckBox3.TabIndex = 12
+        Me.CheckBox3.Text = "Tirsdag"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'CheckBox2
+        '
+        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.Location = New System.Drawing.Point(22, 201)
+        Me.CheckBox2.Name = "CheckBox2"
+        Me.CheckBox2.Size = New System.Drawing.Size(65, 17)
+        Me.CheckBox2.TabIndex = 11
+        Me.CheckBox2.Text = "Mandag"
+        Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'Label15
+        '
+        Me.Label15.AutoSize = True
+        Me.Label15.Location = New System.Drawing.Point(19, 137)
+        Me.Label15.Name = "Label15"
+        Me.Label15.Size = New System.Drawing.Size(103, 13)
+        Me.Label15.TabIndex = 10
+        Me.Label15.Text = "Fast utkjøring frem til"
+        '
+        'DateTimePicker1
+        '
+        Me.DateTimePicker1.Location = New System.Drawing.Point(22, 153)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(203, 20)
+        Me.DateTimePicker1.TabIndex = 9
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(29, 42)
+        Me.Label14.Location = New System.Drawing.Point(19, 42)
         Me.Label14.Name = "Label14"
         Me.Label14.Size = New System.Drawing.Size(38, 13)
         Me.Label14.TabIndex = 7
@@ -450,109 +478,93 @@ Partial Class Ordre
         'ComboBox5
         '
         Me.ComboBox5.FormattingEnabled = True
-        Me.ComboBox5.Location = New System.Drawing.Point(32, 58)
+        Me.ComboBox5.Location = New System.Drawing.Point(22, 58)
         Me.ComboBox5.Name = "ComboBox5"
-        Me.ComboBox5.Size = New System.Drawing.Size(184, 21)
+        Me.ComboBox5.Size = New System.Drawing.Size(203, 21)
         Me.ComboBox5.TabIndex = 6
         '
-        'DateTimePicker1
+        'ComboBox3
         '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(32, 153)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(184, 20)
-        Me.DateTimePicker1.TabIndex = 9
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Location = New System.Drawing.Point(22, 107)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(203, 21)
+        Me.ComboBox3.TabIndex = 1
         '
-        'Label15
+        'Label12
         '
-        Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(29, 137)
-        Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(103, 13)
-        Me.Label15.TabIndex = 10
-        Me.Label15.Text = "Fast utkjøring frem til"
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(19, 91)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(71, 13)
+        Me.Label12.TabIndex = 0
+        Me.Label12.Text = "Pakkeløsning"
         '
-        'CheckBox2
+        'Button16
         '
-        Me.CheckBox2.AutoSize = True
-        Me.CheckBox2.Location = New System.Drawing.Point(32, 201)
-        Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(65, 17)
-        Me.CheckBox2.TabIndex = 11
-        Me.CheckBox2.Text = "Mandag"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.Button16.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button16.Location = New System.Drawing.Point(778, 64)
+        Me.Button16.Name = "Button16"
+        Me.Button16.Size = New System.Drawing.Size(359, 39)
+        Me.Button16.TabIndex = 22
+        Me.Button16.Text = "Logg ut"
+        Me.Button16.UseVisualStyleBackColor = True
         '
-        'CheckBox3
+        'Label11
         '
-        Me.CheckBox3.AutoSize = True
-        Me.CheckBox3.Location = New System.Drawing.Point(32, 224)
-        Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(61, 17)
-        Me.CheckBox3.TabIndex = 12
-        Me.CheckBox3.Text = "Tirsdag"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.Label11.AutoSize = True
+        Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 30.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.Location = New System.Drawing.Point(12, 64)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(567, 46)
+        Me.Label11.TabIndex = 21
+        Me.Label11.Text = "Ansatt innlogget: <ansattnavn>"
         '
-        'CheckBox4
+        'Button1
         '
-        Me.CheckBox4.AutoSize = True
-        Me.CheckBox4.Location = New System.Drawing.Point(32, 247)
-        Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(63, 17)
-        Me.CheckBox4.TabIndex = 13
-        Me.CheckBox4.Text = "Onsdag"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.Location = New System.Drawing.Point(12, 12)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(327, 39)
+        Me.Button1.TabIndex = 18
+        Me.Button1.Text = "Administrasjon"
+        Me.Button1.UseVisualStyleBackColor = True
         '
-        'CheckBox5
+        'Button3
         '
-        Me.CheckBox5.AutoSize = True
-        Me.CheckBox5.Location = New System.Drawing.Point(32, 270)
-        Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(65, 17)
-        Me.CheckBox5.TabIndex = 14
-        Me.CheckBox5.Text = "Torsdag"
-        Me.CheckBox5.UseVisualStyleBackColor = True
+        Me.Button3.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button3.Location = New System.Drawing.Point(778, 12)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(359, 39)
+        Me.Button3.TabIndex = 20
+        Me.Button3.Text = "Ordre"
+        Me.Button3.UseVisualStyleBackColor = True
         '
-        'CheckBox6
+        'Button2
         '
-        Me.CheckBox6.AutoSize = True
-        Me.CheckBox6.Location = New System.Drawing.Point(32, 293)
-        Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(59, 17)
-        Me.CheckBox6.TabIndex = 15
-        Me.CheckBox6.Text = "Fredag"
-        Me.CheckBox6.UseVisualStyleBackColor = True
-        '
-        'Label16
-        '
-        Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(29, 185)
-        Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(144, 13)
-        Me.Label16.TabIndex = 16
-        Me.Label16.Text = "Utkjøring på valgte ukedager"
-        '
-        'Button10
-        '
-        Me.Button10.Location = New System.Drawing.Point(32, 357)
-        Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(185, 23)
-        Me.Button10.TabIndex = 17
-        Me.Button10.Text = "Registrer abonnementsavtale"
-        Me.Button10.UseVisualStyleBackColor = True
+        Me.Button2.Font = New System.Drawing.Font("Microsoft Sans Serif", 15.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.Location = New System.Drawing.Point(377, 12)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(349, 39)
+        Me.Button2.TabIndex = 19
+        Me.Button2.Text = "Logistikk"
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'Ordre
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1192, 773)
+        Me.ClientSize = New System.Drawing.Size(1188, 692)
+        Me.Controls.Add(Me.Button16)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button2)
         Me.Name = "Ordre"
-        Me.Text = "Form1"
+        Me.Text = "AS Kakefunn InfoSystem - Ordre"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -563,9 +575,6 @@ Partial Class Ordre
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button4 As System.Windows.Forms.Button
@@ -593,7 +602,6 @@ Partial Class Ordre
     Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents Label13 As System.Windows.Forms.Label
     Friend WithEvents ComboBox4 As System.Windows.Forms.ComboBox
     Friend WithEvents Button9 As System.Windows.Forms.Button
@@ -611,5 +619,10 @@ Partial Class Ordre
     Friend WithEvents ComboBox5 As System.Windows.Forms.ComboBox
     Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
     Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Button16 As System.Windows.Forms.Button
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class
