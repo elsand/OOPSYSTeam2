@@ -72,6 +72,8 @@ Partial Class frmSaleOrder
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -81,6 +83,7 @@ Partial Class frmSaleOrder
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -472,7 +475,7 @@ Partial Class frmSaleOrder
         Me.GroupBox6.Controls.Add(Me.Label18)
         Me.GroupBox6.Controls.Add(Me.Label17)
         Me.GroupBox6.Controls.Add(Me.Label16)
-        Me.GroupBox6.Location = New System.Drawing.Point(525, 215)
+        Me.GroupBox6.Location = New System.Drawing.Point(524, 277)
         Me.GroupBox6.Name = "GroupBox6"
         Me.GroupBox6.Size = New System.Drawing.Size(291, 152)
         Me.GroupBox6.TabIndex = 10
@@ -556,9 +559,9 @@ Partial Class frmSaleOrder
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(690, 458)
+        Me.Button3.Location = New System.Drawing.Point(725, 458)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(126, 34)
+        Me.Button3.Size = New System.Drawing.Size(91, 34)
         Me.Button3.TabIndex = 11
         Me.Button3.Text = "Lagre ordre"
         Me.Button3.UseVisualStyleBackColor = True
@@ -575,11 +578,29 @@ Partial Class frmSaleOrder
         Me.CheckBox2.Text = "Skriv ut kvittering"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.TextBox9)
+        Me.GroupBox7.Location = New System.Drawing.Point(524, 162)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(292, 100)
+        Me.GroupBox7.TabIndex = 14
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Notat"
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(7, 14)
+        Me.TextBox9.Multiline = True
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(278, 78)
+        Me.TextBox9.TabIndex = 0
+        '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(550, 458)
+        Me.Button4.Location = New System.Drawing.Point(608, 458)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(129, 34)
+        Me.Button4.Size = New System.Drawing.Size(111, 34)
         Me.Button4.TabIndex = 13
         Me.Button4.Text = "Lag abonnement"
         Me.Button4.UseVisualStyleBackColor = True
@@ -588,6 +609,7 @@ Partial Class frmSaleOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(830, 528)
+        Me.Controls.Add(Me.GroupBox7)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Button3)
@@ -608,6 +630,7 @@ Partial Class frmSaleOrder
         Me.Controls.SetChildIndex(Me.Button3, 0)
         Me.Controls.SetChildIndex(Me.CheckBox2, 0)
         Me.Controls.SetChildIndex(Me.Button4, 0)
+        Me.Controls.SetChildIndex(Me.GroupBox7, 0)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -621,6 +644,8 @@ Partial Class frmSaleOrder
         Me.GroupBox5.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -677,6 +702,8 @@ Partial Class frmSaleOrder
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
     Friend WithEvents Button4 As System.Windows.Forms.Button
 
 End Class
