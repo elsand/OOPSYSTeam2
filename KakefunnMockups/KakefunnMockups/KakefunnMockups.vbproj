@@ -79,6 +79,18 @@
     <Compile Include="frmAdminBase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAdminProcessedOrders.Designer.vb">
+      <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminProcessedOrders.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminSystemAdministration.Designer.vb">
+      <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminSystemAdministration.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDialogBase.Designer.vb">
       <DependentUpon>frmDialogBase.vb</DependentUpon>
     </Compile>
@@ -101,6 +113,24 @@
       <DependentUpon>frmLogisticsBase.vb</DependentUpon>
     </Compile>
     <Compile Include="frmLogisticsBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsPackingList.Designer.vb">
+      <DependentUpon>frmLogisticsPackingList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsPackingList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsRegisterCommodity.Designer.vb">
+      <DependentUpon>frmLogisticsRegisterCommodity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsRegisterCommodity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsReports.Designer.vb">
+      <DependentUpon>frmLogisticsReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsReports.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmSaleBase.Designer.vb">
@@ -154,6 +184,12 @@
     <EmbeddedResource Include="frmAdminBase.resx">
       <DependentUpon>frmAdminBase.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminProcessedOrders.resx">
+      <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminSystemAdministration.resx">
+      <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogBase.resx">
       <DependentUpon>frmDialogBase.vb</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +201,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogisticsBase.resx">
       <DependentUpon>frmLogisticsBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsPackingList.resx">
+      <DependentUpon>frmLogisticsPackingList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsRegisterCommodity.resx">
+      <DependentUpon>frmLogisticsRegisterCommodity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsReports.resx">
+      <DependentUpon>frmLogisticsReports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSaleCustomer.resx">
       <DependentUpon>frmSaleCustomer.vb</DependentUpon>
