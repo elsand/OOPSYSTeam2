@@ -23,30 +23,30 @@ Partial Class Logistikk
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
-        Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Button5 = New System.Windows.Forms.Button()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.ListBox2 = New System.Windows.Forms.ListBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.Button8 = New System.Windows.Forms.Button()
+        Me.ListBox2 = New System.Windows.Forms.ListBox()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
         Me.Button16 = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Button1 = New System.Windows.Forms.Button()
@@ -72,6 +72,58 @@ Partial Class Logistikk
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Pakkseddel"
         '
+        'Button6
+        '
+        Me.Button6.Location = New System.Drawing.Point(15, 332)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(203, 23)
+        Me.Button6.TabIndex = 5
+        Me.Button6.Text = "Skriv ut adresselapp og pakkseddel"
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'Button5
+        '
+        Me.Button5.Location = New System.Drawing.Point(15, 303)
+        Me.Button5.Name = "Button5"
+        Me.Button5.Size = New System.Drawing.Size(203, 23)
+        Me.Button5.TabIndex = 4
+        Me.Button5.Text = "Skriv ut plukkliste"
+        Me.Button5.UseVisualStyleBackColor = True
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(15, 106)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(203, 108)
+        Me.ListBox1.TabIndex = 3
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(12, 76)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(52, 13)
+        Me.Label6.TabIndex = 2
+        Me.Label6.Text = "Plukkliste"
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Location = New System.Drawing.Point(15, 44)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(203, 21)
+        Me.ComboBox2.TabIndex = 1
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(12, 27)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(57, 13)
+        Me.Label5.TabIndex = 0
+        Me.Label5.Text = "Hent ordre"
+        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.TextBox3)
@@ -90,65 +142,30 @@ Partial Class Logistikk
         Me.GroupBox2.Size = New System.Drawing.Size(242, 533)
         Me.GroupBox2.TabIndex = 12
         Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Registrer vare"
+        Me.GroupBox2.Text = "Legg inn vare"
         '
-        'Button4
+        'TextBox3
         '
-        Me.Button4.Location = New System.Drawing.Point(16, 332)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(203, 23)
-        Me.Button4.TabIndex = 0
-        Me.Button4.Text = "Registrer vare"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.TextBox3.Location = New System.Drawing.Point(16, 196)
+        Me.TextBox3.Name = "TextBox3"
+        Me.TextBox3.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox3.TabIndex = 10
         '
-        'Label1
+        'Label8
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 76)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(56, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Ingrediens"
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(13, 179)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(93, 13)
+        Me.Label8.TabIndex = 9
+        Me.Label8.Text = "Kostpris eks. mva."
         '
-        'TextBox1
+        'TextBox2
         '
-        Me.TextBox1.Location = New System.Drawing.Point(16, 43)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(203, 20)
-        Me.TextBox1.TabIndex = 2
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 126)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Utløpsdato"
-        '
-        'DateTimePicker1
-        '
-        Me.DateTimePicker1.Location = New System.Drawing.Point(16, 142)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(203, 20)
-        Me.DateTimePicker1.TabIndex = 4
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(16, 249)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(203, 21)
-        Me.ComboBox1.TabIndex = 5
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(13, 227)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(77, 13)
-        Me.Label3.TabIndex = 6
-        Me.Label3.Text = "Hylleplassering"
+        Me.TextBox2.Location = New System.Drawing.Point(16, 92)
+        Me.TextBox2.Name = "TextBox2"
+        Me.TextBox2.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox2.TabIndex = 8
         '
         'Label4
         '
@@ -159,64 +176,63 @@ Partial Class Logistikk
         Me.Label4.TabIndex = 7
         Me.Label4.Text = "Varenummer"
         '
-        'TextBox2
+        'Label3
         '
-        Me.TextBox2.Location = New System.Drawing.Point(16, 92)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(203, 20)
-        Me.TextBox2.TabIndex = 8
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(13, 227)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(77, 13)
+        Me.Label3.TabIndex = 6
+        Me.Label3.Text = "Hylleplassering"
         '
-        'Label5
+        'ComboBox1
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 27)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(57, 13)
-        Me.Label5.TabIndex = 0
-        Me.Label5.Text = "Hent ordre"
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(16, 249)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(203, 21)
+        Me.ComboBox1.TabIndex = 5
         '
-        'ComboBox2
+        'DateTimePicker1
         '
-        Me.ComboBox2.FormattingEnabled = True
-        Me.ComboBox2.Location = New System.Drawing.Point(15, 44)
-        Me.ComboBox2.Name = "ComboBox2"
-        Me.ComboBox2.Size = New System.Drawing.Size(203, 21)
-        Me.ComboBox2.TabIndex = 1
+        Me.DateTimePicker1.Location = New System.Drawing.Point(16, 142)
+        Me.DateTimePicker1.Name = "DateTimePicker1"
+        Me.DateTimePicker1.Size = New System.Drawing.Size(203, 20)
+        Me.DateTimePicker1.TabIndex = 4
         '
-        'Label6
+        'Label2
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 76)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(52, 13)
-        Me.Label6.TabIndex = 2
-        Me.Label6.Text = "Plukkliste"
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(10, 126)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(58, 13)
+        Me.Label2.TabIndex = 3
+        Me.Label2.Text = "Utløpsdato"
         '
-        'ListBox1
+        'TextBox1
         '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(15, 106)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(203, 108)
-        Me.ListBox1.TabIndex = 3
+        Me.TextBox1.Location = New System.Drawing.Point(16, 43)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(203, 20)
+        Me.TextBox1.TabIndex = 2
         '
-        'Button5
+        'Label1
         '
-        Me.Button5.Location = New System.Drawing.Point(15, 303)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(203, 23)
-        Me.Button5.TabIndex = 4
-        Me.Button5.Text = "Skriv ut plukkliste"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 76)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(56, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Ingrediens"
         '
-        'Button6
+        'Button4
         '
-        Me.Button6.Location = New System.Drawing.Point(15, 332)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(203, 23)
-        Me.Button6.TabIndex = 5
-        Me.Button6.Text = "Skriv ut adresselapp og pakkseddel"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button4.Location = New System.Drawing.Point(16, 332)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(203, 23)
+        Me.Button4.TabIndex = 0
+        Me.Button4.Text = "Legg inn vare"
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'GroupBox3
         '
@@ -232,37 +248,22 @@ Partial Class Logistikk
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Rapporter"
         '
-        'DateTimePicker2
+        'Button8
         '
-        Me.DateTimePicker2.Location = New System.Drawing.Point(29, 43)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(203, 20)
-        Me.DateTimePicker2.TabIndex = 0
+        Me.Button8.Location = New System.Drawing.Point(29, 332)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(203, 23)
+        Me.Button8.TabIndex = 4
+        Me.Button8.Text = "Fjern varer fra beholdning"
+        Me.Button8.UseVisualStyleBackColor = True
         '
-        'Label7
+        'ListBox2
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(26, 27)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(58, 13)
-        Me.Label7.TabIndex = 1
-        Me.Label7.Text = "Utløpsdato"
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(13, 179)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(93, 13)
-        Me.Label8.TabIndex = 9
-        Me.Label8.Text = "Kostpris eks. mva."
-        '
-        'TextBox3
-        '
-        Me.TextBox3.Location = New System.Drawing.Point(16, 196)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(203, 20)
-        Me.TextBox3.TabIndex = 10
+        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.Location = New System.Drawing.Point(29, 106)
+        Me.ListBox2.Name = "ListBox2"
+        Me.ListBox2.Size = New System.Drawing.Size(203, 108)
+        Me.ListBox2.TabIndex = 3
         '
         'Button7
         '
@@ -273,22 +274,21 @@ Partial Class Logistikk
         Me.Button7.Text = "Skriv ut rapport"
         Me.Button7.UseVisualStyleBackColor = True
         '
-        'ListBox2
+        'Label7
         '
-        Me.ListBox2.FormattingEnabled = True
-        Me.ListBox2.Location = New System.Drawing.Point(29, 106)
-        Me.ListBox2.Name = "ListBox2"
-        Me.ListBox2.Size = New System.Drawing.Size(203, 108)
-        Me.ListBox2.TabIndex = 3
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(26, 27)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(58, 13)
+        Me.Label7.TabIndex = 1
+        Me.Label7.Text = "Utløpsdato"
         '
-        'Button8
+        'DateTimePicker2
         '
-        Me.Button8.Location = New System.Drawing.Point(29, 332)
-        Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(203, 23)
-        Me.Button8.TabIndex = 4
-        Me.Button8.Text = "Fjern varer fra beholdning"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.DateTimePicker2.Location = New System.Drawing.Point(29, 43)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(203, 20)
+        Me.DateTimePicker2.TabIndex = 0
         '
         'Button16
         '
