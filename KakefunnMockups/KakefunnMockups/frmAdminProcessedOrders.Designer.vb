@@ -40,9 +40,9 @@ Partial Class frmAdminProcessedOrders
         Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4})
-        Me.DataGridView1.Location = New System.Drawing.Point(51, 108)
+        Me.DataGridView1.Location = New System.Drawing.Point(12, 66)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(586, 79)
+        Me.DataGridView1.Size = New System.Drawing.Size(696, 306)
         Me.DataGridView1.TabIndex = 5
         '
         'Column5
@@ -77,7 +77,7 @@ Partial Class frmAdminProcessedOrders
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(51, 220)
+        Me.Button2.Location = New System.Drawing.Point(12, 378)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(132, 23)
         Me.Button2.TabIndex = 6
@@ -86,7 +86,7 @@ Partial Class frmAdminProcessedOrders
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(51, 261)
+        Me.Button3.Location = New System.Drawing.Point(576, 378)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(132, 23)
         Me.Button3.TabIndex = 7

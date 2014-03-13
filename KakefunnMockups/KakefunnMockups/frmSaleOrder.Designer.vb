@@ -75,6 +75,7 @@ Partial Class frmSaleOrder
         Me.TextBox9 = New System.Windows.Forms.TextBox()
         Me.Label22 = New System.Windows.Forms.Label()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.Button4 = New System.Windows.Forms.Button()
         Me.Label23 = New System.Windows.Forms.Label()
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -87,7 +88,6 @@ Partial Class frmSaleOrder
         Me.ComboBox3 = New System.Windows.Forms.ComboBox()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -498,9 +498,9 @@ Partial Class frmSaleOrder
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(411, 51)
+        Me.Label21.Location = New System.Drawing.Point(418, 51)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(67, 16)
+        Me.Label21.Size = New System.Drawing.Size(60, 16)
         Me.Label21.TabIndex = 6
         Me.Label21.Text = "1150,00"
         '
@@ -530,7 +530,7 @@ Partial Class frmSaleOrder
         Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label18.Location = New System.Drawing.Point(14, 55)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(72, 16)
+        Me.Label18.Size = New System.Drawing.Size(70, 16)
         Me.Label18.TabIndex = 2
         Me.Label18.Text = "Å betale:"
         '
@@ -630,6 +630,15 @@ Partial Class frmSaleOrder
         Me.GroupBox7.TabIndex = 14
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "Abonnement"
+        '
+        'Button4
+        '
+        Me.Button4.Location = New System.Drawing.Point(155, 15)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(127, 23)
+        Me.Button4.TabIndex = 25
+        Me.Button4.Text = "Vis ordrer for dette abo."
+        Me.Button4.UseVisualStyleBackColor = True
         '
         'Label23
         '
@@ -741,15 +750,6 @@ Partial Class frmSaleOrder
         Me.CheckBox4.TabIndex = 16
         Me.CheckBox4.Text = "Er aktivert"
         Me.CheckBox4.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(155, 15)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(127, 23)
-        Me.Button4.TabIndex = 25
-        Me.Button4.Text = "Vis ordrer for dette abo."
-        Me.Button4.UseVisualStyleBackColor = True
         '
         'frmSaleOrder
         '
