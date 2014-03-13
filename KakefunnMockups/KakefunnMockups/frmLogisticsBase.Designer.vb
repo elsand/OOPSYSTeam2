@@ -26,16 +26,16 @@ Partial Class frmLogisticsBase
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(57, 67)
+        Me.Button1.Location = New System.Drawing.Point(12, 27)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(136, 23)
+        Me.Button1.Size = New System.Drawing.Size(115, 60)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Pakkseddel"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(57, 110)
+        Me.Button2.Location = New System.Drawing.Point(142, 27)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(136, 23)
         Me.Button2.TabIndex = 3

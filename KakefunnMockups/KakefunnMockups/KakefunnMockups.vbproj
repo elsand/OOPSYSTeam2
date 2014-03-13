@@ -85,10 +85,22 @@
     <Compile Include="frmAdminCake.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAdminIngredient.Designer.vb">
+      <DependentUpon>frmAdminIngredient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminIngredient.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAdminProcessedOrders.Designer.vb">
       <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
     </Compile>
     <Compile Include="frmAdminProcessedOrders.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminReports.Designer.vb">
+      <DependentUpon>frmAdminReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminReports.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmAdminSystemAdministration.Designer.vb">
@@ -184,8 +196,17 @@
     <EmbeddedResource Include="frmAdminBase.resx">
       <DependentUpon>frmAdminBase.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminCake.resx">
+      <DependentUpon>frmAdminCake.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminIngredient.resx">
+      <DependentUpon>frmAdminIngredient.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmAdminProcessedOrders.resx">
       <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminReports.resx">
+      <DependentUpon>frmAdminReports.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmAdminSystemAdministration.resx">
       <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>

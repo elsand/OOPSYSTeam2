@@ -19,17 +19,29 @@ Partial Class frmLogisticsPackingList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.SuspendLayout()
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(298, 268)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(120, 95)
+        Me.ListBox1.TabIndex = 5
         '
         'frmLogisticsPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(462, 447)
+        Me.Controls.Add(Me.ListBox1)
         Me.Name = "frmLogisticsPackingList"
         Me.Text = "Pakkseddel"
+        Me.Controls.SetChildIndex(Me.ListBox1, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
 
 End Class
