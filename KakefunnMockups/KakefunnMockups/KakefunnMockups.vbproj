@@ -85,12 +85,6 @@
     <Compile Include="frmDialogBase.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDialogSubscription.Designer.vb">
-      <DependentUpon>frmDialogSubscription.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDialogSubscription.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
@@ -156,9 +150,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDialogBase.resx">
       <DependentUpon>frmDialogBase.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmDialogSubscription.resx">
-      <DependentUpon>frmDialogSubscription.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
