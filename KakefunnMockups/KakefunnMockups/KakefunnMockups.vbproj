@@ -79,6 +79,12 @@
     <Compile Include="frmAdminBase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAdminCake.Designer.vb">
+      <DependentUpon>frmAdminCake.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminCake.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmAdminProcessedOrders.Designer.vb">
       <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
     </Compile>
