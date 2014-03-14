@@ -62,17 +62,32 @@ Partial Class frmSaleOrder
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
         Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.Label18 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label16 = New System.Windows.Forms.Label()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Button3 = New System.Windows.Forms.Button()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
+        Me.TextBox9 = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.GroupBox7 = New System.Windows.Forms.GroupBox()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
+        Me.CheckBox3 = New System.Windows.Forms.CheckBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.DateTimePicker3 = New System.Windows.Forms.DateTimePicker()
+        Me.ComboBox2 = New System.Windows.Forms.ComboBox()
+        Me.Label26 = New System.Windows.Forms.Label()
+        Me.ComboBox3 = New System.Windows.Forms.ComboBox()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -81,6 +96,7 @@ Partial Class frmSaleOrder
         Me.GroupBox4.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
+        Me.GroupBox7.SuspendLayout()
         Me.SuspendLayout()
         '
         'Label1
@@ -303,7 +319,7 @@ Partial Class frmSaleOrder
         Me.GroupBox3.Controls.Add(Me.Panel1)
         Me.GroupBox3.Location = New System.Drawing.Point(13, 258)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(495, 178)
+        Me.GroupBox3.Size = New System.Drawing.Size(495, 221)
         Me.GroupBox3.TabIndex = 7
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Varer"
@@ -314,7 +330,7 @@ Partial Class frmSaleOrder
         Me.Panel1.Controls.Add(Me.DataGridView1)
         Me.Panel1.Location = New System.Drawing.Point(6, 19)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(483, 152)
+        Me.Panel1.Size = New System.Drawing.Size(483, 195)
         Me.Panel1.TabIndex = 8
         '
         'DataGridView1
@@ -325,7 +341,7 @@ Partial Class frmSaleOrder
         Me.DataGridView1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGridView1.Location = New System.Drawing.Point(0, 0)
         Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(483, 152)
+        Me.DataGridView1.Size = New System.Drawing.Size(483, 195)
         Me.DataGridView1.TabIndex = 1
         '
         'Column1
@@ -414,7 +430,7 @@ Partial Class frmSaleOrder
         Me.GroupBox5.Controls.Add(Me.RadioButton3)
         Me.GroupBox5.Controls.Add(Me.RadioButton2)
         Me.GroupBox5.Controls.Add(Me.RadioButton1)
-        Me.GroupBox5.Location = New System.Drawing.Point(13, 442)
+        Me.GroupBox5.Location = New System.Drawing.Point(13, 485)
         Me.GroupBox5.Name = "GroupBox5"
         Me.GroupBox5.Size = New System.Drawing.Size(495, 50)
         Me.GroupBox5.TabIndex = 9
@@ -465,89 +481,90 @@ Partial Class frmSaleOrder
         '
         'GroupBox6
         '
-        Me.GroupBox6.Controls.Add(Me.CheckBox1)
         Me.GroupBox6.Controls.Add(Me.Label21)
         Me.GroupBox6.Controls.Add(Me.Label20)
         Me.GroupBox6.Controls.Add(Me.Label19)
         Me.GroupBox6.Controls.Add(Me.Label18)
         Me.GroupBox6.Controls.Add(Me.Label17)
         Me.GroupBox6.Controls.Add(Me.Label16)
-        Me.GroupBox6.Location = New System.Drawing.Point(525, 215)
+        Me.GroupBox6.Location = New System.Drawing.Point(13, 541)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(291, 152)
+        Me.GroupBox6.Size = New System.Drawing.Size(495, 80)
         Me.GroupBox6.TabIndex = 10
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Betaling"
         '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(14, 120)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(278, 17)
-        Me.CheckBox1.TabIndex = 7
-        Me.CheckBox1.Text = "Er betalt (hvis i kasse, eller oppgjør for faktura mottatt)"
-        Me.CheckBox1.UseVisualStyleBackColor = True
-        '
         'Label21
         '
         Me.Label21.AutoSize = True
-        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(216, 69)
+        Me.Label21.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label21.Location = New System.Drawing.Point(418, 51)
         Me.Label21.Name = "Label21"
-        Me.Label21.Size = New System.Drawing.Size(67, 18)
+        Me.Label21.Size = New System.Drawing.Size(60, 16)
         Me.Label21.TabIndex = 6
         Me.Label21.Text = "1150,00"
         '
         'Label20
         '
         Me.Label20.AutoSize = True
-        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label20.Location = New System.Drawing.Point(233, 44)
+        Me.Label20.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.Location = New System.Drawing.Point(432, 33)
         Me.Label20.Name = "Label20"
-        Me.Label20.Size = New System.Drawing.Size(52, 18)
+        Me.Label20.Size = New System.Drawing.Size(46, 16)
         Me.Label20.TabIndex = 5
         Me.Label20.Text = "150,00"
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label19.Location = New System.Drawing.Point(225, 20)
+        Me.Label19.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label19.Location = New System.Drawing.Point(425, 16)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(60, 18)
+        Me.Label19.Size = New System.Drawing.Size(53, 16)
         Me.Label19.TabIndex = 4
         Me.Label19.Text = "1000,00"
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label18.Location = New System.Drawing.Point(14, 69)
+        Me.Label18.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label18.Location = New System.Drawing.Point(14, 55)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(73, 18)
+        Me.Label18.Size = New System.Drawing.Size(70, 16)
         Me.Label18.TabIndex = 2
         Me.Label18.Text = "Å betale:"
         '
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label17.Location = New System.Drawing.Point(14, 44)
+        Me.Label17.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label17.Location = New System.Drawing.Point(14, 37)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(40, 18)
+        Me.Label17.Size = New System.Drawing.Size(37, 16)
         Me.Label17.TabIndex = 1
         Me.Label17.Text = "Mva:"
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label16.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label16.Location = New System.Drawing.Point(14, 20)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(109, 18)
+        Me.Label16.Size = New System.Drawing.Size(99, 16)
         Me.Label16.TabIndex = 0
         Me.Label16.Text = "Total eks. mva:"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Checked = True
+        Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
+        Me.CheckBox1.Location = New System.Drawing.Point(524, 577)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(77, 17)
+        Me.CheckBox1.TabIndex = 7
+        Me.CheckBox1.Text = "Er oppgjort"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'ContextMenuStrip1
         '
@@ -556,9 +573,9 @@ Partial Class frmSaleOrder
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(690, 458)
+        Me.Button3.Location = New System.Drawing.Point(725, 587)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(126, 34)
+        Me.Button3.Size = New System.Drawing.Size(91, 34)
         Me.Button3.TabIndex = 11
         Me.Button3.Text = "Lagre ordre"
         Me.Button3.UseVisualStyleBackColor = True
@@ -568,27 +585,180 @@ Partial Class frmSaleOrder
         Me.CheckBox2.AutoSize = True
         Me.CheckBox2.Checked = True
         Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.CheckBox2.Location = New System.Drawing.Point(708, 435)
+        Me.CheckBox2.Location = New System.Drawing.Point(524, 599)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(108, 17)
+        Me.CheckBox2.Size = New System.Drawing.Size(163, 17)
         Me.CheckBox2.TabIndex = 12
-        Me.CheckBox2.Text = "Skriv ut kvittering"
+        Me.CheckBox2.Text = "Skriv ut kvittering ved lagring"
         Me.CheckBox2.UseVisualStyleBackColor = True
+        '
+        'TextBox9
+        '
+        Me.TextBox9.Location = New System.Drawing.Point(524, 182)
+        Me.TextBox9.Multiline = True
+        Me.TextBox9.Name = "TextBox9"
+        Me.TextBox9.Size = New System.Drawing.Size(292, 58)
+        Me.TextBox9.TabIndex = 0
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(521, 166)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(193, 13)
+        Me.Label22.TabIndex = 13
+        Me.Label22.Text = "Internt notat (vises ikke på pakkseddel)"
+        '
+        'GroupBox7
+        '
+        Me.GroupBox7.Controls.Add(Me.Button4)
+        Me.GroupBox7.Controls.Add(Me.Label23)
+        Me.GroupBox7.Controls.Add(Me.ListBox1)
+        Me.GroupBox7.Controls.Add(Me.Label24)
+        Me.GroupBox7.Controls.Add(Me.DateTimePicker2)
+        Me.GroupBox7.Controls.Add(Me.CheckBox3)
+        Me.GroupBox7.Controls.Add(Me.Label25)
+        Me.GroupBox7.Controls.Add(Me.DateTimePicker3)
+        Me.GroupBox7.Controls.Add(Me.ComboBox2)
+        Me.GroupBox7.Controls.Add(Me.Label26)
+        Me.GroupBox7.Controls.Add(Me.ComboBox3)
+        Me.GroupBox7.Controls.Add(Me.Label27)
+        Me.GroupBox7.Controls.Add(Me.CheckBox4)
+        Me.GroupBox7.Location = New System.Drawing.Point(526, 258)
+        Me.GroupBox7.Name = "GroupBox7"
+        Me.GroupBox7.Size = New System.Drawing.Size(292, 286)
+        Me.GroupBox7.TabIndex = 14
+        Me.GroupBox7.TabStop = False
+        Me.GroupBox7.Text = "Abonnement"
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(550, 458)
+        Me.Button4.Location = New System.Drawing.Point(155, 15)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(129, 34)
-        Me.Button4.TabIndex = 13
-        Me.Button4.Text = "Lag abonnement"
+        Me.Button4.Size = New System.Drawing.Size(127, 23)
+        Me.Button4.TabIndex = 25
+        Me.Button4.Text = "Vis ordrer for dette abo."
         Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(13, 201)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(92, 13)
+        Me.Label23.TabIndex = 24
+        Me.Label23.Text = "Neste utsendelser"
+        '
+        'ListBox1
+        '
+        Me.ListBox1.Enabled = False
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Items.AddRange(New Object() {"(liste over neste X leveringer utfra valgt intervall)"})
+        Me.ListBox1.Location = New System.Drawing.Point(14, 217)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(270, 56)
+        Me.ListBox1.TabIndex = 13
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Enabled = False
+        Me.Label24.Location = New System.Drawing.Point(13, 168)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(52, 13)
+        Me.Label24.TabIndex = 23
+        Me.Label24.Text = "Slutt-dato"
+        '
+        'DateTimePicker2
+        '
+        Me.DateTimePicker2.Enabled = False
+        Me.DateTimePicker2.Location = New System.Drawing.Point(84, 165)
+        Me.DateTimePicker2.Name = "DateTimePicker2"
+        Me.DateTimePicker2.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker2.TabIndex = 22
+        '
+        'CheckBox3
+        '
+        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.Location = New System.Drawing.Point(10, 138)
+        Me.CheckBox3.Name = "CheckBox3"
+        Me.CheckBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CheckBox3.Size = New System.Drawing.Size(86, 17)
+        Me.CheckBox3.TabIndex = 21
+        Me.CheckBox3.Text = "Har sluttdato"
+        Me.CheckBox3.UseVisualStyleBackColor = True
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(11, 109)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(53, 13)
+        Me.Label25.TabIndex = 20
+        Me.Label25.Text = "Start-dato"
+        '
+        'DateTimePicker3
+        '
+        Me.DateTimePicker3.Location = New System.Drawing.Point(82, 107)
+        Me.DateTimePicker3.Name = "DateTimePicker3"
+        Me.DateTimePicker3.Size = New System.Drawing.Size(200, 20)
+        Me.DateTimePicker3.TabIndex = 19
+        '
+        'ComboBox2
+        '
+        Me.ComboBox2.FormattingEnabled = True
+        Me.ComboBox2.Items.AddRange(New Object() {"Ukentlig", "Daglig", "Månedlig"})
+        Me.ComboBox2.Location = New System.Drawing.Point(84, 77)
+        Me.ComboBox2.Name = "ComboBox2"
+        Me.ComboBox2.Size = New System.Drawing.Size(52, 21)
+        Me.ComboBox2.TabIndex = 18
+        '
+        'Label26
+        '
+        Me.Label26.AutoSize = True
+        Me.Label26.Location = New System.Drawing.Point(9, 80)
+        Me.Label26.Name = "Label26"
+        Me.Label26.Size = New System.Drawing.Size(55, 13)
+        Me.Label26.TabIndex = 17
+        Me.Label26.Text = "Hyppighet"
+        '
+        'ComboBox3
+        '
+        Me.ComboBox3.FormattingEnabled = True
+        Me.ComboBox3.Items.AddRange(New Object() {"Ukentlig", "Daglig", "Månedlig"})
+        Me.ComboBox3.Location = New System.Drawing.Point(83, 47)
+        Me.ComboBox3.Name = "ComboBox3"
+        Me.ComboBox3.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox3.TabIndex = 15
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(9, 50)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(70, 13)
+        Me.Label27.TabIndex = 14
+        Me.Label27.Text = "Type intervall"
+        '
+        'CheckBox4
+        '
+        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.Location = New System.Drawing.Point(10, 19)
+        Me.CheckBox4.Name = "CheckBox4"
+        Me.CheckBox4.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.CheckBox4.Size = New System.Drawing.Size(74, 17)
+        Me.CheckBox4.TabIndex = 16
+        Me.CheckBox4.Text = "Er aktivert"
+        Me.CheckBox4.UseVisualStyleBackColor = True
         '
         'frmSaleOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(830, 528)
-        Me.Controls.Add(Me.Button4)
+        Me.ClientSize = New System.Drawing.Size(830, 655)
+        Me.Controls.Add(Me.GroupBox7)
+        Me.Controls.Add(Me.Label22)
+        Me.Controls.Add(Me.TextBox9)
+        Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.GroupBox6)
@@ -607,7 +777,10 @@ Partial Class frmSaleOrder
         Me.Controls.SetChildIndex(Me.GroupBox6, 0)
         Me.Controls.SetChildIndex(Me.Button3, 0)
         Me.Controls.SetChildIndex(Me.CheckBox2, 0)
-        Me.Controls.SetChildIndex(Me.Button4, 0)
+        Me.Controls.SetChildIndex(Me.CheckBox1, 0)
+        Me.Controls.SetChildIndex(Me.TextBox9, 0)
+        Me.Controls.SetChildIndex(Me.Label22, 0)
+        Me.Controls.SetChildIndex(Me.GroupBox7, 0)
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
@@ -621,6 +794,8 @@ Partial Class frmSaleOrder
         Me.GroupBox5.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
+        Me.GroupBox7.ResumeLayout(False)
+        Me.GroupBox7.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -677,6 +852,21 @@ Partial Class frmSaleOrder
     Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents CheckBox2 As System.Windows.Forms.CheckBox
+    Friend WithEvents TextBox9 As System.Windows.Forms.TextBox
+    Friend WithEvents Label22 As System.Windows.Forms.Label
+    Friend WithEvents GroupBox7 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label23 As System.Windows.Forms.Label
+    Friend WithEvents ListBox1 As System.Windows.Forms.ListBox
+    Friend WithEvents Label24 As System.Windows.Forms.Label
+    Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents CheckBox3 As System.Windows.Forms.CheckBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents DateTimePicker3 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents ComboBox2 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label26 As System.Windows.Forms.Label
+    Friend WithEvents ComboBox3 As System.Windows.Forms.ComboBox
+    Friend WithEvents Label27 As System.Windows.Forms.Label
+    Friend WithEvents CheckBox4 As System.Windows.Forms.CheckBox
     Friend WithEvents Button4 As System.Windows.Forms.Button
 
 End Class

@@ -46,6 +46,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -71,6 +73,78 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmAdminBase.Designer.vb">
+      <DependentUpon>frmAdminBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminCake.Designer.vb">
+      <DependentUpon>frmAdminCake.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminCake.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminIngredient.Designer.vb">
+      <DependentUpon>frmAdminIngredient.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminIngredient.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminProcessedOrders.Designer.vb">
+      <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminProcessedOrders.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminReports.Designer.vb">
+      <DependentUpon>frmAdminReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdminSystemAdministration.Designer.vb">
+      <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminSystemAdministration.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogBase.Designer.vb">
+      <DependentUpon>frmDialogBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.vb">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsBase.Designer.vb">
+      <DependentUpon>frmLogisticsBase.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsPackingList.Designer.vb">
+      <DependentUpon>frmLogisticsPackingList.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsPackingList.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsRegisterCommodity.Designer.vb">
+      <DependentUpon>frmLogisticsRegisterCommodity.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsRegisterCommodity.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsReports.Designer.vb">
+      <DependentUpon>frmLogisticsReports.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsReports.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmSaleBase.Designer.vb">
       <DependentUpon>frmSaleBase.vb</DependentUpon>
     </Compile>
@@ -119,6 +193,45 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmAdminBase.resx">
+      <DependentUpon>frmAdminBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminCake.resx">
+      <DependentUpon>frmAdminCake.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminIngredient.resx">
+      <DependentUpon>frmAdminIngredient.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminProcessedOrders.resx">
+      <DependentUpon>frmAdminProcessedOrders.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminReports.resx">
+      <DependentUpon>frmAdminReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminSystemAdministration.resx">
+      <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogBase.resx">
+      <DependentUpon>frmDialogBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsBase.resx">
+      <DependentUpon>frmLogisticsBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsPackingList.resx">
+      <DependentUpon>frmLogisticsPackingList.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsRegisterCommodity.resx">
+      <DependentUpon>frmLogisticsRegisterCommodity.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsReports.resx">
+      <DependentUpon>frmLogisticsReports.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSaleCustomer.resx">
+      <DependentUpon>frmSaleCustomer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSaleMain.resx">
       <DependentUpon>frmSaleMain.vb</DependentUpon>
     </EmbeddedResource>

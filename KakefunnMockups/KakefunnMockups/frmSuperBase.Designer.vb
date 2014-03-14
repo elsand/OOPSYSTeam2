@@ -24,17 +24,17 @@ Partial Class frmSuperBase
     Private Sub InitializeComponent()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FilToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RedigerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HjelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ByttBrukerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LoggUtToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
         Me.AvsluttToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RedigerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SalgToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdminstrasjonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HjelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -55,12 +55,53 @@ Partial Class frmSuperBase
         Me.FilToolStripMenuItem.Size = New System.Drawing.Size(31, 20)
         Me.FilToolStripMenuItem.Text = "&Fil"
         '
+        'ByttBrukerToolStripMenuItem
+        '
+        Me.ByttBrukerToolStripMenuItem.Name = "ByttBrukerToolStripMenuItem"
+        Me.ByttBrukerToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.ByttBrukerToolStripMenuItem.Text = "&Bytt bruker"
+        '
+        'LoggUtToolStripMenuItem
+        '
+        Me.LoggUtToolStripMenuItem.Name = "LoggUtToolStripMenuItem"
+        Me.LoggUtToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.LoggUtToolStripMenuItem.Text = "&Logg ut"
+        '
+        'ToolStripMenuItem1
+        '
+        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(129, 6)
+        '
+        'AvsluttToolStripMenuItem
+        '
+        Me.AvsluttToolStripMenuItem.Name = "AvsluttToolStripMenuItem"
+        Me.AvsluttToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
+        Me.AvsluttToolStripMenuItem.Text = "&Avslutt"
+        '
         'RedigerToolStripMenuItem
         '
         Me.RedigerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalgToolStripMenuItem, Me.AdminstrasjonToolStripMenuItem, Me.LagerToolStripMenuItem})
         Me.RedigerToolStripMenuItem.Name = "RedigerToolStripMenuItem"
         Me.RedigerToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
         Me.RedigerToolStripMenuItem.Text = "&Aspekt"
+        '
+        'SalgToolStripMenuItem
+        '
+        Me.SalgToolStripMenuItem.Name = "SalgToolStripMenuItem"
+        Me.SalgToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
+        Me.SalgToolStripMenuItem.Text = "&Salg"
+        '
+        'AdminstrasjonToolStripMenuItem
+        '
+        Me.AdminstrasjonToolStripMenuItem.Name = "AdminstrasjonToolStripMenuItem"
+        Me.AdminstrasjonToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
+        Me.AdminstrasjonToolStripMenuItem.Text = "&Adminstrasjon"
+        '
+        'LagerToolStripMenuItem
+        '
+        Me.LagerToolStripMenuItem.Name = "LagerToolStripMenuItem"
+        Me.LagerToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
+        Me.LagerToolStripMenuItem.Text = "&Lager"
         '
         'HjelpToolStripMenuItem
         '
@@ -84,47 +125,6 @@ Partial Class frmSuperBase
         Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(175, 17)
         Me.ToolStripStatusLabel1.Text = "Innlogget: Ola Nordmann (salg)"
         '
-        'ByttBrukerToolStripMenuItem
-        '
-        Me.ByttBrukerToolStripMenuItem.Name = "ByttBrukerToolStripMenuItem"
-        Me.ByttBrukerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ByttBrukerToolStripMenuItem.Text = "&Bytt bruker"
-        '
-        'LoggUtToolStripMenuItem
-        '
-        Me.LoggUtToolStripMenuItem.Name = "LoggUtToolStripMenuItem"
-        Me.LoggUtToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LoggUtToolStripMenuItem.Text = "&Logg ut"
-        '
-        'ToolStripMenuItem1
-        '
-        Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
-        '
-        'AvsluttToolStripMenuItem
-        '
-        Me.AvsluttToolStripMenuItem.Name = "AvsluttToolStripMenuItem"
-        Me.AvsluttToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AvsluttToolStripMenuItem.Text = "&Avslutt"
-        '
-        'SalgToolStripMenuItem
-        '
-        Me.SalgToolStripMenuItem.Name = "SalgToolStripMenuItem"
-        Me.SalgToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.SalgToolStripMenuItem.Text = "&Salg"
-        '
-        'AdminstrasjonToolStripMenuItem
-        '
-        Me.AdminstrasjonToolStripMenuItem.Name = "AdminstrasjonToolStripMenuItem"
-        Me.AdminstrasjonToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AdminstrasjonToolStripMenuItem.Text = "&Adminstrasjon"
-        '
-        'LagerToolStripMenuItem
-        '
-        Me.LagerToolStripMenuItem.Name = "LagerToolStripMenuItem"
-        Me.LagerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LagerToolStripMenuItem.Text = "&Lager"
-        '
         'frmSuperBase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -132,9 +132,7 @@ Partial Class frmSuperBase
         Me.ClientSize = New System.Drawing.Size(462, 447)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.MaximizeBox = False
         Me.Name = "frmSuperBase"
         Me.Text = "frmSuperBase"
         Me.MenuStrip1.ResumeLayout(False)
