@@ -27,7 +27,6 @@ Partial Class frmLogisticsPackingList
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.Button4 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
@@ -87,24 +86,15 @@ Partial Class frmLogisticsPackingList
         'DateTimePicker1
         '
         Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(471, 63)
+        Me.DateTimePicker1.Location = New System.Drawing.Point(525, 64)
         Me.DateTimePicker1.Name = "DateTimePicker1"
         Me.DateTimePicker1.Size = New System.Drawing.Size(98, 20)
         Me.DateTimePicker1.TabIndex = 7
         '
-        'Button4
-        '
-        Me.Button4.Location = New System.Drawing.Point(575, 61)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(44, 23)
-        Me.Button4.TabIndex = 8
-        Me.Button4.Text = "I dag"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(413, 66)
+        Me.Label2.Location = New System.Drawing.Point(467, 67)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(52, 13)
         Me.Label2.TabIndex = 9
@@ -166,7 +156,6 @@ Partial Class frmLogisticsPackingList
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.DateTimePicker1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGridView1)
@@ -175,7 +164,6 @@ Partial Class frmLogisticsPackingList
         Me.Controls.SetChildIndex(Me.DataGridView1, 0)
         Me.Controls.SetChildIndex(Me.Label1, 0)
         Me.Controls.SetChildIndex(Me.DateTimePicker1, 0)
-        Me.Controls.SetChildIndex(Me.Button4, 0)
         Me.Controls.SetChildIndex(Me.Label2, 0)
         Me.Controls.SetChildIndex(Me.Button5, 0)
         Me.Controls.SetChildIndex(Me.GroupBox1, 0)
@@ -193,7 +181,6 @@ Partial Class frmLogisticsPackingList
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button

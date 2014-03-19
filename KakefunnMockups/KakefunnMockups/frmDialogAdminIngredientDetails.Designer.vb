@@ -20,6 +20,13 @@ Partial Class frmDialogAdminIngredientDetails
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.TextBox7 = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TextBox6 = New System.Windows.Forms.TextBox()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TextBox3 = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -28,22 +35,16 @@ Partial Class frmDialogAdminIngredientDetails
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.TextBox6 = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.Label11 = New System.Windows.Forms.Label()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Innkjsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -71,6 +72,63 @@ Partial Class frmDialogAdminIngredientDetails
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Ingrediens"
+        '
+        'TextBox7
+        '
+        Me.TextBox7.Location = New System.Drawing.Point(96, 252)
+        Me.TextBox7.Name = "TextBox7"
+        Me.TextBox7.Size = New System.Drawing.Size(36, 20)
+        Me.TextBox7.TabIndex = 16
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(8, 255)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(54, 13)
+        Me.Label11.TabIndex = 15
+        Me.Label11.Text = "Avanse-%"
+        '
+        'TextBox6
+        '
+        Me.TextBox6.Location = New System.Drawing.Point(97, 220)
+        Me.TextBox6.Name = "TextBox6"
+        Me.TextBox6.Size = New System.Drawing.Size(36, 20)
+        Me.TextBox6.TabIndex = 14
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(7, 223)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(54, 13)
+        Me.Label10.TabIndex = 13
+        Me.Label10.Text = "Momssats"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(96, 165)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
+        Me.ComboBox1.TabIndex = 10
+        Me.ComboBox1.Text = "Gram"
+        '
+        'TextBox5
+        '
+        Me.TextBox5.Location = New System.Drawing.Point(96, 192)
+        Me.TextBox5.Name = "TextBox5"
+        Me.TextBox5.Size = New System.Drawing.Size(69, 20)
+        Me.TextBox5.TabIndex = 9
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(6, 195)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(60, 13)
+        Me.Label5.TabIndex = 8
+        Me.Label5.Text = "Kcal/enhet"
         '
         'Label4
         '
@@ -132,37 +190,12 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(240, 316)
+        Me.Button1.Location = New System.Drawing.Point(324, 319)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(106, 34)
         Me.Button1.TabIndex = 0
         Me.Button1.Text = "Lagre endringer"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'TextBox5
-        '
-        Me.TextBox5.Location = New System.Drawing.Point(96, 192)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(69, 20)
-        Me.TextBox5.TabIndex = 9
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(6, 195)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(60, 13)
-        Me.Label5.TabIndex = 8
-        Me.Label5.Text = "Kcal/enhet"
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(96, 165)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 10
-        Me.ComboBox1.Text = "Gram"
         '
         'GroupBox2
         '
@@ -177,33 +210,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Lagerstatus"
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 29)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(119, 13)
-        Me.Label7.TabIndex = 2
-        Me.Label7.Text = "Antall enheter på lager: "
-        '
-        'Label8
-        '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(204, 29)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(19, 13)
-        Me.Label8.TabIndex = 3
-        Me.Label8.Text = "47"
-        '
-        'Label9
-        '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(6, 60)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(185, 13)
-        Me.Label9.TabIndex = 4
-        Me.Label9.Text = "Beholdning har opphav i forsendelser:"
-        '
         'DataGridView1
         '
         Me.DataGridView1.AllowUserToAddRows = False
@@ -216,38 +222,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(307, 195)
         Me.DataGridView1.TabIndex = 5
-        '
-        'TextBox6
-        '
-        Me.TextBox6.Location = New System.Drawing.Point(97, 220)
-        Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(36, 20)
-        Me.TextBox6.TabIndex = 14
-        '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(7, 223)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(54, 13)
-        Me.Label10.TabIndex = 13
-        Me.Label10.Text = "Momssats"
-        '
-        'Label11
-        '
-        Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(8, 255)
-        Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(54, 13)
-        Me.Label11.TabIndex = 15
-        Me.Label11.Text = "Avanse-%"
-        '
-        'TextBox7
-        '
-        Me.TextBox7.Location = New System.Drawing.Point(96, 252)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(36, 20)
-        Me.TextBox7.TabIndex = 16
         '
         'Column2
         '
@@ -273,10 +247,47 @@ Partial Class frmDialogAdminIngredientDetails
         Me.Column1.Name = "Column1"
         Me.Column1.Width = 74
         '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(6, 60)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(185, 13)
+        Me.Label9.TabIndex = 4
+        Me.Label9.Text = "Beholdning har opphav i forsendelser:"
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(204, 29)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(19, 13)
+        Me.Label8.TabIndex = 3
+        Me.Label8.Text = "47"
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 29)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(119, 13)
+        Me.Label7.TabIndex = 2
+        Me.Label7.Text = "Antall enheter på lager: "
+        '
+        'Button2
+        '
+        Me.Button2.Location = New System.Drawing.Point(181, 319)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(106, 34)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Avbryt"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(631, 365)
+        Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
@@ -315,5 +326,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Innkjsdf As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class
