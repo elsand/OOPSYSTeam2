@@ -30,43 +30,43 @@ Partial Class frmAdminBase
         '
         Me.Button1.Location = New System.Drawing.Point(12, 27)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(132, 23)
+        Me.Button1.Size = New System.Drawing.Size(106, 23)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Effektuerte ordrer"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(564, 27)
+        Me.Button2.Location = New System.Drawing.Point(435, 27)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(132, 23)
+        Me.Button2.Size = New System.Drawing.Size(87, 23)
         Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Brukeradministrasjon"
+        Me.Button2.Text = "Brukere"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(288, 27)
+        Me.Button3.Location = New System.Drawing.Point(227, 27)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(132, 23)
+        Me.Button3.Size = New System.Drawing.Size(99, 23)
         Me.Button3.TabIndex = 4
         Me.Button3.Text = "Ingredienser"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(150, 27)
+        Me.Button4.Location = New System.Drawing.Point(124, 27)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(132, 23)
+        Me.Button4.Size = New System.Drawing.Size(97, 23)
         Me.Button4.TabIndex = 5
         Me.Button4.Text = "Kaker"
         Me.Button4.UseVisualStyleBackColor = True
         '
         'Button5
         '
-        Me.Button5.Location = New System.Drawing.Point(426, 27)
+        Me.Button5.Location = New System.Drawing.Point(332, 27)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(132, 23)
+        Me.Button5.Size = New System.Drawing.Size(97, 23)
         Me.Button5.TabIndex = 6
         Me.Button5.Text = "Rapporter"
         Me.Button5.UseVisualStyleBackColor = True
