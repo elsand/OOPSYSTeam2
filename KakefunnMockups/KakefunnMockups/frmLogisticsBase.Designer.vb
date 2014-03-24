@@ -28,33 +28,33 @@ Partial Class frmLogisticsBase
         '
         Me.Button1.Location = New System.Drawing.Point(12, 27)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(115, 60)
+        Me.Button1.Size = New System.Drawing.Size(93, 32)
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Pakkseddel"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(142, 27)
+        Me.Button2.Location = New System.Drawing.Point(111, 27)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(136, 23)
+        Me.Button2.Size = New System.Drawing.Size(99, 32)
         Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Registrer vare"
+        Me.Button2.Text = "Registrere varer"
         Me.Button2.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(57, 160)
+        Me.Button3.Location = New System.Drawing.Point(216, 27)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(136, 23)
+        Me.Button3.Size = New System.Drawing.Size(99, 32)
         Me.Button3.TabIndex = 4
-        Me.Button3.Text = "Rapporter"
+        Me.Button3.Text = "Utløpte varer"
         Me.Button3.UseVisualStyleBackColor = True
         '
         'frmLogisticsBase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(462, 447)
+        Me.ClientSize = New System.Drawing.Size(768, 509)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)

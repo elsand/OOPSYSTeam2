@@ -109,10 +109,22 @@
     <Compile Include="frmAdminSystemAdministration.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDialogAdminIngredientDetails.Designer.vb">
+      <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogAdminIngredientDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDialogBase.Designer.vb">
       <DependentUpon>frmDialogBase.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDialogBase.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogSearchResults.Designer.vb">
+      <DependentUpon>frmDialogSearchResults.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogSearchResults.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmLogin.Designer.vb">
@@ -211,8 +223,14 @@
     <EmbeddedResource Include="frmAdminSystemAdministration.resx">
       <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
+      <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogBase.resx">
       <DependentUpon>frmDialogBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogSearchResults.resx">
+      <DependentUpon>frmDialogSearchResults.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
