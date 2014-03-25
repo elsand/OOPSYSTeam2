@@ -73,6 +73,12 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controllers\CustomerManager.vb" />
+    <Compile Include="controllers\DocumentPrinter.vb" />
+    <Compile Include="controllers\OrderManager.vb" />
+    <Compile Include="controllers\ReportManager.vb" />
+    <Compile Include="controllers\StockManager.vb" />
+    <Compile Include="controllers\SubscriptionManager.vb" />
     <Compile Include="core\Model.vb" />
     <Compile Include="frmAdminBase.Designer.vb">
       <DependentUpon>frmAdminBase.vb</DependentUpon>
@@ -189,7 +195,21 @@
     <Compile Include="frmSuperBase.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="models\Adress.vb" />
+    <Compile Include="models\Batch.vb" />
+    <Compile Include="models\Cake.vb" />
+    <Compile Include="models\Customer.vb" />
+    <Compile Include="models\DeliveryMethod.vb" />
+    <Compile Include="models\Discount.vb" />
+    <Compile Include="models\Employee.vb" />
+    <Compile Include="models\Event.vb" />
+    <Compile Include="models\Ingredient.vb" />
     <Compile Include="models\Order.vb" />
+    <Compile Include="core\User.vb" />
+    <Compile Include="models\Price.vb" />
+    <Compile Include="models\Role.vb" />
+    <Compile Include="models\Subscription.vb" />
+    <Compile Include="models\Unit.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
