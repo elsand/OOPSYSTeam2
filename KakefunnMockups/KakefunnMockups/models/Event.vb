@@ -1,3 +1,3 @@
-﻿Public Class Event
+﻿Public Class EventXX
 
 End Class
