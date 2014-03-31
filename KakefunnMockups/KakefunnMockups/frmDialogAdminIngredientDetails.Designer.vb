@@ -37,14 +37,16 @@ Partial Class frmDialogAdminIngredientDetails
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Innkjsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Innkjsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -52,6 +54,7 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.Controls.Add(Me.TextBox7)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.TextBox6)
@@ -190,7 +193,7 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(324, 319)
+        Me.Button1.Location = New System.Drawing.Point(571, 319)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(106, 34)
         Me.Button1.TabIndex = 0
@@ -205,7 +208,7 @@ Partial Class frmDialogAdminIngredientDetails
         Me.GroupBox2.Controls.Add(Me.Label7)
         Me.GroupBox2.Location = New System.Drawing.Point(294, 13)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(329, 285)
+        Me.GroupBox2.Size = New System.Drawing.Size(383, 285)
         Me.GroupBox2.TabIndex = 1
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Lagerstatus"
@@ -214,47 +217,23 @@ Partial Class frmDialogAdminIngredientDetails
         '
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells
+        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column2, Me.Column3, Me.Innkjsdf, Me.Column1})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column4, Me.Column2, Me.Column3, Me.Innkjsdf, Me.Column1})
         Me.DataGridView1.Location = New System.Drawing.Point(9, 76)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(307, 195)
+        Me.DataGridView1.Size = New System.Drawing.Size(368, 195)
         Me.DataGridView1.TabIndex = 5
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Utløpsdato"
-        Me.Column2.Name = "Column2"
-        Me.Column2.Width = 83
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Antall"
-        Me.Column3.Name = "Column3"
-        Me.Column3.Width = 58
-        '
-        'Innkjsdf
-        '
-        Me.Innkjsdf.HeaderText = "Innkjøpspris"
-        Me.Innkjsdf.Name = "Innkjsdf"
-        Me.Innkjsdf.Width = 88
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Salgspris"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 74
         '
         'Label9
         '
         Me.Label9.AutoSize = True
         Me.Label9.Location = New System.Drawing.Point(6, 60)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(185, 13)
+        Me.Label9.Size = New System.Drawing.Size(157, 13)
         Me.Label9.TabIndex = 4
-        Me.Label9.Text = "Beholdning har opphav i forsendelser:"
+        Me.Label9.Text = "Beholdning har opphav i partier:"
         '
         'Label8
         '
@@ -276,17 +255,52 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(181, 319)
+        Me.Button2.Location = New System.Drawing.Point(459, 319)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(106, 34)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Avbryt"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Partinr"
+        Me.Column4.Name = "Column4"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Utløpsdato"
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Antall"
+        Me.Column3.Name = "Column3"
+        '
+        'Innkjsdf
+        '
+        Me.Innkjsdf.HeaderText = "Innkjøpspris"
+        Me.Innkjsdf.Name = "Innkjsdf"
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Salgspris"
+        Me.Column1.Name = "Column1"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(198, 255)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(66, 17)
+        Me.CheckBox1.TabIndex = 17
+        Me.CheckBox1.Text = "Publisert"
+        Me.CheckBox1.UseVisualStyleBackColor = True
+        '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(631, 365)
+        Me.ClientSize = New System.Drawing.Size(689, 378)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.Button1)
@@ -322,10 +336,12 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents Label11 As System.Windows.Forms.Label
     Friend WithEvents TextBox6 As System.Windows.Forms.TextBox
     Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents CheckBox1 As System.Windows.Forms.CheckBox
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Innkjsdf As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Button2 As System.Windows.Forms.Button
 
 End Class

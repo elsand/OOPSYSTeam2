@@ -20,16 +20,18 @@ Partial Class frmAdminIngredient
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.sdffsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
+        Me.Button8 = New System.Windows.Forms.Button()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -43,15 +45,6 @@ Partial Class frmAdminIngredient
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(643, 365)
         Me.DataGridView1.TabIndex = 7
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 467)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(168, 13)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "* Billigste / Dyreste / Gjennomsnitt"
         '
         'Column1
         '
@@ -83,6 +76,15 @@ Partial Class frmAdminIngredient
         Me.Column5.HeaderText = "Avanse i %"
         Me.Column5.Name = "Column5"
         '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(12, 467)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(168, 13)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "* Billigste / Dyreste / Gjennomsnitt"
+        '
         'TextBox1
         '
         Me.TextBox1.Location = New System.Drawing.Point(120, 63)
@@ -108,10 +110,30 @@ Partial Class frmAdminIngredient
         Me.Button6.Text = "Søk"
         Me.Button6.UseVisualStyleBackColor = True
         '
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(553, 61)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(99, 23)
+        Me.Button7.TabIndex = 12
+        Me.Button7.Text = "Ny ingrediens ..."
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'Button8
+        '
+        Me.Button8.Location = New System.Drawing.Point(472, 61)
+        Me.Button8.Name = "Button8"
+        Me.Button8.Size = New System.Drawing.Size(75, 23)
+        Me.Button8.TabIndex = 13
+        Me.Button8.Text = "Slett"
+        Me.Button8.UseVisualStyleBackColor = True
+        '
         'frmAdminIngredient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(664, 516)
+        Me.Controls.Add(Me.Button8)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.TextBox1)
@@ -124,6 +146,8 @@ Partial Class frmAdminIngredient
         Me.Controls.SetChildIndex(Me.TextBox1, 0)
         Me.Controls.SetChildIndex(Me.Label2, 0)
         Me.Controls.SetChildIndex(Me.Button6, 0)
+        Me.Controls.SetChildIndex(Me.Button7, 0)
+        Me.Controls.SetChildIndex(Me.Button8, 0)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -140,5 +164,7 @@ Partial Class frmAdminIngredient
     Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents Button7 As System.Windows.Forms.Button
+    Friend WithEvents Button8 As System.Windows.Forms.Button
 
 End Class
