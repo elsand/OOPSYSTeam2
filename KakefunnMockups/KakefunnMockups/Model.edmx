@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="KakefunnModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="address">
           <Key>
             <PropertyRef Name="id" />
@@ -478,7 +478,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="KakefunnModelStoreContainer">
+        <EntityContainer Name="ModelStoreContainer">
           <EntitySet Name="address" EntityType="Self.address" Schema="***REMOVED***" store:Type="Tables" />
           <EntitySet Name="batch" EntityType="Self.batch" Schema="***REMOVED***" store:Type="Tables" />
           <EntitySet Name="cake" EntityType="Self.cake" Schema="***REMOVED***" store:Type="Tables" />
@@ -585,14 +585,14 @@
             <End Role="subscription" EntitySet="subscription" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="KakefunnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="address">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="zip" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="isPrivate" Type="Boolean" Nullable="false" />
@@ -601,14 +601,13 @@
           <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="zip" Type="Int32" Nullable="false" />
           <NavigationProperty Name="zip1" Relationship="Self.fk_address_zip1" FromRole="address" ToRole="zip" />
-          <NavigationProperty Name="customers" Relationship="KakefunnModel.fk_customer_address1" FromRole="address" ToRole="customer" />
-          <NavigationProperty Name="employees" Relationship="KakefunnModel.fk_employee_address1" FromRole="address" ToRole="employee" />
-          <NavigationProperty Name="orders" Relationship="KakefunnModel.fk_order_address1" FromRole="address" ToRole="order" />
+          <NavigationProperty Name="customers" Relationship="Self.fk_customer_address1" FromRole="address" ToRole="customer" />
+          <NavigationProperty Name="employees" Relationship="Self.fk_employee_address1" FromRole="address" ToRole="employee" />
+          <NavigationProperty Name="orders" Relationship="Self.fk_order_address1" FromRole="address" ToRole="order" />
         </EntityType>
         <EntityType Name="batch">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="ingredientId" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ordered" Type="DateTime" Nullable="false" />
@@ -636,16 +635,14 @@
         </EntityType>
         <EntityType Name="cake_has_ingredient">
           <Key>
-            <PropertyRef Name="cakeId" />
-            <PropertyRef Name="ingredientId" />
             <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="cakeId" Type="Int32" Nullable="false" />
           <Property Name="ingredientId" Type="Int32" Nullable="false" />
           <Property Name="amount" Type="Single" />
           <NavigationProperty Name="cake" Relationship="Self.fk_cake_has_ingredient_cake1" FromRole="cake_has_ingredient" ToRole="cake" />
           <NavigationProperty Name="ingredient" Relationship="Self.fk_cake_has_ingredient_ingredient1" FromRole="cake_has_ingredient" ToRole="ingredient" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="customer">
           <Key>
@@ -662,10 +659,10 @@
           <Property Name="note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="created" Type="DateTime" />
           <Property Name="modfied" Type="DateTime" />
+          <NavigationProperty Name="address" Relationship="Self.fk_customer_address1" FromRole="customer" ToRole="address" />
           <NavigationProperty Name="customerType" Relationship="Self.fk_kunde_kundeType1" FromRole="customer" ToRole="customerType" />
           <NavigationProperty Name="discountPlan" Relationship="Self.fk_kunde_rabattPlan1" FromRole="customer" ToRole="discountPlan" />
           <NavigationProperty Name="orders" Relationship="Self.fk_ordre_kunde1" FromRole="customer" ToRole="order" />
-          <NavigationProperty Name="address" Relationship="KakefunnModel.fk_customer_address1" FromRole="customer" ToRole="address" />
         </EntityType>
         <EntityType Name="customerType">
           <Key>
@@ -697,7 +694,6 @@
         <EntityType Name="employee">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="addressId" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
@@ -705,21 +701,20 @@
           <Property Name="addressId" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.fk_employee_address1" FromRole="employee" ToRole="address" />
+          <NavigationProperty Name="employee_has_roles" Relationship="Self.fk_ansatt_has_roller_ansatt1" FromRole="employee" ToRole="employee_has_roles" />
           <NavigationProperty Name="phone" Relationship="Self.fk_ansatt_telefon1" FromRole="employee" ToRole="phone" />
-          <NavigationProperty Name="address" Relationship="KakefunnModel.fk_employee_address1" FromRole="employee" ToRole="address" />
-          <NavigationProperty Name="employee_has_roles" Relationship="KakefunnModel.fk_ansatt_has_roller_ansatt1" FromRole="employee" ToRole="employee_has_roles" />
-          <NavigationProperty Name="orders" Relationship="KakefunnModel.fk_ordre_ansatt1" FromRole="employee" ToRole="order" />
+          <NavigationProperty Name="orders" Relationship="Self.fk_ordre_ansatt1" FromRole="employee" ToRole="order" />
         </EntityType>
         <EntityType Name="employee_has_roles">
           <Key>
-            <PropertyRef Name="roleId" />
             <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="roleId" Type="Int32" Nullable="false" />
           <Property Name="employeeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="employee" Relationship="Self.fk_ansatt_has_roller_ansatt1" FromRole="employee_has_roles" ToRole="employee" />
           <NavigationProperty Name="role" Relationship="Self.fk_ansatt_has_roller_roller1" FromRole="employee_has_roles" ToRole="role" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <NavigationProperty Name="employee" Relationship="KakefunnModel.fk_ansatt_has_roller_ansatt1" FromRole="employee_has_roles" ToRole="employee" />
         </EntityType>
         <EntityType Name="event">
           <Key>
@@ -771,7 +766,6 @@
         <EntityType Name="order">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="deliveryAddressId" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="customerId" Type="Int32" Nullable="false" />
@@ -791,28 +785,24 @@
           <Property Name="created" Type="DateTime" Nullable="false" />
           <Property Name="modified" Type="DateTime" Nullable="false" />
           <Property Name="isSubscriptionOrder" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="address" Relationship="Self.fk_order_address1" FromRole="order" ToRole="address" />
           <NavigationProperty Name="customer" Relationship="Self.fk_ordre_kunde1" FromRole="order" ToRole="customer" />
           <NavigationProperty Name="deliveryMethod" Relationship="Self.fk_ordre_leveringsMetode1" FromRole="order" ToRole="deliveryMethod" />
+          <NavigationProperty Name="employee" Relationship="Self.fk_ordre_ansatt1" FromRole="order" ToRole="employee" />
           <NavigationProperty Name="order_has_ingredient" Relationship="Self.fk_order_has_ingredient_order1" FromRole="order" ToRole="order_has_ingredient" />
           <NavigationProperty Name="subscriptions" Relationship="Self.fk_subscription_order1" FromRole="order" ToRole="subscription" />
-          <NavigationProperty Name="address" Relationship="KakefunnModel.fk_order_address1" FromRole="order" ToRole="address" />
-          <NavigationProperty Name="employee" Relationship="KakefunnModel.fk_ordre_ansatt1" FromRole="order" ToRole="employee" />
         </EntityType>
         <EntityType Name="order_has_ingredient">
           <Key>
-            <PropertyRef Name="order_id" />
-            <PropertyRef Name="order_deliveryAddressId" />
-            <PropertyRef Name="ingredient_id" />
             <PropertyRef Name="id" />
           </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="order_id" Type="Int32" Nullable="false" />
-          <Property Name="order_deliveryAddressId" Type="Int32" Nullable="false" />
           <Property Name="ingredient_id" Type="Int32" Nullable="false" />
           <Property Name="amount" Type="Double" Nullable="false" />
           <Property Name="cakeId" Type="Int32" />
           <NavigationProperty Name="ingredient" Relationship="Self.fk_order_has_ingredient_ingredient1" FromRole="order_has_ingredient" ToRole="ingredient" />
           <NavigationProperty Name="order" Relationship="Self.fk_order_has_ingredient_order1" FromRole="order_has_ingredient" ToRole="order" />
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
         <EntityType Name="phone">
           <Key>
@@ -834,9 +824,6 @@
         <EntityType Name="subscription">
           <Key>
             <PropertyRef Name="id" />
-            <PropertyRef Name="frequencyTypeId" />
-            <PropertyRef Name="orderid" />
-            <PropertyRef Name="orderdeliveryAddressId" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="isActive" Type="Boolean" />
@@ -847,7 +834,6 @@
           <Property Name="created" Type="DateTime" />
           <Property Name="modified" Type="DateTime" />
           <Property Name="orderid" Type="Int32" Nullable="false" />
-          <Property Name="orderdeliveryAddressId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="frequencyType" Relationship="Self.fk_subscription_frequencyType1" FromRole="subscription" ToRole="frequencyType" />
           <NavigationProperty Name="order" Relationship="Self.fk_subscription_order1" FromRole="subscription" ToRole="order" />
         </EntityType>
@@ -876,6 +862,42 @@
             </Principal>
             <Dependent Role="address">
               <PropertyRef Name="zip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_customer_address1">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_employee_address1">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="addressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_order_address1">
+          <End Role="address" Type="Self.address" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="address">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="deliveryAddressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -963,6 +985,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_ansatt_has_roller_ansatt1">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="employee_has_roles" Type="Self.employee_has_roles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employee_has_roles">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_ansatt_telefon1">
           <End Role="phone" Type="Self.phone" Multiplicity="1" />
           <End Role="employee" Type="Self.employee" Multiplicity="*" />
@@ -975,9 +1009,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_ordre_ansatt1">
+          <End Role="employee" Type="Self.employee" Multiplicity="1" />
+          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employee">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="employeeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="fk_ansatt_has_roller_roller1">
           <End Role="role" Type="Self.role" Multiplicity="1" />
-          <End Role="employee_has_roles" Type="Self.employee_has_roles" Multiplicity="0..1" />
+          <End Role="employee_has_roles" Type="Self.employee_has_roles" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="role">
               <PropertyRef Name="id" />
@@ -1041,11 +1087,9 @@
           <ReferentialConstraint>
             <Principal Role="order">
               <PropertyRef Name="id" />
-              <PropertyRef Name="deliveryAddressId" />
             </Principal>
             <Dependent Role="order_has_ingredient">
               <PropertyRef Name="order_id" />
-              <PropertyRef Name="order_deliveryAddressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1055,15 +1099,13 @@
           <ReferentialConstraint>
             <Principal Role="order">
               <PropertyRef Name="id" />
-              <PropertyRef Name="deliveryAddressId" />
             </Principal>
             <Dependent Role="subscription">
               <PropertyRef Name="orderid" />
-              <PropertyRef Name="orderdeliveryAddressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Kakebunn" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Db" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="addresses" EntityType="Self.address" />
           <EntitySet Name="batches" EntityType="Self.batch" />
           <EntitySet Name="cakes" EntityType="Self.cake" />
@@ -1088,6 +1130,18 @@
           <AssociationSet Name="fk_address_zip1" Association="Self.fk_address_zip1">
             <End Role="zip" EntitySet="zips" />
             <End Role="address" EntitySet="addresses" />
+          </AssociationSet>
+          <AssociationSet Name="fk_customer_address1" Association="Self.fk_customer_address1">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_employee_address1" Association="Self.fk_employee_address1">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_order_address1" Association="Self.fk_order_address1">
+            <End Role="address" EntitySet="addresses" />
+            <End Role="order" EntitySet="orders" />
           </AssociationSet>
           <AssociationSet Name="fk_batch_ingrediens1" Association="Self.fk_batch_ingrediens1">
             <End Role="ingredient" EntitySet="ingredients" />
@@ -1117,9 +1171,17 @@
             <End Role="deliveryMethod" EntitySet="deliveryMethods" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
+          <AssociationSet Name="fk_ansatt_has_roller_ansatt1" Association="Self.fk_ansatt_has_roller_ansatt1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="employee_has_roles" EntitySet="employee_has_roles" />
+          </AssociationSet>
           <AssociationSet Name="fk_ansatt_telefon1" Association="Self.fk_ansatt_telefon1">
             <End Role="phone" EntitySet="phones" />
             <End Role="employee" EntitySet="employees" />
+          </AssociationSet>
+          <AssociationSet Name="fk_ordre_ansatt1" Association="Self.fk_ordre_ansatt1">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="order" EntitySet="orders" />
           </AssociationSet>
           <AssociationSet Name="fk_ansatt_has_roller_roller1" Association="Self.fk_ansatt_has_roller_roller1">
             <End Role="role" EntitySet="roles" />
@@ -1149,95 +1211,15 @@
             <End Role="order" EntitySet="orders" />
             <End Role="subscription" EntitySet="subscriptions" />
           </AssociationSet>
-          <AssociationSet Name="fk_customer_address1" Association="KakefunnModel.fk_customer_address1">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="customer" EntitySet="customers" />
-          </AssociationSet>
-          <AssociationSet Name="fk_employee_address1" Association="KakefunnModel.fk_employee_address1">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="employee" EntitySet="employees" />
-          </AssociationSet>
-          <AssociationSet Name="fk_order_address1" Association="KakefunnModel.fk_order_address1">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="order" EntitySet="orders" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ansatt_has_roller_ansatt1" Association="KakefunnModel.fk_ansatt_has_roller_ansatt1">
-            <End Role="employee" EntitySet="employees" />
-            <End Role="employee_has_roles" EntitySet="employee_has_roles" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ordre_ansatt1" Association="KakefunnModel.fk_ordre_ansatt1">
-            <End Role="employee" EntitySet="employees" />
-            <End Role="order" EntitySet="orders" />
-          </AssociationSet>
         </EntityContainer>
-        <Association Name="fk_customer_address1">
-          <End Type="KakefunnModel.address" Role="address" Multiplicity="1" />
-          <End Type="KakefunnModel.customer" Role="customer" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="customer">
-              <PropertyRef Name="addressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_employee_address1">
-          <End Type="KakefunnModel.address" Role="address" Multiplicity="1" />
-          <End Type="KakefunnModel.employee" Role="employee" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="employee">
-              <PropertyRef Name="addressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_order_address1">
-          <End Type="KakefunnModel.address" Role="address" Multiplicity="1" />
-          <End Type="KakefunnModel.order" Role="order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="address">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="deliveryAddressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ansatt_has_roller_ansatt1">
-          <End Type="KakefunnModel.employee" Role="employee" Multiplicity="1" />
-          <End Type="KakefunnModel.employee_has_roles" Role="employee_has_roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="employee_has_roles">
-              <PropertyRef Name="employeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ordre_ansatt1">
-          <End Type="KakefunnModel.employee" Role="employee" Multiplicity="1" />
-          <End Type="KakefunnModel.order" Role="order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="order">
-              <PropertyRef Name="employeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="KakefunnModelStoreContainer" CdmEntityContainer="Kakebunn">
+        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Db">
           <EntitySetMapping Name="addresses">
-            <EntityTypeMapping TypeName="KakefunnModel.address">
+            <EntityTypeMapping TypeName="Model.address">
               <MappingFragment StoreEntitySet="address">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
@@ -1249,7 +1231,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="batches">
-            <EntityTypeMapping TypeName="KakefunnModel.batch">
+            <EntityTypeMapping TypeName="Model.batch">
               <MappingFragment StoreEntitySet="batch">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ordered" ColumnName="ordered" />
@@ -1265,7 +1247,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cakes">
-            <EntityTypeMapping TypeName="KakefunnModel.cake">
+            <EntityTypeMapping TypeName="Model.cake">
               <MappingFragment StoreEntitySet="cake">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1277,7 +1259,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cake_has_ingredient">
-            <EntityTypeMapping TypeName="KakefunnModel.cake_has_ingredient">
+            <EntityTypeMapping TypeName="Model.cake_has_ingredient">
               <MappingFragment StoreEntitySet="cake_has_ingredient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="cakeId" ColumnName="cakeId" />
@@ -1287,7 +1269,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="customers">
-            <EntityTypeMapping TypeName="KakefunnModel.customer">
+            <EntityTypeMapping TypeName="Model.customer">
               <MappingFragment StoreEntitySet="customer">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
@@ -1304,7 +1286,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="customerTypes">
-            <EntityTypeMapping TypeName="KakefunnModel.customerType">
+            <EntityTypeMapping TypeName="Model.customerType">
               <MappingFragment StoreEntitySet="customerType">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1312,7 +1294,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="deliveryMethods">
-            <EntityTypeMapping TypeName="KakefunnModel.deliveryMethod">
+            <EntityTypeMapping TypeName="Model.deliveryMethod">
               <MappingFragment StoreEntitySet="deliveryMethod">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1322,7 +1304,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="discountPlans">
-            <EntityTypeMapping TypeName="KakefunnModel.discountPlan">
+            <EntityTypeMapping TypeName="Model.discountPlan">
               <MappingFragment StoreEntitySet="discountPlan">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1331,7 +1313,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employees">
-            <EntityTypeMapping TypeName="KakefunnModel.employee">
+            <EntityTypeMapping TypeName="Model.employee">
               <MappingFragment StoreEntitySet="employee">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1343,7 +1325,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="employee_has_roles">
-            <EntityTypeMapping TypeName="KakefunnModel.employee_has_roles">
+            <EntityTypeMapping TypeName="Model.employee_has_roles">
               <MappingFragment StoreEntitySet="employee_has_roles">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="roleId" ColumnName="roleId" />
@@ -1352,7 +1334,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="events">
-            <EntityTypeMapping TypeName="KakefunnModel.event">
+            <EntityTypeMapping TypeName="Model.event">
               <MappingFragment StoreEntitySet="events">
                 <ScalarProperty Name="eventsId" ColumnName="eventsId" />
                 <ScalarProperty Name="eventName" ColumnName="eventName" />
@@ -1363,7 +1345,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="frequencyTypes">
-            <EntityTypeMapping TypeName="KakefunnModel.frequencyType">
+            <EntityTypeMapping TypeName="Model.frequencyType">
               <MappingFragment StoreEntitySet="frequencyType">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1373,7 +1355,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ingredients">
-            <EntityTypeMapping TypeName="KakefunnModel.ingredient">
+            <EntityTypeMapping TypeName="Model.ingredient">
               <MappingFragment StoreEntitySet="ingredient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1386,7 +1368,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ingredientPrices">
-            <EntityTypeMapping TypeName="KakefunnModel.ingredientPrice">
+            <EntityTypeMapping TypeName="Model.ingredientPrice">
               <MappingFragment StoreEntitySet="ingredientPrice">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
@@ -1395,7 +1377,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="KakefunnModel.order">
+            <EntityTypeMapping TypeName="Model.order">
               <MappingFragment StoreEntitySet="order">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="customerId" ColumnName="customerId" />
@@ -1419,7 +1401,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="order_has_ingredient">
-            <EntityTypeMapping TypeName="KakefunnModel.order_has_ingredient">
+            <EntityTypeMapping TypeName="Model.order_has_ingredient">
               <MappingFragment StoreEntitySet="order_has_ingredient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
@@ -1430,7 +1412,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="phones">
-            <EntityTypeMapping TypeName="KakefunnModel.phone">
+            <EntityTypeMapping TypeName="Model.phone">
               <MappingFragment StoreEntitySet="phone">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="countryprefix" ColumnName="countryprefix" />
@@ -1439,7 +1421,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="KakefunnModel.role">
+            <EntityTypeMapping TypeName="Model.role">
               <MappingFragment StoreEntitySet="role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1447,7 +1429,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="subscriptions">
-            <EntityTypeMapping TypeName="KakefunnModel.subscription">
+            <EntityTypeMapping TypeName="Model.subscription">
               <MappingFragment StoreEntitySet="subscription">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
@@ -1462,7 +1444,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="units">
-            <EntityTypeMapping TypeName="KakefunnModel.unit">
+            <EntityTypeMapping TypeName="Model.unit">
               <MappingFragment StoreEntitySet="unit">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1470,7 +1452,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="zips">
-            <EntityTypeMapping TypeName="KakefunnModel.zip">
+            <EntityTypeMapping TypeName="Model.zip">
               <MappingFragment StoreEntitySet="zip">
                 <ScalarProperty Name="zip1" ColumnName="zip" />
                 <ScalarProperty Name="city" ColumnName="city" />
