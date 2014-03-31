@@ -79,6 +79,7 @@
     <Compile Include="controllers\ReportManager.vb" />
     <Compile Include="controllers\StockManager.vb" />
     <Compile Include="controllers\SubscriptionManager.vb" />
+    <Compile Include="core\Db.vb" />
     <Compile Include="core\Model.vb" />
     <Compile Include="frmAdminBase.Designer.vb">
       <DependentUpon>frmAdminBase.vb</DependentUpon>
