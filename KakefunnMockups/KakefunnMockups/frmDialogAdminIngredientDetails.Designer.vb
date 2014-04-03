@@ -20,6 +20,7 @@ Partial Class frmDialogAdminIngredientDetails
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.TextBox7 = New System.Windows.Forms.TextBox()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TextBox6 = New System.Windows.Forms.TextBox()
@@ -37,16 +38,15 @@ Partial Class frmDialogAdminIngredientDetails
         Me.Button1 = New System.Windows.Forms.Button()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Label9 = New System.Windows.Forms.Label()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Innkjsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,6 +75,16 @@ Partial Class frmDialogAdminIngredientDetails
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Ingrediens"
+        '
+        'CheckBox1
+        '
+        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.Location = New System.Drawing.Point(198, 255)
+        Me.CheckBox1.Name = "CheckBox1"
+        Me.CheckBox1.Size = New System.Drawing.Size(66, 17)
+        Me.CheckBox1.TabIndex = 17
+        Me.CheckBox1.Text = "Publisert"
+        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'TextBox7
         '
@@ -226,6 +236,31 @@ Partial Class frmDialogAdminIngredientDetails
         Me.DataGridView1.Size = New System.Drawing.Size(368, 195)
         Me.DataGridView1.TabIndex = 5
         '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Partinr"
+        Me.Column4.Name = "Column4"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Utløpsdato"
+        Me.Column2.Name = "Column2"
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Antall"
+        Me.Column3.Name = "Column3"
+        '
+        'Innkjsdf
+        '
+        Me.Innkjsdf.HeaderText = "Innkjøpspris"
+        Me.Innkjsdf.Name = "Innkjsdf"
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Salgspris"
+        Me.Column1.Name = "Column1"
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -261,41 +296,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Avbryt"
         Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Partinr"
-        Me.Column4.Name = "Column4"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Utløpsdato"
-        Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Antall"
-        Me.Column3.Name = "Column3"
-        '
-        'Innkjsdf
-        '
-        Me.Innkjsdf.HeaderText = "Innkjøpspris"
-        Me.Innkjsdf.Name = "Innkjsdf"
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Salgspris"
-        Me.Column1.Name = "Column1"
-        '
-        'CheckBox1
-        '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(198, 255)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(66, 17)
-        Me.CheckBox1.TabIndex = 17
-        Me.CheckBox1.Text = "Publisert"
-        Me.CheckBox1.UseVisualStyleBackColor = True
         '
         'frmDialogAdminIngredientDetails
         '
