@@ -31,7 +31,6 @@ Partial Public Class Db
     Public Overridable Property deliveryMethods() As DbSet(Of deliveryMethod)
     Public Overridable Property discountPlans() As DbSet(Of discountPlan)
     Public Overridable Property employees() As DbSet(Of employee)
-    Public Overridable Property employee_has_roles() As DbSet(Of employee_has_roles)
     Public Overridable Property events() As DbSet(Of [event])
     Public Overridable Property frequencyTypes() As DbSet(Of frequencyType)
     Public Overridable Property ingredients() As DbSet(Of ingredient)
