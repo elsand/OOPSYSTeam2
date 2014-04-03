@@ -22,138 +22,130 @@ Partial Class frmSuperBase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
-        Me.FilToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ByttBrukerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LoggUtToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.mnuMain = New System.Windows.Forms.MenuStrip()
+        Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.AvsluttToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RedigerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SalgToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AdminstrasjonToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LagerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.HjelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.MenuStrip1.SuspendLayout()
-        Me.StatusStrip1.SuspendLayout()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AspectToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SaleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdminToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LogisticsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.statusMain = New System.Windows.Forms.StatusStrip()
+        Me.statusText = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.mnuMain.SuspendLayout()
+        Me.statusMain.SuspendLayout()
         Me.SuspendLayout()
         '
-        'MenuStrip1
+        'mnuMain
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FilToolStripMenuItem, Me.RedigerToolStripMenuItem, Me.HjelpToolStripMenuItem})
-        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
-        Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(462, 24)
-        Me.MenuStrip1.TabIndex = 0
-        Me.MenuStrip1.Text = "MenuStrip1"
+        Me.mnuMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.AspectToolStripMenuItem, Me.HelpToolStripMenuItem})
+        Me.mnuMain.Location = New System.Drawing.Point(0, 0)
+        Me.mnuMain.Name = "mnuMain"
+        Me.mnuMain.Size = New System.Drawing.Size(462, 24)
+        Me.mnuMain.TabIndex = 0
+        Me.mnuMain.Text = "MenuStrip1"
         '
-        'FilToolStripMenuItem
+        'FileToolStripMenuItem
         '
-        Me.FilToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ByttBrukerToolStripMenuItem, Me.LoggUtToolStripMenuItem, Me.ToolStripMenuItem1, Me.AvsluttToolStripMenuItem})
-        Me.FilToolStripMenuItem.Name = "FilToolStripMenuItem"
-        Me.FilToolStripMenuItem.Size = New System.Drawing.Size(31, 20)
-        Me.FilToolStripMenuItem.Text = "&Fil"
+        Me.FileToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LogOutToolStripMenuItem, Me.ToolStripMenuItem1, Me.ExitToolStripMenuItem})
+        Me.FileToolStripMenuItem.Name = "FileToolStripMenuItem"
+        Me.FileToolStripMenuItem.Size = New System.Drawing.Size(31, 20)
+        Me.FileToolStripMenuItem.Text = "&Fil"
         '
-        'ByttBrukerToolStripMenuItem
+        'LogOutToolStripMenuItem
         '
-        Me.ByttBrukerToolStripMenuItem.Name = "ByttBrukerToolStripMenuItem"
-        Me.ByttBrukerToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.ByttBrukerToolStripMenuItem.Text = "&Bytt bruker"
-        '
-        'LoggUtToolStripMenuItem
-        '
-        Me.LoggUtToolStripMenuItem.Name = "LoggUtToolStripMenuItem"
-        Me.LoggUtToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.LoggUtToolStripMenuItem.Text = "&Logg ut"
+        Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogOutToolStripMenuItem.Text = "&Logg ut"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(129, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
         '
-        'AvsluttToolStripMenuItem
+        'ExitToolStripMenuItem
         '
-        Me.AvsluttToolStripMenuItem.Name = "AvsluttToolStripMenuItem"
-        Me.AvsluttToolStripMenuItem.Size = New System.Drawing.Size(132, 22)
-        Me.AvsluttToolStripMenuItem.Text = "&Avslutt"
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Text = "&Avslutt"
         '
-        'RedigerToolStripMenuItem
+        'AspectToolStripMenuItem
         '
-        Me.RedigerToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SalgToolStripMenuItem, Me.AdminstrasjonToolStripMenuItem, Me.LagerToolStripMenuItem})
-        Me.RedigerToolStripMenuItem.Name = "RedigerToolStripMenuItem"
-        Me.RedigerToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
-        Me.RedigerToolStripMenuItem.Text = "&Aspekt"
+        Me.AspectToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SaleToolStripMenuItem, Me.AdminToolStripMenuItem, Me.LogisticsToolStripMenuItem})
+        Me.AspectToolStripMenuItem.Name = "AspectToolStripMenuItem"
+        Me.AspectToolStripMenuItem.Size = New System.Drawing.Size(55, 20)
+        Me.AspectToolStripMenuItem.Text = "&Aspekt"
         '
-        'SalgToolStripMenuItem
+        'SaleToolStripMenuItem
         '
-        Me.SalgToolStripMenuItem.Name = "SalgToolStripMenuItem"
-        Me.SalgToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
-        Me.SalgToolStripMenuItem.Text = "&Salg"
+        Me.SaleToolStripMenuItem.Name = "SaleToolStripMenuItem"
+        Me.SaleToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaleToolStripMenuItem.Text = "&Salg"
         '
-        'AdminstrasjonToolStripMenuItem
+        'AdminToolStripMenuItem
         '
-        Me.AdminstrasjonToolStripMenuItem.Name = "AdminstrasjonToolStripMenuItem"
-        Me.AdminstrasjonToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
-        Me.AdminstrasjonToolStripMenuItem.Text = "&Adminstrasjon"
+        Me.AdminToolStripMenuItem.Name = "AdminToolStripMenuItem"
+        Me.AdminToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AdminToolStripMenuItem.Text = "&Adminstrasjon"
         '
-        'LagerToolStripMenuItem
+        'LogisticsToolStripMenuItem
         '
-        Me.LagerToolStripMenuItem.Name = "LagerToolStripMenuItem"
-        Me.LagerToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
-        Me.LagerToolStripMenuItem.Text = "&Lager"
+        Me.LogisticsToolStripMenuItem.Name = "LogisticsToolStripMenuItem"
+        Me.LogisticsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogisticsToolStripMenuItem.Text = "&Lager"
         '
-        'HjelpToolStripMenuItem
+        'HelpToolStripMenuItem
         '
-        Me.HjelpToolStripMenuItem.Name = "HjelpToolStripMenuItem"
-        Me.HjelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
-        Me.HjelpToolStripMenuItem.Text = "&Hjelp"
+        Me.HelpToolStripMenuItem.Name = "HelpToolStripMenuItem"
+        Me.HelpToolStripMenuItem.Size = New System.Drawing.Size(47, 20)
+        Me.HelpToolStripMenuItem.Text = "&Hjelp"
         '
-        'StatusStrip1
+        'statusMain
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 425)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(462, 22)
-        Me.StatusStrip1.SizingGrip = False
-        Me.StatusStrip1.TabIndex = 1
-        Me.StatusStrip1.Text = "StatusStrip1"
+        Me.statusMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusText})
+        Me.statusMain.Location = New System.Drawing.Point(0, 425)
+        Me.statusMain.Name = "statusMain"
+        Me.statusMain.Size = New System.Drawing.Size(462, 22)
+        Me.statusMain.SizingGrip = False
+        Me.statusMain.TabIndex = 1
+        Me.statusMain.Text = "StatusStrip1"
         '
-        'ToolStripStatusLabel1
+        'statusText
         '
-        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(175, 17)
-        Me.ToolStripStatusLabel1.Text = "Innlogget: Ola Nordmann (salg)"
+        Me.statusText.Name = "statusText"
+        Me.statusText.Size = New System.Drawing.Size(175, 17)
+        Me.statusText.Text = "Innlogget: Ola Nordmann (salg)"
         '
         'frmSuperBase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(462, 447)
-        Me.Controls.Add(Me.StatusStrip1)
-        Me.Controls.Add(Me.MenuStrip1)
-        Me.MainMenuStrip = Me.MenuStrip1
+        Me.Controls.Add(Me.statusMain)
+        Me.Controls.Add(Me.mnuMain)
+        Me.MainMenuStrip = Me.mnuMain
         Me.Name = "frmSuperBase"
         Me.Text = "frmSuperBase"
-        Me.MenuStrip1.ResumeLayout(False)
-        Me.MenuStrip1.PerformLayout()
-        Me.StatusStrip1.ResumeLayout(False)
-        Me.StatusStrip1.PerformLayout()
+        Me.mnuMain.ResumeLayout(False)
+        Me.mnuMain.PerformLayout()
+        Me.statusMain.ResumeLayout(False)
+        Me.statusMain.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents FilToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RedigerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents HjelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
-    Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
-    Friend WithEvents ByttBrukerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LoggUtToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents mnuMain As System.Windows.Forms.MenuStrip
+    Friend WithEvents FileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AspectToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents statusMain As System.Windows.Forms.StatusStrip
+    Friend WithEvents statusText As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents AvsluttToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SalgToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AdminstrasjonToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LagerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SaleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AdminToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents LogisticsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

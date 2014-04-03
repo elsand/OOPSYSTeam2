@@ -44,6 +44,13 @@
 
     Private loggedInEmployee As employee
     Private _currentForm As frmSuperBase
+
+    ''' <summary>
+    ''' Returns the currently active form. If this is not set (ie. first form), it returns the first form it finds in Application.OpenForms
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Property currentForm As frmSuperBase
         Get
             If _currentForm Is Nothing Then
@@ -60,7 +67,7 @@
 
 
     Public Sub Init()
-        ' Oppstartskode
+        ' Start up code goes here
 
     End Sub
 
@@ -75,14 +82,20 @@
     ''' <remarks></remarks>
     Public Function Login(email As String, password As String) As employee
         Dim employee As employee = DBM.Instance.employees.Where(Function(x) x.email = email And x.password = password).FirstOrDefault()
+        ' LINQ version
+        'Dim employee2 As employee = From e In DBM.Instance.employees Where e.email = email And e.password = password Select e
+
         If employee Is Nothing Then
             Throw New DataException("User not found or invalid password")
         End If
-
         loggedInEmployee = employee
-
         Return loggedInEmployee
     End Function
+
+    Public Sub Logout()
+        loggedInEmployee = Nothing
+        ShowForm(frmLogin)
+    End Sub
 
     ''' <summary>
     ''' Utility function to determine if a user is logged in or not
@@ -98,19 +111,19 @@
             Throw New UnauthorizedAccessException("User is not logged in")
         End If
 
-        For Each r As role In User.roles
-            Select Case r.name
-                Case "Admin"
-                    ShowForm(frmAdminReports)
-                Case "Sale"
-                    ShowForm(frmSaleMain)
-                Case "Logistics"
-                    ShowForm(frmLogisticsPackingList)
-            End Select
-        Next
-
+        ShowDefaultFormForRole(User.roles.First.name)
     End Sub
 
+    Public Sub ShowDefaultFormForRole(role As String)
+        Select role
+            Case "Admin"
+                ShowForm(frmAdminReports)
+            Case "Sale"
+                ShowForm(frmSaleMain)
+            Case "Logistics"
+                ShowForm(frmLogisticsPackingList)
+        End Select
+    End Sub
 
     Public Sub ShowForm(frm As frmSuperBase)
         currentForm.Hide()
@@ -118,5 +131,11 @@
         currentForm = frm
     End Sub
 
+    Public Function HasRole(role As String) As Boolean
+        If Not IsLoggedIn() Then
+            Throw New UnauthorizedAccessException("User is not logged in")
+        End If
+        Return (From r In User.roles Where r.name = role Select r).Count() > 0
+    End Function
 
 End Class
