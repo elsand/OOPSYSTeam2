@@ -12,8 +12,8 @@
         'Opens frmDialogAdminIngredientDetails for adding new ingredients to the database.
         Dim frm As frmDialogAdminIngredientDetails
         frm = New frmDialogAdminIngredientDetails()
-        frm.GroupBox2.Enabled = False
-        frm.Button1.Text = "Lagre"
+        frm.grpStock.Enabled = False
+        frm.btnSave.Text = "Lagre"
         frm.Show()
     End Sub
 End Class
