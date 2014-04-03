@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmLogin
-    Inherits KakefunnMockups.frmSuperBase
+    Inherits Kakefunn.frmSuperBase
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
@@ -20,9 +20,9 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.btnDoLogin = New System.Windows.Forms.Button()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -31,9 +31,9 @@ Partial Class frmLogin
         '
         'GroupBox1
         '
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.TextBox2)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.btnDoLogin)
+        Me.GroupBox1.Controls.Add(Me.txtPassword)
+        Me.GroupBox1.Controls.Add(Me.txtEmail)
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(136, 96)
@@ -43,28 +43,28 @@ Partial Class frmLogin
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Innlogging"
         '
-        'Button1
+        'btnDoLogin
         '
-        Me.Button1.Location = New System.Drawing.Point(97, 119)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(134, 23)
-        Me.Button1.TabIndex = 4
-        Me.Button1.Text = "Logg inn"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnDoLogin.Location = New System.Drawing.Point(97, 119)
+        Me.btnDoLogin.Name = "btnDoLogin"
+        Me.btnDoLogin.Size = New System.Drawing.Size(134, 23)
+        Me.btnDoLogin.TabIndex = 4
+        Me.btnDoLogin.Text = "Logg inn"
+        Me.btnDoLogin.UseVisualStyleBackColor = True
         '
-        'TextBox2
+        'txtPassword
         '
-        Me.TextBox2.Location = New System.Drawing.Point(97, 80)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(134, 20)
-        Me.TextBox2.TabIndex = 3
+        Me.txtPassword.Location = New System.Drawing.Point(97, 80)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.Size = New System.Drawing.Size(134, 20)
+        Me.txtPassword.TabIndex = 3
         '
-        'TextBox1
+        'txtEmail
         '
-        Me.TextBox1.Location = New System.Drawing.Point(97, 41)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(137, 20)
-        Me.TextBox1.TabIndex = 2
+        Me.txtEmail.Location = New System.Drawing.Point(97, 41)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(137, 20)
+        Me.txtEmail.TabIndex = 2
         '
         'Label2
         '
@@ -78,11 +78,11 @@ Partial Class frmLogin
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(29, 44)
+        Me.Label1.Location = New System.Drawing.Point(53, 44)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(62, 13)
+        Me.Label1.Size = New System.Drawing.Size(37, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Brukernavn"
+        Me.Label1.Text = "E-post"
         '
         'Label11
         '
@@ -111,9 +111,9 @@ Partial Class frmLogin
 
     End Sub
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
+    Friend WithEvents btnDoLogin As System.Windows.Forms.Button
+    Friend WithEvents txtPassword As System.Windows.Forms.TextBox
+    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label

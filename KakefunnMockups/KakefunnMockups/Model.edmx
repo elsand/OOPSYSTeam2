@@ -104,9 +104,9 @@
         </EntityType>
         <EntityType Name="employee_has_roles">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="roleId" />
+            <PropertyRef Name="employeeId" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="roleId" Type="int" Nullable="false" />
           <Property Name="employeeId" Type="int" Nullable="false" />
         </EntityType>
@@ -702,19 +702,9 @@
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="address" Relationship="Self.fk_employee_address1" FromRole="employee" ToRole="address" />
-          <NavigationProperty Name="employee_has_roles" Relationship="Self.fk_ansatt_has_roller_ansatt1" FromRole="employee" ToRole="employee_has_roles" />
           <NavigationProperty Name="phone" Relationship="Self.fk_ansatt_telefon1" FromRole="employee" ToRole="phone" />
           <NavigationProperty Name="orders" Relationship="Self.fk_ordre_ansatt1" FromRole="employee" ToRole="order" />
-        </EntityType>
-        <EntityType Name="employee_has_roles">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="roleId" Type="Int32" Nullable="false" />
-          <Property Name="employeeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="employee" Relationship="Self.fk_ansatt_has_roller_ansatt1" FromRole="employee_has_roles" ToRole="employee" />
-          <NavigationProperty Name="role" Relationship="Self.fk_ansatt_has_roller_roller1" FromRole="employee_has_roles" ToRole="role" />
+          <NavigationProperty Name="roles" Relationship="Self.employee_has_roles" FromRole="employee" ToRole="role" />
         </EntityType>
         <EntityType Name="event">
           <Key>
@@ -819,7 +809,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="employee_has_roles" Relationship="Self.fk_ansatt_has_roller_roller1" FromRole="role" ToRole="employee_has_roles" />
+          <NavigationProperty Name="employees" Relationship="Self.employee_has_roles" FromRole="role" ToRole="employee" />
         </EntityType>
         <EntityType Name="subscription">
           <Key>
@@ -985,18 +975,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_ansatt_has_roller_ansatt1">
-          <End Role="employee" Type="Self.employee" Multiplicity="1" />
-          <End Role="employee_has_roles" Type="Self.employee_has_roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="employee">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="employee_has_roles">
-              <PropertyRef Name="employeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_ansatt_telefon1">
           <End Role="phone" Type="Self.phone" Multiplicity="1" />
           <End Role="employee" Type="Self.employee" Multiplicity="*" />
@@ -1018,18 +996,6 @@
             </Principal>
             <Dependent Role="order">
               <PropertyRef Name="employeeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_ansatt_has_roller_roller1">
-          <End Role="role" Type="Self.role" Multiplicity="1" />
-          <End Role="employee_has_roles" Type="Self.employee_has_roles" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="role">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="employee_has_roles">
-              <PropertyRef Name="roleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1105,6 +1071,10 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="employee_has_roles">
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <End Role="role" Type="Self.role" Multiplicity="*" />
+        </Association>
         <EntityContainer Name="Db" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="addresses" EntityType="Self.address" />
           <EntitySet Name="batches" EntityType="Self.batch" />
@@ -1115,7 +1085,6 @@
           <EntitySet Name="deliveryMethods" EntityType="Self.deliveryMethod" />
           <EntitySet Name="discountPlans" EntityType="Self.discountPlan" />
           <EntitySet Name="employees" EntityType="Self.employee" />
-          <EntitySet Name="employee_has_roles" EntityType="Self.employee_has_roles" />
           <EntitySet Name="events" EntityType="Self.event" />
           <EntitySet Name="frequencyTypes" EntityType="Self.frequencyType" />
           <EntitySet Name="ingredients" EntityType="Self.ingredient" />
@@ -1171,10 +1140,6 @@
             <End Role="deliveryMethod" EntitySet="deliveryMethods" />
             <End Role="order" EntitySet="orders" />
           </AssociationSet>
-          <AssociationSet Name="fk_ansatt_has_roller_ansatt1" Association="Self.fk_ansatt_has_roller_ansatt1">
-            <End Role="employee" EntitySet="employees" />
-            <End Role="employee_has_roles" EntitySet="employee_has_roles" />
-          </AssociationSet>
           <AssociationSet Name="fk_ansatt_telefon1" Association="Self.fk_ansatt_telefon1">
             <End Role="phone" EntitySet="phones" />
             <End Role="employee" EntitySet="employees" />
@@ -1182,10 +1147,6 @@
           <AssociationSet Name="fk_ordre_ansatt1" Association="Self.fk_ordre_ansatt1">
             <End Role="employee" EntitySet="employees" />
             <End Role="order" EntitySet="orders" />
-          </AssociationSet>
-          <AssociationSet Name="fk_ansatt_has_roller_roller1" Association="Self.fk_ansatt_has_roller_roller1">
-            <End Role="role" EntitySet="roles" />
-            <End Role="employee_has_roles" EntitySet="employee_has_roles" />
           </AssociationSet>
           <AssociationSet Name="fk_subscription_frequencyType1" Association="Self.fk_subscription_frequencyType1">
             <End Role="frequencyType" EntitySet="frequencyTypes" />
@@ -1210,6 +1171,10 @@
           <AssociationSet Name="fk_subscription_order1" Association="Self.fk_subscription_order1">
             <End Role="order" EntitySet="orders" />
             <End Role="subscription" EntitySet="subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="employee_has_roles" Association="Self.employee_has_roles">
+            <End Role="employee" EntitySet="employees" />
+            <End Role="role" EntitySet="roles" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1321,15 +1286,6 @@
                 <ScalarProperty Name="addressId" ColumnName="addressId" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="employee_has_roles">
-            <EntityTypeMapping TypeName="Model.employee_has_roles">
-              <MappingFragment StoreEntitySet="employee_has_roles">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="roleId" ColumnName="roleId" />
-                <ScalarProperty Name="employeeId" ColumnName="employeeId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1459,6 +1415,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <AssociationSetMapping Name="employee_has_roles" TypeName="Model.employee_has_roles" StoreEntitySet="employee_has_roles">
+            <EndProperty Name="employee">
+              <ScalarProperty Name="id" ColumnName="employeeId" />
+            </EndProperty>
+            <EndProperty Name="role">
+              <ScalarProperty Name="id" ColumnName="roleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmSaleBase
-    Inherits KakefunnMockups.frmSuperBase
+    Inherits Kakefunn.frmSuperBase
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _

@@ -14,6 +14,6 @@ Partial Public Class role
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property employee_has_roles As ICollection(Of employee_has_roles) = New HashSet(Of employee_has_roles)
+    Public Overridable Property employees As ICollection(Of employee) = New HashSet(Of employee)
 
 End Class

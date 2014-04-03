@@ -19,8 +19,8 @@ Partial Public Class employee
     Public Property password As String
 
     Public Overridable Property address As address
-    Public Overridable Property employee_has_roles As ICollection(Of employee_has_roles) = New HashSet(Of employee_has_roles)
     Public Overridable Property phone As phone
     Public Overridable Property orders As ICollection(Of order) = New HashSet(Of order)
+    Public Overridable Property roles As ICollection(Of role) = New HashSet(Of role)
 
 End Class

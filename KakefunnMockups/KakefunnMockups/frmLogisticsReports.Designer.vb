@@ -1,6 +1,6 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
 Partial Class frmLogisticsReports
-    Inherits KakefunnMockups.frmLogisticsBase
+    Inherits Kakefunn.frmLogisticsBase
 
     'Form overrides dispose to clean up the component list.
     <System.Diagnostics.DebuggerNonUserCode()> _
