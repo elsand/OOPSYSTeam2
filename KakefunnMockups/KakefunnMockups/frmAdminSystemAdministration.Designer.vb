@@ -28,12 +28,11 @@ Partial Class frmAdminSystemAdministration
         Me.btnSaveChanges = New System.Windows.Forms.Button()
         Me.btnNewUser = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
+        Me.lblPassword = New System.Windows.Forms.Label()
         Me.txtRepeatPassword = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.btnEditEmployee = New System.Windows.Forms.Button()
@@ -45,6 +44,7 @@ Partial Class frmAdminSystemAdministration
         Me.cbAdmin = New System.Windows.Forms.CheckBox()
         Me.cbSale = New System.Windows.Forms.CheckBox()
         Me.cbLogistics = New System.Windows.Forms.CheckBox()
+        Me.txtPhone = New Kakefunn.NumericTextbox()
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -113,13 +113,6 @@ Partial Class frmAdminSystemAdministration
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Roller"
         '
-        'txtPhone
-        '
-        Me.txtPhone.Location = New System.Drawing.Point(158, 207)
-        Me.txtPhone.Name = "txtPhone"
-        Me.txtPhone.Size = New System.Drawing.Size(150, 20)
-        Me.txtPhone.TabIndex = 16
-        '
         'Label4
         '
         Me.Label4.AutoSize = True
@@ -152,14 +145,14 @@ Partial Class frmAdminSystemAdministration
         Me.txtPassword.Size = New System.Drawing.Size(150, 20)
         Me.txtPassword.TabIndex = 20
         '
-        'Label6
+        'lblPassword
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(12, 262)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(45, 13)
-        Me.Label6.TabIndex = 19
-        Me.Label6.Text = "Passord"
+        Me.lblPassword.AutoSize = True
+        Me.lblPassword.Location = New System.Drawing.Point(12, 262)
+        Me.lblPassword.Name = "lblPassword"
+        Me.lblPassword.Size = New System.Drawing.Size(45, 13)
+        Me.lblPassword.TabIndex = 19
+        Me.lblPassword.Text = "Passord"
         '
         'txtRepeatPassword
         '
@@ -258,10 +251,21 @@ Partial Class frmAdminSystemAdministration
         Me.cbLogistics.Text = "Logistikk"
         Me.cbLogistics.UseVisualStyleBackColor = True
         '
+        'txtPhone
+        '
+        Me.txtPhone.AllowDecimal = False
+        Me.txtPhone.AllowNegative = False
+        Me.txtPhone.AllowSpace = False
+        Me.txtPhone.Location = New System.Drawing.Point(158, 208)
+        Me.txtPhone.Name = "txtPhone"
+        Me.txtPhone.Size = New System.Drawing.Size(150, 20)
+        Me.txtPhone.TabIndex = 32
+        '
         'frmAdminSystemAdministration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(549, 424)
+        Me.Controls.Add(Me.txtPhone)
         Me.Controls.Add(Me.cbLogistics)
         Me.Controls.Add(Me.cbSale)
         Me.Controls.Add(Me.cbAdmin)
@@ -274,10 +278,9 @@ Partial Class frmAdminSystemAdministration
         Me.Controls.Add(Me.txtRepeatPassword)
         Me.Controls.Add(Me.Label7)
         Me.Controls.Add(Me.txtPassword)
-        Me.Controls.Add(Me.Label6)
+        Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.txtPhone)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.btnNewUser)
@@ -296,10 +299,9 @@ Partial Class frmAdminSystemAdministration
         Me.Controls.SetChildIndex(Me.btnNewUser, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
         Me.Controls.SetChildIndex(Me.Label4, 0)
-        Me.Controls.SetChildIndex(Me.txtPhone, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
         Me.Controls.SetChildIndex(Me.txtEmail, 0)
-        Me.Controls.SetChildIndex(Me.Label6, 0)
+        Me.Controls.SetChildIndex(Me.lblPassword, 0)
         Me.Controls.SetChildIndex(Me.txtPassword, 0)
         Me.Controls.SetChildIndex(Me.Label7, 0)
         Me.Controls.SetChildIndex(Me.txtRepeatPassword, 0)
@@ -312,6 +314,7 @@ Partial Class frmAdminSystemAdministration
         Me.Controls.SetChildIndex(Me.cbAdmin, 0)
         Me.Controls.SetChildIndex(Me.cbSale, 0)
         Me.Controls.SetChildIndex(Me.cbLogistics, 0)
+        Me.Controls.SetChildIndex(Me.txtPhone, 0)
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -324,12 +327,11 @@ Partial Class frmAdminSystemAdministration
     Friend WithEvents btnSaveChanges As System.Windows.Forms.Button
     Friend WithEvents btnNewUser As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents txtPhone As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblPassword As System.Windows.Forms.Label
     Friend WithEvents txtRepeatPassword As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents DBMBindingSource As System.Windows.Forms.BindingSource
@@ -342,5 +344,6 @@ Partial Class frmAdminSystemAdministration
     Friend WithEvents cbAdmin As System.Windows.Forms.CheckBox
     Friend WithEvents cbSale As System.Windows.Forms.CheckBox
     Friend WithEvents cbLogistics As System.Windows.Forms.CheckBox
+    Friend WithEvents txtPhone As Kakefunn.NumericTextbox
 
 End Class

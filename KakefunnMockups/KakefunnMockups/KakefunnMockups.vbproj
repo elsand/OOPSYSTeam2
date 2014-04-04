@@ -118,10 +118,17 @@
     <Compile Include="controllers\DatabaseManager.vb" />
     <Compile Include="controllers\DocumentPrinter.vb" />
     <Compile Include="controllers\OrderManager.vb" />
+    <Compile Include="controllers\PhoneHelper.vb" />
     <Compile Include="controllers\ReportManager.vb" />
     <Compile Include="controllers\SessionManager.vb" />
     <Compile Include="controllers\StockManager.vb" />
     <Compile Include="controllers\SubscriptionManager.vb" />
+    <Compile Include="controls\NumericTextbox.Designer.vb">
+      <DependentUpon>NumericTextbox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="controls\NumericTextbox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
