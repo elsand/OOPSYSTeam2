@@ -69,13 +69,13 @@ Public Class frmAdminBatch
         End If
     End Sub
 
-    Private Sub BatchDataGridView_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles BatchDataGridView.CellFormatting
-        If BatchDataGridView.Columns(e.ColumnIndex).DataPropertyName.Equals("ingredient") Then
+    Private Sub BatchDataGridView_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgBatch.CellFormatting
+        If dtgBatch.Columns(e.ColumnIndex).DataPropertyName.Equals("ingredient") Then
             e.Value = CType(e.Value, ingredient).name
         End If
     End Sub
 
-    Private Sub BatchDataGridView_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles BatchDataGridView.MouseDoubleClick
+    Private Sub BatchDataGridView_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgBatch.MouseDoubleClick
 
         If IsDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
@@ -83,7 +83,7 @@ Public Class frmAdminBatch
 
         ResetFields()
 
-        Dim b As batch = CType(BatchDataGridView.SelectedRows.Item(0).DataBoundItem, batch)
+        Dim b As batch = CType(dtgBatch.SelectedRows.Item(0).DataBoundItem, batch)
 
         txtIngredient.Text = b.ingredient.name
         dtpExpected.Value = b.expected
@@ -175,7 +175,7 @@ Public Class frmAdminBatch
         UpdateActionStatus("Lagrer ...")
 
         DBM.Instance.SaveChanges()
-        BatchDataGridView.Refresh()
+        dtgBatch.Refresh()
 
         currentRecord = b
         IsNewRecord = False

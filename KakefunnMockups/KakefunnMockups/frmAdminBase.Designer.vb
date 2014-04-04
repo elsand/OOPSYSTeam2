@@ -20,11 +20,11 @@ Partial Class frmAdminBase
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.btnExecutedOrders = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.btnUsers = New System.Windows.Forms.Button()
         Me.btnIngredients = New System.Windows.Forms.Button()
         Me.btnCakes = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.btnReports = New System.Windows.Forms.Button()
+        Me.btnBatchOrder = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'btnExecutedOrders
@@ -36,14 +36,14 @@ Partial Class frmAdminBase
         Me.btnExecutedOrders.Text = "Effektuerte ordrer"
         Me.btnExecutedOrders.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnUsers
         '
-        Me.Button2.Location = New System.Drawing.Point(540, 27)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(87, 23)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Brukere"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnUsers.Location = New System.Drawing.Point(540, 27)
+        Me.btnUsers.Name = "btnUsers"
+        Me.btnUsers.Size = New System.Drawing.Size(87, 23)
+        Me.btnUsers.TabIndex = 3
+        Me.btnUsers.Text = "Brukere"
+        Me.btnUsers.UseVisualStyleBackColor = True
         '
         'btnIngredients
         '
@@ -63,52 +63,52 @@ Partial Class frmAdminBase
         Me.btnCakes.Text = "Kaker"
         Me.btnCakes.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnReports
         '
-        Me.Button5.Location = New System.Drawing.Point(437, 27)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(97, 23)
-        Me.Button5.TabIndex = 6
-        Me.Button5.Text = "Rapporter"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnReports.Location = New System.Drawing.Point(437, 27)
+        Me.btnReports.Name = "btnReports"
+        Me.btnReports.Size = New System.Drawing.Size(97, 23)
+        Me.btnReports.TabIndex = 6
+        Me.btnReports.Text = "Rapporter"
+        Me.btnReports.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btnBatchOrder
         '
-        Me.Button6.Location = New System.Drawing.Point(332, 27)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(99, 23)
-        Me.Button6.TabIndex = 7
-        Me.Button6.Text = "Varebestilling"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btnBatchOrder.Location = New System.Drawing.Point(332, 27)
+        Me.btnBatchOrder.Name = "btnBatchOrder"
+        Me.btnBatchOrder.Size = New System.Drawing.Size(99, 23)
+        Me.btnBatchOrder.TabIndex = 7
+        Me.btnBatchOrder.Text = "Varebestilling"
+        Me.btnBatchOrder.UseVisualStyleBackColor = True
         '
         'frmAdminBase
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(707, 447)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.btnBatchOrder)
+        Me.Controls.Add(Me.btnReports)
         Me.Controls.Add(Me.btnCakes)
         Me.Controls.Add(Me.btnIngredients)
-        Me.Controls.Add(Me.Button2)
+        Me.Controls.Add(Me.btnUsers)
         Me.Controls.Add(Me.btnExecutedOrders)
         Me.HelpButton = True
         Me.Name = "frmAdminBase"
         Me.Text = "Administrasjon"
         Me.Controls.SetChildIndex(Me.btnExecutedOrders, 0)
-        Me.Controls.SetChildIndex(Me.Button2, 0)
+        Me.Controls.SetChildIndex(Me.btnUsers, 0)
         Me.Controls.SetChildIndex(Me.btnIngredients, 0)
         Me.Controls.SetChildIndex(Me.btnCakes, 0)
-        Me.Controls.SetChildIndex(Me.Button5, 0)
-        Me.Controls.SetChildIndex(Me.Button6, 0)
+        Me.Controls.SetChildIndex(Me.btnReports, 0)
+        Me.Controls.SetChildIndex(Me.btnBatchOrder, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents btnExecutedOrders As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents btnUsers As System.Windows.Forms.Button
     Friend WithEvents btnIngredients As System.Windows.Forms.Button
     Friend WithEvents btnCakes As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents btnReports As System.Windows.Forms.Button
+    Friend WithEvents btnBatchOrder As System.Windows.Forms.Button
 
 End Class
