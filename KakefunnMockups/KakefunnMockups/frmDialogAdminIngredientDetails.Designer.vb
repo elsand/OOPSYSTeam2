@@ -20,10 +20,10 @@ Partial Class frmDialogAdminIngredientDetails
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpIngredient = New System.Windows.Forms.GroupBox()
+        Me.numVAT = New Kakefunn.NumericTextbox()
+        Me.numProfit = New Kakefunn.NumericTextbox()
         Me.chkPub = New System.Windows.Forms.CheckBox()
-        Me.txtProfit = New System.Windows.Forms.TextBox()
         Me.lblProfit = New System.Windows.Forms.Label()
-        Me.txtVAT = New System.Windows.Forms.TextBox()
         Me.lblVAT = New System.Windows.Forms.Label()
         Me.ddlUnitType = New System.Windows.Forms.ComboBox()
         Me.txtCal = New System.Windows.Forms.TextBox()
@@ -53,10 +53,10 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'grpIngredient
         '
+        Me.grpIngredient.Controls.Add(Me.numVAT)
+        Me.grpIngredient.Controls.Add(Me.numProfit)
         Me.grpIngredient.Controls.Add(Me.chkPub)
-        Me.grpIngredient.Controls.Add(Me.txtProfit)
         Me.grpIngredient.Controls.Add(Me.lblProfit)
-        Me.grpIngredient.Controls.Add(Me.txtVAT)
         Me.grpIngredient.Controls.Add(Me.lblVAT)
         Me.grpIngredient.Controls.Add(Me.ddlUnitType)
         Me.grpIngredient.Controls.Add(Me.txtCal)
@@ -73,6 +73,26 @@ Partial Class frmDialogAdminIngredientDetails
         Me.grpIngredient.TabStop = False
         Me.grpIngredient.Text = "Ingrediens"
         '
+        'numVAT
+        '
+        Me.numVAT.AllowDecimal = False
+        Me.numVAT.AllowNegative = False
+        Me.numVAT.AllowSpace = False
+        Me.numVAT.Location = New System.Drawing.Point(96, 180)
+        Me.numVAT.Name = "numVAT"
+        Me.numVAT.Size = New System.Drawing.Size(36, 20)
+        Me.numVAT.TabIndex = 17
+        '
+        'numProfit
+        '
+        Me.numProfit.AllowDecimal = False
+        Me.numProfit.AllowNegative = False
+        Me.numProfit.AllowSpace = False
+        Me.numProfit.Location = New System.Drawing.Point(96, 207)
+        Me.numProfit.Name = "numProfit"
+        Me.numProfit.Size = New System.Drawing.Size(36, 20)
+        Me.numProfit.TabIndex = 16
+        '
         'chkPub
         '
         Me.chkPub.AutoSize = True
@@ -83,13 +103,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.chkPub.Text = "Publisert"
         Me.chkPub.UseVisualStyleBackColor = True
         '
-        'txtProfit
-        '
-        Me.txtProfit.Location = New System.Drawing.Point(96, 206)
-        Me.txtProfit.Name = "txtProfit"
-        Me.txtProfit.Size = New System.Drawing.Size(36, 20)
-        Me.txtProfit.TabIndex = 5
-        '
         'lblProfit
         '
         Me.lblProfit.AutoSize = True
@@ -98,13 +111,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblProfit.Size = New System.Drawing.Size(54, 13)
         Me.lblProfit.TabIndex = 15
         Me.lblProfit.Text = "Avanse-%"
-        '
-        'txtVAT
-        '
-        Me.txtVAT.Location = New System.Drawing.Point(96, 180)
-        Me.txtVAT.Name = "txtVAT"
-        Me.txtVAT.Size = New System.Drawing.Size(36, 20)
-        Me.txtVAT.TabIndex = 4
         '
         'lblVAT
         '
@@ -320,9 +326,7 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents lblDtgDescr As System.Windows.Forms.Label
     Friend WithEvents lblNumInStockValue As System.Windows.Forms.Label
     Friend WithEvents lblNumInStockText As System.Windows.Forms.Label
-    Friend WithEvents txtProfit As System.Windows.Forms.TextBox
     Friend WithEvents lblProfit As System.Windows.Forms.Label
-    Friend WithEvents txtVAT As System.Windows.Forms.TextBox
     Friend WithEvents lblVAT As System.Windows.Forms.Label
     Friend WithEvents btnAbort As System.Windows.Forms.Button
     Friend WithEvents chkPub As System.Windows.Forms.CheckBox
@@ -332,5 +336,7 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents Innkjsdf As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents numProfit As Kakefunn.NumericTextbox
+    Friend WithEvents numVAT As Kakefunn.NumericTextbox
 
 End Class
