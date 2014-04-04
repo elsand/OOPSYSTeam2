@@ -19,7 +19,12 @@
         If Me.Visible Then
             UpdateAspectMenu()
             UpdateStatus()
+            OnFormGetsForeground()
         End If
+    End Sub
+
+    Protected Overridable Sub OnFormGetsForeground()
+        ' Implemented in subclasses
     End Sub
 
     Private Sub UpdateAspectMenu()
