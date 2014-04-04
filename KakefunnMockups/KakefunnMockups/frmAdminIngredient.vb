@@ -14,6 +14,7 @@
         frm = New frmDialogAdminIngredientDetails()
         frm.grpStock.Enabled = False
         frm.btnSave.Text = "Lagre"
+        frm.newIngr = True
         frm.Show()
     End Sub
 
@@ -31,5 +32,14 @@
         '         Select Varenr = x.id, Navn = x.name).ToList()
         dtgResults.DataSource = query
 
+    End Sub
+
+    Private Sub dtgResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgResults.MouseDoubleClick
+        Dim varenr As Integer = dtgResults.SelectedRows(0).Cells(0).Value
+        Dim frm As frmDialogAdminIngredientDetails
+        frm = New frmDialogAdminIngredientDetails()
+        frm.varenr = varenr
+        frm.newIngr = False
+        frm.Show()
     End Sub
 End Class
