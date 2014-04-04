@@ -1,8 +1,8 @@
 ﻿Public Class frmDialogAdminIngredientDetails
 
     Private pub As Boolean = False
-    Private newIngr As Boolean
-    Private toEditIdx As Integer
+    Public newIngr As Boolean
+    Public varenr As Integer
 
     Private Sub ddlUnitsLoad()
         'Populating combobox with unit types.
@@ -14,6 +14,24 @@
     End Sub
 
     Private Sub frmDialogAdminIngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        If Not newIngr Then
+            Me.Text = "Redigerer detaljer for varenummer " & varenr
+            Dim existingItem As ingredient = DBM.Instance.ingredients.Find(varenr)
+            txtName.Text = existingItem.name
+            txtDescr.Text = existingItem.description
+            ddlUnitType.Text = existingItem.unit.name
+            numCal.Text = existingItem.kilocaloriesPerUnit
+            numVAT.Text = existingItem.vat
+            Dim profit As ingredientPrice = (From x In DBM.Instance.ingredientPrices _
+                                             Where x.id = varenr Order By x.date Descending _
+                                             Select x).FirstOrDefault()
+            If profit Is Nothing Then
+                numProfit.Text = ""
+            Else
+                numProfit.Text = profit.markUpPercentage
+            End If
+            'chkPub.Checked = existingItem.published
+        End If
         ddlUnitsLoad()
     End Sub
 
@@ -30,7 +48,7 @@
         End If
 
         i.unit = u
-        i.kilocaloriesPerUnit = txtCal.Text
+        i.kilocaloriesPerUnit = numCal.Text
         i.vat = numVAT.Text
         i.published = pub
 

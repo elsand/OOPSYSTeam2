@@ -37,12 +37,17 @@ Partial Class frmAdminIngredient
         '
         'dtgResults
         '
+        Me.dtgResults.AllowUserToAddRows = False
+        Me.dtgResults.AllowUserToDeleteRows = False
         Me.dtgResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.sdffsdf, Me.Column3, Me.Column4, Me.Column5})
         Me.dtgResults.Location = New System.Drawing.Point(13, 90)
         Me.dtgResults.Name = "dtgResults"
+        Me.dtgResults.ReadOnly = True
         Me.dtgResults.RowHeadersVisible = False
+        Me.dtgResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgResults.ShowEditingIcon = False
         Me.dtgResults.Size = New System.Drawing.Size(643, 365)
         Me.dtgResults.TabIndex = 7
         '
@@ -50,31 +55,37 @@ Partial Class frmAdminIngredient
         '
         Me.Column1.HeaderText = "Varenr"
         Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
         '
         'Column2
         '
         Me.Column2.HeaderText = "Navn"
         Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
         '
         'sdffsdf
         '
         Me.sdffsdf.HeaderText = "Antall på lager"
         Me.sdffsdf.Name = "sdffsdf"
+        Me.sdffsdf.ReadOnly = True
         '
         'Column3
         '
         Me.Column3.HeaderText = "B/D/G* innkjøp"
         Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
         '
         'Column4
         '
         Me.Column4.HeaderText = "B/D/G* utsalg"
         Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
         '
         'Column5
         '
         Me.Column5.HeaderText = "Avanse i %"
         Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
         '
         'Label1
         '

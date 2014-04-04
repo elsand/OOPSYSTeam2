@@ -26,7 +26,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblProfit = New System.Windows.Forms.Label()
         Me.lblVAT = New System.Windows.Forms.Label()
         Me.ddlUnitType = New System.Windows.Forms.ComboBox()
-        Me.txtCal = New System.Windows.Forms.TextBox()
         Me.lblCal = New System.Windows.Forms.Label()
         Me.lblUnitType = New System.Windows.Forms.Label()
         Me.txtDescr = New System.Windows.Forms.TextBox()
@@ -46,6 +45,7 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblNumInStockText = New System.Windows.Forms.Label()
         Me.btnAbort = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.numCal = New Kakefunn.NumericTextbox()
         Me.grpIngredient.SuspendLayout()
         Me.grpStock.SuspendLayout()
         CType(Me.dtgBatches, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -53,13 +53,13 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'grpIngredient
         '
+        Me.grpIngredient.Controls.Add(Me.numCal)
         Me.grpIngredient.Controls.Add(Me.numVAT)
         Me.grpIngredient.Controls.Add(Me.numProfit)
         Me.grpIngredient.Controls.Add(Me.chkPub)
         Me.grpIngredient.Controls.Add(Me.lblProfit)
         Me.grpIngredient.Controls.Add(Me.lblVAT)
         Me.grpIngredient.Controls.Add(Me.ddlUnitType)
-        Me.grpIngredient.Controls.Add(Me.txtCal)
         Me.grpIngredient.Controls.Add(Me.lblCal)
         Me.grpIngredient.Controls.Add(Me.lblUnitType)
         Me.grpIngredient.Controls.Add(Me.txtDescr)
@@ -128,13 +128,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.ddlUnitType.Name = "ddlUnitType"
         Me.ddlUnitType.Size = New System.Drawing.Size(121, 21)
         Me.ddlUnitType.TabIndex = 2
-        '
-        'txtCal
-        '
-        Me.txtCal.Location = New System.Drawing.Point(96, 154)
-        Me.txtCal.Name = "txtCal"
-        Me.txtCal.Size = New System.Drawing.Size(69, 20)
-        Me.txtCal.TabIndex = 3
         '
         'lblCal
         '
@@ -292,6 +285,16 @@ Partial Class frmDialogAdminIngredientDetails
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'numCal
+        '
+        Me.numCal.AllowDecimal = False
+        Me.numCal.AllowNegative = False
+        Me.numCal.AllowSpace = False
+        Me.numCal.Location = New System.Drawing.Point(96, 154)
+        Me.numCal.Name = "numCal"
+        Me.numCal.Size = New System.Drawing.Size(36, 20)
+        Me.numCal.TabIndex = 18
+        '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -319,7 +322,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents ddlUnitType As System.Windows.Forms.ComboBox
-    Friend WithEvents txtCal As System.Windows.Forms.TextBox
     Friend WithEvents lblCal As System.Windows.Forms.Label
     Friend WithEvents grpStock As System.Windows.Forms.GroupBox
     Friend WithEvents dtgBatches As System.Windows.Forms.DataGridView
@@ -338,5 +340,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents numProfit As Kakefunn.NumericTextbox
     Friend WithEvents numVAT As Kakefunn.NumericTextbox
+    Friend WithEvents numCal As Kakefunn.NumericTextbox
 
 End Class
