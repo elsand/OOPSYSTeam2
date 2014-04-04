@@ -18,6 +18,6 @@ Partial Public Class cake
     Public Property deleted As Nullable(Of Date)
     Public Property published As Nullable(Of Boolean)
 
-    Public Overridable Property cake_has_ingredient As ICollection(Of cake_has_ingredient) = New HashSet(Of cake_has_ingredient)
+    Public Overridable Property cake_has_ingredient As ObservableListSource(Of cake_has_ingredient) = New ObservableListSource(Of cake_has_ingredient)
 
 End Class

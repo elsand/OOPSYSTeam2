@@ -19,10 +19,10 @@ Partial Public Class ingredient
     Public Property unitId As Integer
     Public Property published As Nullable(Of Boolean)
 
-    Public Overridable Property batches As ICollection(Of batch) = New HashSet(Of batch)
-    Public Overridable Property cake_has_ingredient As ICollection(Of cake_has_ingredient) = New HashSet(Of cake_has_ingredient)
+    Public Overridable Property batches As ObservableListSource(Of batch) = New ObservableListSource(Of batch)
+    Public Overridable Property cake_has_ingredient As ObservableListSource(Of cake_has_ingredient) = New ObservableListSource(Of cake_has_ingredient)
     Public Overridable Property unit As unit
-    Public Overridable Property ingredientPrices As ICollection(Of ingredientPrice) = New HashSet(Of ingredientPrice)
-    Public Overridable Property order_has_ingredient As ICollection(Of order_has_ingredient) = New HashSet(Of order_has_ingredient)
+    Public Overridable Property ingredientPrices As ObservableListSource(Of ingredientPrice) = New ObservableListSource(Of ingredientPrice)
+    Public Overridable Property order_has_ingredient As ObservableListSource(Of order_has_ingredient) = New ObservableListSource(Of order_has_ingredient)
 
 End Class

@@ -14,6 +14,6 @@ Partial Public Class role
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property employees As ICollection(Of employee) = New HashSet(Of employee)
+    Public Overridable Property employees As ObservableListSource(Of employee) = New ObservableListSource(Of employee)
 
 End Class

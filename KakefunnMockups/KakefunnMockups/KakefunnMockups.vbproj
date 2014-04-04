@@ -92,6 +92,7 @@
     <Import Include="System.Collections" />
     <Import Include="System.Collections.Generic" />
     <Import Include="System.Data" />
+    <Import Include="System.Data.Entity" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
     <Import Include="System.Windows.Forms" />
@@ -118,10 +119,17 @@
     <Compile Include="controllers\DatabaseManager.vb" />
     <Compile Include="controllers\DocumentPrinter.vb" />
     <Compile Include="controllers\OrderManager.vb" />
+    <Compile Include="controllers\PhoneHelper.vb" />
     <Compile Include="controllers\ReportManager.vb" />
     <Compile Include="controllers\SessionManager.vb" />
     <Compile Include="controllers\StockManager.vb" />
     <Compile Include="controllers\SubscriptionManager.vb" />
+    <Compile Include="controls\NumericTextbox.Designer.vb">
+      <DependentUpon>NumericTextbox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="controls\NumericTextbox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -300,6 +308,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="ObservableListSource.vb" />
     <Compile Include="order.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -409,6 +418,7 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
+    <None Include="My Project\DataSources\batch.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
@@ -440,9 +450,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="My Project\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

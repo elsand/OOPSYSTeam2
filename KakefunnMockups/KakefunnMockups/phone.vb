@@ -15,6 +15,6 @@ Partial Public Class phone
     Public Property countryprefix As Nullable(Of Integer)
     Public Property phonenumber As String
 
-    Public Overridable Property employees As ICollection(Of employee) = New HashSet(Of employee)
+    Public Overridable Property employees As ObservableListSource(Of employee) = New ObservableListSource(Of employee)
 
 End Class

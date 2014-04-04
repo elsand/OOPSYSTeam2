@@ -16,6 +16,6 @@ Partial Public Class deliveryMethod
     Public Property price As Decimal
     Public Property isFixedPrice As Boolean
 
-    Public Overridable Property orders As ICollection(Of order) = New HashSet(Of order)
+    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
 
 End Class

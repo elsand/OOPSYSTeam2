@@ -26,6 +26,6 @@ Partial Public Class customer
     Public Overridable Property address As address
     Public Overridable Property customerType As customerType
     Public Overridable Property discountPlan As discountPlan
-    Public Overridable Property orders As ICollection(Of order) = New HashSet(Of order)
+    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
 
 End Class

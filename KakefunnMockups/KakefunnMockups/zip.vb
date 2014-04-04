@@ -14,6 +14,6 @@ Partial Public Class zip
     Public Property zip1 As Integer
     Public Property city As String
 
-    Public Overridable Property addresses As ICollection(Of address) = New HashSet(Of address)
+    Public Overridable Property addresses As ObservableListSource(Of address) = New ObservableListSource(Of address)
 
 End Class

@@ -18,7 +18,8 @@
     Private Sub frmSuperBase_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         If Me.Visible Then
             UpdateAspectMenu()
-            UpdateStatus()
+            UpdateLoginStatus()
+            UpdateActionStatus()
             OnFormGetsForeground()
         End If
     End Sub
@@ -40,9 +41,9 @@
 
     End Sub
 
-    Private Sub UpdateStatus()
+    Private Sub UpdateLoginStatus()
         If Not SessionManager.Instance.IsLoggedIn Then
-            statusText.Text = "Ikke innlogget"
+            statusLogin.Text = "Ikke innlogget"
             Exit Sub
         End If
         Dim roles As String = ""
@@ -50,7 +51,16 @@
             roles = roles & r.name & ", "
         Next
         roles = roles.Substring(0, roles.Length - 2)
-        statusText.Text = "Innlogget: " & SessionManager.Instance.User.name & " (" & roles & ")"
+        statusLogin.Text = "Innlogget: " & SessionManager.Instance.User.name & " (" & roles & ")"
+    End Sub
+
+    Protected Sub UpdateActionStatus(status As String)
+        statusAction.Text = status
+        Application.DoEvents()
+    End Sub
+
+    Protected Sub UpdateActionStatus()
+        UpdateActionStatus("")
     End Sub
 
     Private Sub SaleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaleToolStripMenuItem.Click

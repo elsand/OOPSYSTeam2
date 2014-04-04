@@ -34,7 +34,7 @@ Partial Public Class order
     Public Overridable Property customer As customer
     Public Overridable Property deliveryMethod As deliveryMethod
     Public Overridable Property employee As employee
-    Public Overridable Property order_has_ingredient As ICollection(Of order_has_ingredient) = New HashSet(Of order_has_ingredient)
-    Public Overridable Property subscriptions As ICollection(Of subscription) = New HashSet(Of subscription)
+    Public Overridable Property order_has_ingredient As ObservableListSource(Of order_has_ingredient) = New ObservableListSource(Of order_has_ingredient)
+    Public Overridable Property subscriptions As ObservableListSource(Of subscription) = New ObservableListSource(Of subscription)
 
 End Class

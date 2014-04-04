@@ -1,10 +1,14 @@
-﻿Public Class frmAdminBatch
+﻿
+Public Class frmAdminBatch
 
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellContentClick
-
+    Private Sub frmAdminBatch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DBM.Instance.batches.Load()
+        BatchBindingSource.DataSource = DBM.Instance.batches.Local.ToBindingList()
     End Sub
 
-    Private Sub Label7_Click(sender As Object, e As EventArgs) Handles Label7.Click
-
+    Private Sub BatchBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
+        Validate()
+        DBM.Instance.SaveChanges()
+        BatchDataGridView.Refresh()
     End Sub
 End Class

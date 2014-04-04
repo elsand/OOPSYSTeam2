@@ -33,7 +33,8 @@ Partial Class frmSuperBase
         Me.LogisticsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.statusMain = New System.Windows.Forms.StatusStrip()
-        Me.statusText = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.statusLogin = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.statusAction = New System.Windows.Forms.ToolStripStatusLabel()
         Me.mnuMain.SuspendLayout()
         Me.statusMain.SuspendLayout()
         Me.SuspendLayout()
@@ -104,7 +105,7 @@ Partial Class frmSuperBase
         '
         'statusMain
         '
-        Me.statusMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusText})
+        Me.statusMain.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.statusLogin, Me.statusAction})
         Me.statusMain.Location = New System.Drawing.Point(0, 425)
         Me.statusMain.Name = "statusMain"
         Me.statusMain.Size = New System.Drawing.Size(462, 22)
@@ -112,11 +113,21 @@ Partial Class frmSuperBase
         Me.statusMain.TabIndex = 1
         Me.statusMain.Text = "StatusStrip1"
         '
-        'statusText
+        'statusLogin
         '
-        Me.statusText.Name = "statusText"
-        Me.statusText.Size = New System.Drawing.Size(175, 17)
-        Me.statusText.Text = "Innlogget: Ola Nordmann (salg)"
+        Me.statusLogin.Name = "statusLogin"
+        Me.statusLogin.Size = New System.Drawing.Size(341, 17)
+        Me.statusLogin.Spring = True
+        Me.statusLogin.Text = "Innlogget: Ola Nordmann (salg)"
+        Me.statusLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'statusAction
+        '
+        Me.statusAction.Name = "statusAction"
+        Me.statusAction.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.statusAction.Size = New System.Drawing.Size(75, 17)
+        Me.statusAction.Text = "Redigerer xxx"
+        Me.statusAction.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'frmSuperBase
         '
@@ -141,11 +152,12 @@ Partial Class frmSuperBase
     Friend WithEvents AspectToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HelpToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents statusMain As System.Windows.Forms.StatusStrip
-    Friend WithEvents statusText As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents statusLogin As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents LogOutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SaleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdminToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents LogisticsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents statusAction As System.Windows.Forms.ToolStripStatusLabel
 End Class
