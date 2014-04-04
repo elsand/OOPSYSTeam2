@@ -7,8 +7,6 @@ Public Class NumericTextbox
     Private DecimalOK As Boolean = False
     Private NegativeOK As Boolean = False
 
-    Private Property AutoScaleMode As AutoScaleMode
-
     ' Restricts the entry of characters to digits (including hex),
     ' the negative sign, the e decimal point, and editing keystrokes (backspace).
     Protected Overrides Sub OnKeyPress(ByVal e As KeyPressEventArgs)

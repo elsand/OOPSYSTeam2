@@ -38,13 +38,13 @@ Partial Class frmAdminSystemAdministration
         Me.btnEditEmployee = New System.Windows.Forms.Button()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.txtZip = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
         Me.cbAdmin = New System.Windows.Forms.CheckBox()
         Me.cbSale = New System.Windows.Forms.CheckBox()
         Me.cbLogistics = New System.Windows.Forms.CheckBox()
         Me.txtPhone = New Kakefunn.NumericTextbox()
+        Me.txtZip = New Kakefunn.NumericTextbox()
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -88,11 +88,11 @@ Partial Class frmAdminSystemAdministration
         '
         'btnSaveChanges
         '
-        Me.btnSaveChanges.Location = New System.Drawing.Point(459, 360)
+        Me.btnSaveChanges.Location = New System.Drawing.Point(420, 360)
         Me.btnSaveChanges.Name = "btnSaveChanges"
-        Me.btnSaveChanges.Size = New System.Drawing.Size(75, 23)
+        Me.btnSaveChanges.Size = New System.Drawing.Size(114, 23)
         Me.btnSaveChanges.TabIndex = 11
-        Me.btnSaveChanges.Text = "Lagre "
+        Me.btnSaveChanges.Text = "Lagre ny bruker"
         Me.btnSaveChanges.UseVisualStyleBackColor = True
         '
         'btnNewUser
@@ -196,13 +196,6 @@ Partial Class frmAdminSystemAdministration
         Me.Label8.TabIndex = 25
         Me.Label8.Text = "Adresse"
         '
-        'txtZip
-        '
-        Me.txtZip.Location = New System.Drawing.Point(384, 262)
-        Me.txtZip.Name = "txtZip"
-        Me.txtZip.Size = New System.Drawing.Size(47, 20)
-        Me.txtZip.TabIndex = 26
-        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -261,17 +254,27 @@ Partial Class frmAdminSystemAdministration
         Me.txtPhone.Size = New System.Drawing.Size(150, 20)
         Me.txtPhone.TabIndex = 32
         '
+        'txtZip
+        '
+        Me.txtZip.AllowDecimal = False
+        Me.txtZip.AllowNegative = False
+        Me.txtZip.AllowSpace = False
+        Me.txtZip.Location = New System.Drawing.Point(385, 262)
+        Me.txtZip.Name = "txtZip"
+        Me.txtZip.Size = New System.Drawing.Size(46, 20)
+        Me.txtZip.TabIndex = 33
+        '
         'frmAdminSystemAdministration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(549, 424)
+        Me.Controls.Add(Me.txtZip)
         Me.Controls.Add(Me.txtPhone)
         Me.Controls.Add(Me.cbLogistics)
         Me.Controls.Add(Me.cbSale)
         Me.Controls.Add(Me.cbAdmin)
         Me.Controls.Add(Me.lblCity)
         Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.txtZip)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.txtAddress)
         Me.Controls.Add(Me.btnEditEmployee)
@@ -308,18 +311,18 @@ Partial Class frmAdminSystemAdministration
         Me.Controls.SetChildIndex(Me.btnEditEmployee, 0)
         Me.Controls.SetChildIndex(Me.txtAddress, 0)
         Me.Controls.SetChildIndex(Me.Label8, 0)
-        Me.Controls.SetChildIndex(Me.txtZip, 0)
         Me.Controls.SetChildIndex(Me.Label9, 0)
         Me.Controls.SetChildIndex(Me.lblCity, 0)
         Me.Controls.SetChildIndex(Me.cbAdmin, 0)
         Me.Controls.SetChildIndex(Me.cbSale, 0)
         Me.Controls.SetChildIndex(Me.cbLogistics, 0)
         Me.Controls.SetChildIndex(Me.txtPhone, 0)
+        Me.Controls.SetChildIndex(Me.txtZip, 0)
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
     Friend WithEvents ddlEmployees As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
@@ -338,12 +341,12 @@ Partial Class frmAdminSystemAdministration
     Friend WithEvents btnEditEmployee As System.Windows.Forms.Button
     Friend WithEvents txtAddress As System.Windows.Forms.TextBox
     Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents txtZip As System.Windows.Forms.TextBox
     Friend WithEvents Label9 As System.Windows.Forms.Label
     Friend WithEvents lblCity As System.Windows.Forms.Label
     Friend WithEvents cbAdmin As System.Windows.Forms.CheckBox
     Friend WithEvents cbSale As System.Windows.Forms.CheckBox
     Friend WithEvents cbLogistics As System.Windows.Forms.CheckBox
     Friend WithEvents txtPhone As Kakefunn.NumericTextbox
+    Friend WithEvents txtZip As Kakefunn.NumericTextbox
 
 End Class

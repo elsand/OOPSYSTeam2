@@ -4,13 +4,17 @@
     Private currentRecord As employee
     Private IsDirty As Boolean = False
 
+    Protected Overrides Sub OnFormGetsForeground()
+        If IsNewRecord Then
+            UpdateActionStatus()
+        Else
+            UpdateActionStatus("Redigerer " & currentRecord.name)
+        End If
+    End Sub
 
     Private Sub frmAdminSystemAdministration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        With ddlEmployees
-            .DataSource = DBM.Instance.employees.ToList()
-            .DisplayMember = "name"
-            .ValueMember = "id"
-        End With
+
+        UpdateEmployeeDDL()
 
         For Each c As Control In Me.Controls
             If c.GetType().Name = "TextBox" Then
@@ -19,6 +23,40 @@
                 AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) Me.IsDirty = True
             End If
         Next
+
+        'Dim z = From x As zip In DBM.Instance.zips Select zipCity = x.zip1 & " " & x.city
+        'Dim acSource As AutoCompleteStringCollection = New AutoCompleteStringCollection()
+        'acSource.AddRange(z.ToArray())
+        'txtZip.AutoCompleteMode = AutoCompleteMode.Suggest
+        'txtZip.AutoCompleteSource = AutoCompleteSource.CustomSource
+        'txtZip.AutoCompleteCustomSource = acSource
+
+        AddHandler txtZip.TextChanged, AddressOf Me.PopulateCityLabel
+        lblCity.Text = ""
+
+    End Sub
+
+    Private Sub UpdateEmployeeDDL()
+        With ddlEmployees
+            .DataSource = DBM.Instance.employees.ToList()
+            .DisplayMember = "name"
+            .ValueMember = "id"
+        End With
+    End Sub
+
+    Private Sub PopulateCityLabel()
+        Dim z As Integer
+        If txtZip.Text.Length <> 4 Then
+            lblCity.Text = "UGYLDIG"
+            Exit Sub
+        End If
+
+        Integer.TryParse(txtZip.Text, z)
+        Dim theCity = (From x As zip In DBM.Instance.zips Where x.zip1 = z Select x.city).FirstOrDefault()
+        If theCity Is Nothing Then
+            theCity = "UGYLDIG"
+        End If
+        lblCity.Text = theCity.ToUpper()
     End Sub
 
     Private Sub btnEditEmployee_Click(sender As Object, e As EventArgs) Handles btnEditEmployee.Click
@@ -26,6 +64,8 @@
         If IsDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
         End If
+
+        UpdateActionStatus("Laster oppføring ...")
 
         Dim em As employee = DirectCast(ddlEmployees.SelectedItem, employee)
 
@@ -57,9 +97,12 @@
         IsNewRecord = False
 
         lblPassword.Text = "Nytt passord"
+        btnSaveChanges.Text = "Lagre endringer"
 
         Application.DoEvents()
         IsDirty = False
+
+        UpdateActionStatus("Redigerer: " & em.name)
 
     End Sub
 
@@ -99,6 +142,7 @@
             em.roles.Add(DBM.Instance.roles.Where(Function(x) x.name = "Logistics").FirstOrDefault())
         End If
 
+        UpdateActionStatus("Lagrer ...")
         Try
             If IsNewRecord Then
                 DBM.Instance.employees.Add(em)
@@ -117,7 +161,9 @@
         IsNewRecord = False
         IsDirty = False
         currentRecord = em
+        UpdateEmployeeDDL()
 
+        UpdateActionStatus("Redigerer " & em.name)
         MessageBox.Show("Oppføringen er lagret", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
     End Sub
@@ -133,8 +179,28 @@
         End If
         If txtPhone.Text = "" Then
             MsgBox("Du må oppgi et telefonnummer")
+            Return False
         End If
-
+        If txtEmail.Text = "" Then
+            MsgBox("Du må oppgi en e-postadresse")
+            Return False
+        End If
+        If txtAddress.Text = "" Then
+            MsgBox("Du må oppgi en addresse")
+            Return False
+        End If
+        If IsNewRecord AndAlso txtPassword.Text = "" Then
+            MsgBox("Du må oppgi et passord")
+            Return False
+        End If
+        If txtPassword.Text <> txtRepeatPassword.Text Then
+            MsgBox("Du må oppgi det samme passordet på nytt")
+            Return False
+        End If
+        If txtZip.Text = "" OrElse lblCity.Text = "UGYLDIG" OrElse lblCity.Text = "" Then
+            MsgBox("Du må oppgi et gyldig postnummer")
+            Return False
+        End If
         Return True
     End Function
 
@@ -150,9 +216,13 @@
                 CType(c, CheckBox).Checked = False
             End If
         Next
+        lblCity.Text = ""
         IsNewRecord = True
         IsDirty = False
         currentRecord = Nothing
         lblPassword.Text = "Passord"
+        btnSaveChanges.Text = "Lagre ny bruker"
+
+        UpdateActionStatus()
     End Sub
 End Class
