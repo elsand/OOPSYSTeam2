@@ -1,4 +1,7 @@
-﻿Public Class DBM
+﻿Imports System.Data.Objects
+Imports System.Data.Objects.DataClasses
+
+Public Class DBM
     Inherits Db
 
 #Region "SingletonImplementation"
@@ -26,6 +29,12 @@
             Return _instance.Value
         End Get
     End Property
+
+
+    Public Function FindByName(table As String, name As String)
+        Return Database.SqlQuery(Of String)("SELET * FROM " & table & " WHERE name = '" & name & "'").ToList()
+    End Function
+
 
 #End Region
 

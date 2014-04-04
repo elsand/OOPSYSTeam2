@@ -19,31 +19,47 @@ Partial Class frmAdminSystemAdministration
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.components = New System.ComponentModel.Container()
+        Me.ddlEmployees = New System.Windows.Forms.ComboBox()
+        Me.DBMBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.Button7 = New System.Windows.Forms.Button()
-        Me.CheckedListBox1 = New System.Windows.Forms.CheckedListBox()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.btnSaveChanges = New System.Windows.Forms.Button()
+        Me.btnNewUser = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.txtPhone = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
+        Me.txtRepeatPassword = New System.Windows.Forms.TextBox()
         Me.Label7 = New System.Windows.Forms.Label()
+        Me.btnEditEmployee = New System.Windows.Forms.Button()
+        Me.txtAddress = New System.Windows.Forms.TextBox()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.txtZip = New System.Windows.Forms.TextBox()
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblCity = New System.Windows.Forms.Label()
+        Me.cbAdmin = New System.Windows.Forms.CheckBox()
+        Me.cbSale = New System.Windows.Forms.CheckBox()
+        Me.cbLogistics = New System.Windows.Forms.CheckBox()
+        CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'ComboBox1
+        'ddlEmployees
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(158, 70)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(150, 21)
-        Me.ComboBox1.TabIndex = 7
+        Me.ddlEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ddlEmployees.FormattingEnabled = True
+        Me.ddlEmployees.Location = New System.Drawing.Point(158, 70)
+        Me.ddlEmployees.Name = "ddlEmployees"
+        Me.ddlEmployees.Size = New System.Drawing.Size(150, 21)
+        Me.ddlEmployees.TabIndex = 7
+        '
+        'DBMBindingSource
+        '
+        Me.DBMBindingSource.DataSource = GetType(Kakefunn.DBM)
         '
         'Label1
         '
@@ -63,39 +79,30 @@ Partial Class frmAdminSystemAdministration
         Me.Label2.TabIndex = 9
         Me.Label2.Text = "Navn"
         '
-        'TextBox1
+        'txtName
         '
-        Me.TextBox1.Location = New System.Drawing.Point(158, 126)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox1.TabIndex = 10
+        Me.txtName.Location = New System.Drawing.Point(158, 126)
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(150, 20)
+        Me.txtName.TabIndex = 10
         '
-        'Button6
+        'btnSaveChanges
         '
-        Me.Button6.Location = New System.Drawing.Point(233, 360)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 11
-        Me.Button6.Text = "Lagre "
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btnSaveChanges.Location = New System.Drawing.Point(459, 360)
+        Me.btnSaveChanges.Name = "btnSaveChanges"
+        Me.btnSaveChanges.Size = New System.Drawing.Size(75, 23)
+        Me.btnSaveChanges.TabIndex = 11
+        Me.btnSaveChanges.Text = "Lagre "
+        Me.btnSaveChanges.UseVisualStyleBackColor = True
         '
-        'Button7
+        'btnNewUser
         '
-        Me.Button7.Location = New System.Drawing.Point(15, 360)
-        Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(75, 23)
-        Me.Button7.TabIndex = 12
-        Me.Button7.Text = "Ny bruker"
-        Me.Button7.UseVisualStyleBackColor = True
-        '
-        'CheckedListBox1
-        '
-        Me.CheckedListBox1.FormattingEnabled = True
-        Me.CheckedListBox1.Items.AddRange(New Object() {"Administrator", "Lager", "Salg"})
-        Me.CheckedListBox1.Location = New System.Drawing.Point(158, 152)
-        Me.CheckedListBox1.Name = "CheckedListBox1"
-        Me.CheckedListBox1.Size = New System.Drawing.Size(150, 49)
-        Me.CheckedListBox1.TabIndex = 13
+        Me.btnNewUser.Location = New System.Drawing.Point(15, 360)
+        Me.btnNewUser.Name = "btnNewUser"
+        Me.btnNewUser.Size = New System.Drawing.Size(75, 23)
+        Me.btnNewUser.TabIndex = 12
+        Me.btnNewUser.Text = "Ny bruker"
+        Me.btnNewUser.UseVisualStyleBackColor = True
         '
         'Label3
         '
@@ -106,12 +113,12 @@ Partial Class frmAdminSystemAdministration
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "Roller"
         '
-        'TextBox2
+        'txtPhone
         '
-        Me.TextBox2.Location = New System.Drawing.Point(158, 207)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox2.TabIndex = 16
+        Me.txtPhone.Location = New System.Drawing.Point(158, 207)
+        Me.txtPhone.Name = "txtPhone"
+        Me.txtPhone.Size = New System.Drawing.Size(150, 20)
+        Me.txtPhone.TabIndex = 16
         '
         'Label4
         '
@@ -122,12 +129,12 @@ Partial Class frmAdminSystemAdministration
         Me.Label4.TabIndex = 15
         Me.Label4.Text = "Telefon"
         '
-        'TextBox3
+        'txtEmail
         '
-        Me.TextBox3.Location = New System.Drawing.Point(158, 233)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox3.TabIndex = 18
+        Me.txtEmail.Location = New System.Drawing.Point(158, 233)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(150, 20)
+        Me.txtEmail.TabIndex = 18
         '
         'Label5
         '
@@ -138,12 +145,12 @@ Partial Class frmAdminSystemAdministration
         Me.Label5.TabIndex = 17
         Me.Label5.Text = "E-post"
         '
-        'TextBox4
+        'txtPassword
         '
-        Me.TextBox4.Location = New System.Drawing.Point(158, 259)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox4.TabIndex = 20
+        Me.txtPassword.Location = New System.Drawing.Point(158, 259)
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.Size = New System.Drawing.Size(150, 20)
+        Me.txtPassword.TabIndex = 20
         '
         'Label6
         '
@@ -154,12 +161,12 @@ Partial Class frmAdminSystemAdministration
         Me.Label6.TabIndex = 19
         Me.Label6.Text = "Passord"
         '
-        'TextBox5
+        'txtRepeatPassword
         '
-        Me.TextBox5.Location = New System.Drawing.Point(158, 285)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(150, 20)
-        Me.TextBox5.TabIndex = 22
+        Me.txtRepeatPassword.Location = New System.Drawing.Point(158, 285)
+        Me.txtRepeatPassword.Name = "txtRepeatPassword"
+        Me.txtRepeatPassword.Size = New System.Drawing.Size(150, 20)
+        Me.txtRepeatPassword.TabIndex = 22
         '
         'Label7
         '
@@ -170,63 +177,170 @@ Partial Class frmAdminSystemAdministration
         Me.Label7.TabIndex = 21
         Me.Label7.Text = "Gjenta passord"
         '
+        'btnEditEmployee
+        '
+        Me.btnEditEmployee.Location = New System.Drawing.Point(314, 68)
+        Me.btnEditEmployee.Name = "btnEditEmployee"
+        Me.btnEditEmployee.Size = New System.Drawing.Size(75, 23)
+        Me.btnEditEmployee.TabIndex = 23
+        Me.btnEditEmployee.Text = "Rediger"
+        Me.btnEditEmployee.UseVisualStyleBackColor = True
+        '
+        'txtAddress
+        '
+        Me.txtAddress.Location = New System.Drawing.Point(384, 210)
+        Me.txtAddress.Multiline = True
+        Me.txtAddress.Name = "txtAddress"
+        Me.txtAddress.Size = New System.Drawing.Size(150, 43)
+        Me.txtAddress.TabIndex = 24
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(333, 213)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(45, 13)
+        Me.Label8.TabIndex = 25
+        Me.Label8.Text = "Adresse"
+        '
+        'txtZip
+        '
+        Me.txtZip.Location = New System.Drawing.Point(384, 262)
+        Me.txtZip.Name = "txtZip"
+        Me.txtZip.Size = New System.Drawing.Size(47, 20)
+        Me.txtZip.TabIndex = 26
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(341, 267)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(37, 13)
+        Me.Label9.TabIndex = 27
+        Me.Label9.Text = "Postnr"
+        '
+        'lblCity
+        '
+        Me.lblCity.AutoSize = True
+        Me.lblCity.Location = New System.Drawing.Point(437, 267)
+        Me.lblCity.Name = "lblCity"
+        Me.lblCity.Size = New System.Drawing.Size(36, 13)
+        Me.lblCity.TabIndex = 28
+        Me.lblCity.Text = "STED"
+        '
+        'cbAdmin
+        '
+        Me.cbAdmin.AutoSize = True
+        Me.cbAdmin.Location = New System.Drawing.Point(158, 153)
+        Me.cbAdmin.Name = "cbAdmin"
+        Me.cbAdmin.Size = New System.Drawing.Size(55, 17)
+        Me.cbAdmin.TabIndex = 29
+        Me.cbAdmin.Text = "Admin"
+        Me.cbAdmin.UseVisualStyleBackColor = True
+        '
+        'cbSale
+        '
+        Me.cbSale.AutoSize = True
+        Me.cbSale.Location = New System.Drawing.Point(158, 170)
+        Me.cbSale.Name = "cbSale"
+        Me.cbSale.Size = New System.Drawing.Size(47, 17)
+        Me.cbSale.TabIndex = 30
+        Me.cbSale.Text = "Salg"
+        Me.cbSale.UseVisualStyleBackColor = True
+        '
+        'cbLogistics
+        '
+        Me.cbLogistics.AutoSize = True
+        Me.cbLogistics.Location = New System.Drawing.Point(158, 187)
+        Me.cbLogistics.Name = "cbLogistics"
+        Me.cbLogistics.Size = New System.Drawing.Size(68, 17)
+        Me.cbLogistics.TabIndex = 31
+        Me.cbLogistics.Text = "Logistikk"
+        Me.cbLogistics.UseVisualStyleBackColor = True
+        '
         'frmAdminSystemAdministration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(549, 424)
-        Me.Controls.Add(Me.TextBox5)
+        Me.Controls.Add(Me.cbLogistics)
+        Me.Controls.Add(Me.cbSale)
+        Me.Controls.Add(Me.cbAdmin)
+        Me.Controls.Add(Me.lblCity)
+        Me.Controls.Add(Me.Label9)
+        Me.Controls.Add(Me.txtZip)
+        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.txtAddress)
+        Me.Controls.Add(Me.btnEditEmployee)
+        Me.Controls.Add(Me.txtRepeatPassword)
         Me.Controls.Add(Me.Label7)
-        Me.Controls.Add(Me.TextBox4)
+        Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.Label6)
-        Me.Controls.Add(Me.TextBox3)
+        Me.Controls.Add(Me.txtEmail)
         Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.TextBox2)
+        Me.Controls.Add(Me.txtPhone)
         Me.Controls.Add(Me.Label4)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.CheckedListBox1)
-        Me.Controls.Add(Me.Button7)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.btnNewUser)
+        Me.Controls.Add(Me.btnSaveChanges)
+        Me.Controls.Add(Me.txtName)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.ddlEmployees)
         Me.Name = "frmAdminSystemAdministration"
         Me.Text = "Systemadministrasjon"
-        Me.Controls.SetChildIndex(Me.ComboBox1, 0)
+        Me.Controls.SetChildIndex(Me.ddlEmployees, 0)
         Me.Controls.SetChildIndex(Me.Label1, 0)
         Me.Controls.SetChildIndex(Me.Label2, 0)
-        Me.Controls.SetChildIndex(Me.TextBox1, 0)
-        Me.Controls.SetChildIndex(Me.Button6, 0)
-        Me.Controls.SetChildIndex(Me.Button7, 0)
-        Me.Controls.SetChildIndex(Me.CheckedListBox1, 0)
+        Me.Controls.SetChildIndex(Me.txtName, 0)
+        Me.Controls.SetChildIndex(Me.btnSaveChanges, 0)
+        Me.Controls.SetChildIndex(Me.btnNewUser, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
         Me.Controls.SetChildIndex(Me.Label4, 0)
-        Me.Controls.SetChildIndex(Me.TextBox2, 0)
+        Me.Controls.SetChildIndex(Me.txtPhone, 0)
         Me.Controls.SetChildIndex(Me.Label5, 0)
-        Me.Controls.SetChildIndex(Me.TextBox3, 0)
+        Me.Controls.SetChildIndex(Me.txtEmail, 0)
         Me.Controls.SetChildIndex(Me.Label6, 0)
-        Me.Controls.SetChildIndex(Me.TextBox4, 0)
+        Me.Controls.SetChildIndex(Me.txtPassword, 0)
         Me.Controls.SetChildIndex(Me.Label7, 0)
-        Me.Controls.SetChildIndex(Me.TextBox5, 0)
+        Me.Controls.SetChildIndex(Me.txtRepeatPassword, 0)
+        Me.Controls.SetChildIndex(Me.btnEditEmployee, 0)
+        Me.Controls.SetChildIndex(Me.txtAddress, 0)
+        Me.Controls.SetChildIndex(Me.Label8, 0)
+        Me.Controls.SetChildIndex(Me.txtZip, 0)
+        Me.Controls.SetChildIndex(Me.Label9, 0)
+        Me.Controls.SetChildIndex(Me.lblCity, 0)
+        Me.Controls.SetChildIndex(Me.cbAdmin, 0)
+        Me.Controls.SetChildIndex(Me.cbSale, 0)
+        Me.Controls.SetChildIndex(Me.cbLogistics, 0)
+        CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
+    Friend WithEvents ddlEmployees As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents Button7 As System.Windows.Forms.Button
-    Friend WithEvents CheckedListBox1 As System.Windows.Forms.CheckedListBox
+    Friend WithEvents txtName As System.Windows.Forms.TextBox
+    Friend WithEvents btnSaveChanges As System.Windows.Forms.Button
+    Friend WithEvents btnNewUser As System.Windows.Forms.Button
     Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents TextBox2 As System.Windows.Forms.TextBox
+    Friend WithEvents txtPhone As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents TextBox3 As System.Windows.Forms.TextBox
+    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
+    Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
+    Friend WithEvents txtRepeatPassword As System.Windows.Forms.TextBox
     Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents DBMBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents btnEditEmployee As System.Windows.Forms.Button
+    Friend WithEvents txtAddress As System.Windows.Forms.TextBox
+    Friend WithEvents Label8 As System.Windows.Forms.Label
+    Friend WithEvents txtZip As System.Windows.Forms.TextBox
+    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblCity As System.Windows.Forms.Label
+    Friend WithEvents cbAdmin As System.Windows.Forms.CheckBox
+    Friend WithEvents cbSale As System.Windows.Forms.CheckBox
+    Friend WithEvents cbLogistics As System.Windows.Forms.CheckBox
 
 End Class
