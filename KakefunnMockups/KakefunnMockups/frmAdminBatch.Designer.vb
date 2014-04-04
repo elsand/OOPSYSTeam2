@@ -20,7 +20,7 @@ Partial Class frmAdminBatch
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.grpBatch = New System.Windows.Forms.GroupBox()
         Me.txtPurchasingPrice = New Kakefunn.NumericTextbox()
         Me.txtNumUnits = New Kakefunn.NumericTextbox()
         Me.lblStorageStatus = New System.Windows.Forms.Label()
@@ -28,18 +28,18 @@ Partial Class frmAdminBatch
         Me.dtpExpires = New System.Windows.Forms.DateTimePicker()
         Me.lblUnit = New System.Windows.Forms.Label()
         Me.dtpExpected = New System.Windows.Forms.DateTimePicker()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblExpires = New System.Windows.Forms.Label()
+        Me.lblExpected = New System.Windows.Forms.Label()
+        Me.lblNumUnits = New System.Windows.Forms.Label()
+        Me.lblNameIngredients = New System.Windows.Forms.Label()
         Me.txtIngredient = New System.Windows.Forms.TextBox()
         Me.btnSaveBatch = New System.Windows.Forms.Button()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblPurchasingPrice = New System.Windows.Forms.Label()
         Me.btnNewBatch = New System.Windows.Forms.Button()
         Me.btnDeleteBatch = New System.Windows.Forms.Button()
         Me.btnPrintOrderList = New System.Windows.Forms.Button()
         Me.BatchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BatchDataGridView = New System.Windows.Forms.DataGridView()
+        Me.dtgBatch = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumnIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -47,34 +47,34 @@ Partial Class frmAdminBatch
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
+        Me.lblEditExplanation = New System.Windows.Forms.Label()
+        Me.grpBatch.SuspendLayout()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BatchDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgBatch, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GroupBox1
+        'grpBatch
         '
-        Me.GroupBox1.Controls.Add(Me.txtPurchasingPrice)
-        Me.GroupBox1.Controls.Add(Me.txtNumUnits)
-        Me.GroupBox1.Controls.Add(Me.lblStorageStatus)
-        Me.GroupBox1.Controls.Add(Me.ddlPricePer)
-        Me.GroupBox1.Controls.Add(Me.dtpExpires)
-        Me.GroupBox1.Controls.Add(Me.lblUnit)
-        Me.GroupBox1.Controls.Add(Me.dtpExpected)
-        Me.GroupBox1.Controls.Add(Me.Label6)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Controls.Add(Me.txtIngredient)
-        Me.GroupBox1.Controls.Add(Me.btnSaveBatch)
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 349)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(683, 154)
-        Me.GroupBox1.TabIndex = 12
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Vareparti/bestilling"
+        Me.grpBatch.Controls.Add(Me.txtPurchasingPrice)
+        Me.grpBatch.Controls.Add(Me.txtNumUnits)
+        Me.grpBatch.Controls.Add(Me.lblStorageStatus)
+        Me.grpBatch.Controls.Add(Me.ddlPricePer)
+        Me.grpBatch.Controls.Add(Me.dtpExpires)
+        Me.grpBatch.Controls.Add(Me.lblUnit)
+        Me.grpBatch.Controls.Add(Me.dtpExpected)
+        Me.grpBatch.Controls.Add(Me.lblExpires)
+        Me.grpBatch.Controls.Add(Me.lblExpected)
+        Me.grpBatch.Controls.Add(Me.lblNumUnits)
+        Me.grpBatch.Controls.Add(Me.lblNameIngredients)
+        Me.grpBatch.Controls.Add(Me.txtIngredient)
+        Me.grpBatch.Controls.Add(Me.btnSaveBatch)
+        Me.grpBatch.Controls.Add(Me.lblPurchasingPrice)
+        Me.grpBatch.Location = New System.Drawing.Point(12, 349)
+        Me.grpBatch.Name = "grpBatch"
+        Me.grpBatch.Size = New System.Drawing.Size(683, 154)
+        Me.grpBatch.TabIndex = 12
+        Me.grpBatch.TabStop = False
+        Me.grpBatch.Text = "Vareparti/bestilling"
         '
         'txtPurchasingPrice
         '
@@ -140,41 +140,41 @@ Partial Class frmAdminBatch
         Me.dtpExpected.Size = New System.Drawing.Size(102, 20)
         Me.dtpExpected.TabIndex = 2
         '
-        'Label6
+        'lblExpires
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(371, 55)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(58, 13)
-        Me.Label6.TabIndex = 14
-        Me.Label6.Text = "Utløpsdato"
+        Me.lblExpires.AutoSize = True
+        Me.lblExpires.Location = New System.Drawing.Point(371, 55)
+        Me.lblExpires.Name = "lblExpires"
+        Me.lblExpires.Size = New System.Drawing.Size(58, 13)
+        Me.lblExpires.TabIndex = 14
+        Me.lblExpires.Text = "Utløpsdato"
         '
-        'Label3
+        'lblExpected
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(14, 86)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(79, 13)
-        Me.Label3.TabIndex = 4
-        Me.Label3.Text = "Ventet på lager"
+        Me.lblExpected.AutoSize = True
+        Me.lblExpected.Location = New System.Drawing.Point(14, 86)
+        Me.lblExpected.Name = "lblExpected"
+        Me.lblExpected.Size = New System.Drawing.Size(79, 13)
+        Me.lblExpected.TabIndex = 4
+        Me.lblExpected.Text = "Ventet på lager"
         '
-        'Label2
+        'lblNumUnits
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(14, 57)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(98, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Antall enheter i kolli"
+        Me.lblNumUnits.AutoSize = True
+        Me.lblNumUnits.Location = New System.Drawing.Point(14, 57)
+        Me.lblNumUnits.Name = "lblNumUnits"
+        Me.lblNumUnits.Size = New System.Drawing.Size(98, 13)
+        Me.lblNumUnits.TabIndex = 2
+        Me.lblNumUnits.Text = "Antall enheter i kolli"
         '
-        'Label1
+        'lblNameIngredients
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(14, 28)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(99, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Navn på ingrediens"
+        Me.lblNameIngredients.AutoSize = True
+        Me.lblNameIngredients.Location = New System.Drawing.Point(14, 28)
+        Me.lblNameIngredients.Name = "lblNameIngredients"
+        Me.lblNameIngredients.Size = New System.Drawing.Size(99, 13)
+        Me.lblNameIngredients.TabIndex = 1
+        Me.lblNameIngredients.Text = "Navn på ingrediens"
         '
         'txtIngredient
         '
@@ -192,14 +192,14 @@ Partial Class frmAdminBatch
         Me.btnSaveBatch.Text = "Lagre parti/bestilling"
         Me.btnSaveBatch.UseVisualStyleBackColor = True
         '
-        'Label4
+        'lblPurchasingPrice
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(371, 81)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(63, 13)
-        Me.Label4.TabIndex = 7
-        Me.Label4.Text = "Innkjøpspris"
+        Me.lblPurchasingPrice.AutoSize = True
+        Me.lblPurchasingPrice.Location = New System.Drawing.Point(371, 81)
+        Me.lblPurchasingPrice.Name = "lblPurchasingPrice"
+        Me.lblPurchasingPrice.Size = New System.Drawing.Size(63, 13)
+        Me.lblPurchasingPrice.TabIndex = 7
+        Me.lblPurchasingPrice.Text = "Innkjøpspris"
         '
         'btnNewBatch
         '
@@ -232,21 +232,21 @@ Partial Class frmAdminBatch
         '
         Me.BatchBindingSource.DataSource = GetType(Kakefunn.batch)
         '
-        'BatchDataGridView
+        'dtgBatch
         '
-        Me.BatchDataGridView.AllowUserToAddRows = False
-        Me.BatchDataGridView.AllowUserToDeleteRows = False
-        Me.BatchDataGridView.AutoGenerateColumns = False
-        Me.BatchDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.BatchDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumnIngredient, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4})
-        Me.BatchDataGridView.DataSource = Me.BatchBindingSource
-        Me.BatchDataGridView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.BatchDataGridView.Location = New System.Drawing.Point(12, 56)
-        Me.BatchDataGridView.Name = "BatchDataGridView"
-        Me.BatchDataGridView.RowHeadersVisible = False
-        Me.BatchDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.BatchDataGridView.Size = New System.Drawing.Size(683, 236)
-        Me.BatchDataGridView.TabIndex = 14
+        Me.dtgBatch.AllowUserToAddRows = False
+        Me.dtgBatch.AllowUserToDeleteRows = False
+        Me.dtgBatch.AutoGenerateColumns = False
+        Me.dtgBatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgBatch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumnIngredient, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4})
+        Me.dtgBatch.DataSource = Me.BatchBindingSource
+        Me.dtgBatch.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dtgBatch.Location = New System.Drawing.Point(12, 56)
+        Me.dtgBatch.Name = "dtgBatch"
+        Me.dtgBatch.RowHeadersVisible = False
+        Me.dtgBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgBatch.Size = New System.Drawing.Size(683, 236)
+        Me.dtgBatch.TabIndex = 14
         '
         'DataGridViewTextBoxColumn1
         '
@@ -297,52 +297,52 @@ Partial Class frmAdminBatch
         Me.DataGridViewTextBoxColumn4.HeaderText = "Utløpsdato"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
-        'Label5
+        'lblEditExplanation
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(500, 296)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(193, 13)
-        Me.Label5.TabIndex = 15
-        Me.Label5.Text = "Dobbeltklikk for å redigere en oppføring"
+        Me.lblEditExplanation.AutoSize = True
+        Me.lblEditExplanation.Location = New System.Drawing.Point(500, 296)
+        Me.lblEditExplanation.Name = "lblEditExplanation"
+        Me.lblEditExplanation.Size = New System.Drawing.Size(193, 13)
+        Me.lblEditExplanation.TabIndex = 15
+        Me.lblEditExplanation.Text = "Dobbeltklikk for å redigere en oppføring"
         '
         'frmAdminBatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(708, 555)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.BatchDataGridView)
+        Me.Controls.Add(Me.lblEditExplanation)
+        Me.Controls.Add(Me.dtgBatch)
         Me.Controls.Add(Me.btnPrintOrderList)
         Me.Controls.Add(Me.btnDeleteBatch)
         Me.Controls.Add(Me.btnNewBatch)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.grpBatch)
         Me.Name = "frmAdminBatch"
         Me.Text = "Varebestilling og partier"
-        Me.Controls.SetChildIndex(Me.GroupBox1, 0)
+        Me.Controls.SetChildIndex(Me.grpBatch, 0)
         Me.Controls.SetChildIndex(Me.btnNewBatch, 0)
         Me.Controls.SetChildIndex(Me.btnDeleteBatch, 0)
         Me.Controls.SetChildIndex(Me.btnPrintOrderList, 0)
-        Me.Controls.SetChildIndex(Me.BatchDataGridView, 0)
-        Me.Controls.SetChildIndex(Me.Label5, 0)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.Controls.SetChildIndex(Me.dtgBatch, 0)
+        Me.Controls.SetChildIndex(Me.lblEditExplanation, 0)
+        Me.grpBatch.ResumeLayout(False)
+        Me.grpBatch.PerformLayout()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BatchDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgBatch, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpBatch As System.Windows.Forms.GroupBox
     Friend WithEvents dtpExpected As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblExpected As System.Windows.Forms.Label
+    Friend WithEvents lblNumUnits As System.Windows.Forms.Label
+    Friend WithEvents lblNameIngredients As System.Windows.Forms.Label
     Friend WithEvents txtIngredient As System.Windows.Forms.TextBox
     Friend WithEvents dtpExpires As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label6 As System.Windows.Forms.Label
+    Friend WithEvents lblExpires As System.Windows.Forms.Label
     Friend WithEvents btnSaveBatch As System.Windows.Forms.Button
     Friend WithEvents lblUnit As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lblPurchasingPrice As System.Windows.Forms.Label
     Friend WithEvents ddlPricePer As System.Windows.Forms.ComboBox
     Friend WithEvents btnNewBatch As System.Windows.Forms.Button
     Friend WithEvents btnDeleteBatch As System.Windows.Forms.Button
@@ -351,7 +351,7 @@ Partial Class frmAdminBatch
     Friend WithEvents txtNumUnits As Kakefunn.NumericTextbox
     Friend WithEvents txtPurchasingPrice As Kakefunn.NumericTextbox
     Friend WithEvents BatchBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents BatchDataGridView As System.Windows.Forms.DataGridView
+    Friend WithEvents dtgBatch As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumnIngredient As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -359,6 +359,6 @@ Partial Class frmAdminBatch
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblEditExplanation As System.Windows.Forms.Label
 
 End Class
