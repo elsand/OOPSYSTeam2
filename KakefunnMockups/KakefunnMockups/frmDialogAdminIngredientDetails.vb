@@ -10,14 +10,44 @@
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim unitType As unit
-        Dim u = From data In DBM.Instance.units Where data.name = ddlUnitType.Text Select data
+        Dim ingredientIndex As Integer
+        Dim i As ingredient = New ingredient()
 
-        If Not u.Any Then
-            'legg inn ny enhetstype.
+        i.name = txtName.Text
+        i.description = txtDescr.Text
 
+        Dim u As unit = (From data In DBM.Instance.units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
+        If u Is Nothing Then
+            u = New unit() With {.name = ddlUnitType.Text}
         End If
+
+        i.unit = u
+        i.kilocaloriesPerUnit = txtCal.Text
+        i.vat = txtVAT.Text
+
+        Try
+            DBM.Instance.ingredients.Add(i)
+            DBM.Instance.SaveChanges()
+        Catch ex As Entity.Validation.DbEntityValidationException
+            MsgBox(ex)
+        End Try
+
+        Dim iFind As ingredient = (From data In DBM.Instance.ingredients Where data.name = txtName.Text Select data).FirstOrDefault
+        ingredientIndex = iFind.id
+
+        MsgBox(ingredientIndex)
+
+        Dim ip As New ingredientPrice()
+        ip = New ingredientPrice() With {.markUpPercentage = txtProfit.Text, .date = Date.Today, .id = ingredientIndex}
+
+        Try
+            DBM.Instance.ingredientPrices.Add(ip)
+            DBM.Instance.SaveChanges()
+        Catch ex As Entity.Validation.DbEntityValidationException
+            MsgBox(ex)
+        End Try
 
 
     End Sub
+
 End Class

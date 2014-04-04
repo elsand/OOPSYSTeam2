@@ -45,6 +45,7 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblNumInStockValue = New System.Windows.Forms.Label()
         Me.lblNumInStockText = New System.Windows.Forms.Label()
         Me.btnAbort = New System.Windows.Forms.Button()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.grpIngredient.SuspendLayout()
         Me.grpStock.SuspendLayout()
         CType(Me.dtgBatches, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -276,10 +277,20 @@ Partial Class frmDialogAdminIngredientDetails
         Me.btnAbort.Text = "Avbryt"
         Me.btnAbort.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(186, 329)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 9
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(689, 378)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnAbort)
         Me.Controls.Add(Me.grpStock)
         Me.Controls.Add(Me.btnSave)
@@ -320,5 +331,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Innkjsdf As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
