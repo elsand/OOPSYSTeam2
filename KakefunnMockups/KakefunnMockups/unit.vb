@@ -14,6 +14,6 @@ Partial Public Class unit
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property ingredients As ICollection(Of ingredient) = New HashSet(Of ingredient)
+    Public Overridable Property ingredients As ObservableListSource(Of ingredient) = New ObservableListSource(Of ingredient)
 
 End Class

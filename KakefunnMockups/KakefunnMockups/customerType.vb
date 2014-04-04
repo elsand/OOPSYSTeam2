@@ -14,6 +14,6 @@ Partial Public Class customerType
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property customers As ICollection(Of customer) = New HashSet(Of customer)
+    Public Overridable Property customers As ObservableListSource(Of customer) = New ObservableListSource(Of customer)
 
 End Class

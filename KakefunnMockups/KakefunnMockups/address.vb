@@ -19,8 +19,8 @@ Partial Public Class address
     Public Property zip As Integer
 
     Public Overridable Property zip1 As zip
-    Public Overridable Property customers As ICollection(Of customer) = New HashSet(Of customer)
-    Public Overridable Property employees As ICollection(Of employee) = New HashSet(Of employee)
-    Public Overridable Property orders As ICollection(Of order) = New HashSet(Of order)
+    Public Overridable Property customers As ObservableListSource(Of customer) = New ObservableListSource(Of customer)
+    Public Overridable Property employees As ObservableListSource(Of employee) = New ObservableListSource(Of employee)
+    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
 
 End Class

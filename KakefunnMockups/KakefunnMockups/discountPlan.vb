@@ -15,6 +15,6 @@ Partial Public Class discountPlan
     Public Property name As String
     Public Property percentage As Integer
 
-    Public Overridable Property customers As ICollection(Of customer) = New HashSet(Of customer)
+    Public Overridable Property customers As ObservableListSource(Of customer) = New ObservableListSource(Of customer)
 
 End Class

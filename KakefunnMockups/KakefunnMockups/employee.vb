@@ -20,7 +20,7 @@ Partial Public Class employee
 
     Public Overridable Property address As address
     Public Overridable Property phone As phone
-    Public Overridable Property orders As ICollection(Of order) = New HashSet(Of order)
-    Public Overridable Property roles As ICollection(Of role) = New HashSet(Of role)
+    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
+    Public Overridable Property roles As ObservableListSource(Of role) = New ObservableListSource(Of role)
 
 End Class

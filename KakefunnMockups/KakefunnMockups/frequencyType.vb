@@ -16,6 +16,6 @@ Partial Public Class frequencyType
     Public Property intervalDays As Nullable(Of Integer)
     Public Property intervalMonths As Nullable(Of Integer)
 
-    Public Overridable Property subscriptions As ICollection(Of subscription) = New HashSet(Of subscription)
+    Public Overridable Property subscriptions As ObservableListSource(Of subscription) = New ObservableListSource(Of subscription)
 
 End Class
