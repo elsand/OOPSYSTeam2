@@ -14,12 +14,13 @@ Partial Public Class batch
     Public Property id As Integer
     Public Property ordered As Date
     Public Property registered As Nullable(Of Date)
+    Public Property expected As Date
     Public Property expires As Nullable(Of Date)
-    Public Property unitCount As Nullable(Of Integer)
+    Public Property unitCount As Integer
     Public Property unitPurchasingPrice As Nullable(Of Decimal)
     Public Property ingredientId As Integer
-    Public Property locationRow As Integer
-    Public Property locationShelf As Integer
+    Public Property locationRow As Nullable(Of Integer)
+    Public Property locationShelf As Nullable(Of Integer)
     Public Property deleted As Nullable(Of Date)
 
     Public Overridable Property ingredient As ingredient

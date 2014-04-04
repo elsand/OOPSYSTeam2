@@ -24,13 +24,6 @@
             End If
         Next
 
-        'Dim z = From x As zip In DBM.Instance.zips Select zipCity = x.zip1 & " " & x.city
-        'Dim acSource As AutoCompleteStringCollection = New AutoCompleteStringCollection()
-        'acSource.AddRange(z.ToArray())
-        'txtZip.AutoCompleteMode = AutoCompleteMode.Suggest
-        'txtZip.AutoCompleteSource = AutoCompleteSource.CustomSource
-        'txtZip.AutoCompleteCustomSource = acSource
-
         AddHandler txtZip.TextChanged, AddressOf Me.PopulateCityLabel
         lblCity.Text = ""
 

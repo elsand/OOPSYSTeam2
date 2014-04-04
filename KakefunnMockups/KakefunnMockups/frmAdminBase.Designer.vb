@@ -19,22 +19,22 @@ Partial Class frmAdminBase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnExecutedOrders = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnIngredients = New System.Windows.Forms.Button()
+        Me.btnCakes = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnExecutedOrders
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 27)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(106, 23)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Effektuerte ordrer"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnExecutedOrders.Location = New System.Drawing.Point(12, 27)
+        Me.btnExecutedOrders.Name = "btnExecutedOrders"
+        Me.btnExecutedOrders.Size = New System.Drawing.Size(106, 23)
+        Me.btnExecutedOrders.TabIndex = 2
+        Me.btnExecutedOrders.Text = "Effektuerte ordrer"
+        Me.btnExecutedOrders.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -45,23 +45,23 @@ Partial Class frmAdminBase
         Me.Button2.Text = "Brukere"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnIngredients
         '
-        Me.Button3.Location = New System.Drawing.Point(227, 27)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(99, 23)
-        Me.Button3.TabIndex = 4
-        Me.Button3.Text = "Ingredienser"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnIngredients.Location = New System.Drawing.Point(227, 27)
+        Me.btnIngredients.Name = "btnIngredients"
+        Me.btnIngredients.Size = New System.Drawing.Size(99, 23)
+        Me.btnIngredients.TabIndex = 4
+        Me.btnIngredients.Text = "Ingredienser"
+        Me.btnIngredients.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnCakes
         '
-        Me.Button4.Location = New System.Drawing.Point(124, 27)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(97, 23)
-        Me.Button4.TabIndex = 5
-        Me.Button4.Text = "Kaker"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnCakes.Location = New System.Drawing.Point(124, 27)
+        Me.btnCakes.Name = "btnCakes"
+        Me.btnCakes.Size = New System.Drawing.Size(97, 23)
+        Me.btnCakes.TabIndex = 5
+        Me.btnCakes.Text = "Kaker"
+        Me.btnCakes.UseVisualStyleBackColor = True
         '
         'Button5
         '
@@ -87,27 +87,27 @@ Partial Class frmAdminBase
         Me.ClientSize = New System.Drawing.Size(707, 447)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.btnCakes)
+        Me.Controls.Add(Me.btnIngredients)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnExecutedOrders)
         Me.HelpButton = True
         Me.Name = "frmAdminBase"
         Me.Text = "Administrasjon"
-        Me.Controls.SetChildIndex(Me.Button1, 0)
+        Me.Controls.SetChildIndex(Me.btnExecutedOrders, 0)
         Me.Controls.SetChildIndex(Me.Button2, 0)
-        Me.Controls.SetChildIndex(Me.Button3, 0)
-        Me.Controls.SetChildIndex(Me.Button4, 0)
+        Me.Controls.SetChildIndex(Me.btnIngredients, 0)
+        Me.Controls.SetChildIndex(Me.btnCakes, 0)
         Me.Controls.SetChildIndex(Me.Button5, 0)
         Me.Controls.SetChildIndex(Me.Button6, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnExecutedOrders As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents btnIngredients As System.Windows.Forms.Button
+    Friend WithEvents btnCakes As System.Windows.Forms.Button
     Friend WithEvents Button5 As System.Windows.Forms.Button
     Friend WithEvents Button6 As System.Windows.Forms.Button
 
