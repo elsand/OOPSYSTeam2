@@ -8,4 +8,20 @@
             Return 0
         End If
     End Function
+
+    Public Shared Function getPurchasingPrice(varenr As Integer, type As String) As Double
+        Dim batches = From x In DBM.Instance.batches _
+                      Where x.ingredientId = varenr _
+                      Select x.unitPurchasingPrice
+        If batches.Any Then
+            If type = "high" Then
+                Return batches.Max()
+            ElseIf type = "low" Then
+                Return batches.Min()
+            ElseIf type = "avg" Then
+                Return batches.Average()
+            End If
+        End If
+        Return 0
+    End Function
 End Class

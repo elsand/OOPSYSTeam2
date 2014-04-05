@@ -6,6 +6,15 @@
     End Sub
 
     Private Sub frmAdminIngredient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set up autocomplete for ingredient name
+        Dim ing = From x As ingredient In DBM.Instance.ingredients Select x.name Order By name
+        Dim acSource As AutoCompleteStringCollection = New AutoCompleteStringCollection()
+        acSource.AddRange(ing.ToArray())
+        With txtSearch
+            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
+            .AutoCompleteSource = AutoCompleteSource.CustomSource
+            .AutoCompleteCustomSource = acSource
+        End With
 
     End Sub
 
@@ -23,15 +32,12 @@
         'It's a start. Needs to do calculations for BDG-columns ++. Made this to get search-results for testing
         'editing ingredients in frmDialogAdminIngredientDetails.vb
         UpdateActionStatus("Søker..")
-        Dim query = (From x In DBM.Instance.ingredients _
+        Dim ingQuery = (From x In DBM.Instance.ingredients _
                      Where x.name.Contains(txtSearch.Text) _
                      Select x.id, x.name).ToList()
-        'Dim query = (From x In DBM.Instance.ingredients _
-        '            Join y In DBM.Instance.batches On x.id Equals y.ingredientId _
-        '           Join z In DBM.Instance.ingredientPrices On x.id Equals z.id _
-        '          Where x.name.Contains(txtSearch.Text) _
-        '         Select Varenr = x.id, Navn = x.name).ToList()
-        'dtgResults.DataSource = query
+
+        Dim profQuery = (From x In DBM.Instance.ingredientPrices _
+                         Select x).ToList()
 
         'Filling dtgResults the old fashioned way..
         'Should be possible to structure the query so we only need to specify "dtgResults.DataSource = query",
@@ -39,8 +45,21 @@
         'the right. Additionally the query gets very complex.
         UpdateActionStatus("Laster søkeresultat..")
         dtgResults.Rows.Clear()
-        For Each row In query
-            dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id))
+        For Each row In ingQuery
+            Dim profit As Double = (From x In profQuery _
+                                   Where x.id = row.id _
+                                   Order By x.date Descending
+                                   Select x.markUpPercentage).FirstOrDefault()
+            Dim bi As String = CStr(StockManager.getPurchasingPrice(row.id, "low"))
+            Dim di As String = CStr(StockManager.getPurchasingPrice(row.id, "high"))
+            Dim gi As String = CStr(StockManager.getPurchasingPrice(row.id, "avg"))
+            Dim bdgi As String = CStr(bi) & "/" & CStr(di) & "/" & CStr(gi)
+            Dim bdgu As String = CStr(Format(bi * ((profit / 100) + 1), "0.00") & "/" & _
+                                CStr(Format(di * ((profit / 100) + 1), "0.00") & "/" & _
+                                CStr(Format(gi * ((profit / 100) + 1), "0.00"))))
+
+            dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id), _
+                                bdgi, bdgu, profit)
         Next
 
         delIdx = 0
