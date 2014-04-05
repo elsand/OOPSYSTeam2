@@ -75,8 +75,8 @@
         i.name = txtName.Text
         i.description = txtDescr.Text
 
-        'Checking if measure unit already exists in db and adds it if not.
-        'Skal vi velge ut noen måleenheter å ha en forhåndsdefinert liste her?
+        'Checking if unit already exists in db and adds it if not.
+        'Skal vi velge ut noen måleenheter og ha en forhåndsdefinert liste her?
         Dim u As unit = (From data In DBM.Instance.units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
         If u Is Nothing Then
             u = New unit() With {.name = ddlUnitType.Text}
@@ -131,8 +131,12 @@
         End Try
 
         newIngr = False
+        varenr = (From x In DBM.Instance.ingredients _
+                 Where x.name = txtName.Text _
+                 Select x.id).FirstOrDefault()
         dtgBatchLoad()
         ddlUnitsLoad()
+        grpStock.Enabled = True
     End Sub
 
     Private Sub chkPub_CheckedChanged(sender As Object, e As EventArgs) Handles chkPub.CheckedChanged
