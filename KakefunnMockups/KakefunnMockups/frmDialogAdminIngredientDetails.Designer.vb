@@ -20,6 +20,7 @@ Partial Class frmDialogAdminIngredientDetails
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpIngredient = New System.Windows.Forms.GroupBox()
+        Me.numCal = New Kakefunn.NumericTextbox()
         Me.numVAT = New Kakefunn.NumericTextbox()
         Me.numProfit = New Kakefunn.NumericTextbox()
         Me.chkPub = New System.Windows.Forms.CheckBox()
@@ -44,8 +45,6 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblNumInStockValue = New System.Windows.Forms.Label()
         Me.lblNumInStockText = New System.Windows.Forms.Label()
         Me.btnAbort = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.numCal = New Kakefunn.NumericTextbox()
         Me.grpIngredient.SuspendLayout()
         Me.grpStock.SuspendLayout()
         CType(Me.dtgBatches, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -72,6 +71,16 @@ Partial Class frmDialogAdminIngredientDetails
         Me.grpIngredient.TabIndex = 0
         Me.grpIngredient.TabStop = False
         Me.grpIngredient.Text = "Ingrediens"
+        '
+        'numCal
+        '
+        Me.numCal.AllowDecimal = False
+        Me.numCal.AllowNegative = False
+        Me.numCal.AllowSpace = False
+        Me.numCal.Location = New System.Drawing.Point(96, 154)
+        Me.numCal.Name = "numCal"
+        Me.numCal.Size = New System.Drawing.Size(36, 20)
+        Me.numCal.TabIndex = 18
         '
         'numVAT
         '
@@ -276,30 +285,10 @@ Partial Class frmDialogAdminIngredientDetails
         Me.btnAbort.Text = "Avbryt"
         Me.btnAbort.UseVisualStyleBackColor = True
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(186, 329)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 9
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'numCal
-        '
-        Me.numCal.AllowDecimal = False
-        Me.numCal.AllowNegative = False
-        Me.numCal.AllowSpace = False
-        Me.numCal.Location = New System.Drawing.Point(96, 154)
-        Me.numCal.Name = "numCal"
-        Me.numCal.Size = New System.Drawing.Size(36, 20)
-        Me.numCal.TabIndex = 18
-        '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(689, 378)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.btnAbort)
         Me.Controls.Add(Me.grpStock)
         Me.Controls.Add(Me.btnSave)
@@ -337,7 +326,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Innkjsdf As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents numProfit As Kakefunn.NumericTextbox
     Friend WithEvents numVAT As Kakefunn.NumericTextbox
     Friend WithEvents numCal As Kakefunn.NumericTextbox
