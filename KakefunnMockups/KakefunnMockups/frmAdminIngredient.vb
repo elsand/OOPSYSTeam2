@@ -21,7 +21,6 @@
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         'It's a start. Needs to do calculations for BDG-columns ++. Made this to get search-results for testing
         'editing ingredients in frmDialogAdminIngredientDetails.vb
-        dtgResults.Columns.Clear()
         Dim query = (From x In DBM.Instance.ingredients _
                      Where x.name.Contains(txtSearch.Text) _
                      Select Varenr = x.id, Navn = x.name).ToList()
@@ -30,7 +29,11 @@
         '           Join z In DBM.Instance.ingredientPrices On x.id Equals z.id _
         '          Where x.name.Contains(txtSearch.Text) _
         '         Select Varenr = x.id, Navn = x.name).ToList()
-        dtgResults.DataSource = query
+        'dtgResults.DataSource = query
+        dtgResults.Rows.Clear()
+        For Each row In query
+            dtgResults.Rows.Add(row.Varenr, row.Navn, StockManager.getInStock(row.Varenr))
+        Next
 
     End Sub
 

@@ -14,9 +14,10 @@
         Next
     End Sub
 
-    Private Sub frmDialogAdminIngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ddlUnitsLoad()
+    Private Sub dtgBatchLoad()
         Dim factorProfit As Double
+
+        'Filling form with information for the selected ingredient
         If Not newIngr Then
             Me.Text = "Redigerer detaljer for varenummer " & varenr
             existingItem = DBM.Instance.ingredients.Find(varenr)
@@ -43,25 +44,28 @@
                 pub = False
             End If
 
+            lblNumInStockValue.Text = StockManager.getInStock(varenr)
+
             Dim batches = From x In DBM.Instance.batches Where x.ingredientId = varenr Select x
-
-            Dim inStock = From x In batches Where x.registered IsNot Nothing Select x.unitCount
-
-            If inStock.Any Then
-                lblNumInStockValue.Text = inStock.Sum()
-            Else
-                lblNumInStockValue.Text = 0
-            End If
-
+            dtgBatches.Rows.Clear()
             For Each row In batches
                 dtgBatches.Rows.Add(row.id, row.expires, row.unitCount, row.unitPurchasingPrice, (row.unitPurchasingPrice * factorProfit))
             Next
+        Else
+            Me.Text = "Oppretter ny vare"
         End If
+
+    End Sub
+    Private Sub frmDialogAdminIngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ddlUnitsLoad()
+        dtgBatchLoad()
     End Sub
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Dim ingredientIndex As Integer
         Dim i As ingredient
+
+        'Deklaring i as a new ingredient, or equal to a selected ingredient.
         If newIngr Then
             i = New ingredient()
         Else
@@ -71,6 +75,8 @@
         i.name = txtName.Text
         i.description = txtDescr.Text
 
+        'Checking if measure unit already exists in db and adds it if not.
+        'Skal vi velge ut noen måleenheter å ha en forhåndsdefinert liste her?
         Dim u As unit = (From data In DBM.Instance.units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
         If u Is Nothing Then
             u = New unit() With {.name = ddlUnitType.Text}
@@ -81,6 +87,7 @@
         i.vat = numVAT.Text
         i.published = pub
 
+        'Adds ingredient if it's new, saves changes to existing ingredient
         Try
             If newIngr Then
                 DBM.Instance.ingredients.Add(i)
@@ -90,12 +97,16 @@
             MsgBox(ex.ToString)
         End Try
 
+        'Finds the ingredient index/varenr in the db.
         Dim iFind As ingredient = (From data In DBM.Instance.ingredients Where data.name = txtName.Text Select data).FirstOrDefault
         ingredientIndex = iFind.id
 
+        'Creates a new entry for ingredient prise, pk = id+date
         Dim ip As ingredientPrice
         ip = New ingredientPrice() With {.markUpPercentage = numProfit.Text, .date = Date.Today, .id = ingredientIndex}
 
+        'Creates a new entry for price if the date is different from the previously entered price.
+        'Updates the existing record if the dates match.
         Try
             If newIngr Then
                 DBM.Instance.ingredientPrices.Add(ip)
@@ -103,17 +114,25 @@
                 Dim ipDB As ingredientPrice = (From x In DBM.Instance.ingredientPrices _
                                               Where x.id = ingredientIndex _
                                               Order By x.date Descending).FirstOrDefault()
-                If ipDB.date = Date.Today Then
-                    ip = ipDB
-                    ip.markUpPercentage = numProfit.Text
-                Else
+                If ipDB Is Nothing Then
                     DBM.Instance.ingredientPrices.Add(ip)
+                Else
+                    If ipDB.date = Date.Today Then
+                        ip = ipDB
+                        ip.markUpPercentage = numProfit.Text
+                    Else
+                        DBM.Instance.ingredientPrices.Add(ip)
+                    End If
                 End If
             End If
             DBM.Instance.SaveChanges()
         Catch ex As Entity.Validation.DbEntityValidationException
             MsgBox(ex.ToString)
         End Try
+
+        newIngr = False
+        dtgBatchLoad()
+        ddlUnitsLoad()
     End Sub
 
     Private Sub chkPub_CheckedChanged(sender As Object, e As EventArgs) Handles chkPub.CheckedChanged
