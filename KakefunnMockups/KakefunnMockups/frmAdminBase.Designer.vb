@@ -19,7 +19,7 @@ Partial Class frmAdminBase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.btnExecutedOrders = New System.Windows.Forms.Button()
+        Me.btnProcessedOrders = New System.Windows.Forms.Button()
         Me.btnUsers = New System.Windows.Forms.Button()
         Me.btnIngredients = New System.Windows.Forms.Button()
         Me.btnCakes = New System.Windows.Forms.Button()
@@ -27,14 +27,14 @@ Partial Class frmAdminBase
         Me.btnBatchOrder = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'btnExecutedOrders
+        'btnProcessedOrders
         '
-        Me.btnExecutedOrders.Location = New System.Drawing.Point(12, 27)
-        Me.btnExecutedOrders.Name = "btnExecutedOrders"
-        Me.btnExecutedOrders.Size = New System.Drawing.Size(106, 23)
-        Me.btnExecutedOrders.TabIndex = 2
-        Me.btnExecutedOrders.Text = "Effektuerte ordrer"
-        Me.btnExecutedOrders.UseVisualStyleBackColor = True
+        Me.btnProcessedOrders.Location = New System.Drawing.Point(12, 27)
+        Me.btnProcessedOrders.Name = "btnProcessedOrders"
+        Me.btnProcessedOrders.Size = New System.Drawing.Size(106, 23)
+        Me.btnProcessedOrders.TabIndex = 2
+        Me.btnProcessedOrders.Text = "Effektuerte ordrer"
+        Me.btnProcessedOrders.UseVisualStyleBackColor = True
         '
         'btnUsers
         '
@@ -90,11 +90,11 @@ Partial Class frmAdminBase
         Me.Controls.Add(Me.btnCakes)
         Me.Controls.Add(Me.btnIngredients)
         Me.Controls.Add(Me.btnUsers)
-        Me.Controls.Add(Me.btnExecutedOrders)
+        Me.Controls.Add(Me.btnProcessedOrders)
         Me.HelpButton = True
         Me.Name = "frmAdminBase"
         Me.Text = "Administrasjon"
-        Me.Controls.SetChildIndex(Me.btnExecutedOrders, 0)
+        Me.Controls.SetChildIndex(Me.btnProcessedOrders, 0)
         Me.Controls.SetChildIndex(Me.btnUsers, 0)
         Me.Controls.SetChildIndex(Me.btnIngredients, 0)
         Me.Controls.SetChildIndex(Me.btnCakes, 0)
@@ -104,7 +104,7 @@ Partial Class frmAdminBase
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnExecutedOrders As System.Windows.Forms.Button
+    Friend WithEvents btnProcessedOrders As System.Windows.Forms.Button
     Friend WithEvents btnUsers As System.Windows.Forms.Button
     Friend WithEvents btnIngredients As System.Windows.Forms.Button
     Friend WithEvents btnCakes As System.Windows.Forms.Button

@@ -19,82 +19,82 @@ Partial Class frmAdminReports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.ReportViewer1 = New Microsoft.Reporting.WinForms.ReportViewer()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.cboSelectReportForm = New System.Windows.Forms.ComboBox()
+        Me.lblSelectReportForm = New System.Windows.Forms.Label()
+        Me.btnGetReport = New System.Windows.Forms.Button()
+        Me.rptReports = New Microsoft.Reporting.WinForms.ReportViewer()
+        Me.dtpTimePeriodFrom = New System.Windows.Forms.DateTimePicker()
+        Me.dtpTimePeriodTo = New System.Windows.Forms.DateTimePicker()
+        Me.lblTimePeriod = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.SuspendLayout()
         '
-        'ComboBox1
+        'cboSelectReportForm
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(108, 69)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 7
+        Me.cboSelectReportForm.FormattingEnabled = True
+        Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
+        Me.cboSelectReportForm.Name = "cboSelectReportForm"
+        Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
+        Me.cboSelectReportForm.TabIndex = 7
         '
-        'Label1
+        'lblSelectReportForm
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 72)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(90, 13)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Velg type rapport:"
+        Me.lblSelectReportForm.AutoSize = True
+        Me.lblSelectReportForm.Location = New System.Drawing.Point(12, 72)
+        Me.lblSelectReportForm.Name = "lblSelectReportForm"
+        Me.lblSelectReportForm.Size = New System.Drawing.Size(90, 13)
+        Me.lblSelectReportForm.TabIndex = 8
+        Me.lblSelectReportForm.Text = "Velg type rapport:"
         '
-        'Button6
+        'btnGetReport
         '
-        Me.Button6.Location = New System.Drawing.Point(538, 67)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(157, 23)
-        Me.Button6.TabIndex = 9
-        Me.Button6.Text = "Hent rapport"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btnGetReport.Location = New System.Drawing.Point(538, 67)
+        Me.btnGetReport.Name = "btnGetReport"
+        Me.btnGetReport.Size = New System.Drawing.Size(157, 23)
+        Me.btnGetReport.TabIndex = 9
+        Me.btnGetReport.Text = "Hent rapport"
+        Me.btnGetReport.UseVisualStyleBackColor = True
         '
-        'ReportViewer1
+        'rptReports
         '
-        Me.ReportViewer1.Location = New System.Drawing.Point(15, 96)
-        Me.ReportViewer1.Name = "ReportViewer1"
-        Me.ReportViewer1.ShowBackButton = False
-        Me.ReportViewer1.ShowContextMenu = False
-        Me.ReportViewer1.ShowCredentialPrompts = False
-        Me.ReportViewer1.ShowPageNavigationControls = False
-        Me.ReportViewer1.ShowParameterPrompts = False
-        Me.ReportViewer1.ShowPromptAreaButton = False
-        Me.ReportViewer1.ShowRefreshButton = False
-        Me.ReportViewer1.ShowStopButton = False
-        Me.ReportViewer1.ShowZoomControl = False
-        Me.ReportViewer1.Size = New System.Drawing.Size(681, 326)
-        Me.ReportViewer1.TabIndex = 10
+        Me.rptReports.Location = New System.Drawing.Point(15, 96)
+        Me.rptReports.Name = "rptReports"
+        Me.rptReports.ShowBackButton = False
+        Me.rptReports.ShowContextMenu = False
+        Me.rptReports.ShowCredentialPrompts = False
+        Me.rptReports.ShowPageNavigationControls = False
+        Me.rptReports.ShowParameterPrompts = False
+        Me.rptReports.ShowPromptAreaButton = False
+        Me.rptReports.ShowRefreshButton = False
+        Me.rptReports.ShowStopButton = False
+        Me.rptReports.ShowZoomControl = False
+        Me.rptReports.Size = New System.Drawing.Size(681, 326)
+        Me.rptReports.TabIndex = 10
         '
-        'DateTimePicker1
+        'dtpTimePeriodFrom
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(313, 70)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(96, 20)
-        Me.DateTimePicker1.TabIndex = 11
+        Me.dtpTimePeriodFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpTimePeriodFrom.Location = New System.Drawing.Point(313, 70)
+        Me.dtpTimePeriodFrom.Name = "dtpTimePeriodFrom"
+        Me.dtpTimePeriodFrom.Size = New System.Drawing.Size(96, 20)
+        Me.dtpTimePeriodFrom.TabIndex = 11
         '
-        'DateTimePicker2
+        'dtpTimePeriodTo
         '
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(436, 70)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(96, 20)
-        Me.DateTimePicker2.TabIndex = 12
+        Me.dtpTimePeriodTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpTimePeriodTo.Location = New System.Drawing.Point(436, 70)
+        Me.dtpTimePeriodTo.Name = "dtpTimePeriodTo"
+        Me.dtpTimePeriodTo.Size = New System.Drawing.Size(96, 20)
+        Me.dtpTimePeriodTo.TabIndex = 12
         '
-        'Label2
+        'lblTimePeriod
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(235, 72)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(72, 13)
-        Me.Label2.TabIndex = 13
-        Me.Label2.Text = "for tidsrommet"
+        Me.lblTimePeriod.AutoSize = True
+        Me.lblTimePeriod.Location = New System.Drawing.Point(235, 72)
+        Me.lblTimePeriod.Name = "lblTimePeriod"
+        Me.lblTimePeriod.Size = New System.Drawing.Size(72, 13)
+        Me.lblTimePeriod.TabIndex = 13
+        Me.lblTimePeriod.Text = "for tidsrommet"
         '
         'Label3
         '
@@ -110,33 +110,33 @@ Partial Class frmAdminReports
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(707, 458)
         Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.DateTimePicker2)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.ReportViewer1)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.ComboBox1)
+        Me.Controls.Add(Me.lblTimePeriod)
+        Me.Controls.Add(Me.dtpTimePeriodTo)
+        Me.Controls.Add(Me.dtpTimePeriodFrom)
+        Me.Controls.Add(Me.rptReports)
+        Me.Controls.Add(Me.btnGetReport)
+        Me.Controls.Add(Me.lblSelectReportForm)
+        Me.Controls.Add(Me.cboSelectReportForm)
         Me.Name = "frmAdminReports"
-        Me.Controls.SetChildIndex(Me.ComboBox1, 0)
-        Me.Controls.SetChildIndex(Me.Label1, 0)
-        Me.Controls.SetChildIndex(Me.Button6, 0)
-        Me.Controls.SetChildIndex(Me.ReportViewer1, 0)
-        Me.Controls.SetChildIndex(Me.DateTimePicker1, 0)
-        Me.Controls.SetChildIndex(Me.DateTimePicker2, 0)
-        Me.Controls.SetChildIndex(Me.Label2, 0)
+        Me.Controls.SetChildIndex(Me.cboSelectReportForm, 0)
+        Me.Controls.SetChildIndex(Me.lblSelectReportForm, 0)
+        Me.Controls.SetChildIndex(Me.btnGetReport, 0)
+        Me.Controls.SetChildIndex(Me.rptReports, 0)
+        Me.Controls.SetChildIndex(Me.dtpTimePeriodFrom, 0)
+        Me.Controls.SetChildIndex(Me.dtpTimePeriodTo, 0)
+        Me.Controls.SetChildIndex(Me.lblTimePeriod, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents ComboBox1 As System.Windows.Forms.ComboBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents ReportViewer1 As Microsoft.Reporting.WinForms.ReportViewer
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents cboSelectReportForm As System.Windows.Forms.ComboBox
+    Friend WithEvents lblSelectReportForm As System.Windows.Forms.Label
+    Friend WithEvents btnGetReport As System.Windows.Forms.Button
+    Friend WithEvents rptReports As Microsoft.Reporting.WinForms.ReportViewer
+    Friend WithEvents dtpTimePeriodFrom As System.Windows.Forms.DateTimePicker
+    Friend WithEvents dtpTimePeriodTo As System.Windows.Forms.DateTimePicker
+    Friend WithEvents lblTimePeriod As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class

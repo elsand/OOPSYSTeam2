@@ -22,23 +22,23 @@ Partial Class frmAdminSystemAdministration
         Me.components = New System.ComponentModel.Container()
         Me.ddlEmployees = New System.Windows.Forms.ComboBox()
         Me.DBMBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
+        Me.lblEditEmployee = New System.Windows.Forms.Label()
+        Me.lblName = New System.Windows.Forms.Label()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.btnSaveChanges = New System.Windows.Forms.Button()
         Me.btnNewUser = New System.Windows.Forms.Button()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label4 = New System.Windows.Forms.Label()
+        Me.lblRoles = New System.Windows.Forms.Label()
+        Me.lblPhone = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
-        Me.Label5 = New System.Windows.Forms.Label()
+        Me.lblEmail = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.lblPassword = New System.Windows.Forms.Label()
         Me.txtRepeatPassword = New System.Windows.Forms.TextBox()
-        Me.Label7 = New System.Windows.Forms.Label()
+        Me.lblRepeatPassword = New System.Windows.Forms.Label()
         Me.btnEditEmployee = New System.Windows.Forms.Button()
         Me.txtAddress = New System.Windows.Forms.TextBox()
-        Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
+        Me.lblAddress = New System.Windows.Forms.Label()
+        Me.lblZip = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
         Me.cbAdmin = New System.Windows.Forms.CheckBox()
         Me.cbSale = New System.Windows.Forms.CheckBox()
@@ -61,23 +61,23 @@ Partial Class frmAdminSystemAdministration
         '
         Me.DBMBindingSource.DataSource = GetType(Kakefunn.DBM)
         '
-        'Label1
+        'lblEditEmployee
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 73)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(140, 13)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "Rediger eksisterende bruker"
+        Me.lblEditEmployee.AutoSize = True
+        Me.lblEditEmployee.Location = New System.Drawing.Point(12, 73)
+        Me.lblEditEmployee.Name = "lblEditEmployee"
+        Me.lblEditEmployee.Size = New System.Drawing.Size(140, 13)
+        Me.lblEditEmployee.TabIndex = 8
+        Me.lblEditEmployee.Text = "Rediger eksisterende bruker"
         '
-        'Label2
+        'lblName
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(12, 129)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(33, 13)
-        Me.Label2.TabIndex = 9
-        Me.Label2.Text = "Navn"
+        Me.lblName.AutoSize = True
+        Me.lblName.Location = New System.Drawing.Point(12, 129)
+        Me.lblName.Name = "lblName"
+        Me.lblName.Size = New System.Drawing.Size(33, 13)
+        Me.lblName.TabIndex = 9
+        Me.lblName.Text = "Navn"
         '
         'txtName
         '
@@ -104,23 +104,23 @@ Partial Class frmAdminSystemAdministration
         Me.btnNewUser.Text = "Ny bruker"
         Me.btnNewUser.UseVisualStyleBackColor = True
         '
-        'Label3
+        'lblRoles
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 152)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(34, 13)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "Roller"
+        Me.lblRoles.AutoSize = True
+        Me.lblRoles.Location = New System.Drawing.Point(12, 152)
+        Me.lblRoles.Name = "lblRoles"
+        Me.lblRoles.Size = New System.Drawing.Size(34, 13)
+        Me.lblRoles.TabIndex = 14
+        Me.lblRoles.Text = "Roller"
         '
-        'Label4
+        'lblPhone
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(12, 210)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(43, 13)
-        Me.Label4.TabIndex = 15
-        Me.Label4.Text = "Telefon"
+        Me.lblPhone.AutoSize = True
+        Me.lblPhone.Location = New System.Drawing.Point(12, 210)
+        Me.lblPhone.Name = "lblPhone"
+        Me.lblPhone.Size = New System.Drawing.Size(43, 13)
+        Me.lblPhone.TabIndex = 15
+        Me.lblPhone.Text = "Telefon"
         '
         'txtEmail
         '
@@ -129,14 +129,14 @@ Partial Class frmAdminSystemAdministration
         Me.txtEmail.Size = New System.Drawing.Size(150, 20)
         Me.txtEmail.TabIndex = 18
         '
-        'Label5
+        'lblEmail
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(12, 236)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(37, 13)
-        Me.Label5.TabIndex = 17
-        Me.Label5.Text = "E-post"
+        Me.lblEmail.AutoSize = True
+        Me.lblEmail.Location = New System.Drawing.Point(12, 236)
+        Me.lblEmail.Name = "lblEmail"
+        Me.lblEmail.Size = New System.Drawing.Size(37, 13)
+        Me.lblEmail.TabIndex = 17
+        Me.lblEmail.Text = "E-post"
         '
         'txtPassword
         '
@@ -161,14 +161,14 @@ Partial Class frmAdminSystemAdministration
         Me.txtRepeatPassword.Size = New System.Drawing.Size(150, 20)
         Me.txtRepeatPassword.TabIndex = 22
         '
-        'Label7
+        'lblRepeatPassword
         '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(12, 288)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(78, 13)
-        Me.Label7.TabIndex = 21
-        Me.Label7.Text = "Gjenta passord"
+        Me.lblRepeatPassword.AutoSize = True
+        Me.lblRepeatPassword.Location = New System.Drawing.Point(12, 288)
+        Me.lblRepeatPassword.Name = "lblRepeatPassword"
+        Me.lblRepeatPassword.Size = New System.Drawing.Size(78, 13)
+        Me.lblRepeatPassword.TabIndex = 21
+        Me.lblRepeatPassword.Text = "Gjenta passord"
         '
         'btnEditEmployee
         '
@@ -187,23 +187,23 @@ Partial Class frmAdminSystemAdministration
         Me.txtAddress.Size = New System.Drawing.Size(150, 43)
         Me.txtAddress.TabIndex = 24
         '
-        'Label8
+        'lblAddress
         '
-        Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(333, 213)
-        Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(45, 13)
-        Me.Label8.TabIndex = 25
-        Me.Label8.Text = "Adresse"
+        Me.lblAddress.AutoSize = True
+        Me.lblAddress.Location = New System.Drawing.Point(333, 213)
+        Me.lblAddress.Name = "lblAddress"
+        Me.lblAddress.Size = New System.Drawing.Size(45, 13)
+        Me.lblAddress.TabIndex = 25
+        Me.lblAddress.Text = "Adresse"
         '
-        'Label9
+        'lblZip
         '
-        Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(341, 267)
-        Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(37, 13)
-        Me.Label9.TabIndex = 27
-        Me.Label9.Text = "Postnr"
+        Me.lblZip.AutoSize = True
+        Me.lblZip.Location = New System.Drawing.Point(341, 267)
+        Me.lblZip.Name = "lblZip"
+        Me.lblZip.Size = New System.Drawing.Size(37, 13)
+        Me.lblZip.TabIndex = 27
+        Me.lblZip.Text = "Postnr"
         '
         'lblCity
         '
@@ -274,44 +274,44 @@ Partial Class frmAdminSystemAdministration
         Me.Controls.Add(Me.cbSale)
         Me.Controls.Add(Me.cbAdmin)
         Me.Controls.Add(Me.lblCity)
-        Me.Controls.Add(Me.Label9)
-        Me.Controls.Add(Me.Label8)
+        Me.Controls.Add(Me.lblZip)
+        Me.Controls.Add(Me.lblAddress)
         Me.Controls.Add(Me.txtAddress)
         Me.Controls.Add(Me.btnEditEmployee)
         Me.Controls.Add(Me.txtRepeatPassword)
-        Me.Controls.Add(Me.Label7)
+        Me.Controls.Add(Me.lblRepeatPassword)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.lblPassword)
         Me.Controls.Add(Me.txtEmail)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.Label4)
-        Me.Controls.Add(Me.Label3)
+        Me.Controls.Add(Me.lblEmail)
+        Me.Controls.Add(Me.lblPhone)
+        Me.Controls.Add(Me.lblRoles)
         Me.Controls.Add(Me.btnNewUser)
         Me.Controls.Add(Me.btnSaveChanges)
         Me.Controls.Add(Me.txtName)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.lblName)
+        Me.Controls.Add(Me.lblEditEmployee)
         Me.Controls.Add(Me.ddlEmployees)
         Me.Name = "frmAdminSystemAdministration"
         Me.Text = "Systemadministrasjon"
         Me.Controls.SetChildIndex(Me.ddlEmployees, 0)
-        Me.Controls.SetChildIndex(Me.Label1, 0)
-        Me.Controls.SetChildIndex(Me.Label2, 0)
+        Me.Controls.SetChildIndex(Me.lblEditEmployee, 0)
+        Me.Controls.SetChildIndex(Me.lblName, 0)
         Me.Controls.SetChildIndex(Me.txtName, 0)
         Me.Controls.SetChildIndex(Me.btnSaveChanges, 0)
         Me.Controls.SetChildIndex(Me.btnNewUser, 0)
-        Me.Controls.SetChildIndex(Me.Label3, 0)
-        Me.Controls.SetChildIndex(Me.Label4, 0)
-        Me.Controls.SetChildIndex(Me.Label5, 0)
+        Me.Controls.SetChildIndex(Me.lblRoles, 0)
+        Me.Controls.SetChildIndex(Me.lblPhone, 0)
+        Me.Controls.SetChildIndex(Me.lblEmail, 0)
         Me.Controls.SetChildIndex(Me.txtEmail, 0)
         Me.Controls.SetChildIndex(Me.lblPassword, 0)
         Me.Controls.SetChildIndex(Me.txtPassword, 0)
-        Me.Controls.SetChildIndex(Me.Label7, 0)
+        Me.Controls.SetChildIndex(Me.lblRepeatPassword, 0)
         Me.Controls.SetChildIndex(Me.txtRepeatPassword, 0)
         Me.Controls.SetChildIndex(Me.btnEditEmployee, 0)
         Me.Controls.SetChildIndex(Me.txtAddress, 0)
-        Me.Controls.SetChildIndex(Me.Label8, 0)
-        Me.Controls.SetChildIndex(Me.Label9, 0)
+        Me.Controls.SetChildIndex(Me.lblAddress, 0)
+        Me.Controls.SetChildIndex(Me.lblZip, 0)
         Me.Controls.SetChildIndex(Me.lblCity, 0)
         Me.Controls.SetChildIndex(Me.cbAdmin, 0)
         Me.Controls.SetChildIndex(Me.cbSale, 0)
@@ -319,29 +319,29 @@ Partial Class frmAdminSystemAdministration
         Me.Controls.SetChildIndex(Me.txtPhone, 0)
         Me.Controls.SetChildIndex(Me.txtZip, 0)
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ResumeLayout(false)
-        Me.PerformLayout
+        Me.ResumeLayout(False)
+        Me.PerformLayout()
 
-End Sub
+    End Sub
     Friend WithEvents ddlEmployees As System.Windows.Forms.ComboBox
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblEditEmployee As System.Windows.Forms.Label
+    Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents btnSaveChanges As System.Windows.Forms.Button
     Friend WithEvents btnNewUser As System.Windows.Forms.Button
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label4 As System.Windows.Forms.Label
+    Friend WithEvents lblRoles As System.Windows.Forms.Label
+    Friend WithEvents lblPhone As System.Windows.Forms.Label
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
-    Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents lblPassword As System.Windows.Forms.Label
     Friend WithEvents txtRepeatPassword As System.Windows.Forms.TextBox
-    Friend WithEvents Label7 As System.Windows.Forms.Label
+    Friend WithEvents lblRepeatPassword As System.Windows.Forms.Label
     Friend WithEvents DBMBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents btnEditEmployee As System.Windows.Forms.Button
     Friend WithEvents txtAddress As System.Windows.Forms.TextBox
-    Friend WithEvents Label8 As System.Windows.Forms.Label
-    Friend WithEvents Label9 As System.Windows.Forms.Label
+    Friend WithEvents lblAddress As System.Windows.Forms.Label
+    Friend WithEvents lblZip As System.Windows.Forms.Label
     Friend WithEvents lblCity As System.Windows.Forms.Label
     Friend WithEvents cbAdmin As System.Windows.Forms.CheckBox
     Friend WithEvents cbSale As System.Windows.Forms.CheckBox

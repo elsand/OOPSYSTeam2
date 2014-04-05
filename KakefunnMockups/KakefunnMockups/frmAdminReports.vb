@@ -2,7 +2,7 @@
 
     Private Sub frmAdminReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Me.ReportViewer1.RefreshReport()
-        Me.ReportViewer1.RefreshReport()
+        Me.rptReports.RefreshReport()
+        Me.rptReports.RefreshReport()
     End Sub
 End Class
