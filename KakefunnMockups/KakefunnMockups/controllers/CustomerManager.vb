@@ -4,7 +4,7 @@
     ''' </summary>
     ''' <param name="customerId">Integer</param>
     ''' <returns>customer</returns>
-    ''' <remarks>huhh</remarks>
+    ''' <remarks></remarks>
 
 
     Public Shared Function findCustomer(ByVal customerId As Integer) As customer
