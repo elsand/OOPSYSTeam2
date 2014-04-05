@@ -45,6 +45,7 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblNumInStockValue = New System.Windows.Forms.Label()
         Me.lblNumInStockText = New System.Windows.Forms.Label()
         Me.btnAbort = New System.Windows.Forms.Button()
+        Me.btnSaveClose = New System.Windows.Forms.Button()
         Me.grpIngredient.SuspendLayout()
         Me.grpStock.SuspendLayout()
         CType(Me.dtgBatches, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -191,7 +192,7 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(571, 319)
+        Me.btnSave.Location = New System.Drawing.Point(454, 332)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(106, 34)
         Me.btnSave.TabIndex = 8
@@ -278,17 +279,27 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'btnAbort
         '
-        Me.btnAbort.Location = New System.Drawing.Point(459, 319)
+        Me.btnAbort.Location = New System.Drawing.Point(342, 332)
         Me.btnAbort.Name = "btnAbort"
         Me.btnAbort.Size = New System.Drawing.Size(106, 34)
         Me.btnAbort.TabIndex = 7
         Me.btnAbort.Text = "Avbryt"
         Me.btnAbort.UseVisualStyleBackColor = True
         '
+        'btnSaveClose
+        '
+        Me.btnSaveClose.Location = New System.Drawing.Point(566, 332)
+        Me.btnSaveClose.Name = "btnSaveClose"
+        Me.btnSaveClose.Size = New System.Drawing.Size(106, 34)
+        Me.btnSaveClose.TabIndex = 9
+        Me.btnSaveClose.Text = "Lagre og lukk"
+        Me.btnSaveClose.UseVisualStyleBackColor = True
+        '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(689, 378)
+        Me.Controls.Add(Me.btnSaveClose)
         Me.Controls.Add(Me.btnAbort)
         Me.Controls.Add(Me.grpStock)
         Me.Controls.Add(Me.btnSave)
@@ -329,5 +340,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents numProfit As Kakefunn.NumericTextbox
     Friend WithEvents numVAT As Kakefunn.NumericTextbox
     Friend WithEvents numCal As Kakefunn.NumericTextbox
+    Friend WithEvents btnSaveClose As System.Windows.Forms.Button
 
 End Class

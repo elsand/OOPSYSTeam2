@@ -4,6 +4,7 @@
     Public newIngr As Boolean
     Public varenr As Integer
     Private existingItem As ingredient
+    Private IsDirty As Boolean = False
 
     Private Sub ddlUnitsLoad()
         'Populating combobox with unit types.
@@ -54,14 +55,9 @@
         Else
             Me.Text = "Oppretter ny vare"
         End If
-
-    End Sub
-    Private Sub frmDialogAdminIngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ddlUnitsLoad()
-        dtgBatchLoad()
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub saveIngredient()
         Dim ingredientIndex As Integer
         Dim i As ingredient
 
@@ -134,6 +130,30 @@
         varenr = (From x In DBM.Instance.ingredients _
                  Where x.name = txtName.Text _
                  Select x.id).FirstOrDefault()
+        IsDirty = False
+    End Sub
+
+    Private Sub frmDialogAdminIngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ddlUnitsLoad()
+        dtgBatchLoad()
+
+        'Tracking changes in controls. Used to trigger dialog if user tries to exit form without saving changes.
+        For Each c As Control In Me.grpIngredient.Controls
+            If c.GetType().Name = "TextBox" Then
+                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.IsDirty = True
+            ElseIf c.GetType().Name = "CheckBox" Then
+                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) Me.IsDirty = True
+            ElseIf c.GetType().Name = "ComboBox" Then
+                AddHandler CType(c, ComboBox).TextChanged, Sub(s, ev) Me.IsDirty = True
+            ElseIf c.GetType().Name = "NumericTextbox" Then
+                AddHandler CType(c, NumericTextbox).TextChanged, Sub(s, ev) Me.IsDirty = True
+            End If
+        Next
+
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        saveIngredient()
         dtgBatchLoad()
         ddlUnitsLoad()
         grpStock.Enabled = True
@@ -144,6 +164,27 @@
             pub = True
         Else
             pub = False
+        End If
+    End Sub
+
+    Private Sub btnSaveClose_Click(sender As Object, e As EventArgs) Handles btnSaveClose.Click
+        saveIngredient()
+        frmAdminIngredient.txtSearch.Text = txtName.Text
+        frmAdminIngredient.btnSearch.PerformClick()
+        Me.Close()
+    End Sub
+
+    Private Sub btnAbort_Click(sender As Object, e As EventArgs) Handles btnAbort.Click
+        Me.Close()
+    End Sub
+
+    Private Sub frmDialogAdminIngredientDetails_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        If IsDirty Then
+            Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du lukke redigeringsvinduet likevel?", _
+                                           "Bekreft lukking", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If response = 7 Then
+                e.Cancel = True
+            End If
         End If
     End Sub
 End Class

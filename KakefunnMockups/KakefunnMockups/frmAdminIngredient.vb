@@ -22,6 +22,7 @@
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         'It's a start. Needs to do calculations for BDG-columns ++. Made this to get search-results for testing
         'editing ingredients in frmDialogAdminIngredientDetails.vb
+        UpdateActionStatus("Søker..")
         Dim query = (From x In DBM.Instance.ingredients _
                      Where x.name.Contains(txtSearch.Text) _
                      Select x.id, x.name).ToList()
@@ -36,6 +37,7 @@
         'Should be possible to structure the query so we only need to specify "dtgResults.DataSource = query",
         'and the content should show, but doing that only pushes the header line together and adds new columns to 
         'the right. Additionally the query gets very complex.
+        UpdateActionStatus("Laster søkeresultat..")
         dtgResults.Rows.Clear()
         For Each row In query
             dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id))
@@ -43,6 +45,7 @@
 
         delIdx = 0
         delName = ""
+        UpdateActionStatus()
     End Sub
 
     Private Sub dtgResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgResults.MouseDoubleClick
