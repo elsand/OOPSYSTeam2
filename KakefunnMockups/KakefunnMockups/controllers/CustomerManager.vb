@@ -8,19 +8,10 @@
 
 
     Public Shared Function findCustomer(ByVal customerId As Integer) As customer
-
-        Dim c As New customer
-        Return c
-
+        Return DBM.Instance.customers.Find(customerId)
     End Function
 
     Public Shared Function findCustomer(ByVal customerName As String) As customer
-
-        Dim c As New customer
-
-        Return c
+        Return DBM.Instance.customers.Where(Function(c) c.name = customerName).FirstOrDefault()
     End Function
-
-
-
 End Class
