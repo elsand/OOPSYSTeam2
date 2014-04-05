@@ -1,3 +1,32 @@
 ﻿Public Class OrderManager
 
+    ''' <summary>
+    ''' Finds and returns an order based on orderId
+    ''' </summary>
+    ''' <param name="orderId">Integer</param>
+    ''' <returns>order</returns>
+    ''' <remarks></remarks>
+    Public Shared Function findOrder(ByVal orderId As Integer) As order
+        Dim o As New order
+
+        Return o
+    End Function
+
+    ''' <summary>
+    ''' Creates an order and saves it to the database
+    ''' </summary>
+    ''' <returns>the order</returns>
+    ''' <remarks></remarks>
+    Public Shared Function createOrder(ByVal ingedients As ingredient(), ByVal deliveryMethod As deliveryMethod, ByVal customer As customer)
+        Dim o As New order
+        o.customer = customer
+        o.deliveryMethod = deliveryMethod
+        o.deliveryMethodId = deliveryMethod.id
+
+
+        Return o
+
+    End Function
+
+
 End Class
