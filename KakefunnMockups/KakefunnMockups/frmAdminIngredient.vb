@@ -39,6 +39,9 @@
         Dim profQuery = (From x In DBM.Instance.ingredientPrices _
                          Select x).ToList()
 
+        Dim batchQuery = (From x In DBM.Instance.batches _
+                          Select x).ToList()
+
         'Filling dtgResults the old fashioned way..
         'Should be possible to structure the query so we only need to specify "dtgResults.DataSource = query",
         'and the content should show, but doing that only pushes the header line together and adds new columns to 
@@ -50,15 +53,16 @@
                                    Where x.id = row.id _
                                    Order By x.date Descending
                                    Select x.markUpPercentage).FirstOrDefault()
-            Dim bi As String = CStr(StockManager.getPurchasingPrice(row.id, "low"))
-            Dim di As String = CStr(StockManager.getPurchasingPrice(row.id, "high"))
-            Dim gi As String = CStr(StockManager.getPurchasingPrice(row.id, "avg"))
+
+            Dim bi As String = CStr(StockManager.getPurchasingPrice(row.id, "low", batchQuery))
+            Dim di As String = CStr(StockManager.getPurchasingPrice(row.id, "high", batchQuery))
+            Dim gi As String = CStr(StockManager.getPurchasingPrice(row.id, "avg", batchQuery))
             Dim bdgi As String = CStr(bi) & "/" & CStr(di) & "/" & CStr(gi)
             Dim bdgu As String = CStr(Format(bi * ((profit / 100) + 1), "0.00") & "/" & _
-                                CStr(Format(di * ((profit / 100) + 1), "0.00") & "/" & _
-                                CStr(Format(gi * ((profit / 100) + 1), "0.00"))))
+                                    CStr(Format(di * ((profit / 100) + 1), "0.00") & "/" & _
+                                    CStr(Format(gi * ((profit / 100) + 1), "0.00"))))
 
-            dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id), _
+            dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id, batchQuery), _
                                 bdgi, bdgu, profit)
         Next
 
