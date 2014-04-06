@@ -19,31 +19,31 @@ Partial Class frmLogisticsReports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dtgExpiredIngredients = New System.Windows.Forms.DataGridView()
         Me.Varenr = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dsfgsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.btnPrintExpiredIngredients = New System.Windows.Forms.Button()
+        Me.btnCheckAll = New System.Windows.Forms.Button()
+        Me.btbDeleteCheckedIngredientsInStock = New System.Windows.Forms.Button()
+        CType(Me.dtgExpiredIngredients, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dtgExpiredIngredients
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Varenr, Me.Column4, Me.Column1, Me.Column2, Me.Column3, Me.dsfgsdf})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 79)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(682, 267)
-        Me.DataGridView1.TabIndex = 6
+        Me.dtgExpiredIngredients.AllowUserToAddRows = False
+        Me.dtgExpiredIngredients.AllowUserToDeleteRows = False
+        Me.dtgExpiredIngredients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgExpiredIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgExpiredIngredients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Varenr, Me.Column4, Me.Column1, Me.Column2, Me.Column3, Me.dsfgsdf})
+        Me.dtgExpiredIngredients.Location = New System.Drawing.Point(12, 79)
+        Me.dtgExpiredIngredients.Name = "dtgExpiredIngredients"
+        Me.dtgExpiredIngredients.RowHeadersVisible = False
+        Me.dtgExpiredIngredients.Size = New System.Drawing.Size(682, 267)
+        Me.dtgExpiredIngredients.TabIndex = 6
         '
         'Varenr
         '
@@ -75,61 +75,61 @@ Partial Class frmLogisticsReports
         Me.dsfgsdf.HeaderText = "Reol/Hylle"
         Me.dsfgsdf.Name = "dsfgsdf"
         '
-        'Button4
+        'btnPrintExpiredIngredients
         '
-        Me.Button4.Location = New System.Drawing.Point(619, 361)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 7
-        Me.Button4.Text = "Skriv ut"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnPrintExpiredIngredients.Location = New System.Drawing.Point(619, 361)
+        Me.btnPrintExpiredIngredients.Name = "btnPrintExpiredIngredients"
+        Me.btnPrintExpiredIngredients.Size = New System.Drawing.Size(75, 23)
+        Me.btnPrintExpiredIngredients.TabIndex = 7
+        Me.btnPrintExpiredIngredients.Text = "Skriv ut"
+        Me.btnPrintExpiredIngredients.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnCheckAll
         '
-        Me.Button5.Location = New System.Drawing.Point(12, 361)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(75, 23)
-        Me.Button5.TabIndex = 8
-        Me.Button5.Text = "Merk alle"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnCheckAll.Location = New System.Drawing.Point(12, 361)
+        Me.btnCheckAll.Name = "btnCheckAll"
+        Me.btnCheckAll.Size = New System.Drawing.Size(75, 23)
+        Me.btnCheckAll.TabIndex = 8
+        Me.btnCheckAll.Text = "Merk alle"
+        Me.btnCheckAll.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btbDeleteCheckedIngredientsInStock
         '
-        Me.Button6.Location = New System.Drawing.Point(93, 361)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(175, 23)
-        Me.Button6.TabIndex = 9
-        Me.Button6.Text = "Slett merkede fra varelager"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btbDeleteCheckedIngredientsInStock.Location = New System.Drawing.Point(93, 361)
+        Me.btbDeleteCheckedIngredientsInStock.Name = "btbDeleteCheckedIngredientsInStock"
+        Me.btbDeleteCheckedIngredientsInStock.Size = New System.Drawing.Size(175, 23)
+        Me.btbDeleteCheckedIngredientsInStock.TabIndex = 9
+        Me.btbDeleteCheckedIngredientsInStock.Text = "Slett merkede fra varelager"
+        Me.btbDeleteCheckedIngredientsInStock.UseVisualStyleBackColor = True
         '
         'frmLogisticsReports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(706, 422)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.Button5)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.btbDeleteCheckedIngredientsInStock)
+        Me.Controls.Add(Me.btnCheckAll)
+        Me.Controls.Add(Me.btnPrintExpiredIngredients)
+        Me.Controls.Add(Me.dtgExpiredIngredients)
         Me.Name = "frmLogisticsReports"
         Me.Text = "Utløpte varer"
-        Me.Controls.SetChildIndex(Me.DataGridView1, 0)
-        Me.Controls.SetChildIndex(Me.Button4, 0)
-        Me.Controls.SetChildIndex(Me.Button5, 0)
-        Me.Controls.SetChildIndex(Me.Button6, 0)
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Controls.SetChildIndex(Me.dtgExpiredIngredients, 0)
+        Me.Controls.SetChildIndex(Me.btnPrintExpiredIngredients, 0)
+        Me.Controls.SetChildIndex(Me.btnCheckAll, 0)
+        Me.Controls.SetChildIndex(Me.btbDeleteCheckedIngredientsInStock, 0)
+        CType(Me.dtgExpiredIngredients, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
+    Friend WithEvents dtgExpiredIngredients As System.Windows.Forms.DataGridView
     Friend WithEvents Varenr As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dsfgsdf As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
+    Friend WithEvents btnPrintExpiredIngredients As System.Windows.Forms.Button
+    Friend WithEvents btnCheckAll As System.Windows.Forms.Button
+    Friend WithEvents btbDeleteCheckedIngredientsInStock As System.Windows.Forms.Button
 
 End Class
