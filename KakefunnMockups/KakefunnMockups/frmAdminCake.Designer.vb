@@ -33,6 +33,7 @@ Partial Class frmAdminCake
         Me.txtProcedure = New System.Windows.Forms.TextBox()
         Me.lblProcedure = New System.Windows.Forms.Label()
         Me.grpIngredients = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.txtNameCake = New System.Windows.Forms.TextBox()
         Me.lblNameCake = New System.Windows.Forms.Label()
         Me.MarkUps = New System.Windows.Forms.Label()
@@ -68,7 +69,6 @@ Partial Class frmAdminCake
         'lstAvailableIngredients
         '
         Me.lstAvailableIngredients.FormattingEnabled = True
-        Me.lstAvailableIngredients.Items.AddRange(New Object() {"Seigmenn", "Bløt"})
         Me.lstAvailableIngredients.Location = New System.Drawing.Point(18, 60)
         Me.lstAvailableIngredients.Name = "lstAvailableIngredients"
         Me.lstAvailableIngredients.Size = New System.Drawing.Size(138, 134)
@@ -95,7 +95,6 @@ Partial Class frmAdminCake
         'lstSelectedIngredients
         '
         Me.lstSelectedIngredients.FormattingEnabled = True
-        Me.lstSelectedIngredients.Items.AddRange(New Object() {"Mel - 100 gram"})
         Me.lstSelectedIngredients.Location = New System.Drawing.Point(200, 60)
         Me.lstSelectedIngredients.Name = "lstSelectedIngredients"
         Me.lstSelectedIngredients.Size = New System.Drawing.Size(138, 134)
@@ -145,6 +144,7 @@ Partial Class frmAdminCake
         '
         'txtProcedure
         '
+        Me.txtProcedure.Enabled = False
         Me.txtProcedure.Location = New System.Drawing.Point(545, 367)
         Me.txtProcedure.Multiline = True
         Me.txtProcedure.Name = "txtProcedure"
@@ -154,6 +154,7 @@ Partial Class frmAdminCake
         'lblProcedure
         '
         Me.lblProcedure.AutoSize = True
+        Me.lblProcedure.Enabled = False
         Me.lblProcedure.Location = New System.Drawing.Point(542, 351)
         Me.lblProcedure.Name = "lblProcedure"
         Me.lblProcedure.Size = New System.Drawing.Size(82, 13)
@@ -162,6 +163,7 @@ Partial Class frmAdminCake
         '
         'grpIngredients
         '
+        Me.grpIngredients.Controls.Add(Me.Button1)
         Me.grpIngredients.Controls.Add(Me.lstAvailableIngredients)
         Me.grpIngredients.Controls.Add(Me.btnAddIngredients)
         Me.grpIngredients.Controls.Add(Me.btnRemoveIngredients)
@@ -171,12 +173,22 @@ Partial Class frmAdminCake
         Me.grpIngredients.Controls.Add(Me.lblAmount)
         Me.grpIngredients.Controls.Add(Me.txtAmount)
         Me.grpIngredients.Controls.Add(Me.lblGram)
+        Me.grpIngredients.Enabled = False
         Me.grpIngredients.Location = New System.Drawing.Point(545, 91)
         Me.grpIngredients.Name = "grpIngredients"
         Me.grpIngredients.Size = New System.Drawing.Size(350, 257)
         Me.grpIngredients.TabIndex = 15
         Me.grpIngredients.TabStop = False
         Me.grpIngredients.Text = "Ingredienser"
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(37, 217)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 13
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
         '
         'txtNameCake
         '
@@ -197,6 +209,7 @@ Partial Class frmAdminCake
         'MarkUps
         '
         Me.MarkUps.AutoSize = True
+        Me.MarkUps.Enabled = False
         Me.MarkUps.Location = New System.Drawing.Point(626, 478)
         Me.MarkUps.Name = "MarkUps"
         Me.MarkUps.Size = New System.Drawing.Size(71, 13)
@@ -205,6 +218,7 @@ Partial Class frmAdminCake
         '
         'txtMarkUps
         '
+        Me.txtMarkUps.Enabled = False
         Me.txtMarkUps.Location = New System.Drawing.Point(703, 475)
         Me.txtMarkUps.Name = "txtMarkUps"
         Me.txtMarkUps.Size = New System.Drawing.Size(41, 20)
@@ -213,6 +227,7 @@ Partial Class frmAdminCake
         'lblIngredientsPrice
         '
         Me.lblIngredientsPrice.AutoSize = True
+        Me.lblIngredientsPrice.Enabled = False
         Me.lblIngredientsPrice.Location = New System.Drawing.Point(778, 478)
         Me.lblIngredientsPrice.Name = "lblIngredientsPrice"
         Me.lblIngredientsPrice.Size = New System.Drawing.Size(117, 13)
@@ -222,6 +237,7 @@ Partial Class frmAdminCake
         'lblSalePrice
         '
         Me.lblSalePrice.AutoSize = True
+        Me.lblSalePrice.Enabled = False
         Me.lblSalePrice.Location = New System.Drawing.Point(801, 500)
         Me.lblSalePrice.Name = "lblSalePrice"
         Me.lblSalePrice.Size = New System.Drawing.Size(94, 13)
@@ -230,6 +246,7 @@ Partial Class frmAdminCake
         '
         'btnSave
         '
+        Me.btnSave.Enabled = False
         Me.btnSave.Location = New System.Drawing.Point(820, 525)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
@@ -469,5 +486,6 @@ Partial Class frmAdminCake
     Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
