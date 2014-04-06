@@ -28,16 +28,14 @@ Partial Class frmAdminCake
         Me.txtFilter = New System.Windows.Forms.TextBox()
         Me.lblFilter = New System.Windows.Forms.Label()
         Me.lblAmount = New System.Windows.Forms.Label()
-        Me.lblGram = New System.Windows.Forms.Label()
-        Me.txtAmount = New System.Windows.Forms.TextBox()
+        Me.lblMeasureUnit = New System.Windows.Forms.Label()
         Me.txtProcedure = New System.Windows.Forms.TextBox()
         Me.lblProcedure = New System.Windows.Forms.Label()
         Me.grpIngredients = New System.Windows.Forms.GroupBox()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.numAmount = New Kakefunn.NumericTextbox()
         Me.txtNameCake = New System.Windows.Forms.TextBox()
         Me.lblNameCake = New System.Windows.Forms.Label()
         Me.MarkUps = New System.Windows.Forms.Label()
-        Me.txtMarkUps = New System.Windows.Forms.TextBox()
         Me.lblIngredientsPrice = New System.Windows.Forms.Label()
         Me.lblSalePrice = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
@@ -60,6 +58,8 @@ Partial Class frmAdminCake
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.numMarkUps = New Kakefunn.NumericTextbox()
+        Me.chkPublished = New System.Windows.Forms.CheckBox()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,28 +119,20 @@ Partial Class frmAdminCake
         'lblAmount
         '
         Me.lblAmount.AutoSize = True
-        Me.lblAmount.Location = New System.Drawing.Point(197, 208)
+        Me.lblAmount.Location = New System.Drawing.Point(15, 208)
         Me.lblAmount.Name = "lblAmount"
         Me.lblAmount.Size = New System.Drawing.Size(46, 13)
         Me.lblAmount.TabIndex = 10
         Me.lblAmount.Text = "Mengde"
         '
-        'lblGram
+        'lblMeasureUnit
         '
-        Me.lblGram.AutoSize = True
-        Me.lblGram.Location = New System.Drawing.Point(292, 228)
-        Me.lblGram.Name = "lblGram"
-        Me.lblGram.Size = New System.Drawing.Size(30, 13)
-        Me.lblGram.TabIndex = 11
-        Me.lblGram.Text = "gram"
-        '
-        'txtAmount
-        '
-        Me.txtAmount.Location = New System.Drawing.Point(200, 225)
-        Me.txtAmount.Name = "txtAmount"
-        Me.txtAmount.Size = New System.Drawing.Size(86, 20)
-        Me.txtAmount.TabIndex = 12
-        Me.txtAmount.Text = "100"
+        Me.lblMeasureUnit.AutoSize = True
+        Me.lblMeasureUnit.Location = New System.Drawing.Point(110, 228)
+        Me.lblMeasureUnit.Name = "lblMeasureUnit"
+        Me.lblMeasureUnit.Size = New System.Drawing.Size(10, 13)
+        Me.lblMeasureUnit.TabIndex = 11
+        Me.lblMeasureUnit.Text = "-"
         '
         'txtProcedure
         '
@@ -163,7 +155,7 @@ Partial Class frmAdminCake
         '
         'grpIngredients
         '
-        Me.grpIngredients.Controls.Add(Me.Button1)
+        Me.grpIngredients.Controls.Add(Me.numAmount)
         Me.grpIngredients.Controls.Add(Me.lstAvailableIngredients)
         Me.grpIngredients.Controls.Add(Me.btnAddIngredients)
         Me.grpIngredients.Controls.Add(Me.btnRemoveIngredients)
@@ -171,8 +163,7 @@ Partial Class frmAdminCake
         Me.grpIngredients.Controls.Add(Me.txtFilter)
         Me.grpIngredients.Controls.Add(Me.lblFilter)
         Me.grpIngredients.Controls.Add(Me.lblAmount)
-        Me.grpIngredients.Controls.Add(Me.txtAmount)
-        Me.grpIngredients.Controls.Add(Me.lblGram)
+        Me.grpIngredients.Controls.Add(Me.lblMeasureUnit)
         Me.grpIngredients.Enabled = False
         Me.grpIngredients.Location = New System.Drawing.Point(545, 91)
         Me.grpIngredients.Name = "grpIngredients"
@@ -181,14 +172,15 @@ Partial Class frmAdminCake
         Me.grpIngredients.TabStop = False
         Me.grpIngredients.Text = "Ingredienser"
         '
-        'Button1
+        'numAmount
         '
-        Me.Button1.Location = New System.Drawing.Point(37, 217)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 13
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.numAmount.AllowDecimal = True
+        Me.numAmount.AllowNegative = False
+        Me.numAmount.AllowSpace = False
+        Me.numAmount.Location = New System.Drawing.Point(18, 225)
+        Me.numAmount.Name = "numAmount"
+        Me.numAmount.Size = New System.Drawing.Size(86, 20)
+        Me.numAmount.TabIndex = 14
         '
         'txtNameCake
         '
@@ -210,19 +202,11 @@ Partial Class frmAdminCake
         '
         Me.MarkUps.AutoSize = True
         Me.MarkUps.Enabled = False
-        Me.MarkUps.Location = New System.Drawing.Point(626, 478)
+        Me.MarkUps.Location = New System.Drawing.Point(542, 478)
         Me.MarkUps.Name = "MarkUps"
         Me.MarkUps.Size = New System.Drawing.Size(71, 13)
         Me.MarkUps.TabIndex = 19
         Me.MarkUps.Text = "Prispåslag i %"
-        '
-        'txtMarkUps
-        '
-        Me.txtMarkUps.Enabled = False
-        Me.txtMarkUps.Location = New System.Drawing.Point(703, 475)
-        Me.txtMarkUps.Name = "txtMarkUps"
-        Me.txtMarkUps.Size = New System.Drawing.Size(41, 20)
-        Me.txtMarkUps.TabIndex = 18
         '
         'lblIngredientsPrice
         '
@@ -230,9 +214,9 @@ Partial Class frmAdminCake
         Me.lblIngredientsPrice.Enabled = False
         Me.lblIngredientsPrice.Location = New System.Drawing.Point(778, 478)
         Me.lblIngredientsPrice.Name = "lblIngredientsPrice"
-        Me.lblIngredientsPrice.Size = New System.Drawing.Size(117, 13)
+        Me.lblIngredientsPrice.Size = New System.Drawing.Size(84, 13)
         Me.lblIngredientsPrice.TabIndex = 20
-        Me.lblIngredientsPrice.Text = "Ingredienspris: 1234,54"
+        Me.lblIngredientsPrice.Text = "Ingredienspris: 0"
         '
         'lblSalePrice
         '
@@ -240,9 +224,9 @@ Partial Class frmAdminCake
         Me.lblSalePrice.Enabled = False
         Me.lblSalePrice.Location = New System.Drawing.Point(801, 500)
         Me.lblSalePrice.Name = "lblSalePrice"
-        Me.lblSalePrice.Size = New System.Drawing.Size(94, 13)
+        Me.lblSalePrice.Size = New System.Drawing.Size(61, 13)
         Me.lblSalePrice.TabIndex = 21
-        Me.lblSalePrice.Text = "Salgspris: 1234,54"
+        Me.lblSalePrice.Text = "Salgspris: 0"
         '
         'btnSave
         '
@@ -404,10 +388,32 @@ Partial Class frmAdminCake
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
+        'numMarkUps
+        '
+        Me.numMarkUps.AllowDecimal = False
+        Me.numMarkUps.AllowNegative = False
+        Me.numMarkUps.AllowSpace = False
+        Me.numMarkUps.Location = New System.Drawing.Point(619, 475)
+        Me.numMarkUps.Name = "numMarkUps"
+        Me.numMarkUps.Size = New System.Drawing.Size(35, 20)
+        Me.numMarkUps.TabIndex = 27
+        '
+        'chkPublished
+        '
+        Me.chkPublished.AutoSize = True
+        Me.chkPublished.Location = New System.Drawing.Point(545, 510)
+        Me.chkPublished.Name = "chkPublished"
+        Me.chkPublished.Size = New System.Drawing.Size(66, 17)
+        Me.chkPublished.TabIndex = 28
+        Me.chkPublished.Text = "Publisert"
+        Me.chkPublished.UseVisualStyleBackColor = True
+        '
         'frmAdminCake
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(909, 603)
+        Me.Controls.Add(Me.chkPublished)
+        Me.Controls.Add(Me.numMarkUps)
         Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.lblSearchCake)
         Me.Controls.Add(Me.txtSearchCake)
@@ -416,7 +422,6 @@ Partial Class frmAdminCake
         Me.Controls.Add(Me.lblSalePrice)
         Me.Controls.Add(Me.lblIngredientsPrice)
         Me.Controls.Add(Me.MarkUps)
-        Me.Controls.Add(Me.txtMarkUps)
         Me.Controls.Add(Me.lblNameCake)
         Me.Controls.Add(Me.txtNameCake)
         Me.Controls.Add(Me.grpIngredients)
@@ -429,7 +434,6 @@ Partial Class frmAdminCake
         Me.Controls.SetChildIndex(Me.grpIngredients, 0)
         Me.Controls.SetChildIndex(Me.txtNameCake, 0)
         Me.Controls.SetChildIndex(Me.lblNameCake, 0)
-        Me.Controls.SetChildIndex(Me.txtMarkUps, 0)
         Me.Controls.SetChildIndex(Me.MarkUps, 0)
         Me.Controls.SetChildIndex(Me.lblIngredientsPrice, 0)
         Me.Controls.SetChildIndex(Me.lblSalePrice, 0)
@@ -438,6 +442,8 @@ Partial Class frmAdminCake
         Me.Controls.SetChildIndex(Me.txtSearchCake, 0)
         Me.Controls.SetChildIndex(Me.lblSearchCake, 0)
         Me.Controls.SetChildIndex(Me.BindingNavigator1, 0)
+        Me.Controls.SetChildIndex(Me.numMarkUps, 0)
+        Me.Controls.SetChildIndex(Me.chkPublished, 0)
         Me.grpIngredients.ResumeLayout(False)
         Me.grpIngredients.PerformLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).EndInit()
@@ -455,15 +461,13 @@ Partial Class frmAdminCake
     Friend WithEvents txtFilter As System.Windows.Forms.TextBox
     Friend WithEvents lblFilter As System.Windows.Forms.Label
     Friend WithEvents lblAmount As System.Windows.Forms.Label
-    Friend WithEvents lblGram As System.Windows.Forms.Label
-    Friend WithEvents txtAmount As System.Windows.Forms.TextBox
+    Friend WithEvents lblMeasureUnit As System.Windows.Forms.Label
     Friend WithEvents txtProcedure As System.Windows.Forms.TextBox
     Friend WithEvents lblProcedure As System.Windows.Forms.Label
     Friend WithEvents grpIngredients As System.Windows.Forms.GroupBox
     Friend WithEvents txtNameCake As System.Windows.Forms.TextBox
     Friend WithEvents lblNameCake As System.Windows.Forms.Label
     Friend WithEvents MarkUps As System.Windows.Forms.Label
-    Friend WithEvents txtMarkUps As System.Windows.Forms.TextBox
     Friend WithEvents lblIngredientsPrice As System.Windows.Forms.Label
     Friend WithEvents lblSalePrice As System.Windows.Forms.Label
     Friend WithEvents btnSave As System.Windows.Forms.Button
@@ -486,6 +490,8 @@ Partial Class frmAdminCake
     Friend WithEvents BindingNavigatorMoveNextItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveLastItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator2 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents numAmount As Kakefunn.NumericTextbox
+    Friend WithEvents numMarkUps As Kakefunn.NumericTextbox
+    Friend WithEvents chkPublished As System.Windows.Forms.CheckBox
 
 End Class
