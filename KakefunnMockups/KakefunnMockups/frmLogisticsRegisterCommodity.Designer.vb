@@ -19,148 +19,148 @@ Partial Class frmLogisticsRegisterCommodity
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.DateTimePicker2 = New System.Windows.Forms.DateTimePicker()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Button4 = New System.Windows.Forms.Button()
-        Me.TextBox5 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Button5 = New System.Windows.Forms.Button()
-        Me.Button6 = New System.Windows.Forms.Button()
-        Me.TextBox7 = New System.Windows.Forms.TextBox()
-        Me.Label10 = New System.Windows.Forms.Label()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.grpEditSelectedBatch = New System.Windows.Forms.GroupBox()
+        Me.dtpExpireDate = New System.Windows.Forms.DateTimePicker()
+        Me.lblExpireDate = New System.Windows.Forms.Label()
+        Me.btnSuggestLocation = New System.Windows.Forms.Button()
+        Me.txtShelf = New System.Windows.Forms.TextBox()
+        Me.lblShelf = New System.Windows.Forms.Label()
+        Me.lblRack = New System.Windows.Forms.Label()
+        Me.txtRack = New System.Windows.Forms.TextBox()
+        Me.btnRegisterBatchInStock = New System.Windows.Forms.Button()
+        Me.btnSearchBatch = New System.Windows.Forms.Button()
+        Me.txtSearchBatch = New System.Windows.Forms.TextBox()
+        Me.lblSearchBatch = New System.Windows.Forms.Label()
+        Me.dtgLogisticsRegisterCommodity = New System.Windows.Forms.DataGridView()
         Me.Partinr = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.DateTimePicker1 = New System.Windows.Forms.DateTimePicker()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.lblShowBatchExpectedInStock = New System.Windows.Forms.Label()
+        Me.dtpBatchExpectedInStock = New System.Windows.Forms.DateTimePicker()
+        Me.grpEditSelectedBatch.SuspendLayout()
+        CType(Me.dtgLogisticsRegisterCommodity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'GroupBox2
+        'grpEditSelectedBatch
         '
-        Me.GroupBox2.Controls.Add(Me.DateTimePicker2)
-        Me.GroupBox2.Controls.Add(Me.Label2)
-        Me.GroupBox2.Controls.Add(Me.Button4)
-        Me.GroupBox2.Controls.Add(Me.TextBox5)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.TextBox4)
-        Me.GroupBox2.Controls.Add(Me.Button5)
-        Me.GroupBox2.Location = New System.Drawing.Point(12, 402)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(686, 64)
-        Me.GroupBox2.TabIndex = 6
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Rediger valgt parti"
+        Me.grpEditSelectedBatch.Controls.Add(Me.dtpExpireDate)
+        Me.grpEditSelectedBatch.Controls.Add(Me.lblExpireDate)
+        Me.grpEditSelectedBatch.Controls.Add(Me.btnSuggestLocation)
+        Me.grpEditSelectedBatch.Controls.Add(Me.txtShelf)
+        Me.grpEditSelectedBatch.Controls.Add(Me.lblShelf)
+        Me.grpEditSelectedBatch.Controls.Add(Me.lblRack)
+        Me.grpEditSelectedBatch.Controls.Add(Me.txtRack)
+        Me.grpEditSelectedBatch.Controls.Add(Me.btnRegisterBatchInStock)
+        Me.grpEditSelectedBatch.Location = New System.Drawing.Point(12, 402)
+        Me.grpEditSelectedBatch.Name = "grpEditSelectedBatch"
+        Me.grpEditSelectedBatch.Size = New System.Drawing.Size(686, 64)
+        Me.grpEditSelectedBatch.TabIndex = 6
+        Me.grpEditSelectedBatch.TabStop = False
+        Me.grpEditSelectedBatch.Text = "Rediger valgt parti"
         '
-        'DateTimePicker2
+        'dtpExpireDate
         '
-        Me.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker2.Location = New System.Drawing.Point(410, 19)
-        Me.DateTimePicker2.Name = "DateTimePicker2"
-        Me.DateTimePicker2.Size = New System.Drawing.Size(100, 20)
-        Me.DateTimePicker2.TabIndex = 24
+        Me.dtpExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpExpireDate.Location = New System.Drawing.Point(410, 19)
+        Me.dtpExpireDate.Name = "dtpExpireDate"
+        Me.dtpExpireDate.Size = New System.Drawing.Size(100, 20)
+        Me.dtpExpireDate.TabIndex = 24
         '
-        'Label2
+        'lblExpireDate
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(346, 23)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(58, 13)
-        Me.Label2.TabIndex = 23
-        Me.Label2.Text = "Utløpsdato"
+        Me.lblExpireDate.AutoSize = True
+        Me.lblExpireDate.Location = New System.Drawing.Point(346, 23)
+        Me.lblExpireDate.Name = "lblExpireDate"
+        Me.lblExpireDate.Size = New System.Drawing.Size(58, 13)
+        Me.lblExpireDate.TabIndex = 23
+        Me.lblExpireDate.Text = "Utløpsdato"
         '
-        'Button4
+        'btnSuggestLocation
         '
-        Me.Button4.Location = New System.Drawing.Point(214, 18)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(99, 23)
-        Me.Button4.TabIndex = 14
-        Me.Button4.Text = "Foreslå plassering"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnSuggestLocation.Location = New System.Drawing.Point(214, 18)
+        Me.btnSuggestLocation.Name = "btnSuggestLocation"
+        Me.btnSuggestLocation.Size = New System.Drawing.Size(99, 23)
+        Me.btnSuggestLocation.TabIndex = 14
+        Me.btnSuggestLocation.Text = "Foreslå plassering"
+        Me.btnSuggestLocation.UseVisualStyleBackColor = True
         '
-        'TextBox5
+        'txtShelf
         '
-        Me.TextBox5.Location = New System.Drawing.Point(161, 20)
-        Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(37, 20)
-        Me.TextBox5.TabIndex = 13
+        Me.txtShelf.Location = New System.Drawing.Point(161, 20)
+        Me.txtShelf.Name = "txtShelf"
+        Me.txtShelf.Size = New System.Drawing.Size(37, 20)
+        Me.txtShelf.TabIndex = 13
         '
-        'Label6
+        'lblShelf
         '
-        Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(119, 23)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(30, 13)
-        Me.Label6.TabIndex = 12
-        Me.Label6.Text = "Hylle"
+        Me.lblShelf.AutoSize = True
+        Me.lblShelf.Location = New System.Drawing.Point(119, 23)
+        Me.lblShelf.Name = "lblShelf"
+        Me.lblShelf.Size = New System.Drawing.Size(30, 13)
+        Me.lblShelf.TabIndex = 12
+        Me.lblShelf.Text = "Hylle"
         '
-        'Label5
+        'lblRack
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(11, 23)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(29, 13)
-        Me.Label5.TabIndex = 11
-        Me.Label5.Text = "Reol"
+        Me.lblRack.AutoSize = True
+        Me.lblRack.Location = New System.Drawing.Point(11, 23)
+        Me.lblRack.Name = "lblRack"
+        Me.lblRack.Size = New System.Drawing.Size(29, 13)
+        Me.lblRack.TabIndex = 11
+        Me.lblRack.Text = "Reol"
         '
-        'TextBox4
+        'txtRack
         '
-        Me.TextBox4.Location = New System.Drawing.Point(56, 20)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(37, 20)
-        Me.TextBox4.TabIndex = 10
+        Me.txtRack.Location = New System.Drawing.Point(56, 20)
+        Me.txtRack.Name = "txtRack"
+        Me.txtRack.Size = New System.Drawing.Size(37, 20)
+        Me.txtRack.TabIndex = 10
         '
-        'Button5
+        'btnRegisterBatchInStock
         '
-        Me.Button5.Location = New System.Drawing.Point(554, 16)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(126, 27)
-        Me.Button5.TabIndex = 7
-        Me.Button5.Text = "Registrer parti i lager"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.btnRegisterBatchInStock.Location = New System.Drawing.Point(554, 16)
+        Me.btnRegisterBatchInStock.Name = "btnRegisterBatchInStock"
+        Me.btnRegisterBatchInStock.Size = New System.Drawing.Size(126, 27)
+        Me.btnRegisterBatchInStock.TabIndex = 7
+        Me.btnRegisterBatchInStock.Text = "Registrer parti i lager"
+        Me.btnRegisterBatchInStock.UseVisualStyleBackColor = True
         '
-        'Button6
+        'btnSearchBatch
         '
-        Me.Button6.Location = New System.Drawing.Point(216, 79)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(75, 23)
-        Me.Button6.TabIndex = 17
-        Me.Button6.Text = "Søk"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.btnSearchBatch.Location = New System.Drawing.Point(216, 79)
+        Me.btnSearchBatch.Name = "btnSearchBatch"
+        Me.btnSearchBatch.Size = New System.Drawing.Size(75, 23)
+        Me.btnSearchBatch.TabIndex = 17
+        Me.btnSearchBatch.Text = "Søk"
+        Me.btnSearchBatch.UseVisualStyleBackColor = True
         '
-        'TextBox7
+        'txtSearchBatch
         '
-        Me.TextBox7.Location = New System.Drawing.Point(100, 81)
-        Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(106, 20)
-        Me.TextBox7.TabIndex = 18
+        Me.txtSearchBatch.Location = New System.Drawing.Point(100, 81)
+        Me.txtSearchBatch.Name = "txtSearchBatch"
+        Me.txtSearchBatch.Size = New System.Drawing.Size(106, 20)
+        Me.txtSearchBatch.TabIndex = 18
         '
-        'Label10
+        'lblSearchBatch
         '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(12, 84)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(82, 13)
-        Me.Label10.TabIndex = 19
-        Me.Label10.Text = "Søk etter partinr"
+        Me.lblSearchBatch.AutoSize = True
+        Me.lblSearchBatch.Location = New System.Drawing.Point(12, 84)
+        Me.lblSearchBatch.Name = "lblSearchBatch"
+        Me.lblSearchBatch.Size = New System.Drawing.Size(82, 13)
+        Me.lblSearchBatch.TabIndex = 19
+        Me.lblSearchBatch.Text = "Søk etter partinr"
         '
-        'DataGridView1
+        'dtgLogisticsRegisterCommodity
         '
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Partinr, Me.Column1, Me.Column2, Me.Column5})
-        Me.DataGridView1.Location = New System.Drawing.Point(15, 108)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(683, 288)
-        Me.DataGridView1.TabIndex = 20
+        Me.dtgLogisticsRegisterCommodity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgLogisticsRegisterCommodity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgLogisticsRegisterCommodity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Partinr, Me.Column1, Me.Column2, Me.Column5})
+        Me.dtgLogisticsRegisterCommodity.Location = New System.Drawing.Point(15, 108)
+        Me.dtgLogisticsRegisterCommodity.Name = "dtgLogisticsRegisterCommodity"
+        Me.dtgLogisticsRegisterCommodity.RowHeadersVisible = False
+        Me.dtgLogisticsRegisterCommodity.Size = New System.Drawing.Size(683, 288)
+        Me.dtgLogisticsRegisterCommodity.TabIndex = 20
         '
         'Partinr
         '
@@ -182,68 +182,68 @@ Partial Class frmLogisticsRegisterCommodity
         Me.Column5.HeaderText = "Bestilt dato"
         Me.Column5.Name = "Column5"
         '
-        'Label1
+        'lblShowBatchExpectedInStock
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(465, 84)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(127, 13)
-        Me.Label1.TabIndex = 21
-        Me.Label1.Text = "Vis partier ventet på lager"
+        Me.lblShowBatchExpectedInStock.AutoSize = True
+        Me.lblShowBatchExpectedInStock.Location = New System.Drawing.Point(465, 84)
+        Me.lblShowBatchExpectedInStock.Name = "lblShowBatchExpectedInStock"
+        Me.lblShowBatchExpectedInStock.Size = New System.Drawing.Size(127, 13)
+        Me.lblShowBatchExpectedInStock.TabIndex = 21
+        Me.lblShowBatchExpectedInStock.Text = "Vis partier ventet på lager"
         '
-        'DateTimePicker1
+        'dtpBatchExpectedInStock
         '
-        Me.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.DateTimePicker1.Location = New System.Drawing.Point(598, 81)
-        Me.DateTimePicker1.Name = "DateTimePicker1"
-        Me.DateTimePicker1.Size = New System.Drawing.Size(100, 20)
-        Me.DateTimePicker1.TabIndex = 22
+        Me.dtpBatchExpectedInStock.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
+        Me.dtpBatchExpectedInStock.Location = New System.Drawing.Point(598, 81)
+        Me.dtpBatchExpectedInStock.Name = "dtpBatchExpectedInStock"
+        Me.dtpBatchExpectedInStock.Size = New System.Drawing.Size(100, 20)
+        Me.dtpBatchExpectedInStock.TabIndex = 22
         '
         'frmLogisticsRegisterCommodity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(716, 505)
-        Me.Controls.Add(Me.DateTimePicker1)
-        Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.Label10)
-        Me.Controls.Add(Me.TextBox7)
-        Me.Controls.Add(Me.Button6)
-        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.dtpBatchExpectedInStock)
+        Me.Controls.Add(Me.lblShowBatchExpectedInStock)
+        Me.Controls.Add(Me.dtgLogisticsRegisterCommodity)
+        Me.Controls.Add(Me.lblSearchBatch)
+        Me.Controls.Add(Me.txtSearchBatch)
+        Me.Controls.Add(Me.btnSearchBatch)
+        Me.Controls.Add(Me.grpEditSelectedBatch)
         Me.Name = "frmLogisticsRegisterCommodity"
         Me.Text = "Registrere varer"
-        Me.Controls.SetChildIndex(Me.GroupBox2, 0)
-        Me.Controls.SetChildIndex(Me.Button6, 0)
-        Me.Controls.SetChildIndex(Me.TextBox7, 0)
-        Me.Controls.SetChildIndex(Me.Label10, 0)
-        Me.Controls.SetChildIndex(Me.DataGridView1, 0)
-        Me.Controls.SetChildIndex(Me.Label1, 0)
-        Me.Controls.SetChildIndex(Me.DateTimePicker1, 0)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Controls.SetChildIndex(Me.grpEditSelectedBatch, 0)
+        Me.Controls.SetChildIndex(Me.btnSearchBatch, 0)
+        Me.Controls.SetChildIndex(Me.txtSearchBatch, 0)
+        Me.Controls.SetChildIndex(Me.lblSearchBatch, 0)
+        Me.Controls.SetChildIndex(Me.dtgLogisticsRegisterCommodity, 0)
+        Me.Controls.SetChildIndex(Me.lblShowBatchExpectedInStock, 0)
+        Me.Controls.SetChildIndex(Me.dtpBatchExpectedInStock, 0)
+        Me.grpEditSelectedBatch.ResumeLayout(False)
+        Me.grpEditSelectedBatch.PerformLayout()
+        CType(Me.dtgLogisticsRegisterCommodity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button4 As System.Windows.Forms.Button
-    Friend WithEvents TextBox5 As System.Windows.Forms.TextBox
-    Friend WithEvents Label6 As System.Windows.Forms.Label
-    Friend WithEvents Label5 As System.Windows.Forms.Label
-    Friend WithEvents TextBox4 As System.Windows.Forms.TextBox
-    Friend WithEvents Button5 As System.Windows.Forms.Button
-    Friend WithEvents Button6 As System.Windows.Forms.Button
-    Friend WithEvents TextBox7 As System.Windows.Forms.TextBox
-    Friend WithEvents Label10 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents DateTimePicker2 As System.Windows.Forms.DateTimePicker
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents grpEditSelectedBatch As System.Windows.Forms.GroupBox
+    Friend WithEvents btnSuggestLocation As System.Windows.Forms.Button
+    Friend WithEvents txtShelf As System.Windows.Forms.TextBox
+    Friend WithEvents lblShelf As System.Windows.Forms.Label
+    Friend WithEvents lblRack As System.Windows.Forms.Label
+    Friend WithEvents txtRack As System.Windows.Forms.TextBox
+    Friend WithEvents btnRegisterBatchInStock As System.Windows.Forms.Button
+    Friend WithEvents btnSearchBatch As System.Windows.Forms.Button
+    Friend WithEvents txtSearchBatch As System.Windows.Forms.TextBox
+    Friend WithEvents lblSearchBatch As System.Windows.Forms.Label
+    Friend WithEvents dtgLogisticsRegisterCommodity As System.Windows.Forms.DataGridView
+    Friend WithEvents dtpExpireDate As System.Windows.Forms.DateTimePicker
+    Friend WithEvents lblExpireDate As System.Windows.Forms.Label
     Friend WithEvents Partinr As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents DateTimePicker1 As System.Windows.Forms.DateTimePicker
+    Friend WithEvents lblShowBatchExpectedInStock As System.Windows.Forms.Label
+    Friend WithEvents dtpBatchExpectedInStock As System.Windows.Forms.DateTimePicker
 
 End Class
