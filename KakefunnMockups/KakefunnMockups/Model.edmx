@@ -597,7 +597,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="isPrivate" Type="Boolean" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="true" />
           <Property Name="careOf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="zip" Type="Int32" Nullable="false" />
