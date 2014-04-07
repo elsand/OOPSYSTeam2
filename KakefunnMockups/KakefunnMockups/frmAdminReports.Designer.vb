@@ -19,6 +19,8 @@ Partial Class frmAdminReports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Me.cboSelectReportForm = New System.Windows.Forms.ComboBox()
         Me.lblSelectReportForm = New System.Windows.Forms.Label()
         Me.btnGetReport = New System.Windows.Forms.Button()
@@ -27,6 +29,8 @@ Partial Class frmAdminReports
         Me.dtpTimePeriodTo = New System.Windows.Forms.DateTimePicker()
         Me.lblTimePeriod = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
+        Me.batchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'cboSelectReportForm
@@ -58,6 +62,10 @@ Partial Class frmAdminReports
         '
         'rptReports
         '
+        ReportDataSource1.Name = "Kake"
+        ReportDataSource1.Value = Me.batchBindingSource
+        Me.rptReports.LocalReport.DataSources.Add(ReportDataSource1)
+        Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.Report1.rdlc"
         Me.rptReports.Location = New System.Drawing.Point(15, 96)
         Me.rptReports.Name = "rptReports"
         Me.rptReports.ShowBackButton = False
@@ -106,6 +114,10 @@ Partial Class frmAdminReports
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "til"
         '
+        'batchBindingSource
+        '
+        Me.batchBindingSource.DataSource = GetType(Kakefunn.batch)
+        '
         'frmAdminReports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -127,6 +139,7 @@ Partial Class frmAdminReports
         Me.Controls.SetChildIndex(Me.dtpTimePeriodTo, 0)
         Me.Controls.SetChildIndex(Me.lblTimePeriod, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
+        CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -139,5 +152,6 @@ Partial Class frmAdminReports
     Friend WithEvents dtpTimePeriodTo As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblTimePeriod As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents batchBindingSource As System.Windows.Forms.BindingSource
 
 End Class
