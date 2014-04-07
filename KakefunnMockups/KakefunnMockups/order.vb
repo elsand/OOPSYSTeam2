@@ -19,7 +19,8 @@ Partial Public Class Order
     Public Property deliveryMethodId As Integer
     Public Property employeeId As Integer
     Public Property subscriptionId As Nullable(Of Integer)
-    Public Property discountPercentage As Nullable(Of Integer)
+    Public Property shippingPrice As String
+    Public Property discountPercentage As Nullable(Of Decimal)
     Public Property discountAbsolute As Nullable(Of Decimal)
     Public Property note As String
     Public Property amountPayed As Decimal
@@ -34,7 +35,7 @@ Partial Public Class Order
     Public Overridable Property Customer As Customer
     Public Overridable Property DeliveryMethod As DeliveryMethod
     Public Overridable Property Employee As Employee
-    Public Overridable Property OrdreLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
+    Public Overridable Property OrderLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
     Public Overridable Property Subscriptions As ObservableListSource(Of Subscription) = New ObservableListSource(Of Subscription)
 
 End Class
