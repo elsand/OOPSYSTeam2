@@ -45,7 +45,10 @@
                 pub = False
             End If
 
-            lblNumInStockValue.Text = StockManager.getInStock(varenr)
+            Dim batchQuery = (From x In DBM.Instance.batches _
+                              Select x).ToList()
+
+            lblNumInStockValue.Text = StockManager.getInStock(varenr, batchQuery)
 
             Dim batches = From x In DBM.Instance.batches Where x.ingredientId = varenr Select x
             dtgBatches.Rows.Clear()

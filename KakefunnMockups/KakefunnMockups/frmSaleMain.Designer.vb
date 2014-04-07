@@ -22,116 +22,116 @@ Partial Class frmSaleMain
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.btnNewOrder = New System.Windows.Forms.Button()
+        Me.btnNewCustomer = New System.Windows.Forms.Button()
+        Me.grpRegistration = New System.Windows.Forms.GroupBox()
+        Me.grpSearch = New System.Windows.Forms.GroupBox()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.lblSearchInformation = New System.Windows.Forms.Label()
+        Me.txtSearchInformation = New System.Windows.Forms.TextBox()
+        Me.dtgLast5ProcessedOrder = New System.Windows.Forms.DataGridView()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.DataGridView2 = New System.Windows.Forms.DataGridView()
+        Me.lblLast5ProcessedOrder = New System.Windows.Forms.Label()
+        Me.lblLast5ProcessedCustomers = New System.Windows.Forms.Label()
+        Me.dtgLast5ProcessedCustomers = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpRegistration.SuspendLayout()
+        Me.grpSearch.SuspendLayout()
+        CType(Me.dtgLast5ProcessedOrder, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgLast5ProcessedCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnNewOrder
         '
-        Me.Button1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.Location = New System.Drawing.Point(20, 27)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(105, 31)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Ny ordre ..."
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnNewOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnNewOrder.Location = New System.Drawing.Point(20, 27)
+        Me.btnNewOrder.Name = "btnNewOrder"
+        Me.btnNewOrder.Size = New System.Drawing.Size(105, 31)
+        Me.btnNewOrder.TabIndex = 0
+        Me.btnNewOrder.Text = "Ny ordre ..."
+        Me.btnNewOrder.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnNewCustomer
         '
-        Me.Button2.Location = New System.Drawing.Point(144, 28)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(105, 31)
-        Me.Button2.TabIndex = 1
-        Me.Button2.Text = "Ny kunde ..."
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnNewCustomer.Location = New System.Drawing.Point(144, 28)
+        Me.btnNewCustomer.Name = "btnNewCustomer"
+        Me.btnNewCustomer.Size = New System.Drawing.Size(105, 31)
+        Me.btnNewCustomer.TabIndex = 1
+        Me.btnNewCustomer.Text = "Ny kunde ..."
+        Me.btnNewCustomer.UseVisualStyleBackColor = True
         '
-        'GroupBox1
+        'grpRegistration
         '
-        Me.GroupBox1.Controls.Add(Me.Button1)
-        Me.GroupBox1.Controls.Add(Me.Button2)
-        Me.GroupBox1.Location = New System.Drawing.Point(11, 35)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(272, 80)
-        Me.GroupBox1.TabIndex = 2
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Registrering"
+        Me.grpRegistration.Controls.Add(Me.btnNewOrder)
+        Me.grpRegistration.Controls.Add(Me.btnNewCustomer)
+        Me.grpRegistration.Location = New System.Drawing.Point(11, 35)
+        Me.grpRegistration.Name = "grpRegistration"
+        Me.grpRegistration.Size = New System.Drawing.Size(272, 80)
+        Me.grpRegistration.TabIndex = 2
+        Me.grpRegistration.TabStop = False
+        Me.grpRegistration.Text = "Registrering"
         '
-        'GroupBox2
+        'grpSearch
         '
-        Me.GroupBox2.Controls.Add(Me.Button3)
-        Me.GroupBox2.Controls.Add(Me.Label1)
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
-        Me.GroupBox2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.GroupBox2.Location = New System.Drawing.Point(326, 35)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(272, 83)
-        Me.GroupBox2.TabIndex = 3
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Søk"
+        Me.grpSearch.Controls.Add(Me.btnSearch)
+        Me.grpSearch.Controls.Add(Me.lblSearchInformation)
+        Me.grpSearch.Controls.Add(Me.txtSearchInformation)
+        Me.grpSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
+        Me.grpSearch.Location = New System.Drawing.Point(326, 35)
+        Me.grpSearch.Name = "grpSearch"
+        Me.grpSearch.Size = New System.Drawing.Size(272, 83)
+        Me.grpSearch.TabIndex = 3
+        Me.grpSearch.TabStop = False
+        Me.grpSearch.Text = "Søk"
         '
-        'Button3
+        'btnSearch
         '
-        Me.Button3.Location = New System.Drawing.Point(188, 41)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(61, 23)
-        Me.Button3.TabIndex = 2
-        Me.Button3.Text = "Søk"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnSearch.Location = New System.Drawing.Point(188, 41)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(61, 23)
+        Me.btnSearch.TabIndex = 2
+        Me.btnSearch.Text = "Søk"
+        Me.btnSearch.UseVisualStyleBackColor = True
         '
-        'Label1
+        'lblSearchInformation
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(15, 16)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(215, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Oppgi kundenr/ordrenr/navn/epost/telefon:"
+        Me.lblSearchInformation.AutoSize = True
+        Me.lblSearchInformation.Location = New System.Drawing.Point(15, 16)
+        Me.lblSearchInformation.Name = "lblSearchInformation"
+        Me.lblSearchInformation.Size = New System.Drawing.Size(215, 13)
+        Me.lblSearchInformation.TabIndex = 1
+        Me.lblSearchInformation.Text = "Oppgi kundenr/ordrenr/navn/epost/telefon:"
         '
-        'TextBox1
+        'txtSearchInformation
         '
-        Me.TextBox1.Location = New System.Drawing.Point(18, 43)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(160, 20)
-        Me.TextBox1.TabIndex = 0
+        Me.txtSearchInformation.Location = New System.Drawing.Point(18, 43)
+        Me.txtSearchInformation.Name = "txtSearchInformation"
+        Me.txtSearchInformation.Size = New System.Drawing.Size(160, 20)
+        Me.txtSearchInformation.TabIndex = 0
         '
-        'DataGridView1
+        'dtgLast5ProcessedOrder
         '
-        Me.DataGridView1.AllowUserToAddRows = False
-        Me.DataGridView1.AllowUserToDeleteRows = False
-        Me.DataGridView1.AllowUserToOrderColumns = True
-        Me.DataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4})
-        Me.DataGridView1.Location = New System.Drawing.Point(12, 160)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(586, 79)
-        Me.DataGridView1.TabIndex = 4
+        Me.dtgLast5ProcessedOrder.AllowUserToAddRows = False
+        Me.dtgLast5ProcessedOrder.AllowUserToDeleteRows = False
+        Me.dtgLast5ProcessedOrder.AllowUserToOrderColumns = True
+        Me.dtgLast5ProcessedOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgLast5ProcessedOrder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dtgLast5ProcessedOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgLast5ProcessedOrder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4})
+        Me.dtgLast5ProcessedOrder.Location = New System.Drawing.Point(12, 160)
+        Me.dtgLast5ProcessedOrder.Name = "dtgLast5ProcessedOrder"
+        Me.dtgLast5ProcessedOrder.Size = New System.Drawing.Size(586, 79)
+        Me.dtgLast5ProcessedOrder.TabIndex = 4
         '
         'Column5
         '
@@ -163,37 +163,37 @@ Partial Class frmSaleMain
         Me.Column4.HeaderText = "Beløp"
         Me.Column4.Name = "Column4"
         '
-        'Label2
+        'lblLast5ProcessedOrder
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(13, 141)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(128, 13)
-        Me.Label2.TabIndex = 5
-        Me.Label2.Text = "Siste 5 behandlede ordrer"
+        Me.lblLast5ProcessedOrder.AutoSize = True
+        Me.lblLast5ProcessedOrder.Location = New System.Drawing.Point(13, 141)
+        Me.lblLast5ProcessedOrder.Name = "lblLast5ProcessedOrder"
+        Me.lblLast5ProcessedOrder.Size = New System.Drawing.Size(128, 13)
+        Me.lblLast5ProcessedOrder.TabIndex = 5
+        Me.lblLast5ProcessedOrder.Text = "Siste 5 behandlede ordrer"
         '
-        'Label3
+        'lblLast5ProcessedCustomers
         '
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(12, 257)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(134, 13)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Siste 5 behandlede kunder"
+        Me.lblLast5ProcessedCustomers.AutoSize = True
+        Me.lblLast5ProcessedCustomers.Location = New System.Drawing.Point(12, 257)
+        Me.lblLast5ProcessedCustomers.Name = "lblLast5ProcessedCustomers"
+        Me.lblLast5ProcessedCustomers.Size = New System.Drawing.Size(134, 13)
+        Me.lblLast5ProcessedCustomers.TabIndex = 7
+        Me.lblLast5ProcessedCustomers.Text = "Siste 5 behandlede kunder"
         '
-        'DataGridView2
+        'dtgLast5ProcessedCustomers
         '
-        Me.DataGridView2.AllowUserToAddRows = False
-        Me.DataGridView2.AllowUserToDeleteRows = False
-        Me.DataGridView2.AllowUserToOrderColumns = True
-        Me.DataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.DataGridView2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.Column7, Me.DataGridViewTextBoxColumn4, Me.Column8, Me.Column9})
-        Me.DataGridView2.Location = New System.Drawing.Point(11, 276)
-        Me.DataGridView2.Name = "DataGridView2"
-        Me.DataGridView2.Size = New System.Drawing.Size(586, 79)
-        Me.DataGridView2.TabIndex = 6
+        Me.dtgLast5ProcessedCustomers.AllowUserToAddRows = False
+        Me.dtgLast5ProcessedCustomers.AllowUserToDeleteRows = False
+        Me.dtgLast5ProcessedCustomers.AllowUserToOrderColumns = True
+        Me.dtgLast5ProcessedCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgLast5ProcessedCustomers.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dtgLast5ProcessedCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgLast5ProcessedCustomers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.Column7, Me.DataGridViewTextBoxColumn4, Me.Column8, Me.Column9})
+        Me.dtgLast5ProcessedCustomers.Location = New System.Drawing.Point(11, 276)
+        Me.dtgLast5ProcessedCustomers.Name = "dtgLast5ProcessedCustomers"
+        Me.dtgLast5ProcessedCustomers.Size = New System.Drawing.Size(586, 79)
+        Me.dtgLast5ProcessedCustomers.TabIndex = 6
         '
         'DataGridViewTextBoxColumn1
         '
@@ -230,46 +230,46 @@ Partial Class frmSaleMain
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(618, 397)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.DataGridView2)
-        Me.Controls.Add(Me.Label2)
-        Me.Controls.Add(Me.DataGridView1)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.lblLast5ProcessedCustomers)
+        Me.Controls.Add(Me.dtgLast5ProcessedCustomers)
+        Me.Controls.Add(Me.lblLast5ProcessedOrder)
+        Me.Controls.Add(Me.dtgLast5ProcessedOrder)
+        Me.Controls.Add(Me.grpSearch)
+        Me.Controls.Add(Me.grpRegistration)
         Me.Name = "frmSaleMain"
         Me.Text = "Salg"
-        Me.Controls.SetChildIndex(Me.GroupBox1, 0)
-        Me.Controls.SetChildIndex(Me.GroupBox2, 0)
-        Me.Controls.SetChildIndex(Me.DataGridView1, 0)
-        Me.Controls.SetChildIndex(Me.Label2, 0)
-        Me.Controls.SetChildIndex(Me.DataGridView2, 0)
-        Me.Controls.SetChildIndex(Me.Label3, 0)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Controls.SetChildIndex(Me.grpRegistration, 0)
+        Me.Controls.SetChildIndex(Me.grpSearch, 0)
+        Me.Controls.SetChildIndex(Me.dtgLast5ProcessedOrder, 0)
+        Me.Controls.SetChildIndex(Me.lblLast5ProcessedOrder, 0)
+        Me.Controls.SetChildIndex(Me.dtgLast5ProcessedCustomers, 0)
+        Me.Controls.SetChildIndex(Me.lblLast5ProcessedCustomers, 0)
+        Me.grpRegistration.ResumeLayout(False)
+        Me.grpSearch.ResumeLayout(False)
+        Me.grpSearch.PerformLayout()
+        CType(Me.dtgLast5ProcessedOrder, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgLast5ProcessedCustomers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
-    Friend WithEvents Button2 As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents Button3 As System.Windows.Forms.Button
-    Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents TextBox1 As System.Windows.Forms.TextBox
-    Friend WithEvents DataGridView1 As System.Windows.Forms.DataGridView
-    Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents btnNewOrder As System.Windows.Forms.Button
+    Friend WithEvents btnNewCustomer As System.Windows.Forms.Button
+    Friend WithEvents grpRegistration As System.Windows.Forms.GroupBox
+    Friend WithEvents grpSearch As System.Windows.Forms.GroupBox
+    Friend WithEvents btnSearch As System.Windows.Forms.Button
+    Friend WithEvents lblSearchInformation As System.Windows.Forms.Label
+    Friend WithEvents txtSearchInformation As System.Windows.Forms.TextBox
+    Friend WithEvents dtgLast5ProcessedOrder As System.Windows.Forms.DataGridView
+    Friend WithEvents lblLast5ProcessedOrder As System.Windows.Forms.Label
     Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents DataGridView2 As System.Windows.Forms.DataGridView
+    Friend WithEvents lblLast5ProcessedCustomers As System.Windows.Forms.Label
+    Friend WithEvents dtgLast5ProcessedCustomers As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn

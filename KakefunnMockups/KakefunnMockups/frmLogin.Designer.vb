@@ -19,29 +19,29 @@ Partial Class frmLogin
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.grpLogin = New System.Windows.Forms.GroupBox()
         Me.btnDoLogin = New System.Windows.Forms.Button()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.txtEmail = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
+        Me.lblPassword = New System.Windows.Forms.Label()
+        Me.lblEmail = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
-        Me.GroupBox1.SuspendLayout()
+        Me.grpLogin.SuspendLayout()
         Me.SuspendLayout()
         '
-        'GroupBox1
+        'grpLogin
         '
-        Me.GroupBox1.Controls.Add(Me.btnDoLogin)
-        Me.GroupBox1.Controls.Add(Me.txtPassword)
-        Me.GroupBox1.Controls.Add(Me.txtEmail)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(136, 96)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(266, 171)
-        Me.GroupBox1.TabIndex = 25
-        Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Innlogging"
+        Me.grpLogin.Controls.Add(Me.btnDoLogin)
+        Me.grpLogin.Controls.Add(Me.txtPassword)
+        Me.grpLogin.Controls.Add(Me.txtEmail)
+        Me.grpLogin.Controls.Add(Me.lblPassword)
+        Me.grpLogin.Controls.Add(Me.lblEmail)
+        Me.grpLogin.Location = New System.Drawing.Point(136, 96)
+        Me.grpLogin.Name = "grpLogin"
+        Me.grpLogin.Size = New System.Drawing.Size(266, 171)
+        Me.grpLogin.TabIndex = 25
+        Me.grpLogin.TabStop = False
+        Me.grpLogin.Text = "Innlogging"
         '
         'btnDoLogin
         '
@@ -66,23 +66,23 @@ Partial Class frmLogin
         Me.txtEmail.Size = New System.Drawing.Size(137, 20)
         Me.txtEmail.TabIndex = 2
         '
-        'Label2
+        'lblPassword
         '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(46, 83)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(45, 13)
-        Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Passord"
+        Me.lblPassword.AutoSize = True
+        Me.lblPassword.Location = New System.Drawing.Point(46, 83)
+        Me.lblPassword.Name = "lblPassword"
+        Me.lblPassword.Size = New System.Drawing.Size(45, 13)
+        Me.lblPassword.TabIndex = 1
+        Me.lblPassword.Text = "Passord"
         '
-        'Label1
+        'lblEmail
         '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(53, 44)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(37, 13)
-        Me.Label1.TabIndex = 0
-        Me.Label1.Text = "E-post"
+        Me.lblEmail.AutoSize = True
+        Me.lblEmail.Location = New System.Drawing.Point(53, 44)
+        Me.lblEmail.Name = "lblEmail"
+        Me.lblEmail.Size = New System.Drawing.Size(37, 13)
+        Me.lblEmail.TabIndex = 0
+        Me.lblEmail.Text = "E-post"
         '
         'Label11
         '
@@ -98,24 +98,24 @@ Partial Class frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(563, 335)
-        Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.grpLogin)
         Me.Controls.Add(Me.Label11)
         Me.Name = "frmLogin"
         Me.Text = "Innlogging"
         Me.Controls.SetChildIndex(Me.Label11, 0)
-        Me.Controls.SetChildIndex(Me.GroupBox1, 0)
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
+        Me.Controls.SetChildIndex(Me.grpLogin, 0)
+        Me.grpLogin.ResumeLayout(False)
+        Me.grpLogin.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpLogin As System.Windows.Forms.GroupBox
     Friend WithEvents btnDoLogin As System.Windows.Forms.Button
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
-    Friend WithEvents Label2 As System.Windows.Forms.Label
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblPassword As System.Windows.Forms.Label
+    Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
 
 End Class
