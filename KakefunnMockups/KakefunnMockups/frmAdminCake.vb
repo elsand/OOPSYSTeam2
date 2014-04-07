@@ -1,21 +1,86 @@
-﻿Public Class frmAdminCake
+﻿'TODO
+'Implement option to edit cakes.
+'Doubleclick on a cake in the list should load it in the form on the right.
+'Need to comment the code!!
+
+Public Class frmAdminCakes
     Private ingQuery As List(Of Kakefunn.ingredient)
     Private priceQuery As List(Of Kakefunn.ingredientPrice)
     Private batchQuery As List(Of Kakefunn.batch)
     Private selList As DataTable
     Private factor As Double
     Private published As Boolean = False
+    Private cakeArray() As Integer
+    Private cakePriceArray() As Double
+    Private arrayCounter As Integer
+
+    Private Sub loadTables()
+        'Fetches data from database. Local operations on the data is faster.
+        ingQuery = (From x In DBM.Instance.ingredients Select x).ToList()
+        priceQuery = (From x In DBM.Instance.ingredientPrices Select x).ToList()
+        batchQuery = (From x In DBM.Instance.batches Select x).ToList()
+    End Sub
+
+    Private Sub bindCake()
+        'Loading cakes in dtgCake
+        Dim cakeQuery = (From x In DBM.Instance.cakes Select x.id, x.name, x.published).ToList()
+        CakeBindingSource.DataSource = cakeQuery
+    End Sub
+
+    Private Sub loadPrices()
+        'Calculating prices for cakes in dtgCake
+        Dim i As Integer
+        ReDim cakeArray(-1)
+        ReDim cakePriceArray(-1)
+
+        For i = 0 To dtgCake.Rows.Count - 1
+            Dim cakePrice As Double = 0
+            Dim idx As Integer = CInt(dtgCake.Rows(i).Cells(0).Value)
+            Dim cakeMarkUpFactor As Double = ((CDbl(dtgCake.Rows(i).Cells(3).Value)) / 100) + 1
+            Dim ingList = (From x In DBM.Instance.cake_has_ingredient _
+                           Where x.cakeId = idx _
+                           Select x.ingredientId, x.amount).ToList()
+            For Each row In ingList
+                Dim purchasingPrice As Double = StockManager.getPurchasingPrice(row.ingredientId, "avg", batchQuery)
+                Dim ingMarkUp As Double = (From x In priceQuery _
+                                           Where x.id = row.ingredientId _
+                                           Order By x.date Descending _
+                                           Select x.markUpPercentage).FirstOrDefault()
+                Dim ingMarkUpFactor As Double = (ingMarkUp / 100) + 1
+                Dim amount As Double = row.amount
+                Dim ingPrice As Double = purchasingPrice * ingMarkUpFactor * amount
+                cakePrice += ingPrice
+            Next
+
+            'Saves the prices with cakeID in parallell arrays to avoid 
+            'calculating prices every time dtgCake is updadet.
+            ReDim Preserve cakeArray(i)
+            ReDim Preserve cakePriceArray(i)
+            cakeArray(i) = idx
+            cakePriceArray(i) = cakePrice * cakeMarkUpFactor
+            arrayCounter = i
+        Next i
+    End Sub
+
+    Private Sub showPriceArrays()
+        'Showing prices in dtgCake
+        Dim i, j As Integer
+        For i = 0 To dtgCake.Rows.Count - 1
+            For j = 0 To arrayCounter
+                If dtgCake.Rows(i).Cells(0).Value = cakeArray(j) Then
+                    dtgCake.Rows(i).Cells(2).Value() = cakePriceArray(j)
+                End If
+            Next j
+        Next i
+    End Sub
 
     Private Sub frmAdminCake_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ingQuery = (From x In DBM.Instance.ingredients _
-                    Select x).ToList()
+        bindCake()
+        loadTables()
+        loadPrices()
+        showPriceArrays()
 
-        priceQuery = (From x In DBM.Instance.ingredientPrices _
-                      Select x).ToList()
-
-        batchQuery = (From x In DBM.Instance.batches _
-                      Select x).ToList()
-
+        'Should be moved. Only needed when updating or creating cakes.
         selList = New DataTable()
         Dim idColumn As New DataColumn("ID", Type.GetType("System.Int32"))
         Dim nameColumn As New DataColumn("Name", Type.GetType("System.String"))
@@ -153,8 +218,6 @@
                                      Select x.id).FirstOrDefault()
 
             For Each row As DataRow In selList.Rows
-                MsgBox(row.Item("ID") & " " & row.Item("Amount"))
-
                 Dim cakeIng As cake_has_ingredient = New cake_has_ingredient()
                 cakeIng.cakeId = cakeID
                 cakeIng.ingredientId = CInt(row.Item("ID"))
@@ -166,6 +229,9 @@
                     MsgBox(ex.ToString)
                 End Try
             Next
+            bindCake()
+            loadPrices()
+            showPriceArrays()
         End If
     End Sub
 
@@ -205,29 +271,10 @@
         End If
     End Sub
 
-    Private Sub txtSearchCake_TextChanged(sender As Object, e As EventArgs) Handles txtSearchCake.TextChanged
-        'Veldig ikke ferdig!
-        Dim cakeQuery = (From x In DBM.Instance.cakes _
-                         Where x.name.Contains(txtSearchCake.Text) _
-                         Select Kakenr = x.id, Navn = x.name).ToList()
-
-        For Each row In cakeQuery
-        Next
-
-        Dim cakeQuery2 = (From x In DBM.Instance.cakes _
-                          Join y In DBM.Instance.cake_has_ingredient _
-                          On x.id Equals y.cakeId _
-                          Join z In DBM.Instance.ingredients _
-                          On y.ingredientId Equals z.id _
-                          Where x.name.Contains(txtSearchCake.Text) _
-                          Select z.id, z.name, y.amount).ToList()
-
-        For Each row In cakeQuery2
-            MsgBox(row.id & ". " & row.name & ": Antall: " & row.amount)
-        Next
-
-        With dtgCake
-            .DataSource = cakeQuery
-        End With
+    Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
+        Dim cakeQuery = (From x In DBM.Instance.cakes Where x.name.Contains(txtFilterCake.Text) _
+                         Select x.id, x.name, x.published).ToList()
+        CakeBindingSource.DataSource = cakeQuery
+        showPriceArrays()
     End Sub
 End Class
