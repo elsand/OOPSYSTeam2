@@ -12,7 +12,6 @@ Imports System.Collections.Generic
 
 Partial Public Class Customer
     Public Property id As Integer
-    Public Property isPrivate As SByte
     Public Property name As String
     Public Property phone As String
     Public Property email As String
