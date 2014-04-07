@@ -8,7 +8,7 @@
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>
-    Public Function createReport() As String
+    Public Sub createReport()
         Dim rep As String
 
 
@@ -17,12 +17,14 @@
 
 
 
-        Return rep
-
-    End Function
 
 
-    Private Function _createSalesReport()
+    End Sub
+
+
+    Private Sub _createSalesReport()
+
+    End Sub
 
 
 End Class
