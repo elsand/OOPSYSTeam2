@@ -9,6 +9,8 @@
 ''' - Only load some subset (no deleted batches, only non-delivered batches or recently received batches)
 ''' - Handle writing reports
 ''' </remarks>
+''' 
+
 Public Class frmAdminBatch
 
     Dim notInStorageText As String

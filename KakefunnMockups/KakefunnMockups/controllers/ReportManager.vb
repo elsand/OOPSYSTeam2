@@ -4,7 +4,7 @@
 
 
     ''' <summary>
-    ''' Creates report and returns it as a html string styled with css
+    ''' Creates sql for report
     ''' </summary>
     ''' <returns>String</returns>
     ''' <remarks></remarks>

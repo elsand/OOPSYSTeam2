@@ -1,9 +1,7 @@
 ﻿Public Class frmAdminIngredient
     Private delIdx As Integer
     Private delName As String
-    Private Sub Label1_Click(sender As Object, e As EventArgs) Handles Label1.Click
 
-    End Sub
 
     Private Sub frmAdminIngredient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Set up autocomplete for ingredient name
