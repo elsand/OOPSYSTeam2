@@ -6,15 +6,44 @@
     Private factor As Double
     Private published As Boolean = False
 
+    Private Sub loadTables()
+        ingQuery = (From x In DBM.Instance.ingredients Select x).ToList()
+        priceQuery = (From x In DBM.Instance.ingredientPrices Select x).ToList()
+        batchQuery = (From x In DBM.Instance.batches Select x).ToList()
+    End Sub
+
+    Private Sub loadPrices()
+        Dim i As Integer
+
+        For i = 0 To dtgCake.Rows.Count - 2
+            Dim cakePrice As Double = 0
+            Dim idx As Integer = CInt(dtgCake.Rows(i).Cells(0).Value)
+            Dim cakeMarkUpFactor As Double = ((CDbl(dtgCake.Rows(i).Cells(3).Value)) / 100) + 1
+            Dim ingList = (From x In DBM.Instance.cake_has_ingredient _
+                           Where x.cakeId = idx _
+                           Select x.ingredientId, x.amount).ToList()
+            For Each row In ingList
+                Dim purchasingPrice As Double = StockManager.getPurchasingPrice(row.ingredientId, "avg", batchQuery)
+                Dim ingMarkUp As Double = (From x In priceQuery _
+                                           Where x.id = row.ingredientId _
+                                           Order By x.date Descending _
+                                           Select x.markUpPercentage).FirstOrDefault()
+                Dim ingMarkUpFactor As Double = (ingMarkUp / 100) + 1
+                Dim amount As Double = row.amount
+                Dim ingPrice As Double = purchasingPrice * ingMarkUpFactor * amount
+                cakePrice += ingPrice
+            Next
+            dtgCake.Rows(i).Cells(2).Value = cakePrice * cakeMarkUpFactor
+        Next
+
+    End Sub
+
+
     Private Sub frmAdminCake_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ingQuery = (From x In DBM.Instance.ingredients _
-                    Select x).ToList()
-
-        priceQuery = (From x In DBM.Instance.ingredientPrices _
-                      Select x).ToList()
-
-        batchQuery = (From x In DBM.Instance.batches _
-                      Select x).ToList()
+        DBM.Instance.cakes.Load()
+        CakeBindingSource.DataSource = DBM.Instance.cakes.Local.ToBindingList()
+        loadTables()
+        loadPrices()
 
         selList = New DataTable()
         Dim idColumn As New DataColumn("ID", Type.GetType("System.Int32"))
@@ -153,8 +182,6 @@
                                      Select x.id).FirstOrDefault()
 
             For Each row As DataRow In selList.Rows
-                MsgBox(row.Item("ID") & " " & row.Item("Amount"))
-
                 Dim cakeIng As cake_has_ingredient = New cake_has_ingredient()
                 cakeIng.cakeId = cakeID
                 cakeIng.ingredientId = CInt(row.Item("ID"))
@@ -166,6 +193,7 @@
                     MsgBox(ex.ToString)
                 End Try
             Next
+            loadPrices()
         End If
     End Sub
 
@@ -205,29 +233,7 @@
         End If
     End Sub
 
-    Private Sub txtSearchCake_TextChanged(sender As Object, e As EventArgs) Handles txtSearchCake.TextChanged
-        'Veldig ikke ferdig!
-        Dim cakeQuery = (From x In DBM.Instance.cakes _
-                         Where x.name.Contains(txtSearchCake.Text) _
-                         Select Kakenr = x.id, Navn = x.name).ToList()
-
-        For Each row In cakeQuery
-        Next
-
-        Dim cakeQuery2 = (From x In DBM.Instance.cakes _
-                          Join y In DBM.Instance.cake_has_ingredient _
-                          On x.id Equals y.cakeId _
-                          Join z In DBM.Instance.ingredients _
-                          On y.ingredientId Equals z.id _
-                          Where x.name.Contains(txtSearchCake.Text) _
-                          Select z.id, z.name, y.amount).ToList()
-
-        For Each row In cakeQuery2
-            MsgBox(row.id & ". " & row.name & ": Antall: " & row.amount)
-        Next
-
-        With dtgCake
-            .DataSource = cakeQuery
-        End With
+    Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
+        'Implementer filter
     End Sub
 End Class

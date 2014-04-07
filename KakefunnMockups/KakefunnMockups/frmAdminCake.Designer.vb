@@ -40,12 +40,9 @@ Partial Class frmAdminCake
         Me.lblSalePrice = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.dtgCake = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.lblSearchCake = New System.Windows.Forms.Label()
-        Me.txtSearchCake = New System.Windows.Forms.TextBox()
+        Me.CakeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.lblFilterCake = New System.Windows.Forms.Label()
+        Me.txtFilterCake = New System.Windows.Forms.TextBox()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
@@ -60,8 +57,13 @@ Partial Class frmAdminCake
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.numMarkUps = New Kakefunn.NumericTextbox()
         Me.chkPublished = New System.Windows.Forms.CheckBox()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.markupPercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CakeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator1.SuspendLayout()
         Me.SuspendLayout()
@@ -240,50 +242,36 @@ Partial Class frmAdminCake
         '
         'dtgCake
         '
+        Me.dtgCake.AutoGenerateColumns = False
         Me.dtgCake.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgCake.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgCake.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
+        Me.dtgCake.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.price, Me.markupPercentage})
+        Me.dtgCake.DataSource = Me.CakeBindingSource
         Me.dtgCake.Location = New System.Drawing.Point(12, 91)
         Me.dtgCake.Name = "dtgCake"
         Me.dtgCake.RowHeadersVisible = False
         Me.dtgCake.Size = New System.Drawing.Size(511, 457)
         Me.dtgCake.TabIndex = 23
         '
-        'Column1
+        'CakeBindingSource
         '
-        Me.Column1.HeaderText = "Kakenr"
-        Me.Column1.Name = "Column1"
+        Me.CakeBindingSource.DataSource = GetType(Kakefunn.cake)
         '
-        'Column2
+        'lblFilterCake
         '
-        Me.Column2.HeaderText = "Navn"
-        Me.Column2.Name = "Column2"
+        Me.lblFilterCake.AutoSize = True
+        Me.lblFilterCake.Location = New System.Drawing.Point(12, 68)
+        Me.lblFilterCake.Name = "lblFilterCake"
+        Me.lblFilterCake.Size = New System.Drawing.Size(53, 13)
+        Me.lblFilterCake.TabIndex = 25
+        Me.lblFilterCake.Text = "Filtrer liste"
         '
-        'Column3
+        'txtFilterCake
         '
-        Me.Column3.HeaderText = "Pris"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Sist endret"
-        Me.Column4.Name = "Column4"
-        '
-        'lblSearchCake
-        '
-        Me.lblSearchCake.AutoSize = True
-        Me.lblSearchCake.Location = New System.Drawing.Point(12, 68)
-        Me.lblSearchCake.Name = "lblSearchCake"
-        Me.lblSearchCake.Size = New System.Drawing.Size(77, 13)
-        Me.lblSearchCake.TabIndex = 25
-        Me.lblSearchCake.Text = "Søk etter kake"
-        '
-        'txtSearchCake
-        '
-        Me.txtSearchCake.Location = New System.Drawing.Point(102, 65)
-        Me.txtSearchCake.Name = "txtSearchCake"
-        Me.txtSearchCake.Size = New System.Drawing.Size(100, 20)
-        Me.txtSearchCake.TabIndex = 24
+        Me.txtFilterCake.Location = New System.Drawing.Point(71, 65)
+        Me.txtFilterCake.Name = "txtFilterCake"
+        Me.txtFilterCake.Size = New System.Drawing.Size(100, 20)
+        Me.txtFilterCake.TabIndex = 24
         '
         'BindingNavigator1
         '
@@ -408,6 +396,30 @@ Partial Class frmAdminCake
         Me.chkPublished.Text = "Publisert"
         Me.chkPublished.UseVisualStyleBackColor = True
         '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Kakenr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Navn"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        '
+        'price
+        '
+        Me.price.HeaderText = "Pris"
+        Me.price.Name = "price"
+        '
+        'markupPercentage
+        '
+        Me.markupPercentage.DataPropertyName = "markupPercentage"
+        Me.markupPercentage.HeaderText = "markupPercentage"
+        Me.markupPercentage.Name = "markupPercentage"
+        Me.markupPercentage.Visible = False
+        '
         'frmAdminCake
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -415,8 +427,8 @@ Partial Class frmAdminCake
         Me.Controls.Add(Me.chkPublished)
         Me.Controls.Add(Me.numMarkUps)
         Me.Controls.Add(Me.BindingNavigator1)
-        Me.Controls.Add(Me.lblSearchCake)
-        Me.Controls.Add(Me.txtSearchCake)
+        Me.Controls.Add(Me.lblFilterCake)
+        Me.Controls.Add(Me.txtFilterCake)
         Me.Controls.Add(Me.dtgCake)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.lblSalePrice)
@@ -439,14 +451,15 @@ Partial Class frmAdminCake
         Me.Controls.SetChildIndex(Me.lblSalePrice, 0)
         Me.Controls.SetChildIndex(Me.btnSave, 0)
         Me.Controls.SetChildIndex(Me.dtgCake, 0)
-        Me.Controls.SetChildIndex(Me.txtSearchCake, 0)
-        Me.Controls.SetChildIndex(Me.lblSearchCake, 0)
+        Me.Controls.SetChildIndex(Me.txtFilterCake, 0)
+        Me.Controls.SetChildIndex(Me.lblFilterCake, 0)
         Me.Controls.SetChildIndex(Me.BindingNavigator1, 0)
         Me.Controls.SetChildIndex(Me.numMarkUps, 0)
         Me.Controls.SetChildIndex(Me.chkPublished, 0)
         Me.grpIngredients.ResumeLayout(False)
         Me.grpIngredients.PerformLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CakeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator1.ResumeLayout(False)
         Me.BindingNavigator1.PerformLayout()
@@ -472,12 +485,8 @@ Partial Class frmAdminCake
     Friend WithEvents lblSalePrice As System.Windows.Forms.Label
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents dtgCake As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents lblSearchCake As System.Windows.Forms.Label
-    Friend WithEvents txtSearchCake As System.Windows.Forms.TextBox
+    Friend WithEvents lblFilterCake As System.Windows.Forms.Label
+    Friend WithEvents txtFilterCake As System.Windows.Forms.TextBox
     Friend WithEvents BindingNavigator1 As System.Windows.Forms.BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
@@ -493,5 +502,10 @@ Partial Class frmAdminCake
     Friend WithEvents numAmount As Kakefunn.NumericTextbox
     Friend WithEvents numMarkUps As Kakefunn.NumericTextbox
     Friend WithEvents chkPublished As System.Windows.Forms.CheckBox
+    Friend WithEvents CakeBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents price As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents markupPercentage As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class
