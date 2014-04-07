@@ -7,7 +7,7 @@
 
     Private Sub frmAdminIngredient_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Set up autocomplete for ingredient name
-        Dim ing = From x As ingredient In DBM.Instance.ingredients Select x.name Order By name
+        Dim ing = From x As Ingredient In DBM.Instance.Ingredients Select x.name Order By name
         Dim acSource As AutoCompleteStringCollection = New AutoCompleteStringCollection()
         acSource.AddRange(ing.ToArray())
         With txtSearch
@@ -32,14 +32,14 @@
         'It's a start. Needs to do calculations for BDG-columns ++. Made this to get search-results for testing
         'editing ingredients in frmDialogAdminIngredientDetails.vb
         UpdateActionStatus("Søker..")
-        Dim ingQuery = (From x In DBM.Instance.ingredients _
+        Dim ingQuery = (From x In DBM.Instance.Ingredients _
                      Where x.name.Contains(txtSearch.Text) _
                      Select x.id, x.name).ToList()
 
         Dim profQuery = (From x In DBM.Instance.ingredientPrices _
                          Select x).ToList()
 
-        Dim batchQuery = (From x In DBM.Instance.batches _
+        Dim batchQuery = (From x In DBM.Instance.Batches _
                           Select x).ToList()
 
         'Filling dtgResults the old fashioned way..
@@ -101,7 +101,7 @@
                     DBM.Instance.ingredientPrices.Remove(x)
                 Next
 
-                DBM.Instance.ingredients.Remove(DBM.Instance.ingredients.Find(delIdx))
+                DBM.Instance.Ingredients.Remove(DBM.Instance.Ingredients.Find(delIdx))
                 DBM.Instance.SaveChanges()
             End If
         End If

@@ -10,11 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class phone
+Partial Public Class Phone
     Public Property id As Integer
     Public Property countryprefix As Nullable(Of Integer)
     Public Property phonenumber As String
 
-    Public Overridable Property employees As ObservableListSource(Of employee) = New ObservableListSource(Of employee)
+    Public Overridable Property Employees As ObservableListSource(Of Employee) = New ObservableListSource(Of Employee)
 
 End Class

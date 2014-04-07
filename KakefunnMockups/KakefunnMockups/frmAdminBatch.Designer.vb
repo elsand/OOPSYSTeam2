@@ -41,7 +41,6 @@ Partial Class frmAdminBatch
         Me.BatchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.dtgBatch = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumnIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -231,7 +230,7 @@ Partial Class frmAdminBatch
         '
         'BatchBindingSource
         '
-        Me.BatchBindingSource.DataSource = GetType(Kakefunn.batch)
+        Me.BatchBindingSource.DataSource = GetType(Kakefunn.Batch)
         '
         'dtgBatch
         '
@@ -239,7 +238,7 @@ Partial Class frmAdminBatch
         Me.dtgBatch.AllowUserToDeleteRows = False
         Me.dtgBatch.AutoGenerateColumns = False
         Me.dtgBatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgBatch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumnIngredient, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4})
+        Me.dtgBatch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4})
         Me.dtgBatch.DataSource = Me.BatchBindingSource
         Me.dtgBatch.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgBatch.Location = New System.Drawing.Point(12, 56)
@@ -256,13 +255,6 @@ Partial Class frmAdminBatch
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
         Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumnIngredient
-        '
-        Me.DataGridViewTextBoxColumnIngredient.DataPropertyName = "ingredient"
-        Me.DataGridViewTextBoxColumnIngredient.HeaderText = "Ingrediens"
-        Me.DataGridViewTextBoxColumnIngredient.Name = "DataGridViewTextBoxColumnIngredient"
-        Me.DataGridViewTextBoxColumnIngredient.Width = 150
         '
         'DataGridViewTextBoxColumn5
         '

@@ -10,10 +10,10 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class customerType
+Partial Public Class CustomerType
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property customers As ObservableListSource(Of customer) = New ObservableListSource(Of customer)
+    Public Overridable Property Customers As ObservableListSource(Of Customer) = New ObservableListSource(Of Customer)
 
 End Class

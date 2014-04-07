@@ -10,10 +10,10 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class zip
+Partial Public Class Zip
     Public Property zip1 As Integer
     Public Property city As String
 
-    Public Overridable Property addresses As ObservableListSource(Of address) = New ObservableListSource(Of address)
+    Public Overridable Property Addresses As ObservableListSource(Of Address) = New ObservableListSource(Of Address)
 
 End Class

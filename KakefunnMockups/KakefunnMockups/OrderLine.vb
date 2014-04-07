@@ -10,11 +10,14 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class [event]
-    Public Property eventsId As Integer
-    Public Property eventName As String
-    Public Property eventTime As Date
-    Public Property employeeId As Integer
-    Public Property eventData As String
+Partial Public Class OrderLine
+    Public Property id As Integer
+    Public Property order_id As Integer
+    Public Property ingredient_id As Integer
+    Public Property amount As Double
+    Public Property cakeId As Nullable(Of Integer)
+
+    Public Overridable Property Ingredient As Ingredient
+    Public Overridable Property Order As Order
 
 End Class

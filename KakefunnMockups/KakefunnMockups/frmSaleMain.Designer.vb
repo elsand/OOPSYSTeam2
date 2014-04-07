@@ -29,13 +29,6 @@ Partial Class frmSaleMain
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.lblSearchInformation = New System.Windows.Forms.Label()
         Me.txtSearchInformation = New System.Windows.Forms.TextBox()
-        Me.dtgLast5ProcessedOrder = New System.Windows.Forms.DataGridView()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblLast5ProcessedOrder = New System.Windows.Forms.Label()
         Me.lblLast5ProcessedCustomers = New System.Windows.Forms.Label()
         Me.dtgLast5ProcessedCustomers = New System.Windows.Forms.DataGridView()
@@ -45,10 +38,17 @@ Partial Class frmSaleMain
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dtgLast5ProcessedOrder = New System.Windows.Forms.DataGridView()
         Me.grpRegistration.SuspendLayout()
         Me.grpSearch.SuspendLayout()
-        CType(Me.dtgLast5ProcessedOrder, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgLast5ProcessedCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgLast5ProcessedOrder, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnNewOrder
@@ -119,50 +119,6 @@ Partial Class frmSaleMain
         Me.txtSearchInformation.Size = New System.Drawing.Size(160, 20)
         Me.txtSearchInformation.TabIndex = 0
         '
-        'dtgLast5ProcessedOrder
-        '
-        Me.dtgLast5ProcessedOrder.AllowUserToAddRows = False
-        Me.dtgLast5ProcessedOrder.AllowUserToDeleteRows = False
-        Me.dtgLast5ProcessedOrder.AllowUserToOrderColumns = True
-        Me.dtgLast5ProcessedOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgLast5ProcessedOrder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
-        Me.dtgLast5ProcessedOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgLast5ProcessedOrder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4})
-        Me.dtgLast5ProcessedOrder.Location = New System.Drawing.Point(12, 160)
-        Me.dtgLast5ProcessedOrder.Name = "dtgLast5ProcessedOrder"
-        Me.dtgLast5ProcessedOrder.Size = New System.Drawing.Size(586, 79)
-        Me.dtgLast5ProcessedOrder.TabIndex = 4
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Sist redigert"
-        Me.Column5.Name = "Column5"
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Ordrenr"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Kundenr"
-        Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Navn"
-        Me.Column3.Name = "Column3"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Leveringsadresse"
-        Me.Column6.Name = "Column6"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Beløp"
-        Me.Column4.Name = "Column4"
-        '
         'lblLast5ProcessedOrder
         '
         Me.lblLast5ProcessedOrder.AutoSize = True
@@ -225,6 +181,50 @@ Partial Class frmSaleMain
         Me.Column9.HeaderText = "Epost"
         Me.Column9.Name = "Column9"
         '
+        'Column4
+        '
+        Me.Column4.HeaderText = "Beløp"
+        Me.Column4.Name = "Column4"
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "Leveringsadresse"
+        Me.Column6.Name = "Column6"
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "Navn"
+        Me.Column3.Name = "Column3"
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Kundenr"
+        Me.Column2.Name = "Column2"
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Ordrenr"
+        Me.Column1.Name = "Column1"
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Sist redigert"
+        Me.Column5.Name = "Column5"
+        '
+        'dtgLast5ProcessedOrder
+        '
+        Me.dtgLast5ProcessedOrder.AllowUserToAddRows = False
+        Me.dtgLast5ProcessedOrder.AllowUserToDeleteRows = False
+        Me.dtgLast5ProcessedOrder.AllowUserToOrderColumns = True
+        Me.dtgLast5ProcessedOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgLast5ProcessedOrder.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
+        Me.dtgLast5ProcessedOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgLast5ProcessedOrder.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column1, Me.Column2, Me.Column3, Me.Column6, Me.Column4})
+        Me.dtgLast5ProcessedOrder.Location = New System.Drawing.Point(12, 160)
+        Me.dtgLast5ProcessedOrder.Name = "dtgLast5ProcessedOrder"
+        Me.dtgLast5ProcessedOrder.Size = New System.Drawing.Size(586, 79)
+        Me.dtgLast5ProcessedOrder.TabIndex = 4
+        '
         'frmSaleMain
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -247,8 +247,8 @@ Partial Class frmSaleMain
         Me.grpRegistration.ResumeLayout(False)
         Me.grpSearch.ResumeLayout(False)
         Me.grpSearch.PerformLayout()
-        CType(Me.dtgLast5ProcessedOrder, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.dtgLast5ProcessedCustomers, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgLast5ProcessedOrder, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -260,14 +260,7 @@ Partial Class frmSaleMain
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents lblSearchInformation As System.Windows.Forms.Label
     Friend WithEvents txtSearchInformation As System.Windows.Forms.TextBox
-    Friend WithEvents dtgLast5ProcessedOrder As System.Windows.Forms.DataGridView
     Friend WithEvents lblLast5ProcessedOrder As System.Windows.Forms.Label
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblLast5ProcessedCustomers As System.Windows.Forms.Label
     Friend WithEvents dtgLast5ProcessedCustomers As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -276,5 +269,12 @@ Partial Class frmSaleMain
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column9 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dtgLast5ProcessedOrder As System.Windows.Forms.DataGridView
 
 End Class

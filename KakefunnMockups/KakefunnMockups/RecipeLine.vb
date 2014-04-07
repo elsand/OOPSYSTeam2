@@ -10,14 +10,13 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class order_has_ingredient
+Partial Public Class RecipeLine
     Public Property id As Integer
-    Public Property order_id As Integer
-    Public Property ingredient_id As Integer
-    Public Property amount As Double
-    Public Property cakeId As Nullable(Of Integer)
+    Public Property cakeId As Integer
+    Public Property ingredientId As Integer
+    Public Property amount As Nullable(Of Single)
 
-    Public Overridable Property ingredient As ingredient
-    Public Overridable Property order As order
+    Public Overridable Property Cake As Cake
+    Public Overridable Property Ingredient As Ingredient
 
 End Class

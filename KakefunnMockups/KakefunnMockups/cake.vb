@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class cake
+Partial Public Class Cake
     Public Property id As Integer
     Public Property name As String
     Public Property recipe As String
@@ -18,6 +18,6 @@ Partial Public Class cake
     Public Property deleted As Nullable(Of Date)
     Public Property published As Nullable(Of Boolean)
 
-    Public Overridable Property cake_has_ingredient As ObservableListSource(Of cake_has_ingredient) = New ObservableListSource(Of cake_has_ingredient)
+    Public Overridable Property RecipeLines As ObservableListSource(Of RecipeLine) = New ObservableListSource(Of RecipeLine)
 
 End Class

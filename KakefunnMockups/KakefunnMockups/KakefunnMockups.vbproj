@@ -106,17 +106,14 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="address.vb">
+    <Compile Include="Address.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ApplicationEvents.vb" />
-    <Compile Include="batch.vb">
+    <Compile Include="Batch.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="cake.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="cake_has_ingredient.vb">
+    <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="controllers\AddressHelper.vb" />
@@ -135,25 +132,25 @@
     <Compile Include="controls\NumericTextbox.vb">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="customer.vb">
+    <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="customerType.vb">
+    <Compile Include="CustomerType.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="deliveryMethod.vb">
+    <Compile Include="DeliveryMethod.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="discountPlan.vb">
+    <Compile Include="DiscountPlan.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="employee.vb">
+    <Compile Include="Employee.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="event.vb">
+    <Compile Include="Event.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="frequencyType.vb">
+    <Compile Include="FrequencyType.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="frmAdminBase.Designer.vb">
@@ -277,10 +274,10 @@
     <Compile Include="frmSuperBase.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ingredient.vb">
+    <Compile Include="Ingredient.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="ingredientPrice.vb">
+    <Compile Include="IngredientPrice.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model.Context.vb">
@@ -314,25 +311,28 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ObservableListSource.vb" />
-    <Compile Include="order.vb">
+    <Compile Include="Order.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="order_has_ingredient.vb">
+    <Compile Include="OrdreLine.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="phone.vb">
+    <Compile Include="Phone.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="role.vb">
+    <Compile Include="RecipeLine.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="subscription.vb">
+    <Compile Include="Role.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="unit.vb">
+    <Compile Include="Subscription.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="zip.vb">
+    <Compile Include="Unit.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Zip.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -423,10 +423,10 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\DataSources\batch.datasource" />
-    <None Include="My Project\DataSources\cake.datasource" />
-    <None Include="My Project\DataSources\customer.datasource" />
-    <None Include="My Project\DataSources\order.datasource" />
+    <None Include="My Project\DataSources\Batch.datasource" />
+    <None Include="My Project\DataSources\Cake.datasource" />
+    <None Include="My Project\DataSources\Customer.datasource" />
+    <None Include="My Project\DataSources\Order.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

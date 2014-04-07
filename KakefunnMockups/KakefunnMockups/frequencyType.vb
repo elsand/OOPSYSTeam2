@@ -10,12 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class frequencyType
+Partial Public Class FrequencyType
     Public Property id As Integer
     Public Property name As String
     Public Property intervalDays As Nullable(Of Integer)
     Public Property intervalMonths As Nullable(Of Integer)
 
-    Public Overridable Property subscriptions As ObservableListSource(Of subscription) = New ObservableListSource(Of subscription)
+    Public Overridable Property Subscriptions As ObservableListSource(Of Subscription) = New ObservableListSource(Of Subscription)
 
 End Class

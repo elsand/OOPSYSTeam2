@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class customer
+Partial Public Class Customer
     Public Property id As Integer
     Public Property isPrivate As SByte
     Public Property name As String
@@ -23,9 +23,9 @@ Partial Public Class customer
     Public Property created As Nullable(Of Date)
     Public Property modfied As Nullable(Of Date)
 
-    Public Overridable Property address As address
-    Public Overridable Property customerType As customerType
-    Public Overridable Property discountPlan As discountPlan
-    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
+    Public Overridable Property Address As Address
+    Public Overridable Property CustomerType As CustomerType
+    Public Overridable Property DiscountPlan As DiscountPlan
+    Public Overridable Property Orders As ObservableListSource(Of Order) = New ObservableListSource(Of Order)
 
 End Class

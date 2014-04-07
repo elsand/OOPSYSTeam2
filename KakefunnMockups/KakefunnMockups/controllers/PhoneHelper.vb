@@ -1,6 +1,6 @@
 ﻿Public Class PhoneHelper
     Public Shared Function GetPhone(pn As Integer) As phone
-        Dim p As phone = DBM.Instance.phones.Find(pn)
+        Dim p As phone = DBM.Instance.Phones.Find(pn)
         If p Is Nothing Then
             p = New phone() With {.countryprefix = 47, .phonenumber = pn}
         End If

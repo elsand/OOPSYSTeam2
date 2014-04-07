@@ -1,5 +1,5 @@
 ﻿Public Class StockManager
-    Public Shared Function getInStock(varenr As Integer, list As List(Of Kakefunn.batch)) As Integer 'Finds amount of an ingredient in stock.
+    Public Shared Function getInStock(varenr As Integer, list As List(Of Kakefunn.Batch)) As Integer 'Finds amount of an ingredient in stock.
         Dim batches = From x In list Where x.ingredientId = varenr _
                       And x.registered IsNot Nothing Select x.unitCount
         If batches.Any Then
@@ -9,7 +9,7 @@
         End If
     End Function
 
-    Public Shared Function getPurchasingPrice(varenr As Integer, type As String, list As List(Of Kakefunn.batch)) As Double
+    Public Shared Function getPurchasingPrice(varenr As Integer, type As String, list As List(Of Kakefunn.Batch)) As Double
         Dim batches = From x In list _
                       Where x.ingredientId = varenr _
                       Select x.unitPurchasingPrice

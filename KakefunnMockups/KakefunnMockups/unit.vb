@@ -10,10 +10,10 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class unit
+Partial Public Class Unit
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property ingredients As ObservableListSource(Of ingredient) = New ObservableListSource(Of ingredient)
+    Public Overridable Property Ingredients As ObservableListSource(Of Ingredient) = New ObservableListSource(Of Ingredient)
 
 End Class

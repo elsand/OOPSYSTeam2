@@ -14,8 +14,8 @@ Public Class frmAdminBatch
     Dim notInStorageText As String
     Dim IsNewRecord As Boolean = True
     Dim IsDirty As Boolean = False
-    Dim currentRecord As batch
-    Dim batchBindingListView As BindingListView(Of batch)
+    Dim currentRecord As Batch
+    Dim batchBindingListView As BindingListView(Of Batch)
 
     Private Sub frmAdminBatch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -23,15 +23,15 @@ Public Class frmAdminBatch
         notInStorageText = lblStorageStatus.Text
 
         ' Load data from batches and bind to datagridview
-        DBM.Instance.batches.Load()
+        DBM.Instance.Batches.Load()
 
         ' Make binding list view from the bindinglist we get from EF
-        batchBindingListView = New BindingListView(Of batch)(DBM.Instance.batches.Local.ToBindingList())
+        batchBindingListView = New BindingListView(Of Batch)(DBM.Instance.Batches.Local.ToBindingList())
         ' Set it as the datasource, and presto, we have filtering et.al.
         BatchBindingSource.DataSource = batchBindingListView
 
         ' Set up autocomplete for ingredient name
-        Dim ing = From x As ingredient In DBM.Instance.ingredients Select x.name Order By name
+        Dim ing = From x As Ingredient In DBM.Instance.Ingredients Select x.name Order By name
         Dim acSource As AutoCompleteStringCollection = New AutoCompleteStringCollection()
         acSource.AddRange(ing.ToArray())
         With txtIngredient
@@ -64,7 +64,7 @@ Public Class frmAdminBatch
         If txtIngredient.Text = "" Then
             Exit Sub
         End If
-        Dim ing As ingredient = DBM.Instance.ingredients.Where(Function(x) x.name = txtIngredient.Text).FirstOrDefault()
+        Dim ing As Ingredient = DBM.Instance.Ingredients.Where(Function(x) x.name = txtIngredient.Text).FirstOrDefault()
         If ing Is Nothing Then
             lblUnit.Text = ""
             MsgBox("Du må velge en ingrediens fra databasen.")
@@ -76,7 +76,7 @@ Public Class frmAdminBatch
 
     Private Sub BatchDataGridView_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgBatch.CellFormatting
         If dtgBatch.Columns(e.ColumnIndex).DataPropertyName.Equals("ingredient") Then
-            e.Value = CType(e.Value, ingredient).name
+            e.Value = CType(e.Value, Ingredient).name
         End If
     End Sub
 
@@ -88,7 +88,7 @@ Public Class frmAdminBatch
 
         ResetFields()
 
-        Dim b As batch = CType(dtgBatch.SelectedRows.Item(0).DataBoundItem, batch)
+        Dim b As Batch = CType(dtgBatch.SelectedRows.Item(0).DataBoundItem, Batch)
 
         txtIngredient.Text = b.ingredient.name
         dtpExpected.Value = b.expected
@@ -148,15 +148,15 @@ Public Class frmAdminBatch
             Exit Sub
         End If
 
-        Dim b As batch
+        Dim b As Batch
         If IsNewRecord Then
-            b = New batch()
+            b = New Batch()
             b.ordered = DateTime.Now
         Else
             b = currentRecord
         End If
 
-        b.ingredient = DBM.Instance.ingredients.Where(Function(x) x.name = txtIngredient.Text).FirstOrDefault()
+        b.ingredient = DBM.Instance.Ingredients.Where(Function(x) x.name = txtIngredient.Text).FirstOrDefault()
         b.expected = dtpExpected.Value
         b.unitCount = txtNumUnits.IntValue
         If dtpExpires.Enabled Then
@@ -174,7 +174,7 @@ Public Class frmAdminBatch
         End If
 
         If IsNewRecord Then
-            DBM.Instance.batches.Add(b)
+            DBM.Instance.Batches.Add(b)
         End If
 
         UpdateActionStatus("Lagrer ...")

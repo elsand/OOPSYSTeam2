@@ -4,9 +4,9 @@
 'Need to comment the code!!
 
 Public Class frmAdminCakes
-    Private ingQuery As List(Of Kakefunn.ingredient)
+    Private ingQuery As List(Of Kakefunn.Ingredient)
     Private priceQuery As List(Of Kakefunn.ingredientPrice)
-    Private batchQuery As List(Of Kakefunn.batch)
+    Private batchQuery As List(Of Kakefunn.Batch)
     Private selList As DataTable
     Private factor As Double
     Private published As Boolean = False
@@ -16,14 +16,14 @@ Public Class frmAdminCakes
 
     Private Sub loadTables()
         'Fetches data from database. Local operations on the data is faster.
-        ingQuery = (From x In DBM.Instance.ingredients Select x).ToList()
+        ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         priceQuery = (From x In DBM.Instance.ingredientPrices Select x).ToList()
-        batchQuery = (From x In DBM.Instance.batches Select x).ToList()
+        batchQuery = (From x In DBM.Instance.Batches Select x).ToList()
     End Sub
 
     Private Sub bindCake()
         'Loading cakes in dtgCake
-        Dim cakeQuery = (From x In DBM.Instance.cakes Select x.id, x.name, x.published).ToList()
+        Dim cakeQuery = (From x In DBM.Instance.Cakes Select x.id, x.name, x.published).ToList()
         CakeBindingSource.DataSource = cakeQuery
     End Sub
 
@@ -37,7 +37,7 @@ Public Class frmAdminCakes
             Dim cakePrice As Double = 0
             Dim idx As Integer = CInt(dtgCake.Rows(i).Cells(0).Value)
             Dim cakeMarkUpFactor As Double = ((CDbl(dtgCake.Rows(i).Cells(3).Value)) / 100) + 1
-            Dim ingList = (From x In DBM.Instance.cake_has_ingredient _
+            Dim ingList = (From x In DBM.Instance.RecipeLines _
                            Where x.cakeId = idx _
                            Select x.ingredientId, x.amount).ToList()
             For Each row In ingList
@@ -199,7 +199,7 @@ Public Class frmAdminCakes
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         If isValid() Then
-            Dim newCake As cake = New cake()
+            Dim newCake As Cake = New Cake()
             newCake.name = txtNameCake.Text
             newCake.markupPercentage = numMarkUps.Text
             newCake.recipe = txtProcedure.Text
@@ -207,23 +207,23 @@ Public Class frmAdminCakes
                 newCake.published = True
             End If
             Try
-                DBM.Instance.cakes.Add(newCake)
+                DBM.Instance.Cakes.Add(newCake)
                 DBM.Instance.SaveChanges()
             Catch ex As Entity.Validation.DbEntityValidationException
                 MsgBox(ex.ToString)
             End Try
 
-            Dim cakeID As Integer = (From x In DBM.Instance.cakes _
+            Dim cakeID As Integer = (From x In DBM.Instance.Cakes _
                                      Where x.name = txtNameCake.Text _
                                      Select x.id).FirstOrDefault()
 
             For Each row As DataRow In selList.Rows
-                Dim cakeIng As cake_has_ingredient = New cake_has_ingredient()
+                Dim cakeIng As RecipeLine = New RecipeLine()
                 cakeIng.cakeId = cakeID
                 cakeIng.ingredientId = CInt(row.Item("ID"))
                 cakeIng.amount = CDbl(row.Item("Amount"))
                 Try
-                    DBM.Instance.cake_has_ingredient.Add(cakeIng)
+                    DBM.Instance.RecipeLines.Add(cakeIng)
                     DBM.Instance.SaveChanges()
                 Catch ex As Entity.Validation.DbEntityValidationException
                     MsgBox(ex.ToString)
@@ -238,7 +238,7 @@ Public Class frmAdminCakes
     Private Sub lstAvailableIngredients_MouseClick(sender As Object, e As MouseEventArgs) Handles lstAvailableIngredients.MouseClick
         'Shows unit type in label.
         If lstAvailableIngredients.SelectedIndex <> -1 Then
-            lblMeasureUnit.Text = (From x In DBM.Instance.ingredients _
+            lblMeasureUnit.Text = (From x In DBM.Instance.Ingredients _
                                    Where x.id = CInt(lstAvailableIngredients.SelectedValue.ToString()) _
                                    Select x.unit.name).FirstOrDefault()
             numAmount.Enabled = True
@@ -272,7 +272,7 @@ Public Class frmAdminCakes
     End Sub
 
     Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
-        Dim cakeQuery = (From x In DBM.Instance.cakes Where x.name.Contains(txtFilterCake.Text) _
+        Dim cakeQuery = (From x In DBM.Instance.Cakes Where x.name.Contains(txtFilterCake.Text) _
                          Select x.id, x.name, x.published).ToList()
         CakeBindingSource.DataSource = cakeQuery
         showPriceArrays()

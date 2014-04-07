@@ -36,13 +36,13 @@
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public ReadOnly Property User As employee
+    Public ReadOnly Property User As Employee
         Get
             Return loggedInEmployee
         End Get
     End Property
 
-    Private loggedInEmployee As employee
+    Private loggedInEmployee As Employee
     Private _currentForm As frmSuperBase
 
     ''' <summary>
@@ -80,8 +80,8 @@
     ''' <param name="password"></param>
     ''' <returns></returns>
     ''' <remarks></remarks>
-    Public Function Login(email As String, password As String) As employee
-        Dim employee As employee = DBM.Instance.employees.Where(Function(x) x.email = email And x.password = password).FirstOrDefault()
+    Public Function Login(email As String, password As String) As Employee
+        Dim employee As Employee = DBM.Instance.Employees.Where(Function(x) x.email = email And x.password = password).FirstOrDefault()
         ' LINQ version
         'Dim employee2 As employee = From e In DBM.Instance.employees Where e.email = email And e.password = password Select e
 

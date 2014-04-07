@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class subscription
+Partial Public Class Subscription
     Public Property id As Integer
     Public Property isActive As Nullable(Of Boolean)
     Public Property frequencyTypeId As Integer
@@ -21,7 +21,7 @@ Partial Public Class subscription
     Public Property modified As Nullable(Of Date)
     Public Property orderid As Integer
 
-    Public Overridable Property frequencyType As frequencyType
-    Public Overridable Property order As order
+    Public Overridable Property FrequencyType As FrequencyType
+    Public Overridable Property Order As Order
 
 End Class

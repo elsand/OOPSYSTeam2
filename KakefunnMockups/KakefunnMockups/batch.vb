@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class batch
+Partial Public Class Batch
     Public Property id As Integer
     Public Property ordered As Date
     Public Property registered As Nullable(Of Date)
@@ -23,6 +23,6 @@ Partial Public Class batch
     Public Property locationShelf As Nullable(Of Integer)
     Public Property deleted As Nullable(Of Date)
 
-    Public Overridable Property ingredient As ingredient
+    Public Overridable Property Ingredient As Ingredient
 
 End Class

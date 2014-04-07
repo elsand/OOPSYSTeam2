@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class ingredient
+Partial Public Class Ingredient
     Public Property id As Integer
     Public Property name As String
     Public Property description As String
@@ -19,10 +19,10 @@ Partial Public Class ingredient
     Public Property unitId As Integer
     Public Property published As Nullable(Of Boolean)
 
-    Public Overridable Property batches As ObservableListSource(Of batch) = New ObservableListSource(Of batch)
-    Public Overridable Property cake_has_ingredient As ObservableListSource(Of cake_has_ingredient) = New ObservableListSource(Of cake_has_ingredient)
-    Public Overridable Property unit As unit
-    Public Overridable Property ingredientPrices As ObservableListSource(Of ingredientPrice) = New ObservableListSource(Of ingredientPrice)
-    Public Overridable Property order_has_ingredient As ObservableListSource(Of order_has_ingredient) = New ObservableListSource(Of order_has_ingredient)
+    Public Overridable Property Batches As ObservableListSource(Of Batch) = New ObservableListSource(Of Batch)
+    Public Overridable Property RecipeLines As ObservableListSource(Of RecipeLine) = New ObservableListSource(Of RecipeLine)
+    Public Overridable Property Unit As Unit
+    Public Overridable Property IngredientPrices As ObservableListSource(Of IngredientPrice) = New ObservableListSource(Of IngredientPrice)
+    Public Overridable Property OrdreLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
 
 End Class

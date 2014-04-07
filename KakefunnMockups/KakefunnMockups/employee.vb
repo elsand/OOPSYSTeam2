@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class employee
+Partial Public Class Employee
     Public Property id As Integer
     Public Property name As String
     Public Property phoneId As Integer
@@ -18,9 +18,9 @@ Partial Public Class employee
     Public Property email As String
     Public Property password As String
 
-    Public Overridable Property address As address
-    Public Overridable Property phone As phone
-    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
-    Public Overridable Property roles As ObservableListSource(Of role) = New ObservableListSource(Of role)
+    Public Overridable Property Address As Address
+    Public Overridable Property Phone As Phone
+    Public Overridable Property Orders As ObservableListSource(Of Order) = New ObservableListSource(Of Order)
+    Public Overridable Property Roles As ObservableListSource(Of Role) = New ObservableListSource(Of Role)
 
 End Class

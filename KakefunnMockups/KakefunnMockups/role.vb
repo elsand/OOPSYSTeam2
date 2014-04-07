@@ -10,10 +10,10 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class role
+Partial Public Class Role
     Public Property id As Integer
     Public Property name As String
 
-    Public Overridable Property employees As ObservableListSource(Of employee) = New ObservableListSource(Of employee)
+    Public Overridable Property Employees As ObservableListSource(Of Employee) = New ObservableListSource(Of Employee)
 
 End Class

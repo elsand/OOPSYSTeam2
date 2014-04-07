@@ -10,7 +10,7 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class order
+Partial Public Class Order
     Public Property id As Integer
     Public Property customerId As Integer
     Public Property deliveryAddressId As Integer
@@ -30,11 +30,11 @@ Partial Public Class order
     Public Property modified As Date
     Public Property isSubscriptionOrder As Boolean
 
-    Public Overridable Property address As address
-    Public Overridable Property customer As customer
-    Public Overridable Property deliveryMethod As deliveryMethod
-    Public Overridable Property employee As employee
-    Public Overridable Property order_has_ingredient As ObservableListSource(Of order_has_ingredient) = New ObservableListSource(Of order_has_ingredient)
-    Public Overridable Property subscriptions As ObservableListSource(Of subscription) = New ObservableListSource(Of subscription)
+    Public Overridable Property Address As Address
+    Public Overridable Property Customer As Customer
+    Public Overridable Property DeliveryMethod As DeliveryMethod
+    Public Overridable Property Employee As Employee
+    Public Overridable Property OrdreLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
+    Public Overridable Property Subscriptions As ObservableListSource(Of Subscription) = New ObservableListSource(Of Subscription)
 
 End Class

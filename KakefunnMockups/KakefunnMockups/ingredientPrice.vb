@@ -10,11 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class ingredientPrice
+Partial Public Class IngredientPrice
     Public Property id As Integer
     Public Property [date] As Date
     Public Property markUpPercentage As Double
 
-    Public Overridable Property ingredient As ingredient
+    Public Overridable Property Ingredient As Ingredient
 
 End Class

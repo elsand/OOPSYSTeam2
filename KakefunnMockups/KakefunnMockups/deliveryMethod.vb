@@ -10,12 +10,12 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class deliveryMethod
+Partial Public Class DeliveryMethod
     Public Property id As Integer
     Public Property name As String
     Public Property price As Decimal
     Public Property isFixedPrice As Boolean
 
-    Public Overridable Property orders As ObservableListSource(Of order) = New ObservableListSource(Of order)
+    Public Overridable Property Orders As ObservableListSource(Of Order) = New ObservableListSource(Of Order)
 
 End Class

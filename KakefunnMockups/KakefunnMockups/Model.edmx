@@ -4,593 +4,594 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1">
-        <EntityType Name="address">
+      <Schema Namespace="Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Address">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="isPrivate" Nullable="false" Type="bool" />
-          <Property Name="name" Nullable="false" MaxLength="100" Type="varchar" />
-          <Property Name="careOf" MaxLength="100" Type="varchar" />
-          <Property Name="address" Nullable="false" MaxLength="100" Type="varchar" />
-          <Property Name="zip" Nullable="false" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isPrivate" Type="bool" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="careOf" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="zip" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="batch">
+        <EntityType Name="Batch">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="ordered" Nullable="false" Precision="0" Type="datetime" />
-          <Property Name="registered" Precision="0" Type="datetime" />
-          <Property Name="expected" Nullable="false" Type="date" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ordered" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="registered" Type="datetime" Precision="0" />
+          <Property Name="expected" Type="date" Nullable="false" />
           <Property Name="expires" Type="date" />
-          <Property Name="unitCount" Type="int" />
-          <Property Name="unitPurchasingPrice" Precision="10" Scale="2" Type="decimal" />
-          <Property Name="ingredientId" Nullable="false" Type="int" />
+          <Property Name="unitCount" Type="int" Nullable="false" />
+          <Property Name="unitPurchasingPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="ingredientId" Type="int" Nullable="false" />
           <Property Name="locationRow" Type="int" />
           <Property Name="locationShelf" Type="int" />
-          <Property Name="deleted" Precision="0" Type="datetime" />
+          <Property Name="deleted" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityType Name="cake">
+        <EntityType Name="Cake">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="recipe" Type="text" />
           <Property Name="markupPercentage" Type="double" />
-          <Property Name="deleted" Precision="0" Type="datetime" />
+          <Property Name="deleted" Type="datetime" Precision="0" />
           <Property Name="published" Type="bool" />
         </EntityType>
-        <EntityType Name="cake_has_ingredient">
+        <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="cakeId" Nullable="false" Type="int" />
-          <Property Name="ingredientId" Nullable="false" Type="int" />
-          <Property Name="amount" Type="float" />
-        </EntityType>
-        <EntityType Name="customer">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="isPrivate" Nullable="false" Type="tinyint" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="phone" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="email" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="addressId" Nullable="false" Type="int" />
-          <Property Name="customerTypeId" Nullable="false" Type="int" />
-          <Property Name="discountPlanId" Nullable="false" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="isPrivate" Type="tinyint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="addressId" Type="int" Nullable="false" />
+          <Property Name="customerTypeId" Type="int" Nullable="false" />
+          <Property Name="discountPlanId" Type="int" Nullable="false" />
           <Property Name="note" Type="text" />
-          <Property Name="created" Precision="0" Type="datetime" />
-          <Property Name="modfied" Precision="0" Type="datetime" />
+          <Property Name="created" Type="datetime" Precision="0" />
+          <Property Name="modfied" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityType Name="customerType">
+        <EntityType Name="CustomerType">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
-        <EntityType Name="deliveryMethod">
+        <EntityType Name="DeliveryMethod">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="price" Nullable="false" Precision="10" Scale="2" Type="decimal" />
-          <Property Name="isFixedPrice" Nullable="false" Type="bool" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="isFixedPrice" Type="bool" Nullable="false" />
         </EntityType>
-        <EntityType Name="discountPlan">
+        <EntityType Name="DiscountPlan">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="percentage" Nullable="false" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="percentage" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="employee">
+        <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="phoneId" Nullable="false" Type="int" />
-          <Property Name="addressId" Nullable="false" Type="int" />
-          <Property Name="email" Nullable="false" MaxLength="255" Type="varchar" />
-          <Property Name="password" Nullable="false" MaxLength="32" Type="varchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="phoneId" Type="int" Nullable="false" />
+          <Property Name="addressId" Type="int" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="32" Nullable="false" />
         </EntityType>
-        <EntityType Name="employee_has_roles">
+        <EntityType Name="EmployeeRoles">
           <Key>
             <PropertyRef Name="roleId" />
             <PropertyRef Name="employeeId" />
           </Key>
-          <Property Name="roleId" Nullable="false" Type="int" />
-          <Property Name="employeeId" Nullable="false" Type="int" />
+          <Property Name="roleId" Type="int" Nullable="false" />
+          <Property Name="employeeId" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="events">
+        <EntityType Name="Event">
           <Key>
             <PropertyRef Name="eventsId" />
           </Key>
-          <Property Name="eventsId" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="eventName" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="eventTime" Nullable="false" Precision="0" Type="timestamp" />
-          <Property Name="employeeId" Nullable="false" Type="int" />
-          <Property Name="eventData" Nullable="false" Type="text" />
+          <Property Name="eventsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eventName" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="eventTime" Type="timestamp" Precision="0" Nullable="false" />
+          <Property Name="employeeId" Type="int" Nullable="false" />
+          <Property Name="eventData" Type="text" Nullable="false" />
         </EntityType>
-        <EntityType Name="frequencyType">
+        <EntityType Name="FrequencyType">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" MaxLength="45" Type="varchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" />
           <Property Name="intervalDays" Type="int" />
           <Property Name="intervalMonths" Type="int" />
         </EntityType>
-        <EntityType Name="ingredient">
+        <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="description" MaxLength="45" Type="varchar" />
-          <Property Name="kilocaloriesPerUnit" Nullable="false" Type="double" />
-          <Property Name="vat" Nullable="false" Type="int" />
-          <Property Name="unitId" Nullable="false" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="45" />
+          <Property Name="kilocaloriesPerUnit" Type="double" Nullable="false" />
+          <Property Name="vat" Type="int" Nullable="false" />
+          <Property Name="unitId" Type="int" Nullable="false" />
           <Property Name="published" Type="bool" />
         </EntityType>
-        <EntityType Name="ingredientPrice">
+        <EntityType Name="IngredientPrice">
           <Key>
             <PropertyRef Name="id" />
             <PropertyRef Name="date" />
           </Key>
-          <Property Name="id" Nullable="false" Type="int" />
-          <Property Name="date" Nullable="false" Type="date" />
-          <Property Name="markUpPercentage" Nullable="false" Type="double" />
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="markUpPercentage" Type="double" Nullable="false" />
         </EntityType>
-        <EntityType Name="order">
+        <EntityType Name="Order">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="customerId" Nullable="false" Type="int" />
-          <Property Name="deliveryAddressId" Nullable="false" Type="int" />
-          <Property Name="deliveryPhone" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="deliveryEmail" Nullable="false" MaxLength="45" Type="varchar" />
-          <Property Name="deliveryMethodId" Nullable="false" Type="int" />
-          <Property Name="employeeId" Nullable="false" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerId" Type="int" Nullable="false" />
+          <Property Name="deliveryAddressId" Type="int" Nullable="false" />
+          <Property Name="deliveryPhone" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="deliveryEmail" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="deliveryMethodId" Type="int" Nullable="false" />
+          <Property Name="employeeId" Type="int" Nullable="false" />
           <Property Name="subscriptionId" Type="int" />
           <Property Name="discountPercentage" Type="int" />
-          <Property Name="discountAbsolute" Precision="10" Scale="2" Type="decimal" />
+          <Property Name="discountAbsolute" Type="decimal" Precision="10" Scale="2" />
           <Property Name="note" Type="text" />
-          <Property Name="amountPayed" Nullable="false" Precision="10" Scale="2" Type="decimal" />
-          <Property Name="sent" Precision="0" Type="datetime" />
-          <Property Name="settled" Precision="0" Type="datetime" />
-          <Property Name="exported" Precision="0" Type="datetime" />
-          <Property Name="created" Nullable="false" Precision="0" Type="datetime" />
-          <Property Name="modified" Nullable="false" Precision="0" Type="datetime" />
-          <Property Name="isSubscriptionOrder" Nullable="false" Type="bool" />
+          <Property Name="amountPayed" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="sent" Type="datetime" Precision="0" />
+          <Property Name="settled" Type="datetime" Precision="0" />
+          <Property Name="exported" Type="datetime" Precision="0" />
+          <Property Name="created" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="modified" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="isSubscriptionOrder" Type="bool" Nullable="false" />
         </EntityType>
-        <EntityType Name="order_has_ingredient">
+        <EntityType Name="OrdreLine">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="order_id" Nullable="false" Type="int" />
-          <Property Name="ingredient_id" Nullable="false" Type="int" />
-          <Property Name="amount" Nullable="false" Type="double" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="order_id" Type="int" Nullable="false" />
+          <Property Name="ingredient_id" Type="int" Nullable="false" />
+          <Property Name="amount" Type="double" Nullable="false" />
           <Property Name="cakeId" Type="int" />
         </EntityType>
-        <EntityType Name="phone">
+        <EntityType Name="Phone">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="countryprefix" Type="int" />
-          <Property Name="phonenumber" MaxLength="45" Type="varchar" />
+          <Property Name="phonenumber" Type="varchar" MaxLength="45" />
         </EntityType>
-        <EntityType Name="role">
+        <EntityType Name="RecipeLine">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cakeId" Type="int" Nullable="false" />
+          <Property Name="ingredientId" Type="int" Nullable="false" />
+          <Property Name="amount" Type="float" />
         </EntityType>
-        <EntityType Name="subscription">
+        <EntityType Name="Role">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Subscription">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="isActive" Type="bool" />
-          <Property Name="frequencyTypeId" Nullable="false" Type="int" />
+          <Property Name="frequencyTypeId" Type="int" Nullable="false" />
           <Property Name="frequency" Type="int" />
-          <Property Name="startDate" Nullable="false" Type="date" />
+          <Property Name="startDate" Type="date" Nullable="false" />
           <Property Name="stopDate" Type="date" />
-          <Property Name="created" Precision="0" Type="datetime" />
-          <Property Name="modified" Precision="0" Type="datetime" />
-          <Property Name="orderid" Nullable="false" Type="int" />
+          <Property Name="created" Type="datetime" Precision="0" />
+          <Property Name="modified" Type="datetime" Precision="0" />
+          <Property Name="orderid" Type="int" Nullable="false" />
         </EntityType>
-        <EntityType Name="unit">
+        <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="name" Nullable="false" MaxLength="45" Type="varchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
-        <EntityType Name="zip">
+        <EntityType Name="Zip">
           <Key>
             <PropertyRef Name="zip" />
           </Key>
-          <Property Name="zip" Nullable="false" Type="int" />
-          <Property Name="city" Nullable="false" MaxLength="45" Type="varchar" />
+          <Property Name="zip" Type="int" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <Association Name="fk_address_zip1">
-          <End Type="Self.zip" Multiplicity="1" Role="zip" />
-          <End Type="Self.address" Multiplicity="*" Role="address" />
+          <End Role="Zip" Type="Self.Zip" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="zip">
+            <Principal Role="Zip">
               <PropertyRef Name="zip" />
             </Principal>
-            <Dependent Role="address">
+            <Dependent Role="Address">
               <PropertyRef Name="zip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ansatt_has_roller_ansatt1">
-          <End Type="Self.employee" Multiplicity="1" Role="employee" />
-          <End Type="Self.employee_has_roles" Multiplicity="*" Role="employee_has_roles" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="employee">
+            <Principal Role="Employee">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="employee_has_roles">
+            <Dependent Role="EmployeeRoles">
               <PropertyRef Name="employeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ansatt_has_roller_roller1">
-          <End Type="Self.role" Multiplicity="1" Role="role" />
-          <End Type="Self.employee_has_roles" Multiplicity="*" Role="employee_has_roles" />
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="EmployeeRoles" Type="Self.EmployeeRoles" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="role">
+            <Principal Role="Role">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="employee_has_roles">
+            <Dependent Role="EmployeeRoles">
               <PropertyRef Name="roleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ansatt_telefon1">
-          <End Type="Self.phone" Multiplicity="1" Role="phone" />
-          <End Type="Self.employee" Multiplicity="*" Role="employee" />
+          <End Role="Phone" Type="Self.Phone" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="phone">
+            <Principal Role="Phone">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="employee">
+            <Dependent Role="Employee">
               <PropertyRef Name="phoneId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_batch_ingrediens1">
-          <End Type="Self.ingredient" Multiplicity="1" Role="ingredient" />
-          <End Type="Self.batch" Multiplicity="*" Role="batch" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="batch">
+            <Dependent Role="Batch">
               <PropertyRef Name="ingredientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_cake_has_ingredient_cake1">
-          <End Type="Self.cake" Multiplicity="1" Role="cake" />
-          <End Type="Self.cake_has_ingredient" Multiplicity="*" Role="cake_has_ingredient" />
+          <End Role="Cake" Type="Self.Cake" Multiplicity="1" />
+          <End Role="RecipeLine" Type="Self.RecipeLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="cake">
+            <Principal Role="Cake">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="cake_has_ingredient">
+            <Dependent Role="RecipeLine">
               <PropertyRef Name="cakeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_cake_has_ingredient_ingredient1">
-          <End Type="Self.ingredient" Multiplicity="1" Role="ingredient" />
-          <End Type="Self.cake_has_ingredient" Multiplicity="*" Role="cake_has_ingredient" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="RecipeLine" Type="Self.RecipeLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="cake_has_ingredient">
+            <Dependent Role="RecipeLine">
               <PropertyRef Name="ingredientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_customer_address1">
-          <End Type="Self.address" Multiplicity="1" Role="address" />
-          <End Type="Self.customer" Multiplicity="*" Role="customer" />
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="address">
+            <Principal Role="Address">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="customer">
+            <Dependent Role="Customer">
               <PropertyRef Name="addressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_employee_address1">
-          <End Type="Self.address" Multiplicity="1" Role="address" />
-          <End Type="Self.employee" Multiplicity="*" Role="employee" />
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="address">
+            <Principal Role="Address">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="employee">
+            <Dependent Role="Employee">
               <PropertyRef Name="addressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ingrediens_enhet1">
-          <End Type="Self.unit" Multiplicity="1" Role="unit" />
-          <End Type="Self.ingredient" Multiplicity="*" Role="ingredient" />
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="unit">
+            <Principal Role="Unit">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="ingredient">
+            <Dependent Role="Ingredient">
               <PropertyRef Name="unitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ingrediensPris_ingrediens1">
-          <End Type="Self.ingredient" Multiplicity="1" Role="ingredient" />
-          <End Type="Self.ingredientPrice" Multiplicity="*" Role="ingredientPrice" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="IngredientPrice" Type="Self.IngredientPrice" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="ingredientPrice">
+            <Dependent Role="IngredientPrice">
               <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_kunde_kundeType1">
-          <End Type="Self.customerType" Multiplicity="1" Role="customerType" />
-          <End Type="Self.customer" Multiplicity="*" Role="customer" />
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="customerType">
+            <Principal Role="CustomerType">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="customer">
+            <Dependent Role="Customer">
               <PropertyRef Name="customerTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_kunde_rabattPlan1">
-          <End Type="Self.discountPlan" Multiplicity="1" Role="discountPlan" />
-          <End Type="Self.customer" Multiplicity="*" Role="customer" />
+          <End Role="DiscountPlan" Type="Self.DiscountPlan" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="discountPlan">
+            <Principal Role="DiscountPlan">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="customer">
+            <Dependent Role="Customer">
               <PropertyRef Name="discountPlanId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_address1">
-          <End Type="Self.address" Multiplicity="1" Role="address" />
-          <End Type="Self.order" Multiplicity="*" Role="order" />
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="address">
+            <Principal Role="Address">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="deliveryAddressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_has_ingredient_ingredient1">
-          <End Type="Self.ingredient" Multiplicity="1" Role="ingredient" />
-          <End Type="Self.order_has_ingredient" Multiplicity="*" Role="order_has_ingredient" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="OrdreLine" Type="Self.OrdreLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order_has_ingredient">
+            <Dependent Role="OrdreLine">
               <PropertyRef Name="ingredient_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_has_ingredient_order1">
-          <End Type="Self.order" Multiplicity="1" Role="order" />
-          <End Type="Self.order_has_ingredient" Multiplicity="*" Role="order_has_ingredient" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrdreLine" Type="Self.OrdreLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="Order">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order_has_ingredient">
+            <Dependent Role="OrdreLine">
               <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ordre_ansatt1">
-          <End Type="Self.employee" Multiplicity="1" Role="employee" />
-          <End Type="Self.order" Multiplicity="*" Role="order" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="employee">
+            <Principal Role="Employee">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="employeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ordre_kunde1">
-          <End Type="Self.customer" Multiplicity="1" Role="customer" />
-          <End Type="Self.order" Multiplicity="*" Role="order" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="customer">
+            <Principal Role="Customer">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="customerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ordre_leveringsMetode1">
-          <End Type="Self.deliveryMethod" Multiplicity="1" Role="deliveryMethod" />
-          <End Type="Self.order" Multiplicity="*" Role="order" />
+          <End Role="DeliveryMethod" Type="Self.DeliveryMethod" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="deliveryMethod">
+            <Principal Role="DeliveryMethod">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="deliveryMethodId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_subscription_frequencyType1">
-          <End Type="Self.frequencyType" Multiplicity="1" Role="frequencyType" />
-          <End Type="Self.subscription" Multiplicity="*" Role="subscription" />
+          <End Role="FrequencyType" Type="Self.FrequencyType" Multiplicity="1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="frequencyType">
+            <Principal Role="FrequencyType">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="subscription">
+            <Dependent Role="Subscription">
               <PropertyRef Name="frequencyTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_subscription_order1">
-          <End Type="Self.order" Multiplicity="1" Role="order" />
-          <End Type="Self.subscription" Multiplicity="*" Role="subscription" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="Order">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="subscription">
+            <Dependent Role="Subscription">
               <PropertyRef Name="orderid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="ModelStoreContainer">
-          <EntitySet Name="address" EntityType="Self.address" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="batch" EntityType="Self.batch" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="cake" EntityType="Self.cake" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="cake_has_ingredient" EntityType="Self.cake_has_ingredient" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="customer" EntityType="Self.customer" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="customerType" EntityType="Self.customerType" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="deliveryMethod" EntityType="Self.deliveryMethod" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="discountPlan" EntityType="Self.discountPlan" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="employee" EntityType="Self.employee" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="employee_has_roles" EntityType="Self.employee_has_roles" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="events" EntityType="Self.events" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="frequencyType" EntityType="Self.frequencyType" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="ingredient" EntityType="Self.ingredient" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="ingredientPrice" EntityType="Self.ingredientPrice" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="order" EntityType="Self.order" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="order_has_ingredient" EntityType="Self.order_has_ingredient" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="phone" EntityType="Self.phone" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="role" EntityType="Self.role" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="subscription" EntityType="Self.subscription" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="unit" EntityType="Self.unit" Schema="***REMOVED***" store:Type="Tables" />
-          <EntitySet Name="zip" EntityType="Self.zip" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Address" EntityType="Self.Address" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Batch" EntityType="Self.Batch" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Cake" EntityType="Self.Cake" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="CustomerType" EntityType="Self.CustomerType" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="DeliveryMethod" EntityType="Self.DeliveryMethod" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="DiscountPlan" EntityType="Self.DiscountPlan" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="EmployeeRoles" EntityType="Self.EmployeeRoles" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Event" EntityType="Self.Event" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="FrequencyType" EntityType="Self.FrequencyType" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Ingredient" EntityType="Self.Ingredient" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="IngredientPrice" EntityType="Self.IngredientPrice" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Order" EntityType="Self.Order" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="OrdreLine" EntityType="Self.OrdreLine" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Phone" EntityType="Self.Phone" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="RecipeLine" EntityType="Self.RecipeLine" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Subscription" EntityType="Self.Subscription" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Unit" EntityType="Self.Unit" Schema="***REMOVED***" store:Type="Tables" />
+          <EntitySet Name="Zip" EntityType="Self.Zip" Schema="***REMOVED***" store:Type="Tables" />
           <AssociationSet Name="fk_address_zip1" Association="Self.fk_address_zip1">
-            <End EntitySet="zip" Role="zip" />
-            <End EntitySet="address" Role="address" />
+            <End Role="Zip" EntitySet="Zip" />
+            <End Role="Address" EntitySet="Address" />
           </AssociationSet>
           <AssociationSet Name="fk_ansatt_has_roller_ansatt1" Association="Self.fk_ansatt_has_roller_ansatt1">
-            <End EntitySet="employee" Role="employee" />
-            <End EntitySet="employee_has_roles" Role="employee_has_roles" />
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
           </AssociationSet>
           <AssociationSet Name="fk_ansatt_has_roller_roller1" Association="Self.fk_ansatt_has_roller_roller1">
-            <End EntitySet="role" Role="role" />
-            <End EntitySet="employee_has_roles" Role="employee_has_roles" />
+            <End Role="Role" EntitySet="Role" />
+            <End Role="EmployeeRoles" EntitySet="EmployeeRoles" />
           </AssociationSet>
           <AssociationSet Name="fk_ansatt_telefon1" Association="Self.fk_ansatt_telefon1">
-            <End EntitySet="phone" Role="phone" />
-            <End EntitySet="employee" Role="employee" />
+            <End Role="Phone" EntitySet="Phone" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="fk_batch_ingrediens1" Association="Self.fk_batch_ingrediens1">
-            <End EntitySet="ingredient" Role="ingredient" />
-            <End EntitySet="batch" Role="batch" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="Batch" EntitySet="Batch" />
           </AssociationSet>
           <AssociationSet Name="fk_cake_has_ingredient_cake1" Association="Self.fk_cake_has_ingredient_cake1">
-            <End EntitySet="cake" Role="cake" />
-            <End EntitySet="cake_has_ingredient" Role="cake_has_ingredient" />
+            <End Role="Cake" EntitySet="Cake" />
+            <End Role="RecipeLine" EntitySet="RecipeLine" />
           </AssociationSet>
           <AssociationSet Name="fk_cake_has_ingredient_ingredient1" Association="Self.fk_cake_has_ingredient_ingredient1">
-            <End EntitySet="ingredient" Role="ingredient" />
-            <End EntitySet="cake_has_ingredient" Role="cake_has_ingredient" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="RecipeLine" EntitySet="RecipeLine" />
           </AssociationSet>
           <AssociationSet Name="fk_customer_address1" Association="Self.fk_customer_address1">
-            <End EntitySet="address" Role="address" />
-            <End EntitySet="customer" Role="customer" />
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="fk_employee_address1" Association="Self.fk_employee_address1">
-            <End EntitySet="address" Role="address" />
-            <End EntitySet="employee" Role="employee" />
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
           <AssociationSet Name="fk_ingrediens_enhet1" Association="Self.fk_ingrediens_enhet1">
-            <End EntitySet="unit" Role="unit" />
-            <End EntitySet="ingredient" Role="ingredient" />
+            <End Role="Unit" EntitySet="Unit" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
           </AssociationSet>
           <AssociationSet Name="fk_ingrediensPris_ingrediens1" Association="Self.fk_ingrediensPris_ingrediens1">
-            <End EntitySet="ingredient" Role="ingredient" />
-            <End EntitySet="ingredientPrice" Role="ingredientPrice" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="IngredientPrice" EntitySet="IngredientPrice" />
           </AssociationSet>
           <AssociationSet Name="fk_kunde_kundeType1" Association="Self.fk_kunde_kundeType1">
-            <End EntitySet="customerType" Role="customerType" />
-            <End EntitySet="customer" Role="customer" />
+            <End Role="CustomerType" EntitySet="CustomerType" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="fk_kunde_rabattPlan1" Association="Self.fk_kunde_rabattPlan1">
-            <End EntitySet="discountPlan" Role="discountPlan" />
-            <End EntitySet="customer" Role="customer" />
+            <End Role="DiscountPlan" EntitySet="DiscountPlan" />
+            <End Role="Customer" EntitySet="Customer" />
           </AssociationSet>
           <AssociationSet Name="fk_order_address1" Association="Self.fk_order_address1">
-            <End EntitySet="address" Role="address" />
-            <End EntitySet="order" Role="order" />
+            <End Role="Address" EntitySet="Address" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="fk_order_has_ingredient_ingredient1" Association="Self.fk_order_has_ingredient_ingredient1">
-            <End EntitySet="ingredient" Role="ingredient" />
-            <End EntitySet="order_has_ingredient" Role="order_has_ingredient" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="OrdreLine" EntitySet="OrdreLine" />
           </AssociationSet>
           <AssociationSet Name="fk_order_has_ingredient_order1" Association="Self.fk_order_has_ingredient_order1">
-            <End EntitySet="order" Role="order" />
-            <End EntitySet="order_has_ingredient" Role="order_has_ingredient" />
+            <End Role="Order" EntitySet="Order" />
+            <End Role="OrdreLine" EntitySet="OrdreLine" />
           </AssociationSet>
           <AssociationSet Name="fk_ordre_ansatt1" Association="Self.fk_ordre_ansatt1">
-            <End EntitySet="employee" Role="employee" />
-            <End EntitySet="order" Role="order" />
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="fk_ordre_kunde1" Association="Self.fk_ordre_kunde1">
-            <End EntitySet="customer" Role="customer" />
-            <End EntitySet="order" Role="order" />
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="fk_ordre_leveringsMetode1" Association="Self.fk_ordre_leveringsMetode1">
-            <End EntitySet="deliveryMethod" Role="deliveryMethod" />
-            <End EntitySet="order" Role="order" />
+            <End Role="DeliveryMethod" EntitySet="DeliveryMethod" />
+            <End Role="Order" EntitySet="Order" />
           </AssociationSet>
           <AssociationSet Name="fk_subscription_frequencyType1" Association="Self.fk_subscription_frequencyType1">
-            <End EntitySet="frequencyType" Role="frequencyType" />
-            <End EntitySet="subscription" Role="subscription" />
+            <End Role="FrequencyType" EntitySet="FrequencyType" />
+            <End Role="Subscription" EntitySet="Subscription" />
           </AssociationSet>
           <AssociationSet Name="fk_subscription_order1" Association="Self.fk_subscription_order1">
-            <End EntitySet="order" Role="order" />
-            <End EntitySet="subscription" Role="subscription" />
+            <End Role="Order" EntitySet="Order" />
+            <End Role="Subscription" EntitySet="Subscription" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="address">
+        <EntityType Name="Address">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -600,29 +601,29 @@
           <Property Name="careOf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="zip" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="zip1" Relationship="Self.fk_address_zip1" FromRole="address" ToRole="zip" />
-          <NavigationProperty Name="customers" Relationship="Self.fk_customer_address1" FromRole="address" ToRole="customer" />
-          <NavigationProperty Name="employees" Relationship="Self.fk_employee_address1" FromRole="address" ToRole="employee" />
-          <NavigationProperty Name="orders" Relationship="Self.fk_order_address1" FromRole="address" ToRole="order" />
+          <NavigationProperty Name="Zip1" Relationship="Self.fk_address_zip1" FromRole="Address" ToRole="Zip" />
+          <NavigationProperty Name="Customers" Relationship="Self.fk_customer_address1" FromRole="Address" ToRole="Customer" />
+          <NavigationProperty Name="Employees" Relationship="Self.fk_employee_address1" FromRole="Address" ToRole="Employee" />
+          <NavigationProperty Name="Orders" Relationship="Self.fk_order_address1" FromRole="Address" ToRole="Order" />
         </EntityType>
-        <EntityType Name="batch">
+        <EntityType Name="Batch">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ordered" Type="DateTime" Nullable="false" />
           <Property Name="registered" Type="DateTime" />
-          <Property Name="expected" Nullable="false" Type="DateTime" />
+          <Property Name="expected" Type="DateTime" Nullable="false" />
           <Property Name="expires" Type="DateTime" />
           <Property Name="unitCount" Type="Int32" Nullable="false" />
           <Property Name="unitPurchasingPrice" Type="Decimal" />
           <Property Name="ingredientId" Type="Int32" Nullable="false" />
-          <Property Name="locationRow" Type="Int32" Nullable="true" />
-          <Property Name="locationShelf" Type="Int32" Nullable="true" />
+          <Property Name="locationRow" Type="Int32" />
+          <Property Name="locationShelf" Type="Int32" />
           <Property Name="deleted" Type="DateTime" />
-          <NavigationProperty Name="ingredient" Relationship="Self.fk_batch_ingrediens1" FromRole="batch" ToRole="ingredient" />
+          <NavigationProperty Name="Ingredient" Relationship="Self.fk_batch_ingrediens1" FromRole="Batch" ToRole="Ingredient" />
         </EntityType>
-        <EntityType Name="cake">
+        <EntityType Name="Cake">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -632,20 +633,9 @@
           <Property Name="markupPercentage" Type="Double" />
           <Property Name="deleted" Type="DateTime" />
           <Property Name="published" Type="Boolean" />
-          <NavigationProperty Name="cake_has_ingredient" Relationship="Self.fk_cake_has_ingredient_cake1" FromRole="cake" ToRole="cake_has_ingredient" />
+          <NavigationProperty Name="RecipeLines" Relationship="Self.fk_cake_has_ingredient_cake1" FromRole="Cake" ToRole="RecipeLine" />
         </EntityType>
-        <EntityType Name="cake_has_ingredient">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="cakeId" Type="Int32" Nullable="false" />
-          <Property Name="ingredientId" Type="Int32" Nullable="false" />
-          <Property Name="amount" Type="Single" />
-          <NavigationProperty Name="cake" Relationship="Self.fk_cake_has_ingredient_cake1" FromRole="cake_has_ingredient" ToRole="cake" />
-          <NavigationProperty Name="ingredient" Relationship="Self.fk_cake_has_ingredient_ingredient1" FromRole="cake_has_ingredient" ToRole="ingredient" />
-        </EntityType>
-        <EntityType Name="customer">
+        <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -660,20 +650,20 @@
           <Property Name="note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="created" Type="DateTime" />
           <Property Name="modfied" Type="DateTime" />
-          <NavigationProperty Name="address" Relationship="Self.fk_customer_address1" FromRole="customer" ToRole="address" />
-          <NavigationProperty Name="customerType" Relationship="Self.fk_kunde_kundeType1" FromRole="customer" ToRole="customerType" />
-          <NavigationProperty Name="discountPlan" Relationship="Self.fk_kunde_rabattPlan1" FromRole="customer" ToRole="discountPlan" />
-          <NavigationProperty Name="orders" Relationship="Self.fk_ordre_kunde1" FromRole="customer" ToRole="order" />
+          <NavigationProperty Name="Address" Relationship="Self.fk_customer_address1" FromRole="Customer" ToRole="Address" />
+          <NavigationProperty Name="CustomerType" Relationship="Self.fk_kunde_kundeType1" FromRole="Customer" ToRole="CustomerType" />
+          <NavigationProperty Name="DiscountPlan" Relationship="Self.fk_kunde_rabattPlan1" FromRole="Customer" ToRole="DiscountPlan" />
+          <NavigationProperty Name="Orders" Relationship="Self.fk_ordre_kunde1" FromRole="Customer" ToRole="Order" />
         </EntityType>
-        <EntityType Name="customerType">
+        <EntityType Name="CustomerType">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="customers" Relationship="Self.fk_kunde_kundeType1" FromRole="customerType" ToRole="customer" />
+          <NavigationProperty Name="Customers" Relationship="Self.fk_kunde_kundeType1" FromRole="CustomerType" ToRole="Customer" />
         </EntityType>
-        <EntityType Name="deliveryMethod">
+        <EntityType Name="DeliveryMethod">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -681,18 +671,18 @@
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="price" Type="Decimal" Nullable="false" />
           <Property Name="isFixedPrice" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="orders" Relationship="Self.fk_ordre_leveringsMetode1" FromRole="deliveryMethod" ToRole="order" />
+          <NavigationProperty Name="Orders" Relationship="Self.fk_ordre_leveringsMetode1" FromRole="DeliveryMethod" ToRole="Order" />
         </EntityType>
-        <EntityType Name="discountPlan">
+        <EntityType Name="DiscountPlan">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="percentage" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="customers" Relationship="Self.fk_kunde_rabattPlan1" FromRole="discountPlan" ToRole="customer" />
+          <NavigationProperty Name="Customers" Relationship="Self.fk_kunde_rabattPlan1" FromRole="DiscountPlan" ToRole="Customer" />
         </EntityType>
-        <EntityType Name="employee">
+        <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -702,12 +692,12 @@
           <Property Name="addressId" Type="Int32" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="address" Relationship="Self.fk_employee_address1" FromRole="employee" ToRole="address" />
-          <NavigationProperty Name="phone" Relationship="Self.fk_ansatt_telefon1" FromRole="employee" ToRole="phone" />
-          <NavigationProperty Name="orders" Relationship="Self.fk_ordre_ansatt1" FromRole="employee" ToRole="order" />
-          <NavigationProperty Name="roles" Relationship="Self.employee_has_roles" FromRole="employee" ToRole="role" />
+          <NavigationProperty Name="Address" Relationship="Self.fk_employee_address1" FromRole="Employee" ToRole="Address" />
+          <NavigationProperty Name="Phone" Relationship="Self.fk_ansatt_telefon1" FromRole="Employee" ToRole="Phone" />
+          <NavigationProperty Name="Orders" Relationship="Self.fk_ordre_ansatt1" FromRole="Employee" ToRole="Order" />
+          <NavigationProperty Name="Roles" Relationship="Self.EmployeeRoles" FromRole="Employee" ToRole="Role" />
         </EntityType>
-        <EntityType Name="event">
+        <EntityType Name="SystemEvent">
           <Key>
             <PropertyRef Name="eventsId" />
           </Key>
@@ -717,7 +707,7 @@
           <Property Name="employeeId" Type="Int32" Nullable="false" />
           <Property Name="eventData" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="frequencyType">
+        <EntityType Name="FrequencyType">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -725,9 +715,9 @@
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="intervalDays" Type="Int32" />
           <Property Name="intervalMonths" Type="Int32" />
-          <NavigationProperty Name="subscriptions" Relationship="Self.fk_subscription_frequencyType1" FromRole="frequencyType" ToRole="subscription" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.fk_subscription_frequencyType1" FromRole="FrequencyType" ToRole="Subscription" />
         </EntityType>
-        <EntityType Name="ingredient">
+        <EntityType Name="Ingredient">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -738,13 +728,13 @@
           <Property Name="vat" Type="Int32" Nullable="false" />
           <Property Name="unitId" Type="Int32" Nullable="false" />
           <Property Name="published" Type="Boolean" />
-          <NavigationProperty Name="batches" Relationship="Self.fk_batch_ingrediens1" FromRole="ingredient" ToRole="batch" />
-          <NavigationProperty Name="cake_has_ingredient" Relationship="Self.fk_cake_has_ingredient_ingredient1" FromRole="ingredient" ToRole="cake_has_ingredient" />
-          <NavigationProperty Name="unit" Relationship="Self.fk_ingrediens_enhet1" FromRole="ingredient" ToRole="unit" />
-          <NavigationProperty Name="ingredientPrices" Relationship="Self.fk_ingrediensPris_ingrediens1" FromRole="ingredient" ToRole="ingredientPrice" />
-          <NavigationProperty Name="order_has_ingredient" Relationship="Self.fk_order_has_ingredient_ingredient1" FromRole="ingredient" ToRole="order_has_ingredient" />
+          <NavigationProperty Name="Batches" Relationship="Self.fk_batch_ingrediens1" FromRole="Ingredient" ToRole="Batch" />
+          <NavigationProperty Name="RecipeLines" Relationship="Self.fk_cake_has_ingredient_ingredient1" FromRole="Ingredient" ToRole="RecipeLine" />
+          <NavigationProperty Name="Unit" Relationship="Self.fk_ingrediens_enhet1" FromRole="Ingredient" ToRole="Unit" />
+          <NavigationProperty Name="IngredientPrices" Relationship="Self.fk_ingrediensPris_ingrediens1" FromRole="Ingredient" ToRole="IngredientPrice" />
+          <NavigationProperty Name="OrdreLines" Relationship="Self.fk_order_has_ingredient_ingredient1" FromRole="Ingredient" ToRole="OrdreLine" />
         </EntityType>
-        <EntityType Name="ingredientPrice">
+        <EntityType Name="IngredientPrice">
           <Key>
             <PropertyRef Name="id" />
             <PropertyRef Name="date" />
@@ -752,9 +742,9 @@
           <Property Name="id" Type="Int32" Nullable="false" />
           <Property Name="date" Type="DateTime" Nullable="false" />
           <Property Name="markUpPercentage" Type="Double" Nullable="false" />
-          <NavigationProperty Name="ingredient" Relationship="Self.fk_ingrediensPris_ingrediens1" FromRole="ingredientPrice" ToRole="ingredient" />
+          <NavigationProperty Name="Ingredient" Relationship="Self.fk_ingrediensPris_ingrediens1" FromRole="IngredientPrice" ToRole="Ingredient" />
         </EntityType>
-        <EntityType Name="order">
+        <EntityType Name="Order">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -776,14 +766,14 @@
           <Property Name="created" Type="DateTime" Nullable="false" />
           <Property Name="modified" Type="DateTime" Nullable="false" />
           <Property Name="isSubscriptionOrder" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="address" Relationship="Self.fk_order_address1" FromRole="order" ToRole="address" />
-          <NavigationProperty Name="customer" Relationship="Self.fk_ordre_kunde1" FromRole="order" ToRole="customer" />
-          <NavigationProperty Name="deliveryMethod" Relationship="Self.fk_ordre_leveringsMetode1" FromRole="order" ToRole="deliveryMethod" />
-          <NavigationProperty Name="employee" Relationship="Self.fk_ordre_ansatt1" FromRole="order" ToRole="employee" />
-          <NavigationProperty Name="order_has_ingredient" Relationship="Self.fk_order_has_ingredient_order1" FromRole="order" ToRole="order_has_ingredient" />
-          <NavigationProperty Name="subscriptions" Relationship="Self.fk_subscription_order1" FromRole="order" ToRole="subscription" />
+          <NavigationProperty Name="Address" Relationship="Self.fk_order_address1" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Customer" Relationship="Self.fk_ordre_kunde1" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="DeliveryMethod" Relationship="Self.fk_ordre_leveringsMetode1" FromRole="Order" ToRole="DeliveryMethod" />
+          <NavigationProperty Name="Employee" Relationship="Self.fk_ordre_ansatt1" FromRole="Order" ToRole="Employee" />
+          <NavigationProperty Name="OrdreLines" Relationship="Self.fk_order_has_ingredient_order1" FromRole="Order" ToRole="OrdreLine" />
+          <NavigationProperty Name="Subscriptions" Relationship="Self.fk_subscription_order1" FromRole="Order" ToRole="Subscription" />
         </EntityType>
-        <EntityType Name="order_has_ingredient">
+        <EntityType Name="OrderLine">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -792,27 +782,38 @@
           <Property Name="ingredient_id" Type="Int32" Nullable="false" />
           <Property Name="amount" Type="Double" Nullable="false" />
           <Property Name="cakeId" Type="Int32" />
-          <NavigationProperty Name="ingredient" Relationship="Self.fk_order_has_ingredient_ingredient1" FromRole="order_has_ingredient" ToRole="ingredient" />
-          <NavigationProperty Name="order" Relationship="Self.fk_order_has_ingredient_order1" FromRole="order_has_ingredient" ToRole="order" />
+          <NavigationProperty Name="Ingredient" Relationship="Self.fk_order_has_ingredient_ingredient1" FromRole="OrdreLine" ToRole="Ingredient" />
+          <NavigationProperty Name="Order" Relationship="Self.fk_order_has_ingredient_order1" FromRole="OrdreLine" ToRole="Order" />
         </EntityType>
-        <EntityType Name="phone">
+        <EntityType Name="Phone">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="countryprefix" Type="Int32" />
           <Property Name="phonenumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="employees" Relationship="Self.fk_ansatt_telefon1" FromRole="phone" ToRole="employee" />
+          <NavigationProperty Name="Employees" Relationship="Self.fk_ansatt_telefon1" FromRole="Phone" ToRole="Employee" />
         </EntityType>
-        <EntityType Name="role">
+        <EntityType Name="RecipeLine">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cakeId" Type="Int32" Nullable="false" />
+          <Property Name="ingredientId" Type="Int32" Nullable="false" />
+          <Property Name="amount" Type="Single" />
+          <NavigationProperty Name="Cake" Relationship="Self.fk_cake_has_ingredient_cake1" FromRole="RecipeLine" ToRole="Cake" />
+          <NavigationProperty Name="Ingredient" Relationship="Self.fk_cake_has_ingredient_ingredient1" FromRole="RecipeLine" ToRole="Ingredient" />
+        </EntityType>
+        <EntityType Name="Role">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="employees" Relationship="Self.employee_has_roles" FromRole="role" ToRole="employee" />
+          <NavigationProperty Name="Employees" Relationship="Self.EmployeeRoles" FromRole="Role" ToRole="Employee" />
         </EntityType>
-        <EntityType Name="subscription">
+        <EntityType Name="Subscription">
           <Key>
             <PropertyRef Name="id" />
           </Key>
@@ -825,357 +826,357 @@
           <Property Name="created" Type="DateTime" />
           <Property Name="modified" Type="DateTime" />
           <Property Name="orderid" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="frequencyType" Relationship="Self.fk_subscription_frequencyType1" FromRole="subscription" ToRole="frequencyType" />
-          <NavigationProperty Name="order" Relationship="Self.fk_subscription_order1" FromRole="subscription" ToRole="order" />
+          <NavigationProperty Name="FrequencyType" Relationship="Self.fk_subscription_frequencyType1" FromRole="Subscription" ToRole="FrequencyType" />
+          <NavigationProperty Name="Order" Relationship="Self.fk_subscription_order1" FromRole="Subscription" ToRole="Order" />
         </EntityType>
-        <EntityType Name="unit">
+        <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="ingredients" Relationship="Self.fk_ingrediens_enhet1" FromRole="unit" ToRole="ingredient" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.fk_ingrediens_enhet1" FromRole="Unit" ToRole="Ingredient" />
         </EntityType>
-        <EntityType Name="zip">
+        <EntityType Name="Zip">
           <Key>
             <PropertyRef Name="zip1" />
           </Key>
           <Property Name="zip1" Type="Int32" Nullable="false" />
           <Property Name="city" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="addresses" Relationship="Self.fk_address_zip1" FromRole="zip" ToRole="address" />
+          <NavigationProperty Name="Addresses" Relationship="Self.fk_address_zip1" FromRole="Zip" ToRole="Address" />
         </EntityType>
         <Association Name="fk_address_zip1">
-          <End Role="zip" Type="Self.zip" Multiplicity="1" />
-          <End Role="address" Type="Self.address" Multiplicity="*" />
+          <End Role="Zip" Type="Self.Zip" Multiplicity="1" />
+          <End Role="Address" Type="Self.Address" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="zip">
+            <Principal Role="Zip">
               <PropertyRef Name="zip1" />
             </Principal>
-            <Dependent Role="address">
+            <Dependent Role="Address">
               <PropertyRef Name="zip" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_customer_address1">
-          <End Role="address" Type="Self.address" Multiplicity="1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="address">
+            <Principal Role="Address">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="customer">
+            <Dependent Role="Customer">
               <PropertyRef Name="addressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_employee_address1">
-          <End Role="address" Type="Self.address" Multiplicity="1" />
-          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="address">
+            <Principal Role="Address">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="employee">
+            <Dependent Role="Employee">
               <PropertyRef Name="addressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_address1">
-          <End Role="address" Type="Self.address" Multiplicity="1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <End Role="Address" Type="Self.Address" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="address">
+            <Principal Role="Address">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="deliveryAddressId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_batch_ingrediens1">
-          <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
-          <End Role="batch" Type="Self.batch" Multiplicity="*" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="Batch" Type="Self.Batch" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="batch">
+            <Dependent Role="Batch">
               <PropertyRef Name="ingredientId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_cake_has_ingredient_cake1">
-          <End Role="cake" Type="Self.cake" Multiplicity="1" />
-          <End Role="cake_has_ingredient" Type="Self.cake_has_ingredient" Multiplicity="*" />
+          <End Role="Cake" Type="Self.Cake" Multiplicity="1" />
+          <End Role="RecipeLine" Type="Self.RecipeLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="cake">
+            <Principal Role="Cake">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="cake_has_ingredient">
+            <Dependent Role="RecipeLine">
               <PropertyRef Name="cakeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_cake_has_ingredient_ingredient1">
-          <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
-          <End Role="cake_has_ingredient" Type="Self.cake_has_ingredient" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ingredient">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="cake_has_ingredient">
-              <PropertyRef Name="ingredientId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_kunde_kundeType1">
-          <End Role="customerType" Type="Self.customerType" Multiplicity="1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="CustomerType" Type="Self.CustomerType" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="customerType">
+            <Principal Role="CustomerType">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="customer">
+            <Dependent Role="Customer">
               <PropertyRef Name="customerTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_kunde_rabattPlan1">
-          <End Role="discountPlan" Type="Self.discountPlan" Multiplicity="1" />
-          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <End Role="DiscountPlan" Type="Self.DiscountPlan" Multiplicity="1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="discountPlan">
+            <Principal Role="DiscountPlan">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="customer">
+            <Dependent Role="Customer">
               <PropertyRef Name="discountPlanId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ordre_kunde1">
-          <End Role="customer" Type="Self.customer" Multiplicity="1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="customer">
+            <Principal Role="Customer">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="customerId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ordre_leveringsMetode1">
-          <End Role="deliveryMethod" Type="Self.deliveryMethod" Multiplicity="1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <End Role="DeliveryMethod" Type="Self.DeliveryMethod" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="deliveryMethod">
+            <Principal Role="DeliveryMethod">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="deliveryMethodId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ansatt_telefon1">
-          <End Role="phone" Type="Self.phone" Multiplicity="1" />
-          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <End Role="Phone" Type="Self.Phone" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="phone">
+            <Principal Role="Phone">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="employee">
+            <Dependent Role="Employee">
               <PropertyRef Name="phoneId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ordre_ansatt1">
-          <End Role="employee" Type="Self.employee" Multiplicity="1" />
-          <End Role="order" Type="Self.order" Multiplicity="*" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Order" Type="Self.Order" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="employee">
+            <Principal Role="Employee">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order">
+            <Dependent Role="Order">
               <PropertyRef Name="employeeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_subscription_frequencyType1">
-          <End Role="frequencyType" Type="Self.frequencyType" Multiplicity="1" />
-          <End Role="subscription" Type="Self.subscription" Multiplicity="*" />
+          <End Role="FrequencyType" Type="Self.FrequencyType" Multiplicity="1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="frequencyType">
+            <Principal Role="FrequencyType">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="subscription">
+            <Dependent Role="Subscription">
               <PropertyRef Name="frequencyTypeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="fk_ingrediens_enhet1">
-          <End Role="unit" Type="Self.unit" Multiplicity="1" />
-          <End Role="ingredient" Type="Self.ingredient" Multiplicity="*" />
+        <Association Name="fk_cake_has_ingredient_ingredient1">
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="RecipeLine" Type="Self.RecipeLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="unit">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="ingredient">
+            <Dependent Role="RecipeLine">
+              <PropertyRef Name="ingredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_ingrediens_enhet1">
+          <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ingredient">
               <PropertyRef Name="unitId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_ingrediensPris_ingrediens1">
-          <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
-          <End Role="ingredientPrice" Type="Self.ingredientPrice" Multiplicity="*" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="IngredientPrice" Type="Self.IngredientPrice" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="ingredientPrice">
+            <Dependent Role="IngredientPrice">
               <PropertyRef Name="id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_has_ingredient_ingredient1">
-          <End Role="ingredient" Type="Self.ingredient" Multiplicity="1" />
-          <End Role="order_has_ingredient" Type="Self.order_has_ingredient" Multiplicity="*" />
+          <End Role="Ingredient" Type="Self.Ingredient" Multiplicity="1" />
+          <End Role="OrdreLine" Type="Model.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="ingredient">
+            <Principal Role="Ingredient">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order_has_ingredient">
+            <Dependent Role="OrdreLine">
               <PropertyRef Name="ingredient_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_order_has_ingredient_order1">
-          <End Role="order" Type="Self.order" Multiplicity="1" />
-          <End Role="order_has_ingredient" Type="Self.order_has_ingredient" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="OrdreLine" Type="Model.OrderLine" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="Order">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="order_has_ingredient">
+            <Dependent Role="OrdreLine">
               <PropertyRef Name="order_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="fk_subscription_order1">
-          <End Role="order" Type="Self.order" Multiplicity="1" />
-          <End Role="subscription" Type="Self.subscription" Multiplicity="*" />
+          <End Role="Order" Type="Self.Order" Multiplicity="1" />
+          <End Role="Subscription" Type="Self.Subscription" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="order">
+            <Principal Role="Order">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="subscription">
+            <Dependent Role="Subscription">
               <PropertyRef Name="orderid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="employee_has_roles">
-          <End Role="employee" Type="Self.employee" Multiplicity="*" />
-          <End Role="role" Type="Self.role" Multiplicity="*" />
+        <Association Name="EmployeeRoles">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Role" Type="Self.Role" Multiplicity="*" />
         </Association>
         <EntityContainer Name="Db" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="addresses" EntityType="Self.address" />
-          <EntitySet Name="batches" EntityType="Self.batch" />
-          <EntitySet Name="cakes" EntityType="Self.cake" />
-          <EntitySet Name="cake_has_ingredient" EntityType="Self.cake_has_ingredient" />
-          <EntitySet Name="customers" EntityType="Self.customer" />
-          <EntitySet Name="customerTypes" EntityType="Self.customerType" />
-          <EntitySet Name="deliveryMethods" EntityType="Self.deliveryMethod" />
-          <EntitySet Name="discountPlans" EntityType="Self.discountPlan" />
-          <EntitySet Name="employees" EntityType="Self.employee" />
-          <EntitySet Name="events" EntityType="Self.event" />
-          <EntitySet Name="frequencyTypes" EntityType="Self.frequencyType" />
-          <EntitySet Name="ingredients" EntityType="Self.ingredient" />
-          <EntitySet Name="ingredientPrices" EntityType="Self.ingredientPrice" />
-          <EntitySet Name="orders" EntityType="Self.order" />
-          <EntitySet Name="order_has_ingredient" EntityType="Self.order_has_ingredient" />
-          <EntitySet Name="phones" EntityType="Self.phone" />
-          <EntitySet Name="roles" EntityType="Self.role" />
-          <EntitySet Name="subscriptions" EntityType="Self.subscription" />
-          <EntitySet Name="units" EntityType="Self.unit" />
-          <EntitySet Name="zips" EntityType="Self.zip" />
+          <EntitySet Name="Addresses" EntityType="Self.Address" />
+          <EntitySet Name="Batches" EntityType="Self.Batch" />
+          <EntitySet Name="Cakes" EntityType="Self.Cake" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerTypes" EntityType="Self.CustomerType" />
+          <EntitySet Name="DeliveryMethods" EntityType="Self.DeliveryMethod" />
+          <EntitySet Name="DiscountPlans" EntityType="Self.DiscountPlan" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="SystemEvents" EntityType="Model.SystemEvent" />
+          <EntitySet Name="FrequencyTypes" EntityType="Self.FrequencyType" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredient" />
+          <EntitySet Name="IngredientPrices" EntityType="Self.IngredientPrice" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="OrderLines" EntityType="Model.OrderLine" />
+          <EntitySet Name="Phones" EntityType="Self.Phone" />
+          <EntitySet Name="RecipeLines" EntityType="Self.RecipeLine" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="Subscriptions" EntityType="Self.Subscription" />
+          <EntitySet Name="Units" EntityType="Self.Unit" />
+          <EntitySet Name="Zips" EntityType="Self.Zip" />
           <AssociationSet Name="fk_address_zip1" Association="Self.fk_address_zip1">
-            <End Role="zip" EntitySet="zips" />
-            <End Role="address" EntitySet="addresses" />
+            <End Role="Zip" EntitySet="Zips" />
+            <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
           <AssociationSet Name="fk_customer_address1" Association="Self.fk_customer_address1">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="customer" EntitySet="customers" />
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="fk_employee_address1" Association="Self.fk_employee_address1">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="employee" EntitySet="employees" />
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="fk_order_address1" Association="Self.fk_order_address1">
-            <End Role="address" EntitySet="addresses" />
-            <End Role="order" EntitySet="orders" />
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="fk_batch_ingrediens1" Association="Self.fk_batch_ingrediens1">
-            <End Role="ingredient" EntitySet="ingredients" />
-            <End Role="batch" EntitySet="batches" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="Batch" EntitySet="Batches" />
           </AssociationSet>
           <AssociationSet Name="fk_cake_has_ingredient_cake1" Association="Self.fk_cake_has_ingredient_cake1">
-            <End Role="cake" EntitySet="cakes" />
-            <End Role="cake_has_ingredient" EntitySet="cake_has_ingredient" />
-          </AssociationSet>
-          <AssociationSet Name="fk_cake_has_ingredient_ingredient1" Association="Self.fk_cake_has_ingredient_ingredient1">
-            <End Role="ingredient" EntitySet="ingredients" />
-            <End Role="cake_has_ingredient" EntitySet="cake_has_ingredient" />
+            <End Role="Cake" EntitySet="Cakes" />
+            <End Role="RecipeLine" EntitySet="RecipeLines" />
           </AssociationSet>
           <AssociationSet Name="fk_kunde_kundeType1" Association="Self.fk_kunde_kundeType1">
-            <End Role="customerType" EntitySet="customerTypes" />
-            <End Role="customer" EntitySet="customers" />
+            <End Role="CustomerType" EntitySet="CustomerTypes" />
+            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="fk_kunde_rabattPlan1" Association="Self.fk_kunde_rabattPlan1">
-            <End Role="discountPlan" EntitySet="discountPlans" />
-            <End Role="customer" EntitySet="customers" />
+            <End Role="DiscountPlan" EntitySet="DiscountPlans" />
+            <End Role="Customer" EntitySet="Customers" />
           </AssociationSet>
           <AssociationSet Name="fk_ordre_kunde1" Association="Self.fk_ordre_kunde1">
-            <End Role="customer" EntitySet="customers" />
-            <End Role="order" EntitySet="orders" />
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="fk_ordre_leveringsMetode1" Association="Self.fk_ordre_leveringsMetode1">
-            <End Role="deliveryMethod" EntitySet="deliveryMethods" />
-            <End Role="order" EntitySet="orders" />
+            <End Role="DeliveryMethod" EntitySet="DeliveryMethods" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="fk_ansatt_telefon1" Association="Self.fk_ansatt_telefon1">
-            <End Role="phone" EntitySet="phones" />
-            <End Role="employee" EntitySet="employees" />
+            <End Role="Phone" EntitySet="Phones" />
+            <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
           <AssociationSet Name="fk_ordre_ansatt1" Association="Self.fk_ordre_ansatt1">
-            <End Role="employee" EntitySet="employees" />
-            <End Role="order" EntitySet="orders" />
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
           <AssociationSet Name="fk_subscription_frequencyType1" Association="Self.fk_subscription_frequencyType1">
-            <End Role="frequencyType" EntitySet="frequencyTypes" />
-            <End Role="subscription" EntitySet="subscriptions" />
+            <End Role="FrequencyType" EntitySet="FrequencyTypes" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
+          </AssociationSet>
+          <AssociationSet Name="fk_cake_has_ingredient_ingredient1" Association="Self.fk_cake_has_ingredient_ingredient1">
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="RecipeLine" EntitySet="RecipeLines" />
           </AssociationSet>
           <AssociationSet Name="fk_ingrediens_enhet1" Association="Self.fk_ingrediens_enhet1">
-            <End Role="unit" EntitySet="units" />
-            <End Role="ingredient" EntitySet="ingredients" />
+            <End Role="Unit" EntitySet="Units" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
           </AssociationSet>
           <AssociationSet Name="fk_ingrediensPris_ingrediens1" Association="Self.fk_ingrediensPris_ingrediens1">
-            <End Role="ingredient" EntitySet="ingredients" />
-            <End Role="ingredientPrice" EntitySet="ingredientPrices" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="IngredientPrice" EntitySet="IngredientPrices" />
           </AssociationSet>
           <AssociationSet Name="fk_order_has_ingredient_ingredient1" Association="Self.fk_order_has_ingredient_ingredient1">
-            <End Role="ingredient" EntitySet="ingredients" />
-            <End Role="order_has_ingredient" EntitySet="order_has_ingredient" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="OrdreLine" EntitySet="OrderLines" />
           </AssociationSet>
           <AssociationSet Name="fk_order_has_ingredient_order1" Association="Self.fk_order_has_ingredient_order1">
-            <End Role="order" EntitySet="orders" />
-            <End Role="order_has_ingredient" EntitySet="order_has_ingredient" />
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrdreLine" EntitySet="OrderLines" />
           </AssociationSet>
           <AssociationSet Name="fk_subscription_order1" Association="Self.fk_subscription_order1">
-            <End Role="order" EntitySet="orders" />
-            <End Role="subscription" EntitySet="subscriptions" />
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Subscription" EntitySet="Subscriptions" />
           </AssociationSet>
-          <AssociationSet Name="employee_has_roles" Association="Self.employee_has_roles">
-            <End Role="employee" EntitySet="employees" />
-            <End Role="role" EntitySet="roles" />
+          <AssociationSet Name="EmployeeRoles" Association="Self.EmployeeRoles">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Role" EntitySet="Roles" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -1184,9 +1185,9 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Db">
-          <EntitySetMapping Name="addresses">
-            <EntityTypeMapping TypeName="Model.address">
-              <MappingFragment StoreEntitySet="address">
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="Model.Address">
+              <MappingFragment StoreEntitySet="Address">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1196,13 +1197,13 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="batches">
-            <EntityTypeMapping TypeName="Model.batch">
-              <MappingFragment StoreEntitySet="batch">
-                <ScalarProperty Name="expected" ColumnName="expected" />
+          <EntitySetMapping Name="Batches">
+            <EntityTypeMapping TypeName="Model.Batch">
+              <MappingFragment StoreEntitySet="Batch">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ordered" ColumnName="ordered" />
                 <ScalarProperty Name="registered" ColumnName="registered" />
+                <ScalarProperty Name="expected" ColumnName="expected" />
                 <ScalarProperty Name="expires" ColumnName="expires" />
                 <ScalarProperty Name="unitCount" ColumnName="unitCount" />
                 <ScalarProperty Name="unitPurchasingPrice" ColumnName="unitPurchasingPrice" />
@@ -1213,9 +1214,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cakes">
-            <EntityTypeMapping TypeName="Model.cake">
-              <MappingFragment StoreEntitySet="cake">
+          <EntitySetMapping Name="Cakes">
+            <EntityTypeMapping TypeName="Model.Cake">
+              <MappingFragment StoreEntitySet="Cake">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="recipe" ColumnName="recipe" />
@@ -1225,19 +1226,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="cake_has_ingredient">
-            <EntityTypeMapping TypeName="Model.cake_has_ingredient">
-              <MappingFragment StoreEntitySet="cake_has_ingredient">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="cakeId" ColumnName="cakeId" />
-                <ScalarProperty Name="ingredientId" ColumnName="ingredientId" />
-                <ScalarProperty Name="amount" ColumnName="amount" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="customers">
-            <EntityTypeMapping TypeName="Model.customer">
-              <MappingFragment StoreEntitySet="customer">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -1252,17 +1243,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="customerTypes">
-            <EntityTypeMapping TypeName="Model.customerType">
-              <MappingFragment StoreEntitySet="customerType">
+          <EntitySetMapping Name="CustomerTypes">
+            <EntityTypeMapping TypeName="Model.CustomerType">
+              <MappingFragment StoreEntitySet="CustomerType">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="deliveryMethods">
-            <EntityTypeMapping TypeName="Model.deliveryMethod">
-              <MappingFragment StoreEntitySet="deliveryMethod">
+          <EntitySetMapping Name="DeliveryMethods">
+            <EntityTypeMapping TypeName="Model.DeliveryMethod">
+              <MappingFragment StoreEntitySet="DeliveryMethod">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="price" ColumnName="price" />
@@ -1270,18 +1261,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="discountPlans">
-            <EntityTypeMapping TypeName="Model.discountPlan">
-              <MappingFragment StoreEntitySet="discountPlan">
+          <EntitySetMapping Name="DiscountPlans">
+            <EntityTypeMapping TypeName="Model.DiscountPlan">
+              <MappingFragment StoreEntitySet="DiscountPlan">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="percentage" ColumnName="percentage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="employees">
-            <EntityTypeMapping TypeName="Model.employee">
-              <MappingFragment StoreEntitySet="employee">
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="Model.Employee">
+              <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="phoneId" ColumnName="phoneId" />
@@ -1291,9 +1282,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="events">
-            <EntityTypeMapping TypeName="Model.event">
-              <MappingFragment StoreEntitySet="events">
+          <EntitySetMapping Name="SystemEvents">
+            <EntityTypeMapping TypeName="Model.SystemEvent">
+              <MappingFragment StoreEntitySet="Event">
                 <ScalarProperty Name="eventsId" ColumnName="eventsId" />
                 <ScalarProperty Name="eventName" ColumnName="eventName" />
                 <ScalarProperty Name="eventTime" ColumnName="eventTime" />
@@ -1302,9 +1293,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="frequencyTypes">
-            <EntityTypeMapping TypeName="Model.frequencyType">
-              <MappingFragment StoreEntitySet="frequencyType">
+          <EntitySetMapping Name="FrequencyTypes">
+            <EntityTypeMapping TypeName="Model.FrequencyType">
+              <MappingFragment StoreEntitySet="FrequencyType">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="intervalDays" ColumnName="intervalDays" />
@@ -1312,9 +1303,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ingredients">
-            <EntityTypeMapping TypeName="Model.ingredient">
-              <MappingFragment StoreEntitySet="ingredient">
+          <EntitySetMapping Name="Ingredients">
+            <EntityTypeMapping TypeName="Model.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredient">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -1325,18 +1316,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="ingredientPrices">
-            <EntityTypeMapping TypeName="Model.ingredientPrice">
-              <MappingFragment StoreEntitySet="ingredientPrice">
+          <EntitySetMapping Name="IngredientPrices">
+            <EntityTypeMapping TypeName="Model.IngredientPrice">
+              <MappingFragment StoreEntitySet="IngredientPrice">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="markUpPercentage" ColumnName="markUpPercentage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="orders">
-            <EntityTypeMapping TypeName="Model.order">
-              <MappingFragment StoreEntitySet="order">
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="Model.Order">
+              <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="customerId" ColumnName="customerId" />
                 <ScalarProperty Name="deliveryAddressId" ColumnName="deliveryAddressId" />
@@ -1358,9 +1349,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="order_has_ingredient">
-            <EntityTypeMapping TypeName="Model.order_has_ingredient">
-              <MappingFragment StoreEntitySet="order_has_ingredient">
+          <EntitySetMapping Name="OrderLines">
+            <EntityTypeMapping TypeName="Model.OrderLine">
+              <MappingFragment StoreEntitySet="OrdreLine">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="order_id" ColumnName="order_id" />
                 <ScalarProperty Name="ingredient_id" ColumnName="ingredient_id" />
@@ -1369,26 +1360,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="phones">
-            <EntityTypeMapping TypeName="Model.phone">
-              <MappingFragment StoreEntitySet="phone">
+          <EntitySetMapping Name="Phones">
+            <EntityTypeMapping TypeName="Model.Phone">
+              <MappingFragment StoreEntitySet="Phone">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="countryprefix" ColumnName="countryprefix" />
                 <ScalarProperty Name="phonenumber" ColumnName="phonenumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="roles">
-            <EntityTypeMapping TypeName="Model.role">
-              <MappingFragment StoreEntitySet="role">
+          <EntitySetMapping Name="RecipeLines">
+            <EntityTypeMapping TypeName="Model.RecipeLine">
+              <MappingFragment StoreEntitySet="RecipeLine">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cakeId" ColumnName="cakeId" />
+                <ScalarProperty Name="ingredientId" ColumnName="ingredientId" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="Model.Role">
+              <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="subscriptions">
-            <EntityTypeMapping TypeName="Model.subscription">
-              <MappingFragment StoreEntitySet="subscription">
+          <EntitySetMapping Name="Subscriptions">
+            <EntityTypeMapping TypeName="Model.Subscription">
+              <MappingFragment StoreEntitySet="Subscription">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="isActive" ColumnName="isActive" />
                 <ScalarProperty Name="frequencyTypeId" ColumnName="frequencyTypeId" />
@@ -1401,27 +1402,27 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="units">
-            <EntityTypeMapping TypeName="Model.unit">
-              <MappingFragment StoreEntitySet="unit">
+          <EntitySetMapping Name="Units">
+            <EntityTypeMapping TypeName="Model.Unit">
+              <MappingFragment StoreEntitySet="Unit">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="zips">
-            <EntityTypeMapping TypeName="Model.zip">
-              <MappingFragment StoreEntitySet="zip">
+          <EntitySetMapping Name="Zips">
+            <EntityTypeMapping TypeName="Model.Zip">
+              <MappingFragment StoreEntitySet="Zip">
                 <ScalarProperty Name="zip1" ColumnName="zip" />
                 <ScalarProperty Name="city" ColumnName="city" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="employee_has_roles" TypeName="Model.employee_has_roles" StoreEntitySet="employee_has_roles">
-            <EndProperty Name="employee">
+          <AssociationSetMapping Name="EmployeeRoles" TypeName="Model.EmployeeRoles" StoreEntitySet="EmployeeRoles">
+            <EndProperty Name="Employee">
               <ScalarProperty Name="id" ColumnName="employeeId" />
             </EndProperty>
-            <EndProperty Name="role">
+            <EndProperty Name="Role">
               <ScalarProperty Name="id" ColumnName="roleId" />
             </EndProperty>
           </AssociationSetMapping>

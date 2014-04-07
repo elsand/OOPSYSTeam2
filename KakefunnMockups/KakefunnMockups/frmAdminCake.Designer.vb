@@ -258,7 +258,7 @@ Partial Class frmAdminCakes
         '
         'CakeBindingSource
         '
-        Me.CakeBindingSource.DataSource = GetType(Kakefunn.cake)
+        Me.CakeBindingSource.DataSource = GetType(Kakefunn.Cake)
         '
         'lblFilterCake
         '

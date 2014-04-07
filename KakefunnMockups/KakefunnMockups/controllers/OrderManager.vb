@@ -17,7 +17,7 @@
     ''' </summary>
     ''' <returns>the order</returns>
     ''' <remarks></remarks>
-    Public Shared Function createOrder(ByVal ingedients As ingredient(), ByVal deliveryMethod As deliveryMethod, ByVal customer As customer)
+    Public Shared Function createOrder(ByVal ingedients As Ingredient(), ByVal deliveryMethod As deliveryMethod, ByVal customer As Customer)
         Dim o As New order
         o.customer = customer
         o.deliveryMethod = deliveryMethod

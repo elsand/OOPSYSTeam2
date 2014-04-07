@@ -1,7 +1,7 @@
 ﻿Public Class frmAdminSystemAdministration
 
     Private IsNewRecord As Boolean = True
-    Private currentRecord As employee
+    Private currentRecord As Employee
     Private IsDirty As Boolean = False
 
     Protected Overrides Sub OnFormGetsForeground()
@@ -31,7 +31,7 @@
 
     Private Sub UpdateEmployeeDDL()
         With ddlEmployees
-            .DataSource = DBM.Instance.employees.ToList()
+            .DataSource = DBM.Instance.Employees.ToList()
             .DisplayMember = "name"
             .ValueMember = "id"
         End With
@@ -45,7 +45,7 @@
         End If
 
         Integer.TryParse(txtZip.Text, z)
-        Dim theCity = (From x As zip In DBM.Instance.zips Where x.zip1 = z Select x.city).FirstOrDefault()
+        Dim theCity = (From x As Zip In DBM.Instance.Zips Where x.zip1 = z Select x.city).FirstOrDefault()
         If theCity Is Nothing Then
             theCity = "UGYLDIG"
         End If
@@ -60,7 +60,7 @@
 
         UpdateActionStatus("Laster oppføring ...")
 
-        Dim em As employee = DirectCast(ddlEmployees.SelectedItem, employee)
+        Dim em As Employee = DirectCast(ddlEmployees.SelectedItem, Employee)
 
         txtName.Text = em.name
         txtEmail.Text = em.email
@@ -106,9 +106,9 @@
             Exit Sub
         End If
 
-        Dim em As employee
+        Dim em As Employee
         If IsNewRecord Then
-            em = New employee()
+            em = New Employee()
         Else
             em = currentRecord
         End If
@@ -124,21 +124,21 @@
         em.phone = PhoneHelper.GetPhone(txtPhone.Text)
 
         If cbAdmin.Checked Then
-            em.roles.Add(DBM.Instance.roles.Where(Function(x) x.name = "Admin").FirstOrDefault())
+            em.roles.Add(DBM.Instance.Roles.Where(Function(x) x.name = "Admin").FirstOrDefault())
         End If
 
         If cbSale.Checked Then
-            em.roles.Add(DBM.Instance.roles.Where(Function(x) x.name = "Sale").FirstOrDefault())
+            em.roles.Add(DBM.Instance.Roles.Where(Function(x) x.name = "Sale").FirstOrDefault())
         End If
 
         If cbLogistics.Checked Then
-            em.roles.Add(DBM.Instance.roles.Where(Function(x) x.name = "Logistics").FirstOrDefault())
+            em.roles.Add(DBM.Instance.Roles.Where(Function(x) x.name = "Logistics").FirstOrDefault())
         End If
 
         UpdateActionStatus("Lagrer ...")
         Try
             If IsNewRecord Then
-                DBM.Instance.employees.Add(em)
+                DBM.Instance.Employees.Add(em)
             End If
             DBM.Instance.SaveChanges()
         Catch ex As Entity.Validation.DbEntityValidationException

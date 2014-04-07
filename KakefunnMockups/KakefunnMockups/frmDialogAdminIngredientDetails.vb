@@ -3,13 +3,13 @@
     Private pub As Boolean = False
     Public newIngr As Boolean
     Public varenr As Integer
-    Private existingItem As ingredient
+    Private existingItem As Ingredient
     Private IsDirty As Boolean = False
 
     Private Sub ddlUnitsLoad()
         'Populating combobox with unit types.
-        Dim query = From x In DBM.Instance.units Select x
-        Dim unitType As unit
+        Dim query = From x In DBM.Instance.Units Select x
+        Dim unitType As Unit
         For Each unitType In query
             ddlUnitType.Items.Add(unitType.name)
         Next
@@ -21,7 +21,7 @@
         'Filling form with information for the selected ingredient
         If Not newIngr Then
             Me.Text = "Redigerer detaljer for varenummer " & varenr
-            existingItem = DBM.Instance.ingredients.Find(varenr)
+            existingItem = DBM.Instance.Ingredients.Find(varenr)
             txtName.Text = existingItem.name
             txtDescr.Text = existingItem.description
             ddlUnitType.Text = existingItem.unit.name
@@ -45,12 +45,12 @@
                 pub = False
             End If
 
-            Dim batchQuery = (From x In DBM.Instance.batches _
+            Dim batchQuery = (From x In DBM.Instance.Batches _
                               Select x).ToList()
 
             lblNumInStockValue.Text = StockManager.getInStock(varenr, batchQuery)
 
-            Dim batches = From x In DBM.Instance.batches Where x.ingredientId = varenr Select x
+            Dim batches = From x In DBM.Instance.Batches Where x.ingredientId = varenr Select x
             dtgBatches.Rows.Clear()
             For Each row In batches
                 dtgBatches.Rows.Add(row.id, row.expires, row.unitCount, row.unitPurchasingPrice, (row.unitPurchasingPrice * factorProfit))
@@ -62,11 +62,11 @@
 
     Private Sub saveIngredient()
         Dim ingredientIndex As Integer
-        Dim i As ingredient
+        Dim i As Ingredient
 
         'Deklaring i as a new ingredient, or equal to a selected ingredient.
         If newIngr Then
-            i = New ingredient()
+            i = New Ingredient()
         Else
             i = existingItem
         End If
@@ -76,9 +76,9 @@
 
         'Checking if unit already exists in db and adds it if not.
         'Skal vi velge ut noen måleenheter og ha en forhåndsdefinert liste her?
-        Dim u As unit = (From data In DBM.Instance.units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
+        Dim u As Unit = (From data In DBM.Instance.Units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
         If u Is Nothing Then
-            u = New unit() With {.name = ddlUnitType.Text}
+            u = New Unit() With {.name = ddlUnitType.Text}
         End If
 
         i.unit = u
@@ -89,7 +89,7 @@
         'Adds ingredient if it's new, saves changes to existing ingredient
         Try
             If newIngr Then
-                DBM.Instance.ingredients.Add(i)
+                DBM.Instance.Ingredients.Add(i)
             End If
             DBM.Instance.SaveChanges()
         Catch ex As Entity.Validation.DbEntityValidationException
@@ -97,7 +97,7 @@
         End Try
 
         'Finds the ingredient index/varenr in the db.
-        Dim iFind As ingredient = (From data In DBM.Instance.ingredients Where data.name = txtName.Text Select data).FirstOrDefault
+        Dim iFind As Ingredient = (From data In DBM.Instance.Ingredients Where data.name = txtName.Text Select data).FirstOrDefault
         ingredientIndex = iFind.id
 
         'Creates a new entry for ingredient prise, pk = id+date
@@ -130,7 +130,7 @@
         End Try
 
         newIngr = False
-        varenr = (From x In DBM.Instance.ingredients _
+        varenr = (From x In DBM.Instance.Ingredients _
                  Where x.name = txtName.Text _
                  Select x.id).FirstOrDefault()
         IsDirty = False

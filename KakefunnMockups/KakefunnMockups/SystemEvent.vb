@@ -10,13 +10,11 @@
 Imports System
 Imports System.Collections.Generic
 
-Partial Public Class cake_has_ingredient
-    Public Property id As Integer
-    Public Property cakeId As Integer
-    Public Property ingredientId As Integer
-    Public Property amount As Nullable(Of Single)
-
-    Public Overridable Property cake As cake
-    Public Overridable Property ingredient As ingredient
+Partial Public Class SystemEvent
+    Public Property eventsId As Integer
+    Public Property eventName As String
+    Public Property eventTime As Date
+    Public Property employeeId As Integer
+    Public Property eventData As String
 
 End Class

@@ -7,11 +7,11 @@
     ''' <remarks></remarks>
 
 
-    Public Shared Function findCustomer(ByVal customerId As Integer) As customer
-        Return DBM.Instance.customers.Find(customerId)
+    Public Shared Function findCustomer(ByVal customerId As Integer) As Customer
+        Return DBM.Instance.Customers.Find(customerId)
     End Function
 
-    Public Shared Function findCustomer(ByVal customerName As String) As customer
-        Return DBM.Instance.customers.Where(Function(c) c.name = customerName).FirstOrDefault()
+    Public Shared Function findCustomer(ByVal customerName As String) As Customer
+        Return DBM.Instance.Customers.Where(Function(c) c.name = customerName).FirstOrDefault()
     End Function
 End Class
