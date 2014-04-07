@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class frmAdminCake
+Partial Class frmAdminCakes
     Inherits Kakefunn.frmAdminBase
 
     'Form overrides dispose to clean up the component list.
@@ -20,7 +20,7 @@ Partial Class frmAdminCake
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdminCake))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmAdminCakes))
         Me.lstAvailableIngredients = New System.Windows.Forms.ListBox()
         Me.btnAddIngredients = New System.Windows.Forms.Button()
         Me.btnRemoveIngredients = New System.Windows.Forms.Button()
@@ -60,7 +60,10 @@ Partial Class frmAdminCake
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.markupPercentage = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MarkupPercentageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PublishedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RecipeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeletedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CakeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -245,12 +248,12 @@ Partial Class frmAdminCake
         Me.dtgCake.AutoGenerateColumns = False
         Me.dtgCake.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgCake.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgCake.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.price, Me.markupPercentage})
+        Me.dtgCake.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.price, Me.MarkupPercentageDataGridViewTextBoxColumn, Me.PublishedDataGridViewTextBoxColumn, Me.RecipeDataGridViewTextBoxColumn, Me.DeletedDataGridViewTextBoxColumn})
         Me.dtgCake.DataSource = Me.CakeBindingSource
         Me.dtgCake.Location = New System.Drawing.Point(12, 91)
         Me.dtgCake.Name = "dtgCake"
         Me.dtgCake.RowHeadersVisible = False
-        Me.dtgCake.Size = New System.Drawing.Size(511, 457)
+        Me.dtgCake.Size = New System.Drawing.Size(522, 457)
         Me.dtgCake.TabIndex = 23
         '
         'CakeBindingSource
@@ -413,14 +416,34 @@ Partial Class frmAdminCake
         Me.price.HeaderText = "Pris"
         Me.price.Name = "price"
         '
-        'markupPercentage
+        'MarkupPercentageDataGridViewTextBoxColumn
         '
-        Me.markupPercentage.DataPropertyName = "markupPercentage"
-        Me.markupPercentage.HeaderText = "markupPercentage"
-        Me.markupPercentage.Name = "markupPercentage"
-        Me.markupPercentage.Visible = False
+        Me.MarkupPercentageDataGridViewTextBoxColumn.DataPropertyName = "markupPercentage"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.HeaderText = "markupPercentage"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.Name = "MarkupPercentageDataGridViewTextBoxColumn"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.Visible = False
         '
-        'frmAdminCake
+        'PublishedDataGridViewTextBoxColumn
+        '
+        Me.PublishedDataGridViewTextBoxColumn.DataPropertyName = "published"
+        Me.PublishedDataGridViewTextBoxColumn.HeaderText = "Publisert"
+        Me.PublishedDataGridViewTextBoxColumn.Name = "PublishedDataGridViewTextBoxColumn"
+        '
+        'RecipeDataGridViewTextBoxColumn
+        '
+        Me.RecipeDataGridViewTextBoxColumn.DataPropertyName = "recipe"
+        Me.RecipeDataGridViewTextBoxColumn.HeaderText = "recipe"
+        Me.RecipeDataGridViewTextBoxColumn.Name = "RecipeDataGridViewTextBoxColumn"
+        Me.RecipeDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeletedDataGridViewTextBoxColumn
+        '
+        Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
+        Me.DeletedDataGridViewTextBoxColumn.Visible = False
+        '
+        'frmAdminCakes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(909, 603)
@@ -439,7 +462,7 @@ Partial Class frmAdminCake
         Me.Controls.Add(Me.grpIngredients)
         Me.Controls.Add(Me.lblProcedure)
         Me.Controls.Add(Me.txtProcedure)
-        Me.Name = "frmAdminCake"
+        Me.Name = "frmAdminCakes"
         Me.Text = "Kaker"
         Me.Controls.SetChildIndex(Me.txtProcedure, 0)
         Me.Controls.SetChildIndex(Me.lblProcedure, 0)
@@ -506,6 +529,9 @@ Partial Class frmAdminCake
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents price As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents markupPercentage As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MarkupPercentageDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents PublishedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents RecipeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeletedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class
