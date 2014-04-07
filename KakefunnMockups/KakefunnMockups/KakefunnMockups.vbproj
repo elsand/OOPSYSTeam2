@@ -147,9 +147,6 @@
     <Compile Include="Employee.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Event.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="FrequencyType.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -314,7 +311,7 @@
     <Compile Include="Order.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrdreLine.vb">
+    <Compile Include="OrderLine.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Phone.vb">
@@ -327,6 +324,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Subscription.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SystemEvent.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Unit.vb">
