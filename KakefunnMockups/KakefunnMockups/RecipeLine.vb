@@ -12,8 +12,6 @@ Imports System.Collections.Generic
 
 Partial Public Class RecipeLine
     Public Property id As Integer
-    Public Property cakeId As Integer
-    Public Property ingredientId As Integer
     Public Property amount As Nullable(Of Single)
 
     Public Overridable Property Cake As Cake

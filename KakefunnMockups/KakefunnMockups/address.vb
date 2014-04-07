@@ -16,9 +16,8 @@ Partial Public Class Address
     Public Property name As String
     Public Property careOf As String
     Public Property address1 As String
-    Public Property zip As Integer
 
-    Public Overridable Property Zip1 As Zip
+    Public Overridable Property Zip As Zip
     Public Overridable Property Customers As ObservableListSource(Of Customer) = New ObservableListSource(Of Customer)
     Public Overridable Property Employees As ObservableListSource(Of Employee) = New ObservableListSource(Of Employee)
     Public Overridable Property Orders As ObservableListSource(Of Order) = New ObservableListSource(Of Order)

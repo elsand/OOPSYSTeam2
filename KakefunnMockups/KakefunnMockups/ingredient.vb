@@ -16,13 +16,12 @@ Partial Public Class Ingredient
     Public Property description As String
     Public Property kilocaloriesPerUnit As Double
     Public Property vat As Integer
-    Public Property unitId As Integer
     Public Property published As Nullable(Of Boolean)
 
     Public Overridable Property Batches As ObservableListSource(Of Batch) = New ObservableListSource(Of Batch)
     Public Overridable Property RecipeLines As ObservableListSource(Of RecipeLine) = New ObservableListSource(Of RecipeLine)
     Public Overridable Property Unit As Unit
     Public Overridable Property IngredientPrices As ObservableListSource(Of IngredientPrice) = New ObservableListSource(Of IngredientPrice)
-    Public Overridable Property OrdreLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
+    Public Overridable Property OrderLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
 
 End Class

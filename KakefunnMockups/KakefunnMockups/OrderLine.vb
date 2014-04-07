@@ -12,10 +12,8 @@ Imports System.Collections.Generic
 
 Partial Public Class OrderLine
     Public Property id As Integer
-    Public Property orderId As Integer
-    Public Property ingredientId As Integer
     Public Property amount As Double
-    Public Property totalPrice As Nullable(Of Decimal)
+    Public Property totalPrice As Decimal
     Public Property cakeId As Nullable(Of Integer)
 
     Public Overridable Property Ingredient As Ingredient

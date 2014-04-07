@@ -13,8 +13,6 @@ Imports System.Collections.Generic
 Partial Public Class Employee
     Public Property id As Integer
     Public Property name As String
-    Public Property phoneId As Integer
-    Public Property addressId As Integer
     Public Property email As String
     Public Property password As String
 

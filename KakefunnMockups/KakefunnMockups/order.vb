@@ -12,15 +12,11 @@ Imports System.Collections.Generic
 
 Partial Public Class Order
     Public Property id As Integer
-    Public Property customerId As Integer
-    Public Property deliveryAddressId As Integer
     Public Property deliveryPhone As String
     Public Property deliveryEmail As String
-    Public Property deliveryMethodId As Integer
-    Public Property employeeId As Integer
     Public Property subscriptionId As Nullable(Of Integer)
-    Public Property shippingPrice As String
-    Public Property discountPercentage As Nullable(Of Decimal)
+    Public Property shippingPrice As Decimal
+    Public Property discountPercentage As Nullable(Of Integer)
     Public Property discountAbsolute As Nullable(Of Decimal)
     Public Property note As String
     Public Property amountPayed As Decimal
@@ -35,7 +31,7 @@ Partial Public Class Order
     Public Overridable Property Customer As Customer
     Public Overridable Property DeliveryMethod As DeliveryMethod
     Public Overridable Property Employee As Employee
-    Public Overridable Property OrderLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
     Public Overridable Property Subscriptions As ObservableListSource(Of Subscription) = New ObservableListSource(Of Subscription)
+    Public Overridable Property OrderLines As ObservableListSource(Of OrderLine) = New ObservableListSource(Of OrderLine)
 
 End Class

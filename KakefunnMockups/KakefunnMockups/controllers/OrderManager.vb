@@ -21,7 +21,6 @@
         Dim o As New order
         o.customer = customer
         o.deliveryMethod = deliveryMethod
-        o.deliveryMethodId = deliveryMethod.id
 
 
         Return o

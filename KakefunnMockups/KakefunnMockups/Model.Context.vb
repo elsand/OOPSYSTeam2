@@ -30,7 +30,6 @@ Partial Public Class Db
     Public Overridable Property DeliveryMethods() As DbSet(Of DeliveryMethod)
     Public Overridable Property DiscountPlans() As DbSet(Of DiscountPlan)
     Public Overridable Property Employees() As DbSet(Of Employee)
-    Public Overridable Property SystemEvents() As DbSet(Of SystemEvent)
     Public Overridable Property FrequencyTypes() As DbSet(Of FrequencyType)
     Public Overridable Property Ingredients() As DbSet(Of Ingredient)
     Public Overridable Property IngredientPrices() As DbSet(Of IngredientPrice)
@@ -40,6 +39,7 @@ Partial Public Class Db
     Public Overridable Property RecipeLines() As DbSet(Of RecipeLine)
     Public Overridable Property Roles() As DbSet(Of Role)
     Public Overridable Property Subscriptions() As DbSet(Of Subscription)
+    Public Overridable Property SystemEvents() As DbSet(Of SystemEvent)
     Public Overridable Property Units() As DbSet(Of Unit)
     Public Overridable Property Zips() As DbSet(Of Zip)
 

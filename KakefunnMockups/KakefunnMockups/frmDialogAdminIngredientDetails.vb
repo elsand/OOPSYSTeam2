@@ -50,7 +50,7 @@
 
             lblNumInStockValue.Text = StockManager.getInStock(varenr, batchQuery)
 
-            Dim batches = From x In DBM.Instance.Batches Where x.ingredientId = varenr Select x
+            Dim batches = From x In DBM.Instance.Batches Where x.Ingredient.id = varenr Select x
             dtgBatches.Rows.Clear()
             For Each row In batches
                 dtgBatches.Rows.Add(row.id, row.expires, row.unitCount, row.unitPurchasingPrice, (row.unitPurchasingPrice * factorProfit))

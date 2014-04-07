@@ -38,12 +38,12 @@ Public Class frmAdminCakes
             Dim idx As Integer = CInt(dtgCake.Rows(i).Cells(0).Value)
             Dim cakeMarkUpFactor As Double = ((CDbl(dtgCake.Rows(i).Cells(3).Value)) / 100) + 1
             Dim ingList = (From x In DBM.Instance.RecipeLines _
-                           Where x.cakeId = idx _
-                           Select x.ingredientId, x.amount).ToList()
+                           Where x.Cake.id = idx _
+                           Select IngredientId = x.Ingredient.id, x.amount).ToList()
             For Each row In ingList
-                Dim purchasingPrice As Double = StockManager.getPurchasingPrice(row.ingredientId, "avg", batchQuery)
+                Dim purchasingPrice As Double = StockManager.getPurchasingPrice(row.IngredientId, "avg", batchQuery)
                 Dim ingMarkUp As Double = (From x In priceQuery _
-                                           Where x.id = row.ingredientId _
+                                           Where x.id = row.IngredientId _
                                            Order By x.date Descending _
                                            Select x.markUpPercentage).FirstOrDefault()
                 Dim ingMarkUpFactor As Double = (ingMarkUp / 100) + 1
@@ -207,28 +207,18 @@ Public Class frmAdminCakes
                 newCake.published = True
             End If
             Try
+                For Each row As DataRow In selList.Rows
+                    Dim cakeIng As RecipeLine = New RecipeLine()
+                    cakeIng.Ingredient = DBM.Instance.Ingredients.Find(CInt(row.Item("ID")))
+                    cakeIng.amount = CDbl(row.Item("Amount"))
+                    newCake.RecipeLines.Add(cakeIng)
+                Next
+
                 DBM.Instance.Cakes.Add(newCake)
                 DBM.Instance.SaveChanges()
             Catch ex As Entity.Validation.DbEntityValidationException
                 MsgBox(ex.ToString)
             End Try
-
-            Dim cakeID As Integer = (From x In DBM.Instance.Cakes _
-                                     Where x.name = txtNameCake.Text _
-                                     Select x.id).FirstOrDefault()
-
-            For Each row As DataRow In selList.Rows
-                Dim cakeIng As RecipeLine = New RecipeLine()
-                cakeIng.cakeId = cakeID
-                cakeIng.ingredientId = CInt(row.Item("ID"))
-                cakeIng.amount = CDbl(row.Item("Amount"))
-                Try
-                    DBM.Instance.RecipeLines.Add(cakeIng)
-                    DBM.Instance.SaveChanges()
-                Catch ex As Entity.Validation.DbEntityValidationException
-                    MsgBox(ex.ToString)
-                End Try
-            Next
             bindCake()
             loadPrices()
             showPriceArrays()

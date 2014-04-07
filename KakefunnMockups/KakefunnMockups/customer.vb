@@ -15,9 +15,6 @@ Partial Public Class Customer
     Public Property name As String
     Public Property phone As String
     Public Property email As String
-    Public Property addressId As Integer
-    Public Property customerTypeId As Integer
-    Public Property discountPlanId As Integer
     Public Property note As String
     Public Property created As Nullable(Of Date)
     Public Property modfied As Nullable(Of Date)

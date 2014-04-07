@@ -17,9 +17,9 @@
 
     Private Shared Function _GetAddress(zip As Integer, address As String, name As String, careof As String, isPrivate As Boolean) As Address
 
-        Dim a As Address = DBM.Instance.Addresses.Where(Function(x) x.address1 = address And x.zip1.zip1 = zip And x.careOf = careof And x.isPrivate = isPrivate).FirstOrDefault()
+        Dim a As Address = DBM.Instance.Addresses.Where(Function(x) x.address1 = address And x.Zip.zip1 = zip And x.careOf = careof And x.isPrivate = isPrivate).FirstOrDefault()
         If a Is Nothing Then
-            a = New Address With {.name = "", .address1 = address, .zip1 = DBM.Instance.Zips.Find(zip), .careOf = careof, .isPrivate = isPrivate}
+            a = New Address With {.name = "", .address1 = address, .Zip = DBM.Instance.Zips.Find(zip), .careOf = careof, .isPrivate = isPrivate}
             DBM.Instance.Addresses.Add(a)
         End If
 

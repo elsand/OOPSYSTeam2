@@ -66,8 +66,8 @@
         txtEmail.Text = em.email
         txtPhone.Text = em.phone.phonenumber
         txtAddress.Text = em.address.address1
-        txtZip.Text = em.address.zip1.zip1
-        lblCity.Text = em.address.zip1.city
+        txtZip.Text = em.Address.Zip.zip1
+        lblCity.Text = em.Address.Zip.city
         txtPassword.Text = ""
         txtRepeatPassword.Text = ""
 

@@ -18,7 +18,6 @@ Partial Public Class Batch
     Public Property expires As Nullable(Of Date)
     Public Property unitCount As Integer
     Public Property unitPurchasingPrice As Nullable(Of Decimal)
-    Public Property ingredientId As Integer
     Public Property locationRow As Nullable(Of Integer)
     Public Property locationShelf As Nullable(Of Integer)
     Public Property deleted As Nullable(Of Date)

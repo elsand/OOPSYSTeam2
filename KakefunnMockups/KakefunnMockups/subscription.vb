@@ -13,13 +13,11 @@ Imports System.Collections.Generic
 Partial Public Class Subscription
     Public Property id As Integer
     Public Property isActive As Nullable(Of Boolean)
-    Public Property frequencyTypeId As Integer
     Public Property frequency As Nullable(Of Integer)
     Public Property startDate As Date
     Public Property stopDate As Nullable(Of Date)
     Public Property created As Nullable(Of Date)
     Public Property modified As Nullable(Of Date)
-    Public Property orderid As Integer
 
     Public Overridable Property FrequencyType As FrequencyType
     Public Overridable Property Order As Order
