@@ -32,6 +32,7 @@ Partial Class frmAdminReports
         'cboSelectReportForm
         '
         Me.cboSelectReportForm.FormattingEnabled = True
+        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport"})
         Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
