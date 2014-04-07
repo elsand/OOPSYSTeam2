@@ -425,6 +425,8 @@
     </None>
     <None Include="My Project\DataSources\batch.datasource" />
     <None Include="My Project\DataSources\cake.datasource" />
+    <None Include="My Project\DataSources\customer.datasource" />
+    <None Include="My Project\DataSources\order.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>

@@ -10,7 +10,7 @@ Imports System.Data.Entity
 Public Class ObservableListSource(Of T As Class)
     Inherits ObservableCollection(Of T)
     Implements IListSource
-    Private _bindingList As IBindingListView
+    Private _bindingList As IBindingList
 
     Private ReadOnly Property IListSource_ContainsListCollection() As Boolean Implements IListSource.ContainsListCollection
         Get
