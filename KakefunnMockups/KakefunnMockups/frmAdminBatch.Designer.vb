@@ -48,6 +48,7 @@ Partial Class frmAdminBatch
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblEditExplanation = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.grpBatch.SuspendLayout()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgBatch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -306,10 +307,20 @@ Partial Class frmAdminBatch
         Me.lblEditExplanation.TabIndex = 15
         Me.lblEditExplanation.Text = "Dobbeltklikk for å redigere en oppføring"
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(509, 320)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 16
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmAdminBatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(708, 555)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblEditExplanation)
         Me.Controls.Add(Me.dtgBatch)
         Me.Controls.Add(Me.btnPrintOrderList)
@@ -324,6 +335,7 @@ Partial Class frmAdminBatch
         Me.Controls.SetChildIndex(Me.btnPrintOrderList, 0)
         Me.Controls.SetChildIndex(Me.dtgBatch, 0)
         Me.Controls.SetChildIndex(Me.lblEditExplanation, 0)
+        Me.Controls.SetChildIndex(Me.Button1, 0)
         Me.grpBatch.ResumeLayout(False)
         Me.grpBatch.PerformLayout()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -360,5 +372,6 @@ Partial Class frmAdminBatch
     Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblEditExplanation As System.Windows.Forms.Label
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class

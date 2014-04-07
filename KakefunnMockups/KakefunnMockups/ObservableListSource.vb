@@ -10,7 +10,7 @@ Imports System.Data.Entity
 Public Class ObservableListSource(Of T As Class)
     Inherits ObservableCollection(Of T)
     Implements IListSource
-    Private _bindingList As IBindingList
+    Private _bindingList As IBindingListView
 
     Private ReadOnly Property IListSource_ContainsListCollection() As Boolean Implements IListSource.ContainsListCollection
         Get
@@ -19,10 +19,10 @@ Public Class ObservableListSource(Of T As Class)
     End Property
 
     Private Function IListSource_GetList() As IList Implements IListSource.GetList
-        Return If(_bindingList, (InlineAssignHelper(_bindingList, Me.ToBindingList())))
-    End Function
-    Private Shared Function InlineAssignHelper(Of T)(ByRef target As T, value As T) As T
-        target = value
-        Return value
+        If _bindingList Is Nothing Then
+            Return Me.ToBindingList()
+        Else
+            Return _bindingList
+        End If
     End Function
 End Class

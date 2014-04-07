@@ -15,6 +15,7 @@ Public Class frmAdminBatch
     Dim IsNewRecord As Boolean = True
     Dim IsDirty As Boolean = False
     Dim currentRecord As batch
+    Dim batchBindingListView As BindingListView(Of batch)
 
     Private Sub frmAdminBatch_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -23,7 +24,11 @@ Public Class frmAdminBatch
 
         ' Load data from batches and bind to datagridview
         DBM.Instance.batches.Load()
-        BatchBindingSource.DataSource = DBM.Instance.batches.Local.ToBindingList()
+
+        ' Make binding list view from the bindinglist we get from EF
+        batchBindingListView = New BindingListView(Of batch)(DBM.Instance.batches.Local.ToBindingList())
+        ' Set it as the datasource, and presto, we have filtering et.al.
+        BatchBindingSource.DataSource = batchBindingListView
 
         ' Set up autocomplete for ingredient name
         Dim ing = From x As ingredient In DBM.Instance.ingredients Select x.name Order By name
@@ -175,6 +180,7 @@ Public Class frmAdminBatch
         UpdateActionStatus("Lagrer ...")
 
         DBM.Instance.SaveChanges()
+        ' Dette under skal ikke være nødvendig!
         dtgBatch.Refresh()
 
         currentRecord = b
@@ -190,4 +196,21 @@ Public Class frmAdminBatch
         Return True
 
     End Function
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ' Støtter ikke tekst-baserte filtre :(
+        'BatchBindingSource.Filter = "unitCount > 400"
+
+
+        batchBindingListView.ApplyFilter(Function(x) x.unitCount > 400)
+
+        ' Kan alternativt gjøres som
+        ' view.ApplyFilter(AddressOf BalanceFilter)
+        '...
+        ' Function UnitCountFilter(ByVal b as batch) as Boolean
+        '   Return batch.unitCount > 1000
+        'End Sub
+        '
+
+    End Sub
 End Class
