@@ -44,6 +44,7 @@
 
     Private loggedInEmployee As Employee
     Private _currentForm As frmSuperBase
+    Private _currentDialog As frmDialogBase
 
     ''' <summary>
     ''' Returns the currently active form. If this is not set (ie. first form), it returns the first form it finds in Application.OpenForms
@@ -62,6 +63,22 @@
         End Get
         Set(value As frmSuperBase)
             _currentForm = value
+        End Set
+    End Property
+
+    Private Property currentDialog As frmDialogBase
+        Get
+            If _currentDialog Is Nothing Then
+                For Each frm As Form In Application.OpenForms
+                    If frm.GetType().IsInstanceOfType(frmDialogBase) Then
+                        Return frm
+                    End If
+                Next
+            End If
+            Return Nothing
+        End Get
+        Set(value As frmDialogBase)
+            _currentDialog = value
         End Set
     End Property
 
@@ -126,16 +143,45 @@
     End Sub
 
     Public Sub ShowForm(frm As frmSuperBase)
+        If frm.Name = currentForm.Name Then
+            frm.Focus()
+            Exit Sub
+        End If
         currentForm.Hide()
         frm.Show()
+        frm.Focus()
         currentForm = frm
+        HideDialog()
+    End Sub
+
+    Public Sub ShowDialog(dialog As frmDialogBase)
+        If Not currentDialog Is Nothing Then
+            If dialog.Name = currentDialog.Name Then
+                dialog.Focus()
+                Exit Sub
+            End If
+            currentDialog.Hide()
+        End If
+        dialog.Show()
+        dialog.Focus()
+        currentDialog = dialog
+    End Sub
+
+    Public Sub HideDialog()
+        If Not currentDialog Is Nothing Then
+            currentDialog.Hide()
+            currentDialog = Nothing
+        End If
+    End Sub
+
+    Public Sub LoadInBackground(frm As Form)
+
     End Sub
 
     Public Function HasRole(role As String) As Boolean
         If Not IsLoggedIn() Then
             Throw New UnauthorizedAccessException("User is not logged in")
         End If
-        Return (From r In User.roles Where r.name = role Select r).Count() > 0
+        Return (From r In User.Roles Where r.name = role Select r).Count() > 0
     End Function
-
 End Class

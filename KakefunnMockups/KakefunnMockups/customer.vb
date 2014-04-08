@@ -17,7 +17,7 @@ Partial Public Class Customer
     Public Property email As String
     Public Property note As String
     Public Property created As Nullable(Of Date)
-    Public Property modfied As Nullable(Of Date)
+    Public Property modified As Nullable(Of Date)
 
     Public Overridable Property Address As Address
     Public Overridable Property CustomerType As CustomerType
