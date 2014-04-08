@@ -9,7 +9,17 @@
     ''' <returns>String</returns>
     ''' <remarks></remarks>
     Public Sub createReport()
-        Dim rep As String
+        Dim sql As String
+
+
+
+
+
+
+
+
+
+
 
 
 

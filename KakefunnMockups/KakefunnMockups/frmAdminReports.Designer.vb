@@ -21,6 +21,9 @@ Partial Class frmAdminReports
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EmployeeTest = New Kakefunn.EmployeeTest()
+        Me.batchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.cboSelectReportForm = New System.Windows.Forms.ComboBox()
         Me.lblSelectReportForm = New System.Windows.Forms.Label()
         Me.btnGetReport = New System.Windows.Forms.Button()
@@ -29,9 +32,30 @@ Partial Class frmAdminReports
         Me.dtpTimePeriodTo = New System.Windows.Forms.DateTimePicker()
         Me.lblTimePeriod = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.batchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.EmployeeTableAdapter = New Kakefunn.EmployeeTestTableAdapters.EmployeeTableAdapter()
+        Me.Turnover = New Kakefunn.Turnover()
+        Me.IngredientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IngredientTableAdapter = New Kakefunn.TurnoverTableAdapters.IngredientTableAdapter()
+        CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Turnover, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'EmployeeBindingSource
+        '
+        Me.EmployeeBindingSource.DataMember = "Employee"
+        Me.EmployeeBindingSource.DataSource = Me.EmployeeTest
+        '
+        'EmployeeTest
+        '
+        Me.EmployeeTest.DataSetName = "EmployeeTest"
+        Me.EmployeeTest.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'batchBindingSource
+        '
+        Me.batchBindingSource.DataSource = GetType(Kakefunn.Batch)
         '
         'cboSelectReportForm
         '
@@ -62,10 +86,10 @@ Partial Class frmAdminReports
         '
         'rptReports
         '
-        ReportDataSource1.Name = "Kake"
-        ReportDataSource1.Value = Me.batchBindingSource
+        ReportDataSource1.Name = "DataSet1"
+        ReportDataSource1.Value = Me.IngredientBindingSource
         Me.rptReports.LocalReport.DataSources.Add(ReportDataSource1)
-        Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.Report1.rdlc"
+        Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.Turnover.rdlc"
         Me.rptReports.Location = New System.Drawing.Point(15, 96)
         Me.rptReports.Name = "rptReports"
         Me.rptReports.ShowBackButton = False
@@ -114,9 +138,23 @@ Partial Class frmAdminReports
         Me.Label3.TabIndex = 14
         Me.Label3.Text = "til"
         '
-        'batchBindingSource
+        'EmployeeTableAdapter
         '
-        Me.batchBindingSource.DataSource = GetType(Kakefunn.batch)
+        Me.EmployeeTableAdapter.ClearBeforeFill = True
+        '
+        'Turnover
+        '
+        Me.Turnover.DataSetName = "Turnover"
+        Me.Turnover.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'IngredientBindingSource
+        '
+        Me.IngredientBindingSource.DataMember = "Ingredient"
+        Me.IngredientBindingSource.DataSource = Me.Turnover
+        '
+        'IngredientTableAdapter
+        '
+        Me.IngredientTableAdapter.ClearBeforeFill = True
         '
         'frmAdminReports
         '
@@ -139,7 +177,11 @@ Partial Class frmAdminReports
         Me.Controls.SetChildIndex(Me.dtpTimePeriodTo, 0)
         Me.Controls.SetChildIndex(Me.lblTimePeriod, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
+        CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Turnover, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -153,5 +195,11 @@ Partial Class frmAdminReports
     Friend WithEvents lblTimePeriod As System.Windows.Forms.Label
     Friend WithEvents Label3 As System.Windows.Forms.Label
     Friend WithEvents batchBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents EmployeeBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents EmployeeTest As Kakefunn.EmployeeTest
+    Friend WithEvents EmployeeTableAdapter As Kakefunn.EmployeeTestTableAdapters.EmployeeTableAdapter
+    Friend WithEvents IngredientBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Turnover As Kakefunn.Turnover
+    Friend WithEvents IngredientTableAdapter As Kakefunn.TurnoverTableAdapters.IngredientTableAdapter
 
 End Class

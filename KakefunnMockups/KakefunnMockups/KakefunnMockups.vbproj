@@ -148,6 +148,11 @@
     <Compile Include="Employee.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="EmployeeTest.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeeTest.xsd</DependentUpon>
+    </Compile>
     <Compile Include="FrequencyType.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -321,6 +326,11 @@
     <Compile Include="RecipeLine.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="report\Turnover.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Turnover.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Role.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -401,13 +411,24 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="report\Report1.rdlc" />
+    <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Model.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.vb</LastGenOutput>
     </EntityDeploy>
+    <None Include="EmployeeTest.xsc">
+      <DependentUpon>EmployeeTest.xsd</DependentUpon>
+    </None>
+    <None Include="EmployeeTest.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EmployeeTest.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="EmployeeTest.xss">
+      <DependentUpon>EmployeeTest.xsd</DependentUpon>
+    </None>
     <None Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -436,6 +457,17 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="report\Turnover.xsc">
+      <DependentUpon>Turnover.xsd</DependentUpon>
+    </None>
+    <None Include="report\Turnover.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Turnover.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="report\Turnover.xss">
+      <DependentUpon>Turnover.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="README.txt" />
