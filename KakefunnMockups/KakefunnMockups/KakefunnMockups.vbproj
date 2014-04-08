@@ -124,6 +124,7 @@
     <Compile Include="controllers\OrderManager.vb" />
     <Compile Include="controllers\PhoneHelper.vb" />
     <Compile Include="controllers\ReportManager.vb" />
+    <Compile Include="controllers\SearchHelper.vb" />
     <Compile Include="controllers\SessionManager.vb" />
     <Compile Include="controllers\StockManager.vb" />
     <Compile Include="controllers\SubscriptionManager.vb" />

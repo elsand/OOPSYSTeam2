@@ -56,7 +56,7 @@
           <Property Name="discountPlanId" Type="int" Nullable="false" />
           <Property Name="note" Type="text" />
           <Property Name="created" Type="datetime" Precision="0" />
-          <Property Name="modfied" Type="datetime" Precision="0" />
+          <Property Name="modified" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="CustomerType">
           <Key>
@@ -644,7 +644,7 @@
           <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Name="created" Type="DateTime" />
-          <Property Name="modfied" Type="DateTime" />
+          <Property Name="modified" Type="DateTime" />
           <NavigationProperty Name="Address" Relationship="Self.fk_customer_address1" FromRole="Customer" ToRole="Address" />
           <NavigationProperty Name="CustomerType" Relationship="Self.fk_kunde_kundeType1" FromRole="Customer" ToRole="CustomerType" />
           <NavigationProperty Name="DiscountPlan" Relationship="Self.fk_kunde_rabattPlan1" FromRole="Customer" ToRole="DiscountPlan" />
@@ -1073,7 +1073,7 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="note" ColumnName="note" />
                 <ScalarProperty Name="created" ColumnName="created" />
-                <ScalarProperty Name="modfied" ColumnName="modfied" />
+                <ScalarProperty Name="modified" ColumnName="modified" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
