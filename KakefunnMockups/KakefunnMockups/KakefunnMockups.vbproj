@@ -327,6 +327,12 @@
     <Compile Include="RecipeLine.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ReportTest.Designer.vb">
+      <DependentUpon>ReportTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ReportTest.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="report\Turnover.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -411,6 +417,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportTest.resx">
+      <DependentUpon>ReportTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
