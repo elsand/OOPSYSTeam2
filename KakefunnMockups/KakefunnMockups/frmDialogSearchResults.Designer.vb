@@ -19,86 +19,32 @@ Partial Class frmDialogSearchResults
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.dtgSearchResultsOrders = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dtgSearchResultsCustomers = New System.Windows.Forms.DataGridView()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblHitsInOrders = New System.Windows.Forms.Label()
         Me.lblHitsInCustomers = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
         Me.grpSearchResults = New System.Windows.Forms.GroupBox()
-        CType(Me.dtgSearchResultsOrders, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.dtgSearchResultsCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.dtgSearchResultsCustomers = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcCustomerEmail = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.dtgSearchResultsOrders = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn13 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcOrderPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcCustomer = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.grpSearchResults.SuspendLayout()
+        CType(Me.dtgSearchResultsCustomers, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.CustomerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dtgSearchResultsOrders, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'dtgSearchResultsOrders
-        '
-        Me.dtgSearchResultsOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgSearchResultsOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgSearchResultsOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.dtgSearchResultsOrders.Location = New System.Drawing.Point(18, 42)
-        Me.dtgSearchResultsOrders.Name = "dtgSearchResultsOrders"
-        Me.dtgSearchResultsOrders.RowHeadersVisible = False
-        Me.dtgSearchResultsOrders.Size = New System.Drawing.Size(504, 209)
-        Me.dtgSearchResultsOrders.TabIndex = 0
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Ordrenr"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Ordredato"
-        Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Ordreverdi"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Bestiller"
-        Me.Column4.Name = "Column4"
-        '
-        'dtgSearchResultsCustomers
-        '
-        Me.dtgSearchResultsCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgSearchResultsCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgSearchResultsCustomers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column5, Me.Column6, Me.Column7, Me.Column8})
-        Me.dtgSearchResultsCustomers.Location = New System.Drawing.Point(18, 296)
-        Me.dtgSearchResultsCustomers.Name = "dtgSearchResultsCustomers"
-        Me.dtgSearchResultsCustomers.RowHeadersVisible = False
-        Me.dtgSearchResultsCustomers.Size = New System.Drawing.Size(504, 209)
-        Me.dtgSearchResultsCustomers.TabIndex = 1
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Kundenr"
-        Me.Column5.Name = "Column5"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Navn"
-        Me.Column6.Name = "Column6"
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "E-post"
-        Me.Column7.Name = "Column7"
-        '
-        'Column8
-        '
-        Me.Column8.HeaderText = "Telefon"
-        Me.Column8.Name = "Column8"
         '
         'lblHitsInOrders
         '
@@ -129,45 +75,151 @@ Partial Class frmDialogSearchResults
         '
         'grpSearchResults
         '
-        Me.grpSearchResults.Controls.Add(Me.lblHitsInOrders)
-        Me.grpSearchResults.Controls.Add(Me.dtgSearchResultsOrders)
-        Me.grpSearchResults.Controls.Add(Me.lblHitsInCustomers)
         Me.grpSearchResults.Controls.Add(Me.dtgSearchResultsCustomers)
+        Me.grpSearchResults.Controls.Add(Me.dtgSearchResultsOrders)
+        Me.grpSearchResults.Controls.Add(Me.lblHitsInOrders)
+        Me.grpSearchResults.Controls.Add(Me.lblHitsInCustomers)
         Me.grpSearchResults.Location = New System.Drawing.Point(12, 12)
         Me.grpSearchResults.Name = "grpSearchResults"
-        Me.grpSearchResults.Size = New System.Drawing.Size(542, 529)
+        Me.grpSearchResults.Size = New System.Drawing.Size(542, 530)
         Me.grpSearchResults.TabIndex = 5
         Me.grpSearchResults.TabStop = False
         Me.grpSearchResults.Text = "Søkeresultater etter ""xxxx"""
         '
+        'dtgSearchResultsCustomers
+        '
+        Me.dtgSearchResultsCustomers.AllowUserToAddRows = False
+        Me.dtgSearchResultsCustomers.AllowUserToDeleteRows = False
+        Me.dtgSearchResultsCustomers.AutoGenerateColumns = False
+        Me.dtgSearchResultsCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgSearchResultsCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgSearchResultsCustomers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.dcCustomerEmail, Me.DataGridViewTextBoxColumn4})
+        Me.dtgSearchResultsCustomers.DataSource = Me.CustomerBindingSource
+        Me.dtgSearchResultsCustomers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dtgSearchResultsCustomers.Location = New System.Drawing.Point(18, 296)
+        Me.dtgSearchResultsCustomers.Name = "dtgSearchResultsCustomers"
+        Me.dtgSearchResultsCustomers.RowHeadersVisible = False
+        Me.dtgSearchResultsCustomers.Size = New System.Drawing.Size(504, 220)
+        Me.dtgSearchResultsCustomers.TabIndex = 4
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "id"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewTextBoxColumn2.FillWeight = 45.0!
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Kundenr"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "name"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Navn"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'dcCustomerEmail
+        '
+        Me.dcCustomerEmail.DataPropertyName = "email"
+        Me.dcCustomerEmail.HeaderText = "E-post"
+        Me.dcCustomerEmail.Name = "dcCustomerEmail"
+        Me.dcCustomerEmail.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.dcCustomerEmail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.dcCustomerEmail.TrackVisitedState = False
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "phone"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Telefon"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        '
+        'CustomerBindingSource
+        '
+        Me.CustomerBindingSource.DataSource = GetType(Kakefunn.Customer)
+        '
+        'dtgSearchResultsOrders
+        '
+        Me.dtgSearchResultsOrders.AllowUserToAddRows = False
+        Me.dtgSearchResultsOrders.AllowUserToDeleteRows = False
+        Me.dtgSearchResultsOrders.AllowUserToResizeRows = False
+        Me.dtgSearchResultsOrders.AutoGenerateColumns = False
+        Me.dtgSearchResultsOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgSearchResultsOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgSearchResultsOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn13, Me.dcOrderPrice, Me.dcCustomer})
+        Me.dtgSearchResultsOrders.DataSource = Me.OrderBindingSource
+        Me.dtgSearchResultsOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.dtgSearchResultsOrders.Location = New System.Drawing.Point(18, 43)
+        Me.dtgSearchResultsOrders.Name = "dtgSearchResultsOrders"
+        Me.dtgSearchResultsOrders.RowHeadersVisible = False
+        Me.dtgSearchResultsOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgSearchResultsOrders.Size = New System.Drawing.Size(504, 220)
+        Me.dtgSearchResultsOrders.TabIndex = 4
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle3
+        Me.DataGridViewTextBoxColumn1.FillWeight = 45.0!
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Ordrenr"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        '
+        'DataGridViewTextBoxColumn13
+        '
+        Me.DataGridViewTextBoxColumn13.DataPropertyName = "created"
+        Me.DataGridViewTextBoxColumn13.HeaderText = "Ordredato"
+        Me.DataGridViewTextBoxColumn13.Name = "DataGridViewTextBoxColumn13"
+        '
+        'dcOrderPrice
+        '
+        Me.dcOrderPrice.FillWeight = 80.0!
+        Me.dcOrderPrice.HeaderText = "Ordreverdi"
+        Me.dcOrderPrice.Name = "dcOrderPrice"
+        '
+        'dcCustomer
+        '
+        Me.dcCustomer.DataPropertyName = "Customer"
+        Me.dcCustomer.FillWeight = 170.0!
+        Me.dcCustomer.HeaderText = "Bestiller"
+        Me.dcCustomer.Name = "dcCustomer"
+        '
+        'OrderBindingSource
+        '
+        Me.OrderBindingSource.DataSource = GetType(Kakefunn.Order)
+        '
         'frmDialogSearchResults
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(566, 600)
+        Me.ClientSize = New System.Drawing.Size(566, 594)
         Me.Controls.Add(Me.grpSearchResults)
         Me.Controls.Add(Me.btnClose)
         Me.Name = "frmDialogSearchResults"
         Me.Text = "Søk etter ""xxxx"""
-        CType(Me.dtgSearchResultsOrders, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.dtgSearchResultsCustomers, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpSearchResults.ResumeLayout(False)
         Me.grpSearchResults.PerformLayout()
+        CType(Me.dtgSearchResultsCustomers, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.CustomerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dtgSearchResultsOrders, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-    Friend WithEvents dtgSearchResultsOrders As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents dtgSearchResultsCustomers As System.Windows.Forms.DataGridView
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column7 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column8 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblHitsInOrders As System.Windows.Forms.Label
     Friend WithEvents lblHitsInCustomers As System.Windows.Forms.Label
     Friend WithEvents btnClose As System.Windows.Forms.Button
     Friend WithEvents grpSearchResults As System.Windows.Forms.GroupBox
+    Friend WithEvents dtgSearchResultsOrders As System.Windows.Forms.DataGridView
+    Friend WithEvents OrderBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents dtgSearchResultsCustomers As System.Windows.Forms.DataGridView
+    Friend WithEvents CustomerBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcCustomerEmail As System.Windows.Forms.DataGridViewLinkColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn13 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcOrderPrice As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcCustomer As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

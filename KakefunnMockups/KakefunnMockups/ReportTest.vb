@@ -14,6 +14,7 @@ Public Class ReportTest
             "GROUP BY i.id" _
         )
 
+        ' "DataSet1" er navnet på datasettet som Turnover.rdlc forventer
         reportDataSource = New ReportDataSource("DataSet1", reportDt)
 
         With rvTest.LocalReport

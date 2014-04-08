@@ -7,6 +7,8 @@
 
         DBM.Instance.Customers.OrderByDescending(Function(c) c.modified).Load()
         CustomerBindingSource.DataSource = DBM.Instance.Customers.Local.Take(5).ToList()
+
+        txtSearchInformation.Focus()
     End Sub
 
     Private Sub dgvOrder_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dgvOrder.CellFormatting
@@ -57,6 +59,16 @@
     End Sub
 
     Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        If txtSearchInformation.Text = "" Then
+            MsgBox("Du må oppgi et søkeord")
+            Exit Sub
+        End If
+        UpdateActionStatus("Søker ...")
+        SearchHelper.Search(txtSearchInformation.Text, True, True)
+        UpdateActionStatus()
+    End Sub
 
+    Private Sub txtSearchInformation_Enter(sender As Object, e As EventArgs) Handles txtSearchInformation.Click
+        txtSearchInformation.SelectAll()
     End Sub
 End Class
