@@ -33,14 +33,8 @@ Public Class frmAdminBatch
         BatchBindingSource.DataSource = batchBindingListView
 
         ' Set up autocomplete for ingredient name
-        Dim ing = From x As Ingredient In DBM.Instance.Ingredients Select x.name Order By name
-        Dim acSource As AutoCompleteStringCollection = New AutoCompleteStringCollection()
-        acSource.AddRange(ing.ToArray())
-        With txtIngredient
-            .AutoCompleteMode = AutoCompleteMode.SuggestAppend
-            .AutoCompleteSource = AutoCompleteSource.CustomSource
-            .AutoCompleteCustomSource = acSource
-        End With
+        Dim ac As AutoCompleteHelper = New AutoCompleteHelper(DBM.Instance.GetNameColumn("Ingredient"))
+        ac.UseOn(txtIngredient)
 
         ' Handle display of correct unit type
         AddHandler txtIngredient.Leave, AddressOf ValidateAndUpdateUnitTypeLabel

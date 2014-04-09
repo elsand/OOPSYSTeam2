@@ -30,7 +30,6 @@ Partial Class frmSaleOrder
         Me.lblDate = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
-        Me.btnSearchTelephoneDirectory = New System.Windows.Forms.Button()
         Me.txtTelephone = New System.Windows.Forms.TextBox()
         Me.lblTelephone = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
@@ -114,7 +113,6 @@ Partial Class frmSaleOrder
         Me.txtCustomerNameAndOrderAutocomplete.Name = "txtCustomerNameAndOrderAutocomplete"
         Me.txtCustomerNameAndOrderAutocomplete.Size = New System.Drawing.Size(338, 20)
         Me.txtCustomerNameAndOrderAutocomplete.TabIndex = 3
-        Me.txtCustomerNameAndOrderAutocomplete.Text = "Autocomplete på kundenavn/nr her ..."
         '
         'btnNewCustomer
         '
@@ -133,7 +131,6 @@ Partial Class frmSaleOrder
         Me.grpDelivery.Controls.Add(Me.lblDate)
         Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.lblEmail)
-        Me.grpDelivery.Controls.Add(Me.btnSearchTelephoneDirectory)
         Me.grpDelivery.Controls.Add(Me.txtTelephone)
         Me.grpDelivery.Controls.Add(Me.lblTelephone)
         Me.grpDelivery.Controls.Add(Me.lblCity)
@@ -201,20 +198,11 @@ Partial Class frmSaleOrder
         Me.lblEmail.TabIndex = 12
         Me.lblEmail.Text = "E-post:"
         '
-        'btnSearchTelephoneDirectory
-        '
-        Me.btnSearchTelephoneDirectory.Location = New System.Drawing.Point(131, 90)
-        Me.btnSearchTelephoneDirectory.Name = "btnSearchTelephoneDirectory"
-        Me.btnSearchTelephoneDirectory.Size = New System.Drawing.Size(138, 20)
-        Me.btnSearchTelephoneDirectory.TabIndex = 11
-        Me.btnSearchTelephoneDirectory.Text = "Slå opp i telefonkatalogen"
-        Me.btnSearchTelephoneDirectory.UseVisualStyleBackColor = True
-        '
         'txtTelephone
         '
         Me.txtTelephone.Location = New System.Drawing.Point(59, 90)
         Me.txtTelephone.Name = "txtTelephone"
-        Me.txtTelephone.Size = New System.Drawing.Size(66, 20)
+        Me.txtTelephone.Size = New System.Drawing.Size(210, 20)
         Me.txtTelephone.TabIndex = 10
         '
         'lblTelephone
@@ -817,7 +805,6 @@ Partial Class frmSaleOrder
     Friend WithEvents lblCo As System.Windows.Forms.Label
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
-    Friend WithEvents btnSearchTelephoneDirectory As System.Windows.Forms.Button
     Friend WithEvents grpOrderingCustomer As System.Windows.Forms.GroupBox
     Friend WithEvents grpCommodity As System.Windows.Forms.GroupBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel

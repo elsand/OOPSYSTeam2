@@ -23,7 +23,8 @@
     Private Sub dtgSearchResultsOrders_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgSearchResultsOrders.CellFormatting
         Select Case dtgSearchResultsOrders.Columns(e.ColumnIndex).Name
             Case "dcCustomer"
-                e.Value = CType(e.Value, Customer).name
+                Dim c As Customer = CType(e.Value, Customer)
+                e.Value = c.firstName & " " & c.lastName
             Case "dcOrderPrice"
                 Dim row As DataGridViewRow = dtgSearchResultsOrders.Rows(e.RowIndex)
                 Dim o As Order = CType(row.DataBoundItem, Order)

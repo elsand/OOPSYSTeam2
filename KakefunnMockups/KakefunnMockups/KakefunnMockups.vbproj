@@ -117,23 +117,6 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="controllers\AddressHelper.vb" />
-    <Compile Include="controllers\CustomerManager.vb" />
-    <Compile Include="controllers\DatabaseManager.vb" />
-    <Compile Include="controllers\DocumentPrinter.vb" />
-    <Compile Include="controllers\OrderManager.vb" />
-    <Compile Include="controllers\PhoneHelper.vb" />
-    <Compile Include="controllers\ReportManager.vb" />
-    <Compile Include="controllers\SearchHelper.vb" />
-    <Compile Include="controllers\SessionManager.vb" />
-    <Compile Include="controllers\StockManager.vb" />
-    <Compile Include="controllers\SubscriptionManager.vb" />
-    <Compile Include="controls\NumericTextbox.Designer.vb">
-      <DependentUpon>NumericTextbox.vb</DependentUpon>
-    </Compile>
-    <Compile Include="controls\NumericTextbox.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -149,13 +132,32 @@
     <Compile Include="Employee.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="FrequencyType.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="helpers\AddressHelper.vb" />
+    <Compile Include="controllers\CustomerManager.vb" />
+    <Compile Include="controllers\DatabaseManager.vb" />
+    <Compile Include="controllers\DocumentPrinter.vb" />
+    <Compile Include="controllers\OrderManager.vb" />
+    <Compile Include="helpers\AutoCompleteHelper.vb" />
+    <Compile Include="helpers\FullName.vb" />
+    <Compile Include="helpers\PhoneHelper.vb" />
+    <Compile Include="controllers\ReportManager.vb" />
+    <Compile Include="helpers\SearchHelper.vb" />
+    <Compile Include="controllers\SessionManager.vb" />
+    <Compile Include="controllers\StockManager.vb" />
+    <Compile Include="controllers\SubscriptionManager.vb" />
+    <Compile Include="controls\NumericTextbox.Designer.vb">
+      <DependentUpon>NumericTextbox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="controls\NumericTextbox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EmployeeTest.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>EmployeeTest.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="FrequencyType.vb">
-      <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="frmAdminBase.Designer.vb">
       <DependentUpon>frmAdminBase.vb</DependentUpon>
@@ -424,10 +426,6 @@
     <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="Model.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model.Designer.vb</LastGenOutput>
-    </EntityDeploy>
     <None Include="EmployeeTest.xsc">
       <DependentUpon>EmployeeTest.xsd</DependentUpon>
     </None>
@@ -439,6 +437,10 @@
     <None Include="EmployeeTest.xss">
       <DependentUpon>EmployeeTest.xsd</DependentUpon>
     </None>
+    <EntityDeploy Include="Model.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model.Designer.vb</LastGenOutput>
+    </EntityDeploy>
     <None Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>

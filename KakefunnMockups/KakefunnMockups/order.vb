@@ -12,6 +12,8 @@ Imports System.Collections.Generic
 
 Partial Public Class Order
     Public Property id As Integer
+    Public Property deliveryFirstName As String
+    Public Property deliveryLastName As String
     Public Property deliveryPhone As String
     Public Property deliveryEmail As String
     Public Property subscriptionId As Nullable(Of Integer)

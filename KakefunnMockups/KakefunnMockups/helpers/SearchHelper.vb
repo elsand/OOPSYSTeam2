@@ -22,8 +22,10 @@
                 ).ToList()
             Else
                 orderQueryResult = DBM.Instance.Orders.Where(Function(o) _
-                    o.Customer.name.Contains(query) _
-                    Or o.Address.name.Contains(query) _
+                    o.Customer.firstName.Contains(query) _
+                    Or o.Customer.lastName.Contains(query) _
+                    Or o.deliveryFirstName.Contains(query) _
+                    Or o.deliveryLastName.Contains(query) _
                     Or o.deliveryEmail.Contains(query) _
                 ).ToList()
             End If
@@ -40,7 +42,8 @@
                 ).ToList()
             Else
                 customerQueryResult = DBM.Instance.Customers.Where(Function(c) _
-                    c.name.Contains(query) _
+                    c.firstName.Contains(query) _
+                    Or c.lastName.Contains(query) _
                     Or c.email.Contains(query) _
                 ).ToList()
             End If

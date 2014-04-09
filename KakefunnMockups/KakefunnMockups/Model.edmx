@@ -10,9 +10,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="isPrivate" Type="bool" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="100" />
-          <Property Name="careOf" Type="varchar" MaxLength="100" />
           <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="zip" Type="int" Nullable="false" />
         </EntityType>
@@ -48,7 +45,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="60" Nullable="false" />
           <Property Name="phone" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="addressId" Type="int" Nullable="false" />
@@ -87,7 +85,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="phoneId" Type="int" Nullable="false" />
           <Property Name="addressId" Type="int" Nullable="false" />
           <Property Name="email" Type="varchar" MaxLength="255" Nullable="false" />
@@ -137,6 +136,8 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="customerId" Type="int" Nullable="false" />
+          <Property Name="deliveryFirstName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="deliveryLastName" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="deliveryAddressId" Type="int" Nullable="false" />
           <Property Name="deliveryPhone" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="deliveryEmail" Type="varchar" MaxLength="45" Nullable="false" />
@@ -597,9 +598,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="isPrivate" Type="Boolean" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="careOf" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="address1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Zip" Relationship="Self.fk_address_zip1" FromRole="Address" ToRole="Zip" />
           <NavigationProperty Name="Customers" Relationship="Self.fk_customer_address1" FromRole="Address" ToRole="Customer" />
@@ -639,7 +637,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="phone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
@@ -682,7 +681,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.fk_employee_address1" FromRole="Employee" ToRole="Address" />
@@ -731,6 +731,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="deliveryFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="deliveryLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="deliveryPhone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="deliveryEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="subscriptionId" Type="Int32" />
@@ -1029,9 +1031,6 @@
             <EntityTypeMapping TypeName="Model.Address">
               <MappingFragment StoreEntitySet="Address">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="isPrivate" ColumnName="isPrivate" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="careOf" ColumnName="careOf" />
                 <ScalarProperty Name="address1" ColumnName="address" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -1068,7 +1067,8 @@
             <EntityTypeMapping TypeName="Model.Customer">
               <MappingFragment StoreEntitySet="Customer">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="note" ColumnName="note" />
@@ -1108,7 +1108,8 @@
             <EntityTypeMapping TypeName="Model.Employee">
               <MappingFragment StoreEntitySet="Employee">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
               </MappingFragment>
@@ -1149,6 +1150,8 @@
             <EntityTypeMapping TypeName="Model.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="deliveryFirstName" ColumnName="deliveryFirstName" />
+                <ScalarProperty Name="deliveryLastName" ColumnName="deliveryLastName" />
                 <ScalarProperty Name="deliveryPhone" ColumnName="deliveryPhone" />
                 <ScalarProperty Name="deliveryEmail" ColumnName="deliveryEmail" />
                 <ScalarProperty Name="subscriptionId" ColumnName="subscriptionId" />

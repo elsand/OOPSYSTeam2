@@ -8,7 +8,7 @@
         If IsNewRecord Then
             UpdateActionStatus()
         Else
-            UpdateActionStatus("Redigerer " & currentRecord.name)
+            UpdateActionStatus("Redigerer " & currentRecord.firstName & " " & currentRecord.lastName)
         End If
     End Sub
 
@@ -30,9 +30,11 @@
     End Sub
 
     Private Sub UpdateEmployeeDDL()
+
+        Dim employees As DataTable = DBM.Instance.GetDataTableFromQuery("SELECT id, CONCAT(firstName, ' ', lastName) as fullName from Employee ORDER BY lastName")
         With ddlEmployees
-            .DataSource = DBM.Instance.Employees.ToList()
-            .DisplayMember = "name"
+            .DataSource = employees
+            .DisplayMember = "fullName"
             .ValueMember = "id"
         End With
     End Sub
@@ -60,9 +62,9 @@
 
         UpdateActionStatus("Laster oppføring ...")
 
-        Dim em As Employee = DirectCast(ddlEmployees.SelectedItem, Employee)
+        Dim em As Employee = DBM.Instance.Employees.Find(ddlEmployees.SelectedValue)
 
-        txtName.Text = em.name
+        txtName.Text = em.firstName & " " & em.lastName
         txtEmail.Text = em.email
         txtPhone.Text = em.phone.phonenumber
         txtAddress.Text = em.address.address1
@@ -95,7 +97,7 @@
         Application.DoEvents()
         IsDirty = False
 
-        UpdateActionStatus("Redigerer: " & em.name)
+        UpdateActionStatus("Redigerer: " & em.firstName & " " & em.lastName)
 
     End Sub
 
@@ -113,7 +115,9 @@
             em = currentRecord
         End If
 
-        em.name = txtName.Text
+        Dim fn As FullName = CustomerManager.GetFullName(txtName.Text)
+        em.firstName = fn.firstName
+        em.lastName = fn.lastName
         em.email = txtEmail.Text
 
         If IsNewRecord OrElse txtPassword.Text <> "" Then
@@ -156,7 +160,7 @@
         currentRecord = em
         UpdateEmployeeDDL()
 
-        UpdateActionStatus("Redigerer " & em.name)
+        UpdateActionStatus("Redigerer " & em.firstName & " " & em.lastName)
         MessageBox.Show("Oppføringen er lagret", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
     End Sub

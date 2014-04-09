@@ -35,10 +35,13 @@ Public Class DBM
 
 #End Region
 
-    '    Public Function FindByName(table As String, name As String)
-    '        Return Database.SqlQuery(Of String)("SELET * FROM " & table & " WHERE name = '" & name & "'").ToList()
-    '    End Function
+    Public Function SqlToArray(sql As String) As Array
+        Return Database.SqlQuery(Of String)(sql).ToArray()
+    End Function
 
+    Public Function GetNameColumn(table As String) As Array
+        Return SqlToArray("SELECT name FROM " & table & " ORDER BY name")
+    End Function
 
     Public Function GetDataSetFromQuery(query As String) As DataSet
         Dim ds As DataSet = New DataSet()

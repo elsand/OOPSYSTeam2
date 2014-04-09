@@ -12,7 +12,8 @@ Imports System.Collections.Generic
 
 Partial Public Class Customer
     Public Property id As Integer
-    Public Property name As String
+    Public Property firstName As String
+    Public Property lastName As String
     Public Property phone As String
     Public Property email As String
     Public Property note As String
