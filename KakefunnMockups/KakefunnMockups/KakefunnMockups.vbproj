@@ -123,7 +123,7 @@
     <Compile Include="controllers\DocumentPrinter.vb" />
     <Compile Include="controllers\OrderManager.vb" />
     <Compile Include="controllers\PhoneHelper.vb" />
-    <Compile Include="controllers\ReportManager.vb" />
+    <Compile Include="controllers\ReportHelper.vb" />
     <Compile Include="controllers\SearchHelper.vb" />
     <Compile Include="controllers\SessionManager.vb" />
     <Compile Include="controllers\StockManager.vb" />
@@ -421,6 +421,7 @@
     <EmbeddedResource Include="ReportTest.resx">
       <DependentUpon>ReportTest.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="report\Report1.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
   <ItemGroup>

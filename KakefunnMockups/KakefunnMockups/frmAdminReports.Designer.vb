@@ -20,7 +20,9 @@ Partial Class frmAdminReports
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.IngredientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Turnover = New Kakefunn.Turnover()
         Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.EmployeeTest = New Kakefunn.EmployeeTest()
         Me.batchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -33,15 +35,24 @@ Partial Class frmAdminReports
         Me.lblTimePeriod = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.EmployeeTableAdapter = New Kakefunn.EmployeeTestTableAdapters.EmployeeTableAdapter()
-        Me.Turnover = New Kakefunn.Turnover()
-        Me.IngredientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.IngredientTableAdapter = New Kakefunn.TurnoverTableAdapters.IngredientTableAdapter()
+        Me.fpdFindReportFolder = New System.Windows.Forms.FolderBrowserDialog()
+        CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Turnover, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.Turnover, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'IngredientBindingSource
+        '
+        Me.IngredientBindingSource.DataMember = "Ingredient"
+        Me.IngredientBindingSource.DataSource = Me.Turnover
+        '
+        'Turnover
+        '
+        Me.Turnover.DataSetName = "Turnover"
+        Me.Turnover.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'EmployeeBindingSource
         '
@@ -60,7 +71,7 @@ Partial Class frmAdminReports
         'cboSelectReportForm
         '
         Me.cboSelectReportForm.FormattingEnabled = True
-        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport"})
+        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Repport 2"})
         Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
@@ -86,9 +97,9 @@ Partial Class frmAdminReports
         '
         'rptReports
         '
-        ReportDataSource1.Name = "DataSet1"
-        ReportDataSource1.Value = Me.IngredientBindingSource
-        Me.rptReports.LocalReport.DataSources.Add(ReportDataSource1)
+        ReportDataSource2.Name = "DataSet1"
+        ReportDataSource2.Value = Me.IngredientBindingSource
+        Me.rptReports.LocalReport.DataSources.Add(ReportDataSource2)
         Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.Turnover.rdlc"
         Me.rptReports.Location = New System.Drawing.Point(15, 96)
         Me.rptReports.Name = "rptReports"
@@ -142,16 +153,6 @@ Partial Class frmAdminReports
         '
         Me.EmployeeTableAdapter.ClearBeforeFill = True
         '
-        'Turnover
-        '
-        Me.Turnover.DataSetName = "Turnover"
-        Me.Turnover.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'IngredientBindingSource
-        '
-        Me.IngredientBindingSource.DataMember = "Ingredient"
-        Me.IngredientBindingSource.DataSource = Me.Turnover
-        '
         'IngredientTableAdapter
         '
         Me.IngredientTableAdapter.ClearBeforeFill = True
@@ -177,11 +178,11 @@ Partial Class frmAdminReports
         Me.Controls.SetChildIndex(Me.dtpTimePeriodTo, 0)
         Me.Controls.SetChildIndex(Me.lblTimePeriod, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
+        CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Turnover, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.Turnover, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -201,5 +202,6 @@ Partial Class frmAdminReports
     Friend WithEvents IngredientBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents Turnover As Kakefunn.Turnover
     Friend WithEvents IngredientTableAdapter As Kakefunn.TurnoverTableAdapters.IngredientTableAdapter
+    Friend WithEvents fpdFindReportFolder As System.Windows.Forms.FolderBrowserDialog
 
 End Class
