@@ -15,7 +15,6 @@ Public Class frmAdminBatch
 
     Dim notInStorageText As String
     Dim IsNewRecord As Boolean = True
-    Dim IsDirty As Boolean = False
     Dim currentRecord As Batch
     Dim batchBindingListView As BindingListView(Of Batch)
 
@@ -41,6 +40,9 @@ Public Class frmAdminBatch
 
         ' Handle swapping between price per unit and per batch
         AddHandler ddlPricePer.SelectedIndexChanged, AddressOf UpdateUnitPriceText
+
+        ' Enable tracking of fields being changed so that we can prompt to save changes
+        FormHelper.SetupDirtyTracking(Me)
 
     End Sub
 

@@ -14,6 +14,11 @@ Partial Public Class Customer
     Public Property id As Integer
     Public Property firstName As String
     Public Property lastName As String
+    Public ReadOnly Property fullName As String
+        Get
+            Return firstName & " " & lastName
+        End Get
+    End Property
     Public Property phone As String
     Public Property email As String
     Public Property note As String

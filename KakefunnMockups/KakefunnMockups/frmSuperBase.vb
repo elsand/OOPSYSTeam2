@@ -1,5 +1,6 @@
 ﻿Public Class frmSuperBase
 
+    Public isDirty As Boolean = False
     Private Shared IsClosingEventHandled As Boolean = False
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click

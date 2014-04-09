@@ -2,7 +2,6 @@
 
     Private IsNewRecord As Boolean = True
     Private currentRecord As Employee
-    Private IsDirty As Boolean = False
 
     Protected Overrides Sub OnFormGetsForeground()
         If IsNewRecord Then
@@ -15,17 +14,8 @@
     Private Sub frmAdminSystemAdministration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         UpdateEmployeeDDL()
-
-        For Each c As Control In Me.Controls
-            If c.GetType().Name = "TextBox" Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.IsDirty = True
-            ElseIf c.GetType().Name = "CheckBox" Then
-                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) Me.IsDirty = True
-            End If
-        Next
-
-        AddHandler txtZip.TextChanged, AddressOf Me.PopulateCityLabel
-        lblCity.Text = ""
+        FormHelper.SetupDirtyTracking(Me)
+        AddressHelper.SetupAutoCityFill(txtZip, lblCity)
 
     End Sub
 
@@ -37,21 +27,6 @@
             .DisplayMember = "fullName"
             .ValueMember = "id"
         End With
-    End Sub
-
-    Private Sub PopulateCityLabel()
-        Dim z As Integer
-        If txtZip.Text.Length <> 4 Then
-            lblCity.Text = "UGYLDIG"
-            Exit Sub
-        End If
-
-        Integer.TryParse(txtZip.Text, z)
-        Dim theCity = (From x As Zip In DBM.Instance.Zips Where x.zip1 = z Select x.city).FirstOrDefault()
-        If theCity Is Nothing Then
-            theCity = "UGYLDIG"
-        End If
-        lblCity.Text = theCity.ToUpper()
     End Sub
 
     Private Sub btnEditEmployee_Click(sender As Object, e As EventArgs) Handles btnEditEmployee.Click
@@ -66,8 +41,8 @@
 
         txtName.Text = em.firstName & " " & em.lastName
         txtEmail.Text = em.email
-        txtPhone.Text = em.phone.phonenumber
-        txtAddress.Text = em.address.address1
+        txtPhone.Text = em.Phone.phonenumber
+        txtAddress.Text = em.Address.address1
         txtZip.Text = em.Address.Zip.zip1
         lblCity.Text = em.Address.Zip.city
         txtPassword.Text = ""
@@ -77,7 +52,7 @@
         cbSale.Checked = False
         cbLogistics.Checked = False
 
-        For Each r As role In em.roles
+        For Each r As Role In em.Roles
             Select Case r.name
                 Case "Admin"
                     cbAdmin.Checked = True
