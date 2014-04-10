@@ -1,5 +1,6 @@
 ﻿Public Class frmSuperBase
 
+    Public isDirty As Boolean = False
     Private Shared IsClosingEventHandled As Boolean = False
 
     Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
@@ -47,11 +48,11 @@
             Exit Sub
         End If
         Dim roles As String = ""
-        For Each r In SessionManager.Instance.User.roles
+        For Each r In SessionManager.Instance.User.Roles
             roles = roles & r.name & ", "
         Next
         roles = roles.Substring(0, roles.Length - 2)
-        statusLogin.Text = "Innlogget: " & SessionManager.Instance.User.name & " (" & roles & ")"
+        statusLogin.Text = "Innlogget: " & SessionManager.Instance.User.firstName & " " & SessionManager.Instance.User.lastName & " (" & roles & ")"
     End Sub
 
     Protected Sub UpdateActionStatus(status As String)

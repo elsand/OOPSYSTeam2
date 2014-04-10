@@ -21,7 +21,6 @@ Partial Class frmSaleOrder
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.lblCustomer = New System.Windows.Forms.Label()
-        Me.txtCustomerNameAndOrderAutocomplete = New System.Windows.Forms.TextBox()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
         Me.lblDeliveryMethod = New System.Windows.Forms.Label()
@@ -30,19 +29,18 @@ Partial Class frmSaleOrder
         Me.lblDate = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
-        Me.btnSearchTelephoneDirectory = New System.Windows.Forms.Button()
         Me.txtTelephone = New System.Windows.Forms.TextBox()
         Me.lblTelephone = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
         Me.txtZip = New System.Windows.Forms.TextBox()
         Me.lblZip = New System.Windows.Forms.Label()
-        Me.txtCo = New System.Windows.Forms.TextBox()
-        Me.lblCo = New System.Windows.Forms.Label()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.lblAddress = New System.Windows.Forms.Label()
-        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.txtDeliveryName = New System.Windows.Forms.TextBox()
         Me.lblName = New System.Windows.Forms.Label()
         Me.grpOrderingCustomer = New System.Windows.Forms.GroupBox()
+        Me.cbCustomerName = New System.Windows.Forms.ComboBox()
+        Me.CustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.grpCommodity = New System.Windows.Forms.GroupBox()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.dtgCommodity = New System.Windows.Forms.DataGridView()
@@ -90,6 +88,7 @@ Partial Class frmSaleOrder
         Me.chkIsActivated = New System.Windows.Forms.CheckBox()
         Me.grpDelivery.SuspendLayout()
         Me.grpOrderingCustomer.SuspendLayout()
+        CType(Me.CustomerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpCommodity.SuspendLayout()
         Me.Panel1.SuspendLayout()
         CType(Me.dtgCommodity, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,14 +107,6 @@ Partial Class frmSaleOrder
         Me.lblCustomer.TabIndex = 2
         Me.lblCustomer.Text = "Kunde:"
         '
-        'txtCustomerNameAndOrderAutocomplete
-        '
-        Me.txtCustomerNameAndOrderAutocomplete.Location = New System.Drawing.Point(60, 22)
-        Me.txtCustomerNameAndOrderAutocomplete.Name = "txtCustomerNameAndOrderAutocomplete"
-        Me.txtCustomerNameAndOrderAutocomplete.Size = New System.Drawing.Size(338, 20)
-        Me.txtCustomerNameAndOrderAutocomplete.TabIndex = 3
-        Me.txtCustomerNameAndOrderAutocomplete.Text = "Autocomplete på kundenavn/nr her ..."
-        '
         'btnNewCustomer
         '
         Me.btnNewCustomer.Location = New System.Drawing.Point(414, 19)
@@ -133,17 +124,14 @@ Partial Class frmSaleOrder
         Me.grpDelivery.Controls.Add(Me.lblDate)
         Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.lblEmail)
-        Me.grpDelivery.Controls.Add(Me.btnSearchTelephoneDirectory)
         Me.grpDelivery.Controls.Add(Me.txtTelephone)
         Me.grpDelivery.Controls.Add(Me.lblTelephone)
         Me.grpDelivery.Controls.Add(Me.lblCity)
         Me.grpDelivery.Controls.Add(Me.txtZip)
         Me.grpDelivery.Controls.Add(Me.lblZip)
-        Me.grpDelivery.Controls.Add(Me.txtCo)
-        Me.grpDelivery.Controls.Add(Me.lblCo)
         Me.grpDelivery.Controls.Add(Me.txtAddress)
         Me.grpDelivery.Controls.Add(Me.lblAddress)
-        Me.grpDelivery.Controls.Add(Me.txtName)
+        Me.grpDelivery.Controls.Add(Me.txtDeliveryName)
         Me.grpDelivery.Controls.Add(Me.lblName)
         Me.grpDelivery.Location = New System.Drawing.Point(13, 89)
         Me.grpDelivery.Name = "grpDelivery"
@@ -201,20 +189,11 @@ Partial Class frmSaleOrder
         Me.lblEmail.TabIndex = 12
         Me.lblEmail.Text = "E-post:"
         '
-        'btnSearchTelephoneDirectory
-        '
-        Me.btnSearchTelephoneDirectory.Location = New System.Drawing.Point(131, 90)
-        Me.btnSearchTelephoneDirectory.Name = "btnSearchTelephoneDirectory"
-        Me.btnSearchTelephoneDirectory.Size = New System.Drawing.Size(138, 20)
-        Me.btnSearchTelephoneDirectory.TabIndex = 11
-        Me.btnSearchTelephoneDirectory.Text = "Slå opp i telefonkatalogen"
-        Me.btnSearchTelephoneDirectory.UseVisualStyleBackColor = True
-        '
         'txtTelephone
         '
         Me.txtTelephone.Location = New System.Drawing.Point(59, 90)
         Me.txtTelephone.Name = "txtTelephone"
-        Me.txtTelephone.Size = New System.Drawing.Size(66, 20)
+        Me.txtTelephone.Size = New System.Drawing.Size(210, 20)
         Me.txtTelephone.TabIndex = 10
         '
         'lblTelephone
@@ -251,47 +230,28 @@ Partial Class frmSaleOrder
         Me.lblZip.TabIndex = 6
         Me.lblZip.Text = "Postnr:"
         '
-        'txtCo
-        '
-        Me.txtCo.Location = New System.Drawing.Point(327, 17)
-        Me.txtCo.Name = "txtCo"
-        Me.txtCo.Size = New System.Drawing.Size(145, 20)
-        Me.txtCo.TabIndex = 5
-        '
-        'lblCo
-        '
-        Me.lblCo.AutoSize = True
-        Me.lblCo.Location = New System.Drawing.Point(276, 20)
-        Me.lblCo.Name = "lblCo"
-        Me.lblCo.Size = New System.Drawing.Size(30, 13)
-        Me.lblCo.TabIndex = 4
-        Me.lblCo.Text = "C/O:"
-        '
         'txtAddress
         '
-        Me.txtAddress.Location = New System.Drawing.Point(59, 43)
-        Me.txtAddress.Multiline = True
+        Me.txtAddress.Location = New System.Drawing.Point(60, 46)
         Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.Size = New System.Drawing.Size(210, 41)
+        Me.txtAddress.Size = New System.Drawing.Size(210, 20)
         Me.txtAddress.TabIndex = 3
-        Me.txtAddress.Text = "Default kundenavn, ellers autocomplete mot address-tabell"
         '
         'lblAddress
         '
         Me.lblAddress.AutoSize = True
-        Me.lblAddress.Location = New System.Drawing.Point(5, 46)
+        Me.lblAddress.Location = New System.Drawing.Point(6, 49)
         Me.lblAddress.Name = "lblAddress"
         Me.lblAddress.Size = New System.Drawing.Size(48, 13)
         Me.lblAddress.TabIndex = 2
         Me.lblAddress.Text = "Adresse:"
         '
-        'txtName
+        'txtDeliveryName
         '
-        Me.txtName.Location = New System.Drawing.Point(59, 17)
-        Me.txtName.Name = "txtName"
-        Me.txtName.Size = New System.Drawing.Size(210, 20)
-        Me.txtName.TabIndex = 1
-        Me.txtName.Text = "Default kundenavn"
+        Me.txtDeliveryName.Location = New System.Drawing.Point(59, 17)
+        Me.txtDeliveryName.Name = "txtDeliveryName"
+        Me.txtDeliveryName.Size = New System.Drawing.Size(210, 20)
+        Me.txtDeliveryName.TabIndex = 1
         '
         'lblName
         '
@@ -304,8 +264,8 @@ Partial Class frmSaleOrder
         '
         'grpOrderingCustomer
         '
+        Me.grpOrderingCustomer.Controls.Add(Me.cbCustomerName)
         Me.grpOrderingCustomer.Controls.Add(Me.lblCustomer)
-        Me.grpOrderingCustomer.Controls.Add(Me.txtCustomerNameAndOrderAutocomplete)
         Me.grpOrderingCustomer.Controls.Add(Me.btnNewCustomer)
         Me.grpOrderingCustomer.Location = New System.Drawing.Point(13, 27)
         Me.grpOrderingCustomer.Name = "grpOrderingCustomer"
@@ -313,6 +273,23 @@ Partial Class frmSaleOrder
         Me.grpOrderingCustomer.TabIndex = 6
         Me.grpOrderingCustomer.TabStop = False
         Me.grpOrderingCustomer.Text = "Bestiller"
+        '
+        'cbCustomerName
+        '
+        Me.cbCustomerName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cbCustomerName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cbCustomerName.DataSource = Me.CustomerBindingSource
+        Me.cbCustomerName.DisplayMember = "fullName"
+        Me.cbCustomerName.FormattingEnabled = True
+        Me.cbCustomerName.Location = New System.Drawing.Point(60, 20)
+        Me.cbCustomerName.Name = "cbCustomerName"
+        Me.cbCustomerName.Size = New System.Drawing.Size(348, 21)
+        Me.cbCustomerName.TabIndex = 5
+        Me.cbCustomerName.ValueMember = "id"
+        '
+        'CustomerBindingSource
+        '
+        Me.CustomerBindingSource.DataSource = GetType(Kakefunn.Customer)
         '
         'grpCommodity
         '
@@ -785,6 +762,7 @@ Partial Class frmSaleOrder
         Me.grpDelivery.PerformLayout()
         Me.grpOrderingCustomer.ResumeLayout(False)
         Me.grpOrderingCustomer.PerformLayout()
+        CType(Me.CustomerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpCommodity.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         CType(Me.dtgCommodity, System.ComponentModel.ISupportInitialize).EndInit()
@@ -801,23 +779,19 @@ Partial Class frmSaleOrder
 
     End Sub
     Friend WithEvents lblCustomer As System.Windows.Forms.Label
-    Friend WithEvents txtCustomerNameAndOrderAutocomplete As System.Windows.Forms.TextBox
     Friend WithEvents btnNewCustomer As System.Windows.Forms.Button
     Friend WithEvents grpDelivery As System.Windows.Forms.GroupBox
     Friend WithEvents txtAddress As System.Windows.Forms.TextBox
     Friend WithEvents lblAddress As System.Windows.Forms.Label
-    Friend WithEvents txtName As System.Windows.Forms.TextBox
+    Friend WithEvents txtDeliveryName As System.Windows.Forms.TextBox
     Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents txtTelephone As System.Windows.Forms.TextBox
     Friend WithEvents lblTelephone As System.Windows.Forms.Label
     Friend WithEvents lblCity As System.Windows.Forms.Label
     Friend WithEvents txtZip As System.Windows.Forms.TextBox
     Friend WithEvents lblZip As System.Windows.Forms.Label
-    Friend WithEvents txtCo As System.Windows.Forms.TextBox
-    Friend WithEvents lblCo As System.Windows.Forms.Label
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
-    Friend WithEvents btnSearchTelephoneDirectory As System.Windows.Forms.Button
     Friend WithEvents grpOrderingCustomer As System.Windows.Forms.GroupBox
     Friend WithEvents grpCommodity As System.Windows.Forms.GroupBox
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
@@ -868,5 +842,7 @@ Partial Class frmSaleOrder
     Friend WithEvents lblTypeInterval As System.Windows.Forms.Label
     Friend WithEvents chkIsActivated As System.Windows.Forms.CheckBox
     Friend WithEvents btnShowOrderForSubscription As System.Windows.Forms.Button
+    Friend WithEvents cbCustomerName As System.Windows.Forms.ComboBox
+    Friend WithEvents CustomerBindingSource As System.Windows.Forms.BindingSource
 
 End Class

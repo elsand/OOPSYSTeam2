@@ -1,5 +1,6 @@
 ﻿Public Class frmSaleCustomer
 
+    Public returnToFormAfterSave As Form
 
     Public Sub LoadCustomer(customer As Customer)
         MsgBox("load customer " & customer.id)

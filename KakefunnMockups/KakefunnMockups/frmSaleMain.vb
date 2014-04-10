@@ -16,7 +16,8 @@
             Case "dcCustomerId"
                 e.Value = CType(e.Value, Customer).id
             Case "dcCustomerName"
-                e.Value = CType(e.Value, Customer).name
+                Dim c As Customer = CType(e.Value, Customer)
+                e.Value = c.firstName & " " & c.lastName
             Case "dcOrderAddress"
                 Dim a As Address = CType(e.Value, Address)
                 e.Value = a.address1 & ", " & a.Zip.zip1 & " " & a.Zip.city

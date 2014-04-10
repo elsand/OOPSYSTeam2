@@ -2,54 +2,31 @@
 
     Private IsNewRecord As Boolean = True
     Private currentRecord As Employee
-    Private IsDirty As Boolean = False
 
     Protected Overrides Sub OnFormGetsForeground()
         If IsNewRecord Then
             UpdateActionStatus()
         Else
-            UpdateActionStatus("Redigerer " & currentRecord.name)
+            UpdateActionStatus("Redigerer " & currentRecord.firstName & " " & currentRecord.lastName)
         End If
     End Sub
 
     Private Sub frmAdminSystemAdministration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         UpdateEmployeeDDL()
-
-        For Each c As Control In Me.Controls
-            If c.GetType().Name = "TextBox" Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.IsDirty = True
-            ElseIf c.GetType().Name = "CheckBox" Then
-                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) Me.IsDirty = True
-            End If
-        Next
-
-        AddHandler txtZip.TextChanged, AddressOf Me.PopulateCityLabel
-        lblCity.Text = ""
+        FormHelper.SetupDirtyTracking(Me)
+        AddressHelper.SetupAutoCityFill(txtZip, lblCity)
 
     End Sub
 
     Private Sub UpdateEmployeeDDL()
+
+        Dim employees As DataTable = DBM.Instance.GetDataTableFromQuery("SELECT id, CONCAT(firstName, ' ', lastName) as fullName from Employee ORDER BY lastName")
         With ddlEmployees
-            .DataSource = DBM.Instance.Employees.ToList()
-            .DisplayMember = "name"
+            .DataSource = employees
+            .DisplayMember = "fullName"
             .ValueMember = "id"
         End With
-    End Sub
-
-    Private Sub PopulateCityLabel()
-        Dim z As Integer
-        If txtZip.Text.Length <> 4 Then
-            lblCity.Text = "UGYLDIG"
-            Exit Sub
-        End If
-
-        Integer.TryParse(txtZip.Text, z)
-        Dim theCity = (From x As Zip In DBM.Instance.Zips Where x.zip1 = z Select x.city).FirstOrDefault()
-        If theCity Is Nothing Then
-            theCity = "UGYLDIG"
-        End If
-        lblCity.Text = theCity.ToUpper()
     End Sub
 
     Private Sub btnEditEmployee_Click(sender As Object, e As EventArgs) Handles btnEditEmployee.Click
@@ -60,12 +37,12 @@
 
         UpdateActionStatus("Laster oppføring ...")
 
-        Dim em As Employee = DirectCast(ddlEmployees.SelectedItem, Employee)
+        Dim em As Employee = DBM.Instance.Employees.Find(ddlEmployees.SelectedValue)
 
-        txtName.Text = em.name
+        txtName.Text = em.firstName & " " & em.lastName
         txtEmail.Text = em.email
-        txtPhone.Text = em.phone.phonenumber
-        txtAddress.Text = em.address.address1
+        txtPhone.Text = em.Phone.phonenumber
+        txtAddress.Text = em.Address.address1
         txtZip.Text = em.Address.Zip.zip1
         lblCity.Text = em.Address.Zip.city
         txtPassword.Text = ""
@@ -75,7 +52,7 @@
         cbSale.Checked = False
         cbLogistics.Checked = False
 
-        For Each r As role In em.roles
+        For Each r As Role In em.Roles
             Select Case r.name
                 Case "Admin"
                     cbAdmin.Checked = True
@@ -95,7 +72,7 @@
         Application.DoEvents()
         IsDirty = False
 
-        UpdateActionStatus("Redigerer: " & em.name)
+        UpdateActionStatus("Redigerer: " & em.firstName & " " & em.lastName)
 
     End Sub
 
@@ -113,7 +90,9 @@
             em = currentRecord
         End If
 
-        em.name = txtName.Text
+        Dim fn As FullName = CustomerManager.GetFullName(txtName.Text)
+        em.firstName = fn.firstName
+        em.lastName = fn.lastName
         em.email = txtEmail.Text
 
         If IsNewRecord OrElse txtPassword.Text <> "" Then
@@ -156,7 +135,7 @@
         currentRecord = em
         UpdateEmployeeDDL()
 
-        UpdateActionStatus("Redigerer " & em.name)
+        UpdateActionStatus("Redigerer " & em.firstName & " " & em.lastName)
         MessageBox.Show("Oppføringen er lagret", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
     End Sub

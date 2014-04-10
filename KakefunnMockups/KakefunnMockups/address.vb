@@ -12,9 +12,6 @@ Imports System.Collections.Generic
 
 Partial Public Class Address
     Public Property id As Integer
-    Public Property isPrivate As Boolean
-    Public Property name As String
-    Public Property careOf As String
     Public Property address1 As String
 
     Public Overridable Property Zip As Zip

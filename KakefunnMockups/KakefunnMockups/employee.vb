@@ -12,7 +12,13 @@ Imports System.Collections.Generic
 
 Partial Public Class Employee
     Public Property id As Integer
-    Public Property name As String
+    Public Property firstName As String
+    Public Property lastName As String
+    Public ReadOnly Property fullName As String
+        Get
+            Return firstName & " " & lastName
+        End Get
+    End Property
     Public Property email As String
     Public Property password As String
 
