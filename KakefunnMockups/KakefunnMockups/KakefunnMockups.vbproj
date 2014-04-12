@@ -346,6 +346,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Ingredien.xsd</DependentUpon>
     </Compile>
+    <Compile Include="report\Ingredien.vb">
+      <DependentUpon>Ingredien.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\Turnover.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -441,6 +444,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="report\Customer.rdlc" />
     <EmbeddedResource Include="report\IngredientHistory.rdlc" />
+    <EmbeddedResource Include="report\LastYearNextMonth.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
   <ItemGroup>

@@ -39,13 +39,15 @@ ORDER BY year, month</CommandText>
               <DbSource ConnectionRef="_14vfu_t02ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT        i.name, MONTH(o.created) AS month, SUM(ol.amount) AS totalAmount, u.name AS Expr1
+                    <CommandText>SELECT        i.name, MONTH(o.created) AS month, YEAR(o.created) AS year, SUM(ol.amount) AS totalAmount, u.name AS uName, SUM(b.unitCount) AS currAmount, COALESCE(SUM(b.unitCount) - SUM(ol.amount), 
+                         SUM(ol.amount)) AS toOrder
 FROM            `Order` o INNER JOIN
                          OrderLine ol ON ol.orderId = o.id INNER JOIN
                          Ingredient i ON ol.ingredientId = i.id INNER JOIN
-                         Unit u ON u.id = i.unitId
-WHERE        (MONTH(o.created) = 4) AND (YEAR(o.created) = YEAR(NOW()) - 1)
-GROUP BY i.id
+                         Unit u ON u.id = i.unitId LEFT OUTER JOIN
+                         Batch b ON b.ingredientId = i.id
+WHERE        (MONTH(o.created) = MONTH(NOW()) + 1) AND (YEAR(o.created) = YEAR(NOW()) - 1)
+GROUP BY i.id, MONTH(o.created)
 ORDER BY totalAmount DESC</CommandText>
                     <Parameters />
                   </DbCommand>
@@ -56,7 +58,10 @@ ORDER BY totalAmount DESC</CommandText>
               <Mapping SourceColumn="name" DataSetColumn="name" />
               <Mapping SourceColumn="month" DataSetColumn="month" />
               <Mapping SourceColumn="totalAmount" DataSetColumn="totalAmount" />
-              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="year" DataSetColumn="year" />
+              <Mapping SourceColumn="uName" DataSetColumn="uName" />
+              <Mapping SourceColumn="currAmount" DataSetColumn="currAmount" />
+              <Mapping SourceColumn="toOrder" DataSetColumn="toOrder" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -103,13 +108,16 @@ ORDER BY totalAmount DESC</CommandText>
               </xs:element>
               <xs:element name="month" msprop:Generator_ColumnVarNameInTable="columnmonth" msprop:Generator_ColumnPropNameInRow="month" msprop:Generator_ColumnPropNameInTable="monthColumn" msprop:Generator_UserColumnName="month" type="xs:long" minOccurs="0" />
               <xs:element name="totalAmount" msprop:Generator_ColumnVarNameInTable="columntotalAmount" msprop:Generator_ColumnPropNameInRow="totalAmount" msprop:Generator_ColumnPropNameInTable="totalAmountColumn" msprop:Generator_UserColumnName="totalAmount" type="xs:double" minOccurs="0" />
-              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" type="xs:long" minOccurs="0" />
+              <xs:element name="uName" msprop:Generator_ColumnVarNameInTable="columnuName" msprop:Generator_ColumnPropNameInRow="uName" msprop:Generator_ColumnPropNameInTable="uNameColumn" msprop:Generator_UserColumnName="uName">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="45" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="currAmount" msprop:Generator_ColumnVarNameInTable="columncurrAmount" msprop:Generator_ColumnPropNameInRow="currAmount" msprop:Generator_ColumnPropNameInTable="currAmountColumn" msprop:Generator_UserColumnName="currAmount" type="xs:decimal" minOccurs="0" />
+              <xs:element name="toOrder" msprop:Generator_ColumnVarNameInTable="columntoOrder" msprop:Generator_ColumnPropNameInRow="toOrder" msprop:Generator_ColumnPropNameInTable="toOrderColumn" msprop:Generator_UserColumnName="toOrder" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

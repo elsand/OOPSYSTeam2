@@ -63,6 +63,8 @@ Public Class frmAdminReports
                 rph.id = cboSelectIngredient.SelectedValue
 
                 reportDataSource = New ReportDataSource("IngredientHistory", rph.getDataTable("ingredientHistory"))
+            Case 3
+                reportDataSource = New ReportDataSource("LastYearNextMonth", rph.getDataTable("lastYearNextMonth"))
 
 
 
