@@ -20,7 +20,11 @@ Partial Class frmAdminReports
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim ReportDataSource1 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
         Dim ReportDataSource2 As Microsoft.Reporting.WinForms.ReportDataSource = New Microsoft.Reporting.WinForms.ReportDataSource()
+        Me.LastYearMonthSaleBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Ingredien = New Kakefunn.Ingredien()
+        Me.IngredientHistoryBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.IngredientBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Turnover = New Kakefunn.Turnover()
         Me.EmployeeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -37,12 +41,39 @@ Partial Class frmAdminReports
         Me.EmployeeTableAdapter = New Kakefunn.EmployeeTestTableAdapters.EmployeeTableAdapter()
         Me.IngredientTableAdapter = New Kakefunn.TurnoverTableAdapters.IngredientTableAdapter()
         Me.fpdFindReportFolder = New System.Windows.Forms.FolderBrowserDialog()
+        Me.LastYearMonthSaleTableAdapter = New Kakefunn.IngredienTableAdapters.LastYearMonthSaleTableAdapter()
+        Me.IngredientHistoryTableAdapter = New Kakefunn.IngredienTableAdapters.IngredientHistoryTableAdapter()
+        Me.cboSelectIngredient = New System.Windows.Forms.ComboBox()
+        Me.IngredientBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me._14vfu_t02DataSet = New Kakefunn._14vfu_t02DataSet()
+        Me.IngredientTableAdapter1 = New Kakefunn._14vfu_t02DataSetTableAdapters.IngredientTableAdapter()
+        Me.lblSelectIngredient = New System.Windows.Forms.Label()
+        CType(Me.LastYearMonthSaleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.Ingredien, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IngredientHistoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Turnover, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IngredientBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me._14vfu_t02DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'LastYearMonthSaleBindingSource
+        '
+        Me.LastYearMonthSaleBindingSource.DataMember = "LastYearMonthSale"
+        Me.LastYearMonthSaleBindingSource.DataSource = Me.Ingredien
+        '
+        'Ingredien
+        '
+        Me.Ingredien.DataSetName = "Ingredien"
+        Me.Ingredien.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'IngredientHistoryBindingSource
+        '
+        Me.IngredientHistoryBindingSource.DataMember = "IngredientHistory"
+        Me.IngredientHistoryBindingSource.DataSource = Me.Ingredien
         '
         'IngredientBindingSource
         '
@@ -71,7 +102,7 @@ Partial Class frmAdminReports
         'cboSelectReportForm
         '
         Me.cboSelectReportForm.FormattingEnabled = True
-        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Repport 2"})
+        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Ingrediens siste år"})
         Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
@@ -97,10 +128,13 @@ Partial Class frmAdminReports
         '
         'rptReports
         '
-        ReportDataSource2.Name = "DataSet1"
-        ReportDataSource2.Value = Me.IngredientBindingSource
+        ReportDataSource1.Name = "IngredientsPrMonth"
+        ReportDataSource1.Value = Me.LastYearMonthSaleBindingSource
+        ReportDataSource2.Name = "IngredientHistory"
+        ReportDataSource2.Value = Me.IngredientHistoryBindingSource
+        Me.rptReports.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rptReports.LocalReport.DataSources.Add(ReportDataSource2)
-        Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.Turnover.rdlc"
+        Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.IngredientMonth.rdlc"
         Me.rptReports.Location = New System.Drawing.Point(15, 96)
         Me.rptReports.Name = "rptReports"
         Me.rptReports.ShowBackButton = False
@@ -157,10 +191,56 @@ Partial Class frmAdminReports
         '
         Me.IngredientTableAdapter.ClearBeforeFill = True
         '
+        'LastYearMonthSaleTableAdapter
+        '
+        Me.LastYearMonthSaleTableAdapter.ClearBeforeFill = True
+        '
+        'IngredientHistoryTableAdapter
+        '
+        Me.IngredientHistoryTableAdapter.ClearBeforeFill = True
+        '
+        'cboSelectIngredient
+        '
+        Me.cboSelectIngredient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
+        Me.cboSelectIngredient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
+        Me.cboSelectIngredient.DataSource = Me.IngredientBindingSource1
+        Me.cboSelectIngredient.DisplayMember = "name"
+        Me.cboSelectIngredient.FormattingEnabled = True
+        Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 70)
+        Me.cboSelectIngredient.Name = "cboSelectIngredient"
+        Me.cboSelectIngredient.Size = New System.Drawing.Size(211, 21)
+        Me.cboSelectIngredient.TabIndex = 15
+        Me.cboSelectIngredient.ValueMember = "id"
+        '
+        'IngredientBindingSource1
+        '
+        Me.IngredientBindingSource1.DataMember = "Ingredient"
+        Me.IngredientBindingSource1.DataSource = Me._14vfu_t02DataSet
+        '
+        '_14vfu_t02DataSet
+        '
+        Me._14vfu_t02DataSet.DataSetName = "_14vfu_t02DataSet"
+        Me._14vfu_t02DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'IngredientTableAdapter1
+        '
+        Me.IngredientTableAdapter1.ClearBeforeFill = True
+        '
+        'lblSelectIngredient
+        '
+        Me.lblSelectIngredient.AutoSize = True
+        Me.lblSelectIngredient.Location = New System.Drawing.Point(236, 72)
+        Me.lblSelectIngredient.Name = "lblSelectIngredient"
+        Me.lblSelectIngredient.Size = New System.Drawing.Size(79, 13)
+        Me.lblSelectIngredient.TabIndex = 16
+        Me.lblSelectIngredient.Text = "Velg ingrediens"
+        '
         'frmAdminReports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(707, 458)
+        Me.Controls.Add(Me.lblSelectIngredient)
+        Me.Controls.Add(Me.cboSelectIngredient)
         Me.Controls.Add(Me.Label3)
         Me.Controls.Add(Me.lblTimePeriod)
         Me.Controls.Add(Me.dtpTimePeriodTo)
@@ -178,11 +258,18 @@ Partial Class frmAdminReports
         Me.Controls.SetChildIndex(Me.dtpTimePeriodTo, 0)
         Me.Controls.SetChildIndex(Me.lblTimePeriod, 0)
         Me.Controls.SetChildIndex(Me.Label3, 0)
+        Me.Controls.SetChildIndex(Me.cboSelectIngredient, 0)
+        Me.Controls.SetChildIndex(Me.lblSelectIngredient, 0)
+        CType(Me.LastYearMonthSaleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.Ingredien, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IngredientHistoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IngredientBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Turnover, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IngredientBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me._14vfu_t02DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -203,5 +290,15 @@ Partial Class frmAdminReports
     Friend WithEvents Turnover As Kakefunn.Turnover
     Friend WithEvents IngredientTableAdapter As Kakefunn.TurnoverTableAdapters.IngredientTableAdapter
     Friend WithEvents fpdFindReportFolder As System.Windows.Forms.FolderBrowserDialog
+    Friend WithEvents LastYearMonthSaleBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents Ingredien As Kakefunn.Ingredien
+    Friend WithEvents IngredientHistoryBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents LastYearMonthSaleTableAdapter As Kakefunn.IngredienTableAdapters.LastYearMonthSaleTableAdapter
+    Friend WithEvents IngredientHistoryTableAdapter As Kakefunn.IngredienTableAdapters.IngredientHistoryTableAdapter
+    Friend WithEvents cboSelectIngredient As System.Windows.Forms.ComboBox
+    Friend WithEvents _14vfu_t02DataSet As Kakefunn._14vfu_t02DataSet
+    Friend WithEvents IngredientBindingSource1 As System.Windows.Forms.BindingSource
+    Friend WithEvents IngredientTableAdapter1 As Kakefunn._14vfu_t02DataSetTableAdapters.IngredientTableAdapter
+    Friend WithEvents lblSelectIngredient As System.Windows.Forms.Label
 
 End Class

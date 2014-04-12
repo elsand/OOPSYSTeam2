@@ -117,6 +117,7 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="controllers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -144,7 +145,6 @@
     <Compile Include="helpers\FormHelper.vb" />
     <Compile Include="helpers\FullName.vb" />
     <Compile Include="helpers\PhoneHelper.vb" />
-    <Compile Include="controllers\ReportManager.vb" />
     <Compile Include="helpers\SearchHelper.vb" />
     <Compile Include="controllers\SessionManager.vb" />
     <Compile Include="controllers\StockManager.vb" />
@@ -336,6 +336,16 @@
     <Compile Include="ReportTest.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="report\Customer.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Customer.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="report\Ingredien.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ingredien.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\Turnover.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -355,6 +365,11 @@
     </Compile>
     <Compile Include="Zip.vb">
       <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="_14vfu_t02DataSet.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>_14vfu_t02DataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -424,6 +439,8 @@
     <EmbeddedResource Include="ReportTest.resx">
       <DependentUpon>ReportTest.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="report\Customer.rdlc" />
+    <EmbeddedResource Include="report\IngredientHistory.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +487,28 @@
     </None>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="report\Customer.xsc">
+      <DependentUpon>Customer.xsd</DependentUpon>
+    </None>
+    <None Include="report\Customer.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Customer.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="report\Customer.xss">
+      <DependentUpon>Customer.xsd</DependentUpon>
+    </None>
+    <None Include="report\Ingredien.xsc">
+      <DependentUpon>Ingredien.xsd</DependentUpon>
+    </None>
+    <None Include="report\Ingredien.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Ingredien.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="report\Ingredien.xss">
+      <DependentUpon>Ingredien.xsd</DependentUpon>
+    </None>
     <None Include="report\Turnover.xsc">
       <DependentUpon>Turnover.xsd</DependentUpon>
     </None>
@@ -480,6 +519,17 @@
     </None>
     <None Include="report\Turnover.xss">
       <DependentUpon>Turnover.xsd</DependentUpon>
+    </None>
+    <None Include="_14vfu_t02DataSet.xsc">
+      <DependentUpon>_14vfu_t02DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="_14vfu_t02DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>_14vfu_t02DataSet.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="_14vfu_t02DataSet.xss">
+      <DependentUpon>_14vfu_t02DataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

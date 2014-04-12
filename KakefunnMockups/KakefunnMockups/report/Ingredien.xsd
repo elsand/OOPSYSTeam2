@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Ingredien" targetNamespace="http://tempuri.org/Ingredien.xsd" xmlns:mstns="http://tempuri.org/Ingredien.xsd" xmlns="http://tempuri.org/Ingredien.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="_14vfu_t02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="_14vfu_t02ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Kakefunn.My.MySettings.GlobalReference.Default._14vfu_t02ConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="IngredientHistoryTableAdapter" GeneratorDataComponentClassName="IngredientHistoryTableAdapter" Name="IngredientHistory" UserDataComponentName="IngredientHistoryTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="_14vfu_t02ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        i.name, MONTH(o.created) AS month, YEAR(o.created) AS year, SUM(ol.amount) AS amount, u.name AS uName
+FROM            `Order` o INNER JOIN
+                         OrderLine ol ON ol.orderId = o.id INNER JOIN
+                         Ingredient i ON ol.ingredientId = i.id INNER JOIN
+                         Unit u ON u.id = i.unitId
+WHERE        (i.id = 6) AND (DATEDIFF(NOW(), o.created) &lt; 365 + DAYOFMONTH(NOW()))
+GROUP BY year, month
+ORDER BY year, month</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="month" DataSetColumn="month" />
+              <Mapping SourceColumn="year" DataSetColumn="year" />
+              <Mapping SourceColumn="amount" DataSetColumn="amount" />
+              <Mapping SourceColumn="uName" DataSetColumn="uName" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="LastYearMonthSaleTableAdapter" GeneratorDataComponentClassName="LastYearMonthSaleTableAdapter" Name="LastYearMonthSale" UserDataComponentName="LastYearMonthSaleTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="_14vfu_t02ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        i.name, MONTH(o.created) AS month, SUM(ol.amount) AS totalAmount, u.name AS Expr1
+FROM            `Order` o INNER JOIN
+                         OrderLine ol ON ol.orderId = o.id INNER JOIN
+                         Ingredient i ON ol.ingredientId = i.id INNER JOIN
+                         Unit u ON u.id = i.unitId
+WHERE        (MONTH(o.created) = 4) AND (YEAR(o.created) = YEAR(NOW()) - 1)
+GROUP BY i.id
+ORDER BY totalAmount DESC</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="month" DataSetColumn="month" />
+              <Mapping SourceColumn="totalAmount" DataSetColumn="totalAmount" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Ingredien" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Ingredien" msprop:Generator_UserDSName="Ingredien">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="IngredientHistory" msprop:Generator_TableClassName="IngredientHistoryDataTable" msprop:Generator_TableVarName="tableIngredientHistory" msprop:Generator_TablePropName="IngredientHistory" msprop:Generator_RowDeletingName="IngredientHistoryRowDeleting" msprop:Generator_RowChangingName="IngredientHistoryRowChanging" msprop:Generator_RowEvHandlerName="IngredientHistoryRowChangeEventHandler" msprop:Generator_RowDeletedName="IngredientHistoryRowDeleted" msprop:Generator_UserTableName="IngredientHistory" msprop:Generator_RowChangedName="IngredientHistoryRowChanged" msprop:Generator_RowEvArgName="IngredientHistoryRowChangeEvent" msprop:Generator_RowClassName="IngredientHistoryRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="month" msprop:Generator_ColumnVarNameInTable="columnmonth" msprop:Generator_ColumnPropNameInRow="month" msprop:Generator_ColumnPropNameInTable="monthColumn" msprop:Generator_UserColumnName="month" type="xs:long" minOccurs="0" />
+              <xs:element name="year" msprop:Generator_ColumnVarNameInTable="columnyear" msprop:Generator_ColumnPropNameInRow="year" msprop:Generator_ColumnPropNameInTable="yearColumn" msprop:Generator_UserColumnName="year" type="xs:long" minOccurs="0" />
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:double" minOccurs="0" />
+              <xs:element name="uName" msprop:Generator_ColumnVarNameInTable="columnuName" msprop:Generator_ColumnPropNameInRow="uName" msprop:Generator_ColumnPropNameInTable="uNameColumn" msprop:Generator_UserColumnName="uName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="LastYearMonthSale" msprop:Generator_TableClassName="LastYearMonthSaleDataTable" msprop:Generator_TableVarName="tableLastYearMonthSale" msprop:Generator_TablePropName="LastYearMonthSale" msprop:Generator_RowDeletingName="LastYearMonthSaleRowDeleting" msprop:Generator_RowChangingName="LastYearMonthSaleRowChanging" msprop:Generator_RowEvHandlerName="LastYearMonthSaleRowChangeEventHandler" msprop:Generator_RowDeletedName="LastYearMonthSaleRowDeleted" msprop:Generator_UserTableName="LastYearMonthSale" msprop:Generator_RowChangedName="LastYearMonthSaleRowChanged" msprop:Generator_RowEvArgName="LastYearMonthSaleRowChangeEvent" msprop:Generator_RowClassName="LastYearMonthSaleRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="month" msprop:Generator_ColumnVarNameInTable="columnmonth" msprop:Generator_ColumnPropNameInRow="month" msprop:Generator_ColumnPropNameInTable="monthColumn" msprop:Generator_UserColumnName="month" type="xs:long" minOccurs="0" />
+              <xs:element name="totalAmount" msprop:Generator_ColumnVarNameInTable="columntotalAmount" msprop:Generator_ColumnPropNameInRow="totalAmount" msprop:Generator_ColumnPropNameInTable="totalAmountColumn" msprop:Generator_UserColumnName="totalAmount" type="xs:double" minOccurs="0" />
+              <xs:element name="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" msprop:Generator_UserColumnName="Expr1">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
