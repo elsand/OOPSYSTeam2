@@ -17,6 +17,7 @@ Partial Public Class Batch
     Public Property expected As Date
     Public Property expires As Nullable(Of Date)
     Public Property unitCount As Integer
+    Public Property origUnitCount As Integer
     Public Property unitPurchasingPrice As Nullable(Of Decimal)
     Public Property locationRow As Nullable(Of Integer)
     Public Property locationShelf As Nullable(Of Integer)

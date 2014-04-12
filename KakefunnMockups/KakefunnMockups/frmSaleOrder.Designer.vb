@@ -20,19 +20,31 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
+        Me.txtTelephone = New Kakefunn.NumericTextbox()
+        Me.txtZip = New Kakefunn.NumericTextbox()
         Me.lblDeliveryMethod = New System.Windows.Forms.Label()
         Me.cboDeliveryMethod = New System.Windows.Forms.ComboBox()
         Me.dtpDeliveryDate = New System.Windows.Forms.DateTimePicker()
         Me.lblDate = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
-        Me.txtTelephone = New System.Windows.Forms.TextBox()
+        Me.grpCommodity = New System.Windows.Forms.GroupBox()
+        Me.btnAddIngredientOrCake = New System.Windows.Forms.Button()
+        Me.lblChooseIngredientOrCake = New System.Windows.Forms.Label()
+        Me.cbIngredientOrCake = New System.Windows.Forms.ComboBox()
+        Me.dtgOrderLines = New System.Windows.Forms.DataGridView()
+        Me.dcIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcCake = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcTotalPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderLinesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblTelephone = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
-        Me.txtZip = New System.Windows.Forms.TextBox()
         Me.lblZip = New System.Windows.Forms.Label()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.lblAddress = New System.Windows.Forms.Label()
@@ -41,13 +53,6 @@ Partial Class frmSaleOrder
         Me.grpOrderingCustomer = New System.Windows.Forms.GroupBox()
         Me.cbCustomerName = New System.Windows.Forms.ComboBox()
         Me.CustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.grpCommodity = New System.Windows.Forms.GroupBox()
-        Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.dtgCommodity = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpOrderStatus = New System.Windows.Forms.GroupBox()
         Me.lblPayedDate = New System.Windows.Forms.Label()
         Me.lblOrderSent = New System.Windows.Forms.Label()
@@ -55,11 +60,13 @@ Partial Class frmSaleOrder
         Me.lblOrderCreated = New System.Windows.Forms.Label()
         Me.lblOrderNumber = New System.Windows.Forms.Label()
         Me.grpDiscount = New System.Windows.Forms.GroupBox()
-        Me.txtDiscount = New System.Windows.Forms.TextBox()
+        Me.txtDiscount = New Kakefunn.NumericTextbox()
         Me.rdoPercent = New System.Windows.Forms.RadioButton()
         Me.rdoCurrencyValue = New System.Windows.Forms.RadioButton()
         Me.rdoNone = New System.Windows.Forms.RadioButton()
         Me.grpPayment = New System.Windows.Forms.GroupBox()
+        Me.lblDiscountValue = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
         Me.lblAmountToPayValue = New System.Windows.Forms.Label()
         Me.lblVatValue = New System.Windows.Forms.Label()
         Me.lblTotalAmountWithoutVatValue = New System.Windows.Forms.Label()
@@ -67,11 +74,9 @@ Partial Class frmSaleOrder
         Me.lblVat = New System.Windows.Forms.Label()
         Me.lblTotalAmountWithoutVat = New System.Windows.Forms.Label()
         Me.cboIsPayed = New System.Windows.Forms.CheckBox()
-        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.btnSaveOrder = New System.Windows.Forms.Button()
         Me.cboPrintReceiptOnSave = New System.Windows.Forms.CheckBox()
         Me.txtInternalNote = New System.Windows.Forms.TextBox()
-        Me.lblInternalNote = New System.Windows.Forms.Label()
         Me.grpSubscription = New System.Windows.Forms.GroupBox()
         Me.btnShowOrderForSubscription = New System.Windows.Forms.Button()
         Me.lblNextShipments = New System.Windows.Forms.Label()
@@ -86,16 +91,22 @@ Partial Class frmSaleOrder
         Me.cboTypeInterval = New System.Windows.Forms.ComboBox()
         Me.lblTypeInterval = New System.Windows.Forms.Label()
         Me.chkIsActivated = New System.Windows.Forms.CheckBox()
+        Me.tlayRight = New System.Windows.Forms.TableLayoutPanel()
+        Me.grpOrderNote = New System.Windows.Forms.GroupBox()
+        Me.btnCancel = New System.Windows.Forms.Button()
+        Me.btnClear = New System.Windows.Forms.Button()
         Me.grpDelivery.SuspendLayout()
+        Me.grpCommodity.SuspendLayout()
+        CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OrderLinesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpOrderingCustomer.SuspendLayout()
         CType(Me.CustomerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpCommodity.SuspendLayout()
-        Me.Panel1.SuspendLayout()
-        CType(Me.dtgCommodity, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpOrderStatus.SuspendLayout()
         Me.grpDiscount.SuspendLayout()
         Me.grpPayment.SuspendLayout()
         Me.grpSubscription.SuspendLayout()
+        Me.tlayRight.SuspendLayout()
+        Me.grpOrderNote.SuspendLayout()
         Me.SuspendLayout()
         '
         'lblCustomer
@@ -118,16 +129,17 @@ Partial Class frmSaleOrder
         '
         'grpDelivery
         '
+        Me.grpDelivery.Controls.Add(Me.txtTelephone)
+        Me.grpDelivery.Controls.Add(Me.txtZip)
         Me.grpDelivery.Controls.Add(Me.lblDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.cboDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.dtpDeliveryDate)
         Me.grpDelivery.Controls.Add(Me.lblDate)
         Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.lblEmail)
-        Me.grpDelivery.Controls.Add(Me.txtTelephone)
+        Me.grpDelivery.Controls.Add(Me.grpCommodity)
         Me.grpDelivery.Controls.Add(Me.lblTelephone)
         Me.grpDelivery.Controls.Add(Me.lblCity)
-        Me.grpDelivery.Controls.Add(Me.txtZip)
         Me.grpDelivery.Controls.Add(Me.lblZip)
         Me.grpDelivery.Controls.Add(Me.txtAddress)
         Me.grpDelivery.Controls.Add(Me.lblAddress)
@@ -135,10 +147,32 @@ Partial Class frmSaleOrder
         Me.grpDelivery.Controls.Add(Me.lblName)
         Me.grpDelivery.Location = New System.Drawing.Point(13, 89)
         Me.grpDelivery.Name = "grpDelivery"
-        Me.grpDelivery.Size = New System.Drawing.Size(495, 163)
+        Me.grpDelivery.Size = New System.Drawing.Size(498, 398)
         Me.grpDelivery.TabIndex = 5
         Me.grpDelivery.TabStop = False
         Me.grpDelivery.Text = "Levering"
+        '
+        'txtTelephone
+        '
+        Me.txtTelephone.AllowDecimal = False
+        Me.txtTelephone.AllowNegative = False
+        Me.txtTelephone.AllowSpace = False
+        Me.txtTelephone.Location = New System.Drawing.Point(61, 90)
+        Me.txtTelephone.MaxLength = 8
+        Me.txtTelephone.Name = "txtTelephone"
+        Me.txtTelephone.Size = New System.Drawing.Size(208, 20)
+        Me.txtTelephone.TabIndex = 3
+        '
+        'txtZip
+        '
+        Me.txtZip.AllowDecimal = False
+        Me.txtZip.AllowNegative = False
+        Me.txtZip.AllowSpace = False
+        Me.txtZip.Location = New System.Drawing.Point(327, 46)
+        Me.txtZip.MaxLength = 4
+        Me.txtZip.Name = "txtZip"
+        Me.txtZip.Size = New System.Drawing.Size(44, 20)
+        Me.txtZip.TabIndex = 2
         '
         'lblDeliveryMethod
         '
@@ -155,14 +189,14 @@ Partial Class frmSaleOrder
         Me.cboDeliveryMethod.Location = New System.Drawing.Point(327, 127)
         Me.cboDeliveryMethod.Name = "cboDeliveryMethod"
         Me.cboDeliveryMethod.Size = New System.Drawing.Size(145, 21)
-        Me.cboDeliveryMethod.TabIndex = 16
+        Me.cboDeliveryMethod.TabIndex = 6
         '
         'dtpDeliveryDate
         '
         Me.dtpDeliveryDate.Location = New System.Drawing.Point(59, 126)
         Me.dtpDeliveryDate.Name = "dtpDeliveryDate"
         Me.dtpDeliveryDate.Size = New System.Drawing.Size(210, 20)
-        Me.dtpDeliveryDate.TabIndex = 15
+        Me.dtpDeliveryDate.TabIndex = 5
         '
         'lblDate
         '
@@ -178,7 +212,7 @@ Partial Class frmSaleOrder
         Me.txtEmail.Location = New System.Drawing.Point(327, 91)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(145, 20)
-        Me.txtEmail.TabIndex = 13
+        Me.txtEmail.TabIndex = 4
         '
         'lblEmail
         '
@@ -189,12 +223,92 @@ Partial Class frmSaleOrder
         Me.lblEmail.TabIndex = 12
         Me.lblEmail.Text = "E-post:"
         '
-        'txtTelephone
+        'grpCommodity
         '
-        Me.txtTelephone.Location = New System.Drawing.Point(59, 90)
-        Me.txtTelephone.Name = "txtTelephone"
-        Me.txtTelephone.Size = New System.Drawing.Size(210, 20)
-        Me.txtTelephone.TabIndex = 10
+        Me.grpCommodity.Controls.Add(Me.btnAddIngredientOrCake)
+        Me.grpCommodity.Controls.Add(Me.lblChooseIngredientOrCake)
+        Me.grpCommodity.Controls.Add(Me.cbIngredientOrCake)
+        Me.grpCommodity.Controls.Add(Me.dtgOrderLines)
+        Me.grpCommodity.Location = New System.Drawing.Point(3, 161)
+        Me.grpCommodity.Name = "grpCommodity"
+        Me.grpCommodity.Size = New System.Drawing.Size(495, 214)
+        Me.grpCommodity.TabIndex = 7
+        Me.grpCommodity.TabStop = False
+        Me.grpCommodity.Text = "Varer"
+        '
+        'btnAddIngredientOrCake
+        '
+        Me.btnAddIngredientOrCake.Location = New System.Drawing.Point(319, 182)
+        Me.btnAddIngredientOrCake.Name = "btnAddIngredientOrCake"
+        Me.btnAddIngredientOrCake.Size = New System.Drawing.Size(75, 23)
+        Me.btnAddIngredientOrCake.TabIndex = 5
+        Me.btnAddIngredientOrCake.Text = "Legg til"
+        Me.btnAddIngredientOrCake.UseVisualStyleBackColor = True
+        '
+        'lblChooseIngredientOrCake
+        '
+        Me.lblChooseIngredientOrCake.AutoSize = True
+        Me.lblChooseIngredientOrCake.Location = New System.Drawing.Point(8, 188)
+        Me.lblChooseIngredientOrCake.Name = "lblChooseIngredientOrCake"
+        Me.lblChooseIngredientOrCake.Size = New System.Drawing.Size(124, 13)
+        Me.lblChooseIngredientOrCake.TabIndex = 6
+        Me.lblChooseIngredientOrCake.Text = "Legg til ingrediens/kake:"
+        '
+        'cbIngredientOrCake
+        '
+        Me.cbIngredientOrCake.FormattingEnabled = True
+        Me.cbIngredientOrCake.Location = New System.Drawing.Point(137, 184)
+        Me.cbIngredientOrCake.Name = "cbIngredientOrCake"
+        Me.cbIngredientOrCake.Size = New System.Drawing.Size(176, 21)
+        Me.cbIngredientOrCake.TabIndex = 0
+        '
+        'dtgOrderLines
+        '
+        Me.dtgOrderLines.AllowUserToAddRows = False
+        Me.dtgOrderLines.AllowUserToResizeRows = False
+        Me.dtgOrderLines.AutoGenerateColumns = False
+        Me.dtgOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgOrderLines.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.dcIngredient, Me.dcCake, Me.dcAmount, Me.dcTotalPrice})
+        Me.dtgOrderLines.DataSource = Me.OrderLinesBindingSource
+        Me.dtgOrderLines.Location = New System.Drawing.Point(8, 19)
+        Me.dtgOrderLines.Name = "dtgOrderLines"
+        Me.dtgOrderLines.Size = New System.Drawing.Size(481, 150)
+        Me.dtgOrderLines.TabIndex = 0
+        '
+        'dcIngredient
+        '
+        Me.dcIngredient.DataPropertyName = "Ingredient"
+        Me.dcIngredient.HeaderText = "Ingrediens"
+        Me.dcIngredient.Name = "dcIngredient"
+        Me.dcIngredient.ReadOnly = True
+        '
+        'dcCake
+        '
+        Me.dcCake.DataPropertyName = "cakeId"
+        Me.dcCake.HeaderText = "Tilhører kake"
+        Me.dcCake.Name = "dcCake"
+        Me.dcCake.ReadOnly = True
+        '
+        'dcAmount
+        '
+        Me.dcAmount.DataPropertyName = "amount"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
+        Me.dcAmount.HeaderText = "Antall"
+        Me.dcAmount.Name = "dcAmount"
+        '
+        'dcTotalPrice
+        '
+        Me.dcTotalPrice.DataPropertyName = "totalPrice"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dcTotalPrice.HeaderText = "Totalpris"
+        Me.dcTotalPrice.Name = "dcTotalPrice"
+        Me.dcTotalPrice.ReadOnly = True
+        '
+        'OrderLinesBindingSource
+        '
+        Me.OrderLinesBindingSource.DataSource = GetType(Kakefunn.ObservableListSource(Of Kakefunn.OrderLine))
         '
         'lblTelephone
         '
@@ -214,13 +328,6 @@ Partial Class frmSaleOrder
         Me.lblCity.TabIndex = 8
         Me.lblCity.Text = "BRØNNØYSUND"
         '
-        'txtZip
-        '
-        Me.txtZip.Location = New System.Drawing.Point(327, 46)
-        Me.txtZip.Name = "txtZip"
-        Me.txtZip.Size = New System.Drawing.Size(44, 20)
-        Me.txtZip.TabIndex = 7
-        '
         'lblZip
         '
         Me.lblZip.AutoSize = True
@@ -235,7 +342,7 @@ Partial Class frmSaleOrder
         Me.txtAddress.Location = New System.Drawing.Point(60, 46)
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(210, 20)
-        Me.txtAddress.TabIndex = 3
+        Me.txtAddress.TabIndex = 1
         '
         'lblAddress
         '
@@ -251,7 +358,7 @@ Partial Class frmSaleOrder
         Me.txtDeliveryName.Location = New System.Drawing.Point(59, 17)
         Me.txtDeliveryName.Name = "txtDeliveryName"
         Me.txtDeliveryName.Size = New System.Drawing.Size(210, 20)
-        Me.txtDeliveryName.TabIndex = 1
+        Me.txtDeliveryName.TabIndex = 0
         '
         'lblName
         '
@@ -284,62 +391,12 @@ Partial Class frmSaleOrder
         Me.cbCustomerName.Location = New System.Drawing.Point(60, 20)
         Me.cbCustomerName.Name = "cbCustomerName"
         Me.cbCustomerName.Size = New System.Drawing.Size(348, 21)
-        Me.cbCustomerName.TabIndex = 5
+        Me.cbCustomerName.TabIndex = 0
         Me.cbCustomerName.ValueMember = "id"
         '
         'CustomerBindingSource
         '
         Me.CustomerBindingSource.DataSource = GetType(Kakefunn.Customer)
-        '
-        'grpCommodity
-        '
-        Me.grpCommodity.Controls.Add(Me.Panel1)
-        Me.grpCommodity.Location = New System.Drawing.Point(13, 258)
-        Me.grpCommodity.Name = "grpCommodity"
-        Me.grpCommodity.Size = New System.Drawing.Size(495, 221)
-        Me.grpCommodity.TabIndex = 7
-        Me.grpCommodity.TabStop = False
-        Me.grpCommodity.Text = "Varer"
-        '
-        'Panel1
-        '
-        Me.Panel1.AutoScroll = True
-        Me.Panel1.Controls.Add(Me.dtgCommodity)
-        Me.Panel1.Location = New System.Drawing.Point(6, 19)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(483, 195)
-        Me.Panel1.TabIndex = 8
-        '
-        'dtgCommodity
-        '
-        Me.dtgCommodity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgCommodity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgCommodity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4})
-        Me.dtgCommodity.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.dtgCommodity.Location = New System.Drawing.Point(0, 0)
-        Me.dtgCommodity.Name = "dtgCommodity"
-        Me.dtgCommodity.Size = New System.Drawing.Size(483, 195)
-        Me.dtgCommodity.TabIndex = 1
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Varenr"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Enkeltingrediens?"
-        Me.Column2.Name = "Column2"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Antall"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "Pris eks.mva."
-        Me.Column4.Name = "Column4"
         '
         'grpOrderStatus
         '
@@ -348,12 +405,12 @@ Partial Class frmSaleOrder
         Me.grpOrderStatus.Controls.Add(Me.lblOrderLastEdited)
         Me.grpOrderStatus.Controls.Add(Me.lblOrderCreated)
         Me.grpOrderStatus.Controls.Add(Me.lblOrderNumber)
-        Me.grpOrderStatus.Location = New System.Drawing.Point(524, 27)
+        Me.grpOrderStatus.Location = New System.Drawing.Point(3, 3)
         Me.grpOrderStatus.Name = "grpOrderStatus"
         Me.grpOrderStatus.Size = New System.Drawing.Size(292, 128)
         Me.grpOrderStatus.TabIndex = 8
         Me.grpOrderStatus.TabStop = False
-        Me.grpOrderStatus.Text = "Status (denne vises bare ved redigering)"
+        Me.grpOrderStatus.Text = "Status"
         '
         'lblPayedDate
         '
@@ -407,7 +464,7 @@ Partial Class frmSaleOrder
         Me.grpDiscount.Controls.Add(Me.rdoPercent)
         Me.grpDiscount.Controls.Add(Me.rdoCurrencyValue)
         Me.grpDiscount.Controls.Add(Me.rdoNone)
-        Me.grpDiscount.Location = New System.Drawing.Point(13, 485)
+        Me.grpDiscount.Location = New System.Drawing.Point(13, 468)
         Me.grpDiscount.Name = "grpDiscount"
         Me.grpDiscount.Size = New System.Drawing.Size(495, 50)
         Me.grpDiscount.TabIndex = 9
@@ -416,10 +473,12 @@ Partial Class frmSaleOrder
         '
         'txtDiscount
         '
-        Me.txtDiscount.Enabled = False
-        Me.txtDiscount.Location = New System.Drawing.Point(388, 19)
+        Me.txtDiscount.AllowDecimal = True
+        Me.txtDiscount.AllowNegative = False
+        Me.txtDiscount.AllowSpace = False
+        Me.txtDiscount.Location = New System.Drawing.Point(389, 20)
         Me.txtDiscount.Name = "txtDiscount"
-        Me.txtDiscount.Size = New System.Drawing.Size(101, 20)
+        Me.txtDiscount.Size = New System.Drawing.Size(100, 20)
         Me.txtDiscount.TabIndex = 3
         Me.txtDiscount.Text = "0"
         Me.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
@@ -430,7 +489,7 @@ Partial Class frmSaleOrder
         Me.rdoPercent.Location = New System.Drawing.Point(72, 20)
         Me.rdoPercent.Name = "rdoPercent"
         Me.rdoPercent.Size = New System.Drawing.Size(61, 17)
-        Me.rdoPercent.TabIndex = 2
+        Me.rdoPercent.TabIndex = 1
         Me.rdoPercent.Text = "Prosent"
         Me.rdoPercent.UseVisualStyleBackColor = True
         '
@@ -440,7 +499,7 @@ Partial Class frmSaleOrder
         Me.rdoCurrencyValue.Location = New System.Drawing.Point(140, 20)
         Me.rdoCurrencyValue.Name = "rdoCurrencyValue"
         Me.rdoCurrencyValue.Size = New System.Drawing.Size(76, 17)
-        Me.rdoCurrencyValue.TabIndex = 1
+        Me.rdoCurrencyValue.TabIndex = 2
         Me.rdoCurrencyValue.Text = "Kroneverdi"
         Me.rdoCurrencyValue.UseVisualStyleBackColor = True
         '
@@ -458,54 +517,76 @@ Partial Class frmSaleOrder
         '
         'grpPayment
         '
+        Me.grpPayment.Controls.Add(Me.lblDiscountValue)
+        Me.grpPayment.Controls.Add(Me.Label1)
         Me.grpPayment.Controls.Add(Me.lblAmountToPayValue)
         Me.grpPayment.Controls.Add(Me.lblVatValue)
         Me.grpPayment.Controls.Add(Me.lblTotalAmountWithoutVatValue)
         Me.grpPayment.Controls.Add(Me.lblAmountToPay)
         Me.grpPayment.Controls.Add(Me.lblVat)
         Me.grpPayment.Controls.Add(Me.lblTotalAmountWithoutVat)
-        Me.grpPayment.Location = New System.Drawing.Point(13, 541)
+        Me.grpPayment.Location = New System.Drawing.Point(13, 524)
         Me.grpPayment.Name = "grpPayment"
-        Me.grpPayment.Size = New System.Drawing.Size(495, 80)
+        Me.grpPayment.Size = New System.Drawing.Size(495, 97)
         Me.grpPayment.TabIndex = 10
         Me.grpPayment.TabStop = False
         Me.grpPayment.Text = "Betaling"
         '
+        'lblDiscountValue
+        '
+        Me.lblDiscountValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDiscountValue.Location = New System.Drawing.Point(327, 32)
+        Me.lblDiscountValue.Name = "lblDiscountValue"
+        Me.lblDiscountValue.Size = New System.Drawing.Size(151, 16)
+        Me.lblDiscountValue.TabIndex = 8
+        Me.lblDiscountValue.Text = "0"
+        Me.lblDiscountValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(14, 37)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(51, 16)
+        Me.Label1.TabIndex = 7
+        Me.Label1.Text = "Rabatt:"
+        '
         'lblAmountToPayValue
         '
-        Me.lblAmountToPayValue.AutoSize = True
         Me.lblAmountToPayValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAmountToPayValue.Location = New System.Drawing.Point(418, 51)
+        Me.lblAmountToPayValue.Location = New System.Drawing.Point(336, 67)
         Me.lblAmountToPayValue.Name = "lblAmountToPayValue"
-        Me.lblAmountToPayValue.Size = New System.Drawing.Size(60, 16)
+        Me.lblAmountToPayValue.Size = New System.Drawing.Size(142, 16)
         Me.lblAmountToPayValue.TabIndex = 6
         Me.lblAmountToPayValue.Text = "1150,00"
+        Me.lblAmountToPayValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblVatValue
         '
-        Me.lblVatValue.AutoSize = True
         Me.lblVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVatValue.Location = New System.Drawing.Point(432, 33)
+        Me.lblVatValue.Location = New System.Drawing.Point(333, 49)
         Me.lblVatValue.Name = "lblVatValue"
-        Me.lblVatValue.Size = New System.Drawing.Size(46, 16)
+        Me.lblVatValue.Size = New System.Drawing.Size(145, 16)
         Me.lblVatValue.TabIndex = 5
         Me.lblVatValue.Text = "150,00"
+        Me.lblVatValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblTotalAmountWithoutVatValue
         '
-        Me.lblTotalAmountWithoutVatValue.AutoSize = True
         Me.lblTotalAmountWithoutVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalAmountWithoutVatValue.Location = New System.Drawing.Point(425, 16)
+        Me.lblTotalAmountWithoutVatValue.Location = New System.Drawing.Point(330, 16)
         Me.lblTotalAmountWithoutVatValue.Name = "lblTotalAmountWithoutVatValue"
-        Me.lblTotalAmountWithoutVatValue.Size = New System.Drawing.Size(53, 16)
+        Me.lblTotalAmountWithoutVatValue.Size = New System.Drawing.Size(148, 16)
         Me.lblTotalAmountWithoutVatValue.TabIndex = 4
         Me.lblTotalAmountWithoutVatValue.Text = "1000,00"
+        Me.lblTotalAmountWithoutVatValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'lblAmountToPay
         '
         Me.lblAmountToPay.AutoSize = True
         Me.lblAmountToPay.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAmountToPay.Location = New System.Drawing.Point(14, 55)
+        Me.lblAmountToPay.Location = New System.Drawing.Point(14, 71)
         Me.lblAmountToPay.Name = "lblAmountToPay"
         Me.lblAmountToPay.Size = New System.Drawing.Size(70, 16)
         Me.lblAmountToPay.TabIndex = 2
@@ -515,7 +596,7 @@ Partial Class frmSaleOrder
         '
         Me.lblVat.AutoSize = True
         Me.lblVat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVat.Location = New System.Drawing.Point(14, 37)
+        Me.lblVat.Location = New System.Drawing.Point(14, 53)
         Me.lblVat.Name = "lblVat"
         Me.lblVat.Size = New System.Drawing.Size(37, 16)
         Me.lblVat.TabIndex = 1
@@ -536,24 +617,19 @@ Partial Class frmSaleOrder
         Me.cboIsPayed.AutoSize = True
         Me.cboIsPayed.Checked = True
         Me.cboIsPayed.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cboIsPayed.Location = New System.Drawing.Point(524, 577)
+        Me.cboIsPayed.Location = New System.Drawing.Point(514, 541)
         Me.cboIsPayed.Name = "cboIsPayed"
         Me.cboIsPayed.Size = New System.Drawing.Size(77, 17)
-        Me.cboIsPayed.TabIndex = 7
+        Me.cboIsPayed.TabIndex = 0
         Me.cboIsPayed.Text = "Er oppgjort"
         Me.cboIsPayed.UseVisualStyleBackColor = True
-        '
-        'ContextMenuStrip1
-        '
-        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(61, 4)
         '
         'btnSaveOrder
         '
         Me.btnSaveOrder.Location = New System.Drawing.Point(725, 587)
         Me.btnSaveOrder.Name = "btnSaveOrder"
         Me.btnSaveOrder.Size = New System.Drawing.Size(91, 34)
-        Me.btnSaveOrder.TabIndex = 11
+        Me.btnSaveOrder.TabIndex = 4
         Me.btnSaveOrder.Text = "Lagre ordre"
         Me.btnSaveOrder.UseVisualStyleBackColor = True
         '
@@ -562,29 +638,20 @@ Partial Class frmSaleOrder
         Me.cboPrintReceiptOnSave.AutoSize = True
         Me.cboPrintReceiptOnSave.Checked = True
         Me.cboPrintReceiptOnSave.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.cboPrintReceiptOnSave.Location = New System.Drawing.Point(524, 599)
+        Me.cboPrintReceiptOnSave.Location = New System.Drawing.Point(601, 541)
         Me.cboPrintReceiptOnSave.Name = "cboPrintReceiptOnSave"
         Me.cboPrintReceiptOnSave.Size = New System.Drawing.Size(163, 17)
-        Me.cboPrintReceiptOnSave.TabIndex = 12
+        Me.cboPrintReceiptOnSave.TabIndex = 1
         Me.cboPrintReceiptOnSave.Text = "Skriv ut kvittering ved lagring"
         Me.cboPrintReceiptOnSave.UseVisualStyleBackColor = True
         '
         'txtInternalNote
         '
-        Me.txtInternalNote.Location = New System.Drawing.Point(524, 182)
+        Me.txtInternalNote.Location = New System.Drawing.Point(6, 19)
         Me.txtInternalNote.Multiline = True
         Me.txtInternalNote.Name = "txtInternalNote"
-        Me.txtInternalNote.Size = New System.Drawing.Size(292, 58)
+        Me.txtInternalNote.Size = New System.Drawing.Size(280, 55)
         Me.txtInternalNote.TabIndex = 0
-        '
-        'lblInternalNote
-        '
-        Me.lblInternalNote.AutoSize = True
-        Me.lblInternalNote.Location = New System.Drawing.Point(521, 166)
-        Me.lblInternalNote.Name = "lblInternalNote"
-        Me.lblInternalNote.Size = New System.Drawing.Size(193, 13)
-        Me.lblInternalNote.TabIndex = 13
-        Me.lblInternalNote.Text = "Internt notat (vises ikke på pakkseddel)"
         '
         'grpSubscription
         '
@@ -601,9 +668,9 @@ Partial Class frmSaleOrder
         Me.grpSubscription.Controls.Add(Me.cboTypeInterval)
         Me.grpSubscription.Controls.Add(Me.lblTypeInterval)
         Me.grpSubscription.Controls.Add(Me.chkIsActivated)
-        Me.grpSubscription.Location = New System.Drawing.Point(526, 258)
+        Me.grpSubscription.Location = New System.Drawing.Point(3, 223)
         Me.grpSubscription.Name = "grpSubscription"
-        Me.grpSubscription.Size = New System.Drawing.Size(292, 286)
+        Me.grpSubscription.Size = New System.Drawing.Size(292, 276)
         Me.grpSubscription.TabIndex = 14
         Me.grpSubscription.TabStop = False
         Me.grpSubscription.Text = "Abonnement"
@@ -623,18 +690,20 @@ Partial Class frmSaleOrder
         Me.lblNextShipments.Location = New System.Drawing.Point(13, 201)
         Me.lblNextShipments.Name = "lblNextShipments"
         Me.lblNextShipments.Size = New System.Drawing.Size(92, 13)
-        Me.lblNextShipments.TabIndex = 24
+        Me.lblNextShipments.TabIndex = 6
         Me.lblNextShipments.Text = "Neste utsendelser"
         '
         'lstNextShipments
         '
+        Me.lstNextShipments.BackColor = System.Drawing.SystemColors.Control
+        Me.lstNextShipments.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.lstNextShipments.Enabled = False
         Me.lstNextShipments.FormattingEnabled = True
         Me.lstNextShipments.Items.AddRange(New Object() {"(liste over neste X leveringer utfra valgt intervall)"})
         Me.lstNextShipments.Location = New System.Drawing.Point(14, 217)
         Me.lstNextShipments.Name = "lstNextShipments"
-        Me.lstNextShipments.Size = New System.Drawing.Size(270, 56)
-        Me.lstNextShipments.TabIndex = 13
+        Me.lstNextShipments.Size = New System.Drawing.Size(270, 52)
+        Me.lstNextShipments.TabIndex = 7
         '
         'lblEndDate
         '
@@ -652,7 +721,7 @@ Partial Class frmSaleOrder
         Me.dtpEndDate.Location = New System.Drawing.Point(84, 165)
         Me.dtpEndDate.Name = "dtpEndDate"
         Me.dtpEndDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpEndDate.TabIndex = 22
+        Me.dtpEndDate.TabIndex = 5
         '
         'cboHasEndDate
         '
@@ -661,7 +730,7 @@ Partial Class frmSaleOrder
         Me.cboHasEndDate.Name = "cboHasEndDate"
         Me.cboHasEndDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cboHasEndDate.Size = New System.Drawing.Size(86, 17)
-        Me.cboHasEndDate.TabIndex = 21
+        Me.cboHasEndDate.TabIndex = 4
         Me.cboHasEndDate.Text = "Har sluttdato"
         Me.cboHasEndDate.UseVisualStyleBackColor = True
         '
@@ -679,7 +748,7 @@ Partial Class frmSaleOrder
         Me.dtpStartDate.Location = New System.Drawing.Point(82, 107)
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpStartDate.TabIndex = 19
+        Me.dtpStartDate.TabIndex = 3
         '
         'cboFrequency
         '
@@ -688,7 +757,7 @@ Partial Class frmSaleOrder
         Me.cboFrequency.Location = New System.Drawing.Point(84, 77)
         Me.cboFrequency.Name = "cboFrequency"
         Me.cboFrequency.Size = New System.Drawing.Size(52, 21)
-        Me.cboFrequency.TabIndex = 18
+        Me.cboFrequency.TabIndex = 2
         '
         'lblFrequency
         '
@@ -706,7 +775,7 @@ Partial Class frmSaleOrder
         Me.cboTypeInterval.Location = New System.Drawing.Point(83, 47)
         Me.cboTypeInterval.Name = "cboTypeInterval"
         Me.cboTypeInterval.Size = New System.Drawing.Size(121, 21)
-        Me.cboTypeInterval.TabIndex = 15
+        Me.cboTypeInterval.TabIndex = 1
         '
         'lblTypeInterval
         '
@@ -724,48 +793,89 @@ Partial Class frmSaleOrder
         Me.chkIsActivated.Name = "chkIsActivated"
         Me.chkIsActivated.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkIsActivated.Size = New System.Drawing.Size(74, 17)
-        Me.chkIsActivated.TabIndex = 16
+        Me.chkIsActivated.TabIndex = 0
         Me.chkIsActivated.Text = "Er aktivert"
         Me.chkIsActivated.UseVisualStyleBackColor = True
+        '
+        'tlayRight
+        '
+        Me.tlayRight.ColumnCount = 1
+        Me.tlayRight.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.tlayRight.Controls.Add(Me.grpOrderStatus, 0, 0)
+        Me.tlayRight.Controls.Add(Me.grpSubscription, 0, 2)
+        Me.tlayRight.Controls.Add(Me.grpOrderNote, 0, 1)
+        Me.tlayRight.Location = New System.Drawing.Point(514, 27)
+        Me.tlayRight.Name = "tlayRight"
+        Me.tlayRight.RowCount = 3
+        Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.tlayRight.Size = New System.Drawing.Size(316, 508)
+        Me.tlayRight.TabIndex = 15
+        '
+        'grpOrderNote
+        '
+        Me.grpOrderNote.Controls.Add(Me.txtInternalNote)
+        Me.grpOrderNote.Location = New System.Drawing.Point(3, 137)
+        Me.grpOrderNote.Name = "grpOrderNote"
+        Me.grpOrderNote.Size = New System.Drawing.Size(292, 80)
+        Me.grpOrderNote.TabIndex = 9
+        Me.grpOrderNote.TabStop = False
+        Me.grpOrderNote.Text = "Internt notat"
+        '
+        'btnCancel
+        '
+        Me.btnCancel.Location = New System.Drawing.Point(517, 587)
+        Me.btnCancel.Name = "btnCancel"
+        Me.btnCancel.Size = New System.Drawing.Size(91, 34)
+        Me.btnCancel.TabIndex = 2
+        Me.btnCancel.Text = "Avbryt"
+        Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'btnClear
+        '
+        Me.btnClear.Location = New System.Drawing.Point(620, 587)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(91, 34)
+        Me.btnClear.TabIndex = 3
+        Me.btnClear.Text = "Tøm felter"
+        Me.btnClear.UseVisualStyleBackColor = True
         '
         'frmSaleOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(830, 655)
-        Me.Controls.Add(Me.grpSubscription)
-        Me.Controls.Add(Me.lblInternalNote)
-        Me.Controls.Add(Me.txtInternalNote)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnCancel)
+        Me.Controls.Add(Me.tlayRight)
         Me.Controls.Add(Me.cboIsPayed)
         Me.Controls.Add(Me.cboPrintReceiptOnSave)
         Me.Controls.Add(Me.btnSaveOrder)
         Me.Controls.Add(Me.grpPayment)
         Me.Controls.Add(Me.grpDiscount)
-        Me.Controls.Add(Me.grpOrderStatus)
-        Me.Controls.Add(Me.grpCommodity)
         Me.Controls.Add(Me.grpOrderingCustomer)
         Me.Controls.Add(Me.grpDelivery)
         Me.Name = "frmSaleOrder"
         Me.Text = "Ordre"
         Me.Controls.SetChildIndex(Me.grpDelivery, 0)
         Me.Controls.SetChildIndex(Me.grpOrderingCustomer, 0)
-        Me.Controls.SetChildIndex(Me.grpCommodity, 0)
-        Me.Controls.SetChildIndex(Me.grpOrderStatus, 0)
         Me.Controls.SetChildIndex(Me.grpDiscount, 0)
         Me.Controls.SetChildIndex(Me.grpPayment, 0)
         Me.Controls.SetChildIndex(Me.btnSaveOrder, 0)
         Me.Controls.SetChildIndex(Me.cboPrintReceiptOnSave, 0)
         Me.Controls.SetChildIndex(Me.cboIsPayed, 0)
-        Me.Controls.SetChildIndex(Me.txtInternalNote, 0)
-        Me.Controls.SetChildIndex(Me.lblInternalNote, 0)
-        Me.Controls.SetChildIndex(Me.grpSubscription, 0)
+        Me.Controls.SetChildIndex(Me.tlayRight, 0)
+        Me.Controls.SetChildIndex(Me.btnCancel, 0)
+        Me.Controls.SetChildIndex(Me.btnClear, 0)
         Me.grpDelivery.ResumeLayout(False)
         Me.grpDelivery.PerformLayout()
+        Me.grpCommodity.ResumeLayout(False)
+        Me.grpCommodity.PerformLayout()
+        CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OrderLinesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpOrderingCustomer.ResumeLayout(False)
         Me.grpOrderingCustomer.PerformLayout()
         CType(Me.CustomerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.grpCommodity.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
-        CType(Me.dtgCommodity, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpOrderStatus.ResumeLayout(False)
         Me.grpOrderStatus.PerformLayout()
         Me.grpDiscount.ResumeLayout(False)
@@ -774,6 +884,9 @@ Partial Class frmSaleOrder
         Me.grpPayment.PerformLayout()
         Me.grpSubscription.ResumeLayout(False)
         Me.grpSubscription.PerformLayout()
+        Me.tlayRight.ResumeLayout(False)
+        Me.grpOrderNote.ResumeLayout(False)
+        Me.grpOrderNote.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -785,21 +898,13 @@ Partial Class frmSaleOrder
     Friend WithEvents lblAddress As System.Windows.Forms.Label
     Friend WithEvents txtDeliveryName As System.Windows.Forms.TextBox
     Friend WithEvents lblName As System.Windows.Forms.Label
-    Friend WithEvents txtTelephone As System.Windows.Forms.TextBox
     Friend WithEvents lblTelephone As System.Windows.Forms.Label
     Friend WithEvents lblCity As System.Windows.Forms.Label
-    Friend WithEvents txtZip As System.Windows.Forms.TextBox
     Friend WithEvents lblZip As System.Windows.Forms.Label
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents grpOrderingCustomer As System.Windows.Forms.GroupBox
     Friend WithEvents grpCommodity As System.Windows.Forms.GroupBox
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
-    Friend WithEvents dtgCommodity As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents grpOrderStatus As System.Windows.Forms.GroupBox
     Friend WithEvents lblOrderNumber As System.Windows.Forms.Label
     Friend WithEvents lblOrderCreated As System.Windows.Forms.Label
@@ -807,7 +912,6 @@ Partial Class frmSaleOrder
     Friend WithEvents lblOrderSent As System.Windows.Forms.Label
     Friend WithEvents lblOrderLastEdited As System.Windows.Forms.Label
     Friend WithEvents grpDiscount As System.Windows.Forms.GroupBox
-    Friend WithEvents txtDiscount As System.Windows.Forms.TextBox
     Friend WithEvents rdoPercent As System.Windows.Forms.RadioButton
     Friend WithEvents rdoCurrencyValue As System.Windows.Forms.RadioButton
     Friend WithEvents rdoNone As System.Windows.Forms.RadioButton
@@ -823,11 +927,9 @@ Partial Class frmSaleOrder
     Friend WithEvents lblAmountToPay As System.Windows.Forms.Label
     Friend WithEvents lblVat As System.Windows.Forms.Label
     Friend WithEvents lblTotalAmountWithoutVat As System.Windows.Forms.Label
-    Friend WithEvents ContextMenuStrip1 As System.Windows.Forms.ContextMenuStrip
     Friend WithEvents btnSaveOrder As System.Windows.Forms.Button
     Friend WithEvents cboPrintReceiptOnSave As System.Windows.Forms.CheckBox
     Friend WithEvents txtInternalNote As System.Windows.Forms.TextBox
-    Friend WithEvents lblInternalNote As System.Windows.Forms.Label
     Friend WithEvents grpSubscription As System.Windows.Forms.GroupBox
     Friend WithEvents lblNextShipments As System.Windows.Forms.Label
     Friend WithEvents lstNextShipments As System.Windows.Forms.ListBox
@@ -844,5 +946,23 @@ Partial Class frmSaleOrder
     Friend WithEvents btnShowOrderForSubscription As System.Windows.Forms.Button
     Friend WithEvents cbCustomerName As System.Windows.Forms.ComboBox
     Friend WithEvents CustomerBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents tlayRight As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents grpOrderNote As System.Windows.Forms.GroupBox
+    Friend WithEvents txtZip As Kakefunn.NumericTextbox
+    Friend WithEvents txtTelephone As Kakefunn.NumericTextbox
+    Friend WithEvents btnCancel As System.Windows.Forms.Button
+    Friend WithEvents btnClear As System.Windows.Forms.Button
+    Friend WithEvents lblChooseIngredientOrCake As System.Windows.Forms.Label
+    Friend WithEvents cbIngredientOrCake As System.Windows.Forms.ComboBox
+    Friend WithEvents dtgOrderLines As System.Windows.Forms.DataGridView
+    Friend WithEvents OrderLinesBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents btnAddIngredientOrCake As System.Windows.Forms.Button
+    Friend WithEvents dcIngredient As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcCake As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcAmount As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents txtDiscount As Kakefunn.NumericTextbox
+    Friend WithEvents lblDiscountValue As System.Windows.Forms.Label
+    Friend WithEvents Label1 As System.Windows.Forms.Label
 
 End Class

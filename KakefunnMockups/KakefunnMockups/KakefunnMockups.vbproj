@@ -142,6 +142,7 @@
     <Compile Include="controllers\DocumentPrinter.vb" />
     <Compile Include="controllers\OrderManager.vb" />
     <Compile Include="helpers\AutoCompleteHelper.vb" />
+    <Compile Include="helpers\FormatHelper.vb" />
     <Compile Include="helpers\FormHelper.vb" />
     <Compile Include="helpers\FullName.vb" />
     <Compile Include="helpers\PhoneHelper.vb" />

@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="181cb603aa3e4d9e9739dd2d9a3841a4" Name="Diagram1">
+      <Diagram DiagramId="9b0012217fda4f718d4a3196c8d8f999" Name="Diagram1">
         <EntityTypeShape EntityType="Model.Address" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.Batch" Width="1.5" PointX="15.75" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Batch" Width="1.5" PointX="15.75" PointY="9.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Cake" Width="1.5" PointX="16.5" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Customer" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.CustomerType" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="Model.Employee" Width="1.5" PointX="8.25" PointY="4.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.FrequencyType" Width="1.5" PointX="16.5" PointY="1.875" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Ingredient" Width="1.5" PointX="13.5" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Model.IngredientPrice" Width="1.5" PointX="15.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.IngredientPrice" Width="1.5" PointX="15.75" PointY="14" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Order" Width="1.5" PointX="13.5" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.OrderLine" Width="1.5" PointX="15.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Model.Phone" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />

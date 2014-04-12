@@ -23,6 +23,7 @@
           <Property Name="expected" Type="date" Nullable="false" />
           <Property Name="expires" Type="date" />
           <Property Name="unitCount" Type="int" Nullable="false" />
+          <Property Name="origUnitCount" Type="int" Nullable="false" />
           <Property Name="unitPurchasingPrice" Type="decimal" Precision="10" Scale="2" />
           <Property Name="ingredientId" Type="int" Nullable="false" />
           <Property Name="locationRow" Type="int" />
@@ -614,6 +615,7 @@
           <Property Name="expected" Type="DateTime" Nullable="false" />
           <Property Name="expires" Type="DateTime" />
           <Property Name="unitCount" Type="Int32" Nullable="false" />
+          <Property Name="origUnitCount" Type="Int32" Nullable="false" />
           <Property Name="unitPurchasingPrice" Type="Decimal" />
           <Property Name="locationRow" Type="Int32" />
           <Property Name="locationShelf" Type="Int32" />
@@ -1044,6 +1046,7 @@
                 <ScalarProperty Name="expected" ColumnName="expected" />
                 <ScalarProperty Name="expires" ColumnName="expires" />
                 <ScalarProperty Name="unitCount" ColumnName="unitCount" />
+                <ScalarProperty Name="origUnitCount" ColumnName="origUnitCount" />
                 <ScalarProperty Name="unitPurchasingPrice" ColumnName="unitPurchasingPrice" />
                 <ScalarProperty Name="locationRow" ColumnName="locationRow" />
                 <ScalarProperty Name="locationShelf" ColumnName="locationShelf" />

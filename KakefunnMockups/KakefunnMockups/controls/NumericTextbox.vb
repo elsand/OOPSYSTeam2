@@ -42,6 +42,9 @@ Public Class NumericTextbox
 
     Public ReadOnly Property IntValue() As Integer
         Get
+            If Me.Text = "" Then
+                Return 0
+            End If
             Return Int32.Parse(Me.Text)
         End Get
     End Property
@@ -49,6 +52,9 @@ Public Class NumericTextbox
 
     Public ReadOnly Property DecimalValue() As Decimal
         Get
+            If Me.Text = "" Then
+                Return 0
+            End If
             Return [Decimal].Parse(Me.Text)
         End Get
     End Property
