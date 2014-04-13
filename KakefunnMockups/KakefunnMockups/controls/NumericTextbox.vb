@@ -42,20 +42,22 @@ Public Class NumericTextbox
 
     Public ReadOnly Property IntValue() As Integer
         Get
-            If Me.Text = "" Then
+            Try
+                Return Int32.Parse(Me.Text)
+            Catch ex As Exception
                 Return 0
-            End If
-            Return Int32.Parse(Me.Text)
+            End Try
         End Get
     End Property
 
 
     Public ReadOnly Property DecimalValue() As Decimal
         Get
-            If Me.Text = "" Then
+            Try
+                Return [Decimal].Parse(Me.Text)
+            Catch ex As Exception
                 Return 0
-            End If
-            Return [Decimal].Parse(Me.Text)
+            End Try
         End Get
     End Property
 

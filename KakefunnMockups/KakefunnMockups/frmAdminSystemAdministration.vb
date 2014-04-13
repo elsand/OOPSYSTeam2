@@ -90,9 +90,9 @@
             em = currentRecord
         End If
 
-        Dim fn As FullName = CustomerManager.GetFullName(txtName.Text)
-        em.firstName = fn.firstName
-        em.lastName = fn.lastName
+        Dim name As NameHelper = New NameHelper(txtName.Text)
+        em.firstName = name.firstName
+        em.lastName = name.lastName
         em.email = txtEmail.Text
 
         If IsNewRecord OrElse txtPassword.Text <> "" Then
