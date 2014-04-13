@@ -46,6 +46,7 @@ Partial Class frmDialogAdminIngredientDetails
         Me.lblNumInStockText = New System.Windows.Forms.Label()
         Me.btnAbort = New System.Windows.Forms.Button()
         Me.btnSaveClose = New System.Windows.Forms.Button()
+        Me.btnNewIngredient = New System.Windows.Forms.Button()
         Me.grpIngredient.SuspendLayout()
         Me.grpStock.SuspendLayout()
         CType(Me.dtgBatches, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -75,7 +76,7 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'numCal
         '
-        Me.numCal.AllowDecimal = False
+        Me.numCal.AllowDecimal = True
         Me.numCal.AllowNegative = False
         Me.numCal.AllowSpace = False
         Me.numCal.Location = New System.Drawing.Point(96, 154)
@@ -85,7 +86,7 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'numVAT
         '
-        Me.numVAT.AllowDecimal = False
+        Me.numVAT.AllowDecimal = True
         Me.numVAT.AllowNegative = False
         Me.numVAT.AllowSpace = False
         Me.numVAT.Location = New System.Drawing.Point(96, 180)
@@ -95,7 +96,7 @@ Partial Class frmDialogAdminIngredientDetails
         '
         'numProfit
         '
-        Me.numProfit.AllowDecimal = False
+        Me.numProfit.AllowDecimal = True
         Me.numProfit.AllowNegative = False
         Me.numProfit.AllowSpace = False
         Me.numProfit.Location = New System.Drawing.Point(96, 207)
@@ -160,6 +161,7 @@ Partial Class frmDialogAdminIngredientDetails
         'txtDescr
         '
         Me.txtDescr.Location = New System.Drawing.Point(96, 53)
+        Me.txtDescr.MaxLength = 255
         Me.txtDescr.Multiline = True
         Me.txtDescr.Name = "txtDescr"
         Me.txtDescr.Size = New System.Drawing.Size(168, 68)
@@ -186,6 +188,7 @@ Partial Class frmDialogAdminIngredientDetails
         'txtName
         '
         Me.txtName.Location = New System.Drawing.Point(96, 27)
+        Me.txtName.MaxLength = 45
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(168, 20)
         Me.txtName.TabIndex = 0
@@ -196,7 +199,8 @@ Partial Class frmDialogAdminIngredientDetails
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(106, 34)
         Me.btnSave.TabIndex = 8
-        Me.btnSave.Text = "Lagre endringer"
+        Me.btnSave.Tag = "1"
+        Me.btnSave.Text = "Lagre"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'grpStock
@@ -292,20 +296,31 @@ Partial Class frmDialogAdminIngredientDetails
         Me.btnSaveClose.Name = "btnSaveClose"
         Me.btnSaveClose.Size = New System.Drawing.Size(106, 34)
         Me.btnSaveClose.TabIndex = 9
+        Me.btnSaveClose.Tag = "2"
         Me.btnSaveClose.Text = "Lagre og lukk"
         Me.btnSaveClose.UseVisualStyleBackColor = True
+        '
+        'btnNewIngredient
+        '
+        Me.btnNewIngredient.Location = New System.Drawing.Point(12, 305)
+        Me.btnNewIngredient.Name = "btnNewIngredient"
+        Me.btnNewIngredient.Size = New System.Drawing.Size(92, 32)
+        Me.btnNewIngredient.TabIndex = 10
+        Me.btnNewIngredient.Text = "Ny ingrediens"
+        Me.btnNewIngredient.UseVisualStyleBackColor = True
         '
         'frmDialogAdminIngredientDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(689, 378)
+        Me.Controls.Add(Me.btnNewIngredient)
         Me.Controls.Add(Me.btnSaveClose)
         Me.Controls.Add(Me.btnAbort)
         Me.Controls.Add(Me.grpStock)
         Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.grpIngredient)
         Me.Name = "frmDialogAdminIngredientDetails"
-        Me.Text = "Rediger ingrediensdetaljer for varenr #1234"
+        Me.Text = ""
         Me.grpIngredient.ResumeLayout(False)
         Me.grpIngredient.PerformLayout()
         Me.grpStock.ResumeLayout(False)
@@ -341,5 +356,6 @@ Partial Class frmDialogAdminIngredientDetails
     Friend WithEvents numVAT As Kakefunn.NumericTextbox
     Friend WithEvents numCal As Kakefunn.NumericTextbox
     Friend WithEvents btnSaveClose As System.Windows.Forms.Button
+    Friend WithEvents btnNewIngredient As System.Windows.Forms.Button
 
 End Class

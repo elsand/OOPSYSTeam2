@@ -1,4 +1,7 @@
-﻿Public Class frmDialogAdminIngredientDetails
+﻿'This dialog is for registering and editing ingredients.
+'Last edited 13.04.14
+'OK to finalize?
+Public Class frmDialogAdminIngredientDetails
 
     Private pub As Boolean = False
     Public newIngr As Boolean
@@ -24,15 +27,15 @@
             existingItem = DBM.Instance.Ingredients.Find(varenr)
             txtName.Text = existingItem.name
             txtDescr.Text = existingItem.description
-            ddlUnitType.Text = existingItem.unit.name
+            ddlUnitType.Text = existingItem.Unit.name
             numCal.Text = existingItem.kilocaloriesPerUnit
             numVAT.Text = existingItem.vat
-            Dim profit As ingredientPrice = (From x In DBM.Instance.ingredientPrices _
+            Dim profit As IngredientPrice = (From x In DBM.Instance.IngredientPrices _
                                              Where x.id = varenr Order By x.date Descending _
                                              Select x).FirstOrDefault()
             If profit Is Nothing Then
                 numProfit.Text = ""
-                factorProfit = 0
+                factorProfit = 1
             Else
                 numProfit.Text = profit.markUpPercentage
                 factorProfit = (profit.markUpPercentage / 100) + 1
@@ -57,6 +60,7 @@
             Next
         Else
             Me.Text = "Oppretter ny vare"
+            dtgBatches.Enabled = False
         End If
     End Sub
 
@@ -75,13 +79,12 @@
         i.description = txtDescr.Text
 
         'Checking if unit already exists in db and adds it if not.
-        'Skal vi velge ut noen måleenheter og ha en forhåndsdefinert liste her?
         Dim u As Unit = (From data In DBM.Instance.Units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
         If u Is Nothing Then
             u = New Unit() With {.name = ddlUnitType.Text}
         End If
 
-        i.unit = u
+        i.Unit = u
         i.kilocaloriesPerUnit = numCal.Text
         i.vat = numVAT.Text
         i.published = pub
@@ -100,27 +103,27 @@
         Dim iFind As Ingredient = (From data In DBM.Instance.Ingredients Where data.name = txtName.Text Select data).FirstOrDefault
         ingredientIndex = iFind.id
 
-        'Creates a new entry for ingredient prise, pk = id+date
-        Dim ip As ingredientPrice
-        ip = New ingredientPrice() With {.markUpPercentage = numProfit.Text, .date = Date.Today, .id = ingredientIndex}
+        'Creates a new entry for ingredient price, pk = id+date
+        Dim ip As IngredientPrice
+        ip = New IngredientPrice() With {.markUpPercentage = numProfit.Text, .date = Date.Today, .id = ingredientIndex}
 
         'Creates a new entry for price if the date is different from the previously entered price.
         'Updates the existing record if the dates match.
         Try
             If newIngr Then
-                DBM.Instance.ingredientPrices.Add(ip)
+                DBM.Instance.IngredientPrices.Add(ip)
             ElseIf Not newIngr Then
-                Dim ipDB As ingredientPrice = (From x In DBM.Instance.ingredientPrices _
+                Dim ipDB As IngredientPrice = (From x In DBM.Instance.IngredientPrices _
                                               Where x.id = ingredientIndex _
                                               Order By x.date Descending).FirstOrDefault()
                 If ipDB Is Nothing Then
-                    DBM.Instance.ingredientPrices.Add(ip)
+                    DBM.Instance.IngredientPrices.Add(ip)
                 Else
                     If ipDB.date = Date.Today Then
                         ip = ipDB
                         ip.markUpPercentage = numProfit.Text
                     Else
-                        DBM.Instance.ingredientPrices.Add(ip)
+                        DBM.Instance.IngredientPrices.Add(ip)
                     End If
                 End If
             End If
@@ -155,14 +158,31 @@
 
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        saveIngredient()
-        dtgBatchLoad()
-        ddlUnitsLoad()
-        grpStock.Enabled = True
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click, btnSaveClose.Click
+        'Calls procedures to save new ingredient or update an existing one.
+        Dim btn As Button = CType(sender, Button)
+        Dim saveType As Integer = btn.Tag
+        If isValid() Then
+            saveIngredient()
+            If saveType = 1 Then 'Saves ingredient and keeps form open.
+                dtgBatchLoad()
+                ddlUnitsLoad()
+                grpStock.Enabled = True
+                IsDirty = False
+            Else 'Saves ingredient and closes form to return to frmAdminIngredient. 
+                frmAdminIngredient.txtSearch.Text = txtName.Text
+                frmAdminIngredient.btnSearch.PerformClick()
+                frmAdminIngredient.txtSearch.Text = ""
+                Me.Close()
+            End If
+        Else
+            'Error message, content missing in form.
+            MsgBox("Sjekk at alle felter er utfylt", MsgBoxStyle.Exclamation, "Advarsel")
+        End If
     End Sub
 
     Private Sub chkPub_CheckedChanged(sender As Object, e As EventArgs) Handles chkPub.CheckedChanged
+        'Catches changes for the published checkbox.
         If Not pub Then
             pub = True
         Else
@@ -170,24 +190,76 @@
         End If
     End Sub
 
-    Private Sub btnSaveClose_Click(sender As Object, e As EventArgs) Handles btnSaveClose.Click
-        saveIngredient()
-        frmAdminIngredient.txtSearch.Text = txtName.Text
-        frmAdminIngredient.btnSearch.PerformClick()
-        Me.Close()
-    End Sub
-
     Private Sub btnAbort_Click(sender As Object, e As EventArgs) Handles btnAbort.Click
         Me.Close()
     End Sub
 
     Private Sub frmDialogAdminIngredientDetails_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        'Triggers on exit if there are unsaved content in the form. The user can stop the form from closing 
+        'if it was by mistake
         If IsDirty Then
             Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du lukke redigeringsvinduet likevel?", _
                                            "Bekreft lukking", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
             If response = 7 Then
                 e.Cancel = True
             End If
+        End If
+    End Sub
+
+    Private Function isValid() As Boolean
+        'Checks registration form for content.
+        If txtName.Text = "" Then
+            Return False
+        End If
+
+        If txtDescr.Text = "" Then
+            Return False
+        End If
+
+        If ddlUnitType.Text = "" Then
+            Return False
+        End If
+
+        If numCal.Text = "" Then
+            Return False
+        End If
+
+        If numProfit.Text = "" Then
+            Return False
+        End If
+
+        If numVAT.Text = "" Then
+            Return False
+        End If
+
+        Return True
+    End Function
+
+    Private Sub restartReg()
+        'Readies the form for registering a new ingredient.
+        newIngr = True
+        txtName.Text = ""
+        txtDescr.Text = ""
+        ddlUnitType.Items.Clear()
+        ddlUnitsLoad()
+        numCal.Text = ""
+        numProfit.Text = ""
+        numVAT.Text = ""
+        chkPub.Checked = False
+        dtgBatches.Enabled = False
+        IsDirty = False
+        Me.Text = "Oppretter ny vare"
+    End Sub
+    Private Sub btnNewIngredient_Click(sender As Object, e As EventArgs) Handles btnNewIngredient.Click
+        'Empties fields in the form to register a new ingredient.
+        If IsDirty Then
+            Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du forkaste disse og registrere ny ingrediens?", _
+                                           "Bekreft", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If response = 6 Then
+                restartReg()
+            End If
+        Else
+            restartReg()
         End If
     End Sub
 End Class
