@@ -20,15 +20,15 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
         Me.txtTelephone = New Kakefunn.NumericTextbox()
         Me.txtZip = New Kakefunn.NumericTextbox()
         Me.lblDeliveryMethod = New System.Windows.Forms.Label()
-        Me.cboDeliveryMethod = New System.Windows.Forms.ComboBox()
+        Me.ddlDeliveryMethod = New System.Windows.Forms.ComboBox()
         Me.dtpDeliveryDate = New System.Windows.Forms.DateTimePicker()
         Me.lblDate = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
@@ -65,6 +65,8 @@ Partial Class frmSaleOrder
         Me.rdoCurrencyValue = New System.Windows.Forms.RadioButton()
         Me.rdoNone = New System.Windows.Forms.RadioButton()
         Me.grpPayment = New System.Windows.Forms.GroupBox()
+        Me.lblShippingValue = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.lblDiscountValue = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.lblAmountToPayValue = New System.Windows.Forms.Label()
@@ -132,7 +134,7 @@ Partial Class frmSaleOrder
         Me.grpDelivery.Controls.Add(Me.txtTelephone)
         Me.grpDelivery.Controls.Add(Me.txtZip)
         Me.grpDelivery.Controls.Add(Me.lblDeliveryMethod)
-        Me.grpDelivery.Controls.Add(Me.cboDeliveryMethod)
+        Me.grpDelivery.Controls.Add(Me.ddlDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.dtpDeliveryDate)
         Me.grpDelivery.Controls.Add(Me.lblDate)
         Me.grpDelivery.Controls.Add(Me.txtEmail)
@@ -183,13 +185,13 @@ Partial Class frmSaleOrder
         Me.lblDeliveryMethod.TabIndex = 17
         Me.lblDeliveryMethod.Text = "Lev.met.:"
         '
-        'cboDeliveryMethod
+        'ddlDeliveryMethod
         '
-        Me.cboDeliveryMethod.FormattingEnabled = True
-        Me.cboDeliveryMethod.Location = New System.Drawing.Point(327, 127)
-        Me.cboDeliveryMethod.Name = "cboDeliveryMethod"
-        Me.cboDeliveryMethod.Size = New System.Drawing.Size(145, 21)
-        Me.cboDeliveryMethod.TabIndex = 6
+        Me.ddlDeliveryMethod.FormattingEnabled = True
+        Me.ddlDeliveryMethod.Location = New System.Drawing.Point(327, 127)
+        Me.ddlDeliveryMethod.Name = "ddlDeliveryMethod"
+        Me.ddlDeliveryMethod.Size = New System.Drawing.Size(145, 21)
+        Me.ddlDeliveryMethod.TabIndex = 6
         '
         'dtpDeliveryDate
         '
@@ -292,16 +294,16 @@ Partial Class frmSaleOrder
         'dcAmount
         '
         Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle19
         Me.dcAmount.HeaderText = "Antall"
         Me.dcAmount.Name = "dcAmount"
         '
         'dcTotalPrice
         '
         Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle20
         Me.dcTotalPrice.HeaderText = "Totalpris"
         Me.dcTotalPrice.Name = "dcTotalPrice"
         Me.dcTotalPrice.ReadOnly = True
@@ -517,6 +519,8 @@ Partial Class frmSaleOrder
         '
         'grpPayment
         '
+        Me.grpPayment.Controls.Add(Me.lblShippingValue)
+        Me.grpPayment.Controls.Add(Me.Label2)
         Me.grpPayment.Controls.Add(Me.lblDiscountValue)
         Me.grpPayment.Controls.Add(Me.Label1)
         Me.grpPayment.Controls.Add(Me.lblAmountToPayValue)
@@ -532,10 +536,30 @@ Partial Class frmSaleOrder
         Me.grpPayment.TabStop = False
         Me.grpPayment.Text = "Betaling"
         '
+        'lblShippingValue
+        '
+        Me.lblShippingValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblShippingValue.Location = New System.Drawing.Point(327, 28)
+        Me.lblShippingValue.Name = "lblShippingValue"
+        Me.lblShippingValue.Size = New System.Drawing.Size(151, 16)
+        Me.lblShippingValue.TabIndex = 10
+        Me.lblShippingValue.Text = "0"
+        Me.lblShippingValue.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(14, 32)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(34, 13)
+        Me.Label2.TabIndex = 9
+        Me.Label2.Text = "Frakt:"
+        '
         'lblDiscountValue
         '
-        Me.lblDiscountValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDiscountValue.Location = New System.Drawing.Point(327, 32)
+        Me.lblDiscountValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblDiscountValue.Location = New System.Drawing.Point(327, 43)
         Me.lblDiscountValue.Name = "lblDiscountValue"
         Me.lblDiscountValue.Size = New System.Drawing.Size(151, 16)
         Me.lblDiscountValue.TabIndex = 8
@@ -545,17 +569,18 @@ Partial Class frmSaleOrder
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(14, 37)
+        Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label1.Location = New System.Drawing.Point(14, 48)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(51, 16)
+        Me.Label1.Size = New System.Drawing.Size(42, 13)
         Me.Label1.TabIndex = 7
         Me.Label1.Text = "Rabatt:"
         '
         'lblAmountToPayValue
         '
-        Me.lblAmountToPayValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAmountToPayValue.Location = New System.Drawing.Point(336, 67)
+        Me.lblAmountToPayValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAmountToPayValue.ForeColor = System.Drawing.Color.Blue
+        Me.lblAmountToPayValue.Location = New System.Drawing.Point(336, 76)
         Me.lblAmountToPayValue.Name = "lblAmountToPayValue"
         Me.lblAmountToPayValue.Size = New System.Drawing.Size(142, 16)
         Me.lblAmountToPayValue.TabIndex = 6
@@ -564,8 +589,8 @@ Partial Class frmSaleOrder
         '
         'lblVatValue
         '
-        Me.lblVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVatValue.Location = New System.Drawing.Point(333, 49)
+        Me.lblVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVatValue.Location = New System.Drawing.Point(333, 59)
         Me.lblVatValue.Name = "lblVatValue"
         Me.lblVatValue.Size = New System.Drawing.Size(145, 16)
         Me.lblVatValue.TabIndex = 5
@@ -574,8 +599,8 @@ Partial Class frmSaleOrder
         '
         'lblTotalAmountWithoutVatValue
         '
-        Me.lblTotalAmountWithoutVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalAmountWithoutVatValue.Location = New System.Drawing.Point(330, 16)
+        Me.lblTotalAmountWithoutVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalAmountWithoutVatValue.Location = New System.Drawing.Point(330, 13)
         Me.lblTotalAmountWithoutVatValue.Name = "lblTotalAmountWithoutVatValue"
         Me.lblTotalAmountWithoutVatValue.Size = New System.Drawing.Size(148, 16)
         Me.lblTotalAmountWithoutVatValue.TabIndex = 4
@@ -585,32 +610,33 @@ Partial Class frmSaleOrder
         'lblAmountToPay
         '
         Me.lblAmountToPay.AutoSize = True
-        Me.lblAmountToPay.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAmountToPay.Location = New System.Drawing.Point(14, 71)
+        Me.lblAmountToPay.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAmountToPay.ForeColor = System.Drawing.Color.Blue
+        Me.lblAmountToPay.Location = New System.Drawing.Point(14, 80)
         Me.lblAmountToPay.Name = "lblAmountToPay"
-        Me.lblAmountToPay.Size = New System.Drawing.Size(70, 16)
+        Me.lblAmountToPay.Size = New System.Drawing.Size(49, 13)
         Me.lblAmountToPay.TabIndex = 2
         Me.lblAmountToPay.Text = "Å betale:"
         '
         'lblVat
         '
         Me.lblVat.AutoSize = True
-        Me.lblVat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVat.Location = New System.Drawing.Point(14, 53)
+        Me.lblVat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblVat.Location = New System.Drawing.Point(14, 63)
         Me.lblVat.Name = "lblVat"
-        Me.lblVat.Size = New System.Drawing.Size(37, 16)
+        Me.lblVat.Size = New System.Drawing.Size(31, 13)
         Me.lblVat.TabIndex = 1
         Me.lblVat.Text = "Mva:"
         '
         'lblTotalAmountWithoutVat
         '
         Me.lblTotalAmountWithoutVat.AutoSize = True
-        Me.lblTotalAmountWithoutVat.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalAmountWithoutVat.Location = New System.Drawing.Point(14, 20)
+        Me.lblTotalAmountWithoutVat.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTotalAmountWithoutVat.Location = New System.Drawing.Point(14, 17)
         Me.lblTotalAmountWithoutVat.Name = "lblTotalAmountWithoutVat"
-        Me.lblTotalAmountWithoutVat.Size = New System.Drawing.Size(99, 16)
+        Me.lblTotalAmountWithoutVat.Size = New System.Drawing.Size(128, 13)
         Me.lblTotalAmountWithoutVat.TabIndex = 0
-        Me.lblTotalAmountWithoutVat.Text = "Total eks. mva:"
+        Me.lblTotalAmountWithoutVat.Text = "Total eks. mva uten frakt:"
         '
         'cboIsPayed
         '
@@ -916,7 +942,7 @@ Partial Class frmSaleOrder
     Friend WithEvents rdoCurrencyValue As System.Windows.Forms.RadioButton
     Friend WithEvents rdoNone As System.Windows.Forms.RadioButton
     Friend WithEvents lblDeliveryMethod As System.Windows.Forms.Label
-    Friend WithEvents cboDeliveryMethod As System.Windows.Forms.ComboBox
+    Friend WithEvents ddlDeliveryMethod As System.Windows.Forms.ComboBox
     Friend WithEvents dtpDeliveryDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblDate As System.Windows.Forms.Label
     Friend WithEvents grpPayment As System.Windows.Forms.GroupBox
@@ -964,5 +990,7 @@ Partial Class frmSaleOrder
     Friend WithEvents txtDiscount As Kakefunn.NumericTextbox
     Friend WithEvents lblDiscountValue As System.Windows.Forms.Label
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents lblShippingValue As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 
 End Class

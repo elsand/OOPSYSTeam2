@@ -144,7 +144,8 @@
     <Compile Include="helpers\AutoCompleteHelper.vb" />
     <Compile Include="helpers\FormatHelper.vb" />
     <Compile Include="helpers\FormHelper.vb" />
-    <Compile Include="helpers\FullName.vb" />
+    <Compile Include="helpers\NameHelper.vb" />
+    <Compile Include="helpers\OrderTotals.vb" />
     <Compile Include="helpers\PhoneHelper.vb" />
     <Compile Include="helpers\SearchHelper.vb" />
     <Compile Include="controllers\SessionManager.vb" />

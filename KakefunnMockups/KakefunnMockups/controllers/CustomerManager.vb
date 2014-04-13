@@ -1,13 +1,4 @@
 ﻿Public Class CustomerManager
-
-
-    Public Shared Function GetFullName(name As String) As FullName
-        Dim parts As String() = name.Split(" ")
-        Dim lastName As String = parts.Last()
-        Dim firstName As String = String.Join(" ", parts.Reverse().Skip(1).Reverse())
-        Return New FullName() With {.firstName = firstName, .lastName = lastName}
-    End Function
-
     ''' <summary>
     ''' finds and returns a customer 
     ''' </summary>
@@ -19,8 +10,8 @@
     End Function
 
     Public Shared Function findCustomer(ByVal customerName As String) As Customer
-        Dim fn As FullName = GetFullName(customerName)
-        Return DBM.Instance.Customers.Where(Function(c) c.firstName = fn.firstName And c.lastName = fn.lastName).FirstOrDefault()
+        Dim name As NameHelper = New NameHelper(customerName)
+        Return DBM.Instance.Customers.Where(Function(c) c.firstName = name.firstName And c.lastName = name.lastName).FirstOrDefault()
     End Function
 
     Public Shared Sub NewCustomer()

@@ -36,13 +36,46 @@
         frmSaleOrder.LoadOrder(order)
     End Sub
 
+    ' TODO Remove this wrapper
     Public Shared Function GetOrderPrice(order As Order) As Decimal
-        Dim total As Decimal
-        For Each ol As OrderLine In order.OrderLines
-            total = total + ol.totalPrice
-        Next
-        Return total + order.shippingPrice
+        Return CalculateTotals(order).totalToPay
     End Function
 
+    Public Shared Function CalculateTotals(order As Order) As OrderTotals
 
+        Dim remainingDiscount As Decimal = 0
+        Dim orderLineDiscount As Decimal = 0
+        Dim orderLinePrice As Decimal = 0
+        Dim totals As OrderTotals = New OrderTotals()
+
+        If order.shippingPrice Then
+            ' Hardcode shipping VAT to 25% ...
+            totals.totalVat = order.shippingPrice - order.shippingPrice / 1.25
+            totals.shipping = order.shippingPrice - totals.totalVat
+        End If
+
+        If order.discountAbsolute > 0 Then
+            remainingDiscount = order.discountAbsolute
+            totals.totalDiscount = remainingDiscount
+        End If
+
+        For Each ol As OrderLine In order.OrderLines
+            orderLinePrice = ol.totalPrice
+            If order.discountPercentage > 0 Then
+                orderLineDiscount = (orderLinePrice / 100 * order.discountPercentage)
+                orderLinePrice = orderLinePrice - orderLineDiscount
+                totals.totalDiscount = totals.totalDiscount + orderLineDiscount
+            ElseIf order.discountAbsolute > 0 Then
+                If remainingDiscount > orderLinePrice Then
+                    remainingDiscount = remainingDiscount - orderLinePrice
+                    Continue For
+                End If
+                orderLinePrice = orderLinePrice - remainingDiscount
+            End If
+            totals.totalPriceExVat = totals.totalPriceExVat + orderLinePrice
+            totals.totalVat = totals.totalVat + (orderLinePrice / 100) * ol.Ingredient.vat
+        Next
+
+        Return totals
+    End Function
 End Class

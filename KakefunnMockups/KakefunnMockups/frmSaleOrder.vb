@@ -1,7 +1,7 @@
 ﻿Public Class frmSaleOrder
 
     Private isNewRecord = False
-    Private currentRecord As Order
+    Private currentRecord As Order = New Order()
 
     Public Sub LoadOrder(order As Order)
         MsgBox("load order " & order.id)
@@ -11,7 +11,7 @@
 
         isDirty = False
         isNewRecord = False
-        currentRecord = Nothing
+        currentRecord = New Order()
         grpOrderStatus.Hide()
         FormHelper.ResetControls(Controls)
         OrderLinesBindingSource.Clear()
@@ -19,6 +19,22 @@
         UpdateTotalPrice()
 
     End Sub
+
+    Private Sub SaveOrder()
+        If Not ValidOrder() Then
+            Exit Sub
+        End If
+
+        If isNewRecord Then
+
+        End If
+
+    End Sub
+
+    Private Function ValidOrder() As Boolean
+        ' TODO! Implement
+        Return True
+    End Function
 
     Private Sub ToggleSubscriptionGroup()
         For Each c As Control In grpSubscription.Controls
@@ -104,50 +120,37 @@
                 MessageBox.Show("Kan ikke legge til kake. En eller flere av ingrediensene har manglende dekning på lager." & _
                        vbCrLf & vbCrLf & ex.Message, "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End Try
-
         End If
 
+        SyncCurrentOrderWithBindingSource()
         UpdateTotalPrice()
 
     End Sub
 
-    Private Sub UpdateTotalPrice()
-        Dim totalPriceExVat As Decimal = 0
-        Dim totalVat As Decimal = 0
-        Dim remainingDiscount As Decimal = 0
-        Dim totalDiscount As Decimal = 0
-        Dim orderLineDiscount As Decimal = 0
-        Dim orderLinePrice As Decimal = 0
-
-        If rdoCurrencyValue.Checked Then
-            remainingDiscount = txtDiscount.DecimalValue
-            totalDiscount = remainingDiscount
-        End If
-
+    Private Sub SyncCurrentOrderWithBindingSource()
+        currentRecord.OrderLines.Clear()
         For Each ol As OrderLine In OrderLinesBindingSource.List
-
-            orderLinePrice = ol.totalPrice
-            If rdoPercent.Checked Then
-                orderLineDiscount = (orderLinePrice / 100 * txtDiscount.DecimalValue)
-                orderLinePrice = orderLinePrice - orderLineDiscount
-                totalDiscount = totalDiscount + orderLineDiscount
-            ElseIf rdoCurrencyValue.Checked Then
-                If remainingDiscount > orderLinePrice Then
-                    remainingDiscount = remainingDiscount - orderLinePrice
-                    Continue For
-                End If
-                orderLinePrice = orderLinePrice - remainingDiscount
-            End If
-
-            totalPriceExVat = totalPriceExVat + orderLinePrice
-            totalVat = totalVat + (orderLinePrice / 100) * ol.Ingredient.vat
+            currentRecord.OrderLines.Add(ol)
         Next
+    End Sub
 
-        lblTotalAmountWithoutVatValue.Text = FormatHelper.Currency(totalPriceExVat)
-        lblDiscountValue.Text = FormatHelper.Currency(totalDiscount)
-        lblVatValue.Text = FormatHelper.Currency(totalVat)
-        lblAmountToPayValue.Text = FormatHelper.Currency(totalPriceExVat - totalDiscount + totalVat)
 
+    Private Sub UpdateTotalPrice()
+
+        Dim totals As OrderTotals
+        totals = OrderManager.CalculateTotals(currentRecord)
+
+        lblTotalAmountWithoutVatValue.Text = FormatHelper.Currency(totals.totalPriceExVat)
+        lblDiscountValue.Text = FormatHelper.Currency(totals.totalDiscount)
+        lblShippingValue.Text = FormatHelper.Currency(totals.shipping)
+        lblVatValue.Text = FormatHelper.Currency(totals.totalVat)
+        lblAmountToPayValue.Text = FormatHelper.Currency(totals.totalToPay)
+
+    End Sub
+
+    Private Sub SetupDeliveryTypeDropdown()
+        ddlDeliveryMethod.DisplayMember = "name"
+        ddlDeliveryMethod.DataSource = DBM.Instance.DeliveryMethods.ToList()
     End Sub
 
     ''''''''''''''''''''''''''''''''''''
@@ -158,6 +161,7 @@
         AddressHelper.SetupAutoCityFill(txtZip, lblCity)
         FormHelper.SetupDirtyTracking(Me)
         SetupIngredientOrCakeSelection()
+        SetupDeliveryTypeDropdown()
         NewOrder()
     End Sub
 
@@ -179,6 +183,7 @@
     Private Sub cbCustomerName_SelectedValueChanged(sender As Object, e As EventArgs) Handles cbCustomerName.SelectedValueChanged
         If Not cbCustomerName.SelectedItem Is Nothing Then
             SetDeliveryToCustomer(cbCustomerName.SelectedItem)
+            currentRecord.Customer = cbCustomerName.SelectedItem
         End If
     End Sub
 
@@ -248,6 +253,7 @@
             Try
                 Dim ol = CType(dtgOrderLines.Rows(e.RowIndex).DataBoundItem, OrderLine)
                 ol.totalPrice = amount * StockManager.GetSellingPriceFor(ol.Ingredient, amount, dtpDeliveryDate.Value)
+                SyncCurrentOrderWithBindingSource()
             Catch ex As Exception
                 err = ex.Message
             End Try
@@ -264,22 +270,82 @@
         UpdateTotalPrice()
     End Sub
 
-    Private Sub Discount_CheckedChanged(sender As Object, e As EventArgs) Handles rdoNone.CheckedChanged, rdoPercent.CheckedChanged, rdoCurrencyValue.CheckedChanged
+    Private Sub Discount_Changed(sender As Object, e As EventArgs) Handles rdoNone.CheckedChanged, rdoPercent.CheckedChanged, rdoCurrencyValue.CheckedChanged, txtDiscount.TextChanged
         Select Case True
+
             Case rdoNone.Checked
                 txtDiscount.Enabled = False
+                currentRecord.discountAbsolute = 0
+                currentRecord.discountPercentage = 0
+
             Case rdoPercent.Checked
                 txtDiscount.Enabled = True
                 If txtDiscount.DecimalValue > 100 Then
                     txtDiscount.Text = "0"
                 End If
+                currentRecord.discountAbsolute = 0
+                currentRecord.discountPercentage = txtDiscount.DecimalValue
+
             Case rdoCurrencyValue.Checked
                 txtDiscount.Enabled = True
+                currentRecord.discountAbsolute = txtDiscount.DecimalValue
+                currentRecord.discountPercentage = 0
         End Select
         UpdateTotalPrice()
     End Sub
 
-    Private Sub txtDiscount_TextChanged(sender As Object, e As EventArgs) Handles txtDiscount.TextChanged
+    '  Private Sub txtDiscount_Leave(sender As Object, e As EventArgs) Handles txtDiscount.Leave
+    'Check if total discount exceeds total order value
+    '   End Sub
+
+    Private Sub dtgOrderLines_UserDeletingRow(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dtgOrderLines.RowsRemoved
+        SyncCurrentOrderWithBindingSource()
         UpdateTotalPrice()
+    End Sub
+
+    Private Sub ddlDeliveryMethod_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlDeliveryMethod.SelectedIndexChanged
+        If Not ddlDeliveryMethod.SelectedItem Is Nothing Then
+            Dim dm As DeliveryMethod = CType(ddlDeliveryMethod.SelectedItem, DeliveryMethod)
+            currentRecord.DeliveryMethod = dm
+            currentRecord.shippingPrice = dm.price
+            UpdateTotalPrice()
+        End If
+    End Sub
+
+    Private Sub btnSaveOrder_Click(sender As Object, e As EventArgs) Handles btnSaveOrder.Click
+        SaveOrder()
+    End Sub
+
+    Private Sub txtDeliveryName_TextChanged(sender As Object, e As EventArgs) Handles txtDeliveryName.TextChanged
+        Dim name As NameHelper = New NameHelper(txtDeliveryName.Text)
+        currentRecord.deliveryFirstName = name.firstName
+        currentRecord.deliveryLastName = name.lastName
+    End Sub
+
+    Private Sub txtAddress_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged
+        If currentRecord.Address Is Nothing Then
+            currentRecord.Address = New Address()
+        End If
+        currentRecord.Address.address1 = txtAddress.Text
+    End Sub
+
+    Private Sub txtTelephone_TextChanged(sender As Object, e As EventArgs) Handles txtTelephone.TextChanged
+        currentRecord.deliveryPhone = txtTelephone.Text
+    End Sub
+
+    Private Sub dtpDeliveryDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDeliveryDate.ValueChanged
+        ' Missing from datamodel
+    End Sub
+
+    Private Sub txtZip_TextChanged(sender As Object, e As EventArgs) Handles txtZip.TextChanged
+
+    End Sub
+
+    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
+
+    End Sub
+
+    Private Sub txtInternalNote_TextChanged(sender As Object, e As EventArgs) Handles txtInternalNote.TextChanged
+
     End Sub
 End Class
