@@ -16,14 +16,14 @@ Partial Public Class Order
     Public Property deliveryLastName As String
     Public Property deliveryPhone As String
     Public Property deliveryEmail As String
+    Public Property deliveryDate As Date
     Public Property subscriptionId As Nullable(Of Integer)
     Public Property shippingPrice As Decimal
     Public Property discountPercentage As Nullable(Of Integer)
     Public Property discountAbsolute As Nullable(Of Decimal)
     Public Property note As String
-    Public Property amountPayed As Decimal
+    Public Property isPaid As Boolean
     Public Property sent As Nullable(Of Date)
-    Public Property settled As Nullable(Of Date)
     Public Property exported As Nullable(Of Date)
     Public Property created As Date
     Public Property modified As Date

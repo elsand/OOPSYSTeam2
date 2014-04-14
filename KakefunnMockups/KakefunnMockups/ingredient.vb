@@ -17,6 +17,7 @@ Partial Public Class Ingredient
     Public Property kilocaloriesPerUnit As Double
     Public Property vat As Integer
     Public Property published As Nullable(Of Boolean)
+    Public Property deleted As Nullable(Of Date)
 
     Public Overridable Property Batches As ObservableListSource(Of Batch) = New ObservableListSource(Of Batch)
     Public Overridable Property RecipeLines As ObservableListSource(Of RecipeLine) = New ObservableListSource(Of RecipeLine)

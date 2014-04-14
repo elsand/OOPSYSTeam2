@@ -116,11 +116,12 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="name" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="description" Type="varchar" MaxLength="45" />
+          <Property Name="description" Type="varchar" MaxLength="255" />
           <Property Name="kilocaloriesPerUnit" Type="double" Nullable="false" />
           <Property Name="vat" Type="int" Nullable="false" />
           <Property Name="unitId" Type="int" Nullable="false" />
           <Property Name="published" Type="bool" />
+          <Property Name="deleted" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="IngredientPrice">
           <Key>
@@ -143,15 +144,15 @@
           <Property Name="deliveryPhone" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="deliveryEmail" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="deliveryMethodId" Type="int" Nullable="false" />
+          <Property Name="deliveryDate" Type="date" Nullable="false" />
           <Property Name="employeeId" Type="int" Nullable="false" />
           <Property Name="subscriptionId" Type="int" />
           <Property Name="shippingPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="discountPercentage" Type="int" />
           <Property Name="discountAbsolute" Type="decimal" Precision="10" Scale="2" />
           <Property Name="note" Type="text" />
-          <Property Name="amountPayed" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="isPaid" Type="bool" Nullable="false" />
           <Property Name="sent" Type="datetime" Precision="0" />
-          <Property Name="settled" Type="datetime" Precision="0" />
           <Property Name="exported" Type="datetime" Precision="0" />
           <Property Name="created" Type="datetime" Precision="0" Nullable="false" />
           <Property Name="modified" Type="datetime" Precision="0" Nullable="false" />
@@ -712,6 +713,7 @@
           <Property Name="kilocaloriesPerUnit" Type="Double" Nullable="false" />
           <Property Name="vat" Type="Int32" Nullable="false" />
           <Property Name="published" Type="Boolean" />
+          <Property Name="deleted" Type="DateTime" />
           <NavigationProperty Name="Batches" Relationship="Self.fk_batch_ingrediens1" FromRole="Ingredient" ToRole="Batch" />
           <NavigationProperty Name="RecipeLines" Relationship="Self.fk_cake_has_ingredient_ingredient1" FromRole="Ingredient" ToRole="RecipeLine" />
           <NavigationProperty Name="Unit" Relationship="Self.fk_ingrediens_enhet1" FromRole="Ingredient" ToRole="Unit" />
@@ -737,14 +739,14 @@
           <Property Name="deliveryLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="deliveryPhone" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="deliveryEmail" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="deliveryDate" Type="DateTime" Nullable="false" />
           <Property Name="subscriptionId" Type="Int32" />
           <Property Name="shippingPrice" Type="Decimal" Nullable="false" />
           <Property Name="discountPercentage" Type="Int32" />
           <Property Name="discountAbsolute" Type="Decimal" />
           <Property Name="note" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Name="amountPayed" Type="Decimal" Nullable="false" />
+          <Property Name="isPaid" Type="Boolean" Nullable="false" />
           <Property Name="sent" Type="DateTime" />
-          <Property Name="settled" Type="DateTime" />
           <Property Name="exported" Type="DateTime" />
           <Property Name="created" Type="DateTime" Nullable="false" />
           <Property Name="modified" Type="DateTime" Nullable="false" />
@@ -1137,6 +1139,7 @@
                 <ScalarProperty Name="kilocaloriesPerUnit" ColumnName="kilocaloriesPerUnit" />
                 <ScalarProperty Name="vat" ColumnName="vat" />
                 <ScalarProperty Name="published" ColumnName="published" />
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1157,14 +1160,14 @@
                 <ScalarProperty Name="deliveryLastName" ColumnName="deliveryLastName" />
                 <ScalarProperty Name="deliveryPhone" ColumnName="deliveryPhone" />
                 <ScalarProperty Name="deliveryEmail" ColumnName="deliveryEmail" />
+                <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
                 <ScalarProperty Name="subscriptionId" ColumnName="subscriptionId" />
                 <ScalarProperty Name="shippingPrice" ColumnName="shippingPrice" />
                 <ScalarProperty Name="discountPercentage" ColumnName="discountPercentage" />
                 <ScalarProperty Name="discountAbsolute" ColumnName="discountAbsolute" />
                 <ScalarProperty Name="note" ColumnName="note" />
-                <ScalarProperty Name="amountPayed" ColumnName="amountPayed" />
+                <ScalarProperty Name="isPaid" ColumnName="isPaid" />
                 <ScalarProperty Name="sent" ColumnName="sent" />
-                <ScalarProperty Name="settled" ColumnName="settled" />
                 <ScalarProperty Name="exported" ColumnName="exported" />
                 <ScalarProperty Name="created" ColumnName="created" />
                 <ScalarProperty Name="modified" ColumnName="modified" />
