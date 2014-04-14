@@ -55,7 +55,7 @@ Partial Class frmAdminSystemAdministration
         Me.ddlEmployees.Location = New System.Drawing.Point(158, 70)
         Me.ddlEmployees.Name = "ddlEmployees"
         Me.ddlEmployees.Size = New System.Drawing.Size(150, 21)
-        Me.ddlEmployees.TabIndex = 7
+        Me.ddlEmployees.TabIndex = 8
         '
         'DBMBindingSource
         '
@@ -91,7 +91,7 @@ Partial Class frmAdminSystemAdministration
         Me.btnSaveChanges.Location = New System.Drawing.Point(420, 360)
         Me.btnSaveChanges.Name = "btnSaveChanges"
         Me.btnSaveChanges.Size = New System.Drawing.Size(114, 23)
-        Me.btnSaveChanges.TabIndex = 11
+        Me.btnSaveChanges.TabIndex = 22
         Me.btnSaveChanges.Text = "Lagre ny bruker"
         Me.btnSaveChanges.UseVisualStyleBackColor = True
         '
@@ -100,7 +100,7 @@ Partial Class frmAdminSystemAdministration
         Me.btnNewUser.Location = New System.Drawing.Point(15, 360)
         Me.btnNewUser.Name = "btnNewUser"
         Me.btnNewUser.Size = New System.Drawing.Size(75, 23)
-        Me.btnNewUser.TabIndex = 12
+        Me.btnNewUser.TabIndex = 21
         Me.btnNewUser.Text = "Ny bruker"
         Me.btnNewUser.UseVisualStyleBackColor = True
         '
@@ -127,7 +127,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtEmail.Location = New System.Drawing.Point(158, 233)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(150, 20)
-        Me.txtEmail.TabIndex = 18
+        Me.txtEmail.TabIndex = 15
         '
         'lblEmail
         '
@@ -143,7 +143,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtPassword.Location = New System.Drawing.Point(158, 259)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(150, 20)
-        Me.txtPassword.TabIndex = 20
+        Me.txtPassword.TabIndex = 16
         '
         'lblPassword
         '
@@ -159,7 +159,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtRepeatPassword.Location = New System.Drawing.Point(158, 285)
         Me.txtRepeatPassword.Name = "txtRepeatPassword"
         Me.txtRepeatPassword.Size = New System.Drawing.Size(150, 20)
-        Me.txtRepeatPassword.TabIndex = 22
+        Me.txtRepeatPassword.TabIndex = 17
         '
         'lblRepeatPassword
         '
@@ -175,7 +175,7 @@ Partial Class frmAdminSystemAdministration
         Me.btnEditEmployee.Location = New System.Drawing.Point(314, 68)
         Me.btnEditEmployee.Name = "btnEditEmployee"
         Me.btnEditEmployee.Size = New System.Drawing.Size(75, 23)
-        Me.btnEditEmployee.TabIndex = 23
+        Me.btnEditEmployee.TabIndex = 9
         Me.btnEditEmployee.Text = "Rediger"
         Me.btnEditEmployee.UseVisualStyleBackColor = True
         '
@@ -185,7 +185,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(150, 43)
-        Me.txtAddress.TabIndex = 24
+        Me.txtAddress.TabIndex = 18
         '
         'lblAddress
         '
@@ -211,7 +211,7 @@ Partial Class frmAdminSystemAdministration
         Me.lblCity.Location = New System.Drawing.Point(437, 267)
         Me.lblCity.Name = "lblCity"
         Me.lblCity.Size = New System.Drawing.Size(36, 13)
-        Me.lblCity.TabIndex = 28
+        Me.lblCity.TabIndex = 20
         Me.lblCity.Text = "STED"
         '
         'cbAdmin
@@ -220,7 +220,7 @@ Partial Class frmAdminSystemAdministration
         Me.cbAdmin.Location = New System.Drawing.Point(158, 153)
         Me.cbAdmin.Name = "cbAdmin"
         Me.cbAdmin.Size = New System.Drawing.Size(55, 17)
-        Me.cbAdmin.TabIndex = 29
+        Me.cbAdmin.TabIndex = 11
         Me.cbAdmin.Text = "Admin"
         Me.cbAdmin.UseVisualStyleBackColor = True
         '
@@ -230,7 +230,7 @@ Partial Class frmAdminSystemAdministration
         Me.cbSale.Location = New System.Drawing.Point(158, 170)
         Me.cbSale.Name = "cbSale"
         Me.cbSale.Size = New System.Drawing.Size(47, 17)
-        Me.cbSale.TabIndex = 30
+        Me.cbSale.TabIndex = 12
         Me.cbSale.Text = "Salg"
         Me.cbSale.UseVisualStyleBackColor = True
         '
@@ -240,7 +240,7 @@ Partial Class frmAdminSystemAdministration
         Me.cbLogistics.Location = New System.Drawing.Point(158, 187)
         Me.cbLogistics.Name = "cbLogistics"
         Me.cbLogistics.Size = New System.Drawing.Size(68, 17)
-        Me.cbLogistics.TabIndex = 31
+        Me.cbLogistics.TabIndex = 13
         Me.cbLogistics.Text = "Logistikk"
         Me.cbLogistics.UseVisualStyleBackColor = True
         '
@@ -252,7 +252,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtPhone.Location = New System.Drawing.Point(158, 208)
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.Size = New System.Drawing.Size(150, 20)
-        Me.txtPhone.TabIndex = 32
+        Me.txtPhone.TabIndex = 14
         '
         'txtZip
         '
@@ -262,12 +262,12 @@ Partial Class frmAdminSystemAdministration
         Me.txtZip.Location = New System.Drawing.Point(385, 262)
         Me.txtZip.Name = "txtZip"
         Me.txtZip.Size = New System.Drawing.Size(46, 20)
-        Me.txtZip.TabIndex = 33
+        Me.txtZip.TabIndex = 19
         '
         'frmAdminSystemAdministration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(549, 424)
+        Me.ClientSize = New System.Drawing.Size(630, 424)
         Me.Controls.Add(Me.txtZip)
         Me.Controls.Add(Me.txtPhone)
         Me.Controls.Add(Me.cbLogistics)

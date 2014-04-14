@@ -79,7 +79,7 @@ Partial Class frmSaleCustomer
         Me.txtDiscount.Location = New System.Drawing.Point(290, 97)
         Me.txtDiscount.Name = "txtDiscount"
         Me.txtDiscount.Size = New System.Drawing.Size(45, 20)
-        Me.txtDiscount.TabIndex = 13
+        Me.txtDiscount.TabIndex = 8
         '
         'lblDiscount
         '
@@ -95,7 +95,7 @@ Partial Class frmSaleCustomer
         Me.txtTelephone.Location = New System.Drawing.Point(290, 71)
         Me.txtTelephone.Name = "txtTelephone"
         Me.txtTelephone.Size = New System.Drawing.Size(134, 20)
-        Me.txtTelephone.TabIndex = 11
+        Me.txtTelephone.TabIndex = 7
         '
         'lblTelephone
         '
@@ -111,7 +111,7 @@ Partial Class frmSaleCustomer
         Me.txtEmail.Location = New System.Drawing.Point(290, 45)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(134, 20)
-        Me.txtEmail.TabIndex = 9
+        Me.txtEmail.TabIndex = 6
         '
         'lblEmail
         '
@@ -128,7 +128,7 @@ Partial Class frmSaleCustomer
         Me.lblCity.Location = New System.Drawing.Point(135, 116)
         Me.lblCity.Name = "lblCity"
         Me.lblCity.Size = New System.Drawing.Size(92, 13)
-        Me.lblCity.TabIndex = 7
+        Me.lblCity.TabIndex = 5
         Me.lblCity.Text = "BRØNNØYSUND"
         '
         'txtZip
@@ -136,7 +136,7 @@ Partial Class frmSaleCustomer
         Me.txtZip.Location = New System.Drawing.Point(83, 113)
         Me.txtZip.Name = "txtZip"
         Me.txtZip.Size = New System.Drawing.Size(46, 20)
-        Me.txtZip.TabIndex = 6
+        Me.txtZip.TabIndex = 4
         '
         'lblZip
         '
@@ -153,7 +153,7 @@ Partial Class frmSaleCustomer
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(134, 32)
-        Me.txtAddress.TabIndex = 4
+        Me.txtAddress.TabIndex = 3
         '
         'lblAddress
         '
@@ -187,7 +187,7 @@ Partial Class frmSaleCustomer
         Me.chkIsBusinessClient.Name = "chkIsBusinessClient"
         Me.chkIsBusinessClient.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.chkIsBusinessClient.Size = New System.Drawing.Size(91, 17)
-        Me.chkIsBusinessClient.TabIndex = 0
+        Me.chkIsBusinessClient.TabIndex = 1
         Me.chkIsBusinessClient.Text = "Er firmakunde"
         Me.chkIsBusinessClient.UseVisualStyleBackColor = True
         '
@@ -203,7 +203,7 @@ Partial Class frmSaleCustomer
         Me.grpCustomerStatus.Location = New System.Drawing.Point(12, 27)
         Me.grpCustomerStatus.Name = "grpCustomerStatus"
         Me.grpCustomerStatus.Size = New System.Drawing.Size(438, 96)
-        Me.grpCustomerStatus.TabIndex = 9
+        Me.grpCustomerStatus.TabIndex = 1
         Me.grpCustomerStatus.TabStop = False
         Me.grpCustomerStatus.Text = "Status (denne vises bare ved redigering)"
         '
@@ -212,7 +212,7 @@ Partial Class frmSaleCustomer
         Me.btnShowSubscriptions.Location = New System.Drawing.Point(304, 60)
         Me.btnShowSubscriptions.Name = "btnShowSubscriptions"
         Me.btnShowSubscriptions.Size = New System.Drawing.Size(128, 23)
-        Me.btnShowSubscriptions.TabIndex = 6
+        Me.btnShowSubscriptions.TabIndex = 1
         Me.btnShowSubscriptions.Text = "Vis abonnementer ..."
         Me.btnShowSubscriptions.UseVisualStyleBackColor = True
         '
@@ -221,7 +221,7 @@ Partial Class frmSaleCustomer
         Me.btnShowOrders.Location = New System.Drawing.Point(223, 60)
         Me.btnShowOrders.Name = "btnShowOrders"
         Me.btnShowOrders.Size = New System.Drawing.Size(75, 23)
-        Me.btnShowOrders.TabIndex = 5
+        Me.btnShowOrders.TabIndex = 0
         Me.btnShowOrders.Text = "Vis order ..."
         Me.btnShowOrders.UseVisualStyleBackColor = True
         '
@@ -277,7 +277,7 @@ Partial Class frmSaleCustomer
         Me.grpNote.Location = New System.Drawing.Point(13, 281)
         Me.grpNote.Name = "grpNote"
         Me.grpNote.Size = New System.Drawing.Size(437, 102)
-        Me.grpNote.TabIndex = 10
+        Me.grpNote.TabIndex = 3
         Me.grpNote.TabStop = False
         Me.grpNote.Text = "Notat"
         '
@@ -294,7 +294,7 @@ Partial Class frmSaleCustomer
         Me.btnSave.Location = New System.Drawing.Point(356, 398)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(94, 28)
-        Me.btnSave.TabIndex = 11
+        Me.btnSave.TabIndex = 5
         Me.btnSave.Text = "Lagre"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -303,7 +303,7 @@ Partial Class frmSaleCustomer
         Me.btnCancel.Location = New System.Drawing.Point(253, 398)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(94, 28)
-        Me.btnCancel.TabIndex = 12
+        Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "Avbryt"
         Me.btnCancel.UseVisualStyleBackColor = True
         '

@@ -43,7 +43,7 @@ Partial Class frmLogisticsReports
         Me.dtgExpiredIngredients.Name = "dtgExpiredIngredients"
         Me.dtgExpiredIngredients.RowHeadersVisible = False
         Me.dtgExpiredIngredients.Size = New System.Drawing.Size(682, 267)
-        Me.dtgExpiredIngredients.TabIndex = 6
+        Me.dtgExpiredIngredients.TabIndex = 5
         '
         'Varenr
         '
@@ -80,7 +80,7 @@ Partial Class frmLogisticsReports
         Me.btnPrintExpiredIngredients.Location = New System.Drawing.Point(619, 361)
         Me.btnPrintExpiredIngredients.Name = "btnPrintExpiredIngredients"
         Me.btnPrintExpiredIngredients.Size = New System.Drawing.Size(75, 23)
-        Me.btnPrintExpiredIngredients.TabIndex = 7
+        Me.btnPrintExpiredIngredients.TabIndex = 8
         Me.btnPrintExpiredIngredients.Text = "Skriv ut"
         Me.btnPrintExpiredIngredients.UseVisualStyleBackColor = True
         '
@@ -89,7 +89,7 @@ Partial Class frmLogisticsReports
         Me.btnCheckAll.Location = New System.Drawing.Point(12, 361)
         Me.btnCheckAll.Name = "btnCheckAll"
         Me.btnCheckAll.Size = New System.Drawing.Size(75, 23)
-        Me.btnCheckAll.TabIndex = 8
+        Me.btnCheckAll.TabIndex = 6
         Me.btnCheckAll.Text = "Merk alle"
         Me.btnCheckAll.UseVisualStyleBackColor = True
         '
@@ -98,7 +98,7 @@ Partial Class frmLogisticsReports
         Me.btbDeleteCheckedIngredientsInStock.Location = New System.Drawing.Point(93, 361)
         Me.btbDeleteCheckedIngredientsInStock.Name = "btbDeleteCheckedIngredientsInStock"
         Me.btbDeleteCheckedIngredientsInStock.Size = New System.Drawing.Size(175, 23)
-        Me.btbDeleteCheckedIngredientsInStock.TabIndex = 9
+        Me.btbDeleteCheckedIngredientsInStock.TabIndex = 7
         Me.btbDeleteCheckedIngredientsInStock.Text = "Slett merkede fra varelager"
         Me.btbDeleteCheckedIngredientsInStock.UseVisualStyleBackColor = True
         '

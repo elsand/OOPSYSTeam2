@@ -20,8 +20,8 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle20 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
@@ -150,7 +150,7 @@ Partial Class frmSaleOrder
         Me.grpDelivery.Location = New System.Drawing.Point(13, 89)
         Me.grpDelivery.Name = "grpDelivery"
         Me.grpDelivery.Size = New System.Drawing.Size(498, 398)
-        Me.grpDelivery.TabIndex = 5
+        Me.grpDelivery.TabIndex = 2
         Me.grpDelivery.TabStop = False
         Me.grpDelivery.Text = "Levering"
         '
@@ -294,16 +294,16 @@ Partial Class frmSaleOrder
         'dcAmount
         '
         Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
         Me.dcAmount.HeaderText = "Antall"
         Me.dcAmount.Name = "dcAmount"
         '
         'dcTotalPrice
         '
         Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle20
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
         Me.dcTotalPrice.HeaderText = "Totalpris"
         Me.dcTotalPrice.Name = "dcTotalPrice"
         Me.dcTotalPrice.ReadOnly = True
@@ -379,7 +379,7 @@ Partial Class frmSaleOrder
         Me.grpOrderingCustomer.Location = New System.Drawing.Point(13, 27)
         Me.grpOrderingCustomer.Name = "grpOrderingCustomer"
         Me.grpOrderingCustomer.Size = New System.Drawing.Size(495, 56)
-        Me.grpOrderingCustomer.TabIndex = 6
+        Me.grpOrderingCustomer.TabIndex = 1
         Me.grpOrderingCustomer.TabStop = False
         Me.grpOrderingCustomer.Text = "Bestiller"
         '
@@ -410,7 +410,7 @@ Partial Class frmSaleOrder
         Me.grpOrderStatus.Location = New System.Drawing.Point(3, 3)
         Me.grpOrderStatus.Name = "grpOrderStatus"
         Me.grpOrderStatus.Size = New System.Drawing.Size(292, 128)
-        Me.grpOrderStatus.TabIndex = 8
+        Me.grpOrderStatus.TabIndex = 0
         Me.grpOrderStatus.TabStop = False
         Me.grpOrderStatus.Text = "Status"
         '
@@ -469,7 +469,7 @@ Partial Class frmSaleOrder
         Me.grpDiscount.Location = New System.Drawing.Point(13, 468)
         Me.grpDiscount.Name = "grpDiscount"
         Me.grpDiscount.Size = New System.Drawing.Size(495, 50)
-        Me.grpDiscount.TabIndex = 9
+        Me.grpDiscount.TabIndex = 3
         Me.grpDiscount.TabStop = False
         Me.grpDiscount.Text = "Rabatt"
         '
@@ -532,7 +532,7 @@ Partial Class frmSaleOrder
         Me.grpPayment.Location = New System.Drawing.Point(13, 524)
         Me.grpPayment.Name = "grpPayment"
         Me.grpPayment.Size = New System.Drawing.Size(495, 97)
-        Me.grpPayment.TabIndex = 10
+        Me.grpPayment.TabIndex = 4
         Me.grpPayment.TabStop = False
         Me.grpPayment.Text = "Betaling"
         '
@@ -646,7 +646,7 @@ Partial Class frmSaleOrder
         Me.cboIsPayed.Location = New System.Drawing.Point(514, 541)
         Me.cboIsPayed.Name = "cboIsPayed"
         Me.cboIsPayed.Size = New System.Drawing.Size(77, 17)
-        Me.cboIsPayed.TabIndex = 0
+        Me.cboIsPayed.TabIndex = 6
         Me.cboIsPayed.Text = "Er oppgjort"
         Me.cboIsPayed.UseVisualStyleBackColor = True
         '
@@ -655,7 +655,7 @@ Partial Class frmSaleOrder
         Me.btnSaveOrder.Location = New System.Drawing.Point(725, 587)
         Me.btnSaveOrder.Name = "btnSaveOrder"
         Me.btnSaveOrder.Size = New System.Drawing.Size(91, 34)
-        Me.btnSaveOrder.TabIndex = 4
+        Me.btnSaveOrder.TabIndex = 10
         Me.btnSaveOrder.Text = "Lagre ordre"
         Me.btnSaveOrder.UseVisualStyleBackColor = True
         '
@@ -667,7 +667,7 @@ Partial Class frmSaleOrder
         Me.cboPrintReceiptOnSave.Location = New System.Drawing.Point(601, 541)
         Me.cboPrintReceiptOnSave.Name = "cboPrintReceiptOnSave"
         Me.cboPrintReceiptOnSave.Size = New System.Drawing.Size(163, 17)
-        Me.cboPrintReceiptOnSave.TabIndex = 1
+        Me.cboPrintReceiptOnSave.TabIndex = 7
         Me.cboPrintReceiptOnSave.Text = "Skriv ut kvittering ved lagring"
         Me.cboPrintReceiptOnSave.UseVisualStyleBackColor = True
         '
@@ -697,7 +697,7 @@ Partial Class frmSaleOrder
         Me.grpSubscription.Location = New System.Drawing.Point(3, 223)
         Me.grpSubscription.Name = "grpSubscription"
         Me.grpSubscription.Size = New System.Drawing.Size(292, 276)
-        Me.grpSubscription.TabIndex = 14
+        Me.grpSubscription.TabIndex = 2
         Me.grpSubscription.TabStop = False
         Me.grpSubscription.Text = "Abonnement"
         '
@@ -706,7 +706,7 @@ Partial Class frmSaleOrder
         Me.btnShowOrderForSubscription.Location = New System.Drawing.Point(155, 15)
         Me.btnShowOrderForSubscription.Name = "btnShowOrderForSubscription"
         Me.btnShowOrderForSubscription.Size = New System.Drawing.Size(127, 23)
-        Me.btnShowOrderForSubscription.TabIndex = 25
+        Me.btnShowOrderForSubscription.TabIndex = 1
         Me.btnShowOrderForSubscription.Text = "Vis ordrer for dette abo."
         Me.btnShowOrderForSubscription.UseVisualStyleBackColor = True
         '
@@ -747,7 +747,7 @@ Partial Class frmSaleOrder
         Me.dtpEndDate.Location = New System.Drawing.Point(84, 165)
         Me.dtpEndDate.Name = "dtpEndDate"
         Me.dtpEndDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpEndDate.TabIndex = 5
+        Me.dtpEndDate.TabIndex = 6
         '
         'cboHasEndDate
         '
@@ -756,7 +756,7 @@ Partial Class frmSaleOrder
         Me.cboHasEndDate.Name = "cboHasEndDate"
         Me.cboHasEndDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cboHasEndDate.Size = New System.Drawing.Size(86, 17)
-        Me.cboHasEndDate.TabIndex = 4
+        Me.cboHasEndDate.TabIndex = 5
         Me.cboHasEndDate.Text = "Har sluttdato"
         Me.cboHasEndDate.UseVisualStyleBackColor = True
         '
@@ -774,7 +774,7 @@ Partial Class frmSaleOrder
         Me.dtpStartDate.Location = New System.Drawing.Point(82, 107)
         Me.dtpStartDate.Name = "dtpStartDate"
         Me.dtpStartDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpStartDate.TabIndex = 3
+        Me.dtpStartDate.TabIndex = 4
         '
         'cboFrequency
         '
@@ -783,7 +783,7 @@ Partial Class frmSaleOrder
         Me.cboFrequency.Location = New System.Drawing.Point(84, 77)
         Me.cboFrequency.Name = "cboFrequency"
         Me.cboFrequency.Size = New System.Drawing.Size(52, 21)
-        Me.cboFrequency.TabIndex = 2
+        Me.cboFrequency.TabIndex = 3
         '
         'lblFrequency
         '
@@ -801,7 +801,7 @@ Partial Class frmSaleOrder
         Me.cboTypeInterval.Location = New System.Drawing.Point(83, 47)
         Me.cboTypeInterval.Name = "cboTypeInterval"
         Me.cboTypeInterval.Size = New System.Drawing.Size(121, 21)
-        Me.cboTypeInterval.TabIndex = 1
+        Me.cboTypeInterval.TabIndex = 2
         '
         'lblTypeInterval
         '
@@ -837,7 +837,7 @@ Partial Class frmSaleOrder
         Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.tlayRight.Size = New System.Drawing.Size(316, 508)
-        Me.tlayRight.TabIndex = 15
+        Me.tlayRight.TabIndex = 5
         '
         'grpOrderNote
         '
@@ -845,7 +845,7 @@ Partial Class frmSaleOrder
         Me.grpOrderNote.Location = New System.Drawing.Point(3, 137)
         Me.grpOrderNote.Name = "grpOrderNote"
         Me.grpOrderNote.Size = New System.Drawing.Size(292, 80)
-        Me.grpOrderNote.TabIndex = 9
+        Me.grpOrderNote.TabIndex = 1
         Me.grpOrderNote.TabStop = False
         Me.grpOrderNote.Text = "Internt notat"
         '
@@ -854,7 +854,7 @@ Partial Class frmSaleOrder
         Me.btnCancel.Location = New System.Drawing.Point(517, 587)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(91, 34)
-        Me.btnCancel.TabIndex = 2
+        Me.btnCancel.TabIndex = 8
         Me.btnCancel.Text = "Avbryt"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -863,7 +863,7 @@ Partial Class frmSaleOrder
         Me.btnClear.Location = New System.Drawing.Point(620, 587)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(91, 34)
-        Me.btnClear.TabIndex = 3
+        Me.btnClear.TabIndex = 9
         Me.btnClear.Text = "Tøm felter"
         Me.btnClear.UseVisualStyleBackColor = True
         '

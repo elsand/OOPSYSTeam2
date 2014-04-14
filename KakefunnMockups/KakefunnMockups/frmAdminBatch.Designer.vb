@@ -246,7 +246,7 @@ Partial Class frmAdminBatch
         Me.dtgBatch.RowHeadersVisible = False
         Me.dtgBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgBatch.Size = New System.Drawing.Size(683, 236)
-        Me.dtgBatch.TabIndex = 14
+        Me.dtgBatch.TabIndex = 8
         '
         'DataGridViewTextBoxColumn1
         '
