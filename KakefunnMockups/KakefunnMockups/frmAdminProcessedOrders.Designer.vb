@@ -43,7 +43,7 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.Location = New System.Drawing.Point(12, 66)
         Me.dtgProcessedOrders.Name = "dtgProcessedOrders"
         Me.dtgProcessedOrders.Size = New System.Drawing.Size(696, 306)
-        Me.dtgProcessedOrders.TabIndex = 5
+        Me.dtgProcessedOrders.TabIndex = 8
         '
         'Column5
         '
@@ -80,7 +80,7 @@ Partial Class frmAdminProcessedOrders
         Me.btnPrintProcessedOrders.Location = New System.Drawing.Point(12, 378)
         Me.btnPrintProcessedOrders.Name = "btnPrintProcessedOrders"
         Me.btnPrintProcessedOrders.Size = New System.Drawing.Size(132, 23)
-        Me.btnPrintProcessedOrders.TabIndex = 6
+        Me.btnPrintProcessedOrders.TabIndex = 9
         Me.btnPrintProcessedOrders.Text = "Skriv ut rapport"
         Me.btnPrintProcessedOrders.UseVisualStyleBackColor = True
         '
@@ -89,7 +89,7 @@ Partial Class frmAdminProcessedOrders
         Me.btnTransferToBillingSystem.Location = New System.Drawing.Point(576, 378)
         Me.btnTransferToBillingSystem.Name = "btnTransferToBillingSystem"
         Me.btnTransferToBillingSystem.Size = New System.Drawing.Size(132, 23)
-        Me.btnTransferToBillingSystem.TabIndex = 7
+        Me.btnTransferToBillingSystem.TabIndex = 10
         Me.btnTransferToBillingSystem.Text = "Overfør til fakturasystem"
         Me.btnTransferToBillingSystem.UseVisualStyleBackColor = True
         '

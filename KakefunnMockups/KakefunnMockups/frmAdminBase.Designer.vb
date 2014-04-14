@@ -41,7 +41,7 @@ Partial Class frmAdminBase
         Me.btnUsers.Location = New System.Drawing.Point(540, 27)
         Me.btnUsers.Name = "btnUsers"
         Me.btnUsers.Size = New System.Drawing.Size(87, 23)
-        Me.btnUsers.TabIndex = 3
+        Me.btnUsers.TabIndex = 7
         Me.btnUsers.Text = "Brukere"
         Me.btnUsers.UseVisualStyleBackColor = True
         '
@@ -59,7 +59,7 @@ Partial Class frmAdminBase
         Me.btnCakes.Location = New System.Drawing.Point(124, 27)
         Me.btnCakes.Name = "btnCakes"
         Me.btnCakes.Size = New System.Drawing.Size(97, 23)
-        Me.btnCakes.TabIndex = 5
+        Me.btnCakes.TabIndex = 3
         Me.btnCakes.Text = "Kaker"
         Me.btnCakes.UseVisualStyleBackColor = True
         '
@@ -77,7 +77,7 @@ Partial Class frmAdminBase
         Me.btnBatchOrder.Location = New System.Drawing.Point(332, 27)
         Me.btnBatchOrder.Name = "btnBatchOrder"
         Me.btnBatchOrder.Size = New System.Drawing.Size(99, 23)
-        Me.btnBatchOrder.TabIndex = 7
+        Me.btnBatchOrder.TabIndex = 5
         Me.btnBatchOrder.Text = "Varebestilling"
         Me.btnBatchOrder.UseVisualStyleBackColor = True
         '

@@ -47,7 +47,7 @@ Partial Class frmLogisticsPackingList
         Me.dtgPackingList.RowHeadersVisible = False
         Me.dtgPackingList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgPackingList.Size = New System.Drawing.Size(611, 348)
-        Me.dtgPackingList.TabIndex = 5
+        Me.dtgPackingList.TabIndex = 6
         '
         'Column1
         '
@@ -89,7 +89,7 @@ Partial Class frmLogisticsPackingList
         Me.dtpPackingList.Location = New System.Drawing.Point(525, 64)
         Me.dtpPackingList.Name = "dtpPackingList"
         Me.dtpPackingList.Size = New System.Drawing.Size(98, 20)
-        Me.dtpPackingList.TabIndex = 7
+        Me.dtpPackingList.TabIndex = 5
         '
         'lblPickDate
         '
@@ -105,7 +105,7 @@ Partial Class frmLogisticsPackingList
         Me.btnMarkUnsent.Location = New System.Drawing.Point(15, 463)
         Me.btnMarkUnsent.Name = "btnMarkUnsent"
         Me.btnMarkUnsent.Size = New System.Drawing.Size(104, 23)
-        Me.btnMarkUnsent.TabIndex = 10
+        Me.btnMarkUnsent.TabIndex = 7
         Me.btnMarkUnsent.Text = "Merk usendte"
         Me.btnMarkUnsent.UseVisualStyleBackColor = True
         '
@@ -114,7 +114,7 @@ Partial Class frmLogisticsPackingList
         Me.btnPrintPackingList.Location = New System.Drawing.Point(6, 19)
         Me.btnPrintPackingList.Name = "btnPrintPackingList"
         Me.btnPrintPackingList.Size = New System.Drawing.Size(120, 23)
-        Me.btnPrintPackingList.TabIndex = 11
+        Me.btnPrintPackingList.TabIndex = 0
         Me.btnPrintPackingList.Text = "Skriv ut pakkseddel"
         Me.btnPrintPackingList.UseVisualStyleBackColor = True
         '
@@ -126,7 +126,7 @@ Partial Class frmLogisticsPackingList
         Me.grpPerformOnOrders.Location = New System.Drawing.Point(304, 444)
         Me.grpPerformOnOrders.Name = "grpPerformOnOrders"
         Me.grpPerformOnOrders.Size = New System.Drawing.Size(319, 54)
-        Me.grpPerformOnOrders.TabIndex = 12
+        Me.grpPerformOnOrders.TabIndex = 8
         Me.grpPerformOnOrders.TabStop = False
         Me.grpPerformOnOrders.Text = "Utfør på merkede ordrer"
         '
@@ -135,7 +135,7 @@ Partial Class frmLogisticsPackingList
         Me.btnSetStatus.Location = New System.Drawing.Point(146, 19)
         Me.btnSetStatus.Name = "btnSetStatus"
         Me.btnSetStatus.Size = New System.Drawing.Size(91, 23)
-        Me.btnSetStatus.TabIndex = 13
+        Me.btnSetStatus.TabIndex = 1
         Me.btnSetStatus.Text = "Sett status"
         Me.btnSetStatus.UseVisualStyleBackColor = True
         '
@@ -146,7 +146,7 @@ Partial Class frmLogisticsPackingList
         Me.cboStatusSetOrder.Location = New System.Drawing.Point(243, 20)
         Me.cboStatusSetOrder.Name = "cboStatusSetOrder"
         Me.cboStatusSetOrder.Size = New System.Drawing.Size(70, 21)
-        Me.cboStatusSetOrder.TabIndex = 12
+        Me.cboStatusSetOrder.TabIndex = 2
         Me.cboStatusSetOrder.Text = "Sendt"
         '
         'frmLogisticsPackingList

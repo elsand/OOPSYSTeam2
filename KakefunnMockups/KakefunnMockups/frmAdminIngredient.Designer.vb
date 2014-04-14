@@ -49,7 +49,7 @@ Partial Class frmAdminIngredient
         Me.dtgResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgResults.ShowEditingIcon = False
         Me.dtgResults.Size = New System.Drawing.Size(643, 365)
-        Me.dtgResults.TabIndex = 7
+        Me.dtgResults.TabIndex = 10
         '
         'Column1
         '
@@ -101,7 +101,7 @@ Partial Class frmAdminIngredient
         Me.txtSearch.Location = New System.Drawing.Point(120, 63)
         Me.txtSearch.Name = "txtSearch"
         Me.txtSearch.Size = New System.Drawing.Size(136, 20)
-        Me.txtSearch.TabIndex = 9
+        Me.txtSearch.TabIndex = 8
         '
         'lblSearch
         '
@@ -117,7 +117,7 @@ Partial Class frmAdminIngredient
         Me.btnSearch.Location = New System.Drawing.Point(262, 61)
         Me.btnSearch.Name = "btnSearch"
         Me.btnSearch.Size = New System.Drawing.Size(75, 23)
-        Me.btnSearch.TabIndex = 11
+        Me.btnSearch.TabIndex = 9
         Me.btnSearch.Text = "Søk"
         Me.btnSearch.UseVisualStyleBackColor = True
         '
@@ -135,7 +135,7 @@ Partial Class frmAdminIngredient
         Me.btnDel.Location = New System.Drawing.Point(472, 61)
         Me.btnDel.Name = "btnDel"
         Me.btnDel.Size = New System.Drawing.Size(75, 23)
-        Me.btnDel.TabIndex = 13
+        Me.btnDel.TabIndex = 11
         Me.btnDel.Text = "Slett"
         Me.btnDel.UseVisualStyleBackColor = True
         '

@@ -39,7 +39,7 @@ Partial Class frmLogin
         Me.grpLogin.Location = New System.Drawing.Point(136, 96)
         Me.grpLogin.Name = "grpLogin"
         Me.grpLogin.Size = New System.Drawing.Size(266, 171)
-        Me.grpLogin.TabIndex = 25
+        Me.grpLogin.TabIndex = 2
         Me.grpLogin.TabStop = False
         Me.grpLogin.Text = "Innlogging"
         '
@@ -48,7 +48,7 @@ Partial Class frmLogin
         Me.btnDoLogin.Location = New System.Drawing.Point(97, 119)
         Me.btnDoLogin.Name = "btnDoLogin"
         Me.btnDoLogin.Size = New System.Drawing.Size(134, 23)
-        Me.btnDoLogin.TabIndex = 4
+        Me.btnDoLogin.TabIndex = 2
         Me.btnDoLogin.Text = "Logg inn"
         Me.btnDoLogin.UseVisualStyleBackColor = True
         '
@@ -57,14 +57,14 @@ Partial Class frmLogin
         Me.txtPassword.Location = New System.Drawing.Point(97, 80)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(134, 20)
-        Me.txtPassword.TabIndex = 3
+        Me.txtPassword.TabIndex = 1
         '
         'txtEmail
         '
         Me.txtEmail.Location = New System.Drawing.Point(97, 41)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(137, 20)
-        Me.txtEmail.TabIndex = 2
+        Me.txtEmail.TabIndex = 0
         '
         'lblPassword
         '

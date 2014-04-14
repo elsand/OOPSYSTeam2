@@ -106,7 +106,7 @@ Partial Class frmAdminReports
         Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
-        Me.cboSelectReportForm.TabIndex = 7
+        Me.cboSelectReportForm.TabIndex = 8
         '
         'lblSelectReportForm
         '
@@ -122,7 +122,7 @@ Partial Class frmAdminReports
         Me.btnGetReport.Location = New System.Drawing.Point(538, 67)
         Me.btnGetReport.Name = "btnGetReport"
         Me.btnGetReport.Size = New System.Drawing.Size(157, 23)
-        Me.btnGetReport.TabIndex = 9
+        Me.btnGetReport.TabIndex = 11
         Me.btnGetReport.Text = "Hent rapport"
         Me.btnGetReport.UseVisualStyleBackColor = True
         '
@@ -147,7 +147,7 @@ Partial Class frmAdminReports
         Me.rptReports.ShowStopButton = False
         Me.rptReports.ShowZoomControl = False
         Me.rptReports.Size = New System.Drawing.Size(681, 326)
-        Me.rptReports.TabIndex = 10
+        Me.rptReports.TabIndex = 12
         '
         'dtpTimePeriodFrom
         '
@@ -163,7 +163,7 @@ Partial Class frmAdminReports
         Me.dtpTimePeriodTo.Location = New System.Drawing.Point(436, 70)
         Me.dtpTimePeriodTo.Name = "dtpTimePeriodTo"
         Me.dtpTimePeriodTo.Size = New System.Drawing.Size(96, 20)
-        Me.dtpTimePeriodTo.TabIndex = 12
+        Me.dtpTimePeriodTo.TabIndex = 10
         '
         'lblTimePeriod
         '
@@ -209,7 +209,7 @@ Partial Class frmAdminReports
         Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 70)
         Me.cboSelectIngredient.Name = "cboSelectIngredient"
         Me.cboSelectIngredient.Size = New System.Drawing.Size(211, 21)
-        Me.cboSelectIngredient.TabIndex = 15
+        Me.cboSelectIngredient.TabIndex = 9
         Me.cboSelectIngredient.ValueMember = "id"
         '
         'IngredientBindingSource1
