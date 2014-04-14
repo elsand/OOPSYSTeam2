@@ -12,7 +12,7 @@ Public Class frmAdminReports
 
 
         'TODO: This line of code loads data into the '_14vfu_t02DataSet.Ingredient' table. You can move, or remove it, as needed.
-        Me.IngredientTableAdapter1.Fill(Me._14vfu_t02DataSet.Ingredient)
+        'Me.IngredientTableAdapter1.Fill(Me._14vfu_t02DataSet.Ingredient)
         'TODO: This line of code loads data into the 'Ingredien.LastYearMonthSale' table. You can move, or remove it, as needed.
         ' Me.LastYearMonthSaleTableAdapter.Fill(Me.Ingredien.LastYearMonthSale)
         'TODO: This line of code loads data into the 'Ingredien.IngredientHistory' table. You can move, or remove it, as needed.

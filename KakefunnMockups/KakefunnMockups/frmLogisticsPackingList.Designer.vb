@@ -19,6 +19,7 @@ Partial Class frmLogisticsPackingList
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.dtgPackingList = New System.Windows.Forms.DataGridView()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -33,8 +34,13 @@ Partial Class frmLogisticsPackingList
         Me.grpPerformOnOrders = New System.Windows.Forms.GroupBox()
         Me.btnSetStatus = New System.Windows.Forms.Button()
         Me.cboStatusSetOrder = New System.Windows.Forms.ComboBox()
+        Me.PackingList = New Kakefunn.PackingList()
+        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OrderTableAdapter = New Kakefunn.PackingListTableAdapters.OrderTableAdapter()
         CType(Me.dtgPackingList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpPerformOnOrders.SuspendLayout()
+        CType(Me.PackingList, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dtgPackingList
@@ -149,6 +155,20 @@ Partial Class frmLogisticsPackingList
         Me.cboStatusSetOrder.TabIndex = 12
         Me.cboStatusSetOrder.Text = "Sendt"
         '
+        'PackingList
+        '
+        Me.PackingList.DataSetName = "PackingList"
+        Me.PackingList.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'OrderBindingSource
+        '
+        Me.OrderBindingSource.DataMember = "Order"
+        Me.OrderBindingSource.DataSource = Me.PackingList
+        '
+        'OrderTableAdapter
+        '
+        Me.OrderTableAdapter.ClearBeforeFill = True
+        '
         'frmLogisticsPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -169,6 +189,8 @@ Partial Class frmLogisticsPackingList
         Me.Controls.SetChildIndex(Me.grpPerformOnOrders, 0)
         CType(Me.dtgPackingList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpPerformOnOrders.ResumeLayout(False)
+        CType(Me.PackingList, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -187,5 +209,8 @@ Partial Class frmLogisticsPackingList
     Friend WithEvents grpPerformOnOrders As System.Windows.Forms.GroupBox
     Friend WithEvents btnSetStatus As System.Windows.Forms.Button
     Friend WithEvents cboStatusSetOrder As System.Windows.Forms.ComboBox
+    Friend WithEvents PackingList As Kakefunn.PackingList
+    Friend WithEvents OrderBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents OrderTableAdapter As Kakefunn.PackingListTableAdapters.OrderTableAdapter
 
 End Class

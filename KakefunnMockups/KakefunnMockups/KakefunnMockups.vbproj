@@ -309,6 +309,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="My Project\DataSources\PackingList.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PackingList.xsd</DependentUpon>
+    </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -486,6 +491,17 @@
     <None Include="My Project\DataSources\Cake.datasource" />
     <None Include="My Project\DataSources\Customer.datasource" />
     <None Include="My Project\DataSources\Order.datasource" />
+    <None Include="My Project\DataSources\PackingList.xsc">
+      <DependentUpon>PackingList.xsd</DependentUpon>
+    </None>
+    <None Include="My Project\DataSources\PackingList.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PackingList.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\PackingList.xss">
+      <DependentUpon>PackingList.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
