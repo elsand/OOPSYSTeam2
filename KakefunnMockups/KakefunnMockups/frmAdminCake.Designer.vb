@@ -40,6 +40,13 @@ Partial Class frmAdminCakes
         Me.lblSalePrice = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.dtgCake = New System.Windows.Forms.DataGridView()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MarkupPercentageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PublishedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RecipeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeletedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CakeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblFilterCake = New System.Windows.Forms.Label()
         Me.txtFilterCake = New System.Windows.Forms.TextBox()
@@ -57,13 +64,6 @@ Partial Class frmAdminCakes
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.numMarkUps = New Kakefunn.NumericTextbox()
         Me.chkPublished = New System.Windows.Forms.CheckBox()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MarkupPercentageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PublishedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RecipeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DeletedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CakeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -77,14 +77,14 @@ Partial Class frmAdminCakes
         Me.lstAvailableIngredients.Location = New System.Drawing.Point(18, 60)
         Me.lstAvailableIngredients.Name = "lstAvailableIngredients"
         Me.lstAvailableIngredients.Size = New System.Drawing.Size(138, 134)
-        Me.lstAvailableIngredients.TabIndex = 4
+        Me.lstAvailableIngredients.TabIndex = 3
         '
         'btnAddIngredients
         '
         Me.btnAddIngredients.Location = New System.Drawing.Point(162, 105)
         Me.btnAddIngredients.Name = "btnAddIngredients"
         Me.btnAddIngredients.Size = New System.Drawing.Size(32, 23)
-        Me.btnAddIngredients.TabIndex = 5
+        Me.btnAddIngredients.TabIndex = 4
         Me.btnAddIngredients.Text = ">"
         Me.btnAddIngredients.UseVisualStyleBackColor = True
         '
@@ -93,7 +93,7 @@ Partial Class frmAdminCakes
         Me.btnRemoveIngredients.Location = New System.Drawing.Point(162, 134)
         Me.btnRemoveIngredients.Name = "btnRemoveIngredients"
         Me.btnRemoveIngredients.Size = New System.Drawing.Size(32, 23)
-        Me.btnRemoveIngredients.TabIndex = 6
+        Me.btnRemoveIngredients.TabIndex = 5
         Me.btnRemoveIngredients.Text = "<"
         Me.btnRemoveIngredients.UseVisualStyleBackColor = True
         '
@@ -103,14 +103,14 @@ Partial Class frmAdminCakes
         Me.lstSelectedIngredients.Location = New System.Drawing.Point(200, 60)
         Me.lstSelectedIngredients.Name = "lstSelectedIngredients"
         Me.lstSelectedIngredients.Size = New System.Drawing.Size(138, 134)
-        Me.lstSelectedIngredients.TabIndex = 7
+        Me.lstSelectedIngredients.TabIndex = 6
         '
         'txtFilter
         '
         Me.txtFilter.Location = New System.Drawing.Point(18, 38)
         Me.txtFilter.Name = "txtFilter"
         Me.txtFilter.Size = New System.Drawing.Size(138, 20)
-        Me.txtFilter.TabIndex = 8
+        Me.txtFilter.TabIndex = 0
         '
         'lblFilter
         '
@@ -118,7 +118,7 @@ Partial Class frmAdminCakes
         Me.lblFilter.Location = New System.Drawing.Point(15, 22)
         Me.lblFilter.Name = "lblFilter"
         Me.lblFilter.Size = New System.Drawing.Size(29, 13)
-        Me.lblFilter.TabIndex = 9
+        Me.lblFilter.TabIndex = 2
         Me.lblFilter.Text = "Filter"
         '
         'lblAmount
@@ -155,7 +155,7 @@ Partial Class frmAdminCakes
         Me.lblProcedure.Location = New System.Drawing.Point(542, 351)
         Me.lblProcedure.Name = "lblProcedure"
         Me.lblProcedure.Size = New System.Drawing.Size(82, 13)
-        Me.lblProcedure.TabIndex = 14
+        Me.lblProcedure.TabIndex = 13
         Me.lblProcedure.Text = "Fremgangsmåte"
         '
         'grpIngredients
@@ -173,7 +173,7 @@ Partial Class frmAdminCakes
         Me.grpIngredients.Location = New System.Drawing.Point(545, 91)
         Me.grpIngredients.Name = "grpIngredients"
         Me.grpIngredients.Size = New System.Drawing.Size(350, 257)
-        Me.grpIngredients.TabIndex = 15
+        Me.grpIngredients.TabIndex = 12
         Me.grpIngredients.TabStop = False
         Me.grpIngredients.Text = "Ingredienser"
         '
@@ -185,14 +185,14 @@ Partial Class frmAdminCakes
         Me.numAmount.Location = New System.Drawing.Point(18, 225)
         Me.numAmount.Name = "numAmount"
         Me.numAmount.Size = New System.Drawing.Size(86, 20)
-        Me.numAmount.TabIndex = 14
+        Me.numAmount.TabIndex = 7
         '
         'txtNameCake
         '
         Me.txtNameCake.Location = New System.Drawing.Point(639, 65)
         Me.txtNameCake.Name = "txtNameCake"
         Me.txtNameCake.Size = New System.Drawing.Size(100, 20)
-        Me.txtNameCake.TabIndex = 16
+        Me.txtNameCake.TabIndex = 11
         '
         'lblNameCake
         '
@@ -239,7 +239,7 @@ Partial Class frmAdminCakes
         Me.btnSave.Location = New System.Drawing.Point(820, 525)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 22
+        Me.btnSave.TabIndex = 15
         Me.btnSave.Text = "Lagre"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -254,7 +254,51 @@ Partial Class frmAdminCakes
         Me.dtgCake.Name = "dtgCake"
         Me.dtgCake.RowHeadersVisible = False
         Me.dtgCake.Size = New System.Drawing.Size(522, 457)
-        Me.dtgCake.TabIndex = 23
+        Me.dtgCake.TabIndex = 9
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Kakenr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Navn"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        '
+        'price
+        '
+        Me.price.HeaderText = "Pris"
+        Me.price.Name = "price"
+        '
+        'MarkupPercentageDataGridViewTextBoxColumn
+        '
+        Me.MarkupPercentageDataGridViewTextBoxColumn.DataPropertyName = "markupPercentage"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.HeaderText = "markupPercentage"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.Name = "MarkupPercentageDataGridViewTextBoxColumn"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.Visible = False
+        '
+        'PublishedDataGridViewTextBoxColumn
+        '
+        Me.PublishedDataGridViewTextBoxColumn.DataPropertyName = "published"
+        Me.PublishedDataGridViewTextBoxColumn.HeaderText = "Publisert"
+        Me.PublishedDataGridViewTextBoxColumn.Name = "PublishedDataGridViewTextBoxColumn"
+        '
+        'RecipeDataGridViewTextBoxColumn
+        '
+        Me.RecipeDataGridViewTextBoxColumn.DataPropertyName = "recipe"
+        Me.RecipeDataGridViewTextBoxColumn.HeaderText = "recipe"
+        Me.RecipeDataGridViewTextBoxColumn.Name = "RecipeDataGridViewTextBoxColumn"
+        Me.RecipeDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeletedDataGridViewTextBoxColumn
+        '
+        Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
+        Me.DeletedDataGridViewTextBoxColumn.Visible = False
         '
         'CakeBindingSource
         '
@@ -274,7 +318,7 @@ Partial Class frmAdminCakes
         Me.txtFilterCake.Location = New System.Drawing.Point(71, 65)
         Me.txtFilterCake.Name = "txtFilterCake"
         Me.txtFilterCake.Size = New System.Drawing.Size(100, 20)
-        Me.txtFilterCake.TabIndex = 24
+        Me.txtFilterCake.TabIndex = 8
         '
         'BindingNavigator1
         '
@@ -291,7 +335,7 @@ Partial Class frmAdminCakes
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem
         Me.BindingNavigator1.Size = New System.Drawing.Size(909, 25)
-        Me.BindingNavigator1.TabIndex = 26
+        Me.BindingNavigator1.TabIndex = 10
         Me.BindingNavigator1.Text = "BindingNavigator1"
         '
         'BindingNavigatorAddNewItem
@@ -387,7 +431,7 @@ Partial Class frmAdminCakes
         Me.numMarkUps.Location = New System.Drawing.Point(619, 475)
         Me.numMarkUps.Name = "numMarkUps"
         Me.numMarkUps.Size = New System.Drawing.Size(35, 20)
-        Me.numMarkUps.TabIndex = 27
+        Me.numMarkUps.TabIndex = 14
         '
         'chkPublished
         '
@@ -398,50 +442,6 @@ Partial Class frmAdminCakes
         Me.chkPublished.TabIndex = 28
         Me.chkPublished.Text = "Publisert"
         Me.chkPublished.UseVisualStyleBackColor = True
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Kakenr"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        '
-        'NameDataGridViewTextBoxColumn
-        '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Navn"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        '
-        'price
-        '
-        Me.price.HeaderText = "Pris"
-        Me.price.Name = "price"
-        '
-        'MarkupPercentageDataGridViewTextBoxColumn
-        '
-        Me.MarkupPercentageDataGridViewTextBoxColumn.DataPropertyName = "markupPercentage"
-        Me.MarkupPercentageDataGridViewTextBoxColumn.HeaderText = "markupPercentage"
-        Me.MarkupPercentageDataGridViewTextBoxColumn.Name = "MarkupPercentageDataGridViewTextBoxColumn"
-        Me.MarkupPercentageDataGridViewTextBoxColumn.Visible = False
-        '
-        'PublishedDataGridViewTextBoxColumn
-        '
-        Me.PublishedDataGridViewTextBoxColumn.DataPropertyName = "published"
-        Me.PublishedDataGridViewTextBoxColumn.HeaderText = "Publisert"
-        Me.PublishedDataGridViewTextBoxColumn.Name = "PublishedDataGridViewTextBoxColumn"
-        '
-        'RecipeDataGridViewTextBoxColumn
-        '
-        Me.RecipeDataGridViewTextBoxColumn.DataPropertyName = "recipe"
-        Me.RecipeDataGridViewTextBoxColumn.HeaderText = "recipe"
-        Me.RecipeDataGridViewTextBoxColumn.Name = "RecipeDataGridViewTextBoxColumn"
-        Me.RecipeDataGridViewTextBoxColumn.Visible = False
-        '
-        'DeletedDataGridViewTextBoxColumn
-        '
-        Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
-        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "deleted"
-        Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
-        Me.DeletedDataGridViewTextBoxColumn.Visible = False
         '
         'frmAdminCakes
         '

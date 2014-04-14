@@ -29,7 +29,6 @@ Partial Class frmDialogSearchResults
         Me.grpSearchResults = New System.Windows.Forms.GroupBox()
         Me.dtgSearchResultsCustomers = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerEmail = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -69,7 +68,7 @@ Partial Class frmDialogSearchResults
         Me.btnClose.Location = New System.Drawing.Point(236, 559)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
-        Me.btnClose.TabIndex = 4
+        Me.btnClose.TabIndex = 1
         Me.btnClose.Text = "Lukk"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -82,7 +81,7 @@ Partial Class frmDialogSearchResults
         Me.grpSearchResults.Location = New System.Drawing.Point(12, 12)
         Me.grpSearchResults.Name = "grpSearchResults"
         Me.grpSearchResults.Size = New System.Drawing.Size(542, 530)
-        Me.grpSearchResults.TabIndex = 5
+        Me.grpSearchResults.TabIndex = 0
         Me.grpSearchResults.TabStop = False
         Me.grpSearchResults.Text = "Søkeresultater etter ""xxxx"""
         '
@@ -93,14 +92,14 @@ Partial Class frmDialogSearchResults
         Me.dtgSearchResultsCustomers.AutoGenerateColumns = False
         Me.dtgSearchResultsCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgSearchResultsCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgSearchResultsCustomers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.dcCustomerEmail, Me.DataGridViewTextBoxColumn4})
+        Me.dtgSearchResultsCustomers.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.dcCustomerEmail, Me.DataGridViewTextBoxColumn4})
         Me.dtgSearchResultsCustomers.DataSource = Me.CustomerBindingSource
         Me.dtgSearchResultsCustomers.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgSearchResultsCustomers.Location = New System.Drawing.Point(18, 296)
         Me.dtgSearchResultsCustomers.Name = "dtgSearchResultsCustomers"
         Me.dtgSearchResultsCustomers.RowHeadersVisible = False
         Me.dtgSearchResultsCustomers.Size = New System.Drawing.Size(504, 220)
-        Me.dtgSearchResultsCustomers.TabIndex = 4
+        Me.dtgSearchResultsCustomers.TabIndex = 1
         '
         'DataGridViewTextBoxColumn2
         '
@@ -110,12 +109,6 @@ Partial Class frmDialogSearchResults
         Me.DataGridViewTextBoxColumn2.FillWeight = 45.0!
         Me.DataGridViewTextBoxColumn2.HeaderText = "Kundenr"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "name"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Navn"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         '
         'dcCustomerEmail
         '
@@ -154,7 +147,7 @@ Partial Class frmDialogSearchResults
         Me.dtgSearchResultsOrders.RowHeadersVisible = False
         Me.dtgSearchResultsOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgSearchResultsOrders.Size = New System.Drawing.Size(504, 220)
-        Me.dtgSearchResultsOrders.TabIndex = 4
+        Me.dtgSearchResultsOrders.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
         '

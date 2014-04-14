@@ -55,7 +55,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.grpEditSelectedBatch.Location = New System.Drawing.Point(12, 402)
         Me.grpEditSelectedBatch.Name = "grpEditSelectedBatch"
         Me.grpEditSelectedBatch.Size = New System.Drawing.Size(686, 64)
-        Me.grpEditSelectedBatch.TabIndex = 6
+        Me.grpEditSelectedBatch.TabIndex = 9
         Me.grpEditSelectedBatch.TabStop = False
         Me.grpEditSelectedBatch.Text = "Rediger valgt parti"
         '
@@ -65,7 +65,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.dtpExpireDate.Location = New System.Drawing.Point(410, 19)
         Me.dtpExpireDate.Name = "dtpExpireDate"
         Me.dtpExpireDate.Size = New System.Drawing.Size(100, 20)
-        Me.dtpExpireDate.TabIndex = 24
+        Me.dtpExpireDate.TabIndex = 3
         '
         'lblExpireDate
         '
@@ -81,7 +81,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.btnSuggestLocation.Location = New System.Drawing.Point(214, 18)
         Me.btnSuggestLocation.Name = "btnSuggestLocation"
         Me.btnSuggestLocation.Size = New System.Drawing.Size(99, 23)
-        Me.btnSuggestLocation.TabIndex = 14
+        Me.btnSuggestLocation.TabIndex = 2
         Me.btnSuggestLocation.Text = "Foreslå plassering"
         Me.btnSuggestLocation.UseVisualStyleBackColor = True
         '
@@ -90,7 +90,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.txtShelf.Location = New System.Drawing.Point(161, 20)
         Me.txtShelf.Name = "txtShelf"
         Me.txtShelf.Size = New System.Drawing.Size(37, 20)
-        Me.txtShelf.TabIndex = 13
+        Me.txtShelf.TabIndex = 1
         '
         'lblShelf
         '
@@ -115,14 +115,14 @@ Partial Class frmLogisticsRegisterCommodity
         Me.txtRack.Location = New System.Drawing.Point(56, 20)
         Me.txtRack.Name = "txtRack"
         Me.txtRack.Size = New System.Drawing.Size(37, 20)
-        Me.txtRack.TabIndex = 10
+        Me.txtRack.TabIndex = 0
         '
         'btnRegisterBatchInStock
         '
         Me.btnRegisterBatchInStock.Location = New System.Drawing.Point(554, 16)
         Me.btnRegisterBatchInStock.Name = "btnRegisterBatchInStock"
         Me.btnRegisterBatchInStock.Size = New System.Drawing.Size(126, 27)
-        Me.btnRegisterBatchInStock.TabIndex = 7
+        Me.btnRegisterBatchInStock.TabIndex = 4
         Me.btnRegisterBatchInStock.Text = "Registrer parti i lager"
         Me.btnRegisterBatchInStock.UseVisualStyleBackColor = True
         '
@@ -131,7 +131,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.btnSearchBatch.Location = New System.Drawing.Point(216, 79)
         Me.btnSearchBatch.Name = "btnSearchBatch"
         Me.btnSearchBatch.Size = New System.Drawing.Size(75, 23)
-        Me.btnSearchBatch.TabIndex = 17
+        Me.btnSearchBatch.TabIndex = 6
         Me.btnSearchBatch.Text = "Søk"
         Me.btnSearchBatch.UseVisualStyleBackColor = True
         '
@@ -140,7 +140,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.txtSearchBatch.Location = New System.Drawing.Point(100, 81)
         Me.txtSearchBatch.Name = "txtSearchBatch"
         Me.txtSearchBatch.Size = New System.Drawing.Size(106, 20)
-        Me.txtSearchBatch.TabIndex = 18
+        Me.txtSearchBatch.TabIndex = 5
         '
         'lblSearchBatch
         '
@@ -160,7 +160,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.dtgLogisticsRegisterCommodity.Name = "dtgLogisticsRegisterCommodity"
         Me.dtgLogisticsRegisterCommodity.RowHeadersVisible = False
         Me.dtgLogisticsRegisterCommodity.Size = New System.Drawing.Size(683, 288)
-        Me.dtgLogisticsRegisterCommodity.TabIndex = 20
+        Me.dtgLogisticsRegisterCommodity.TabIndex = 8
         '
         'Partinr
         '
@@ -197,7 +197,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.dtpBatchExpectedInStock.Location = New System.Drawing.Point(598, 81)
         Me.dtpBatchExpectedInStock.Name = "dtpBatchExpectedInStock"
         Me.dtpBatchExpectedInStock.Size = New System.Drawing.Size(100, 20)
-        Me.dtpBatchExpectedInStock.TabIndex = 22
+        Me.dtpBatchExpectedInStock.TabIndex = 7
         '
         'frmLogisticsRegisterCommodity
         '
