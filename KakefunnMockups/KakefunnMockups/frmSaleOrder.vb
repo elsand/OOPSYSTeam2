@@ -25,9 +25,16 @@
             Exit Sub
         End If
 
-        If isNewRecord Then
+        Try
+            If isNewRecord Then
+                DBM.Instance.Orders.Add(currentRecord)
+            End If
 
-        End If
+            DBM.Instance.SaveChanges()
+        Catch ex As Exception
+            MessageBox.Show("Det oppstod en feil under lagring av ordre. " & ex.Message, "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+        
 
     End Sub
 
@@ -322,11 +329,8 @@
         currentRecord.deliveryLastName = name.lastName
     End Sub
 
-    Private Sub txtAddress_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged
-        If currentRecord.Address Is Nothing Then
-            currentRecord.Address = New Address()
-        End If
-        currentRecord.Address.address1 = txtAddress.Text
+    Private Sub Address_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged, txtZip.TextChanged
+        currentRecord.Address = AddressHelper.GetAddress(txtZip.IntValue, txtAddress.Text)
     End Sub
 
     Private Sub txtTelephone_TextChanged(sender As Object, e As EventArgs) Handles txtTelephone.TextChanged
@@ -334,18 +338,14 @@
     End Sub
 
     Private Sub dtpDeliveryDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDeliveryDate.ValueChanged
-        ' Missing from datamodel
-    End Sub
-
-    Private Sub txtZip_TextChanged(sender As Object, e As EventArgs) Handles txtZip.TextChanged
-
+        ' TODO! Missing from datamodel
     End Sub
 
     Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
-
+        currentRecord.deliveryEmail = txtEmail.Text
     End Sub
 
     Private Sub txtInternalNote_TextChanged(sender As Object, e As EventArgs) Handles txtInternalNote.TextChanged
-
+        currentRecord.note = txtInternalNote.Text
     End Sub
 End Class

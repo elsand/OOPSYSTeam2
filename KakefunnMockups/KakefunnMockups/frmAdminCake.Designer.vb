@@ -52,7 +52,6 @@ Partial Class frmAdminCakes
         Me.txtFilterCake = New System.Windows.Forms.TextBox()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
@@ -61,10 +60,12 @@ Partial Class frmAdminCakes
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.btnToolStripCakeNew = New System.Windows.Forms.ToolStripButton()
+        Me.btnToolStripCakeDelete = New System.Windows.Forms.ToolStripButton()
         Me.numMarkUps = New Kakefunn.NumericTextbox()
         Me.chkPublished = New System.Windows.Forms.CheckBox()
         Me.grpCakeEdit = New System.Windows.Forms.GroupBox()
+        Me.btnAvbryt = New System.Windows.Forms.Button()
         Me.btnNewCake = New System.Windows.Forms.Button()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -302,10 +303,9 @@ Partial Class frmAdminCakes
         'DeletedDataGridViewTextBoxColumn
         '
         Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
-        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "Slettet"
         Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
         Me.DeletedDataGridViewTextBoxColumn.ReadOnly = True
-        Me.DeletedDataGridViewTextBoxColumn.Visible = False
         '
         'CakeBindingSource
         '
@@ -332,9 +332,9 @@ Partial Class frmAdminCakes
         Me.BindingNavigator1.AddNewItem = Nothing
         Me.BindingNavigator1.BindingSource = Me.CakeBindingSource
         Me.BindingNavigator1.CountItem = Me.BindingNavigatorCountItem
-        Me.BindingNavigator1.DeleteItem = Me.BindingNavigatorDeleteItem
+        Me.BindingNavigator1.DeleteItem = Nothing
         Me.BindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.ToolStripButton2, Me.BindingNavigatorDeleteItem})
+        Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.btnToolStripCakeNew, Me.btnToolStripCakeDelete})
         Me.BindingNavigator1.Location = New System.Drawing.Point(0, 592)
         Me.BindingNavigator1.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.BindingNavigator1.MoveLastItem = Me.BindingNavigatorMoveLastItem
@@ -352,14 +352,6 @@ Partial Class frmAdminCakes
         Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
         Me.BindingNavigatorCountItem.Text = "of {0}"
         Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(77, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Slett kake"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -421,13 +413,21 @@ Partial Class frmAdminCakes
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
-        'ToolStripButton2
+        'btnToolStripCakeNew
         '
-        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
-        Me.ToolStripButton2.Name = "ToolStripButton2"
-        Me.ToolStripButton2.RightToLeftAutoMirrorImage = True
-        Me.ToolStripButton2.Size = New System.Drawing.Size(69, 22)
-        Me.ToolStripButton2.Text = "Ny kake"
+        Me.btnToolStripCakeNew.Image = CType(resources.GetObject("btnToolStripCakeNew.Image"), System.Drawing.Image)
+        Me.btnToolStripCakeNew.Name = "btnToolStripCakeNew"
+        Me.btnToolStripCakeNew.RightToLeftAutoMirrorImage = True
+        Me.btnToolStripCakeNew.Size = New System.Drawing.Size(69, 22)
+        Me.btnToolStripCakeNew.Text = "Ny kake"
+        '
+        'btnToolStripCakeDelete
+        '
+        Me.btnToolStripCakeDelete.Image = CType(resources.GetObject("btnToolStripCakeDelete.Image"), System.Drawing.Image)
+        Me.btnToolStripCakeDelete.Name = "btnToolStripCakeDelete"
+        Me.btnToolStripCakeDelete.RightToLeftAutoMirrorImage = True
+        Me.btnToolStripCakeDelete.Size = New System.Drawing.Size(77, 22)
+        Me.btnToolStripCakeDelete.Text = "Slett kake"
         '
         'numMarkUps
         '
@@ -451,6 +451,7 @@ Partial Class frmAdminCakes
         '
         'grpCakeEdit
         '
+        Me.grpCakeEdit.Controls.Add(Me.btnAvbryt)
         Me.grpCakeEdit.Controls.Add(Me.lblNameCake)
         Me.grpCakeEdit.Controls.Add(Me.txtProcedure)
         Me.grpCakeEdit.Controls.Add(Me.lblProcedure)
@@ -469,6 +470,15 @@ Partial Class frmAdminCakes
         Me.grpCakeEdit.TabIndex = 29
         Me.grpCakeEdit.TabStop = False
         Me.grpCakeEdit.Text = "Kakedetaljer"
+        '
+        'btnAvbryt
+        '
+        Me.btnAvbryt.Location = New System.Drawing.Point(207, 480)
+        Me.btnAvbryt.Name = "btnAvbryt"
+        Me.btnAvbryt.Size = New System.Drawing.Size(75, 23)
+        Me.btnAvbryt.TabIndex = 29
+        Me.btnAvbryt.Text = "Avbryt"
+        Me.btnAvbryt.UseVisualStyleBackColor = True
         '
         'btnNewCake
         '
@@ -532,7 +542,6 @@ Partial Class frmAdminCakes
     Friend WithEvents txtFilterCake As System.Windows.Forms.TextBox
     Friend WithEvents BindingNavigator1 As System.Windows.Forms.BindingNavigator
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMovePreviousItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorSeparator As System.Windows.Forms.ToolStripSeparator
@@ -547,6 +556,8 @@ Partial Class frmAdminCakes
     Friend WithEvents CakeBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents grpCakeEdit As System.Windows.Forms.GroupBox
     Friend WithEvents btnNewCake As System.Windows.Forms.Button
+    Friend WithEvents btnToolStripCakeNew As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnToolStripCakeDelete As System.Windows.Forms.ToolStripButton
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents price As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -554,6 +565,6 @@ Partial Class frmAdminCakes
     Friend WithEvents PublishedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RecipeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DeletedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnAvbryt As System.Windows.Forms.Button
 
 End Class
