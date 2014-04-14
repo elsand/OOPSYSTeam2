@@ -86,12 +86,18 @@ Public Class frmAdminIngredient
             delName = dtgResults.SelectedRows(0).Cells(1).Value
         End If
 
-        'Checks if the ingredient is in use in a cake recipe.
+        'Checks if the ingredient is in use.
         Dim hasCake = (From x In DBM.Instance.RecipeLines _
                        Where x.Ingredient.id = delIdx Select x).FirstOrDefault()
+        Dim hasBatch = (From x In DBM.Instance.Batches _
+                        Where x.Ingredient.id = delIdx Select x).FirstOrDefault()
+        Dim hasOrder = (From x In DBM.Instance.OrderLines _
+                        Where x.Ingredient.id = delIdx Select x).FirstOrDefault()
 
         'Deletes ingredient if it isn't in use. Prompts the user for confirmation.
-        If hasCake Is Nothing Then
+        If hasCake Is Nothing _
+            And hasBatch Is Nothing _
+            And hasOrder Is Nothing Then
             If delIdx > 0 Then
                 Dim delOK As Integer = MessageBox.Show("Er du sikker på at du vil slette varen >>" & delName & _
                                                        "<< med varenummer >>" & delIdx & "<<?", "Bekreft sletting", _
@@ -115,8 +121,8 @@ Public Class frmAdminIngredient
                 End If
             End If
         Else
-            'Error: The ingredient can't be deleted because it's used in a cake.
-            MsgBox("Ingrediensen tilhører en kake og kan ikke slettes.", MsgBoxStyle.Information, "Informasjon")
+            'Error: The ingredient can't be deleted because it's in use.
+            MsgBox("Ingrediensen er i bruk og kan ikke slettes.", MsgBoxStyle.Information, "Informasjon")
         End If
     End Sub
 End Class
