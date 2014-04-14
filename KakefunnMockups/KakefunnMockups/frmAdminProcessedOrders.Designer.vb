@@ -21,15 +21,15 @@ Partial Class frmAdminProcessedOrders
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dtgProcessedOrders = New System.Windows.Forms.DataGridView()
-        Me.ModifiedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.custID = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.custName = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.deliveryAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.orderPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnPrintProcessedOrders = New System.Windows.Forms.Button()
         Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
+        Me.ModifiedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcCustomerId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcCustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcOrderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcOrderTotalPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,44 +43,15 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgProcessedOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dtgProcessedOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.custID, Me.custName, Me.deliveryAddress, Me.orderPrice})
+        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress, Me.dcOrderTotalPrice})
         Me.dtgProcessedOrders.DataSource = Me.OrderBindingSource
+        Me.dtgProcessedOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgProcessedOrders.Location = New System.Drawing.Point(12, 66)
         Me.dtgProcessedOrders.Name = "dtgProcessedOrders"
+        Me.dtgProcessedOrders.RowHeadersVisible = False
+        Me.dtgProcessedOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgProcessedOrders.Size = New System.Drawing.Size(696, 306)
         Me.dtgProcessedOrders.TabIndex = 8
-        '
-        'ModifiedDataGridViewTextBoxColumn
-        '
-        Me.ModifiedDataGridViewTextBoxColumn.DataPropertyName = "modified"
-        Me.ModifiedDataGridViewTextBoxColumn.HeaderText = "Sist redigert"
-        Me.ModifiedDataGridViewTextBoxColumn.Name = "ModifiedDataGridViewTextBoxColumn"
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Ordrenr"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        '
-        'custID
-        '
-        Me.custID.HeaderText = "Kundenr"
-        Me.custID.Name = "custID"
-        '
-        'custName
-        '
-        Me.custName.HeaderText = "Navn"
-        Me.custName.Name = "custName"
-        '
-        'deliveryAddress
-        '
-        Me.deliveryAddress.HeaderText = "Leveringsadresse"
-        Me.deliveryAddress.Name = "deliveryAddress"
-        '
-        'orderPrice
-        '
-        Me.orderPrice.HeaderText = "Beløp"
-        Me.orderPrice.Name = "orderPrice"
         '
         'OrderBindingSource
         '
@@ -103,6 +74,42 @@ Partial Class frmAdminProcessedOrders
         Me.btnTransferToBillingSystem.TabIndex = 10
         Me.btnTransferToBillingSystem.Text = "Overfør til fakturasystem"
         Me.btnTransferToBillingSystem.UseVisualStyleBackColor = True
+        '
+        'ModifiedDataGridViewTextBoxColumn
+        '
+        Me.ModifiedDataGridViewTextBoxColumn.DataPropertyName = "modified"
+        Me.ModifiedDataGridViewTextBoxColumn.HeaderText = "Sist redigert"
+        Me.ModifiedDataGridViewTextBoxColumn.Name = "ModifiedDataGridViewTextBoxColumn"
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Ordrenr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        '
+        'dcCustomerId
+        '
+        Me.dcCustomerId.DataPropertyName = "Customer"
+        Me.dcCustomerId.HeaderText = "Kundenr"
+        Me.dcCustomerId.Name = "dcCustomerId"
+        '
+        'dcCustomerName
+        '
+        Me.dcCustomerName.DataPropertyName = "Customer"
+        Me.dcCustomerName.HeaderText = "Navn"
+        Me.dcCustomerName.Name = "dcCustomerName"
+        '
+        'dcOrderAddress
+        '
+        Me.dcOrderAddress.DataPropertyName = "Address"
+        Me.dcOrderAddress.HeaderText = "Leveringsadresse"
+        Me.dcOrderAddress.Name = "dcOrderAddress"
+        '
+        'dcOrderTotalPrice
+        '
+        Me.dcOrderTotalPrice.DataPropertyName = "id"
+        Me.dcOrderTotalPrice.HeaderText = "Beløp"
+        Me.dcOrderTotalPrice.Name = "dcOrderTotalPrice"
         '
         'frmAdminProcessedOrders
         '
@@ -128,9 +135,9 @@ Partial Class frmAdminProcessedOrders
     Friend WithEvents OrderBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents ModifiedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents custID As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents custName As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents deliveryAddress As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents orderPrice As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcCustomerId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcCustomerName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcOrderAddress As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents dcOrderTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

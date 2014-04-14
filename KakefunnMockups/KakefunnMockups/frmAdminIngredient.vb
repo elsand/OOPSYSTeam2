@@ -30,7 +30,7 @@ Public Class frmAdminIngredient
         'Preloading information from tables in the database.
         Dim ingQuery = (From x In DBM.Instance.Ingredients _
                      Where x.name.Contains(txtSearch.Text) _
-                     Select x.id, x.name).ToList()
+                     Select x.id, x.name, x.deleted).ToList()
 
         Dim profQuery = (From x In DBM.Instance.IngredientPrices _
                          Select x).ToList()
@@ -59,7 +59,7 @@ Public Class frmAdminIngredient
 
             'Adds results to dtgResults.
             dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id, batchQuery), _
-                                bdgi, bdgu, profit)
+                                bdgi, bdgu, profit, row.deleted)
         Next
 
         delIdx = 0
@@ -70,11 +70,9 @@ Public Class frmAdminIngredient
     Private Sub dtgResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgResults.MouseDoubleClick
         'Opens dialog to change ingredient details on doubleclicking an ingredient in the list.
         Dim varenr As Integer = dtgResults.SelectedRows(0).Cells(0).Value
-        Dim frm As frmDialogAdminIngredientDetails
-        frm = New frmDialogAdminIngredientDetails()
-        frm.varenr = varenr
-        frm.newIngr = False
-        frm.Show()
+        frmDialogAdminIngredientDetails.varenr = varenr
+        frmDialogAdminIngredientDetails.newIngr = False
+        SessionManager.Instance.ShowDialog(frmDialogAdminIngredientDetails)
     End Sub
 
     Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
@@ -86,43 +84,33 @@ Public Class frmAdminIngredient
             delName = dtgResults.SelectedRows(0).Cells(1).Value
         End If
 
-        'Checks if the ingredient is in use.
-        Dim hasCake = (From x In DBM.Instance.RecipeLines _
-                       Where x.Ingredient.id = delIdx Select x).FirstOrDefault()
-        Dim hasBatch = (From x In DBM.Instance.Batches _
-                        Where x.Ingredient.id = delIdx Select x).FirstOrDefault()
-        Dim hasOrder = (From x In DBM.Instance.OrderLines _
-                        Where x.Ingredient.id = delIdx Select x).FirstOrDefault()
+        'Marks ingredient as deleted on todays date. 
+        'Does not delete the record from db. Prompts the user for confirmation.
+        If delIdx > 0 Then
+            Dim delOK As Integer = MessageBox.Show("Er du sikker på at du vil slette varen >>" & delName & _
+                                                   "<< med varenummer >>" & delIdx & "<<?", "Bekreft sletting", _
+                                                   MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+            If delOK = 6 Then
+                Dim delIng = (From x In DBM.Instance.Ingredients _
+                              Where x.id = delIdx _
+                              Select x).FirstOrDefault()
+                delIng.deleted = Date.Today
 
-        'Deletes ingredient if it isn't in use. Prompts the user for confirmation.
-        If hasCake Is Nothing _
-            And hasBatch Is Nothing _
-            And hasOrder Is Nothing Then
-            If delIdx > 0 Then
-                Dim delOK As Integer = MessageBox.Show("Er du sikker på at du vil slette varen >>" & delName & _
-                                                       "<< med varenummer >>" & delIdx & "<<?", "Bekreft sletting", _
-                                                       MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                If delOK = 6 Then
-                    'Getting pricing-data from ingredientPrices and deleting elements
-                    'relevant for the selected ingredient.
-                    Dim prices = From x In DBM.Instance.IngredientPrices _
-                                 Where x.id = delIdx _
-                                 Select x
+                DBM.Instance.SaveChanges()
 
-                    For Each x In prices
-                        DBM.Instance.IngredientPrices.Remove(x)
-                    Next
-
-                    DBM.Instance.Ingredients.Remove(DBM.Instance.Ingredients.Find(delIdx))
-                    DBM.Instance.SaveChanges()
-
-                    btnSearch.PerformClick()
-                    txtSearch.Text = ""
-                End If
+                btnSearch.PerformClick()
+                txtSearch.Text = ""
             End If
-        Else
-            'Error: The ingredient can't be deleted because it's in use.
-            MsgBox("Ingrediensen er i bruk og kan ikke slettes.", MsgBoxStyle.Information, "Informasjon")
         End If
+    End Sub
+
+    Private Sub dtgResults_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgResults.CellFormatting
+        'Indicates a deleted ingredient in the list.
+        If dtgResults.Rows(e.RowIndex).Cells(6).Value <= Date.Today And _
+            dtgResults.Rows(e.RowIndex).Cells(6).Value > CDate("2000-01-01") Then
+            dtgResults.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
+            dtgResults.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
+        End If
+
     End Sub
 End Class

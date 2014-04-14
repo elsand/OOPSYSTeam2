@@ -40,13 +40,6 @@ Partial Class frmAdminCakes
         Me.lblSalePrice = New System.Windows.Forms.Label()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.dtgCake = New System.Windows.Forms.DataGridView()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.MarkupPercentageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PublishedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.RecipeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DeletedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CakeBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblFilterCake = New System.Windows.Forms.Label()
         Me.txtFilterCake = New System.Windows.Forms.TextBox()
@@ -67,6 +60,13 @@ Partial Class frmAdminCakes
         Me.grpCakeEdit = New System.Windows.Forms.GroupBox()
         Me.btnAvbryt = New System.Windows.Forms.Button()
         Me.btnNewCake = New System.Windows.Forms.Button()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.price = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MarkupPercentageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PublishedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RecipeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeletedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CakeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -249,6 +249,7 @@ Partial Class frmAdminCakes
         Me.dtgCake.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgCake.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.price, Me.MarkupPercentageDataGridViewTextBoxColumn, Me.PublishedDataGridViewTextBoxColumn, Me.RecipeDataGridViewTextBoxColumn, Me.DeletedDataGridViewTextBoxColumn})
         Me.dtgCake.DataSource = Me.CakeBindingSource
+        Me.dtgCake.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgCake.Location = New System.Drawing.Point(12, 97)
         Me.dtgCake.Name = "dtgCake"
         Me.dtgCake.ReadOnly = True
@@ -256,56 +257,6 @@ Partial Class frmAdminCakes
         Me.dtgCake.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgCake.Size = New System.Drawing.Size(522, 492)
         Me.dtgCake.TabIndex = 23
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Kakenr"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'NameDataGridViewTextBoxColumn
-        '
-        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
-        Me.NameDataGridViewTextBoxColumn.HeaderText = "Navn"
-        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
-        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'price
-        '
-        Me.price.HeaderText = "Pris"
-        Me.price.Name = "price"
-        Me.price.ReadOnly = True
-        '
-        'MarkupPercentageDataGridViewTextBoxColumn
-        '
-        Me.MarkupPercentageDataGridViewTextBoxColumn.DataPropertyName = "markupPercentage"
-        Me.MarkupPercentageDataGridViewTextBoxColumn.HeaderText = "markupPercentage"
-        Me.MarkupPercentageDataGridViewTextBoxColumn.Name = "MarkupPercentageDataGridViewTextBoxColumn"
-        Me.MarkupPercentageDataGridViewTextBoxColumn.ReadOnly = True
-        Me.MarkupPercentageDataGridViewTextBoxColumn.Visible = False
-        '
-        'PublishedDataGridViewTextBoxColumn
-        '
-        Me.PublishedDataGridViewTextBoxColumn.DataPropertyName = "published"
-        Me.PublishedDataGridViewTextBoxColumn.HeaderText = "Publisert"
-        Me.PublishedDataGridViewTextBoxColumn.Name = "PublishedDataGridViewTextBoxColumn"
-        Me.PublishedDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'RecipeDataGridViewTextBoxColumn
-        '
-        Me.RecipeDataGridViewTextBoxColumn.DataPropertyName = "recipe"
-        Me.RecipeDataGridViewTextBoxColumn.HeaderText = "recipe"
-        Me.RecipeDataGridViewTextBoxColumn.Name = "RecipeDataGridViewTextBoxColumn"
-        Me.RecipeDataGridViewTextBoxColumn.ReadOnly = True
-        Me.RecipeDataGridViewTextBoxColumn.Visible = False
-        '
-        'DeletedDataGridViewTextBoxColumn
-        '
-        Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
-        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "Slettet"
-        Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
-        Me.DeletedDataGridViewTextBoxColumn.ReadOnly = True
         '
         'CakeBindingSource
         '
@@ -489,6 +440,56 @@ Partial Class frmAdminCakes
         Me.btnNewCake.Text = "Ny kake >>"
         Me.btnNewCake.UseVisualStyleBackColor = True
         '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Kakenr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'NameDataGridViewTextBoxColumn
+        '
+        Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
+        Me.NameDataGridViewTextBoxColumn.HeaderText = "Navn"
+        Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'price
+        '
+        Me.price.HeaderText = "Pris"
+        Me.price.Name = "price"
+        Me.price.ReadOnly = True
+        '
+        'MarkupPercentageDataGridViewTextBoxColumn
+        '
+        Me.MarkupPercentageDataGridViewTextBoxColumn.DataPropertyName = "markupPercentage"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.HeaderText = "markupPercentage"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.Name = "MarkupPercentageDataGridViewTextBoxColumn"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.ReadOnly = True
+        Me.MarkupPercentageDataGridViewTextBoxColumn.Visible = False
+        '
+        'PublishedDataGridViewTextBoxColumn
+        '
+        Me.PublishedDataGridViewTextBoxColumn.DataPropertyName = "published"
+        Me.PublishedDataGridViewTextBoxColumn.HeaderText = "Publisert"
+        Me.PublishedDataGridViewTextBoxColumn.Name = "PublishedDataGridViewTextBoxColumn"
+        Me.PublishedDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'RecipeDataGridViewTextBoxColumn
+        '
+        Me.RecipeDataGridViewTextBoxColumn.DataPropertyName = "recipe"
+        Me.RecipeDataGridViewTextBoxColumn.HeaderText = "recipe"
+        Me.RecipeDataGridViewTextBoxColumn.Name = "RecipeDataGridViewTextBoxColumn"
+        Me.RecipeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.RecipeDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeletedDataGridViewTextBoxColumn
+        '
+        Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "Slettet"
+        Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
+        Me.DeletedDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'frmAdminCakes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -558,6 +559,7 @@ Partial Class frmAdminCakes
     Friend WithEvents btnNewCake As System.Windows.Forms.Button
     Friend WithEvents btnToolStripCakeNew As System.Windows.Forms.ToolStripButton
     Friend WithEvents btnToolStripCakeDelete As System.Windows.Forms.ToolStripButton
+    Friend WithEvents btnAvbryt As System.Windows.Forms.Button
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents price As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -565,6 +567,5 @@ Partial Class frmAdminCakes
     Friend WithEvents PublishedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RecipeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DeletedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents btnAvbryt As System.Windows.Forms.Button
 
 End Class

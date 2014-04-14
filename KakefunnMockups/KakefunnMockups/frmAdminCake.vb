@@ -159,9 +159,10 @@ Public Class frmAdminCakes
     Private Sub txtFilter_TextChanged(sender As Object, e As EventArgs) Handles txtFilter.TextChanged
         'Filtering ingredient list.
 
-        'Gets ingredients from preloaded list of ingredients.
+        'Gets ingredients from preloaded list of ingredients. Only shows published ingredients.
         Dim ingList = (From x In ingQuery _
                        Where x.name.ToUpper().Contains(txtFilter.Text.ToUpper()) _
+                       And x.published = True _
                        Select x).ToList()
 
         'Clears ingredient list if filter-textbox is empty.
@@ -470,11 +471,6 @@ Public Class frmAdminCakes
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
         End If
     End Sub
-
-    'Private Sub dtgCake_ColumnHeaderMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles dtgCake.ColumnHeaderMouseClick
-    'Originally to load prices when sorting on column headers. Can't get sorting to work though..
-    '   showPriceArrays()
-    'End Sub
 
     Private Sub btnAvbryt_Click(sender As Object, e As EventArgs) Handles btnAvbryt.Click
         'Cancels editing or adding a new cake. Alerts user about unsaved changes.
