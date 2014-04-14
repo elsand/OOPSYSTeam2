@@ -19,19 +19,19 @@ Partial Class frmLogisticsBase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnPackingList = New System.Windows.Forms.Button()
         Me.btnRegisterCommodity = New System.Windows.Forms.Button()
         Me.btnExpiredCommodity = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
-        'Button1
+        'btnPackingList
         '
-        Me.Button1.Location = New System.Drawing.Point(12, 27)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(93, 32)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "btnPackingList"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnPackingList.Location = New System.Drawing.Point(12, 27)
+        Me.btnPackingList.Name = "btnPackingList"
+        Me.btnPackingList.Size = New System.Drawing.Size(93, 32)
+        Me.btnPackingList.TabIndex = 2
+        Me.btnPackingList.Text = "Pakklister"
+        Me.btnPackingList.UseVisualStyleBackColor = True
         '
         'btnRegisterCommodity
         '
@@ -57,17 +57,17 @@ Partial Class frmLogisticsBase
         Me.ClientSize = New System.Drawing.Size(768, 509)
         Me.Controls.Add(Me.btnExpiredCommodity)
         Me.Controls.Add(Me.btnRegisterCommodity)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnPackingList)
         Me.Name = "frmLogisticsBase"
         Me.Text = "Logistikk"
-        Me.Controls.SetChildIndex(Me.Button1, 0)
+        Me.Controls.SetChildIndex(Me.btnPackingList, 0)
         Me.Controls.SetChildIndex(Me.btnRegisterCommodity, 0)
         Me.Controls.SetChildIndex(Me.btnExpiredCommodity, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents btnPackingList As System.Windows.Forms.Button
     Friend WithEvents btnRegisterCommodity As System.Windows.Forms.Button
     Friend WithEvents btnExpiredCommodity As System.Windows.Forms.Button
 
