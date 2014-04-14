@@ -1,4 +1,4 @@
-﻿'TODO
+﻿'Sorting on column-headers is not working.
 'Last edited 14.04.14
 'OK?
 
