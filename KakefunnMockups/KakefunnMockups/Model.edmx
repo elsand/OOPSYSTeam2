@@ -708,7 +708,7 @@
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="description" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="kilocaloriesPerUnit" Type="Double" Nullable="false" />
           <Property Name="vat" Type="Int32" Nullable="false" />
           <Property Name="published" Type="Boolean" />

@@ -51,7 +51,6 @@ Partial Class frmAdminCakes
         Me.lblFilterCake = New System.Windows.Forms.Label()
         Me.txtFilterCake = New System.Windows.Forms.TextBox()
         Me.BindingNavigator1 = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
@@ -62,29 +61,33 @@ Partial Class frmAdminCakes
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.numMarkUps = New Kakefunn.NumericTextbox()
         Me.chkPublished = New System.Windows.Forms.CheckBox()
+        Me.grpCakeEdit = New System.Windows.Forms.GroupBox()
+        Me.btnNewCake = New System.Windows.Forms.Button()
         Me.grpIngredients.SuspendLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.CakeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.BindingNavigator1.SuspendLayout()
+        Me.grpCakeEdit.SuspendLayout()
         Me.SuspendLayout()
         '
         'lstAvailableIngredients
         '
         Me.lstAvailableIngredients.FormattingEnabled = True
-        Me.lstAvailableIngredients.Location = New System.Drawing.Point(18, 60)
+        Me.lstAvailableIngredients.Location = New System.Drawing.Point(6, 60)
         Me.lstAvailableIngredients.Name = "lstAvailableIngredients"
-        Me.lstAvailableIngredients.Size = New System.Drawing.Size(138, 134)
-        Me.lstAvailableIngredients.TabIndex = 3
+        Me.lstAvailableIngredients.Size = New System.Drawing.Size(150, 134)
+        Me.lstAvailableIngredients.TabIndex = 4
         '
         'btnAddIngredients
         '
         Me.btnAddIngredients.Location = New System.Drawing.Point(162, 105)
         Me.btnAddIngredients.Name = "btnAddIngredients"
         Me.btnAddIngredients.Size = New System.Drawing.Size(32, 23)
-        Me.btnAddIngredients.TabIndex = 4
+        Me.btnAddIngredients.TabIndex = 5
         Me.btnAddIngredients.Text = ">"
         Me.btnAddIngredients.UseVisualStyleBackColor = True
         '
@@ -93,7 +96,7 @@ Partial Class frmAdminCakes
         Me.btnRemoveIngredients.Location = New System.Drawing.Point(162, 134)
         Me.btnRemoveIngredients.Name = "btnRemoveIngredients"
         Me.btnRemoveIngredients.Size = New System.Drawing.Size(32, 23)
-        Me.btnRemoveIngredients.TabIndex = 5
+        Me.btnRemoveIngredients.TabIndex = 6
         Me.btnRemoveIngredients.Text = "<"
         Me.btnRemoveIngredients.UseVisualStyleBackColor = True
         '
@@ -102,23 +105,23 @@ Partial Class frmAdminCakes
         Me.lstSelectedIngredients.FormattingEnabled = True
         Me.lstSelectedIngredients.Location = New System.Drawing.Point(200, 60)
         Me.lstSelectedIngredients.Name = "lstSelectedIngredients"
-        Me.lstSelectedIngredients.Size = New System.Drawing.Size(138, 134)
-        Me.lstSelectedIngredients.TabIndex = 6
+        Me.lstSelectedIngredients.Size = New System.Drawing.Size(150, 134)
+        Me.lstSelectedIngredients.TabIndex = 7
         '
         'txtFilter
         '
-        Me.txtFilter.Location = New System.Drawing.Point(18, 38)
+        Me.txtFilter.Location = New System.Drawing.Point(7, 38)
         Me.txtFilter.Name = "txtFilter"
-        Me.txtFilter.Size = New System.Drawing.Size(138, 20)
-        Me.txtFilter.TabIndex = 0
+        Me.txtFilter.Size = New System.Drawing.Size(149, 20)
+        Me.txtFilter.TabIndex = 8
         '
         'lblFilter
         '
         Me.lblFilter.AutoSize = True
-        Me.lblFilter.Location = New System.Drawing.Point(15, 22)
+        Me.lblFilter.Location = New System.Drawing.Point(6, 22)
         Me.lblFilter.Name = "lblFilter"
         Me.lblFilter.Size = New System.Drawing.Size(29, 13)
-        Me.lblFilter.TabIndex = 2
+        Me.lblFilter.TabIndex = 9
         Me.lblFilter.Text = "Filter"
         '
         'lblAmount
@@ -141,21 +144,19 @@ Partial Class frmAdminCakes
         '
         'txtProcedure
         '
-        Me.txtProcedure.Enabled = False
-        Me.txtProcedure.Location = New System.Drawing.Point(545, 367)
+        Me.txtProcedure.Location = New System.Drawing.Point(6, 321)
         Me.txtProcedure.Multiline = True
         Me.txtProcedure.Name = "txtProcedure"
-        Me.txtProcedure.Size = New System.Drawing.Size(350, 94)
+        Me.txtProcedure.Size = New System.Drawing.Size(357, 94)
         Me.txtProcedure.TabIndex = 13
         '
         'lblProcedure
         '
         Me.lblProcedure.AutoSize = True
-        Me.lblProcedure.Enabled = False
-        Me.lblProcedure.Location = New System.Drawing.Point(542, 351)
+        Me.lblProcedure.Location = New System.Drawing.Point(3, 305)
         Me.lblProcedure.Name = "lblProcedure"
         Me.lblProcedure.Size = New System.Drawing.Size(82, 13)
-        Me.lblProcedure.TabIndex = 13
+        Me.lblProcedure.TabIndex = 14
         Me.lblProcedure.Text = "Fremgangsmåte"
         '
         'grpIngredients
@@ -169,11 +170,10 @@ Partial Class frmAdminCakes
         Me.grpIngredients.Controls.Add(Me.lblFilter)
         Me.grpIngredients.Controls.Add(Me.lblAmount)
         Me.grpIngredients.Controls.Add(Me.lblMeasureUnit)
-        Me.grpIngredients.Enabled = False
-        Me.grpIngredients.Location = New System.Drawing.Point(545, 91)
+        Me.grpIngredients.Location = New System.Drawing.Point(6, 46)
         Me.grpIngredients.Name = "grpIngredients"
-        Me.grpIngredients.Size = New System.Drawing.Size(350, 257)
-        Me.grpIngredients.TabIndex = 12
+        Me.grpIngredients.Size = New System.Drawing.Size(358, 257)
+        Me.grpIngredients.TabIndex = 15
         Me.grpIngredients.TabStop = False
         Me.grpIngredients.Text = "Ingredienser"
         '
@@ -185,19 +185,19 @@ Partial Class frmAdminCakes
         Me.numAmount.Location = New System.Drawing.Point(18, 225)
         Me.numAmount.Name = "numAmount"
         Me.numAmount.Size = New System.Drawing.Size(86, 20)
-        Me.numAmount.TabIndex = 7
+        Me.numAmount.TabIndex = 14
         '
         'txtNameCake
         '
-        Me.txtNameCake.Location = New System.Drawing.Point(639, 65)
+        Me.txtNameCake.Location = New System.Drawing.Point(263, 20)
         Me.txtNameCake.Name = "txtNameCake"
         Me.txtNameCake.Size = New System.Drawing.Size(100, 20)
-        Me.txtNameCake.TabIndex = 11
+        Me.txtNameCake.TabIndex = 16
         '
         'lblNameCake
         '
         Me.lblNameCake.AutoSize = True
-        Me.lblNameCake.Location = New System.Drawing.Point(549, 68)
+        Me.lblNameCake.Location = New System.Drawing.Point(173, 23)
         Me.lblNameCake.Name = "lblNameCake"
         Me.lblNameCake.Size = New System.Drawing.Size(75, 13)
         Me.lblNameCake.TabIndex = 17
@@ -206,8 +206,7 @@ Partial Class frmAdminCakes
         'MarkUps
         '
         Me.MarkUps.AutoSize = True
-        Me.MarkUps.Enabled = False
-        Me.MarkUps.Location = New System.Drawing.Point(542, 478)
+        Me.MarkUps.Location = New System.Drawing.Point(10, 433)
         Me.MarkUps.Name = "MarkUps"
         Me.MarkUps.Size = New System.Drawing.Size(71, 13)
         Me.MarkUps.TabIndex = 19
@@ -216,8 +215,7 @@ Partial Class frmAdminCakes
         'lblIngredientsPrice
         '
         Me.lblIngredientsPrice.AutoSize = True
-        Me.lblIngredientsPrice.Enabled = False
-        Me.lblIngredientsPrice.Location = New System.Drawing.Point(778, 478)
+        Me.lblIngredientsPrice.Location = New System.Drawing.Point(225, 433)
         Me.lblIngredientsPrice.Name = "lblIngredientsPrice"
         Me.lblIngredientsPrice.Size = New System.Drawing.Size(84, 13)
         Me.lblIngredientsPrice.TabIndex = 20
@@ -226,8 +224,7 @@ Partial Class frmAdminCakes
         'lblSalePrice
         '
         Me.lblSalePrice.AutoSize = True
-        Me.lblSalePrice.Enabled = False
-        Me.lblSalePrice.Location = New System.Drawing.Point(801, 500)
+        Me.lblSalePrice.Location = New System.Drawing.Point(248, 455)
         Me.lblSalePrice.Name = "lblSalePrice"
         Me.lblSalePrice.Size = New System.Drawing.Size(61, 13)
         Me.lblSalePrice.TabIndex = 21
@@ -235,49 +232,56 @@ Partial Class frmAdminCakes
         '
         'btnSave
         '
-        Me.btnSave.Enabled = False
-        Me.btnSave.Location = New System.Drawing.Point(820, 525)
+        Me.btnSave.Location = New System.Drawing.Point(288, 480)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
-        Me.btnSave.TabIndex = 15
+        Me.btnSave.TabIndex = 22
         Me.btnSave.Text = "Lagre"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'dtgCake
         '
+        Me.dtgCake.AllowUserToAddRows = False
+        Me.dtgCake.AllowUserToDeleteRows = False
         Me.dtgCake.AutoGenerateColumns = False
         Me.dtgCake.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgCake.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgCake.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.NameDataGridViewTextBoxColumn, Me.price, Me.MarkupPercentageDataGridViewTextBoxColumn, Me.PublishedDataGridViewTextBoxColumn, Me.RecipeDataGridViewTextBoxColumn, Me.DeletedDataGridViewTextBoxColumn})
         Me.dtgCake.DataSource = Me.CakeBindingSource
-        Me.dtgCake.Location = New System.Drawing.Point(12, 91)
+        Me.dtgCake.Location = New System.Drawing.Point(12, 97)
         Me.dtgCake.Name = "dtgCake"
+        Me.dtgCake.ReadOnly = True
         Me.dtgCake.RowHeadersVisible = False
-        Me.dtgCake.Size = New System.Drawing.Size(522, 457)
-        Me.dtgCake.TabIndex = 9
+        Me.dtgCake.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgCake.Size = New System.Drawing.Size(522, 492)
+        Me.dtgCake.TabIndex = 23
         '
         'IdDataGridViewTextBoxColumn
         '
         Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
         Me.IdDataGridViewTextBoxColumn.HeaderText = "Kakenr"
         Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
         '
         'NameDataGridViewTextBoxColumn
         '
         Me.NameDataGridViewTextBoxColumn.DataPropertyName = "name"
         Me.NameDataGridViewTextBoxColumn.HeaderText = "Navn"
         Me.NameDataGridViewTextBoxColumn.Name = "NameDataGridViewTextBoxColumn"
+        Me.NameDataGridViewTextBoxColumn.ReadOnly = True
         '
         'price
         '
         Me.price.HeaderText = "Pris"
         Me.price.Name = "price"
+        Me.price.ReadOnly = True
         '
         'MarkupPercentageDataGridViewTextBoxColumn
         '
         Me.MarkupPercentageDataGridViewTextBoxColumn.DataPropertyName = "markupPercentage"
         Me.MarkupPercentageDataGridViewTextBoxColumn.HeaderText = "markupPercentage"
         Me.MarkupPercentageDataGridViewTextBoxColumn.Name = "MarkupPercentageDataGridViewTextBoxColumn"
+        Me.MarkupPercentageDataGridViewTextBoxColumn.ReadOnly = True
         Me.MarkupPercentageDataGridViewTextBoxColumn.Visible = False
         '
         'PublishedDataGridViewTextBoxColumn
@@ -285,12 +289,14 @@ Partial Class frmAdminCakes
         Me.PublishedDataGridViewTextBoxColumn.DataPropertyName = "published"
         Me.PublishedDataGridViewTextBoxColumn.HeaderText = "Publisert"
         Me.PublishedDataGridViewTextBoxColumn.Name = "PublishedDataGridViewTextBoxColumn"
+        Me.PublishedDataGridViewTextBoxColumn.ReadOnly = True
         '
         'RecipeDataGridViewTextBoxColumn
         '
         Me.RecipeDataGridViewTextBoxColumn.DataPropertyName = "recipe"
         Me.RecipeDataGridViewTextBoxColumn.HeaderText = "recipe"
         Me.RecipeDataGridViewTextBoxColumn.Name = "RecipeDataGridViewTextBoxColumn"
+        Me.RecipeDataGridViewTextBoxColumn.ReadOnly = True
         Me.RecipeDataGridViewTextBoxColumn.Visible = False
         '
         'DeletedDataGridViewTextBoxColumn
@@ -298,6 +304,7 @@ Partial Class frmAdminCakes
         Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
         Me.DeletedDataGridViewTextBoxColumn.HeaderText = "deleted"
         Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
+        Me.DeletedDataGridViewTextBoxColumn.ReadOnly = True
         Me.DeletedDataGridViewTextBoxColumn.Visible = False
         '
         'CakeBindingSource
@@ -307,7 +314,7 @@ Partial Class frmAdminCakes
         'lblFilterCake
         '
         Me.lblFilterCake.AutoSize = True
-        Me.lblFilterCake.Location = New System.Drawing.Point(12, 68)
+        Me.lblFilterCake.Location = New System.Drawing.Point(15, 74)
         Me.lblFilterCake.Name = "lblFilterCake"
         Me.lblFilterCake.Size = New System.Drawing.Size(53, 13)
         Me.lblFilterCake.TabIndex = 25
@@ -315,37 +322,29 @@ Partial Class frmAdminCakes
         '
         'txtFilterCake
         '
-        Me.txtFilterCake.Location = New System.Drawing.Point(71, 65)
+        Me.txtFilterCake.Location = New System.Drawing.Point(74, 71)
         Me.txtFilterCake.Name = "txtFilterCake"
-        Me.txtFilterCake.Size = New System.Drawing.Size(100, 20)
-        Me.txtFilterCake.TabIndex = 8
+        Me.txtFilterCake.Size = New System.Drawing.Size(147, 20)
+        Me.txtFilterCake.TabIndex = 24
         '
         'BindingNavigator1
         '
-        Me.BindingNavigator1.AddNewItem = Me.BindingNavigatorAddNewItem
+        Me.BindingNavigator1.AddNewItem = Nothing
+        Me.BindingNavigator1.BindingSource = Me.CakeBindingSource
         Me.BindingNavigator1.CountItem = Me.BindingNavigatorCountItem
         Me.BindingNavigator1.DeleteItem = Me.BindingNavigatorDeleteItem
         Me.BindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem})
-        Me.BindingNavigator1.Location = New System.Drawing.Point(0, 556)
+        Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.ToolStripButton2, Me.BindingNavigatorDeleteItem})
+        Me.BindingNavigator1.Location = New System.Drawing.Point(0, 592)
         Me.BindingNavigator1.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.BindingNavigator1.MoveLastItem = Me.BindingNavigatorMoveLastItem
         Me.BindingNavigator1.MoveNextItem = Me.BindingNavigatorMoveNextItem
         Me.BindingNavigator1.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem
-        Me.BindingNavigator1.Size = New System.Drawing.Size(909, 25)
-        Me.BindingNavigator1.TabIndex = 10
+        Me.BindingNavigator1.Size = New System.Drawing.Size(929, 25)
+        Me.BindingNavigator1.TabIndex = 26
         Me.BindingNavigator1.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
         '
         'BindingNavigatorCountItem
         '
@@ -356,12 +355,11 @@ Partial Class frmAdminCakes
         '
         'BindingNavigatorDeleteItem
         '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
         Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
         Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
+        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(77, 22)
+        Me.BindingNavigatorDeleteItem.Text = "Slett kake"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -423,62 +421,82 @@ Partial Class frmAdminCakes
         Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
         '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.Image = CType(resources.GetObject("ToolStripButton2.Image"), System.Drawing.Image)
+        Me.ToolStripButton2.Name = "ToolStripButton2"
+        Me.ToolStripButton2.RightToLeftAutoMirrorImage = True
+        Me.ToolStripButton2.Size = New System.Drawing.Size(69, 22)
+        Me.ToolStripButton2.Text = "Ny kake"
+        '
         'numMarkUps
         '
         Me.numMarkUps.AllowDecimal = False
         Me.numMarkUps.AllowNegative = False
         Me.numMarkUps.AllowSpace = False
-        Me.numMarkUps.Location = New System.Drawing.Point(619, 475)
+        Me.numMarkUps.Location = New System.Drawing.Point(87, 430)
         Me.numMarkUps.Name = "numMarkUps"
         Me.numMarkUps.Size = New System.Drawing.Size(35, 20)
-        Me.numMarkUps.TabIndex = 14
+        Me.numMarkUps.TabIndex = 27
         '
         'chkPublished
         '
         Me.chkPublished.AutoSize = True
-        Me.chkPublished.Location = New System.Drawing.Point(545, 510)
+        Me.chkPublished.Location = New System.Drawing.Point(13, 454)
         Me.chkPublished.Name = "chkPublished"
         Me.chkPublished.Size = New System.Drawing.Size(66, 17)
         Me.chkPublished.TabIndex = 28
         Me.chkPublished.Text = "Publisert"
         Me.chkPublished.UseVisualStyleBackColor = True
         '
+        'grpCakeEdit
+        '
+        Me.grpCakeEdit.Controls.Add(Me.lblNameCake)
+        Me.grpCakeEdit.Controls.Add(Me.txtProcedure)
+        Me.grpCakeEdit.Controls.Add(Me.lblProcedure)
+        Me.grpCakeEdit.Controls.Add(Me.grpIngredients)
+        Me.grpCakeEdit.Controls.Add(Me.txtNameCake)
+        Me.grpCakeEdit.Controls.Add(Me.MarkUps)
+        Me.grpCakeEdit.Controls.Add(Me.lblIngredientsPrice)
+        Me.grpCakeEdit.Controls.Add(Me.lblSalePrice)
+        Me.grpCakeEdit.Controls.Add(Me.btnSave)
+        Me.grpCakeEdit.Controls.Add(Me.chkPublished)
+        Me.grpCakeEdit.Controls.Add(Me.numMarkUps)
+        Me.grpCakeEdit.Enabled = False
+        Me.grpCakeEdit.Location = New System.Drawing.Point(540, 68)
+        Me.grpCakeEdit.Name = "grpCakeEdit"
+        Me.grpCakeEdit.Size = New System.Drawing.Size(377, 521)
+        Me.grpCakeEdit.TabIndex = 29
+        Me.grpCakeEdit.TabStop = False
+        Me.grpCakeEdit.Text = "Kakedetaljer"
+        '
+        'btnNewCake
+        '
+        Me.btnNewCake.Location = New System.Drawing.Point(459, 68)
+        Me.btnNewCake.Name = "btnNewCake"
+        Me.btnNewCake.Size = New System.Drawing.Size(75, 23)
+        Me.btnNewCake.TabIndex = 30
+        Me.btnNewCake.Text = "Ny kake >>"
+        Me.btnNewCake.UseVisualStyleBackColor = True
+        '
         'frmAdminCakes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(909, 603)
-        Me.Controls.Add(Me.chkPublished)
-        Me.Controls.Add(Me.numMarkUps)
+        Me.ClientSize = New System.Drawing.Size(929, 639)
+        Me.Controls.Add(Me.btnNewCake)
+        Me.Controls.Add(Me.grpCakeEdit)
         Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.lblFilterCake)
         Me.Controls.Add(Me.txtFilterCake)
         Me.Controls.Add(Me.dtgCake)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.lblSalePrice)
-        Me.Controls.Add(Me.lblIngredientsPrice)
-        Me.Controls.Add(Me.MarkUps)
-        Me.Controls.Add(Me.lblNameCake)
-        Me.Controls.Add(Me.txtNameCake)
-        Me.Controls.Add(Me.grpIngredients)
-        Me.Controls.Add(Me.lblProcedure)
-        Me.Controls.Add(Me.txtProcedure)
         Me.Name = "frmAdminCakes"
         Me.Text = "Kaker"
-        Me.Controls.SetChildIndex(Me.txtProcedure, 0)
-        Me.Controls.SetChildIndex(Me.lblProcedure, 0)
-        Me.Controls.SetChildIndex(Me.grpIngredients, 0)
-        Me.Controls.SetChildIndex(Me.txtNameCake, 0)
-        Me.Controls.SetChildIndex(Me.lblNameCake, 0)
-        Me.Controls.SetChildIndex(Me.MarkUps, 0)
-        Me.Controls.SetChildIndex(Me.lblIngredientsPrice, 0)
-        Me.Controls.SetChildIndex(Me.lblSalePrice, 0)
-        Me.Controls.SetChildIndex(Me.btnSave, 0)
         Me.Controls.SetChildIndex(Me.dtgCake, 0)
         Me.Controls.SetChildIndex(Me.txtFilterCake, 0)
         Me.Controls.SetChildIndex(Me.lblFilterCake, 0)
         Me.Controls.SetChildIndex(Me.BindingNavigator1, 0)
-        Me.Controls.SetChildIndex(Me.numMarkUps, 0)
-        Me.Controls.SetChildIndex(Me.chkPublished, 0)
+        Me.Controls.SetChildIndex(Me.grpCakeEdit, 0)
+        Me.Controls.SetChildIndex(Me.btnNewCake, 0)
         Me.grpIngredients.ResumeLayout(False)
         Me.grpIngredients.PerformLayout()
         CType(Me.dtgCake, System.ComponentModel.ISupportInitialize).EndInit()
@@ -486,6 +504,8 @@ Partial Class frmAdminCakes
         CType(Me.BindingNavigator1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.BindingNavigator1.ResumeLayout(False)
         Me.BindingNavigator1.PerformLayout()
+        Me.grpCakeEdit.ResumeLayout(False)
+        Me.grpCakeEdit.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -511,7 +531,6 @@ Partial Class frmAdminCakes
     Friend WithEvents lblFilterCake As System.Windows.Forms.Label
     Friend WithEvents txtFilterCake As System.Windows.Forms.TextBox
     Friend WithEvents BindingNavigator1 As System.Windows.Forms.BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorCountItem As System.Windows.Forms.ToolStripLabel
     Friend WithEvents BindingNavigatorDeleteItem As System.Windows.Forms.ToolStripButton
     Friend WithEvents BindingNavigatorMoveFirstItem As System.Windows.Forms.ToolStripButton
@@ -526,6 +545,8 @@ Partial Class frmAdminCakes
     Friend WithEvents numMarkUps As Kakefunn.NumericTextbox
     Friend WithEvents chkPublished As System.Windows.Forms.CheckBox
     Friend WithEvents CakeBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents grpCakeEdit As System.Windows.Forms.GroupBox
+    Friend WithEvents btnNewCake As System.Windows.Forms.Button
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents NameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents price As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -533,5 +554,6 @@ Partial Class frmAdminCakes
     Friend WithEvents PublishedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents RecipeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DeletedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ToolStripButton2 As System.Windows.Forms.ToolStripButton
 
 End Class
