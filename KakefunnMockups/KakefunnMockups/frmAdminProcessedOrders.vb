@@ -69,6 +69,8 @@
     End Sub
 
     Private Sub btnPrintProcessedOrders_Click(sender As Object, e As EventArgs) Handles btnPrintProcessedOrders.Click
-        'Create report.
+        frmDialogAdminNotExported.ShowDialog()
+
+
     End Sub
 End Class
