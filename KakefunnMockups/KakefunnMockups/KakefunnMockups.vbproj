@@ -117,6 +117,12 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmDialogAdminNotExported.Designer.vb">
+      <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogAdminNotExported.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
@@ -309,7 +315,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="My Project\DataSources\PackingList.Designer.vb">
+    <Compile Include="report\PackingList.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PackingList.xsd</DependentUpon>
@@ -407,6 +413,9 @@
     <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
       <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogAdminNotExported.resx">
+      <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogBase.resx">
       <DependentUpon>frmDialogBase.vb</DependentUpon>
     </EmbeddedResource>
@@ -452,6 +461,7 @@
     <EmbeddedResource Include="report\Customer.rdlc" />
     <EmbeddedResource Include="report\IngredientHistory.rdlc" />
     <EmbeddedResource Include="report\LastYearNextMonth.rdlc" />
+    <EmbeddedResource Include="report\notExportedOrders.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
   </ItemGroup>
   <ItemGroup>
@@ -491,15 +501,15 @@
     <None Include="My Project\DataSources\Cake.datasource" />
     <None Include="My Project\DataSources\Customer.datasource" />
     <None Include="My Project\DataSources\Order.datasource" />
-    <None Include="My Project\DataSources\PackingList.xsc">
+    <None Include="report\PackingList.xsc">
       <DependentUpon>PackingList.xsd</DependentUpon>
     </None>
-    <None Include="My Project\DataSources\PackingList.xsd">
+    <None Include="report\PackingList.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>PackingList.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\DataSources\PackingList.xss">
+    <None Include="report\PackingList.xss">
       <DependentUpon>PackingList.xsd</DependentUpon>
     </None>
     <None Include="My Project\Settings.settings">
