@@ -63,8 +63,9 @@
 
     Private Sub dtgProcessedOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgProcessedOrders.CellDoubleClick
         'Opens order for editing on doubleclick in the dgv.
-        Dim orderNumber As Integer = dtgProcessedOrders.Rows(e.RowIndex).Cells(Me.IdDataGridViewTextBoxColumn.Index).Value
-        OrderManager.EditOrder(orderNumber)
+        Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(Me.IdDataGridViewTextBoxColumn.Index).Value)
+        Dim order = DBM.Instance.Orders.Find(orderNr)
+        OrderManager.EditOrder(order)
     End Sub
 
     Private Sub btnPrintProcessedOrders_Click(sender As Object, e As EventArgs) Handles btnPrintProcessedOrders.Click
