@@ -11,7 +11,7 @@ Public Class frmDialogAdminNotExported
     Private Sub frmDialogAdminNotExported_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
 
-            Dim query = "select o.id, o.deliveryFirstName, o.deliveryLastName , o.created from `Order` o where o.exported = NULL ;"
+            Dim query = "select o.id, o.deliveryFirstName, o.deliveryLastName , o.created from `Order` o where o.exported IS NULL ;"
 
 
             Dim t = Kakefunn.DBM.Instance.GetDataTableFromQuery(query)
