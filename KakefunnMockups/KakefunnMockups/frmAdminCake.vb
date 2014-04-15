@@ -1,4 +1,6 @@
-﻿'Sorting on column-headers is not working.
+﻿Imports System.ComponentModel
+
+'Sorting on column-headers is not working.
 'Last edited 14.04.14
 'OK?
 
@@ -8,7 +10,6 @@ Public Class frmAdminCakes
     Private ingQuery As List(Of Kakefunn.Ingredient)
     Private priceQuery As List(Of Kakefunn.IngredientPrice)
     Private batchQuery As List(Of Kakefunn.Batch)
-    Private cakeQuery As List(Of Kakefunn.Cake)
 
     'Datatable to keep track of selected ingredients before writing them to the db.
     Private selList As DataTable
@@ -28,8 +29,8 @@ Public Class frmAdminCakes
 
     Private Sub bindCake()
         'Loading cakes in dtgCake
-        cakeQuery = (From x In DBM.Instance.Cakes Select x Order By x.deleted Ascending).ToList()
-        CakeBindingSource.DataSource = cakeQuery
+        DBM.Instance.Cakes.OrderBy(Function(c) c.deleted).Load()
+        CakeBindingSource.DataSource = DBM.Instance.Cakes.Local.ToBindingList()
     End Sub
 
     Private Sub loadPrices()
@@ -70,18 +71,6 @@ Public Class frmAdminCakes
         Next i
     End Sub
 
-    Private Sub showPriceArrays()
-        'Traverses dtgCake and adds prices to the price column.
-        Dim i, j As Integer
-        For i = 0 To dtgCake.Rows.Count - 1
-            For j = 0 To arrayCounter
-                If dtgCake.Rows(i).Cells(0).Value = cakeArray(j) Then
-                    dtgCake.Rows(i).Cells(2).Value() = "kr. " & Format(cakePriceArray(j), "0.00")
-                End If
-            Next j
-        Next i
-    End Sub
-
     Private Sub frmAdminCake_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Preloading data from IngredientPrices and Batches.
         priceQuery = (From x In DBM.Instance.IngredientPrices Select x).ToList()
@@ -90,7 +79,6 @@ Public Class frmAdminCakes
         'Binding cakes to dtgCakes, calculating and showing prices.
         bindCake()
         loadPrices()
-        showPriceArrays()
 
         'Tracking changes in controls. Used to trigger dialog if user tries to exit form without saving changes.
         For Each c As Control In Me.grpCakeEdit.Controls
@@ -256,7 +244,7 @@ Public Class frmAdminCakes
         'This button saves the cake.
 
         'The cake must have a name. No further requirements before saving.
-        If txtNameCake.Text = "" Then
+        If txtNameCake.Text <> "" Then
             UpdateActionStatus("Lagrer..")
             Dim cake As Cake
 
@@ -308,7 +296,6 @@ Public Class frmAdminCakes
             'Calls procedures to reload information to dtgCakes.
             bindCake()
             loadPrices()
-            showPriceArrays()
 
             'Disables the registration part of the form.
             grpCakeEdit.Enabled = False
@@ -317,6 +304,7 @@ Public Class frmAdminCakes
             MsgBox("Kaken må ha et navn før den kan lagres.")
         End If
         UpdateActionStatus("Klar")
+        dtgCake.Refresh()
     End Sub
 
     Private Sub lstAvailableIngredients_MouseClick(sender As Object, e As MouseEventArgs) Handles lstAvailableIngredients.MouseClick
@@ -353,10 +341,11 @@ Public Class frmAdminCakes
 
     Private Sub filter()
         'Filters dtgCakes.
-        cakeQuery = (From x In DBM.Instance.Cakes Where x.name.Contains(txtFilterCake.Text) _
-                         Select x Order By x.deleted Ascending).ToList()
-        CakeBindingSource.DataSource = cakeQuery
-        showPriceArrays()
+        CakeBindingSource.DataSource = DBM.Instance.Cakes.Local.Where(Function(c) _
+                c.name.ToUpper().Contains(txtFilterCake.Text.ToUpper())).ToList()
+        If txtFilterCake.Text = "" Then
+            bindCake()
+        End If
     End Sub
 
     Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
@@ -383,18 +372,13 @@ Public Class frmAdminCakes
 
         'Displays data in the form.
         Dim cakeID As Integer = dtgCake.SelectedRows(0).Cells(0).Value
+        Dim pub As Boolean = dtgCake.SelectedRows(0).Cells(4).Value
+        MsgBox(dtgCake.SelectedRows(0).Cells(4).Value)
         txtNameCake.Text = dtgCake.SelectedRows(0).Cells(1).Value
-        Dim cakeQuery = (From x In DBM.Instance.Cakes _
-                         Where x.id = cakeID _
-                         Select x.markupPercentage, x.recipe, x.published).ToList()
-        txtProcedure.Text = cakeQuery.Item(0).recipe.ToString()
-        numMarkUps.Text = cakeQuery.Item(0).markupPercentage.Value()
-        If cakeQuery.Item(0).published.HasValue Then
-            If cakeQuery.Item(0).published.Value = True Then
-                chkPublished.Checked = True
-            Else
-                chkPublished.Checked = False
-            End If
+        txtProcedure.Text = DBM.Instance.Cakes.Local.Where(Function(c) c.id = cakeID).Select(Function(c) c.recipe.ToString).FirstOrDefault()
+        numMarkUps.Text = DBM.Instance.Cakes.Local.Where(Function(c) c.id = cakeID).Select(Function(c) c.markupPercentage.Value).FirstOrDefault()
+        If pub = True Then
+            chkPublished.Checked = True
         Else
             chkPublished.Checked = False
         End If
@@ -434,15 +418,14 @@ Public Class frmAdminCakes
         'Deletes a cake. The record is not deleted in the db, but rather made inactive.
         UpdateActionStatus("Venter på bekreftelse..")
 
-        'Prompts user: are you sure=
+        'Prompts user: are you sure?
         Dim result As Integer = MessageBox.Show("Er du sikker på at du vil slette kaken? Operasjonen kan ikke reverseres.", _
                                                 "Bekreft sletting", MessageBoxButtons.YesNo)
         UpdateActionStatus("Sletter kake...")
 
         If result = 6 Then
             Dim delIdx As Integer = dtgCake.SelectedRows(0).Cells(0).Value
-            Dim delCake = (From x In DBM.Instance.Cakes Where x.id = delIdx _
-                             Select x).FirstOrDefault()
+            Dim delCake = DBM.Instance.Cakes.Find(delIdx)
             delCake.deleted = Date.Today
             delCake.published = False
 
@@ -457,9 +440,9 @@ Public Class frmAdminCakes
                 filter()
             End If
 
-            showPriceArrays()
             MsgBox("Kaken er nå inaktiv i systemet")
             UpdateActionStatus()
+            dtgCake.Refresh()
         End If
     End Sub
 
@@ -469,6 +452,16 @@ Public Class frmAdminCakes
             dtgCake.Rows(e.RowIndex).Cells(6).Value > CDate("2000-01-01") Then
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
+        End If
+
+        'Adds prices from the cakePriceArray.
+        If dtgCake.Columns(e.ColumnIndex).Name = "price" Then
+            Dim i As Integer
+            For i = 0 To cakeArray.Length - 1
+                If dtgCake.Rows(e.RowIndex).Cells(0).Value = cakeArray(i) Then
+                    e.Value = Format(cakePriceArray(i), "0.00")
+                End If
+            Next
         End If
     End Sub
 
@@ -495,6 +488,5 @@ Public Class frmAdminCakes
         Else
             btnToolStripCakeDelete.Enabled = True
         End If
-
     End Sub
 End Class

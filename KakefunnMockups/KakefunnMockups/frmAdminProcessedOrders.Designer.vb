@@ -20,16 +20,20 @@ Partial Class frmAdminProcessedOrders
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dtgProcessedOrders = New System.Windows.Forms.DataGridView()
-        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.btnPrintProcessedOrders = New System.Windows.Forms.Button()
-        Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
+        Me.exported = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ModifiedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcOrderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcOrderTotalPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnPrintProcessedOrders = New System.Windows.Forms.Button()
+        Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
+        Me.rdoCheckAll = New System.Windows.Forms.RadioButton()
+        Me.rdoCheckNone = New System.Windows.Forms.RadioButton()
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -43,15 +47,68 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgProcessedOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dtgProcessedOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress, Me.dcOrderTotalPrice})
+        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.exported, Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress, Me.dcOrderTotalPrice})
         Me.dtgProcessedOrders.DataSource = Me.OrderBindingSource
-        Me.dtgProcessedOrders.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgProcessedOrders.Location = New System.Drawing.Point(12, 66)
         Me.dtgProcessedOrders.Name = "dtgProcessedOrders"
         Me.dtgProcessedOrders.RowHeadersVisible = False
+        DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
+        DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
+        Me.dtgProcessedOrders.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtgProcessedOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgProcessedOrders.Size = New System.Drawing.Size(696, 306)
         Me.dtgProcessedOrders.TabIndex = 8
+        '
+        'exported
+        '
+        Me.exported.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
+        Me.exported.HeaderText = "Eksporter"
+        Me.exported.Name = "exported"
+        Me.exported.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.exported.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.exported.Width = 60
+        '
+        'ModifiedDataGridViewTextBoxColumn
+        '
+        Me.ModifiedDataGridViewTextBoxColumn.DataPropertyName = "modified"
+        Me.ModifiedDataGridViewTextBoxColumn.HeaderText = "Sist redigert"
+        Me.ModifiedDataGridViewTextBoxColumn.Name = "ModifiedDataGridViewTextBoxColumn"
+        Me.ModifiedDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Ordrenr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'dcCustomerId
+        '
+        Me.dcCustomerId.DataPropertyName = "Customer"
+        Me.dcCustomerId.HeaderText = "Kundenr"
+        Me.dcCustomerId.Name = "dcCustomerId"
+        Me.dcCustomerId.ReadOnly = True
+        '
+        'dcCustomerName
+        '
+        Me.dcCustomerName.DataPropertyName = "Customer"
+        Me.dcCustomerName.HeaderText = "Navn"
+        Me.dcCustomerName.Name = "dcCustomerName"
+        Me.dcCustomerName.ReadOnly = True
+        '
+        'dcOrderAddress
+        '
+        Me.dcOrderAddress.DataPropertyName = "Address"
+        Me.dcOrderAddress.HeaderText = "Leveringsadresse"
+        Me.dcOrderAddress.Name = "dcOrderAddress"
+        Me.dcOrderAddress.ReadOnly = True
+        '
+        'dcOrderTotalPrice
+        '
+        Me.dcOrderTotalPrice.DataPropertyName = "id"
+        Me.dcOrderTotalPrice.HeaderText = "Beløp"
+        Me.dcOrderTotalPrice.Name = "dcOrderTotalPrice"
+        Me.dcOrderTotalPrice.ReadOnly = True
         '
         'OrderBindingSource
         '
@@ -59,7 +116,7 @@ Partial Class frmAdminProcessedOrders
         '
         'btnPrintProcessedOrders
         '
-        Me.btnPrintProcessedOrders.Location = New System.Drawing.Point(12, 378)
+        Me.btnPrintProcessedOrders.Location = New System.Drawing.Point(437, 378)
         Me.btnPrintProcessedOrders.Name = "btnPrintProcessedOrders"
         Me.btnPrintProcessedOrders.Size = New System.Drawing.Size(132, 23)
         Me.btnPrintProcessedOrders.TabIndex = 9
@@ -75,46 +132,34 @@ Partial Class frmAdminProcessedOrders
         Me.btnTransferToBillingSystem.Text = "Overfør til fakturasystem"
         Me.btnTransferToBillingSystem.UseVisualStyleBackColor = True
         '
-        'ModifiedDataGridViewTextBoxColumn
+        'rdoCheckAll
         '
-        Me.ModifiedDataGridViewTextBoxColumn.DataPropertyName = "modified"
-        Me.ModifiedDataGridViewTextBoxColumn.HeaderText = "Sist redigert"
-        Me.ModifiedDataGridViewTextBoxColumn.Name = "ModifiedDataGridViewTextBoxColumn"
+        Me.rdoCheckAll.AutoSize = True
+        Me.rdoCheckAll.Location = New System.Drawing.Point(13, 378)
+        Me.rdoCheckAll.Name = "rdoCheckAll"
+        Me.rdoCheckAll.Size = New System.Drawing.Size(68, 17)
+        Me.rdoCheckAll.TabIndex = 11
+        Me.rdoCheckAll.TabStop = True
+        Me.rdoCheckAll.Text = "Merk alle"
+        Me.rdoCheckAll.UseVisualStyleBackColor = True
         '
-        'IdDataGridViewTextBoxColumn
+        'rdoCheckNone
         '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Ordrenr"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        '
-        'dcCustomerId
-        '
-        Me.dcCustomerId.DataPropertyName = "Customer"
-        Me.dcCustomerId.HeaderText = "Kundenr"
-        Me.dcCustomerId.Name = "dcCustomerId"
-        '
-        'dcCustomerName
-        '
-        Me.dcCustomerName.DataPropertyName = "Customer"
-        Me.dcCustomerName.HeaderText = "Navn"
-        Me.dcCustomerName.Name = "dcCustomerName"
-        '
-        'dcOrderAddress
-        '
-        Me.dcOrderAddress.DataPropertyName = "Address"
-        Me.dcOrderAddress.HeaderText = "Leveringsadresse"
-        Me.dcOrderAddress.Name = "dcOrderAddress"
-        '
-        'dcOrderTotalPrice
-        '
-        Me.dcOrderTotalPrice.DataPropertyName = "id"
-        Me.dcOrderTotalPrice.HeaderText = "Beløp"
-        Me.dcOrderTotalPrice.Name = "dcOrderTotalPrice"
+        Me.rdoCheckNone.AutoSize = True
+        Me.rdoCheckNone.Location = New System.Drawing.Point(87, 378)
+        Me.rdoCheckNone.Name = "rdoCheckNone"
+        Me.rdoCheckNone.Size = New System.Drawing.Size(78, 17)
+        Me.rdoCheckNone.TabIndex = 12
+        Me.rdoCheckNone.TabStop = True
+        Me.rdoCheckNone.Text = "Merk ingen"
+        Me.rdoCheckNone.UseVisualStyleBackColor = True
         '
         'frmAdminProcessedOrders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(720, 441)
+        Me.Controls.Add(Me.rdoCheckNone)
+        Me.Controls.Add(Me.rdoCheckAll)
         Me.Controls.Add(Me.btnTransferToBillingSystem)
         Me.Controls.Add(Me.btnPrintProcessedOrders)
         Me.Controls.Add(Me.dtgProcessedOrders)
@@ -123,6 +168,8 @@ Partial Class frmAdminProcessedOrders
         Me.Controls.SetChildIndex(Me.dtgProcessedOrders, 0)
         Me.Controls.SetChildIndex(Me.btnPrintProcessedOrders, 0)
         Me.Controls.SetChildIndex(Me.btnTransferToBillingSystem, 0)
+        Me.Controls.SetChildIndex(Me.rdoCheckAll, 0)
+        Me.Controls.SetChildIndex(Me.rdoCheckNone, 0)
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -133,6 +180,9 @@ Partial Class frmAdminProcessedOrders
     Friend WithEvents btnPrintProcessedOrders As System.Windows.Forms.Button
     Friend WithEvents btnTransferToBillingSystem As System.Windows.Forms.Button
     Friend WithEvents OrderBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents rdoCheckAll As System.Windows.Forms.RadioButton
+    Friend WithEvents rdoCheckNone As System.Windows.Forms.RadioButton
+    Friend WithEvents exported As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents ModifiedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcCustomerId As System.Windows.Forms.DataGridViewTextBoxColumn

@@ -459,6 +459,7 @@ Partial Class frmAdminCakes
         Me.price.HeaderText = "Pris"
         Me.price.Name = "price"
         Me.price.ReadOnly = True
+        Me.price.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic
         '
         'MarkupPercentageDataGridViewTextBoxColumn
         '
