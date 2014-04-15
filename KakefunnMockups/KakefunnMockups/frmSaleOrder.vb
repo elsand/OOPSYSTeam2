@@ -4,6 +4,44 @@
     Private currentRecord As Order = New Order()
 
     Public Sub LoadOrder(order As Order)
+        'Existing record. Preloads it from db.
+        isNewRecord = False
+        'Adds info to form.
+        cbCustomerName.Text = order.Customer.fullName.ToString()
+        ddlDeliveryMethod.Text = order.DeliveryMethod.name.ToString()
+        txtDeliveryName.Text = order.deliveryFirstName.ToString() & " " _
+                                & order.deliveryLastName.ToString()
+        txtAddress.Text = order.Address.address1.ToString()
+        txtZip.Text = order.Address.Zip.zip1.ToString()
+        If order.discountAbsolute.HasValue Then
+            If order.discountAbsolute.Value > 0 Then
+                rdoCurrencyValue.Checked = True
+                txtDiscount.Text = order.discountAbsolute.Value()
+            End If
+        ElseIf order.discountPercentage.HasValue Then
+            If order.discountPercentage.Value > 0 Then
+                rdoPercent.Checked = True
+                txtDiscount.Text = order.discountPercentage.Value()
+            End If
+        Else
+            rdoNone.Checked = True
+            txtDiscount.Text = ""
+        End If
+        txtTelephone.Text = order.deliveryPhone.ToString()
+        txtEmail.Text = order.deliveryEmail.ToString()
+        If order.deliveryDate.Date > CDate("1976-01-27") Then
+            dtpDeliveryDate.Value = order.deliveryDate.Date()
+        End If
+        If order.note Is Nothing Then
+            txtInternalNote.Text = ""
+        Else
+            txtInternalNote.Text = order.note.ToString()
+        End If
+        If order.isPaid = True Then
+            cboIsPayed.Checked = True
+        Else
+            cboIsPayed.Checked = False
+        End If
         MsgBox("load order " & order.id)
     End Sub
 
