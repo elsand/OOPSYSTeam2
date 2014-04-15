@@ -42,7 +42,24 @@
         Else
             cboIsPayed.Checked = False
         End If
-        MsgBox("load order " & order.id)
+
+        Dim orderNr As Integer = order.id
+        Dim orderLines = (From x In DBM.Instance.OrderLines Where x.Order.id = orderNr _
+                         Select x).ToList()
+
+        For Each row In orderLines
+            Dim ol As OrderLine = New OrderLine
+            ol.Ingredient = row.Ingredient
+            ol.amount = row.amount
+            'Throws exception from StockManager if ingredient isn't in stock.
+            'Then we won't be able to load the order.
+            ol.totalPrice = ol.amount * StockManager.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+            OrderLinesBindingSource.Add(ol)
+        Next
+
+        SyncCurrentOrderWithBindingSource()
+        UpdateTotalPrice()
+
     End Sub
 
     Public Sub NewOrder()
