@@ -34,6 +34,7 @@ Partial Class frmAdminProcessedOrders
         Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
         Me.rdoCheckAll = New System.Windows.Forms.RadioButton()
         Me.rdoCheckNone = New System.Windows.Forms.RadioButton()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -154,10 +155,20 @@ Partial Class frmAdminProcessedOrders
         Me.rdoCheckNone.Text = "Merk ingen"
         Me.rdoCheckNone.UseVisualStyleBackColor = True
         '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(250, 377)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 13
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
         'frmAdminProcessedOrders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(720, 441)
+        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.rdoCheckNone)
         Me.Controls.Add(Me.rdoCheckAll)
         Me.Controls.Add(Me.btnTransferToBillingSystem)
@@ -170,6 +181,7 @@ Partial Class frmAdminProcessedOrders
         Me.Controls.SetChildIndex(Me.btnTransferToBillingSystem, 0)
         Me.Controls.SetChildIndex(Me.rdoCheckAll, 0)
         Me.Controls.SetChildIndex(Me.rdoCheckNone, 0)
+        Me.Controls.SetChildIndex(Me.Button1, 0)
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -189,5 +201,6 @@ Partial Class frmAdminProcessedOrders
     Friend WithEvents dcCustomerName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcOrderAddress As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcOrderTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
