@@ -175,7 +175,6 @@ Public Class frmAdminProcessedOrders
         While File.Exists(newFileName)
             i += 1
             newFileName = "KakeOrderExport_" & i & "_" & Date.Today & ".xml"
-            MsgBox(newFileName)
         End While
     End Sub
 
