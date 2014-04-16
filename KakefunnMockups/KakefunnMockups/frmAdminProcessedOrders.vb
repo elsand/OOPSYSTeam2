@@ -6,34 +6,44 @@
 Imports System.Xml
 Imports System.IO
 Public Class frmAdminProcessedOrders
-    Private originalFileName As String = "KakeOrderExport_1_" & Date.Today & ".xml"
-    Private newFileName As String = originalFileName
+    Private fileName As String = "KakeOrderExport_1_" & Date.Today & ".xml"
 
     Private Sub frmAdminProcessedOrders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadBindingSource()
+        startUp()
     End Sub
 
-    Private Sub loadBindingSource()
+    Private Sub startUp()
         ' Load data from orders and bind to datagridview
         DBM.Instance.Orders.Load()
         OrderBindingSource.DataSource = DBM.Instance.Orders.Local.ToBindingList().Where(Function(o) Not o.exported.HasValue)
+        If OrderBindingSource.Count > 1 Then
+            dtgProcessedOrders.Enabled = True
+            rdoCheckAll.Enabled = True
+            rdoCheckNone.Enabled = True
+        Else
+            dtgProcessedOrders.Enabled = False
+            rdoCheckAll.Enabled = False
+            rdoCheckNone.Enabled = False
+        End If
     End Sub
 
     Private Sub dtgProcessedOrders_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgProcessedOrders.CellFormatting
-        Select Case dtgProcessedOrders.Columns(e.ColumnIndex).Name
-            Case "dcCustomerId" 'Adds customer number to dgv.
-                e.Value = CType(e.Value, Customer).id
-            Case "dcCustomerName" 'Adds customer name to datagridview.
-                Dim c As Customer = CType(e.Value, Customer)
-                e.Value = c.firstName & " " & c.lastName
-            Case "dcOrderAddress" 'Adds customer address to datagridview.
-                Dim a As Address = CType(e.Value, Address)
-                e.Value = a.address1 & ", " & a.Zip.zip1 & " " & a.Zip.city
-            Case "dcOrderTotalPrice" 'Adds order total price to datagridview.
-                Dim row As DataGridViewRow = dtgProcessedOrders.Rows(e.RowIndex)
-                Dim o As Order = CType(row.DataBoundItem, Order)
-                e.Value = OrderManager.GetOrderPrice(o)
-        End Select
+        If e.Value IsNot Nothing Then
+            Select Case dtgProcessedOrders.Columns(e.ColumnIndex).Name
+                Case "dcCustomerId" 'Adds customer number to dgv.
+                    e.Value = CType(e.Value, Customer).id
+                Case "dcCustomerName" 'Adds customer name to datagridview.
+                    Dim c As Customer = CType(e.Value, Customer)
+                    e.Value = c.firstName & " " & c.lastName
+                Case "dcOrderAddress" 'Adds customer address to datagridview.
+                    Dim a As Address = CType(e.Value, Address)
+                    e.Value = a.address1 & ", " & a.Zip.zip1 & " " & a.Zip.city
+                Case "dcOrderTotalPrice" 'Adds order total price to datagridview.
+                    Dim row As DataGridViewRow = dtgProcessedOrders.Rows(e.RowIndex)
+                    Dim o As Order = CType(row.DataBoundItem, Order)
+                    e.Value = OrderManager.GetOrderPrice(o)
+            End Select
+        End If
 
         'Sets row as selected when row checkbox is ticked.
         'The graphics are a litt glitchy, but the ticked lines are selected.
@@ -56,7 +66,8 @@ Public Class frmAdminProcessedOrders
             settings.Indent = True
 
             'Create XmlWriter
-            Using writer As XmlWriter = XmlWriter.Create(newFileName)
+            'File gets saved in program catalog.
+            Using writer As XmlWriter = XmlWriter.Create(fileName)
                 'Begin writing
                 writer.WriteStartDocument()
                 writer.WriteStartElement("Orders") 'XML Root
@@ -108,6 +119,9 @@ Public Class frmAdminProcessedOrders
                 Next
                 writer.WriteEndElement()
                 writer.WriteEndDocument()
+
+                'Shows xml in web-browser. Purely to show that something is happening.
+                Process.Start(LocalSystemHelper.getDefaultBrowser(), fileName)
             End Using
 
             'Writes changes to db.
@@ -117,7 +131,7 @@ Public Class frmAdminProcessedOrders
                 MsgBox(ex)
             End Try
             MsgBox("Eksporterte " & j & " ordre.")
-            loadBindingSource()
+            startUp()
         Else
             MsgBox("Ingen ordre er valgt")
         End If
@@ -166,20 +180,25 @@ Public Class frmAdminProcessedOrders
 
     Private Sub btnPrintProcessedOrders_Click(sender As Object, e As EventArgs) Handles btnPrintProcessedOrders.Click
         'Opens internal report for processed orders.
-        frmDialogAdminNotExported.ShowDialog()
+        If OrderBindingSource.Count > 1 Then
+            frmDialogAdminNotExported.ShowDialog()
+        Else
+            MsgBox("Det er ingen ordre å vise")
+        End If
+
     End Sub
 
     Private Sub checkFileName()
         'Checks if filename exists before writing xml-file to hdd.
         Dim i As Integer = 0
-        While File.Exists(newFileName)
+        While File.Exists(fileName)
             i += 1
-            newFileName = "KakeOrderExport_" & i & "_" & Date.Today & ".xml"
+            fileName = "KakeOrderExport_" & i & "_" & Date.Today & ".xml"
         End While
     End Sub
 
     Private Sub btnUpdateList_Click(sender As Object, e As EventArgs) Handles btnUpdateList.Click
         'Not working. Can't seem to get changes in db without restarting the program.
-        loadBindingSource()
+        startUp()
     End Sub
 End Class
