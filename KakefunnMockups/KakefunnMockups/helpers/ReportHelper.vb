@@ -14,15 +14,20 @@
         Select Case type
             Case "turnover"
                 Me.rdf = "Kakefunn.Turnover.rdlc"
-
                 Return Me._createTurnoverReport()
+
             Case "ingredientHistory"
                 Me.rdf = "Kakefunn.IngredientHistory.rdlc"
-
                 Return Me._createIngredientHistoryReport()
+
             Case "lastYearNextMonth"
                 Me.rdf = "Kakefunn.LastYearNextMonth.rdlc"
                 Return Me._createLastYearNextMonthReport()
+
+            Case "test"
+                Me.rdf = "Kakefunn.test.rdlc"
+                Return Me._createTest()
+
 
 
         End Select
@@ -73,6 +78,17 @@
         )
     End Function
 
+    Private Function _createTest() As DataTable
 
+
+
+        Return DBM.Instance.GetDataTableFromQuery( _
+        "SELECT id, customerId, deliveryFirstName, deliveryLastName, deliveryAddressId, deliveryPhone, deliveryEmail, deliveryMethodId, deliveryDate, employeeId, subscriptionId, shippingPrice, discountPercentage, " & _
+        "  discountAbsolute, note, isPaid, sent, exported, created, modified, isSubscriptionOrder " & _
+        "FROM `Order`" & _
+        "WHERE (created BETWEEN '" & Me.startDate & "' AND '" & Me.stopDate & "')" _
+        )
+
+    End Function
 
 End Class

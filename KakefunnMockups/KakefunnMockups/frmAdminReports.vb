@@ -65,7 +65,10 @@ Public Class frmAdminReports
                 reportDataSource = New ReportDataSource("IngredientHistory", rph.getDataTable("ingredientHistory"))
             Case 3
                 reportDataSource = New ReportDataSource("LastYearNextMonth", rph.getDataTable("lastYearNextMonth"))
-
+            Case 4
+                rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
+                rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
+                reportDataSource = New ReportDataSource("test", rph.getDataTable("test"))
 
 
         End Select
