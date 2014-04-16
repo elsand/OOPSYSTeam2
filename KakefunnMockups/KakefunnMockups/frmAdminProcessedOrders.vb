@@ -1,4 +1,5 @@
-﻿Public Class frmAdminProcessedOrders
+﻿Imports System.Xml
+Public Class frmAdminProcessedOrders
     Private Sub frmAdminProcessedOrders_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Load data from orders and bind to datagridview
         DBM.Instance.Orders.Where(Function(o) Not o.exported.HasValue).Load()
@@ -6,7 +7,7 @@
     End Sub
 
     Private Sub dtgProcessedOrders_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgProcessedOrders.CellFormatting
-           Select dtgProcessedOrders.Columns(e.ColumnIndex).Name
+        Select Case dtgProcessedOrders.Columns(e.ColumnIndex).Name
             Case "dcCustomerId"
                 e.Value = CType(e.Value, Customer).id
             Case "dcCustomerName"
@@ -32,7 +33,7 @@
     End Sub
 
     Private Sub btnTransferToBillingSystem_Click(sender As Object, e As EventArgs) Handles btnTransferToBillingSystem.Click
-        'Create simple xml-file.
+
     End Sub
 
     Private Sub rdoCheckAll_CheckedChanged(sender As Object, e As EventArgs) Handles rdoCheckAll.CheckedChanged

@@ -47,13 +47,15 @@
         Dim orderLines = (From x In DBM.Instance.OrderLines Where x.Order.id = orderNr _
                          Select x).ToList()
 
+        'TODO:
+        'Figure out how to lock existing orderlines.
+        'Allow reduction on the same orderLine at the old unit price or deletion of line.
+        'Has to add new orderLines if the order is to be expanded, new unit price.
         For Each row In orderLines
             Dim ol As OrderLine = New OrderLine
             ol.Ingredient = row.Ingredient
             ol.amount = row.amount
-            'Throws exception from StockManager if ingredient isn't in stock.
-            'Then we won't be able to load the order.
-            ol.totalPrice = ol.amount * StockManager.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+            ol.totalPrice = row.totalPrice
             OrderLinesBindingSource.Add(ol)
         Next
 
