@@ -123,6 +123,7 @@
     <Compile Include="frmDialogAdminNotExported.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="helpers\LocalSystemHelper.vb" />
     <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
@@ -314,6 +315,11 @@
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="report\NotExportedOrders.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NotExportedOrders.xsd</DependentUpon>
     </Compile>
     <Compile Include="report\PackingList.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -513,6 +519,17 @@
     <None Include="My Project\DataSources\Cake.datasource" />
     <None Include="My Project\DataSources\Customer.datasource" />
     <None Include="My Project\DataSources\Order.datasource" />
+    <None Include="report\NotExportedOrders.xsc">
+      <DependentUpon>NotExportedOrders.xsd</DependentUpon>
+    </None>
+    <None Include="report\NotExportedOrders.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>NotExportedOrders.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="report\NotExportedOrders.xss">
+      <DependentUpon>NotExportedOrders.xsd</DependentUpon>
+    </None>
     <None Include="report\PackingList.xsc">
       <DependentUpon>PackingList.xsd</DependentUpon>
     </None>

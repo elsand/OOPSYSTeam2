@@ -34,6 +34,7 @@ Partial Class frmAdminProcessedOrders
         Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
         Me.rdoCheckAll = New System.Windows.Forms.RadioButton()
         Me.rdoCheckNone = New System.Windows.Forms.RadioButton()
+        Me.btnUpdateList = New System.Windows.Forms.Button()
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -118,7 +119,7 @@ Partial Class frmAdminProcessedOrders
         '
         Me.btnPrintProcessedOrders.Location = New System.Drawing.Point(437, 378)
         Me.btnPrintProcessedOrders.Name = "btnPrintProcessedOrders"
-        Me.btnPrintProcessedOrders.Size = New System.Drawing.Size(132, 23)
+        Me.btnPrintProcessedOrders.Size = New System.Drawing.Size(132, 38)
         Me.btnPrintProcessedOrders.TabIndex = 9
         Me.btnPrintProcessedOrders.Text = "Skriv ut rapport"
         Me.btnPrintProcessedOrders.UseVisualStyleBackColor = True
@@ -127,7 +128,7 @@ Partial Class frmAdminProcessedOrders
         '
         Me.btnTransferToBillingSystem.Location = New System.Drawing.Point(576, 378)
         Me.btnTransferToBillingSystem.Name = "btnTransferToBillingSystem"
-        Me.btnTransferToBillingSystem.Size = New System.Drawing.Size(132, 23)
+        Me.btnTransferToBillingSystem.Size = New System.Drawing.Size(132, 38)
         Me.btnTransferToBillingSystem.TabIndex = 10
         Me.btnTransferToBillingSystem.Text = "Overfør til fakturasystem"
         Me.btnTransferToBillingSystem.UseVisualStyleBackColor = True
@@ -154,10 +155,20 @@ Partial Class frmAdminProcessedOrders
         Me.rdoCheckNone.Text = "Merk ingen"
         Me.rdoCheckNone.UseVisualStyleBackColor = True
         '
+        'btnUpdateList
+        '
+        Me.btnUpdateList.Location = New System.Drawing.Point(299, 378)
+        Me.btnUpdateList.Name = "btnUpdateList"
+        Me.btnUpdateList.Size = New System.Drawing.Size(132, 38)
+        Me.btnUpdateList.TabIndex = 13
+        Me.btnUpdateList.Text = "Oppdater liste"
+        Me.btnUpdateList.UseVisualStyleBackColor = True
+        '
         'frmAdminProcessedOrders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(720, 441)
+        Me.Controls.Add(Me.btnUpdateList)
         Me.Controls.Add(Me.rdoCheckNone)
         Me.Controls.Add(Me.rdoCheckAll)
         Me.Controls.Add(Me.btnTransferToBillingSystem)
@@ -170,6 +181,7 @@ Partial Class frmAdminProcessedOrders
         Me.Controls.SetChildIndex(Me.btnTransferToBillingSystem, 0)
         Me.Controls.SetChildIndex(Me.rdoCheckAll, 0)
         Me.Controls.SetChildIndex(Me.rdoCheckNone, 0)
+        Me.Controls.SetChildIndex(Me.btnUpdateList, 0)
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -189,5 +201,6 @@ Partial Class frmAdminProcessedOrders
     Friend WithEvents dcCustomerName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcOrderAddress As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcOrderTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnUpdateList As System.Windows.Forms.Button
 
 End Class
