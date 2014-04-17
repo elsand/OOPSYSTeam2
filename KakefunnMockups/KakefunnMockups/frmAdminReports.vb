@@ -61,7 +61,6 @@ Public Class frmAdminReports
                 reportDataSource = New ReportDataSource("DataSet1", rph.getDataTable("turnover"))
             Case 2
                 rph.id = cboSelectIngredient.SelectedValue
-
                 reportDataSource = New ReportDataSource("IngredientHistory", rph.getDataTable("ingredientHistory"))
             Case 3
                 reportDataSource = New ReportDataSource("LastYearNextMonth", rph.getDataTable("lastYearNextMonth"))
@@ -69,7 +68,10 @@ Public Class frmAdminReports
                 rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
                 rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
                 reportDataSource = New ReportDataSource("test", rph.getDataTable("test"))
-
+            Case 5
+                rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
+                rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
+                reportDataSource = New ReportDataSource("SystemEvent", rph.getDataTable("SystemEvent"))
 
         End Select
 
