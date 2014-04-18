@@ -64,7 +64,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>kakefunn.ico</ApplicationIcon>
+    <ApplicationIcon>resources\kakefunn.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -632,8 +632,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="kakefunn.ico" />
-    <Content Include="Portal-Images-portal-the-game-29379430-800-800.ico" />
+    <Content Include="resources\kakefunn.ico" />
     <Content Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
