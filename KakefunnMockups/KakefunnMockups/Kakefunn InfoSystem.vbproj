@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -59,6 +59,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>kakefunn.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -386,6 +392,12 @@
     <Compile Include="Role.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="SplashScreen.Designer.vb">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SplashScreen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Subscription.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -481,6 +493,9 @@
     <EmbeddedResource Include="report\SystemEvent.rdlc" />
     <EmbeddedResource Include="report\test.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
+    <EmbeddedResource Include="SplashScreen.resx">
+      <DependentUpon>SplashScreen.vb</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="EmployeeTest.xsc">
@@ -511,6 +526,7 @@
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.vb</LastGenOutput>
     </None>
+    <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -616,6 +632,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="kakefunn.ico" />
+    <Content Include="Portal-Images-portal-the-game-29379430-800-800.ico" />
     <Content Include="README.txt" />
   </ItemGroup>
   <ItemGroup>

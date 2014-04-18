@@ -16,6 +16,15 @@ Public Class frmAdminProcessedOrders
         ' Load data from orders and bind to datagridview
         DBM.Instance.Orders.Load()
         OrderBindingSource.DataSource = DBM.Instance.Orders.Local.ToBindingList().Where(Function(o) Not o.exported.HasValue)
+
+        'While the above code allows for filtering, the below code 
+        'makes it possible to update the datasource from the db without restarting 
+        'the program. 
+        'Dim orderQuery = (From x In DBM.Instance.Orders _
+        '                 Where Not x.exported.HasValue _
+        '                Select x).ToList()
+        'OrderBindingSource.DataSource = orderQuery
+
         If OrderBindingSource.Count > 1 Then
             dtgProcessedOrders.Enabled = True
             rdoCheckAll.Enabled = True
@@ -199,6 +208,7 @@ Public Class frmAdminProcessedOrders
 
     Private Sub btnUpdateList_Click(sender As Object, e As EventArgs) Handles btnUpdateList.Click
         'Not working. Can't seem to get changes in db without restarting the program.
-        startUp()
+        '        startUp()
+        DBM.Instance.ChangeTracker.DetectChanges()
     End Sub
 End Class

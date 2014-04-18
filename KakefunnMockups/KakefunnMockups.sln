@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "KakefunnMockups", "KakefunnMockups\KakefunnMockups.vbproj", "{730F645A-52A8-4D44-BF0A-8DF940D70771}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Kakefunn InfoSystem", "KakefunnMockups\Kakefunn InfoSystem.vbproj", "{730F645A-52A8-4D44-BF0A-8DF940D70771}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
