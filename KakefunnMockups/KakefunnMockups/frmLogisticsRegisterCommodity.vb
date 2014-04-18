@@ -106,14 +106,14 @@ Public Class frmLogisticsRegisterCommodity
                         Exit For
                     End If
                 Next
-            If Not gotLocation Then
-                MsgBox(ingLocInfo & vbCrLf & vbCrLf & "Ingen tilstøtende lokasjoner er tilgjengelige. " _
-                       & "Foreslår første ledige lokasjon.")
-                firstFreeLocation()
-            Else
-                MsgBox(ingLocInfo)
+                If Not gotLocation Then
+                    MsgBox(ingLocInfo & vbCrLf & vbCrLf & "Ingen tilstøtende lokasjoner er tilgjengelige. " _
+                           & "Foreslår første ledige lokasjon.")
+                    firstFreeLocation()
+                Else
+                    MsgBox(ingLocInfo)
+                End If
             End If
-        End If
             btnRegisterBatchInStock.Enabled = True
         Else
             MsgBox("Velg en vareforsendelse")
