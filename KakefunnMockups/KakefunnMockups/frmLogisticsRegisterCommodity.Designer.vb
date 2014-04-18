@@ -19,6 +19,7 @@ Partial Class frmLogisticsRegisterCommodity
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.grpEditSelectedBatch = New System.Windows.Forms.GroupBox()
         Me.dtpExpireDate = New System.Windows.Forms.DateTimePicker()
         Me.lblExpireDate = New System.Windows.Forms.Label()
@@ -29,17 +30,20 @@ Partial Class frmLogisticsRegisterCommodity
         Me.txtRack = New System.Windows.Forms.TextBox()
         Me.btnRegisterBatchInStock = New System.Windows.Forms.Button()
         Me.btnSearchBatch = New System.Windows.Forms.Button()
-        Me.txtSearchBatch = New System.Windows.Forms.TextBox()
         Me.lblSearchBatch = New System.Windows.Forms.Label()
         Me.dtgLogisticsRegisterCommodity = New System.Windows.Forms.DataGridView()
-        Me.Partinr = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ingrediens = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitCountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BatchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblShowBatchExpectedInStock = New System.Windows.Forms.Label()
         Me.dtpBatchExpectedInStock = New System.Windows.Forms.DateTimePicker()
+        Me.numSearchBatch = New Kakefunn.NumericTextbox()
+        Me.btnShowAll = New System.Windows.Forms.Button()
         Me.grpEditSelectedBatch.SuspendLayout()
         CType(Me.dtgLogisticsRegisterCommodity, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'grpEditSelectedBatch
@@ -135,13 +139,6 @@ Partial Class frmLogisticsRegisterCommodity
         Me.btnSearchBatch.Text = "Søk"
         Me.btnSearchBatch.UseVisualStyleBackColor = True
         '
-        'txtSearchBatch
-        '
-        Me.txtSearchBatch.Location = New System.Drawing.Point(100, 81)
-        Me.txtSearchBatch.Name = "txtSearchBatch"
-        Me.txtSearchBatch.Size = New System.Drawing.Size(106, 20)
-        Me.txtSearchBatch.TabIndex = 5
-        '
         'lblSearchBatch
         '
         Me.lblSearchBatch.AutoSize = True
@@ -153,34 +150,50 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'dtgLogisticsRegisterCommodity
         '
+        Me.dtgLogisticsRegisterCommodity.AutoGenerateColumns = False
         Me.dtgLogisticsRegisterCommodity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgLogisticsRegisterCommodity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgLogisticsRegisterCommodity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Partinr, Me.Column1, Me.Column2, Me.Column5})
+        Me.dtgLogisticsRegisterCommodity.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdDataGridViewTextBoxColumn, Me.Ingrediens, Me.UnitCountDataGridViewTextBoxColumn, Me.OrderedDataGridViewTextBoxColumn})
+        Me.dtgLogisticsRegisterCommodity.DataSource = Me.BatchBindingSource
         Me.dtgLogisticsRegisterCommodity.Location = New System.Drawing.Point(15, 108)
         Me.dtgLogisticsRegisterCommodity.Name = "dtgLogisticsRegisterCommodity"
+        Me.dtgLogisticsRegisterCommodity.ReadOnly = True
         Me.dtgLogisticsRegisterCommodity.RowHeadersVisible = False
+        Me.dtgLogisticsRegisterCommodity.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgLogisticsRegisterCommodity.Size = New System.Drawing.Size(683, 288)
         Me.dtgLogisticsRegisterCommodity.TabIndex = 8
         '
-        'Partinr
+        'IdDataGridViewTextBoxColumn
         '
-        Me.Partinr.HeaderText = "Partinr"
-        Me.Partinr.Name = "Partinr"
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Partinr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'Column1
+        'Ingrediens
         '
-        Me.Column1.HeaderText = "Ingrediens"
-        Me.Column1.Name = "Column1"
+        Me.Ingrediens.DataPropertyName = "Ingredient"
+        Me.Ingrediens.HeaderText = "Ingrediens"
+        Me.Ingrediens.Name = "Ingrediens"
+        Me.Ingrediens.ReadOnly = True
         '
-        'Column2
+        'UnitCountDataGridViewTextBoxColumn
         '
-        Me.Column2.HeaderText = "Antall"
-        Me.Column2.Name = "Column2"
+        Me.UnitCountDataGridViewTextBoxColumn.DataPropertyName = "unitCount"
+        Me.UnitCountDataGridViewTextBoxColumn.HeaderText = "Antall"
+        Me.UnitCountDataGridViewTextBoxColumn.Name = "UnitCountDataGridViewTextBoxColumn"
+        Me.UnitCountDataGridViewTextBoxColumn.ReadOnly = True
         '
-        'Column5
+        'OrderedDataGridViewTextBoxColumn
         '
-        Me.Column5.HeaderText = "Bestilt dato"
-        Me.Column5.Name = "Column5"
+        Me.OrderedDataGridViewTextBoxColumn.DataPropertyName = "ordered"
+        Me.OrderedDataGridViewTextBoxColumn.HeaderText = "Bestilt dato"
+        Me.OrderedDataGridViewTextBoxColumn.Name = "OrderedDataGridViewTextBoxColumn"
+        Me.OrderedDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'BatchBindingSource
+        '
+        Me.BatchBindingSource.DataSource = GetType(Kakefunn.Batch)
         '
         'lblShowBatchExpectedInStock
         '
@@ -199,29 +212,51 @@ Partial Class frmLogisticsRegisterCommodity
         Me.dtpBatchExpectedInStock.Size = New System.Drawing.Size(100, 20)
         Me.dtpBatchExpectedInStock.TabIndex = 7
         '
+        'numSearchBatch
+        '
+        Me.numSearchBatch.AllowDecimal = False
+        Me.numSearchBatch.AllowNegative = False
+        Me.numSearchBatch.AllowSpace = False
+        Me.numSearchBatch.Location = New System.Drawing.Point(110, 81)
+        Me.numSearchBatch.Name = "numSearchBatch"
+        Me.numSearchBatch.Size = New System.Drawing.Size(100, 20)
+        Me.numSearchBatch.TabIndex = 22
+        '
+        'btnShowAll
+        '
+        Me.btnShowAll.Location = New System.Drawing.Point(297, 79)
+        Me.btnShowAll.Name = "btnShowAll"
+        Me.btnShowAll.Size = New System.Drawing.Size(75, 23)
+        Me.btnShowAll.TabIndex = 23
+        Me.btnShowAll.Text = "Vis alle"
+        Me.btnShowAll.UseVisualStyleBackColor = True
+        '
         'frmLogisticsRegisterCommodity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(716, 505)
+        Me.Controls.Add(Me.btnShowAll)
+        Me.Controls.Add(Me.numSearchBatch)
         Me.Controls.Add(Me.dtpBatchExpectedInStock)
         Me.Controls.Add(Me.lblShowBatchExpectedInStock)
         Me.Controls.Add(Me.dtgLogisticsRegisterCommodity)
         Me.Controls.Add(Me.lblSearchBatch)
-        Me.Controls.Add(Me.txtSearchBatch)
         Me.Controls.Add(Me.btnSearchBatch)
         Me.Controls.Add(Me.grpEditSelectedBatch)
         Me.Name = "frmLogisticsRegisterCommodity"
         Me.Text = "Registrere varer"
         Me.Controls.SetChildIndex(Me.grpEditSelectedBatch, 0)
         Me.Controls.SetChildIndex(Me.btnSearchBatch, 0)
-        Me.Controls.SetChildIndex(Me.txtSearchBatch, 0)
         Me.Controls.SetChildIndex(Me.lblSearchBatch, 0)
         Me.Controls.SetChildIndex(Me.dtgLogisticsRegisterCommodity, 0)
         Me.Controls.SetChildIndex(Me.lblShowBatchExpectedInStock, 0)
         Me.Controls.SetChildIndex(Me.dtpBatchExpectedInStock, 0)
+        Me.Controls.SetChildIndex(Me.numSearchBatch, 0)
+        Me.Controls.SetChildIndex(Me.btnShowAll, 0)
         Me.grpEditSelectedBatch.ResumeLayout(False)
         Me.grpEditSelectedBatch.PerformLayout()
         CType(Me.dtgLogisticsRegisterCommodity, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -234,16 +269,19 @@ Partial Class frmLogisticsRegisterCommodity
     Friend WithEvents txtRack As System.Windows.Forms.TextBox
     Friend WithEvents btnRegisterBatchInStock As System.Windows.Forms.Button
     Friend WithEvents btnSearchBatch As System.Windows.Forms.Button
-    Friend WithEvents txtSearchBatch As System.Windows.Forms.TextBox
     Friend WithEvents lblSearchBatch As System.Windows.Forms.Label
     Friend WithEvents dtgLogisticsRegisterCommodity As System.Windows.Forms.DataGridView
     Friend WithEvents dtpExpireDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblExpireDate As System.Windows.Forms.Label
-    Friend WithEvents Partinr As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblShowBatchExpectedInStock As System.Windows.Forms.Label
     Friend WithEvents dtpBatchExpectedInStock As System.Windows.Forms.DateTimePicker
+    Friend WithEvents BatchBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents IngredientDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Ingrediens As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UnitCountDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents OrderedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents numSearchBatch As Kakefunn.NumericTextbox
+    Friend WithEvents btnShowAll As System.Windows.Forms.Button
 
 End Class
