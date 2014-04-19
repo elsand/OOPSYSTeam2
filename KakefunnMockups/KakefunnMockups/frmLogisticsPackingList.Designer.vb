@@ -21,11 +21,7 @@ Partial Class frmLogisticsPackingList
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.dtgPackingList = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblOrdersToEnvoyDate = New System.Windows.Forms.Label()
         Me.dtpPackingList = New System.Windows.Forms.DateTimePicker()
         Me.lblPickDate = New System.Windows.Forms.Label()
@@ -34,51 +30,57 @@ Partial Class frmLogisticsPackingList
         Me.grpPerformOnOrders = New System.Windows.Forms.GroupBox()
         Me.btnSetStatus = New System.Windows.Forms.Button()
         Me.cboStatusSetOrder = New System.Windows.Forms.ComboBox()
-        Me.PackingList = New Kakefunn.PackingList()
-        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OrderTableAdapter = New Kakefunn.PackingListTableAdapters.OrderTableAdapter()
+        Me.cnOrderId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnDeliveryTo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnZip = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeliveryFirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeliveryLastNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeliveryPhoneDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeliveryEmailDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeliveryDateDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SubscriptionIdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ShippingPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiscountPercentageDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DiscountAbsoluteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.NoteDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IsPaidDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.SentDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ExportedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CreatedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ModifiedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IsSubscriptionOrderDataGridViewCheckBoxColumn = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AddressDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.CustomerDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeliveryMethodDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.EmployeeDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dtgPackingList, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.grpPerformOnOrders.SuspendLayout()
-        CType(Me.PackingList, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpPerformOnOrders.SuspendLayout()
         Me.SuspendLayout()
         '
         'dtgPackingList
         '
+        Me.dtgPackingList.AllowUserToAddRows = False
+        Me.dtgPackingList.AllowUserToDeleteRows = False
+        Me.dtgPackingList.AutoGenerateColumns = False
         Me.dtgPackingList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgPackingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgPackingList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column5, Me.Column3, Me.Column6})
+        Me.dtgPackingList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cnOrderId, Me.cnDeliveryTo, Me.cnAddress, Me.cnZip, Me.cnStatus, Me.IdDataGridViewTextBoxColumn, Me.DeliveryFirstNameDataGridViewTextBoxColumn, Me.DeliveryLastNameDataGridViewTextBoxColumn, Me.DeliveryPhoneDataGridViewTextBoxColumn, Me.DeliveryEmailDataGridViewTextBoxColumn, Me.DeliveryDateDataGridViewTextBoxColumn, Me.SubscriptionIdDataGridViewTextBoxColumn, Me.ShippingPriceDataGridViewTextBoxColumn, Me.DiscountPercentageDataGridViewTextBoxColumn, Me.DiscountAbsoluteDataGridViewTextBoxColumn, Me.NoteDataGridViewTextBoxColumn, Me.IsPaidDataGridViewCheckBoxColumn, Me.SentDataGridViewTextBoxColumn, Me.ExportedDataGridViewTextBoxColumn, Me.CreatedDataGridViewTextBoxColumn, Me.ModifiedDataGridViewTextBoxColumn, Me.IsSubscriptionOrderDataGridViewCheckBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.CustomerDataGridViewTextBoxColumn, Me.DeliveryMethodDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn})
+        Me.dtgPackingList.DataSource = Me.OrderBindingSource
         Me.dtgPackingList.Location = New System.Drawing.Point(12, 90)
         Me.dtgPackingList.Name = "dtgPackingList"
+        Me.dtgPackingList.ReadOnly = True
         Me.dtgPackingList.RowHeadersVisible = False
         Me.dtgPackingList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgPackingList.Size = New System.Drawing.Size(611, 348)
         Me.dtgPackingList.TabIndex = 6
         '
-        'Column1
+        'OrderBindingSource
         '
-        Me.Column1.HeaderText = "Ordrenr"
-        Me.Column1.Name = "Column1"
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Leveres til"
-        Me.Column2.Name = "Column2"
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Adresse"
-        Me.Column5.Name = "Column5"
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "Postnr/sted"
-        Me.Column3.Name = "Column3"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "Status"
-        Me.Column6.Name = "Column6"
+        Me.OrderBindingSource.DataSource = GetType(Kakefunn.Order)
         '
         'lblOrdersToEnvoyDate
         '
@@ -148,26 +150,215 @@ Partial Class frmLogisticsPackingList
         'cboStatusSetOrder
         '
         Me.cboStatusSetOrder.FormattingEnabled = True
-        Me.cboStatusSetOrder.Items.AddRange(New Object() {"Sendt"})
+        Me.cboStatusSetOrder.Items.AddRange(New Object() {"Sendt", "Ikke sendt"})
         Me.cboStatusSetOrder.Location = New System.Drawing.Point(243, 20)
         Me.cboStatusSetOrder.Name = "cboStatusSetOrder"
         Me.cboStatusSetOrder.Size = New System.Drawing.Size(70, 21)
         Me.cboStatusSetOrder.TabIndex = 2
         Me.cboStatusSetOrder.Text = "Sendt"
         '
-        'PackingList
+        'cnOrderId
         '
-        Me.PackingList.DataSetName = "PackingList"
-        Me.PackingList.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        Me.cnOrderId.DataPropertyName = "id"
+        Me.cnOrderId.HeaderText = "Ordrenr"
+        Me.cnOrderId.Name = "cnOrderId"
+        Me.cnOrderId.ReadOnly = True
         '
-        'OrderBindingSource
+        'cnDeliveryTo
         '
-        Me.OrderBindingSource.DataMember = "Order"
-        Me.OrderBindingSource.DataSource = Me.PackingList
+        Me.cnDeliveryTo.DataPropertyName = "Customer"
+        Me.cnDeliveryTo.HeaderText = "Leveres til"
+        Me.cnDeliveryTo.Name = "cnDeliveryTo"
+        Me.cnDeliveryTo.ReadOnly = True
         '
-        'OrderTableAdapter
+        'cnAddress
         '
-        Me.OrderTableAdapter.ClearBeforeFill = True
+        Me.cnAddress.DataPropertyName = "Address"
+        Me.cnAddress.HeaderText = "Adresse"
+        Me.cnAddress.Name = "cnAddress"
+        Me.cnAddress.ReadOnly = True
+        '
+        'cnZip
+        '
+        Me.cnZip.DataPropertyName = "Address"
+        Me.cnZip.HeaderText = "Postnr/sted"
+        Me.cnZip.Name = "cnZip"
+        Me.cnZip.ReadOnly = True
+        '
+        'cnStatus
+        '
+        Me.cnStatus.DataPropertyName = "sent"
+        Me.cnStatus.HeaderText = "Status"
+        Me.cnStatus.Name = "cnStatus"
+        Me.cnStatus.ReadOnly = True
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IdDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeliveryFirstNameDataGridViewTextBoxColumn
+        '
+        Me.DeliveryFirstNameDataGridViewTextBoxColumn.DataPropertyName = "deliveryFirstName"
+        Me.DeliveryFirstNameDataGridViewTextBoxColumn.HeaderText = "deliveryFirstName"
+        Me.DeliveryFirstNameDataGridViewTextBoxColumn.Name = "DeliveryFirstNameDataGridViewTextBoxColumn"
+        Me.DeliveryFirstNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DeliveryFirstNameDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeliveryLastNameDataGridViewTextBoxColumn
+        '
+        Me.DeliveryLastNameDataGridViewTextBoxColumn.DataPropertyName = "deliveryLastName"
+        Me.DeliveryLastNameDataGridViewTextBoxColumn.HeaderText = "deliveryLastName"
+        Me.DeliveryLastNameDataGridViewTextBoxColumn.Name = "DeliveryLastNameDataGridViewTextBoxColumn"
+        Me.DeliveryLastNameDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DeliveryLastNameDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeliveryPhoneDataGridViewTextBoxColumn
+        '
+        Me.DeliveryPhoneDataGridViewTextBoxColumn.DataPropertyName = "deliveryPhone"
+        Me.DeliveryPhoneDataGridViewTextBoxColumn.HeaderText = "deliveryPhone"
+        Me.DeliveryPhoneDataGridViewTextBoxColumn.Name = "DeliveryPhoneDataGridViewTextBoxColumn"
+        Me.DeliveryPhoneDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DeliveryPhoneDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeliveryEmailDataGridViewTextBoxColumn
+        '
+        Me.DeliveryEmailDataGridViewTextBoxColumn.DataPropertyName = "deliveryEmail"
+        Me.DeliveryEmailDataGridViewTextBoxColumn.HeaderText = "deliveryEmail"
+        Me.DeliveryEmailDataGridViewTextBoxColumn.Name = "DeliveryEmailDataGridViewTextBoxColumn"
+        Me.DeliveryEmailDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DeliveryEmailDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeliveryDateDataGridViewTextBoxColumn
+        '
+        Me.DeliveryDateDataGridViewTextBoxColumn.DataPropertyName = "deliveryDate"
+        Me.DeliveryDateDataGridViewTextBoxColumn.HeaderText = "deliveryDate"
+        Me.DeliveryDateDataGridViewTextBoxColumn.Name = "DeliveryDateDataGridViewTextBoxColumn"
+        Me.DeliveryDateDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DeliveryDateDataGridViewTextBoxColumn.Visible = False
+        '
+        'SubscriptionIdDataGridViewTextBoxColumn
+        '
+        Me.SubscriptionIdDataGridViewTextBoxColumn.DataPropertyName = "subscriptionId"
+        Me.SubscriptionIdDataGridViewTextBoxColumn.HeaderText = "subscriptionId"
+        Me.SubscriptionIdDataGridViewTextBoxColumn.Name = "SubscriptionIdDataGridViewTextBoxColumn"
+        Me.SubscriptionIdDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SubscriptionIdDataGridViewTextBoxColumn.Visible = False
+        '
+        'ShippingPriceDataGridViewTextBoxColumn
+        '
+        Me.ShippingPriceDataGridViewTextBoxColumn.DataPropertyName = "shippingPrice"
+        Me.ShippingPriceDataGridViewTextBoxColumn.HeaderText = "shippingPrice"
+        Me.ShippingPriceDataGridViewTextBoxColumn.Name = "ShippingPriceDataGridViewTextBoxColumn"
+        Me.ShippingPriceDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ShippingPriceDataGridViewTextBoxColumn.Visible = False
+        '
+        'DiscountPercentageDataGridViewTextBoxColumn
+        '
+        Me.DiscountPercentageDataGridViewTextBoxColumn.DataPropertyName = "discountPercentage"
+        Me.DiscountPercentageDataGridViewTextBoxColumn.HeaderText = "discountPercentage"
+        Me.DiscountPercentageDataGridViewTextBoxColumn.Name = "DiscountPercentageDataGridViewTextBoxColumn"
+        Me.DiscountPercentageDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DiscountPercentageDataGridViewTextBoxColumn.Visible = False
+        '
+        'DiscountAbsoluteDataGridViewTextBoxColumn
+        '
+        Me.DiscountAbsoluteDataGridViewTextBoxColumn.DataPropertyName = "discountAbsolute"
+        Me.DiscountAbsoluteDataGridViewTextBoxColumn.HeaderText = "discountAbsolute"
+        Me.DiscountAbsoluteDataGridViewTextBoxColumn.Name = "DiscountAbsoluteDataGridViewTextBoxColumn"
+        Me.DiscountAbsoluteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DiscountAbsoluteDataGridViewTextBoxColumn.Visible = False
+        '
+        'NoteDataGridViewTextBoxColumn
+        '
+        Me.NoteDataGridViewTextBoxColumn.DataPropertyName = "note"
+        Me.NoteDataGridViewTextBoxColumn.HeaderText = "note"
+        Me.NoteDataGridViewTextBoxColumn.Name = "NoteDataGridViewTextBoxColumn"
+        Me.NoteDataGridViewTextBoxColumn.ReadOnly = True
+        Me.NoteDataGridViewTextBoxColumn.Visible = False
+        '
+        'IsPaidDataGridViewCheckBoxColumn
+        '
+        Me.IsPaidDataGridViewCheckBoxColumn.DataPropertyName = "isPaid"
+        Me.IsPaidDataGridViewCheckBoxColumn.HeaderText = "isPaid"
+        Me.IsPaidDataGridViewCheckBoxColumn.Name = "IsPaidDataGridViewCheckBoxColumn"
+        Me.IsPaidDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.IsPaidDataGridViewCheckBoxColumn.Visible = False
+        '
+        'SentDataGridViewTextBoxColumn
+        '
+        Me.SentDataGridViewTextBoxColumn.DataPropertyName = "sent"
+        Me.SentDataGridViewTextBoxColumn.HeaderText = "sent"
+        Me.SentDataGridViewTextBoxColumn.Name = "SentDataGridViewTextBoxColumn"
+        Me.SentDataGridViewTextBoxColumn.ReadOnly = True
+        Me.SentDataGridViewTextBoxColumn.Visible = False
+        '
+        'ExportedDataGridViewTextBoxColumn
+        '
+        Me.ExportedDataGridViewTextBoxColumn.DataPropertyName = "exported"
+        Me.ExportedDataGridViewTextBoxColumn.HeaderText = "exported"
+        Me.ExportedDataGridViewTextBoxColumn.Name = "ExportedDataGridViewTextBoxColumn"
+        Me.ExportedDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ExportedDataGridViewTextBoxColumn.Visible = False
+        '
+        'CreatedDataGridViewTextBoxColumn
+        '
+        Me.CreatedDataGridViewTextBoxColumn.DataPropertyName = "created"
+        Me.CreatedDataGridViewTextBoxColumn.HeaderText = "created"
+        Me.CreatedDataGridViewTextBoxColumn.Name = "CreatedDataGridViewTextBoxColumn"
+        Me.CreatedDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CreatedDataGridViewTextBoxColumn.Visible = False
+        '
+        'ModifiedDataGridViewTextBoxColumn
+        '
+        Me.ModifiedDataGridViewTextBoxColumn.DataPropertyName = "modified"
+        Me.ModifiedDataGridViewTextBoxColumn.HeaderText = "modified"
+        Me.ModifiedDataGridViewTextBoxColumn.Name = "ModifiedDataGridViewTextBoxColumn"
+        Me.ModifiedDataGridViewTextBoxColumn.ReadOnly = True
+        Me.ModifiedDataGridViewTextBoxColumn.Visible = False
+        '
+        'IsSubscriptionOrderDataGridViewCheckBoxColumn
+        '
+        Me.IsSubscriptionOrderDataGridViewCheckBoxColumn.DataPropertyName = "isSubscriptionOrder"
+        Me.IsSubscriptionOrderDataGridViewCheckBoxColumn.HeaderText = "isSubscriptionOrder"
+        Me.IsSubscriptionOrderDataGridViewCheckBoxColumn.Name = "IsSubscriptionOrderDataGridViewCheckBoxColumn"
+        Me.IsSubscriptionOrderDataGridViewCheckBoxColumn.ReadOnly = True
+        Me.IsSubscriptionOrderDataGridViewCheckBoxColumn.Visible = False
+        '
+        'AddressDataGridViewTextBoxColumn
+        '
+        Me.AddressDataGridViewTextBoxColumn.DataPropertyName = "Address"
+        Me.AddressDataGridViewTextBoxColumn.HeaderText = "Address"
+        Me.AddressDataGridViewTextBoxColumn.Name = "AddressDataGridViewTextBoxColumn"
+        Me.AddressDataGridViewTextBoxColumn.ReadOnly = True
+        Me.AddressDataGridViewTextBoxColumn.Visible = False
+        '
+        'CustomerDataGridViewTextBoxColumn
+        '
+        Me.CustomerDataGridViewTextBoxColumn.DataPropertyName = "Customer"
+        Me.CustomerDataGridViewTextBoxColumn.HeaderText = "Customer"
+        Me.CustomerDataGridViewTextBoxColumn.Name = "CustomerDataGridViewTextBoxColumn"
+        Me.CustomerDataGridViewTextBoxColumn.ReadOnly = True
+        Me.CustomerDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeliveryMethodDataGridViewTextBoxColumn
+        '
+        Me.DeliveryMethodDataGridViewTextBoxColumn.DataPropertyName = "DeliveryMethod"
+        Me.DeliveryMethodDataGridViewTextBoxColumn.HeaderText = "DeliveryMethod"
+        Me.DeliveryMethodDataGridViewTextBoxColumn.Name = "DeliveryMethodDataGridViewTextBoxColumn"
+        Me.DeliveryMethodDataGridViewTextBoxColumn.ReadOnly = True
+        Me.DeliveryMethodDataGridViewTextBoxColumn.Visible = False
+        '
+        'EmployeeDataGridViewTextBoxColumn
+        '
+        Me.EmployeeDataGridViewTextBoxColumn.DataPropertyName = "Employee"
+        Me.EmployeeDataGridViewTextBoxColumn.HeaderText = "Employee"
+        Me.EmployeeDataGridViewTextBoxColumn.Name = "EmployeeDataGridViewTextBoxColumn"
+        Me.EmployeeDataGridViewTextBoxColumn.ReadOnly = True
+        Me.EmployeeDataGridViewTextBoxColumn.Visible = False
         '
         'frmLogisticsPackingList
         '
@@ -188,19 +379,13 @@ Partial Class frmLogisticsPackingList
         Me.Controls.SetChildIndex(Me.btnMarkUnsent, 0)
         Me.Controls.SetChildIndex(Me.grpPerformOnOrders, 0)
         CType(Me.dtgPackingList, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.grpPerformOnOrders.ResumeLayout(False)
-        CType(Me.PackingList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpPerformOnOrders.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents dtgPackingList As System.Windows.Forms.DataGridView
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents lblOrdersToEnvoyDate As System.Windows.Forms.Label
     Friend WithEvents dtpPackingList As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblPickDate As System.Windows.Forms.Label
@@ -209,8 +394,32 @@ Partial Class frmLogisticsPackingList
     Friend WithEvents grpPerformOnOrders As System.Windows.Forms.GroupBox
     Friend WithEvents btnSetStatus As System.Windows.Forms.Button
     Friend WithEvents cboStatusSetOrder As System.Windows.Forms.ComboBox
-    Friend WithEvents PackingList As Kakefunn.PackingList
     Friend WithEvents OrderBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents OrderTableAdapter As Kakefunn.PackingListTableAdapters.OrderTableAdapter
+    Friend WithEvents cnOrderId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnDeliveryTo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnAddress As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnZip As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnStatus As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeliveryFirstNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeliveryLastNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeliveryPhoneDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeliveryEmailDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeliveryDateDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents SubscriptionIdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ShippingPriceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DiscountPercentageDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DiscountAbsoluteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents NoteDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IsPaidDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents SentDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ExportedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CreatedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ModifiedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IsSubscriptionOrderDataGridViewCheckBoxColumn As System.Windows.Forms.DataGridViewCheckBoxColumn
+    Friend WithEvents AddressDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents CustomerDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeliveryMethodDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents EmployeeDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

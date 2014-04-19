@@ -130,7 +130,10 @@
     <Compile Include="frmDialogAdminNotExported.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="helpers\IngredientHelper.vb" />
     <Compile Include="helpers\LocalSystemHelper.vb" />
+    <Compile Include="helpers\PackingListHelper.vb" />
+    <Compile Include="helpers\RawPrinterHelper.vb" />
     <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
@@ -491,6 +494,7 @@
     <EmbeddedResource Include="report\IngredientHistory.rdlc" />
     <EmbeddedResource Include="report\LastYearNextMonth.rdlc" />
     <EmbeddedResource Include="report\notExportedOrders.rdlc" />
+    <EmbeddedResource Include="report\Report2.rdlc" />
     <EmbeddedResource Include="report\SystemEvent.rdlc" />
     <EmbeddedResource Include="report\test.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />

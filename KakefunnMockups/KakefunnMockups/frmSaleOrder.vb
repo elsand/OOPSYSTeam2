@@ -405,4 +405,6 @@
     Private Sub txtInternalNote_TextChanged(sender As Object, e As EventArgs) Handles txtInternalNote.TextChanged
         currentRecord.note = txtInternalNote.Text
     End Sub
+
+
 End Class

@@ -22,4 +22,22 @@
         firstName = first
         lastName = last
     End Sub
+
+    Public Shared Function getFullName(ByVal firstName As String, ByVal lastName As String) As String
+        Return firstName & " " & lastName
+
+    End Function
+
+    Public Shared Function getFullName(ByVal e As Employee) As String
+        Return getFullName(e.firstName, e.lastName)
+
+
+    End Function
+    Public Shared Function getFullName(ByVal c As Customer) As String
+        Return getFullName(c.firstName, c.lastName)
+
+
+    End Function
+
+
 End Class
