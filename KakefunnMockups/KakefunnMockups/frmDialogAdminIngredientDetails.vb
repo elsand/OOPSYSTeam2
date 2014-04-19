@@ -175,8 +175,8 @@ Public Class frmDialogAdminIngredientDetails
                 frmAdminIngredient.txtSearch.Text = ""
                 Me.Close()
             End If
-            Dim loggtest As New SystemEvent ' JP tester
-            loggtest.saveSystemEvent("Admin Ingredient Details", "1", "Lagret ny ingrediens") ' JP tester
+            ' Logging the event
+            SystemEvent.saveSystemEvent("Ingredienser", "1", "Lagret ny ingrediens")
         Else
             'Error message, content missing in form.
             MsgBox("Sjekk at alle felter er utfylt", MsgBoxStyle.Exclamation, "Advarsel")
