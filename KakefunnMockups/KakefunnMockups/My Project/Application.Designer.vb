@@ -32,7 +32,12 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Kakefunn.frmAdminIngredient
+            Me.MainForm = Global.Kakefunn.frmLogisticsRegisterCommodity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
+        Protected Overrides Sub OnCreateSplashScreen()
+            Me.SplashScreen = Global.Kakefunn.SplashScreen
         End Sub
     End Class
 End Namespace
