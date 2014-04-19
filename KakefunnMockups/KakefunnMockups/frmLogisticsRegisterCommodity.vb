@@ -2,9 +2,12 @@
 'TODO:  - Comment code
 'Last edited: 18.04.14
 
+Imports System.Collections.Specialized
+Imports System.Configuration
 Public Class frmLogisticsRegisterCommodity
-    Private rowMax As Integer = 10
-    Private shelfMax As Integer = 50
+    'Defines warehouse size.
+    Private rowMax, shelfMax As Integer
+
     Private Sub btnSearchBatch_Click(sender As Object, e As EventArgs) Handles btnSearchBatch.Click
         If numSearchBatch.Text IsNot "" Then
             BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
@@ -18,6 +21,12 @@ Public Class frmLogisticsRegisterCommodity
                                         Not b.registered.HasValue)
 
         dtpExpireDate.Text = DateTime.Today.AddDays(15)
+
+        Dim appSettings As NameValueCollection
+        appSettings = ConfigurationManager.AppSettings
+
+        rowMax = appSettings.Item("rowMax")
+        shelfMax = appSettings.Item("shelfMax")
     End Sub
 
     Private Sub dtgLogisticsRegisterCommodity_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgLogisticsRegisterCommodity.CellFormatting
@@ -67,53 +76,62 @@ Public Class frmLogisticsRegisterCommodity
         Dim row, shelf As Integer
         Dim gotLocation As Boolean = False
         Dim ingLocInfo As String
+
+
         If ingredientName <> String.Empty Then
             Dim batchLoc = StockManager.getLocation(ingredientName)
-            If batchLoc.Count < 1 Then
-                MsgBox("Ingrediensen ligger ikke på lager fra før. Foreslår første ledige lokasjon.")
-                firstFreeLocation()
-            Else
-                ingLocInfo = ingredientName & " finnes på:" & vbCrLf
-                For Each Batch In batchLoc
-                    ingLocInfo = ingLocInfo & "Rad: " & Batch.locationRow _
-                        & ", Hylle: " & Batch.locationShelf
-                    row = Batch.locationRow
-                    shelf = Batch.locationShelf
-                    If shelf = shelfMax Then
-                        If StockManager.checkFreeLocation(row, shelf - 1) Then
-                            numRow.Text = row
-                            numShelf.Text = shelf - 1
-                            gotLocation = True
-                        End If
-                    ElseIf shelf = 1 Then
-                        If StockManager.checkFreeLocation(row, shelf + 1) Then
-                            numRow.Text = row
-                            numShelf.Text = shelf + 1
-                            gotLocation = True
-                        End If
-                    Else
-                        Dim i As Integer
-                        For i = shelf - 1 To shelf + 1
-                            If StockManager.checkFreeLocation(row, i) Then
-                                numRow.Text = row
-                                numShelf.Text = i
-                                gotLocation = True
-                                Exit For
-                            End If
-                        Next i
-                    End If
-                    If gotLocation Then
-                        Exit For
-                    End If
-                Next
-                If Not gotLocation Then
-                    MsgBox(ingLocInfo & vbCrLf & vbCrLf & "Ingen tilstøtende lokasjoner er tilgjengelige. " _
-                           & "Foreslår første ledige lokasjon.")
+
+            MsgBox("Maks rader: " & rowMax & ", Maks hyller: " & shelfMax)
+
+            Select Case batchLoc.Count
+                Case Is < 1
+                    MsgBox("Ingrediensen ligger ikke på lager fra før. Foreslår første ledige lokasjon.")
                     firstFreeLocation()
-                Else
-                    MsgBox(ingLocInfo)
-                End If
-            End If
+                Case Is >= 1
+                    ingLocInfo = ingredientName & " finnes på:" & vbCrLf
+                    For Each Batch In batchLoc
+
+                        ingLocInfo = ingLocInfo & "Rad: " & Batch.locationRow _
+                            & ", Hylle: " & Batch.locationShelf
+                        row = Batch.locationRow
+                        shelf = Batch.locationShelf
+
+                        Select Case shelf
+                            Case shelfMax
+                                If StockManager.checkFreeLocation(row, shelf - 1) Then
+                                    numRow.Text = row
+                                    numShelf.Text = shelf - 1
+                                    gotLocation = True
+                                End If
+                            Case 1
+                                If StockManager.checkFreeLocation(row, shelf + 1) Then
+                                    numRow.Text = row
+                                    numShelf.Text = shelf + 1
+                                    gotLocation = True
+                                End If
+                            Case 2 To shelfMax - 1
+                                Dim i As Integer
+                                For i = shelf - 1 To shelf + 1
+                                    If StockManager.checkFreeLocation(row, i) Then
+                                        numRow.Text = row
+                                        numShelf.Text = i
+                                        gotLocation = True
+                                        Exit For
+                                    End If
+                                Next i
+                        End Select
+                        If gotLocation Then
+                            Exit For
+                        End If
+                    Next
+                    If Not gotLocation Then
+                        MsgBox(ingLocInfo & vbCrLf & vbCrLf & "Ingen tilstøtende lokasjoner er tilgjengelige. " _
+                               & "Foreslår første ledige lokasjon.")
+                        firstFreeLocation()
+                    Else
+                        MsgBox(ingLocInfo)
+                    End If
+            End Select
             btnRegisterBatchInStock.Enabled = True
         Else
             MsgBox("Velg en vareforsendelse")
