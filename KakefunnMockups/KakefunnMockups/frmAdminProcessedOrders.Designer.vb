@@ -48,7 +48,7 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgProcessedOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dtgProcessedOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.exported, Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress, Me.dcOrderTotalPrice})
+        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcOrderTotalPrice, Me.exported, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress})
         Me.dtgProcessedOrders.DataSource = Me.OrderBindingSource
         Me.dtgProcessedOrders.Location = New System.Drawing.Point(12, 66)
         Me.dtgProcessedOrders.Name = "dtgProcessedOrders"
