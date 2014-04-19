@@ -32,15 +32,15 @@ Partial Class frmLogisticsRegisterCommodity
         Me.btnSearchBatch = New System.Windows.Forms.Button()
         Me.lblSearchBatch = New System.Windows.Forms.Label()
         Me.dtgLogisticsRegisterCommodity = New System.Windows.Forms.DataGridView()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ingrediens = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitCountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BatchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.lblShowBatchExpectedInStock = New System.Windows.Forms.Label()
         Me.dtpBatchExpectedInStock = New System.Windows.Forms.DateTimePicker()
         Me.numSearchBatch = New Kakefunn.NumericTextbox()
         Me.btnShowAll = New System.Windows.Forms.Button()
-        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ingrediens = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.UnitCountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpEditSelectedBatch.SuspendLayout()
         CType(Me.dtgLogisticsRegisterCommodity, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -170,6 +170,34 @@ Partial Class frmLogisticsRegisterCommodity
         Me.dtgLogisticsRegisterCommodity.Size = New System.Drawing.Size(683, 288)
         Me.dtgLogisticsRegisterCommodity.TabIndex = 8
         '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "Partinr"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'Ingrediens
+        '
+        Me.Ingrediens.DataPropertyName = "Ingredient"
+        Me.Ingrediens.HeaderText = "Ingrediens"
+        Me.Ingrediens.Name = "Ingrediens"
+        Me.Ingrediens.ReadOnly = True
+        '
+        'UnitCountDataGridViewTextBoxColumn
+        '
+        Me.UnitCountDataGridViewTextBoxColumn.DataPropertyName = "unitCount"
+        Me.UnitCountDataGridViewTextBoxColumn.HeaderText = "Antall"
+        Me.UnitCountDataGridViewTextBoxColumn.Name = "UnitCountDataGridViewTextBoxColumn"
+        Me.UnitCountDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'OrderedDataGridViewTextBoxColumn
+        '
+        Me.OrderedDataGridViewTextBoxColumn.DataPropertyName = "ordered"
+        Me.OrderedDataGridViewTextBoxColumn.HeaderText = "Bestilt dato"
+        Me.OrderedDataGridViewTextBoxColumn.Name = "OrderedDataGridViewTextBoxColumn"
+        Me.OrderedDataGridViewTextBoxColumn.ReadOnly = True
+        '
         'BatchBindingSource
         '
         Me.BatchBindingSource.DataSource = GetType(Kakefunn.Batch)
@@ -209,34 +237,6 @@ Partial Class frmLogisticsRegisterCommodity
         Me.btnShowAll.TabIndex = 23
         Me.btnShowAll.Text = "Vis alle"
         Me.btnShowAll.UseVisualStyleBackColor = True
-        '
-        'IdDataGridViewTextBoxColumn
-        '
-        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
-        Me.IdDataGridViewTextBoxColumn.HeaderText = "Partinr"
-        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
-        Me.IdDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'Ingrediens
-        '
-        Me.Ingrediens.DataPropertyName = "Ingredient"
-        Me.Ingrediens.HeaderText = "Ingrediens"
-        Me.Ingrediens.Name = "Ingrediens"
-        Me.Ingrediens.ReadOnly = True
-        '
-        'UnitCountDataGridViewTextBoxColumn
-        '
-        Me.UnitCountDataGridViewTextBoxColumn.DataPropertyName = "unitCount"
-        Me.UnitCountDataGridViewTextBoxColumn.HeaderText = "Antall"
-        Me.UnitCountDataGridViewTextBoxColumn.Name = "UnitCountDataGridViewTextBoxColumn"
-        Me.UnitCountDataGridViewTextBoxColumn.ReadOnly = True
-        '
-        'OrderedDataGridViewTextBoxColumn
-        '
-        Me.OrderedDataGridViewTextBoxColumn.DataPropertyName = "ordered"
-        Me.OrderedDataGridViewTextBoxColumn.HeaderText = "Bestilt dato"
-        Me.OrderedDataGridViewTextBoxColumn.Name = "OrderedDataGridViewTextBoxColumn"
-        Me.OrderedDataGridViewTextBoxColumn.ReadOnly = True
         '
         'frmLogisticsRegisterCommodity
         '
