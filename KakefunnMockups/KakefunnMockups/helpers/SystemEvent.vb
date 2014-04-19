@@ -10,7 +10,7 @@
         Me.logEmployeeId = logEmployeeId ' Må hardkodast fram til det finnes en kobling til tabellen systemEvent
         Me.logEventData = logEventData ' Prøve å få til et eller annet som logger det som skjer. Hva med teksten i knappen og noko anna informasjon?
 
-        DBM.Instance.GetDataTableFromQuery( _
+        DBM.Instance.GetDataSetFromQuery( _
          "INSERT INTO SystemEvent (eventName, eventTime, employeeId, eventData)" & _
          "VALUES ('" & Me.logEventName & "', NOW(), '1', '" & Me.eventData & "')" _
          )
