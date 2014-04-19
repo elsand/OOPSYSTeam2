@@ -28,7 +28,9 @@
                 Me.rdf = "Kakefunn.test.rdlc"
                 Return Me._createTest()
 
-
+            Case "SystemEvent"
+                Me.rdf = "Kakefunn.SystemEvent.rdlc"
+                Return Me._createSystemEvent()
 
         End Select
         Return Nothing
@@ -80,8 +82,6 @@
 
     Private Function _createTest() As DataTable
 
-
-
         Return DBM.Instance.GetDataTableFromQuery( _
         "SELECT id, customerId, deliveryFirstName, deliveryLastName, deliveryAddressId, deliveryPhone, deliveryEmail, deliveryMethodId, deliveryDate, employeeId, subscriptionId, shippingPrice, discountPercentage, " & _
         "  discountAbsolute, note, isPaid, sent, exported, created, modified, isSubscriptionOrder " & _
@@ -90,5 +90,17 @@
         )
 
     End Function
+
+    Private Function _createSystemEvent() As DataTable
+        ' Since the timestamp also has its time, and not only the date, search for timestamp has to be for the next day also 
+        Return DBM.Instance.GetDataTableFromQuery(
+        "SELECT * " & _
+        "FROM  `SystemEvent`" & _
+        "WHERE (eventTime BETWEEN '" & Me.startDate & "' AND '" & Me.stopDate & "')" _
+        )
+
+    End Function
+
+
 
 End Class

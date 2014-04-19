@@ -63,7 +63,7 @@ Public Class PackingListHelper
                           "<div class='cell'>" & ol.Ingredient.name & "</div> " & _
                           "<div class='cell'>" & ol.amount & "</div> " & _
                           "<div class='cell'>" & ol.Ingredient.Unit.name & "</div> " & _
-                          "<div class='cell'>" & IngredientHelper.getIngredientLocation(ol.Ingredient) & "</div> " & _
+                          "<div class='cell'>" & IngredientHelper.getIngredientLocation(ol) & "</div> " & _
                           "<div class='cell'><input type='checkbox'/></div> " & _
                           "</div>"
 

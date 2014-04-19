@@ -22,6 +22,7 @@ Partial Class frmSuperBase
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSuperBase))
         Me.mnuMain = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LogOutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -58,18 +59,18 @@ Partial Class frmSuperBase
         'LogOutToolStripMenuItem
         '
         Me.LogOutToolStripMenuItem.Name = "LogOutToolStripMenuItem"
-        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogOutToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.LogOutToolStripMenuItem.Text = "&Logg ut"
         '
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(112, 6)
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
         Me.ExitToolStripMenuItem.Text = "&Avslutt"
         '
         'AspectToolStripMenuItem
@@ -82,19 +83,19 @@ Partial Class frmSuperBase
         'SaleToolStripMenuItem
         '
         Me.SaleToolStripMenuItem.Name = "SaleToolStripMenuItem"
-        Me.SaleToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaleToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.SaleToolStripMenuItem.Text = "&Salg"
         '
         'AdminToolStripMenuItem
         '
         Me.AdminToolStripMenuItem.Name = "AdminToolStripMenuItem"
-        Me.AdminToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.AdminToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.AdminToolStripMenuItem.Text = "&Adminstrasjon"
         '
         'LogisticsToolStripMenuItem
         '
         Me.LogisticsToolStripMenuItem.Name = "LogisticsToolStripMenuItem"
-        Me.LogisticsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LogisticsToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.LogisticsToolStripMenuItem.Text = "&Lager"
         '
         'HelpToolStripMenuItem
@@ -116,7 +117,7 @@ Partial Class frmSuperBase
         'statusLogin
         '
         Me.statusLogin.Name = "statusLogin"
-        Me.statusLogin.Size = New System.Drawing.Size(341, 17)
+        Me.statusLogin.Size = New System.Drawing.Size(372, 17)
         Me.statusLogin.Spring = True
         Me.statusLogin.Text = "Innlogget: Ola Nordmann (salg)"
         Me.statusLogin.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
@@ -136,6 +137,7 @@ Partial Class frmSuperBase
         Me.ClientSize = New System.Drawing.Size(462, 447)
         Me.Controls.Add(Me.statusMain)
         Me.Controls.Add(Me.mnuMain)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.mnuMain
         Me.Name = "frmSuperBase"
         Me.Text = "frmSuperBase"

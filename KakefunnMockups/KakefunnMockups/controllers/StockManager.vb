@@ -128,4 +128,19 @@
                Select p.markUpPercentage).FirstOrDefault()
     End Function
 
+    Public Shared Function getLocation(ByVal ingredientName As String) As List(Of Batch)
+        Dim batchLoc = (From x In DBM.Instance.Batches Where x.Ingredient.name = ingredientName _
+                        And x.registered.HasValue Order By x.unitCount Descending).ToList()
+        Return batchLoc
+    End Function
+
+    Public Shared Function checkFreeLocation(ByVal row As Integer, shelf As Integer) As Boolean
+        Dim batchLoc = (From x In DBM.Instance.Batches Where x.locationShelf = shelf _
+                        And x.locationRow = row Select x).FirstOrDefault()
+        If batchLoc Is Nothing Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
 End Class
