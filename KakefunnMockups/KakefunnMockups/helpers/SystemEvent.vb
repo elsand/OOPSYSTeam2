@@ -6,9 +6,9 @@
 
     Public Sub saveSystemEvent(ByVal logEventName As String, ByVal logEmployeeId As Integer, logEventData As String)
 
-        Me.logEventName = logEventName ' Prøve å få til navn på formen
+        Me.logEventName = logEventName ' Prøve å få til navn på formen. Hardodar føreløpig
         Me.logEmployeeId = logEmployeeId ' Må hardkodast fram til det finnes en kobling til tabellen systemEvent
-        Me.logEventData = logEventData ' Prøve å få til et eller annet som logger det som skjer. Hva med teksten i knappen og noko anna informasjon?
+        Me.logEventData = logEventData ' Prøve å få til et eller annet som logger det som skjer. Hva med teksten i knappen og noko anna informasjon? Hardodar føreløpig
 
         DBM.Instance.GetDataSetFromQuery( _
          "INSERT INTO SystemEvent (eventName, eventTime, employeeId, eventData)" & _
