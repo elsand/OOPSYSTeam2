@@ -206,7 +206,7 @@ Partial Class frmAdminReports
         Me.cboSelectIngredient.DataSource = Me.IngredientBindingSource1
         Me.cboSelectIngredient.DisplayMember = "name"
         Me.cboSelectIngredient.FormattingEnabled = True
-        Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 56)
+        Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 69)
         Me.cboSelectIngredient.Name = "cboSelectIngredient"
         Me.cboSelectIngredient.Size = New System.Drawing.Size(211, 21)
         Me.cboSelectIngredient.TabIndex = 9
