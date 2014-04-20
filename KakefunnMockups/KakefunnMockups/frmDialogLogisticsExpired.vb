@@ -1,56 +1,16 @@
-﻿''' <summary>
-''' As the name says... this is the dialog for the orders that is not exported.. just i case anyone
-''' wants to print it, use more paper and make squirrels homeless.. not that i really care about the squirrels, but chip 'n' dale are quite funny.  
-''' </summary>
-''' <remarks>Nah. not really.. </remarks>
-
-Imports Microsoft.Reporting.WinForms
+﻿Imports Microsoft.Reporting.WinForms
 
 
-Public Class frmDialogAdminNotExported
+Public Class frmDialogExpiredBatches
+
     Public reportDataSource As ReportDataSource
     Private Sub frmDialogAdminNotExported_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
         Try
 
-            'Crate an orderList.. 
-            Dim orders = DBM.Instance.Orders.Local.ToList().Where(Function(o) Not o.exported.HasValue)
 
-            'Create a datatable for the report, predefined in the report definition file. (The dataset connected to the report is just a dummy ... 
-            Dim t As New DataTable
-
-            'Add the fields
-            t.Columns.Add("id")
-            t.Columns.Add("customerId")
-            t.Columns.Add("modified", Type.GetType("System.String"))
-            t.Columns.Add("deliveryAdress", Type.GetType("System.String"))
-            t.Columns.Add("name", Type.GetType("System.String"))
-            t.Columns.Add("totalPrice", Type.GetType("System.Double"))
-
-
-            'Run through the list of not exported orders and add them to the datatable
-
-
-            For Each row In orders
-
-                Dim r = t.NewRow()
-
-                r("id") = row.id
-                r("customerId") = row.Customer.id
-
-                r("modified") = row.modified
-                r("deliveryAdress") = row.Customer.Address.address1 & ", " & row.Customer.Address.Zip.zip1 & " " & row.Customer.Address.Zip.city
-                r("name") = row.Customer.firstName & " " & row.Customer.lastName
-                r("totalPrice") = OrderManager.CalculateTotals(row).totalToPay()
-
-
-                t.Rows.Add(r)
-
-
-            Next
-
-
+            Dim r = New ReportHelper()
 
 
 
@@ -67,17 +27,18 @@ Public Class frmDialogAdminNotExported
 
             'Creating the the datasource
 
-            reportDataSource = New ReportDataSource("NotExportedOrders", t)
+            reportDataSource = New ReportDataSource("ExpiredBatches", r.getDataTable("expiredBatches"))
+
 
             'manipulating the localreport. 
-            With Me.rptNotExportedOrders.LocalReport
+            With Me.rptExpiredBatches.LocalReport
                 .DataSources.Clear()
                 .DataSources.Add(reportDataSource)
-                .ReportEmbeddedResource = "Kakefunn.notExportedOrders.rdlc"
+                .ReportEmbeddedResource = r.rdf
             End With
 
             'refreshing the report
-            Me.rptNotExportedOrders.RefreshReport()
+            Me.rptExpiredBatches.RefreshReport()
 
 
         Catch ex As Exception

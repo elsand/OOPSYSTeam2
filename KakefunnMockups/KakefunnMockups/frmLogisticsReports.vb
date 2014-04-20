@@ -130,6 +130,14 @@
     End Sub
 
     Private Sub btnPrintExpiredIngredients_Click(sender As Object, e As EventArgs) Handles btnPrintExpiredIngredients.Click
+        frmDialogExpiredBatches.ShowDialog()
+
+    End Sub
+
+    Private Sub dtgExpiredIngredients_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgExpiredIngredients.CellClick
+
+        dtgExpiredIngredients.Rows(e.RowIndex).Selected = True
+
 
     End Sub
 End Class

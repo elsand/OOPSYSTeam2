@@ -27,6 +27,9 @@
             Case "SystemEvent"
                 Me.rdf = "Kakefunn.SystemEvent.rdlc"
                 Return Me._createSystemEvent()
+            Case "expiredBatches"
+                Me.rdf = "Kakefunn.ExpiredBatches.rdlc"
+                Return Me._createExpiredBatches()
 
         End Select
         Return Nothing
@@ -86,6 +89,17 @@
         )
 
 
+
+    End Function
+
+
+    Private Function _createExpiredBatches() As DataTable
+
+        Return DBM.Instance.GetDataTableFromQuery( _
+            "select i.id, b.registered, b.expires, b.unitCount, u.`name`, b.locationRow, b.locationShelf from Batch b " & _
+            "inner join Ingredient i on i.id = b.ingredientId " & _
+            "inner join Unit u on u.id = i.unitId " & _
+            "where DATEDIFF(b.expires,now()) < 5 AND b.deleted IS NULL")
 
     End Function
 

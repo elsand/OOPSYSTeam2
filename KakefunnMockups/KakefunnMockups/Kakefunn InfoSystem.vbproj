@@ -333,6 +333,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="report\ExpiredBatches.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ExpiredBatches.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\NotExportedOrders.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -544,6 +549,17 @@
     <None Include="My Project\DataSources\Cake.datasource" />
     <None Include="My Project\DataSources\Customer.datasource" />
     <None Include="My Project\DataSources\Order.datasource" />
+    <None Include="report\ExpiredBatches.xsc">
+      <DependentUpon>ExpiredBatches.xsd</DependentUpon>
+    </None>
+    <None Include="report\ExpiredBatches.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ExpiredBatches.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="report\ExpiredBatches.xss">
+      <DependentUpon>ExpiredBatches.xsd</DependentUpon>
+    </None>
     <None Include="report\NotExportedOrders.xsc">
       <DependentUpon>NotExportedOrders.xsd</DependentUpon>
     </None>
