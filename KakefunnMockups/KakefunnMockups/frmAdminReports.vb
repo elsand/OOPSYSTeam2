@@ -67,10 +67,6 @@ Public Class frmAdminReports
             Case 4
                 rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
                 rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
-                reportDataSource = New ReportDataSource("test", rph.getDataTable("test"))
-            Case 5
-                rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
-                rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
                 reportDataSource = New ReportDataSource("SystemEvent", rph.getDataTable("SystemEvent"))
 
         End Select

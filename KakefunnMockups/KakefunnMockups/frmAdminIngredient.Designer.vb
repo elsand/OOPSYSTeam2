@@ -20,12 +20,6 @@ Partial Class frmAdminIngredient
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dtgResults = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.lblSearch = New System.Windows.Forms.Label()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
-        Me.btnDel = New System.Windows.Forms.Button()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.sdffsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -33,6 +27,12 @@ Partial Class frmAdminIngredient
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Deleted = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.lblSearch = New System.Windows.Forms.Label()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.btnNew = New System.Windows.Forms.Button()
+        Me.btnDel = New System.Windows.Forms.Button()
         CType(Me.dtgResults, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -51,6 +51,49 @@ Partial Class frmAdminIngredient
         Me.dtgResults.ShowEditingIcon = False
         Me.dtgResults.Size = New System.Drawing.Size(643, 365)
         Me.dtgResults.TabIndex = 10
+        '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Varenr"
+        Me.Column1.Name = "Column1"
+        Me.Column1.ReadOnly = True
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Navn"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        '
+        'sdffsdf
+        '
+        Me.sdffsdf.HeaderText = "Antall på lager"
+        Me.sdffsdf.Name = "sdffsdf"
+        Me.sdffsdf.ReadOnly = True
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "B/D/G* innkjøp"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "B/D/G* utsalg"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "Avanse i %"
+        Me.Column5.Name = "Column5"
+        Me.Column5.ReadOnly = True
+        '
+        'Deleted
+        '
+        Me.Deleted.HeaderText = "Deleted"
+        Me.Deleted.Name = "Deleted"
+        Me.Deleted.ReadOnly = True
+        Me.Deleted.Visible = False
         '
         'Label1
         '
@@ -103,49 +146,6 @@ Partial Class frmAdminIngredient
         Me.btnDel.TabIndex = 11
         Me.btnDel.Text = "Slett"
         Me.btnDel.UseVisualStyleBackColor = True
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Varenr"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Navn"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'sdffsdf
-        '
-        Me.sdffsdf.HeaderText = "Antall på lager"
-        Me.sdffsdf.Name = "sdffsdf"
-        Me.sdffsdf.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "B/D/G* innkjøp"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "B/D/G* utsalg"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Avanse i %"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Deleted
-        '
-        Me.Deleted.HeaderText = "Deleted"
-        Me.Deleted.Name = "Deleted"
-        Me.Deleted.ReadOnly = True
-        Me.Deleted.Visible = False
         '
         'frmAdminIngredient
         '

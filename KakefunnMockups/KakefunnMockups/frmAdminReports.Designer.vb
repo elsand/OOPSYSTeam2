@@ -102,7 +102,7 @@ Partial Class frmAdminReports
         'cboSelectReportForm
         '
         Me.cboSelectReportForm.FormattingEnabled = True
-        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Ingrediens siste år", "Forventet salg neste mnd", "Test", "Hendelseslogg"})
+        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Ingrediens siste år", "Forventet salg neste mnd", "Hendelseslogg"})
         Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
@@ -206,7 +206,7 @@ Partial Class frmAdminReports
         Me.cboSelectIngredient.DataSource = Me.IngredientBindingSource1
         Me.cboSelectIngredient.DisplayMember = "name"
         Me.cboSelectIngredient.FormattingEnabled = True
-        Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 70)
+        Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 56)
         Me.cboSelectIngredient.Name = "cboSelectIngredient"
         Me.cboSelectIngredient.Size = New System.Drawing.Size(211, 21)
         Me.cboSelectIngredient.TabIndex = 9

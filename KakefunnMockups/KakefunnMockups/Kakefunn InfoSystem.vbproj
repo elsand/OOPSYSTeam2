@@ -390,11 +390,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SystemEvent.xsd</DependentUpon>
     </Compile>
-    <Compile Include="report\test.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>test.xsd</DependentUpon>
-    </Compile>
     <Compile Include="report\Turnover.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -506,7 +501,6 @@
     <EmbeddedResource Include="report\notExportedOrders.rdlc" />
     <EmbeddedResource Include="report\ExpiredBatches.rdlc" />
     <EmbeddedResource Include="report\SystemEvent.rdlc" />
-    <EmbeddedResource Include="report\test.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">
       <DependentUpon>SplashScreen.vb</DependentUpon>
@@ -611,17 +605,6 @@
     </None>
     <None Include="report\SystemEvent.xss">
       <DependentUpon>SystemEvent.xsd</DependentUpon>
-    </None>
-    <None Include="report\test.xsc">
-      <DependentUpon>test.xsd</DependentUpon>
-    </None>
-    <None Include="report\test.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>test.Designer.vb</LastGenOutput>
-    </None>
-    <None Include="report\test.xss">
-      <DependentUpon>test.xsd</DependentUpon>
     </None>
     <None Include="report\Turnover.xsc">
       <DependentUpon>Turnover.xsd</DependentUpon>
