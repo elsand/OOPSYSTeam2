@@ -77,12 +77,15 @@
     End Function
 
     Private Function _createSystemEvent() As DataTable
-        ' Since the timestamp also has its time, and not only the date, search for timestamp has to be for the next day also 
+        ' Since the timestamp also has its time, and not only the date, SQL-query has to contain an OR-statement with a wildcard (%)
         Return DBM.Instance.GetDataTableFromQuery(
         "SELECT * " & _
         "FROM  `SystemEvent`" & _
-        "WHERE (eventTime BETWEEN '" & Me.startDate & "' AND '" & Me.stopDate & "')" _
+        "WHERE (eventTime BETWEEN '" & Me.startDate & "' AND '" & Me.stopDate & "')" & _
+        "OR (eventTime LIKE '" & Me.stopDate & "%')"
         )
+
+
 
     End Function
 
