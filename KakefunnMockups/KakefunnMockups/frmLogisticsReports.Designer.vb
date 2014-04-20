@@ -19,61 +19,171 @@ Partial Class frmLogisticsReports
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.dtgExpiredIngredients = New System.Windows.Forms.DataGridView()
-        Me.Varenr = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dsfgsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnIngredientId = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnRegisteredDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnExpireDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnLocation = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.RegisteredDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ExpectedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ExpiresDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitCountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrigUnitCountDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.UnitPurchasingPriceDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocationRowDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LocationShelfDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DeletedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IngredientDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.BatchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnPrintExpiredIngredients = New System.Windows.Forms.Button()
         Me.btnCheckAll = New System.Windows.Forms.Button()
         Me.btbDeleteCheckedIngredientsInStock = New System.Windows.Forms.Button()
         CType(Me.dtgExpiredIngredients, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'dtgExpiredIngredients
         '
         Me.dtgExpiredIngredients.AllowUserToAddRows = False
         Me.dtgExpiredIngredients.AllowUserToDeleteRows = False
+        Me.dtgExpiredIngredients.AutoGenerateColumns = False
         Me.dtgExpiredIngredients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgExpiredIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgExpiredIngredients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Varenr, Me.Column4, Me.Column1, Me.Column2, Me.Column3, Me.dsfgsdf})
+        Me.dtgExpiredIngredients.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cnIngredientId, Me.cnName, Me.cnRegisteredDate, Me.cnExpireDate, Me.cnAmount, Me.cnLocation, Me.IdDataGridViewTextBoxColumn, Me.OrderedDataGridViewTextBoxColumn, Me.RegisteredDataGridViewTextBoxColumn, Me.ExpectedDataGridViewTextBoxColumn, Me.ExpiresDataGridViewTextBoxColumn, Me.UnitCountDataGridViewTextBoxColumn, Me.OrigUnitCountDataGridViewTextBoxColumn, Me.UnitPurchasingPriceDataGridViewTextBoxColumn, Me.LocationRowDataGridViewTextBoxColumn, Me.LocationShelfDataGridViewTextBoxColumn, Me.DeletedDataGridViewTextBoxColumn, Me.IngredientDataGridViewTextBoxColumn})
+        Me.dtgExpiredIngredients.DataSource = Me.BatchBindingSource
         Me.dtgExpiredIngredients.Location = New System.Drawing.Point(12, 79)
         Me.dtgExpiredIngredients.Name = "dtgExpiredIngredients"
         Me.dtgExpiredIngredients.RowHeadersVisible = False
         Me.dtgExpiredIngredients.Size = New System.Drawing.Size(682, 267)
         Me.dtgExpiredIngredients.TabIndex = 5
         '
-        'Varenr
+        'cnIngredientId
         '
-        Me.Varenr.HeaderText = "Varenr"
-        Me.Varenr.Name = "Varenr"
+        Me.cnIngredientId.DataPropertyName = "Ingredient"
+        Me.cnIngredientId.HeaderText = "Varenr"
+        Me.cnIngredientId.Name = "cnIngredientId"
         '
-        'Column4
+        'cnName
         '
-        Me.Column4.HeaderText = "Navn"
-        Me.Column4.Name = "Column4"
+        Me.cnName.DataPropertyName = "Ingredient"
+        Me.cnName.HeaderText = "Navn"
+        Me.cnName.Name = "cnName"
         '
-        'Column1
+        'cnRegisteredDate
         '
-        Me.Column1.HeaderText = "Mottatt dato"
-        Me.Column1.Name = "Column1"
+        Me.cnRegisteredDate.DataPropertyName = "registered"
+        Me.cnRegisteredDate.HeaderText = "Mottatt dato"
+        Me.cnRegisteredDate.Name = "cnRegisteredDate"
         '
-        'Column2
+        'cnExpireDate
         '
-        Me.Column2.HeaderText = "Utløpsdato"
-        Me.Column2.Name = "Column2"
+        Me.cnExpireDate.DataPropertyName = "expires"
+        Me.cnExpireDate.HeaderText = "Utløpsdato"
+        Me.cnExpireDate.Name = "cnExpireDate"
         '
-        'Column3
+        'cnAmount
         '
-        Me.Column3.HeaderText = "Antall"
-        Me.Column3.Name = "Column3"
+        Me.cnAmount.HeaderText = "Antall"
+        Me.cnAmount.Name = "cnAmount"
         '
-        'dsfgsdf
+        'cnLocation
         '
-        Me.dsfgsdf.HeaderText = "Reol/Hylle"
-        Me.dsfgsdf.Name = "dsfgsdf"
+        Me.cnLocation.DataPropertyName = "locationRow"
+        Me.cnLocation.HeaderText = "Reol/Hylle"
+        Me.cnLocation.Name = "cnLocation"
+        '
+        'IdDataGridViewTextBoxColumn
+        '
+        Me.IdDataGridViewTextBoxColumn.DataPropertyName = "id"
+        Me.IdDataGridViewTextBoxColumn.HeaderText = "id"
+        Me.IdDataGridViewTextBoxColumn.Name = "IdDataGridViewTextBoxColumn"
+        Me.IdDataGridViewTextBoxColumn.Visible = False
+        '
+        'OrderedDataGridViewTextBoxColumn
+        '
+        Me.OrderedDataGridViewTextBoxColumn.DataPropertyName = "ordered"
+        Me.OrderedDataGridViewTextBoxColumn.HeaderText = "ordered"
+        Me.OrderedDataGridViewTextBoxColumn.Name = "OrderedDataGridViewTextBoxColumn"
+        Me.OrderedDataGridViewTextBoxColumn.Visible = False
+        '
+        'RegisteredDataGridViewTextBoxColumn
+        '
+        Me.RegisteredDataGridViewTextBoxColumn.DataPropertyName = "registered"
+        Me.RegisteredDataGridViewTextBoxColumn.HeaderText = "registered"
+        Me.RegisteredDataGridViewTextBoxColumn.Name = "RegisteredDataGridViewTextBoxColumn"
+        Me.RegisteredDataGridViewTextBoxColumn.Visible = False
+        '
+        'ExpectedDataGridViewTextBoxColumn
+        '
+        Me.ExpectedDataGridViewTextBoxColumn.DataPropertyName = "expected"
+        Me.ExpectedDataGridViewTextBoxColumn.HeaderText = "expected"
+        Me.ExpectedDataGridViewTextBoxColumn.Name = "ExpectedDataGridViewTextBoxColumn"
+        Me.ExpectedDataGridViewTextBoxColumn.Visible = False
+        '
+        'ExpiresDataGridViewTextBoxColumn
+        '
+        Me.ExpiresDataGridViewTextBoxColumn.DataPropertyName = "expires"
+        Me.ExpiresDataGridViewTextBoxColumn.HeaderText = "expires"
+        Me.ExpiresDataGridViewTextBoxColumn.Name = "ExpiresDataGridViewTextBoxColumn"
+        Me.ExpiresDataGridViewTextBoxColumn.Visible = False
+        '
+        'UnitCountDataGridViewTextBoxColumn
+        '
+        Me.UnitCountDataGridViewTextBoxColumn.DataPropertyName = "unitCount"
+        Me.UnitCountDataGridViewTextBoxColumn.HeaderText = "unitCount"
+        Me.UnitCountDataGridViewTextBoxColumn.Name = "UnitCountDataGridViewTextBoxColumn"
+        Me.UnitCountDataGridViewTextBoxColumn.Visible = False
+        '
+        'OrigUnitCountDataGridViewTextBoxColumn
+        '
+        Me.OrigUnitCountDataGridViewTextBoxColumn.DataPropertyName = "origUnitCount"
+        Me.OrigUnitCountDataGridViewTextBoxColumn.HeaderText = "origUnitCount"
+        Me.OrigUnitCountDataGridViewTextBoxColumn.Name = "OrigUnitCountDataGridViewTextBoxColumn"
+        Me.OrigUnitCountDataGridViewTextBoxColumn.Visible = False
+        '
+        'UnitPurchasingPriceDataGridViewTextBoxColumn
+        '
+        Me.UnitPurchasingPriceDataGridViewTextBoxColumn.DataPropertyName = "unitPurchasingPrice"
+        Me.UnitPurchasingPriceDataGridViewTextBoxColumn.HeaderText = "unitPurchasingPrice"
+        Me.UnitPurchasingPriceDataGridViewTextBoxColumn.Name = "UnitPurchasingPriceDataGridViewTextBoxColumn"
+        Me.UnitPurchasingPriceDataGridViewTextBoxColumn.Visible = False
+        '
+        'LocationRowDataGridViewTextBoxColumn
+        '
+        Me.LocationRowDataGridViewTextBoxColumn.DataPropertyName = "locationRow"
+        Me.LocationRowDataGridViewTextBoxColumn.HeaderText = "locationRow"
+        Me.LocationRowDataGridViewTextBoxColumn.Name = "LocationRowDataGridViewTextBoxColumn"
+        Me.LocationRowDataGridViewTextBoxColumn.Visible = False
+        '
+        'LocationShelfDataGridViewTextBoxColumn
+        '
+        Me.LocationShelfDataGridViewTextBoxColumn.DataPropertyName = "locationShelf"
+        Me.LocationShelfDataGridViewTextBoxColumn.HeaderText = "locationShelf"
+        Me.LocationShelfDataGridViewTextBoxColumn.Name = "LocationShelfDataGridViewTextBoxColumn"
+        Me.LocationShelfDataGridViewTextBoxColumn.Visible = False
+        '
+        'DeletedDataGridViewTextBoxColumn
+        '
+        Me.DeletedDataGridViewTextBoxColumn.DataPropertyName = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.HeaderText = "deleted"
+        Me.DeletedDataGridViewTextBoxColumn.Name = "DeletedDataGridViewTextBoxColumn"
+        Me.DeletedDataGridViewTextBoxColumn.Visible = False
+        '
+        'IngredientDataGridViewTextBoxColumn
+        '
+        Me.IngredientDataGridViewTextBoxColumn.DataPropertyName = "Ingredient"
+        Me.IngredientDataGridViewTextBoxColumn.HeaderText = "Ingredient"
+        Me.IngredientDataGridViewTextBoxColumn.Name = "IngredientDataGridViewTextBoxColumn"
+        Me.IngredientDataGridViewTextBoxColumn.Visible = False
+        '
+        'BatchBindingSource
+        '
+        Me.BatchBindingSource.DataSource = GetType(Kakefunn.Batch)
         '
         'btnPrintExpiredIngredients
         '
@@ -117,19 +227,33 @@ Partial Class frmLogisticsReports
         Me.Controls.SetChildIndex(Me.btnCheckAll, 0)
         Me.Controls.SetChildIndex(Me.btbDeleteCheckedIngredientsInStock, 0)
         CType(Me.dtgExpiredIngredients, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents dtgExpiredIngredients As System.Windows.Forms.DataGridView
-    Friend WithEvents Varenr As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents dsfgsdf As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents btnPrintExpiredIngredients As System.Windows.Forms.Button
     Friend WithEvents btnCheckAll As System.Windows.Forms.Button
     Friend WithEvents btbDeleteCheckedIngredientsInStock As System.Windows.Forms.Button
+    Friend WithEvents BatchBindingSource As System.Windows.Forms.BindingSource
+    Friend WithEvents cnIngredientId As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnRegisteredDate As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnExpireDate As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnAmount As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnLocation As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents OrderedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents RegisteredDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ExpectedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents ExpiresDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UnitCountDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents OrigUnitCountDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents UnitPurchasingPriceDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LocationRowDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents LocationShelfDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DeletedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents IngredientDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

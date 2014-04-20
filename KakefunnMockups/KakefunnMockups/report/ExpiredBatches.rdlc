@@ -9,7 +9,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Utgåtte varer</Value>
+                <Value>Utgåtte varer kommer snart... </Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -20,7 +20,7 @@
         <Top>0.65828cm</Top>
         <Left>0.60537cm</Left>
         <Height>0.6cm</Height>
-        <Width>3.70417cm</Width>
+        <Width>5.8473cm</Width>
         <Style>
           <Border>
             <Style>None</Style>

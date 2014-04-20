@@ -124,6 +124,12 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmDialogLogisticsExpired.Designer.vb">
+      <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogLogisticsExpired.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDialogAdminNotExported.Designer.vb">
       <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
     </Compile>
@@ -441,6 +447,9 @@
     <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
       <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogLogisticsExpired.resx">
+      <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogAdminNotExported.resx">
       <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
     </EmbeddedResource>
@@ -490,7 +499,7 @@
     <EmbeddedResource Include="report\IngredientHistory.rdlc" />
     <EmbeddedResource Include="report\LastYearNextMonth.rdlc" />
     <EmbeddedResource Include="report\notExportedOrders.rdlc" />
-    <EmbeddedResource Include="report\Report2.rdlc" />
+    <EmbeddedResource Include="report\ExpiredBatches.rdlc" />
     <EmbeddedResource Include="report\SystemEvent.rdlc" />
     <EmbeddedResource Include="report\Turnover.rdlc" />
     <EmbeddedResource Include="SplashScreen.resx">
