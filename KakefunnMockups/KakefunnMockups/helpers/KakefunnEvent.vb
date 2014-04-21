@@ -1,5 +1,8 @@
-﻿Public Class SystemEvent
-
+﻿''' <summary>
+''' SystemEvent logging
+''' </summary>
+''' <remarks></remarks>
+Public Class KakefunnEvent
     Private logEventName As String
     Private logEventData As String
 
