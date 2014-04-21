@@ -2,12 +2,12 @@
     Inherits frmSaleBase
 
     Private Sub frmSaleMain_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        DBM.Instance.Orders.OrderByDescending(Function(o) o.modified).Load()
-        OrderBindingSource.DataSource = DBM.Instance.Orders.Local.Take(5).ToList()
+        OnFormGetsForeground()
+    End Sub
 
-        DBM.Instance.Customers.OrderByDescending(Function(c) c.modified).Load()
-        CustomerBindingSource.DataSource = DBM.Instance.Customers.Local.Take(5).ToList()
-
+    Protected Overrides Sub OnFormGetsForeground()
+        OrderBindingSource.DataSource = DBM.Instance.Orders.OrderByDescending(Function(o) o.modified).Take(5).ToList()
+        CustomerBindingSource.DataSource = DBM.Instance.Customers.OrderByDescending(Function(c) c.modified).Take(5).ToList()
         txtSearchInformation.Focus()
     End Sub
 
@@ -24,7 +24,7 @@
             Case "dcOrderTotalPrice"
                 Dim row As DataGridViewRow = dgvOrder.Rows(e.RowIndex)
                 Dim o As Order = CType(row.DataBoundItem, Order)
-                e.Value = OrderManager.GetOrderPrice(o)
+                e.Value = FormatHelper.Currency(OrderManager.GetOrderPrice(o))
         End Select
     End Sub
 

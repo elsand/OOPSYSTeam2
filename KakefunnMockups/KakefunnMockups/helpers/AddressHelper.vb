@@ -1,8 +1,12 @@
 ﻿Public Class AddressHelper
     Public Shared Function GetAddress(zip As Integer, address As String) As Address
         Dim a As Address = DBM.Instance.Addresses.Where(Function(x) x.address1 = address And x.Zip.zip1 = zip).FirstOrDefault()
+        Dim z As Zip = DBM.Instance.Zips.Find(zip)
+        If z Is Nothing Then
+            Return Nothing
+        End If
         If a Is Nothing Then
-            a = New Address With {.address1 = address, .Zip = DBM.Instance.Zips.Find(zip)}
+            a = New Address With {.address1 = address, .Zip = z}
             DBM.Instance.Addresses.Add(a)
         End If
 

@@ -54,7 +54,6 @@ Partial Class frmSaleOrder
         Me.cbCustomerName = New System.Windows.Forms.ComboBox()
         Me.CustomerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.grpOrderStatus = New System.Windows.Forms.GroupBox()
-        Me.lblPayedDate = New System.Windows.Forms.Label()
         Me.lblOrderSent = New System.Windows.Forms.Label()
         Me.lblOrderLastEdited = New System.Windows.Forms.Label()
         Me.lblOrderCreated = New System.Windows.Forms.Label()
@@ -97,6 +96,10 @@ Partial Class frmSaleOrder
         Me.grpOrderNote = New System.Windows.Forms.GroupBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
+        Me.lblOrderNumberValue = New System.Windows.Forms.Label()
+        Me.lblOrderCreatedValue = New System.Windows.Forms.Label()
+        Me.lblOrderLastEditedValue = New System.Windows.Forms.Label()
+        Me.lblOrderSentValue = New System.Windows.Forms.Label()
         Me.grpDelivery.SuspendLayout()
         Me.grpCommodity.SuspendLayout()
         CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -402,53 +405,47 @@ Partial Class frmSaleOrder
         '
         'grpOrderStatus
         '
-        Me.grpOrderStatus.Controls.Add(Me.lblPayedDate)
+        Me.grpOrderStatus.Controls.Add(Me.lblOrderSentValue)
+        Me.grpOrderStatus.Controls.Add(Me.lblOrderLastEditedValue)
+        Me.grpOrderStatus.Controls.Add(Me.lblOrderCreatedValue)
+        Me.grpOrderStatus.Controls.Add(Me.lblOrderNumberValue)
         Me.grpOrderStatus.Controls.Add(Me.lblOrderSent)
         Me.grpOrderStatus.Controls.Add(Me.lblOrderLastEdited)
         Me.grpOrderStatus.Controls.Add(Me.lblOrderCreated)
         Me.grpOrderStatus.Controls.Add(Me.lblOrderNumber)
         Me.grpOrderStatus.Location = New System.Drawing.Point(3, 3)
         Me.grpOrderStatus.Name = "grpOrderStatus"
-        Me.grpOrderStatus.Size = New System.Drawing.Size(292, 128)
+        Me.grpOrderStatus.Size = New System.Drawing.Size(292, 121)
         Me.grpOrderStatus.TabIndex = 0
         Me.grpOrderStatus.TabStop = False
         Me.grpOrderStatus.Text = "Status"
-        '
-        'lblPayedDate
-        '
-        Me.lblPayedDate.AutoSize = True
-        Me.lblPayedDate.Location = New System.Drawing.Point(48, 98)
-        Me.lblPayedDate.Name = "lblPayedDate"
-        Me.lblPayedDate.Size = New System.Drawing.Size(107, 13)
-        Me.lblPayedDate.TabIndex = 4
-        Me.lblPayedDate.Text = "Oppgjort: 02.01.2017"
         '
         'lblOrderSent
         '
         Me.lblOrderSent.AutoSize = True
         Me.lblOrderSent.Location = New System.Drawing.Point(58, 82)
         Me.lblOrderSent.Name = "lblOrderSent"
-        Me.lblOrderSent.Size = New System.Drawing.Size(136, 13)
+        Me.lblOrderSent.Size = New System.Drawing.Size(38, 13)
         Me.lblOrderSent.TabIndex = 3
-        Me.lblOrderSent.Text = "Sendt: 22.12.2016 kl 07:15"
+        Me.lblOrderSent.Text = "Sendt:"
         '
         'lblOrderLastEdited
         '
         Me.lblOrderLastEdited.AutoSize = True
         Me.lblOrderLastEdited.Location = New System.Drawing.Point(36, 65)
         Me.lblOrderLastEdited.Name = "lblOrderLastEdited"
-        Me.lblOrderLastEdited.Size = New System.Drawing.Size(158, 13)
+        Me.lblOrderLastEdited.Size = New System.Drawing.Size(63, 13)
         Me.lblOrderLastEdited.TabIndex = 2
-        Me.lblOrderLastEdited.Text = "Sist endret: 21.12.2016 kl 14:43"
+        Me.lblOrderLastEdited.Text = "Sist endret: "
         '
         'lblOrderCreated
         '
         Me.lblOrderCreated.AutoSize = True
         Me.lblOrderCreated.Location = New System.Drawing.Point(42, 49)
         Me.lblOrderCreated.Name = "lblOrderCreated"
-        Me.lblOrderCreated.Size = New System.Drawing.Size(152, 13)
+        Me.lblOrderCreated.Size = New System.Drawing.Size(54, 13)
         Me.lblOrderCreated.TabIndex = 1
-        Me.lblOrderCreated.Text = "Opprettet: 21.12.2016 kl 14:43"
+        Me.lblOrderCreated.Text = "Opprettet:"
         '
         'lblOrderNumber
         '
@@ -456,9 +453,9 @@ Partial Class frmSaleOrder
         Me.lblOrderNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblOrderNumber.Location = New System.Drawing.Point(22, 23)
         Me.lblOrderNumber.Name = "lblOrderNumber"
-        Me.lblOrderNumber.Size = New System.Drawing.Size(140, 20)
+        Me.lblOrderNumber.Size = New System.Drawing.Size(80, 20)
         Me.lblOrderNumber.TabIndex = 0
-        Me.lblOrderNumber.Text = "Ordrenr: 123345"
+        Me.lblOrderNumber.Text = "Ordrenr: "
         '
         'grpDiscount
         '
@@ -694,7 +691,7 @@ Partial Class frmSaleOrder
         Me.grpSubscription.Controls.Add(Me.cboTypeInterval)
         Me.grpSubscription.Controls.Add(Me.lblTypeInterval)
         Me.grpSubscription.Controls.Add(Me.chkIsActivated)
-        Me.grpSubscription.Location = New System.Drawing.Point(3, 223)
+        Me.grpSubscription.Location = New System.Drawing.Point(3, 216)
         Me.grpSubscription.Name = "grpSubscription"
         Me.grpSubscription.Size = New System.Drawing.Size(292, 276)
         Me.grpSubscription.TabIndex = 2
@@ -842,7 +839,7 @@ Partial Class frmSaleOrder
         'grpOrderNote
         '
         Me.grpOrderNote.Controls.Add(Me.txtInternalNote)
-        Me.grpOrderNote.Location = New System.Drawing.Point(3, 137)
+        Me.grpOrderNote.Location = New System.Drawing.Point(3, 130)
         Me.grpOrderNote.Name = "grpOrderNote"
         Me.grpOrderNote.Size = New System.Drawing.Size(292, 80)
         Me.grpOrderNote.TabIndex = 1
@@ -866,6 +863,43 @@ Partial Class frmSaleOrder
         Me.btnClear.TabIndex = 9
         Me.btnClear.Text = "Tøm felter"
         Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'lblOrderNumberValue
+        '
+        Me.lblOrderNumberValue.AutoSize = True
+        Me.lblOrderNumberValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblOrderNumberValue.Location = New System.Drawing.Point(99, 23)
+        Me.lblOrderNumberValue.Name = "lblOrderNumberValue"
+        Me.lblOrderNumberValue.Size = New System.Drawing.Size(69, 20)
+        Me.lblOrderNumberValue.TabIndex = 4
+        Me.lblOrderNumberValue.Text = "123345"
+        '
+        'lblOrderCreatedValue
+        '
+        Me.lblOrderCreatedValue.AutoSize = True
+        Me.lblOrderCreatedValue.Location = New System.Drawing.Point(95, 49)
+        Me.lblOrderCreatedValue.Name = "lblOrderCreatedValue"
+        Me.lblOrderCreatedValue.Size = New System.Drawing.Size(102, 13)
+        Me.lblOrderCreatedValue.TabIndex = 5
+        Me.lblOrderCreatedValue.Text = "21.12.2016 kl 14:43"
+        '
+        'lblOrderLastEditedValue
+        '
+        Me.lblOrderLastEditedValue.AutoSize = True
+        Me.lblOrderLastEditedValue.Location = New System.Drawing.Point(95, 65)
+        Me.lblOrderLastEditedValue.Name = "lblOrderLastEditedValue"
+        Me.lblOrderLastEditedValue.Size = New System.Drawing.Size(102, 13)
+        Me.lblOrderLastEditedValue.TabIndex = 6
+        Me.lblOrderLastEditedValue.Text = "21.12.2016 kl 14:43"
+        '
+        'lblOrderSentValue
+        '
+        Me.lblOrderSentValue.AutoSize = True
+        Me.lblOrderSentValue.Location = New System.Drawing.Point(95, 82)
+        Me.lblOrderSentValue.Name = "lblOrderSentValue"
+        Me.lblOrderSentValue.Size = New System.Drawing.Size(102, 13)
+        Me.lblOrderSentValue.TabIndex = 7
+        Me.lblOrderSentValue.Text = "21.12.2016 kl 14:43"
         '
         'frmSaleOrder
         '
@@ -934,7 +968,6 @@ Partial Class frmSaleOrder
     Friend WithEvents grpOrderStatus As System.Windows.Forms.GroupBox
     Friend WithEvents lblOrderNumber As System.Windows.Forms.Label
     Friend WithEvents lblOrderCreated As System.Windows.Forms.Label
-    Friend WithEvents lblPayedDate As System.Windows.Forms.Label
     Friend WithEvents lblOrderSent As System.Windows.Forms.Label
     Friend WithEvents lblOrderLastEdited As System.Windows.Forms.Label
     Friend WithEvents grpDiscount As System.Windows.Forms.GroupBox
@@ -992,5 +1025,9 @@ Partial Class frmSaleOrder
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents lblShippingValue As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents lblOrderSentValue As System.Windows.Forms.Label
+    Friend WithEvents lblOrderLastEditedValue As System.Windows.Forms.Label
+    Friend WithEvents lblOrderCreatedValue As System.Windows.Forms.Label
+    Friend WithEvents lblOrderNumberValue As System.Windows.Forms.Label
 
 End Class

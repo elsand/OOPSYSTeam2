@@ -85,7 +85,12 @@
 
     Public Sub Init()
         ' Start up code goes here
-
+#If DEBUG Then
+        ' In debug-mode, we usually don't login before testing, so return the first employee
+        If loggedInEmployee Is Nothing Then
+            loggedInEmployee = DBM.Instance.Employees.First()
+        End If
+#End If
     End Sub
 
 
