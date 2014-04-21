@@ -21,7 +21,7 @@
 
     Public Shared Sub NewCustomerAndReturnTo(returnToForm As Form)
         NewCustomer()
-        frmSaleCustomer.returnToFormAfterSave = returnToForm
+        frmSaleCustomer.returnToForm = returnToForm
     End Sub
 
     Public Shared Sub EditCustomer(id As Integer)

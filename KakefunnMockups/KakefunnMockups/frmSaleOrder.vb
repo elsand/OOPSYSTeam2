@@ -640,4 +640,17 @@ Public Class frmSaleOrder
         currentRecord.note = txtInternalNote.Text
     End Sub
 
+    ''' <summary>
+    ''' Handle show subscription orders for loaded order
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnShowOrderForSubscription_Click(sender As Object, e As EventArgs) Handles btnShowOrderForSubscription.Click
+        If isNewRecord Then
+            Exit Sub
+        End If
+
+
+    End Sub
 End Class
