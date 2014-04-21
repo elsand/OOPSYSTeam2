@@ -1,11 +1,16 @@
 ﻿Imports System.ComponentModel
-
-'Sorting on column-headers is not working.
-'Last edited 14.04.14
-'OK?
-
+''' <summary>
+''' Module to create cake-entries in the database.
+''' A "cake" is the collection of specified amounts of ingredients, and
+''' the recipe itself.
+''' Last edited 14.04.14
+''' </summary>
+''' <remarks>
+''' Sorting on price column is not working, mostly because of limitations with datagridview
+''' bound to a datasource combined with manual columns.
+''' </remarks>
 Public Class frmAdminCakes
-    'For preloading some content from database to make things
+    'Variables for preloading some content from database to make things
     'run a little smoother.
     Private ingQuery As List(Of Kakefunn.Ingredient)
     Private priceQuery As List(Of Kakefunn.IngredientPrice)
@@ -20,21 +25,28 @@ Public Class frmAdminCakes
     Private cakePriceArray() As Double
     Private arrayCounter As Integer
 
-    'Needed to run the appropriate commands for saving a new record, or updating an 
-    'existing one in the db.
+    'Boolean variable needed to run the appropriate commands for saving a new record, 
+    'or updating an existing one in the db.
     Private cakeNew As Boolean
 
     'Fill with information about a cake that is selected to be edited.
     Private existingCake As Cake
 
+    ''' <summary>
+    ''' Loads cakes sorted on the deleted-column, as we want delted cakes at the bottom.
+    ''' Displays the cake list in a datagridview.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub bindCake()
-        'Loading cakes in dtgCake
         DBM.Instance.Cakes.OrderBy(Function(c) c.deleted).Load()
         CakeBindingSource.DataSource = DBM.Instance.Cakes.Local.ToBindingList()
     End Sub
 
+    ''' <summary>
+    ''' Calculates prices for the cakes in the datagridview. See detailed comments within the sub.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub loadPrices()
-        'Calculating prices for cakes in dtgCake
         Dim i As Integer
         ReDim cakeArray(-1)
         ReDim cakePriceArray(-1)
@@ -71,16 +83,21 @@ Public Class frmAdminCakes
         Next i
     End Sub
 
+    ''' <summary>
+    ''' Loads the module and displays data from the database. Also adds adds tracking to
+    ''' controls for cake registration. These are used to issue a warning if the user
+    ''' tries to close the form without saving.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub frmAdminCake_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Preloading data from IngredientPrices and Batches.
         priceQuery = (From x In DBM.Instance.IngredientPrices Select x).ToList()
         batchQuery = (From x In DBM.Instance.Batches Select x).ToList()
 
-        'Binding cakes to dtgCakes, calculating and showing prices.
         bindCake()
         loadPrices()
 
-        'Tracking changes in controls. Used to trigger dialog if user tries to exit form without saving changes.
         For Each c As Control In Me.grpCakeEdit.Controls
             If c.GetType().Name = "TextBox" Then
                 AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.isDirty = True
@@ -102,8 +119,11 @@ Public Class frmAdminCakes
         isDirty = False
     End Sub
 
+    ''' <summary>
+    ''' Resets the cake registration form.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub clearRegForm()
-        'Sub to clear the registration form of data.
         For Each c As Control In Me.grpCakeEdit.Controls
             If c.GetType().Name = "TextBox" Then
                 CType(c, TextBox).Text = ""
@@ -126,8 +146,11 @@ Public Class frmAdminCakes
         lblSalePrice.Text = "Salgspris: 0"
     End Sub
 
+    ''' <summary>
+    ''' Creates structures i the datatable selList, used to add ingredients to cakes.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub structureSelList()
-        'Creates structures i the datatable selList, used to add ingredients to cakes.
         selList = New DataTable()
         Dim idColumn As New DataColumn("ID", Type.GetType("System.Int32"))
         Dim nameColumn As New DataColumn("Name", Type.GetType("System.String"))
@@ -144,9 +167,13 @@ Public Class frmAdminCakes
         selList.Columns.Add(priceColumn)
     End Sub
 
+    ''' <summary>
+    ''' Filtering ingredient list. See detailed comments in the sub.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub txtFilter_TextChanged(sender As Object, e As EventArgs) Handles txtFilter.TextChanged
-        'Filtering ingredient list.
-
         'Gets ingredients from preloaded list of ingredients. Only shows published ingredients.
         Dim ingList = (From x In ingQuery _
                        Where x.name.ToUpper().Contains(txtFilter.Text.ToUpper()) _
@@ -166,19 +193,27 @@ Public Class frmAdminCakes
         End With
     End Sub
 
+    ''' <summary>
+    ''' Shows ingredient- and salesprice in cake registration form.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub showPrices()
-        'Shows ingredient- and salesprice in cake registration form.
         If selList.Rows.Count <> 0 Then
             lblIngredientsPrice.Text = "Ingredienspris: kr. " & Format(selList.Compute("Sum(Price)", ""), "0.00")
             lblSalePrice.Text = "Salgspris: kr. " & Format(selList.Compute("Sum(Price)", "") * factor, "0.00")
         End If
     End Sub
 
+    ''' <summary>
+    ''' Adds selected ingredients to a datatable.
+    ''' When the cake is saved, ingredients are written to the database.
+    ''' Shows selected ingredients in the list of selected ingredients.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Function fillSelList(ByVal id As Integer, ByVal name As String, ByVal unit As String, _
                                  ByVal amount As Double, ByVal markup As Double, _
                                  ByVal price As Double) As Boolean
-        'Adds selected ingredients to a datatable. When the cake is saved, ingredients are 
-        'written to the database.
+
         Dim dr As DataRow
         dr = selList.NewRow()
         dr("ID") = id
@@ -189,7 +224,6 @@ Public Class frmAdminCakes
         dr("Price") = price * ((markup / 100) + 1) * amount
         selList.Rows.Add(dr)
 
-        'Shows selected ingredients in the list of selected ingredients.
         With lstSelectedIngredients
             .DataSource = selList
             .DisplayMember = ("Combined")
@@ -198,9 +232,13 @@ Public Class frmAdminCakes
         Return True
     End Function
 
+    ''' <summary>
+    ''' Adding ingredients to cake. Se detailed comments in the sub.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnAddIngredients_Click(sender As Object, e As EventArgs) Handles btnAddIngredients.Click
-        'Adding ingredients to cake
-
         'Collects relevant info for a cakes ingredients, and saves it all to a number of variables.
         Dim selIndex As Integer = CInt(lstAvailableIngredients.SelectedValue.ToString())
         Dim selName As String = lstAvailableIngredients.Text
@@ -222,10 +260,15 @@ Public Class frmAdminCakes
         btnAddIngredients.BackColor = DefaultBackColor
     End Sub
 
+    ''' <summary>
+    ''' Removing selected ingredients. This will work both for a new cake, and one loaded for editing.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnRemoveIngredients_Click(sender As Object, e As EventArgs) Handles btnRemoveIngredients.Click
-        'Removing selected ingredients. This will work both for a new cake, and one loaded for editing.
         If lstSelectedIngredients.SelectedIndex <> -1 Then
-            'Gets list index of selected ingredient.
+            'Gets index of selected ingredient.
             Dim selIndex As Integer = CInt(lstSelectedIngredients.SelectedValue.ToString())
 
             'Deletes ingredient from selList.
@@ -236,13 +279,16 @@ Public Class frmAdminCakes
                 End If
             Next
         End If
-        'Recalculates prices.
         showPrices()
     End Sub
 
+    ''' <summary>
+    ''' This button saves the cake to the database. Se detailed comments in the sub.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        'This button saves the cake.
-
         'The cake must have a name. No further requirements before saving.
         If txtNameCake.Text <> "" Then
             UpdateActionStatus("Lagrer..")
@@ -254,8 +300,8 @@ Public Class frmAdminCakes
             Else
                 cake = existingCake 'Loads existing data from db.
 
-                'Removes recipelines, these will be added again from selList
-                'when changes are saved.
+                'To prevent doubling up recipeLines in the database,
+                'all lines are removed.
                 Dim removeList = (From x In DBM.Instance.RecipeLines _
                                   Where x.Cake.id = cake.id _
                                   Select x)
@@ -293,7 +339,6 @@ Public Class frmAdminCakes
                 MsgBox(ex.ToString)
             End Try
 
-            'Calls procedures to reload information to dtgCakes.
             bindCake()
             loadPrices()
 
@@ -307,27 +352,46 @@ Public Class frmAdminCakes
         dtgCake.Refresh()
     End Sub
 
+    ''' <summary>
+    ''' Mouseclick on an ingredient in the list of available ingredients loads the correct measure unit
+    ''' in the registration form. It also activates the numeric textbox to enter the amount needed of the 
+    ''' selected ingredient. The box i colored yellow to indicate that is has to be filled.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub lstAvailableIngredients_MouseClick(sender As Object, e As MouseEventArgs) Handles lstAvailableIngredients.MouseClick
-        'Shows unit type in label.
+        '
         If lstAvailableIngredients.SelectedIndex <> -1 Then
             lblMeasureUnit.Text = (From x In DBM.Instance.Ingredients _
                                    Where x.id = CInt(lstAvailableIngredients.SelectedValue.ToString()) _
                                    Select x.Unit.name).FirstOrDefault()
 
-            'Enables box to enter amount.
             numAmount.Enabled = True
             numAmount.BackColor = Color.Yellow
         End If
     End Sub
 
+    ''' <summary>
+    ''' Enables the button to add ingredient. The button is colored yellow to indicate that the ingredient can
+    ''' be added.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub numAmount_TextChanged(sender As Object, e As EventArgs) Handles numAmount.TextChanged
-        'Enables button to add ingredient.
         btnAddIngredients.Enabled = True
         btnAddIngredients.BackColor = Color.Yellow
     End Sub
 
+    ''' <summary>
+    ''' Calculates markup factor on text changed. Makes the salesprice change accordingly.
+    ''' Presets the factor to 1 if the box is left empty.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub numMarkUps_TextChanged(sender As Object, e As EventArgs) Handles numMarkUps.TextChanged
-        'Calculates factor on text changed. Makes the salesprice change accordingly.
         If numMarkUps.Text = "" Then
             factor = 1
         ElseIf CInt(numMarkUps.Text) >= 0 And CInt(numMarkUps.Text) <= 100 Then
@@ -335,12 +399,14 @@ Public Class frmAdminCakes
         Else
             MsgBox("Oppgi avansen som et heltall mellom 0 og 100")
         End If
-
         showPrices()
     End Sub
 
+    ''' <summary>
+    ''' Filters dtgCakes. Converts to uppercase to make filter case insensitive.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub filter()
-        'Filters dtgCakes.
         CakeBindingSource.DataSource = DBM.Instance.Cakes.Local.Where(Function(c) _
                 c.name.ToUpper().Contains(txtFilterCake.Text.ToUpper())).ToList()
         If txtFilterCake.Text = "" Then
@@ -348,12 +414,23 @@ Public Class frmAdminCakes
         End If
     End Sub
 
+    ''' <summary>
+    ''' Calls the filter sub on textchanged.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
         filter()
     End Sub
 
+    ''' <summary>
+    ''' Readies the registration form for a new cake.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnNewCake_Click(sender As Object, e As EventArgs) Handles btnNewCake.Click, btnToolStripCakeNew.Click
-        'Readies the registration form for a new cake.
         ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         grpCakeEdit.Enabled = True
         btnAddIngredients.Enabled = False
@@ -363,8 +440,14 @@ Public Class frmAdminCakes
         isDirty = False
     End Sub
 
+    ''' <summary>
+    ''' Collects data about a cake from db, and displays it in the registration form.
+    ''' See detailed comments in the sub.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgCake_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseDoubleClick
-        'Collects data about a cake from db, and displays it in the registration form.
         ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         grpCakeEdit.Enabled = True
         cakeNew = False
@@ -414,8 +497,11 @@ Public Class frmAdminCakes
         isDirty = False
     End Sub
 
+    ''' <summary>
+    ''' Deletes a cake. For reporting purposes the record is not deleted in the db, but made inactive.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub ToolStripButton1_Click(sender As Object, e As EventArgs) Handles btnToolStripCakeDelete.Click
-        'Deletes a cake. The record is not deleted in the db, but rather made inactive.
         UpdateActionStatus("Venter på bekreftelse..")
 
         'Prompts user: are you sure?
@@ -446,15 +532,20 @@ Public Class frmAdminCakes
         End If
     End Sub
 
+    ''' <summary>
+    ''' Using Cell Formatting events on the datagridview to show the deleted cakes with a different color and
+    ''' strikethrough, as well as showing prices from the cakePriceArray.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgCake_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgCake.CellFormatting
-        'Different formatting for deleted cakes.
         If dtgCake.Rows(e.RowIndex).Cells(6).Value <= Date.Today And _
             dtgCake.Rows(e.RowIndex).Cells(6).Value > CDate("2000-01-01") Then
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
         End If
 
-        'Adds prices from the cakePriceArray.
         If dtgCake.Columns(e.ColumnIndex).Name = "price" Then
             Dim i As Integer
             For i = 0 To cakeArray.Length - 1
@@ -465,8 +556,13 @@ Public Class frmAdminCakes
         End If
     End Sub
 
+    ''' <summary>
+    ''' Cancels editing or adding a new cake. Alerts user about unsaved changes.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnAvbryt_Click(sender As Object, e As EventArgs) Handles btnAvbryt.Click
-        'Cancels editing or adding a new cake. Alerts user about unsaved changes.
         If isDirty Then
             Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du avslutte kakeregistreringen likevel?", _
                                            "Bekreft lukking", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -481,8 +577,13 @@ Public Class frmAdminCakes
 
     End Sub
 
+    ''' <summary>
+    ''' Makes the delete button inactive when already deleted cakes are selected.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgCake_MouseClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseClick
-        'Makes the delete button inactive when already deleted cakes are selected.
         If dtgCake.SelectedRows(0).Cells(6).Value > CDate("2000-01-01") Then
             btnToolStripCakeDelete.Enabled = False
         Else
