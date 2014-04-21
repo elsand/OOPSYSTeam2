@@ -78,4 +78,9 @@
 
         Return totals
     End Function
+
+    Shared Function FindOrdersForCustomer(customer As Customer) As List(Of Order)
+        Return DBM.Instance.Orders.Where(Function(o) o.Customer.id = customer.id).ToList()
+    End Function
+
 End Class

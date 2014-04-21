@@ -50,7 +50,7 @@ Partial Class frmSaleMain
         Me.modified = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerType = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerEmail = New System.Windows.Forms.DataGridViewLinkColumn()
         Me.grpRegistration.SuspendLayout()
@@ -227,7 +227,7 @@ Partial Class frmSaleMain
         Me.dgvCustomer.AutoGenerateColumns = False
         Me.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvCustomer.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.modified, Me.DataGridViewTextBoxColumn5, Me.dcCustomerType, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.dcCustomerEmail})
+        Me.dgvCustomer.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.modified, Me.DataGridViewTextBoxColumn5, Me.dcCustomerType, Me.fullName, Me.DataGridViewTextBoxColumn7, Me.dcCustomerEmail})
         Me.dgvCustomer.DataSource = Me.CustomerBindingSource
         Me.dgvCustomer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dgvCustomer.Location = New System.Drawing.Point(11, 353)
@@ -258,12 +258,12 @@ Partial Class frmSaleMain
         Me.dcCustomerType.HeaderText = "Kundetype"
         Me.dcCustomerType.Name = "dcCustomerType"
         '
-        'DataGridViewTextBoxColumn6
+        'fullName
         '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "name"
-        Me.DataGridViewTextBoxColumn6.FillWeight = 120.0!
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Navn"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.fullName.DataPropertyName = "fullName"
+        Me.fullName.HeaderText = "Navn"
+        Me.fullName.Name = "fullName"
+        Me.fullName.ReadOnly = True
         '
         'DataGridViewTextBoxColumn7
         '
@@ -335,10 +335,11 @@ Partial Class frmSaleMain
     Friend WithEvents CustomerBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents dgvCustomer As System.Windows.Forms.DataGridView
     Friend WithEvents DataGridViewTextBoxColumn11 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents modified As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcCustomerType As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents fullName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcCustomerEmail As System.Windows.Forms.DataGridViewLinkColumn
 

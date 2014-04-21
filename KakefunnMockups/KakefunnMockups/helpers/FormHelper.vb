@@ -11,10 +11,10 @@
         Next
     End Sub
 
-    Public Shared Sub ResetControls(frm As Control.ControlCollection)
-        For Each c As Control In frm
-            If TypeOf c Is GroupBox Then
-                ResetControls(CType(c, GroupBox).Controls)
+    Public Shared Sub ResetControls(frm As Control)
+        For Each c As Control In frm.Controls
+            If c.HasChildren Then
+                ResetControls(c)
             ElseIf TypeOf c Is TextBox Then
                 CType(c, TextBox).Text = ""
             ElseIf TypeOf c Is CheckBox Then

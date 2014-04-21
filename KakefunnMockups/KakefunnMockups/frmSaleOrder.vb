@@ -105,7 +105,7 @@ Public Class frmSaleOrder
         isNewRecord = True
         currentRecord = New Order()
         grpOrderStatus.Hide()
-        FormHelper.ResetControls(Controls)
+        FormHelper.ResetControls(Me)
         OrderLinesBindingSource.DataSource = currentRecord.OrderLines.ToBindingList
         ToggleSubscriptionGroup()
         UpdateTotalPrice()
@@ -290,7 +290,7 @@ Public Class frmSaleOrder
         ddlDeliveryMethod.DataSource = DBM.Instance.DeliveryMethods.ToList()
     End Sub
 
-    '''''''''''''''''''''''''''''''''''' BELOW THIS POINT IS EVENT HANDLERS ''''''''''''''''''''''''''''''''''''''''''''''''''
+    '''''''''''''''''''''''''''''''''''' BELOW THIS POINT ARE EVENT HANDLERS ''''''''''''''''''''''''''''''''''''''''''''''''''
 
     ''' <summary>
     ''' Initialize the form

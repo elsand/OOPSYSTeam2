@@ -20,21 +20,27 @@ Partial Class frmSaleCustomer
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpCustomerInformation = New System.Windows.Forms.GroupBox()
-        Me.txtDiscount = New System.Windows.Forms.TextBox()
+        Me.ddlDiscountPlan = New System.Windows.Forms.ComboBox()
+        Me.txtZip = New Kakefunn.NumericTextbox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.ddlCustomerType = New System.Windows.Forms.ComboBox()
         Me.lblDiscount = New System.Windows.Forms.Label()
         Me.txtTelephone = New System.Windows.Forms.TextBox()
         Me.lblTelephone = New System.Windows.Forms.Label()
         Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
-        Me.txtZip = New System.Windows.Forms.TextBox()
         Me.lblZip = New System.Windows.Forms.Label()
         Me.txtAddress = New System.Windows.Forms.TextBox()
         Me.lblAddress = New System.Windows.Forms.Label()
         Me.txtName = New System.Windows.Forms.TextBox()
         Me.lblName = New System.Windows.Forms.Label()
-        Me.chkIsBusinessClient = New System.Windows.Forms.CheckBox()
         Me.grpCustomerStatus = New System.Windows.Forms.GroupBox()
+        Me.lblTotalOrderValueValue = New System.Windows.Forms.Label()
+        Me.lblNumberOfOrdersValue = New System.Windows.Forms.Label()
+        Me.lblLastEditedDateAndTimeValue = New System.Windows.Forms.Label()
+        Me.lblCreatedDateAndTimeValue = New System.Windows.Forms.Label()
+        Me.lblCustomerNumberValue = New System.Windows.Forms.Label()
         Me.btnShowSubscriptions = New System.Windows.Forms.Button()
         Me.btnShowOrders = New System.Windows.Forms.Button()
         Me.lblTotalOrderValue = New System.Windows.Forms.Label()
@@ -46,56 +52,90 @@ Partial Class frmSaleCustomer
         Me.txtNote = New System.Windows.Forms.TextBox()
         Me.btnSave = New System.Windows.Forms.Button()
         Me.btnCancel = New System.Windows.Forms.Button()
+        Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
+        Me.Panel1 = New System.Windows.Forms.Panel()
         Me.grpCustomerInformation.SuspendLayout()
         Me.grpCustomerStatus.SuspendLayout()
         Me.grpNote.SuspendLayout()
+        Me.TableLayoutPanel1.SuspendLayout()
+        Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
         'grpCustomerInformation
         '
-        Me.grpCustomerInformation.Controls.Add(Me.txtDiscount)
+        Me.grpCustomerInformation.Controls.Add(Me.ddlDiscountPlan)
+        Me.grpCustomerInformation.Controls.Add(Me.txtZip)
+        Me.grpCustomerInformation.Controls.Add(Me.Label1)
+        Me.grpCustomerInformation.Controls.Add(Me.ddlCustomerType)
         Me.grpCustomerInformation.Controls.Add(Me.lblDiscount)
         Me.grpCustomerInformation.Controls.Add(Me.txtTelephone)
         Me.grpCustomerInformation.Controls.Add(Me.lblTelephone)
         Me.grpCustomerInformation.Controls.Add(Me.txtEmail)
         Me.grpCustomerInformation.Controls.Add(Me.lblEmail)
         Me.grpCustomerInformation.Controls.Add(Me.lblCity)
-        Me.grpCustomerInformation.Controls.Add(Me.txtZip)
         Me.grpCustomerInformation.Controls.Add(Me.lblZip)
         Me.grpCustomerInformation.Controls.Add(Me.txtAddress)
         Me.grpCustomerInformation.Controls.Add(Me.lblAddress)
         Me.grpCustomerInformation.Controls.Add(Me.txtName)
         Me.grpCustomerInformation.Controls.Add(Me.lblName)
-        Me.grpCustomerInformation.Controls.Add(Me.chkIsBusinessClient)
-        Me.grpCustomerInformation.Location = New System.Drawing.Point(12, 129)
+        Me.grpCustomerInformation.Location = New System.Drawing.Point(3, 105)
         Me.grpCustomerInformation.Name = "grpCustomerInformation"
-        Me.grpCustomerInformation.Size = New System.Drawing.Size(438, 147)
+        Me.grpCustomerInformation.Size = New System.Drawing.Size(438, 141)
         Me.grpCustomerInformation.TabIndex = 2
         Me.grpCustomerInformation.TabStop = False
         Me.grpCustomerInformation.Text = "Adresseinformasjon"
         '
-        'txtDiscount
+        'ddlDiscountPlan
         '
-        Me.txtDiscount.Location = New System.Drawing.Point(290, 97)
-        Me.txtDiscount.Name = "txtDiscount"
-        Me.txtDiscount.Size = New System.Drawing.Size(45, 20)
-        Me.txtDiscount.TabIndex = 8
+        Me.ddlDiscountPlan.FormattingEnabled = True
+        Me.ddlDiscountPlan.Location = New System.Drawing.Point(303, 97)
+        Me.ddlDiscountPlan.Name = "ddlDiscountPlan"
+        Me.ddlDiscountPlan.Size = New System.Drawing.Size(121, 21)
+        Me.ddlDiscountPlan.TabIndex = 16
+        '
+        'txtZip
+        '
+        Me.txtZip.AllowDecimal = False
+        Me.txtZip.AllowNegative = False
+        Me.txtZip.AllowSpace = False
+        Me.txtZip.Location = New System.Drawing.Point(83, 112)
+        Me.txtZip.MaxLength = 4
+        Me.txtZip.Name = "txtZip"
+        Me.txtZip.Size = New System.Drawing.Size(46, 20)
+        Me.txtZip.TabIndex = 15
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(7, 23)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(58, 13)
+        Me.Label1.TabIndex = 14
+        Me.Label1.Text = "Kundetype"
+        '
+        'ddlCustomerType
+        '
+        Me.ddlCustomerType.FormattingEnabled = True
+        Me.ddlCustomerType.Location = New System.Drawing.Point(83, 20)
+        Me.ddlCustomerType.Name = "ddlCustomerType"
+        Me.ddlCustomerType.Size = New System.Drawing.Size(134, 21)
+        Me.ddlCustomerType.TabIndex = 13
         '
         'lblDiscount
         '
         Me.lblDiscount.AutoSize = True
         Me.lblDiscount.Location = New System.Drawing.Point(239, 100)
         Me.lblDiscount.Name = "lblDiscount"
-        Me.lblDiscount.Size = New System.Drawing.Size(50, 13)
+        Me.lblDiscount.Size = New System.Drawing.Size(59, 13)
         Me.lblDiscount.TabIndex = 12
-        Me.lblDiscount.Text = "Rabatt-%"
+        Me.lblDiscount.Text = "Rabattplan"
         '
         'txtTelephone
         '
-        Me.txtTelephone.Location = New System.Drawing.Point(290, 71)
+        Me.txtTelephone.Location = New System.Drawing.Point(304, 71)
         Me.txtTelephone.Name = "txtTelephone"
-        Me.txtTelephone.Size = New System.Drawing.Size(134, 20)
-        Me.txtTelephone.TabIndex = 7
+        Me.txtTelephone.Size = New System.Drawing.Size(120, 20)
+        Me.txtTelephone.TabIndex = 5
         '
         'lblTelephone
         '
@@ -108,10 +148,10 @@ Partial Class frmSaleCustomer
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(290, 45)
+        Me.txtEmail.Location = New System.Drawing.Point(304, 45)
         Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(134, 20)
-        Me.txtEmail.TabIndex = 6
+        Me.txtEmail.Size = New System.Drawing.Size(120, 20)
+        Me.txtEmail.TabIndex = 4
         '
         'lblEmail
         '
@@ -131,13 +171,6 @@ Partial Class frmSaleCustomer
         Me.lblCity.TabIndex = 5
         Me.lblCity.Text = "BRØNNØYSUND"
         '
-        'txtZip
-        '
-        Me.txtZip.Location = New System.Drawing.Point(83, 113)
-        Me.txtZip.Name = "txtZip"
-        Me.txtZip.Size = New System.Drawing.Size(46, 20)
-        Me.txtZip.TabIndex = 4
-        '
         'lblZip
         '
         Me.lblZip.AutoSize = True
@@ -153,7 +186,7 @@ Partial Class frmSaleCustomer
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(134, 32)
-        Me.txtAddress.TabIndex = 3
+        Me.txtAddress.TabIndex = 2
         '
         'lblAddress
         '
@@ -169,7 +202,7 @@ Partial Class frmSaleCustomer
         Me.txtName.Location = New System.Drawing.Point(83, 48)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(134, 20)
-        Me.txtName.TabIndex = 2
+        Me.txtName.TabIndex = 1
         '
         'lblName
         '
@@ -180,19 +213,13 @@ Partial Class frmSaleCustomer
         Me.lblName.TabIndex = 1
         Me.lblName.Text = "Navn"
         '
-        'chkIsBusinessClient
-        '
-        Me.chkIsBusinessClient.AutoSize = True
-        Me.chkIsBusinessClient.Location = New System.Drawing.Point(6, 23)
-        Me.chkIsBusinessClient.Name = "chkIsBusinessClient"
-        Me.chkIsBusinessClient.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkIsBusinessClient.Size = New System.Drawing.Size(91, 17)
-        Me.chkIsBusinessClient.TabIndex = 1
-        Me.chkIsBusinessClient.Text = "Er firmakunde"
-        Me.chkIsBusinessClient.UseVisualStyleBackColor = True
-        '
         'grpCustomerStatus
         '
+        Me.grpCustomerStatus.Controls.Add(Me.lblTotalOrderValueValue)
+        Me.grpCustomerStatus.Controls.Add(Me.lblNumberOfOrdersValue)
+        Me.grpCustomerStatus.Controls.Add(Me.lblLastEditedDateAndTimeValue)
+        Me.grpCustomerStatus.Controls.Add(Me.lblCreatedDateAndTimeValue)
+        Me.grpCustomerStatus.Controls.Add(Me.lblCustomerNumberValue)
         Me.grpCustomerStatus.Controls.Add(Me.btnShowSubscriptions)
         Me.grpCustomerStatus.Controls.Add(Me.btnShowOrders)
         Me.grpCustomerStatus.Controls.Add(Me.lblTotalOrderValue)
@@ -200,12 +227,58 @@ Partial Class frmSaleCustomer
         Me.grpCustomerStatus.Controls.Add(Me.lblLastEditedDateAndTime)
         Me.grpCustomerStatus.Controls.Add(Me.lblCreatedDateAndTime)
         Me.grpCustomerStatus.Controls.Add(Me.lblCustomerNumber)
-        Me.grpCustomerStatus.Location = New System.Drawing.Point(12, 27)
+        Me.grpCustomerStatus.Location = New System.Drawing.Point(3, 3)
         Me.grpCustomerStatus.Name = "grpCustomerStatus"
         Me.grpCustomerStatus.Size = New System.Drawing.Size(438, 96)
         Me.grpCustomerStatus.TabIndex = 1
         Me.grpCustomerStatus.TabStop = False
-        Me.grpCustomerStatus.Text = "Status (denne vises bare ved redigering)"
+        Me.grpCustomerStatus.Text = "Status"
+        '
+        'lblTotalOrderValueValue
+        '
+        Me.lblTotalOrderValueValue.AutoSize = True
+        Me.lblTotalOrderValueValue.Location = New System.Drawing.Point(305, 39)
+        Me.lblTotalOrderValueValue.Name = "lblTotalOrderValueValue"
+        Me.lblTotalOrderValueValue.Size = New System.Drawing.Size(52, 13)
+        Me.lblTotalOrderValueValue.TabIndex = 9
+        Me.lblTotalOrderValueValue.Text = "19245,44"
+        '
+        'lblNumberOfOrdersValue
+        '
+        Me.lblNumberOfOrdersValue.AutoSize = True
+        Me.lblNumberOfOrdersValue.Location = New System.Drawing.Point(284, 23)
+        Me.lblNumberOfOrdersValue.Name = "lblNumberOfOrdersValue"
+        Me.lblNumberOfOrdersValue.Size = New System.Drawing.Size(19, 13)
+        Me.lblNumberOfOrdersValue.TabIndex = 8
+        Me.lblNumberOfOrdersValue.Text = "22"
+        '
+        'lblLastEditedDateAndTimeValue
+        '
+        Me.lblLastEditedDateAndTimeValue.AutoSize = True
+        Me.lblLastEditedDateAndTimeValue.Location = New System.Drawing.Point(91, 65)
+        Me.lblLastEditedDateAndTimeValue.Name = "lblLastEditedDateAndTimeValue"
+        Me.lblLastEditedDateAndTimeValue.Size = New System.Drawing.Size(102, 13)
+        Me.lblLastEditedDateAndTimeValue.TabIndex = 7
+        Me.lblLastEditedDateAndTimeValue.Text = "21.12.2016 kl 14:43"
+        '
+        'lblCreatedDateAndTimeValue
+        '
+        Me.lblCreatedDateAndTimeValue.AutoSize = True
+        Me.lblCreatedDateAndTimeValue.Location = New System.Drawing.Point(91, 49)
+        Me.lblCreatedDateAndTimeValue.Name = "lblCreatedDateAndTimeValue"
+        Me.lblCreatedDateAndTimeValue.Size = New System.Drawing.Size(102, 13)
+        Me.lblCreatedDateAndTimeValue.TabIndex = 6
+        Me.lblCreatedDateAndTimeValue.Text = "21.12.2016 kl 14:43"
+        '
+        'lblCustomerNumberValue
+        '
+        Me.lblCustomerNumberValue.AutoSize = True
+        Me.lblCustomerNumberValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCustomerNumberValue.Location = New System.Drawing.Point(102, 22)
+        Me.lblCustomerNumberValue.Name = "lblCustomerNumberValue"
+        Me.lblCustomerNumberValue.Size = New System.Drawing.Size(69, 20)
+        Me.lblCustomerNumberValue.TabIndex = 5
+        Me.lblCustomerNumberValue.Text = "123345"
         '
         'btnShowSubscriptions
         '
@@ -230,36 +303,36 @@ Partial Class frmSaleCustomer
         Me.lblTotalOrderValue.AutoSize = True
         Me.lblTotalOrderValue.Location = New System.Drawing.Point(221, 39)
         Me.lblTotalOrderValue.Name = "lblTotalOrderValue"
-        Me.lblTotalOrderValue.Size = New System.Drawing.Size(132, 13)
+        Me.lblTotalOrderValue.Size = New System.Drawing.Size(87, 13)
         Me.lblTotalOrderValue.TabIndex = 4
-        Me.lblTotalOrderValue.Text = "Total ordreverdi: 19245,44"
+        Me.lblTotalOrderValue.Text = "Total ordreverdi: "
         '
         'lblNumberOfOrders
         '
         Me.lblNumberOfOrders.AutoSize = True
         Me.lblNumberOfOrders.Location = New System.Drawing.Point(221, 23)
         Me.lblNumberOfOrders.Name = "lblNumberOfOrders"
-        Me.lblNumberOfOrders.Size = New System.Drawing.Size(81, 13)
+        Me.lblNumberOfOrders.Size = New System.Drawing.Size(66, 13)
         Me.lblNumberOfOrders.TabIndex = 3
-        Me.lblNumberOfOrders.Text = "Antall ordrer: 22"
+        Me.lblNumberOfOrders.Text = "Antall ordrer:"
         '
         'lblLastEditedDateAndTime
         '
         Me.lblLastEditedDateAndTime.AutoSize = True
         Me.lblLastEditedDateAndTime.Location = New System.Drawing.Point(36, 65)
         Me.lblLastEditedDateAndTime.Name = "lblLastEditedDateAndTime"
-        Me.lblLastEditedDateAndTime.Size = New System.Drawing.Size(158, 13)
+        Me.lblLastEditedDateAndTime.Size = New System.Drawing.Size(63, 13)
         Me.lblLastEditedDateAndTime.TabIndex = 2
-        Me.lblLastEditedDateAndTime.Text = "Sist endret: 21.12.2016 kl 14:43"
+        Me.lblLastEditedDateAndTime.Text = "Sist endret: "
         '
         'lblCreatedDateAndTime
         '
         Me.lblCreatedDateAndTime.AutoSize = True
         Me.lblCreatedDateAndTime.Location = New System.Drawing.Point(42, 49)
         Me.lblCreatedDateAndTime.Name = "lblCreatedDateAndTime"
-        Me.lblCreatedDateAndTime.Size = New System.Drawing.Size(152, 13)
+        Me.lblCreatedDateAndTime.Size = New System.Drawing.Size(57, 13)
         Me.lblCreatedDateAndTime.TabIndex = 1
-        Me.lblCreatedDateAndTime.Text = "Opprettet: 21.12.2016 kl 14:43"
+        Me.lblCreatedDateAndTime.Text = "Opprettet: "
         '
         'lblCustomerNumber
         '
@@ -267,14 +340,14 @@ Partial Class frmSaleCustomer
         Me.lblCustomerNumber.Font = New System.Drawing.Font("Microsoft Sans Serif", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCustomerNumber.Location = New System.Drawing.Point(22, 23)
         Me.lblCustomerNumber.Name = "lblCustomerNumber"
-        Me.lblCustomerNumber.Size = New System.Drawing.Size(146, 20)
+        Me.lblCustomerNumber.Size = New System.Drawing.Size(81, 20)
         Me.lblCustomerNumber.TabIndex = 0
-        Me.lblCustomerNumber.Text = "Kundenr: 123345"
+        Me.lblCustomerNumber.Text = "Kundenr:"
         '
         'grpNote
         '
         Me.grpNote.Controls.Add(Me.txtNote)
-        Me.grpNote.Location = New System.Drawing.Point(13, 281)
+        Me.grpNote.Location = New System.Drawing.Point(3, 252)
         Me.grpNote.Name = "grpNote"
         Me.grpNote.Size = New System.Drawing.Size(437, 102)
         Me.grpNote.TabIndex = 3
@@ -291,57 +364,77 @@ Partial Class frmSaleCustomer
         '
         'btnSave
         '
-        Me.btnSave.Location = New System.Drawing.Point(356, 398)
+        Me.btnSave.Location = New System.Drawing.Point(344, 5)
         Me.btnSave.Name = "btnSave"
-        Me.btnSave.Size = New System.Drawing.Size(94, 28)
-        Me.btnSave.TabIndex = 5
+        Me.btnSave.Size = New System.Drawing.Size(94, 25)
+        Me.btnSave.TabIndex = 1
         Me.btnSave.Text = "Lagre"
         Me.btnSave.UseVisualStyleBackColor = True
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(253, 398)
+        Me.btnCancel.Location = New System.Drawing.Point(0, 3)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(94, 28)
-        Me.btnCancel.TabIndex = 4
+        Me.btnCancel.Size = New System.Drawing.Size(94, 27)
+        Me.btnCancel.TabIndex = 0
         Me.btnCancel.Text = "Avbryt"
         Me.btnCancel.UseVisualStyleBackColor = True
+        '
+        'TableLayoutPanel1
+        '
+        Me.TableLayoutPanel1.ColumnCount = 1
+        Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100.0!))
+        Me.TableLayoutPanel1.Controls.Add(Me.Panel1, 0, 3)
+        Me.TableLayoutPanel1.Controls.Add(Me.grpCustomerStatus, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.grpCustomerInformation, 0, 1)
+        Me.TableLayoutPanel1.Controls.Add(Me.grpNote, 0, 2)
+        Me.TableLayoutPanel1.Location = New System.Drawing.Point(12, 27)
+        Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
+        Me.TableLayoutPanel1.RowCount = 4
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle())
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(446, 396)
+        Me.TableLayoutPanel1.TabIndex = 6
+        '
+        'Panel1
+        '
+        Me.Panel1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Panel1.Controls.Add(Me.btnSave)
+        Me.Panel1.Controls.Add(Me.btnCancel)
+        Me.Panel1.Location = New System.Drawing.Point(3, 362)
+        Me.Panel1.Name = "Panel1"
+        Me.Panel1.Size = New System.Drawing.Size(440, 31)
+        Me.Panel1.TabIndex = 7
         '
         'frmSaleCustomer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(462, 464)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.grpNote)
-        Me.Controls.Add(Me.grpCustomerStatus)
-        Me.Controls.Add(Me.grpCustomerInformation)
+        Me.ClientSize = New System.Drawing.Size(466, 452)
+        Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "frmSaleCustomer"
         Me.Text = "Kunde"
-        Me.Controls.SetChildIndex(Me.grpCustomerInformation, 0)
-        Me.Controls.SetChildIndex(Me.grpCustomerStatus, 0)
-        Me.Controls.SetChildIndex(Me.grpNote, 0)
-        Me.Controls.SetChildIndex(Me.btnSave, 0)
-        Me.Controls.SetChildIndex(Me.btnCancel, 0)
+        Me.Controls.SetChildIndex(Me.TableLayoutPanel1, 0)
         Me.grpCustomerInformation.ResumeLayout(False)
         Me.grpCustomerInformation.PerformLayout()
         Me.grpCustomerStatus.ResumeLayout(False)
         Me.grpCustomerStatus.PerformLayout()
         Me.grpNote.ResumeLayout(False)
         Me.grpNote.PerformLayout()
+        Me.TableLayoutPanel1.ResumeLayout(False)
+        Me.Panel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents grpCustomerInformation As System.Windows.Forms.GroupBox
     Friend WithEvents lblCity As System.Windows.Forms.Label
-    Friend WithEvents txtZip As System.Windows.Forms.TextBox
     Friend WithEvents lblZip As System.Windows.Forms.Label
     Friend WithEvents txtAddress As System.Windows.Forms.TextBox
     Friend WithEvents lblAddress As System.Windows.Forms.Label
     Friend WithEvents txtName As System.Windows.Forms.TextBox
     Friend WithEvents lblName As System.Windows.Forms.Label
-    Friend WithEvents chkIsBusinessClient As System.Windows.Forms.CheckBox
     Friend WithEvents txtTelephone As System.Windows.Forms.TextBox
     Friend WithEvents lblTelephone As System.Windows.Forms.Label
     Friend WithEvents txtEmail As System.Windows.Forms.TextBox
@@ -357,8 +450,18 @@ Partial Class frmSaleCustomer
     Friend WithEvents btnShowOrders As System.Windows.Forms.Button
     Friend WithEvents btnSave As System.Windows.Forms.Button
     Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents txtDiscount As System.Windows.Forms.TextBox
     Friend WithEvents lblDiscount As System.Windows.Forms.Label
     Friend WithEvents btnShowSubscriptions As System.Windows.Forms.Button
+    Friend WithEvents TableLayoutPanel1 As System.Windows.Forms.TableLayoutPanel
+    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents ddlCustomerType As System.Windows.Forms.ComboBox
+    Friend WithEvents txtZip As Kakefunn.NumericTextbox
+    Friend WithEvents ddlDiscountPlan As System.Windows.Forms.ComboBox
+    Friend WithEvents lblCustomerNumberValue As System.Windows.Forms.Label
+    Friend WithEvents lblTotalOrderValueValue As System.Windows.Forms.Label
+    Friend WithEvents lblNumberOfOrdersValue As System.Windows.Forms.Label
+    Friend WithEvents lblLastEditedDateAndTimeValue As System.Windows.Forms.Label
+    Friend WithEvents lblCreatedDateAndTimeValue As System.Windows.Forms.Label
 
 End Class

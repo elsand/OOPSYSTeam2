@@ -20,8 +20,8 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
@@ -297,16 +297,16 @@ Partial Class frmSaleOrder
         'dcAmount
         '
         Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle3
         Me.dcAmount.HeaderText = "Antall"
         Me.dcAmount.Name = "dcAmount"
         '
         'dcTotalPrice
         '
         Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle4
         Me.dcTotalPrice.HeaderText = "Totalpris"
         Me.dcTotalPrice.Name = "dcTotalPrice"
         Me.dcTotalPrice.ReadOnly = True
