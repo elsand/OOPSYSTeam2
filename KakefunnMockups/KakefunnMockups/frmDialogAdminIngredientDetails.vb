@@ -176,7 +176,7 @@ Public Class frmDialogAdminIngredientDetails
                 Me.Close()
             End If
             ' Logging the event
-            SystemEvent.saveSystemEvent("Ingredienser", "1", "Lagret ny ingrediens")
+            SystemEvent.saveSystemEvent("Ingredienser", "Lagret ny ingrediens")
         Else
             'Error message, content missing in form.
             MsgBox("Sjekk at alle felter er utfylt", MsgBoxStyle.Exclamation, "Advarsel")
