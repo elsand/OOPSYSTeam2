@@ -13,6 +13,13 @@ Public Class frmSaleCustomer
     ' Holds which form we are to return to. Default to frmSaleMain
     Public returnToForm As Form
 
+    ' Used in callbacks when other forms wants to get the newly created/just edited customer
+    Public ReadOnly Property currentCustomer
+        Get
+            Return currentRecord
+        End Get
+    End Property
+
     ''' <summary>
     ''' Loads the supplied customer for editing
     ''' </summary>
@@ -70,6 +77,7 @@ Public Class frmSaleCustomer
         isNewRecord = True
         currentRecord = New Customer()
         grpCustomerStatus.Hide()
+        lblCity.Text = ""
         FormHelper.ResetControls(Me)
     End Sub
 
@@ -111,6 +119,29 @@ Public Class frmSaleCustomer
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function ValidateCustomer() As Boolean
+        Dim err As String = ""
+
+        If txtName.Text = "" Then
+            err = "Du må oppgi et navn."
+        ElseIf txtAddress.Text = "" Then
+            err = "Du må oppgi en addresse."
+        ElseIf lblCity.Text = "UGYLDIG" Then
+            err = "Du må oppgi et gyldig postnummer."
+        ElseIf txtEmail.Text = "" Then
+            err = "Du må oppgi en e-postadresse."
+        ElseIf txtTelephone.Text = "" Then
+            err = "Du må oppgi et telefonnummer."
+        ElseIf ddlCustomerType.SelectedIndex = -1 Then
+            err = "Du må oppgi en kundetype."
+        ElseIf ddlDiscountPlan.SelectedIndex = -1 Then
+            err = "Du må oppgi en rabattplan."
+        End If
+
+        If Not err = "" Then
+            MessageBox.Show(err, "Feil i skjema", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
         Return True
     End Function
 
@@ -186,7 +217,7 @@ Public Class frmSaleCustomer
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub Address_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged, txtZip.TextChanged
+    Private Sub Address_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.Leave, txtZip.Leave
         If Not isLoadingCustomer Then
             currentRecord.Address = AddressHelper.GetAddress(txtZip.IntValue, txtAddress.Text)
         End If
@@ -265,4 +296,5 @@ Public Class frmSaleCustomer
     Private Sub btnShowSubscriptions_Click(sender As Object, e As EventArgs) Handles btnShowSubscriptions.Click
         SearchHelper.SearchOrders(Function(o) o.Customer.id = currentRecord.id And o.isSubscriptionOrder = True)
     End Sub
+
 End Class

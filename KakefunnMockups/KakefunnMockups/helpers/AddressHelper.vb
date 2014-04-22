@@ -1,5 +1,8 @@
 ﻿Public Class AddressHelper
     Public Shared Function GetAddress(zip As Integer, address As String) As Address
+        If zip = 0 OrElse address = "" Then
+            Return Nothing
+        End If
         Dim a As Address = DBM.Instance.Addresses.Where(Function(x) x.address1 = address And x.Zip.zip1 = zip).FirstOrDefault()
         Dim z As Zip = DBM.Instance.Zips.Find(zip)
         If z Is Nothing Then

@@ -314,12 +314,25 @@ Public Class frmSaleOrder
     ''' <summary>
     ''' Handles when the user clicks new customer. Temporarily hides the order form (no saving is performed) and puts the customer screen
     ''' in the foreground. When completing the customer form, the user is returned to this form.
+    ''' A callback is supplied which is run upon returning to the order form. This loads the recently
+    ''' added customer (if it was saved)
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnNewCustomer_Click(sender As Object, e As EventArgs) Handles btnNewCustomer.Click
-        CustomerManager.NewCustomerAndReturnTo(Me)
+        CustomerManager.NewCustomerAndReturnTo(Me,
+            Function(customerForm, orderForm)
+                Dim customer As Customer = CType(customerForm, frmSaleCustomer).currentCustomer
+                ' Check if it got saved
+                If customer.id > 0 Then
+                    SetDeliveryToCustomer(customer)
+                    currentRecord.Customer = customer
+                    cbCustomerName.Text = customer.fullName
+                End If
+                Return True
+            End Function
+        )
     End Sub
 
 
@@ -594,7 +607,7 @@ Public Class frmSaleOrder
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub Address_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.TextChanged, txtZip.TextChanged
+    Private Sub Address_TextChanged(sender As Object, e As EventArgs) Handles txtAddress.Leave, txtZip.Leave
         If Not isLoadingOrder Then
             currentRecord.Address = AddressHelper.GetAddress(txtZip.IntValue, txtAddress.Text)
         End If
@@ -650,7 +663,6 @@ Public Class frmSaleOrder
         If isNewRecord Then
             Exit Sub
         End If
-
-
+        SearchHelper.SearchOrders(Function(o) o.subscriptionId = currentRecord.id)
     End Sub
 End Class

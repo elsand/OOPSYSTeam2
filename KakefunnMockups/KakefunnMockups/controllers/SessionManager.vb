@@ -45,6 +45,7 @@
     Private loggedInEmployee As Employee
     Private _currentForm As frmSuperBase
     Private _currentDialog As frmDialogBase
+    Private callback As System.Func(Of Form, Form, Boolean)
 
     ''' <summary>
     ''' Returns the currently active form. If this is not set (ie. first form), it returns the first form it finds in Application.OpenForms
@@ -155,8 +156,19 @@
         currentForm.Hide()
         frm.Show()
         frm.Focus()
-        currentForm = frm
+
         HideDialog()
+
+        If callback IsNot Nothing Then
+            callback.Invoke(currentForm, frm)
+            callback = Nothing
+        End If
+
+        currentForm = frm
+    End Sub
+
+    Public Sub RegisterCallback(f As System.Func(Of Form, Form, Boolean))
+        callback = f
     End Sub
 
     Public Sub ShowDialog(dialog As frmDialogBase)
@@ -177,10 +189,6 @@
             currentDialog.Hide()
             currentDialog = Nothing
         End If
-    End Sub
-
-    Public Sub LoadInBackground(frm As Form)
-
     End Sub
 
     Public Function HasRole(role As String) As Boolean

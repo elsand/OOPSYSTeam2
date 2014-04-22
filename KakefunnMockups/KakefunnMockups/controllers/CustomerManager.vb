@@ -24,12 +24,17 @@
         frmSaleCustomer.returnToForm = returnToForm
     End Sub
 
+    Public Shared Sub NewCustomerAndReturnTo(returnToForm As Form, callback As System.Func(Of Form, Form, Boolean))
+        NewCustomerAndReturnTo(returnToForm)
+        SessionManager.Instance.RegisterCallback(callback)
+    End Sub
+
     Public Shared Sub EditCustomer(id As Integer)
         EditCustomer(DBM.Instance.Customers.Find(id))
     End Sub
 
     Public Shared Sub EditCustomer(customer As Customer)
         SessionManager.Instance.ShowForm(frmSaleCustomer)
-        frmSaleCustomer.LoadCustomer(Customer)
+        frmSaleCustomer.LoadCustomer(customer)
     End Sub
 End Class

@@ -87,11 +87,12 @@ Partial Class frmSaleCustomer
         '
         'ddlDiscountPlan
         '
+        Me.ddlDiscountPlan.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ddlDiscountPlan.FormattingEnabled = True
         Me.ddlDiscountPlan.Location = New System.Drawing.Point(303, 97)
         Me.ddlDiscountPlan.Name = "ddlDiscountPlan"
         Me.ddlDiscountPlan.Size = New System.Drawing.Size(121, 21)
-        Me.ddlDiscountPlan.TabIndex = 16
+        Me.ddlDiscountPlan.TabIndex = 6
         '
         'txtZip
         '
@@ -102,7 +103,7 @@ Partial Class frmSaleCustomer
         Me.txtZip.MaxLength = 4
         Me.txtZip.Name = "txtZip"
         Me.txtZip.Size = New System.Drawing.Size(46, 20)
-        Me.txtZip.TabIndex = 15
+        Me.txtZip.TabIndex = 3
         '
         'Label1
         '
@@ -115,11 +116,12 @@ Partial Class frmSaleCustomer
         '
         'ddlCustomerType
         '
+        Me.ddlCustomerType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ddlCustomerType.FormattingEnabled = True
         Me.ddlCustomerType.Location = New System.Drawing.Point(83, 20)
         Me.ddlCustomerType.Name = "ddlCustomerType"
         Me.ddlCustomerType.Size = New System.Drawing.Size(134, 21)
-        Me.ddlCustomerType.TabIndex = 13
+        Me.ddlCustomerType.TabIndex = 0
         '
         'lblDiscount
         '
@@ -367,7 +369,7 @@ Partial Class frmSaleCustomer
         Me.btnSave.Location = New System.Drawing.Point(344, 5)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(94, 25)
-        Me.btnSave.TabIndex = 1
+        Me.btnSave.TabIndex = 0
         Me.btnSave.Text = "Lagre"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -376,7 +378,7 @@ Partial Class frmSaleCustomer
         Me.btnCancel.Location = New System.Drawing.Point(0, 3)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(94, 27)
-        Me.btnCancel.TabIndex = 0
+        Me.btnCancel.TabIndex = 1
         Me.btnCancel.Text = "Avbryt"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
