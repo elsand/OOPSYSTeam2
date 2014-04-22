@@ -32,5 +32,4 @@
         SessionManager.Instance.ShowForm(frmSaleCustomer)
         frmSaleCustomer.LoadCustomer(Customer)
     End Sub
-
 End Class

@@ -60,6 +60,11 @@
     End Sub
 
     Private Sub SaveCustomer()
+
+        If Not ValidateCustomer() Then
+            Exit Sub
+        End If
+
         Try
             If isNewRecord Then
                 currentRecord.created = Date.Now()
@@ -76,6 +81,10 @@
         SessionManager.Instance.ShowForm(returnToForm)
 
     End Sub
+
+    Private Function ValidateCustomer() As Boolean
+        Return True
+    End Function
 
     '''''''''''''''''''''''''''''''''''' BELOW THIS POINT ARE EVENT HANDLERS ''''''''''''''''''''''''''''''''''''''''''''''''''
 
