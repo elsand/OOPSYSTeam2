@@ -77,10 +77,12 @@ Public Class frmAdminIngredient
                                 bdgi, bdgu, profit, row.deleted)
         Next
 
+        dtgResults.Focus()
+
         'Resets deletion variables.
         delIdx = 0
         delName = ""
-        UpdateActionStatus()
+        UpdateActionStatus("Klar")
     End Sub
 
     ''' <summary>
@@ -88,7 +90,7 @@ Public Class frmAdminIngredient
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub dtgResults_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgResults.MouseDoubleClick
-        Dim varenr As Integer = dtgResults.SelectedRows(0).Cells(0).Value
+        Dim varenr As Integer = dtgResults.SelectedRows(0).Cells(colID.Index).Value
         frmDialogAdminIngredientDetails.varenr = varenr
         frmDialogAdminIngredientDetails.newIngr = False
         SessionManager.Instance.ShowDialog(frmDialogAdminIngredientDetails)
@@ -102,8 +104,8 @@ Public Class frmAdminIngredient
     ''' <remarks></remarks>
     Private Sub btnDel_Click(sender As Object, e As EventArgs) Handles btnDel.Click
         If dtgResults.Rows.Count() > 0 Then
-            delIdx = dtgResults.SelectedRows(0).Cells(0).Value
-            delName = dtgResults.SelectedRows(0).Cells(1).Value
+            delIdx = dtgResults.SelectedRows(0).Cells(colID.Index).Value
+            delName = dtgResults.SelectedRows(0).Cells(colName.Index).Value
         End If
 
         If delIdx > 0 Then
@@ -116,8 +118,13 @@ Public Class frmAdminIngredient
                               Select x).FirstOrDefault()
                 delIng.deleted = Date.Now
 
-                DBM.Instance.SaveChanges()
+                Try
+                    DBM.Instance.SaveChanges()
+                Catch ex As Entity.Validation.DbEntityValidationException
+                    MsgBox("Feilmelding ved lagring: " & ex.ToString)
+                End Try
 
+                KakefunnEvent.saveSystemEvent("Ingredienser", "Slettet ingrediensen: " & delIng.id & " " & delIng.name)
                 btnSearch.PerformClick()
                 txtSearch.Text = ""
             End If
@@ -129,8 +136,8 @@ Public Class frmAdminIngredient
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub dtgResults_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgResults.CellFormatting
-        If dtgResults.Rows(e.RowIndex).Cells(6).Value <= Date.Now And _
-            dtgResults.Rows(e.RowIndex).Cells(6).Value > CDate("2000-01-01 00:00:00") Then
+        If dtgResults.Rows(e.RowIndex).Cells(colDeleted.Index).Value <= Date.Now And _
+            dtgResults.Rows(e.RowIndex).Cells(colDeleted.Index).Value > CDate("2000-01-01 00:00:00") Then
             dtgResults.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
             dtgResults.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
         End If
