@@ -20,19 +20,19 @@ Partial Class frmAdminIngredient
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.dtgResults = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.sdffsdf = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Deleted = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtSearch = New System.Windows.Forms.TextBox()
         Me.lblSearch = New System.Windows.Forms.Label()
         Me.btnSearch = New System.Windows.Forms.Button()
         Me.btnNew = New System.Windows.Forms.Button()
         Me.btnDel = New System.Windows.Forms.Button()
+        Me.colID = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colBDGIn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colBDGOut = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colProfig = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.colDeleted = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dtgResults, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -42,7 +42,7 @@ Partial Class frmAdminIngredient
         Me.dtgResults.AllowUserToDeleteRows = False
         Me.dtgResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.sdffsdf, Me.Column3, Me.Column4, Me.Column5, Me.Deleted})
+        Me.dtgResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colID, Me.colName, Me.colStock, Me.colBDGIn, Me.colBDGOut, Me.colProfig, Me.colDeleted})
         Me.dtgResults.Location = New System.Drawing.Point(13, 90)
         Me.dtgResults.Name = "dtgResults"
         Me.dtgResults.ReadOnly = True
@@ -51,49 +51,6 @@ Partial Class frmAdminIngredient
         Me.dtgResults.ShowEditingIcon = False
         Me.dtgResults.Size = New System.Drawing.Size(643, 365)
         Me.dtgResults.TabIndex = 10
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Varenr"
-        Me.Column1.Name = "Column1"
-        Me.Column1.ReadOnly = True
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Navn"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        '
-        'sdffsdf
-        '
-        Me.sdffsdf.HeaderText = "Antall på lager"
-        Me.sdffsdf.Name = "sdffsdf"
-        Me.sdffsdf.ReadOnly = True
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "B/D/G* innkjøp"
-        Me.Column3.Name = "Column3"
-        Me.Column3.ReadOnly = True
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "B/D/G* utsalg"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "Avanse i %"
-        Me.Column5.Name = "Column5"
-        Me.Column5.ReadOnly = True
-        '
-        'Deleted
-        '
-        Me.Deleted.HeaderText = "Deleted"
-        Me.Deleted.Name = "Deleted"
-        Me.Deleted.ReadOnly = True
-        Me.Deleted.Visible = False
         '
         'Label1
         '
@@ -147,6 +104,49 @@ Partial Class frmAdminIngredient
         Me.btnDel.Text = "Slett"
         Me.btnDel.UseVisualStyleBackColor = True
         '
+        'colID
+        '
+        Me.colID.HeaderText = "Varenr"
+        Me.colID.Name = "colID"
+        Me.colID.ReadOnly = True
+        '
+        'colName
+        '
+        Me.colName.HeaderText = "Navn"
+        Me.colName.Name = "colName"
+        Me.colName.ReadOnly = True
+        '
+        'colStock
+        '
+        Me.colStock.HeaderText = "Antall på lager"
+        Me.colStock.Name = "colStock"
+        Me.colStock.ReadOnly = True
+        '
+        'colBDGIn
+        '
+        Me.colBDGIn.HeaderText = "B/D/G* innkjøp"
+        Me.colBDGIn.Name = "colBDGIn"
+        Me.colBDGIn.ReadOnly = True
+        '
+        'colBDGOut
+        '
+        Me.colBDGOut.HeaderText = "B/D/G* utsalg"
+        Me.colBDGOut.Name = "colBDGOut"
+        Me.colBDGOut.ReadOnly = True
+        '
+        'colProfig
+        '
+        Me.colProfig.HeaderText = "Avanse i %"
+        Me.colProfig.Name = "colProfig"
+        Me.colProfig.ReadOnly = True
+        '
+        'colDeleted
+        '
+        Me.colDeleted.HeaderText = "Deleted"
+        Me.colDeleted.Name = "colDeleted"
+        Me.colDeleted.ReadOnly = True
+        Me.colDeleted.Visible = False
+        '
         'frmAdminIngredient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -179,12 +179,12 @@ Partial Class frmAdminIngredient
     Friend WithEvents btnSearch As System.Windows.Forms.Button
     Friend WithEvents btnNew As System.Windows.Forms.Button
     Friend WithEvents btnDel As System.Windows.Forms.Button
-    Friend WithEvents Column1 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents sdffsdf As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Deleted As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colID As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colName As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colStock As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colBDGIn As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colBDGOut As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colProfig As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents colDeleted As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class

@@ -1,21 +1,35 @@
-﻿'Register received goods in warehouse. There has to be an order in the system.
-'TODO:  - Comment code
-'Last edited: 18.04.14
-
-Imports System.Collections.Specialized
+﻿Imports System.Collections.Specialized
 Imports System.Configuration
+
+''' <summary>
+''' Register received goods in warehouse. There has to be an order in the system.
+''' TODO:  - Comment code
+''' Last edited: 18.04.14
+''' </summary>
+''' <remarks></remarks>
 Public Class frmLogisticsRegisterCommodity
     'Defines warehouse size.
     Private rowMax, shelfMax As Integer
 
+    ''' <summary>
+    ''' Searches for a specific order number.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnSearchBatch_Click(sender As Object, e As EventArgs) Handles btnSearchBatch.Click
-        'Searches for a specific order number.
         If numSearchBatch.Text IsNot "" Then
             BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
                                             b.id = numSearchBatch.Text)
         End If
     End Sub
 
+    ''' <summary>
+    ''' Loads the form with initial settings and data.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub frmLogisticsRegisterCommodity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Gets records from the database and displays them in the dgv.
         DBM.Instance.Batches.Load()
@@ -33,8 +47,13 @@ Public Class frmLogisticsRegisterCommodity
         shelfMax = appSettings.Item("shelfMax")
     End Sub
 
+    ''' <summary>
+    ''' Adds ingredient name to datagridview.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgLogisticsRegisterCommodity_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgLogisticsRegisterCommodity.CellFormatting
-        'Adds ingredient name for all ingredients shown in dgv.
         If e.Value IsNot Nothing Then
             Select Case dtgLogisticsRegisterCommodity.Columns(e.ColumnIndex).Name
                 Case "Ingrediens" 'Adds ingredient name to dgv.
@@ -44,23 +63,36 @@ Public Class frmLogisticsRegisterCommodity
 
     End Sub
 
+    ''' <summary>
+    ''' Resets the datagridview to show alle expected batches.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnShowAll_Click(sender As Object, e As EventArgs) Handles btnShowAll.Click
-        'Resets the dgv to show all expected batches.
         BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
                                         Not b.registered.HasValue)
     End Sub
 
+    ''' <summary>
+    ''' On change of selected date shows batches with ETA on selected date.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtpBatchExpectedInStock_ValueChanged(sender As Object, e As EventArgs) Handles dtpBatchExpectedInStock.ValueChanged
-        'On change of selected date shows batches with ETA on selected date.
         BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
                                         b.expected = dtpBatchExpectedInStock.Value.ToShortDateString _
                                         And Not b.registered.HasValue)
     End Sub
 
+    ''' <summary>
+    ''' Checks rows and shelves for a free location to place a batch.
+    ''' Suggests the first free location by entering row and shelf number 
+    ''' in the numeric textboxes in the user interface.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub firstFreeLocation()
-        'Checks rows and shelves for a free location to place a batch.
-        'Suggests the first free location by entering row and shelf number in 
-        'the numeric textboxes in the user interface.
         Dim gotLocation As Boolean = False
         Dim row, shelf As Integer
         While Not gotLocation
@@ -80,15 +112,20 @@ Public Class frmLogisticsRegisterCommodity
         End While
     End Sub
 
+    ''' <summary>
+    ''' Suggests a location to place a selected batch.
+    ''' For ingredients already in stock, checks if neighbouring locations are free, 
+    '''      if not suggests first free location.
+    ''' For ingredients located in the first shelf of a row, checks if the second shelf is free,
+    '''      if not suggests first free location.
+    ''' For ingredients located in the last shelf of a row, checks if the penultimate shelf is free,
+    '''      if not suggests first free location.
+    ''' For ingredients not in stock, suggests first free location.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnSuggestLocation_Click(sender As Object, e As EventArgs) Handles btnSuggestLocation.Click
-        'Suggests a location to place a selected batch.
-        'For ingredients already in stock, checks if neighbouring locations are free, 
-        '   if not suggests first free location.
-        'For ingredients located in the first shelf of a row, checks if the second shelf is free,
-        '   if not suggests first free location.
-        'For ingredients located in the last shelf of a row, checks if the penultimate shelf is free, 
-        '   if not suggests first free location.
-        'For ingredients not in stock, suggests first free location.
         Dim ingredientName As String = dtgLogisticsRegisterCommodity.SelectedRows(0).Cells(1).FormattedValue.ToString()
         Dim row, shelf As Integer
         Dim gotLocation As Boolean = False
@@ -152,9 +189,16 @@ Public Class frmLogisticsRegisterCommodity
         End If
     End Sub
 
+    ''' <summary>
+    ''' Registers selected row and shelf, receive-date (registration) and expiry date.
+    ''' Saves to database.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnRegisterBatchInStock_Click(sender As Object, e As EventArgs) Handles btnRegisterBatchInStock.Click
-        'Registers selected row and shelf, receive-date (registration) and expiry date.
-        'Saves to database.
+        '
+        '
         If StockManager.checkFreeLocation(numRow.Text, numShelf.Text) Then
             Dim batchToRegister = DBM.Instance.Batches.Find(dtgLogisticsRegisterCommodity.SelectedRows(0).Cells(0).Value)
             With batchToRegister
@@ -178,16 +222,24 @@ Public Class frmLogisticsRegisterCommodity
         End If
     End Sub
 
+    ''' <summary>
+    ''' When selecting a different batch from the dgv, user has to select row and shelf over again
+    ''' to make the batch registration button active.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgLogisticsRegisterCommodity_SelectionChanged(sender As Object, e As EventArgs) Handles dtgLogisticsRegisterCommodity.SelectionChanged
-        'When selecting a different batch from the dgv, user has to select row and shelf over again
-        'to make the batch registration button active.
         numRow.Text = ""
         numShelf.Text = ""
         btnRegisterBatchInStock.Enabled = False
     End Sub
 
+    ''' <summary>
+    ''' Activates registration button when valid values are entered for row and shelf.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub locInputCheck()
-        'Activates registration button when valid values are entered for row and shelf.
         If numRow.Text <> "" And numShelf.Text <> "" Then
             If numRow.Text >= 1 And numRow.Text <= rowMax Then
                 If numShelf.Text >= 1 And numShelf.Text <= shelfMax Then
@@ -203,8 +255,13 @@ Public Class frmLogisticsRegisterCommodity
         End If
     End Sub
 
-    'These numeric textboxes only allow integers, so there is no need to check isnumeric in code.
-    'The locInputCheck checks if entered values are valid before activating registration button.
+    ''' <summary>
+    ''' numRow and numShelf are numeric textboxes which only allow integers, so there is no need to check isnumeric in code.
+    ''' The locInputCheck checks if entered values are valid before activating registration button.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub numRow_TextChanged(sender As Object, e As EventArgs) Handles numRow.TextChanged
         locInputCheck()
     End Sub
