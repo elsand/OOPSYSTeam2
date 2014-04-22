@@ -156,14 +156,14 @@ Public Class frmAdminProcessedOrders
                 Process.Start(LocalSystemHelper.getDefaultBrowser(), fileName)
             End Using
 
-            'Writes changes to db and logs write operation in event log.
+            'Writes changes to db.
             Try
                 DBM.Instance.SaveChanges()
-                KakefunnEvent.saveSystemEvent("Ordre-eksporter", "Eksporterte følgende ordre: " & exportedOrders)
             Catch ex As Entity.Validation.DbEntityValidationException
-                MsgBox(ex)
+                MsgBox("Feil under oppdatering av database - " & ex.ToString)
             End Try
 
+            KakefunnEvent.saveSystemEvent("Ordre-eksporter", "Eksporterte følgende ordre: " & exportedOrders)
             MsgBox("Eksporterte " & j & " ordre.")
             startUp()
         Else
