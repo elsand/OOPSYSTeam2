@@ -10,18 +10,6 @@
         Return DBM.Instance.Orders.Find(orderId)
     End Function
 
-    ''' <summary>
-    ''' Creates an order and saves it to the database
-    ''' </summary>
-    ''' <returns>the order</returns>
-    ''' <remarks></remarks>
-    Public Shared Function CreateOrder(ByVal ingedients As Ingredient(), ByVal deliveryMethod As deliveryMethod, ByVal customer As Customer)
-        Dim o As New order
-        o.customer = customer
-        o.deliveryMethod = deliveryMethod
-        Return o
-    End Function
-
     Public Shared Sub NewOrder()
         SessionManager.Instance.ShowForm(frmSaleOrder)
         frmSaleOrder.NewOrder()
@@ -31,9 +19,19 @@
         EditOrder(DBM.Instance.Orders.Find(id))
     End Sub
 
+    Public Shared Sub EditOrder(id As Integer, returnToForm As Form)
+        EditOrder(id)
+        frmSaleOrder.returnToForm = returnToForm
+    End Sub
+
     Public Shared Sub EditOrder(order As Order)
         SessionManager.Instance.ShowForm(frmSaleOrder)
         frmSaleOrder.LoadOrder(order)
+    End Sub
+
+    Public Shared Sub EditOrder(order As Order, returnToForm As Form)
+        EditOrder(order)
+        frmSaleOrder.returnToForm = returnToForm
     End Sub
 
     ' TODO Remove this wrapper

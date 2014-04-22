@@ -1,5 +1,5 @@
 ﻿Public Class SearchHelper
-    Public Shared Sub Search(query As String, searchOrders As Boolean, searchCustomers As Boolean)
+    Public Shared Sub SearchFreeText(query As String, searchOrders As Boolean, searchCustomers As Boolean)
 
         SessionManager.Instance.ShowDialog(frmDialogSearchResults)
         Dim numericQuery As Integer
@@ -53,11 +53,32 @@
 
     End Sub
 
+    Public Shared Sub SearchOrders(predicate As System.Func(Of Order, Boolean))
+
+        SessionManager.Instance.ShowDialog(frmDialogSearchResults)
+
+        Dim orderQueryResult As List(Of Order)
+        orderQueryResult = DBM.Instance.Orders.Where(predicate).ToList()
+        With frmDialogSearchResults
+            .Text = "Søk etter ordrer"
+            .grpSearchResults.Text = "Søkeresultat"
+
+            .dtgSearchResultsOrders.Enabled = True
+            .OrderBindingSource.DataSource = orderQueryResult
+            .lblHitsInOrders.Text = orderQueryResult.Count & " treff i ordrer"
+
+            .CustomerBindingSource.DataSource = Nothing
+            .lblHitsInCustomers.Text = ""
+            .dtgSearchResultsCustomers.Enabled = False
+
+        End With
+    End Sub
+
     Public Shared Sub SearchCustomer(query As String)
-        Search(query, False, True)
+        SearchFreeText(query, False, True)
     End Sub
 
     Public Shared Sub SearchOrder(query As String)
-        Search(query, True, False)
+        SearchFreeText(query, True, False)
     End Sub
 End Class

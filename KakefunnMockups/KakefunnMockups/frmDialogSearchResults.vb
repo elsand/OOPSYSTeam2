@@ -28,7 +28,7 @@
             Case "dcOrderPrice"
                 Dim row As DataGridViewRow = dtgSearchResultsOrders.Rows(e.RowIndex)
                 Dim o As Order = CType(row.DataBoundItem, Order)
-                e.Value = OrderManager.GetOrderPrice(o)
+                e.Value = FormatHelper.Currency(OrderManager.GetOrderPrice(o))
         End Select
     End Sub
 End Class

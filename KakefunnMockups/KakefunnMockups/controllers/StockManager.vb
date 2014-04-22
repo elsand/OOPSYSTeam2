@@ -44,8 +44,9 @@
 
         Dim batches = From b In DBM.Instance.Batches _
                       Where b.Ingredient.id = ingredient.id _
-                      And (b.registered IsNot Nothing Or b.expected < deliveryDate) _
-                      And (b.expires < deliveryDate Or b.expires Is Nothing) _
+                      And b.deleted Is Nothing _
+                      And (b.registered IsNot Nothing OrElse b.expected < deliveryDate) _
+                      And (b.expires Is Nothing OrElse b.expires < deliveryDate) _
                       And b.unitCount > 0 _
                       Order By b.registered _
                       Select b

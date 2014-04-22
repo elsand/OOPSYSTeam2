@@ -65,7 +65,7 @@
             Exit Sub
         End If
         UpdateActionStatus("Søker ...")
-        SearchHelper.Search(txtSearchInformation.Text, True, True)
+        SearchHelper.SearchFreeText(txtSearchInformation.Text, True, True)
         UpdateActionStatus()
     End Sub
 
