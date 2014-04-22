@@ -3,7 +3,7 @@
 ''' Module to create cake-entries in the database.
 ''' A "cake" is the collection of specified amounts of ingredients, and
 ''' the recipe itself.
-''' Last edited 14.04.14
+''' Last edited 22.04.14
 ''' </summary>
 ''' <remarks>
 ''' Sorting on price column is not working, mostly because of limitations with datagridview
@@ -53,8 +53,8 @@ Public Class frmAdminCakes
 
         For i = 0 To dtgCake.Rows.Count - 1
             Dim cakePrice As Double = 0
-            Dim idx As Integer = CInt(dtgCake.Rows(i).Cells(0).Value)
-            Dim cakeMarkUpFactor As Double = ((CDbl(dtgCake.Rows(i).Cells(3).Value)) / 100) + 1
+            Dim idx As Integer = CInt(dtgCake.Rows(i).Cells(IdDataGridViewTextBoxColumn.Index).Value)
+            Dim cakeMarkUpFactor As Double = ((CDbl(dtgCake.Rows(i).Cells(MarkupPercentageDataGridViewTextBoxColumn.Index).Value)) / 100) + 1
             'For each cake in the list, get ingredient list.
             Dim ingList = (From x In DBM.Instance.RecipeLines _
                            Where x.Cake.id = idx _
@@ -336,11 +336,15 @@ Public Class frmAdminCakes
                 'Saves changes.
                 DBM.Instance.SaveChanges()
             Catch ex As Entity.Validation.DbEntityValidationException
-                MsgBox(ex.ToString)
+                MsgBox("Feilmelding: " & ex.ToString & " Noe gikk galt under lagring.")
             End Try
+
+            'logs operation to event log.
+            KakefunnEvent.saveSystemEvent("Kaker", "Lagret/oppdatert " & cake.name)
 
             bindCake()
             loadPrices()
+            clearRegForm()
 
             'Disables the registration part of the form.
             grpCakeEdit.Enabled = False
@@ -454,10 +458,9 @@ Public Class frmAdminCakes
         structureSelList()
 
         'Displays data in the form.
-        Dim cakeID As Integer = dtgCake.SelectedRows(0).Cells(0).Value
-        Dim pub As Boolean = dtgCake.SelectedRows(0).Cells(4).Value
-        MsgBox(dtgCake.SelectedRows(0).Cells(4).Value)
-        txtNameCake.Text = dtgCake.SelectedRows(0).Cells(1).Value
+        Dim cakeID As Integer = dtgCake.SelectedRows(0).Cells(IdDataGridViewTextBoxColumn.Index).Value
+        Dim pub As Boolean = dtgCake.SelectedRows(0).Cells(PublishedDataGridViewTextBoxColumn.Index).Value
+        txtNameCake.Text = dtgCake.SelectedRows(0).Cells(NameDataGridViewTextBoxColumn.Index).Value
         txtProcedure.Text = DBM.Instance.Cakes.Local.Where(Function(c) c.id = cakeID).Select(Function(c) c.recipe.ToString).FirstOrDefault()
         numMarkUps.Text = DBM.Instance.Cakes.Local.Where(Function(c) c.id = cakeID).Select(Function(c) c.markupPercentage.Value).FirstOrDefault()
         If pub = True Then
@@ -510,7 +513,7 @@ Public Class frmAdminCakes
         UpdateActionStatus("Sletter kake...")
 
         If result = 6 Then
-            Dim delIdx As Integer = dtgCake.SelectedRows(0).Cells(0).Value
+            Dim delIdx As Integer = dtgCake.SelectedRows(0).Cells(IdDataGridViewTextBoxColumn.Index).Value
             Dim delCake = DBM.Instance.Cakes.Find(delIdx)
             delCake.deleted = Date.Today
             delCake.published = False
@@ -540,8 +543,8 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtgCake_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgCake.CellFormatting
-        If dtgCake.Rows(e.RowIndex).Cells(6).Value <= Date.Today And _
-            dtgCake.Rows(e.RowIndex).Cells(6).Value > CDate("2000-01-01") Then
+        If dtgCake.Rows(e.RowIndex).Cells(DeletedDataGridViewTextBoxColumn.Index).Value <= Date.Today And _
+            dtgCake.Rows(e.RowIndex).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
         End If
@@ -549,7 +552,7 @@ Public Class frmAdminCakes
         If dtgCake.Columns(e.ColumnIndex).Name = "price" Then
             Dim i As Integer
             For i = 0 To cakeArray.Length - 1
-                If dtgCake.Rows(e.RowIndex).Cells(0).Value = cakeArray(i) Then
+                If dtgCake.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value = cakeArray(i) Then
                     e.Value = Format(cakePriceArray(i), "0.00")
                 End If
             Next
@@ -584,7 +587,7 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtgCake_MouseClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseClick
-        If dtgCake.SelectedRows(0).Cells(6).Value > CDate("2000-01-01") Then
+        If dtgCake.SelectedRows(0).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
             btnToolStripCakeDelete.Enabled = False
         Else
             btnToolStripCakeDelete.Enabled = True
