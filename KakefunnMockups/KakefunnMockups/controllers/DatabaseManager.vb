@@ -43,6 +43,10 @@ Public Class DBM
         Return SqlToArray("SELECT name FROM " & table & " ORDER BY name")
     End Function
 
+    Public Function GetNameColumn(table As String, where As String) As Array
+        Return SqlToArray("SELECT name FROM " & table & " WHERE " & where & " ORDER BY name")
+    End Function
+
     Public Function GetDataSetFromQuery(query As String) As DataSet
         Dim ds As DataSet = New DataSet()
         Dim sqlCmd As MySqlCommand = New MySqlCommand(query, Instance.Database.Connection)

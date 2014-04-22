@@ -1,4 +1,8 @@
-﻿Public Class frmAdminBase
+﻿''' <summary>
+''' Base class of which all frmAdmin* forms inherit. Implements navigation between forms.
+''' </summary>
+''' <remarks></remarks>
+Public Class frmAdminBase
 
     Private Sub btnProcessedOrders_Click(sender As Object, e As EventArgs) Handles btnProcessedOrders.Click
         SessionManager.Instance.ShowForm(frmAdminProcessedOrders)

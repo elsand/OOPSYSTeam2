@@ -43,11 +43,11 @@ Partial Class frmAdminBatch
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expected = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.lblEditExplanation = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.grpBatch.SuspendLayout()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.dtgBatch, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -237,8 +237,9 @@ Partial Class frmAdminBatch
         Me.dtgBatch.AllowUserToAddRows = False
         Me.dtgBatch.AllowUserToDeleteRows = False
         Me.dtgBatch.AutoGenerateColumns = False
+        Me.dtgBatch.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgBatch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgBatch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4})
+        Me.dtgBatch.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn2, Me.expected, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn4})
         Me.dtgBatch.DataSource = Me.BatchBindingSource
         Me.dtgBatch.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgBatch.Location = New System.Drawing.Point(12, 56)
@@ -251,38 +252,41 @@ Partial Class frmAdminBatch
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn1.FillWeight = 50.0!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Partinr"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
         '
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "unitCount"
+        Me.DataGridViewTextBoxColumn5.FillWeight = 75.0!
         Me.DataGridViewTextBoxColumn5.HeaderText = "Antall"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 40
         '
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "ordered"
         Me.DataGridViewTextBoxColumn2.HeaderText = "Bestilt"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Width = 120
+        '
+        'expected
+        '
+        Me.expected.DataPropertyName = "expected"
+        Me.expected.HeaderText = "Ventet på lager"
+        Me.expected.Name = "expected"
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "registered"
         Me.DataGridViewTextBoxColumn3.HeaderText = "Registrert"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Width = 120
         '
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "unitPurchasingPrice"
         Me.DataGridViewTextBoxColumn6.HeaderText = "Innkjøpspris"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 70
         '
         'DataGridViewTextBoxColumn4
         '
@@ -299,20 +303,10 @@ Partial Class frmAdminBatch
         Me.lblEditExplanation.TabIndex = 15
         Me.lblEditExplanation.Text = "Dobbeltklikk for å redigere en oppføring"
         '
-        'Button1
-        '
-        Me.Button1.Location = New System.Drawing.Point(509, 320)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 23)
-        Me.Button1.TabIndex = 16
-        Me.Button1.Text = "Button1"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
         'frmAdminBatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(708, 555)
-        Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.lblEditExplanation)
         Me.Controls.Add(Me.dtgBatch)
         Me.Controls.Add(Me.btnPrintOrderList)
@@ -327,7 +321,6 @@ Partial Class frmAdminBatch
         Me.Controls.SetChildIndex(Me.btnPrintOrderList, 0)
         Me.Controls.SetChildIndex(Me.dtgBatch, 0)
         Me.Controls.SetChildIndex(Me.lblEditExplanation, 0)
-        Me.Controls.SetChildIndex(Me.Button1, 0)
         Me.grpBatch.ResumeLayout(False)
         Me.grpBatch.PerformLayout()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -356,14 +349,14 @@ Partial Class frmAdminBatch
     Friend WithEvents txtPurchasingPrice As Kakefunn.NumericTextbox
     Friend WithEvents BatchBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents dtgBatch As System.Windows.Forms.DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumnIngredient As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents lblEditExplanation As System.Windows.Forms.Label
+    Friend WithEvents DataGridViewTextBoxColumn1 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents expected As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents lblEditExplanation As System.Windows.Forms.Label
-    Friend WithEvents Button1 As System.Windows.Forms.Button
 
 End Class
