@@ -1,16 +1,20 @@
-﻿'This dialog is for registering and editing ingredients.
-'Last edited 13.04.14
-'OK to finalize?
+﻿''' <summary>
+''' This dialog is for registering and editing ingredients.
+''' Last edited 22.04.14
+''' </summary>
+''' <remarks></remarks>
 Public Class frmDialogAdminIngredientDetails
-
     Private pub As Boolean = False
     Public newIngr As Boolean
     Public varenr As Integer
     Private existingItem As Ingredient
     Private IsDirty As Boolean = False
 
+    ''' <summary>
+    ''' Populating combobox with unit types.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub ddlUnitsLoad()
-        'Populating combobox with unit types.
         Dim query = From x In DBM.Instance.Units Select x
         Dim unitType As Unit
         For Each unitType In query
@@ -18,11 +22,14 @@ Public Class frmDialogAdminIngredientDetails
         Next
     End Sub
 
+    ''' <summary>
+    ''' Filling form with information for the selected ingredient.
+    ''' If the form is started to register a new ingredient, only the title is changed.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub dtgBatchLoad()
         Dim factorProfit As Double
-
-        'Filling form with information for the selected ingredient
-        If Not newIngr Then
+        If Not newIngr Then 'Showing details for existing ingredient.
             Me.Text = "Redigerer detaljer for varenummer " & varenr
             existingItem = DBM.Instance.Ingredients.Find(varenr)
             txtName.Text = existingItem.name
@@ -58,12 +65,16 @@ Public Class frmDialogAdminIngredientDetails
             For Each row In batches
                 dtgBatches.Rows.Add(row.id, row.expires, row.unitCount, row.unitPurchasingPrice, (row.unitPurchasingPrice * factorProfit))
             Next
-        Else
+        Else 'Creating new ingredient.
             Me.Text = "Oppretter ny vare"
-            dtgBatches.Enabled = False
         End If
     End Sub
 
+    ''' <summary>
+    ''' Saving details for new or existing ingredient.
+    ''' See detailed comments in sub.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub saveIngredient()
         Dim ingredientIndex As Integer
         Dim i As Ingredient
@@ -78,7 +89,7 @@ Public Class frmDialogAdminIngredientDetails
         i.name = txtName.Text
         i.description = txtDescr.Text
 
-        'Checking if unit already exists in db and adds it if not.
+        'Checking if unit type already exists in db and adds it if not.
         Dim u As Unit = (From data In DBM.Instance.Units Where data.name = ddlUnitType.Text Select data).FirstOrDefault()
         If u Is Nothing Then
             u = New Unit() With {.name = ddlUnitType.Text}
@@ -89,7 +100,7 @@ Public Class frmDialogAdminIngredientDetails
         i.vat = numVAT.Text
         i.published = pub
 
-        'Adds ingredient if it's new, saves changes to existing ingredient
+        'Adds ingredient if it's new, else saves changes to existing ingredient
         Try
             If newIngr Then
                 DBM.Instance.Ingredients.Add(i)
@@ -129,8 +140,11 @@ Public Class frmDialogAdminIngredientDetails
             End If
             DBM.Instance.SaveChanges()
         Catch ex As Entity.Validation.DbEntityValidationException
-            MsgBox(ex.ToString)
+            MsgBox("Saving ingredient to database failed: " & ex.ToString)
         End Try
+
+        'Logging the event
+        KakefunnEvent.saveSystemEvent("Ingredienser", "Lagret ingrediensen:" & i.id & " " & i.name)
 
         newIngr = False
         varenr = (From x In DBM.Instance.Ingredients _
@@ -139,11 +153,15 @@ Public Class frmDialogAdminIngredientDetails
         IsDirty = False
     End Sub
 
+    ''' <summary>
+    ''' Fill ddl for unit types, and if relevant an existing ingredient. Also loads tracking on some
+    ''' controls to prevent the user from exiting without saving.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub frmDialogAdminIngredientDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ddlUnitsLoad()
         dtgBatchLoad()
 
-        'Tracking changes in controls. Used to trigger dialog if user tries to exit form without saving changes.
         For Each c As Control In Me.grpIngredient.Controls
             If c.GetType().Name = "TextBox" Then
                 AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.IsDirty = True
@@ -155,36 +173,40 @@ Public Class frmDialogAdminIngredientDetails
                 AddHandler CType(c, NumericTextbox).TextChanged, Sub(s, ev) Me.IsDirty = True
             End If
         Next
-
     End Sub
 
+    ''' <summary>
+    ''' Calls procedures to save new ingredient or update an existing one. btnSave_Click handles two buttons,
+    ''' one saves to db and keeps the form open, while the other saves and returns to frmAdminIngredient.vb.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click, btnSaveClose.Click
-        'Calls procedures to save new ingredient or update an existing one.
         Dim btn As Button = CType(sender, Button)
         Dim saveType As Integer = btn.Tag
         If isValid() Then
             saveIngredient()
-            If saveType = 1 Then 'Saves ingredient and keeps form open.
+            If saveType = 1 Then
                 dtgBatchLoad()
                 ddlUnitsLoad()
                 grpStock.Enabled = True
                 IsDirty = False
-            Else 'Saves ingredient and closes form to return to frmAdminIngredient. 
+            Else
                 frmAdminIngredient.txtSearch.Text = txtName.Text
                 frmAdminIngredient.btnSearch.PerformClick()
                 frmAdminIngredient.txtSearch.Text = ""
                 Me.Close()
             End If
-            ' Logging the event
-            KakefunnEvent.saveSystemEvent("Ingredienser", "Lagret ny ingrediens")
         Else
             'Error message, content missing in form.
             MsgBox("Sjekk at alle felter er utfylt", MsgBoxStyle.Exclamation, "Advarsel")
         End If
     End Sub
 
+    ''' <summary>
+    ''' Catches changes for the published checkbox.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub chkPub_CheckedChanged(sender As Object, e As EventArgs) Handles chkPub.CheckedChanged
-        'Catches changes for the published checkbox.
         If Not pub Then
             pub = True
         Else
@@ -192,13 +214,20 @@ Public Class frmDialogAdminIngredientDetails
         End If
     End Sub
 
+    ''' <summary>
+    ''' Close form.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub btnAbort_Click(sender As Object, e As EventArgs) Handles btnAbort.Click
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Triggers on exit if there are unsaved content in the form. The user can stop the form from closing 
+    ''' if it was by mistake
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub frmDialogAdminIngredientDetails_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        'Triggers on exit if there are unsaved content in the form. The user can stop the form from closing 
-        'if it was by mistake
         If IsDirty Then
             Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du lukke redigeringsvinduet likevel?", _
                                            "Bekreft lukking", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
@@ -208,37 +237,37 @@ Public Class frmDialogAdminIngredientDetails
         End If
     End Sub
 
+    ''' <summary>
+    ''' Validates registration form content.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Function isValid() As Boolean
-        'Checks registration form for content.
         If txtName.Text = "" Then
             Return False
         End If
-
         If txtDescr.Text = "" Then
             Return False
         End If
-
         If ddlUnitType.Text = "" Then
             Return False
         End If
-
         If numCal.Text = "" Then
             Return False
         End If
-
         If numProfit.Text = "" Then
             Return False
         End If
-
         If numVAT.Text = "" Then
             Return False
         End If
-
         Return True
     End Function
 
+    ''' <summary>
+    ''' Readies the form for registering a new ingredient.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub restartReg()
-        'Readies the form for registering a new ingredient.
         newIngr = True
         txtName.Text = ""
         txtDescr.Text = ""
@@ -248,12 +277,18 @@ Public Class frmDialogAdminIngredientDetails
         numProfit.Text = ""
         numVAT.Text = ""
         chkPub.Checked = False
-        dtgBatches.Enabled = False
+        grpStock.Enabled = False
+        dtgBatches.Rows.Clear()
+        lblNumInStockText.Text = ""
         IsDirty = False
         Me.Text = "Oppretter ny vare"
     End Sub
+
+    ''' <summary>
+    ''' Warns user if there are unsaved changes, then calls procedure to reset form.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub btnNewIngredient_Click(sender As Object, e As EventArgs) Handles btnNewIngredient.Click
-        'Empties fields in the form to register a new ingredient.
         If IsDirty Then
             Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du forkaste disse og registrere ny ingrediens?", _
                                            "Bekreft", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
