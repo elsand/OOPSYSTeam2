@@ -219,7 +219,7 @@ Public Class frmAdminProcessedOrders
         If e.RowIndex >= 0 Then
             Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
             Dim order = DBM.Instance.Orders.Find(orderNr)
-            OrderManager.EditOrder(order)
+            OrderManager.EditOrder(order, Me)
         End If
     End Sub
 
