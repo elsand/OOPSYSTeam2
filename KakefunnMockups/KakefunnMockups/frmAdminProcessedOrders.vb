@@ -216,6 +216,7 @@ Public Class frmAdminProcessedOrders
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub dtgProcessedOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgProcessedOrders.CellDoubleClick
+        'rdoCheckNone.PerformClick()
         If e.RowIndex >= 0 Then
             Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
             Dim order = DBM.Instance.Orders.Find(orderNr)

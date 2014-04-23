@@ -1,4 +1,6 @@
-﻿Public Class StockManager
+﻿Imports System.Configuration
+
+Public Class StockManager
     Public Shared Function getInStock(varenr As Integer, list As List(Of Kakefunn.Batch)) As Integer 'Finds amount of an ingredient in stock.
         Dim batches = From x In list Where x.Ingredient.id = varenr _
                       And x.registered IsNot Nothing Select x.unitCount
@@ -9,10 +11,16 @@
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets lowest and highest purchasing price, and also calculates average purchasing price from batches.
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Shared Function getPurchasingPrice(varenr As Integer, type As String, list As List(Of Kakefunn.Batch)) As Double
-        Dim batches = From x In list _
+        Dim batches = (From x In list _
                       Where x.Ingredient.id = varenr _
-                      Select x.unitPurchasingPrice
+                      And x.unitPurchasingPrice.HasValue _
+                      Select x.unitPurchasingPrice).ToList()
+
         If batches.Any Then
             If type = "high" Then
                 Return batches.Max()
@@ -39,6 +47,14 @@
         Dim unitsFound As Integer
         Dim markupAtDeliveryDate As Decimal
 
+        Dim expiryGraceDaysString As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
+        Dim expiryGraceDays As Integer
+        If Not Integer.TryParse(expiryGraceDaysString, expiryGraceDays) Then
+            expiryGraceDays = 0
+        End If
+
+        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(expiryGraceDays)
+
         Console.WriteLine("-----------------")
         Console.WriteLine("GetSellingPrice(" & ingredient.name & ", " & requestedUnitCount & ", " & deliveryDate & ")")
 
@@ -46,7 +62,7 @@
                       Where b.Ingredient.id = ingredient.id _
                       And b.deleted Is Nothing _
                       And (b.registered IsNot Nothing OrElse b.expected < deliveryDate) _
-                      And (b.expires Is Nothing OrElse b.expires < deliveryDate) _
+                      And (b.expires Is Nothing OrElse b.expires > deliveryDateWithGraceDays) _
                       And b.unitCount > 0 _
                       Order By b.registered _
                       Select b
@@ -66,7 +82,7 @@
             If batch Is Nothing Then
                 Throw New Exception(ingredient.name & " finnes ikke på lager, og ingen bestillinger ventes inn.")
             Else
-                Throw New Exception(ingredient.name & " finnes ikke på lager innen " & deliveryDate & ". " & vbCrLf & vbCrLf & "Bestilling på " & batch.unitCount & _
+                Throw New Exception(ingredient.name & " finnes ikke på lager innen " & deliveryDate & ". " & "Bestilling på " & batch.unitCount & _
                                     " " & ingredient.Unit.name & " forventes på lager " & batch.expected)
             End If
 
@@ -144,4 +160,51 @@
             Return False
         End If
     End Function
+
+    ''' <summary>
+    ''' Reduces the inventory of the supplied ingredient by amount. Deliverydate must be supplied, as that will determine what batches
+    ''' to pick from (with regards to expected delivery and expiry date)
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <param name="amount"></param>
+    ''' <param name="deliveryDate"></param>
+    ''' <remarks></remarks>
+    Shared Sub ReduceInventory(ingredient As Ingredient, ByVal amount As Double, deliveryDate As Date)
+
+        Dim expiryGraceDaysString As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
+        Dim expiryGraceDays As Integer
+        If Not Integer.TryParse(expiryGraceDaysString, expiryGraceDays) Then
+            expiryGraceDays = 0
+        End If
+
+        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(expiryGraceDays)
+
+        Dim batches = From b In DBM.Instance.Batches _
+              Where b.Ingredient.id = ingredient.id _
+              And b.deleted Is Nothing _
+              And (b.registered IsNot Nothing OrElse b.expected < deliveryDate) _
+              And (b.expires Is Nothing OrElse b.expires > deliveryDateWithGraceDays) _
+              And b.unitCount > 0 _
+              Order By b.registered _
+              Select b
+
+        For Each b As Batch In batches
+            ' Enough in this batch?
+            If b.unitCount >= amount Then
+                b.unitCount = b.unitCount - amount
+                amount = 0
+                Exit For
+            End If
+            ' No, empty this batch and try the next one
+            amount = amount - b.unitCount
+            b.unitCount = 0
+        Next
+
+        ' At this point we assert that amount = 0. There is a race condition where two orders are placed at nearly the same time, where
+        ' both are assuming that all the stock is available to them
+
+        DBM.Instance.SaveChanges()
+
+    End Sub
+
 End Class
