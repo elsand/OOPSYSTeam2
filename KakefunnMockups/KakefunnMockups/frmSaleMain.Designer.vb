@@ -53,6 +53,8 @@ Partial Class frmSaleMain
         Me.fullName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerEmail = New System.Windows.Forms.DataGridViewLinkColumn()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.grpRegistration.SuspendLayout()
         Me.grpSearch.SuspendLayout()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -93,11 +95,12 @@ Partial Class frmSaleMain
         '
         'grpSearch
         '
+        Me.grpSearch.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpSearch.Controls.Add(Me.btnSearch)
         Me.grpSearch.Controls.Add(Me.lblSearchInformation)
         Me.grpSearch.Controls.Add(Me.txtSearchInformation)
         Me.grpSearch.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
-        Me.grpSearch.Location = New System.Drawing.Point(326, 35)
+        Me.grpSearch.Location = New System.Drawing.Point(485, 35)
         Me.grpSearch.Name = "grpSearch"
         Me.grpSearch.Size = New System.Drawing.Size(272, 83)
         Me.grpSearch.TabIndex = 3
@@ -141,7 +144,7 @@ Partial Class frmSaleMain
         'lblLast5ProcessedCustomers
         '
         Me.lblLast5ProcessedCustomers.AutoSize = True
-        Me.lblLast5ProcessedCustomers.Location = New System.Drawing.Point(8, 337)
+        Me.lblLast5ProcessedCustomers.Location = New System.Drawing.Point(8, 312)
         Me.lblLast5ProcessedCustomers.Name = "lblLast5ProcessedCustomers"
         Me.lblLast5ProcessedCustomers.Size = New System.Drawing.Size(134, 13)
         Me.lblLast5ProcessedCustomers.TabIndex = 7
@@ -155,6 +158,8 @@ Partial Class frmSaleMain
         '
         Me.dgvOrder.AllowUserToAddRows = False
         Me.dgvOrder.AllowUserToDeleteRows = False
+        Me.dgvOrder.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvOrder.AutoGenerateColumns = False
         Me.dgvOrder.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -165,7 +170,7 @@ Partial Class frmSaleMain
         Me.dgvOrder.Name = "dgvOrder"
         Me.dgvOrder.RowHeadersVisible = False
         Me.dgvOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvOrder.Size = New System.Drawing.Size(586, 154)
+        Me.dgvOrder.Size = New System.Drawing.Size(750, 133)
         Me.dgvOrder.TabIndex = 9
         '
         'DataGridViewTextBoxColumn17
@@ -224,17 +229,19 @@ Partial Class frmSaleMain
         '
         Me.dgvCustomer.AllowUserToAddRows = False
         Me.dgvCustomer.AllowUserToDeleteRows = False
+        Me.dgvCustomer.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dgvCustomer.AutoGenerateColumns = False
         Me.dgvCustomer.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dgvCustomer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvCustomer.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.modified, Me.DataGridViewTextBoxColumn5, Me.dcCustomerType, Me.fullName, Me.DataGridViewTextBoxColumn7, Me.dcCustomerEmail})
         Me.dgvCustomer.DataSource = Me.CustomerBindingSource
         Me.dgvCustomer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.dgvCustomer.Location = New System.Drawing.Point(11, 353)
+        Me.dgvCustomer.Location = New System.Drawing.Point(11, 328)
         Me.dgvCustomer.Name = "dgvCustomer"
         Me.dgvCustomer.RowHeadersVisible = False
         Me.dgvCustomer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dgvCustomer.Size = New System.Drawing.Size(586, 168)
+        Me.dgvCustomer.Size = New System.Drawing.Size(750, 133)
         Me.dgvCustomer.TabIndex = 9
         '
         'modified
@@ -284,12 +291,34 @@ Partial Class frmSaleMain
         Me.dcCustomerEmail.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
         Me.dcCustomerEmail.TrackVisitedState = False
         '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(630, 139)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(131, 13)
+        Me.Label1.TabIndex = 10
+        Me.Label1.Text = "Dobbeltklikk for å redigere"
+        '
+        'Label2
+        '
+        Me.Label2.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(633, 310)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(131, 13)
+        Me.Label2.TabIndex = 11
+        Me.Label2.Text = "Dobbeltklikk for å redigere"
+        '
         'frmSaleMain
         '
         Me.AcceptButton = Me.btnSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(612, 563)
+        Me.ClientSize = New System.Drawing.Size(779, 521)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dgvCustomer)
         Me.Controls.Add(Me.dgvOrder)
         Me.Controls.Add(Me.lblLast5ProcessedCustomers)
@@ -304,6 +333,8 @@ Partial Class frmSaleMain
         Me.Controls.SetChildIndex(Me.lblLast5ProcessedCustomers, 0)
         Me.Controls.SetChildIndex(Me.dgvOrder, 0)
         Me.Controls.SetChildIndex(Me.dgvCustomer, 0)
+        Me.Controls.SetChildIndex(Me.Label1, 0)
+        Me.Controls.SetChildIndex(Me.Label2, 0)
         Me.grpRegistration.ResumeLayout(False)
         Me.grpSearch.ResumeLayout(False)
         Me.grpSearch.PerformLayout()
@@ -342,5 +373,7 @@ Partial Class frmSaleMain
     Friend WithEvents fullName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcCustomerEmail As System.Windows.Forms.DataGridViewLinkColumn
+    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 
 End Class
