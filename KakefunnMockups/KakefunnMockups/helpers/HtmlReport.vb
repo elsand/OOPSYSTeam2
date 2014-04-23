@@ -22,6 +22,7 @@ Public Class HtmlReport
 
     Private Buf As String = ""
     Private TableOpened As Boolean = False
+    Private DlOpened As Boolean = False
     Private FooterAdded As Boolean = False
 
     ''' <summary>
@@ -80,6 +81,37 @@ Public Class HtmlReport
         TableOpened = False
     End Sub
 
+    ''' <summary>
+    ''' Starts as definition list
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub StartDefintionList()
+        Add("<dl>")
+        DlOpened = True
+    End Sub
+
+    ''' <summary>
+    ''' Adds a definition
+    ''' </summary>
+    ''' <param name="dt"></param>
+    ''' <param name="dd"></param>
+    ''' <remarks></remarks>
+    Public Sub AddDefiniton(dt As String, dd As String)
+        If Not DlOpened Then
+            StartDefintionList()
+        End If
+        Add("<dt>" & dt & ":</dt><dd>" & dd & "</dd>")
+    End Sub
+
+    ''' <summary>
+    ''' Closes a definition list
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub EndDefinitionList()
+        Add("</dl>")
+        DlOpened = False
+    End Sub
+
 
     ''' <summary>
     ''' Returns the fully rendered HTML
@@ -89,6 +121,9 @@ Public Class HtmlReport
     Public Function Render() As String
         If TableOpened Then
             EndTable()
+        End If
+        If DlOpened Then
+            EndDefinitionList()
         End If
         If Not FooterAdded Then
             Add(Footer)
