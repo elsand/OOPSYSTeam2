@@ -9,10 +9,16 @@
         End If
     End Function
 
+    ''' <summary>
+    ''' Gets lowest and highest purchasing price, and also calculates average purchasing price from batches.
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Shared Function getPurchasingPrice(varenr As Integer, type As String, list As List(Of Kakefunn.Batch)) As Double
-        Dim batches = From x In list _
+        Dim batches = (From x In list _
                       Where x.Ingredient.id = varenr _
-                      Select x.unitPurchasingPrice
+                      And x.unitPurchasingPrice.HasValue _
+                      Select x.unitPurchasingPrice).ToList()
+
         If batches.Any Then
             If type = "high" Then
                 Return batches.Max()
