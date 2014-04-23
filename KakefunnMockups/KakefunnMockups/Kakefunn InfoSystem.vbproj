@@ -124,6 +124,12 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminTabContainer.Designer.vb">
+      <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDialogLogisticsExpired.Designer.vb">
       <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
     </Compile>
@@ -134,6 +140,24 @@
       <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
     </Compile>
     <Compile Include="frmDialogAdminNotExported.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsTabContainer.Designer.vb">
+      <DependentUpon>frmLogisticsTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaleTabContainer.Designer.vb">
+      <DependentUpon>frmSaleTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaleTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuperTabContainer.Designer.vb">
+      <DependentUpon>frmSuperTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuperTabContainer.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="helpers\HtmlReport.vb" />
@@ -450,6 +474,9 @@
     <EmbeddedResource Include="frmAdminSystemAdministration.resx">
       <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminTabContainer.resx">
+      <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
       <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -480,6 +507,9 @@
     <EmbeddedResource Include="frmLogisticsReports.resx">
       <DependentUpon>frmLogisticsReports.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsTabContainer.resx">
+      <DependentUpon>frmLogisticsTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSaleCustomer.resx">
       <DependentUpon>frmSaleCustomer.vb</DependentUpon>
     </EmbeddedResource>
@@ -489,8 +519,14 @@
     <EmbeddedResource Include="frmSaleOrder.resx">
       <DependentUpon>frmSaleOrder.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSaleTabContainer.resx">
+      <DependentUpon>frmSaleTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSuperBase.resx">
       <DependentUpon>frmSuperBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuperTabContainer.resx">
+      <DependentUpon>frmSuperTabContainer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>

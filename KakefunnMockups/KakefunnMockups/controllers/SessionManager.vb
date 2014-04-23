@@ -36,6 +36,7 @@
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    ''' 
     Public ReadOnly Property User As Employee
         Get
             Return loggedInEmployee
@@ -56,8 +57,15 @@
     Private Property currentForm As frmSuperBase
         Get
             If _currentForm Is Nothing Then
-                For Each frm As frmSuperBase In Application.OpenForms
-                    Return frm
+                For Each frm As Form In Application.OpenForms
+
+                    ' Find first tabcontrol
+                    For Each c As Control In frm.Controls
+                        If TypeOf c Is TabControl Then
+                            Return CType(c, TabControl).SelectedTab.Controls.Item(0)
+                        End If
+                    Next
+
                 Next
             End If
             Return _currentForm
@@ -138,7 +146,7 @@
     End Sub
 
     Public Sub ShowDefaultFormForRole(role As String)
-        Select role
+        Select Case role
             Case "Admin"
                 ShowForm(frmAdminReports)
             Case "Sale"
@@ -148,14 +156,21 @@
         End Select
     End Sub
 
-    Public Sub ShowForm(frm As frmSuperBase)
-        If frm.Name = currentForm.Name Then
-            frm.Focus()
-            Exit Sub
-        End If
-        currentForm.Hide()
-        frm.Show()
-        frm.Focus()
+    Public Sub ShowForm(frm As Form)
+
+
+        Dim f As Form = frmSuperTabContainer.GetContainerForAspect(frmSuperTabContainer.GetAspectForForm(frm))
+        f.Show()
+
+        For Each c As Control In f.Controls
+            If TypeOf c Is TabControl Then
+                For Each t As TabPage In CType(c, TabControl).TabPages
+                    If t.Controls.Item(0).Name = frm.Name Then
+                        CType(c, TabControl).SelectedTab = t
+                    End If
+                Next
+            End If
+        Next
 
         HideDialog()
 
