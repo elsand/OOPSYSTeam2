@@ -97,11 +97,9 @@ Public Class frmSaleOrder
             lblOrderSentValue.Text = "(ikke sendt)"
         End If
 
-
         UpdateTotalPrice()
 
         isLoadingOrder = False
-
     End Sub
 
     ''' <summary>
@@ -600,7 +598,12 @@ Public Class frmSaleOrder
         If Not FormHelper.ContinueIfDirty(Me) Then
             Exit Sub
         End If
-        SessionManager.Instance.ShowForm(returnToForm)
+        If returnToForm.Text = "Salg" Then
+            SessionManager.Instance.ShowForm(returnToForm)
+        Else
+            frmSaleTabContainer.Close()
+        End If
+
     End Sub
 
     ''' <summary>
