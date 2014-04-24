@@ -152,7 +152,7 @@ Public Class frmSaleOrder
                     If Not row.Tag Is Nothing Then
                         ' This means we've reduced it by some amount
                         reduction = row.Tag - ol.amount
-                        StockManager.ReduceInventory(ol.Ingredient, reduction, currentRecord.deliveryDate)
+                        StockManager.ReduceInventory(ol.Ingredient, -reduction, currentRecord.deliveryDate)
                     Else
                         ' New row, reduce by full amount
                         StockManager.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)

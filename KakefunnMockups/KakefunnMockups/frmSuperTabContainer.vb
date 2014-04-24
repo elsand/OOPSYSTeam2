@@ -1,50 +1,66 @@
 ﻿Public Class frmSuperTabContainer
 
     Private Shared IsClosingEventHandled As Boolean = False
-    Private Forms As New Dictionary(Of Form, String)
+    Private Forms As New List(Of Form) From { _
+        frmAdminProcessedOrders, _
+        frmAdminCakes, _
+        frmAdminIngredient, _
+        frmAdminBatch, _
+        frmAdminReports, _
+        frmAdminSystemAdministration, _
+ _
+        frmSaleMain, _
+        frmSaleOrder, _
+        frmSaleCustomer, _
+ _
+        frmLogisticsPackingList, _
+        frmLogisticsRegisterCommodity, _
+        frmLogisticsReports _
+    }
+    Private Aspects As New Dictionary(Of String, String) From { _
+        {"frmAdminProcessedOrders", "ADMIN"}, _
+        {"frmAdminCakes", "ADMIN"}, _
+        {"frmAdminIngredient", "ADMIN"}, _
+        {"frmAdminBatch", "ADMIN"}, _
+        {"frmAdminReports", "ADMIN"}, _
+        {"frmAdminSystemAdministration", "ADMIN"}, _
+ _
+        {"frmSaleMain", "SALE"}, _
+        {"frmSaleOrder", "SALE"}, _
+        {"frmSaleCustomer", "SALE"}, _
+ _
+        {"frmLogisticsPackingList", "LOGISTICS"}, _
+        {"frmLogisticsRegisterCommodity", "LOGISTICS"}, _
+        {"frmLogisticsReports", "LOGISTICS"} _
+    }
     Private Containers As New Dictionary(Of String, Form)
 
-
-    Public Sub New()
-        ' This call is required by the designer.
-        InitializeComponent()
-
-        ' Add any initialization after the InitializeComponent() call.
-
-        Forms.Add(frmAdminProcessedOrders, "ADMIN")
-        Forms.Add(frmAdminCakes, "ADMIN")
-        Forms.Add(frmAdminIngredient, "ADMIN")
-        Forms.Add(frmAdminBatch, "ADMIN")
-        Forms.Add(frmAdminReports, "ADMIN")
-        Forms.Add(frmAdminSystemAdministration, "ADMIN")
-
-        Forms.Add(frmSaleMain, "SALE")
-        Forms.Add(frmSaleOrder, "SALE")
-        Forms.Add(frmSaleCustomer, "SALE")
-
-        Forms.Add(frmLogisticsPackingList, "LOGISTICS")
-        Forms.Add(frmLogisticsRegisterCommodity, "LOGISTICS")
-        Forms.Add(frmLogisticsReports, "LOGISTICS")
-
-    End Sub
-
     Public Function GetFormsForAspect(aspect As String) As List(Of Form)
-        Dim ret As New List(Of Form), pair As KeyValuePair(Of Form, String)
-        For Each pair In Forms
+        Dim ret As New List(Of Form), pair As KeyValuePair(Of String, String)
+        For Each pair In Aspects
             If pair.Value = aspect Then
-                ret.Add(pair.Key)
+                ret.Add(GetFormByName(pair.key))
             End If
         Next
         Return ret
     End Function
 
-    Public Function GetAspectForForm(form As Form) As String
-        If Forms.ContainsKey(form) Then
-            Return Forms.Item(form)
-        Else
-            Return Nothing
-        End If
+    Public Function GetFormByName(formName As String) As Form
+        For Each f As Form In Forms
+            If f.Name = formName Then
+                Return f
+            End If
+        Next
+        Return Nothing
     End Function
+
+    Public Function GetAspectForForm(form As Form) As String
+        If Aspects.ContainsKey(form.Name) Then
+            Return Aspects.Item(form.Name)
+        End If
+        Return Nothing
+    End Function
+
 
     Public Function GetContainerForAspect(aspect As String) As Form
 

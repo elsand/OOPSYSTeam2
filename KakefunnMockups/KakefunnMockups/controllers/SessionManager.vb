@@ -159,7 +159,8 @@
     Public Sub ShowForm(frm As Form)
 
 
-        Dim f As Form = frmSuperTabContainer.GetContainerForAspect(frmSuperTabContainer.GetAspectForForm(frm))
+        Dim aspect As String = frmSuperTabContainer.GetAspectForForm(frm)
+        Dim f As Form = frmSuperTabContainer.GetContainerForAspect(aspect)
         f.Show()
 
         For Each c As Control In f.Controls
