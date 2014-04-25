@@ -269,9 +269,8 @@ Public Class frmSuperTabContainer
         Dim ms As Size = CType(tabControl.SelectedTab.Controls.Item(0), Form).MinimumSize
         ' Add some room for padding on the right side
         ms.Width = ms.Width + padding
-        ' If the tabcontrol is offset from the top (as in sale), account for that here
-        ms.Height = ms.Height + tabControl.Top + padding
+        ' If the tabcontrol is offset from the top (as in sale), account for that here, plus the status bar
+        ms.Height = ms.Height + tabControl.Top + padding + statusMain.Height
         Me.MinimumSize = ms
     End Sub
-
 End Class

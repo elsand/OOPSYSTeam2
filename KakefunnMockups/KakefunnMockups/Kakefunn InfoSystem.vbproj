@@ -165,7 +165,6 @@
     <Compile Include="helpers\KakefunnEvent.vb" />
     <Compile Include="helpers\LocalSystemHelper.vb" />
     <Compile Include="helpers\PackingListHelper.vb" />
-    <Compile Include="helpers\RawPrinterHelper.vb" />
     <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>

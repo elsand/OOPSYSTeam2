@@ -1,10 +1,4 @@
-﻿''' <summary>
-''' As the name says... this is the dialog for the orders that is not exported.. just i case anyone
-''' wants to print it, use more paper and make squirrels homeless.. not that i really care about the squirrels, but chip 'n' dale are quite funny.  
-''' </summary>
-''' <remarks>Nah. not really.. </remarks>
-
-Imports Microsoft.Reporting.WinForms
+﻿Imports Microsoft.Reporting.WinForms
 
 
 Public Class frmDialogAdminNotExported
