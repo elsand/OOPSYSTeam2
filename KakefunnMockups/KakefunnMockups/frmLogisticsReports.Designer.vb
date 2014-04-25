@@ -51,6 +51,9 @@ Partial Class frmLogisticsReports
         '
         Me.dtgExpiredIngredients.AllowUserToAddRows = False
         Me.dtgExpiredIngredients.AllowUserToDeleteRows = False
+        Me.dtgExpiredIngredients.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgExpiredIngredients.AutoGenerateColumns = False
         Me.dtgExpiredIngredients.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgExpiredIngredients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -59,7 +62,7 @@ Partial Class frmLogisticsReports
         Me.dtgExpiredIngredients.Location = New System.Drawing.Point(12, 79)
         Me.dtgExpiredIngredients.Name = "dtgExpiredIngredients"
         Me.dtgExpiredIngredients.RowHeadersVisible = False
-        Me.dtgExpiredIngredients.Size = New System.Drawing.Size(682, 267)
+        Me.dtgExpiredIngredients.Size = New System.Drawing.Size(682, 251)
         Me.dtgExpiredIngredients.TabIndex = 5
         '
         'cnIngredientId
@@ -187,7 +190,8 @@ Partial Class frmLogisticsReports
         '
         'btnPrintExpiredIngredients
         '
-        Me.btnPrintExpiredIngredients.Location = New System.Drawing.Point(619, 361)
+        Me.btnPrintExpiredIngredients.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnPrintExpiredIngredients.Location = New System.Drawing.Point(619, 336)
         Me.btnPrintExpiredIngredients.Name = "btnPrintExpiredIngredients"
         Me.btnPrintExpiredIngredients.Size = New System.Drawing.Size(75, 23)
         Me.btnPrintExpiredIngredients.TabIndex = 8
@@ -196,7 +200,8 @@ Partial Class frmLogisticsReports
         '
         'btnCheckAll
         '
-        Me.btnCheckAll.Location = New System.Drawing.Point(12, 361)
+        Me.btnCheckAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnCheckAll.Location = New System.Drawing.Point(12, 336)
         Me.btnCheckAll.Name = "btnCheckAll"
         Me.btnCheckAll.Size = New System.Drawing.Size(75, 23)
         Me.btnCheckAll.TabIndex = 6
@@ -205,7 +210,8 @@ Partial Class frmLogisticsReports
         '
         'btbDeleteCheckedIngredientsInStock
         '
-        Me.btbDeleteCheckedIngredientsInStock.Location = New System.Drawing.Point(93, 361)
+        Me.btbDeleteCheckedIngredientsInStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btbDeleteCheckedIngredientsInStock.Location = New System.Drawing.Point(93, 336)
         Me.btbDeleteCheckedIngredientsInStock.Name = "btbDeleteCheckedIngredientsInStock"
         Me.btbDeleteCheckedIngredientsInStock.Size = New System.Drawing.Size(175, 23)
         Me.btbDeleteCheckedIngredientsInStock.TabIndex = 7
@@ -220,6 +226,7 @@ Partial Class frmLogisticsReports
         Me.Controls.Add(Me.btnCheckAll)
         Me.Controls.Add(Me.btnPrintExpiredIngredients)
         Me.Controls.Add(Me.dtgExpiredIngredients)
+        Me.MinimumSize = New System.Drawing.Size(722, 461)
         Me.Name = "frmLogisticsReports"
         Me.Text = "Utløpte varer"
         Me.Controls.SetChildIndex(Me.dtgExpiredIngredients, 0)
@@ -229,7 +236,6 @@ Partial Class frmLogisticsReports
         CType(Me.dtgExpiredIngredients, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents dtgExpiredIngredients As System.Windows.Forms.DataGridView
