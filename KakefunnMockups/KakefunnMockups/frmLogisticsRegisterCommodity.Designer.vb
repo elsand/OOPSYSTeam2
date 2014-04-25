@@ -48,6 +48,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'grpEditSelectedBatch
         '
+        Me.grpEditSelectedBatch.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpEditSelectedBatch.Controls.Add(Me.numShelf)
         Me.grpEditSelectedBatch.Controls.Add(Me.numRow)
         Me.grpEditSelectedBatch.Controls.Add(Me.dtpExpireDate)
@@ -68,6 +70,8 @@ Partial Class frmLogisticsRegisterCommodity
         Me.numShelf.AllowDecimal = False
         Me.numShelf.AllowNegative = False
         Me.numShelf.AllowSpace = False
+        Me.numShelf.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.numShelf.Location = New System.Drawing.Point(155, 20)
         Me.numShelf.Name = "numShelf"
         Me.numShelf.Size = New System.Drawing.Size(37, 20)
@@ -78,6 +82,8 @@ Partial Class frmLogisticsRegisterCommodity
         Me.numRow.AllowDecimal = False
         Me.numRow.AllowNegative = False
         Me.numRow.AllowSpace = False
+        Me.numRow.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.numRow.Location = New System.Drawing.Point(63, 20)
         Me.numRow.Name = "numRow"
         Me.numRow.Size = New System.Drawing.Size(37, 20)
@@ -85,6 +91,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'dtpExpireDate
         '
+        Me.dtpExpireDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpExpireDate.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpExpireDate.Location = New System.Drawing.Point(410, 19)
         Me.dtpExpireDate.Name = "dtpExpireDate"
@@ -93,6 +101,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'lblExpireDate
         '
+        Me.lblExpireDate.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblExpireDate.AutoSize = True
         Me.lblExpireDate.Location = New System.Drawing.Point(346, 23)
         Me.lblExpireDate.Name = "lblExpireDate"
@@ -102,6 +112,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'btnSuggestLocation
         '
+        Me.btnSuggestLocation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnSuggestLocation.Location = New System.Drawing.Point(214, 18)
         Me.btnSuggestLocation.Name = "btnSuggestLocation"
         Me.btnSuggestLocation.Size = New System.Drawing.Size(99, 23)
@@ -111,6 +123,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'lblShelf
         '
+        Me.lblShelf.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblShelf.AutoSize = True
         Me.lblShelf.Location = New System.Drawing.Point(119, 23)
         Me.lblShelf.Name = "lblShelf"
@@ -120,6 +134,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'lblRow
         '
+        Me.lblRow.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblRow.AutoSize = True
         Me.lblRow.Location = New System.Drawing.Point(30, 23)
         Me.lblRow.Name = "lblRow"
@@ -129,6 +145,8 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'btnRegisterBatchInStock
         '
+        Me.btnRegisterBatchInStock.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnRegisterBatchInStock.Enabled = False
         Me.btnRegisterBatchInStock.Location = New System.Drawing.Point(554, 16)
         Me.btnRegisterBatchInStock.Name = "btnRegisterBatchInStock"
@@ -157,6 +175,9 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'dtgLogisticsRegisterCommodity
         '
+        Me.dtgLogisticsRegisterCommodity.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgLogisticsRegisterCommodity.AutoGenerateColumns = False
         Me.dtgLogisticsRegisterCommodity.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgLogisticsRegisterCommodity.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -204,6 +225,7 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'lblShowBatchExpectedInStock
         '
+        Me.lblShowBatchExpectedInStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblShowBatchExpectedInStock.AutoSize = True
         Me.lblShowBatchExpectedInStock.Location = New System.Drawing.Point(465, 84)
         Me.lblShowBatchExpectedInStock.Name = "lblShowBatchExpectedInStock"
@@ -213,6 +235,7 @@ Partial Class frmLogisticsRegisterCommodity
         '
         'dtpBatchExpectedInStock
         '
+        Me.dtpBatchExpectedInStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpBatchExpectedInStock.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
         Me.dtpBatchExpectedInStock.Location = New System.Drawing.Point(598, 81)
         Me.dtpBatchExpectedInStock.Name = "dtpBatchExpectedInStock"
@@ -241,7 +264,7 @@ Partial Class frmLogisticsRegisterCommodity
         'frmLogisticsRegisterCommodity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(716, 505)
+        Me.ClientSize = New System.Drawing.Size(713, 521)
         Me.Controls.Add(Me.btnShowAll)
         Me.Controls.Add(Me.numSearchBatch)
         Me.Controls.Add(Me.dtpBatchExpectedInStock)
@@ -250,6 +273,7 @@ Partial Class frmLogisticsRegisterCommodity
         Me.Controls.Add(Me.lblSearchBatch)
         Me.Controls.Add(Me.btnSearchBatch)
         Me.Controls.Add(Me.grpEditSelectedBatch)
+        Me.MinimumSize = New System.Drawing.Size(729, 560)
         Me.Name = "frmLogisticsRegisterCommodity"
         Me.Text = "Registrere varer"
         Me.Controls.SetChildIndex(Me.grpEditSelectedBatch, 0)
