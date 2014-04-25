@@ -118,8 +118,7 @@ Public Class frmAdminCakes
 
         isDirty = False
 
-        'BindingNavigator1.BringToFront()
-    End Sub
+        End Sub
 
     ''' <summary>
     ''' Resets the cake registration form.
