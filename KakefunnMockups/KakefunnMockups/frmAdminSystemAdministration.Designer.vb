@@ -56,6 +56,7 @@ Partial Class frmAdminSystemAdministration
         Me.ddlEmployees.Name = "ddlEmployees"
         Me.ddlEmployees.Size = New System.Drawing.Size(150, 21)
         Me.ddlEmployees.TabIndex = 8
+        Me.ddlEmployees.Tag = "noDirty"
         '
         'DBMBindingSource
         '
@@ -144,6 +145,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(150, 20)
         Me.txtPassword.TabIndex = 16
+        Me.txtPassword.UseSystemPasswordChar = True
         '
         'lblPassword
         '
@@ -160,6 +162,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtRepeatPassword.Name = "txtRepeatPassword"
         Me.txtRepeatPassword.Size = New System.Drawing.Size(150, 20)
         Me.txtRepeatPassword.TabIndex = 17
+        Me.txtRepeatPassword.UseSystemPasswordChar = True
         '
         'lblRepeatPassword
         '
