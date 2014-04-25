@@ -22,7 +22,6 @@ Public Class frmSaleMain
     Protected Overrides Sub OnFormGetsForeground()
         OrderBindingSource.DataSource = DBM.Instance.Orders.OrderByDescending(Function(o) o.modified).Take(5).ToList()
         CustomerBindingSource.DataSource = DBM.Instance.Customers.OrderByDescending(Function(c) c.modified).Take(5).ToList()
-        txtSearchInformation.Focus()
     End Sub
 
     ''' <summary>
@@ -79,26 +78,6 @@ Public Class frmSaleMain
     End Sub
 
     ''' <summary>
-    ''' Create a new order
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub btnNewOrder_Click(sender As Object, e As EventArgs) Handles btnNewOrder.Click
-        OrderManager.NewOrder()
-    End Sub
-
-    ''' <summary>
-    ''' Create a new customer
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub btnNewCustomer_Click(sender As Object, e As EventArgs) Handles btnNewCustomer.Click
-        CustomerManager.NewCustomer()
-    End Sub
-
-    ''' <summary>
     ''' Edit an existing order
     ''' </summary>
     ''' <param name="sender"></param>
@@ -120,29 +99,5 @@ Public Class frmSaleMain
         CustomerManager.EditCustomer(customer)
     End Sub
 
-    ''' <summary>
-    ''' Handle search
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        If txtSearchInformation.Text = "" Then
-            MsgBox("Du må oppgi et søkeord")
-            Exit Sub
-        End If
-        UpdateActionStatus("Søker ...")
-        SearchHelper.SearchFreeText(txtSearchInformation.Text, True, True)
-        UpdateActionStatus()
-    End Sub
 
-    ''' <summary>
-    ''' Select all text when entering the search box for easy replacement
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub txtSearchInformation_Enter(sender As Object, e As EventArgs) Handles txtSearchInformation.Click
-        txtSearchInformation.SelectAll()
-    End Sub
 End Class

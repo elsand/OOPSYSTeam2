@@ -130,7 +130,7 @@ Partial Class frmSaleOrder
         'btnNewCustomer
         '
         Me.btnNewCustomer.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnNewCustomer.Location = New System.Drawing.Point(556, 19)
+        Me.btnNewCustomer.Location = New System.Drawing.Point(330, 19)
         Me.btnNewCustomer.Name = "btnNewCustomer"
         Me.btnNewCustomer.Size = New System.Drawing.Size(75, 23)
         Me.btnNewCustomer.TabIndex = 4
@@ -158,7 +158,7 @@ Partial Class frmSaleOrder
         Me.grpDelivery.Controls.Add(Me.lblName)
         Me.grpDelivery.Location = New System.Drawing.Point(7, 70)
         Me.grpDelivery.Name = "grpDelivery"
-        Me.grpDelivery.Size = New System.Drawing.Size(645, 164)
+        Me.grpDelivery.Size = New System.Drawing.Size(419, 164)
         Me.grpDelivery.TabIndex = 2
         Me.grpDelivery.TabStop = False
         Me.grpDelivery.Text = "Levering"
@@ -173,7 +173,7 @@ Partial Class frmSaleOrder
         Me.txtTelephone.Location = New System.Drawing.Point(61, 90)
         Me.txtTelephone.MaxLength = 8
         Me.txtTelephone.Name = "txtTelephone"
-        Me.txtTelephone.Size = New System.Drawing.Size(356, 20)
+        Me.txtTelephone.Size = New System.Drawing.Size(130, 20)
         Me.txtTelephone.TabIndex = 3
         '
         'txtZip
@@ -182,7 +182,7 @@ Partial Class frmSaleOrder
         Me.txtZip.AllowNegative = False
         Me.txtZip.AllowSpace = False
         Me.txtZip.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtZip.Location = New System.Drawing.Point(485, 51)
+        Me.txtZip.Location = New System.Drawing.Point(259, 51)
         Me.txtZip.MaxLength = 4
         Me.txtZip.Name = "txtZip"
         Me.txtZip.Size = New System.Drawing.Size(44, 20)
@@ -192,7 +192,7 @@ Partial Class frmSaleOrder
         '
         Me.lblDeliveryMethod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDeliveryMethod.AutoSize = True
-        Me.lblDeliveryMethod.Location = New System.Drawing.Point(435, 131)
+        Me.lblDeliveryMethod.Location = New System.Drawing.Point(209, 131)
         Me.lblDeliveryMethod.Name = "lblDeliveryMethod"
         Me.lblDeliveryMethod.Size = New System.Drawing.Size(51, 13)
         Me.lblDeliveryMethod.TabIndex = 17
@@ -202,7 +202,7 @@ Partial Class frmSaleOrder
         '
         Me.ddlDeliveryMethod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ddlDeliveryMethod.FormattingEnabled = True
-        Me.ddlDeliveryMethod.Location = New System.Drawing.Point(485, 127)
+        Me.ddlDeliveryMethod.Location = New System.Drawing.Point(259, 127)
         Me.ddlDeliveryMethod.Name = "ddlDeliveryMethod"
         Me.ddlDeliveryMethod.Size = New System.Drawing.Size(145, 21)
         Me.ddlDeliveryMethod.TabIndex = 6
@@ -213,7 +213,7 @@ Partial Class frmSaleOrder
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpDeliveryDate.Location = New System.Drawing.Point(59, 126)
         Me.dtpDeliveryDate.Name = "dtpDeliveryDate"
-        Me.dtpDeliveryDate.Size = New System.Drawing.Size(358, 20)
+        Me.dtpDeliveryDate.Size = New System.Drawing.Size(132, 20)
         Me.dtpDeliveryDate.TabIndex = 5
         '
         'lblDate
@@ -228,7 +228,7 @@ Partial Class frmSaleOrder
         'txtEmail
         '
         Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEmail.Location = New System.Drawing.Point(485, 91)
+        Me.txtEmail.Location = New System.Drawing.Point(259, 91)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(145, 20)
         Me.txtEmail.TabIndex = 4
@@ -237,7 +237,7 @@ Partial Class frmSaleOrder
         '
         Me.lblEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblEmail.AutoSize = True
-        Me.lblEmail.Location = New System.Drawing.Point(436, 93)
+        Me.lblEmail.Location = New System.Drawing.Point(210, 93)
         Me.lblEmail.Name = "lblEmail"
         Me.lblEmail.Size = New System.Drawing.Size(40, 13)
         Me.lblEmail.TabIndex = 12
@@ -256,7 +256,7 @@ Partial Class frmSaleOrder
         '
         Me.lblCity.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblCity.AutoSize = True
-        Me.lblCity.Location = New System.Drawing.Point(535, 54)
+        Me.lblCity.Location = New System.Drawing.Point(309, 54)
         Me.lblCity.Name = "lblCity"
         Me.lblCity.Size = New System.Drawing.Size(92, 13)
         Me.lblCity.TabIndex = 8
@@ -266,7 +266,7 @@ Partial Class frmSaleOrder
         '
         Me.lblZip.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblZip.AutoSize = True
-        Me.lblZip.Location = New System.Drawing.Point(436, 53)
+        Me.lblZip.Location = New System.Drawing.Point(210, 53)
         Me.lblZip.Name = "lblZip"
         Me.lblZip.Size = New System.Drawing.Size(40, 13)
         Me.lblZip.TabIndex = 6
@@ -278,7 +278,7 @@ Partial Class frmSaleOrder
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtAddress.Location = New System.Drawing.Point(60, 51)
         Me.txtAddress.Name = "txtAddress"
-        Me.txtAddress.Size = New System.Drawing.Size(358, 20)
+        Me.txtAddress.Size = New System.Drawing.Size(132, 20)
         Me.txtAddress.TabIndex = 1
         '
         'lblAddress
@@ -296,7 +296,7 @@ Partial Class frmSaleOrder
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtDeliveryName.Location = New System.Drawing.Point(59, 17)
         Me.txtDeliveryName.Name = "txtDeliveryName"
-        Me.txtDeliveryName.Size = New System.Drawing.Size(358, 20)
+        Me.txtDeliveryName.Size = New System.Drawing.Size(132, 20)
         Me.txtDeliveryName.TabIndex = 0
         '
         'lblName
@@ -318,7 +318,7 @@ Partial Class frmSaleOrder
         Me.grpCommodity.Controls.Add(Me.dtgOrderLines)
         Me.grpCommodity.Location = New System.Drawing.Point(7, 241)
         Me.grpCommodity.Name = "grpCommodity"
-        Me.grpCommodity.Size = New System.Drawing.Size(645, 214)
+        Me.grpCommodity.Size = New System.Drawing.Size(419, 214)
         Me.grpCommodity.TabIndex = 7
         Me.grpCommodity.TabStop = False
         Me.grpCommodity.Text = "Varer"
@@ -326,7 +326,7 @@ Partial Class frmSaleOrder
         'btnAddIngredientOrCake
         '
         Me.btnAddIngredientOrCake.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAddIngredientOrCake.Location = New System.Drawing.Point(564, 182)
+        Me.btnAddIngredientOrCake.Location = New System.Drawing.Point(338, 182)
         Me.btnAddIngredientOrCake.Name = "btnAddIngredientOrCake"
         Me.btnAddIngredientOrCake.Size = New System.Drawing.Size(75, 23)
         Me.btnAddIngredientOrCake.TabIndex = 5
@@ -349,7 +349,7 @@ Partial Class frmSaleOrder
         Me.cbIngredientOrCake.FormattingEnabled = True
         Me.cbIngredientOrCake.Location = New System.Drawing.Point(137, 184)
         Me.cbIngredientOrCake.Name = "cbIngredientOrCake"
-        Me.cbIngredientOrCake.Size = New System.Drawing.Size(421, 21)
+        Me.cbIngredientOrCake.Size = New System.Drawing.Size(195, 21)
         Me.cbIngredientOrCake.TabIndex = 0
         '
         'dtgOrderLines
@@ -365,7 +365,7 @@ Partial Class frmSaleOrder
         Me.dtgOrderLines.DataSource = Me.OrderLinesBindingSource
         Me.dtgOrderLines.Location = New System.Drawing.Point(8, 19)
         Me.dtgOrderLines.Name = "dtgOrderLines"
-        Me.dtgOrderLines.Size = New System.Drawing.Size(630, 150)
+        Me.dtgOrderLines.Size = New System.Drawing.Size(404, 150)
         Me.dtgOrderLines.TabIndex = 0
         '
         'dcIngredient
@@ -414,7 +414,7 @@ Partial Class frmSaleOrder
         Me.grpOrderingCustomer.Controls.Add(Me.btnNewCustomer)
         Me.grpOrderingCustomer.Location = New System.Drawing.Point(7, 6)
         Me.grpOrderingCustomer.Name = "grpOrderingCustomer"
-        Me.grpOrderingCustomer.Size = New System.Drawing.Size(645, 56)
+        Me.grpOrderingCustomer.Size = New System.Drawing.Size(419, 56)
         Me.grpOrderingCustomer.TabIndex = 1
         Me.grpOrderingCustomer.TabStop = False
         Me.grpOrderingCustomer.Text = "Bestiller"
@@ -430,7 +430,7 @@ Partial Class frmSaleOrder
         Me.cbCustomerName.FormattingEnabled = True
         Me.cbCustomerName.Location = New System.Drawing.Point(60, 20)
         Me.cbCustomerName.Name = "cbCustomerName"
-        Me.cbCustomerName.Size = New System.Drawing.Size(490, 21)
+        Me.cbCustomerName.Size = New System.Drawing.Size(264, 21)
         Me.cbCustomerName.TabIndex = 0
         Me.cbCustomerName.ValueMember = "id"
         '
@@ -539,7 +539,7 @@ Partial Class frmSaleOrder
         Me.grpDiscount.Controls.Add(Me.rdoNone)
         Me.grpDiscount.Location = New System.Drawing.Point(10, 461)
         Me.grpDiscount.Name = "grpDiscount"
-        Me.grpDiscount.Size = New System.Drawing.Size(642, 50)
+        Me.grpDiscount.Size = New System.Drawing.Size(416, 50)
         Me.grpDiscount.TabIndex = 3
         Me.grpDiscount.TabStop = False
         Me.grpDiscount.Text = "Rabatt"
@@ -550,7 +550,7 @@ Partial Class frmSaleOrder
         Me.txtDiscount.AllowNegative = False
         Me.txtDiscount.AllowSpace = False
         Me.txtDiscount.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtDiscount.Location = New System.Drawing.Point(534, 20)
+        Me.txtDiscount.Location = New System.Drawing.Point(308, 20)
         Me.txtDiscount.Name = "txtDiscount"
         Me.txtDiscount.Size = New System.Drawing.Size(100, 20)
         Me.txtDiscount.TabIndex = 3
@@ -605,7 +605,7 @@ Partial Class frmSaleOrder
         Me.grpPayment.Controls.Add(Me.lblTotalAmountWithoutVat)
         Me.grpPayment.Location = New System.Drawing.Point(10, 517)
         Me.grpPayment.Name = "grpPayment"
-        Me.grpPayment.Size = New System.Drawing.Size(642, 104)
+        Me.grpPayment.Size = New System.Drawing.Size(416, 104)
         Me.grpPayment.TabIndex = 4
         Me.grpPayment.TabStop = False
         Me.grpPayment.Text = "Betaling"
@@ -614,7 +614,7 @@ Partial Class frmSaleOrder
         '
         Me.lblShippingValue.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblShippingValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblShippingValue.Location = New System.Drawing.Point(483, 28)
+        Me.lblShippingValue.Location = New System.Drawing.Point(257, 28)
         Me.lblShippingValue.Name = "lblShippingValue"
         Me.lblShippingValue.Size = New System.Drawing.Size(151, 16)
         Me.lblShippingValue.TabIndex = 10
@@ -635,7 +635,7 @@ Partial Class frmSaleOrder
         '
         Me.lblDiscountValue.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblDiscountValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblDiscountValue.Location = New System.Drawing.Point(483, 43)
+        Me.lblDiscountValue.Location = New System.Drawing.Point(257, 43)
         Me.lblDiscountValue.Name = "lblDiscountValue"
         Me.lblDiscountValue.Size = New System.Drawing.Size(151, 16)
         Me.lblDiscountValue.TabIndex = 8
@@ -657,7 +657,7 @@ Partial Class frmSaleOrder
         Me.lblAmountToPayValue.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblAmountToPayValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAmountToPayValue.ForeColor = System.Drawing.Color.Blue
-        Me.lblAmountToPayValue.Location = New System.Drawing.Point(492, 76)
+        Me.lblAmountToPayValue.Location = New System.Drawing.Point(266, 76)
         Me.lblAmountToPayValue.Name = "lblAmountToPayValue"
         Me.lblAmountToPayValue.Size = New System.Drawing.Size(142, 16)
         Me.lblAmountToPayValue.TabIndex = 6
@@ -668,7 +668,7 @@ Partial Class frmSaleOrder
         '
         Me.lblVatValue.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblVatValue.Location = New System.Drawing.Point(489, 59)
+        Me.lblVatValue.Location = New System.Drawing.Point(263, 59)
         Me.lblVatValue.Name = "lblVatValue"
         Me.lblVatValue.Size = New System.Drawing.Size(145, 16)
         Me.lblVatValue.TabIndex = 5
@@ -679,7 +679,7 @@ Partial Class frmSaleOrder
         '
         Me.lblTotalAmountWithoutVatValue.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTotalAmountWithoutVatValue.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTotalAmountWithoutVatValue.Location = New System.Drawing.Point(486, 13)
+        Me.lblTotalAmountWithoutVatValue.Location = New System.Drawing.Point(260, 13)
         Me.lblTotalAmountWithoutVatValue.Name = "lblTotalAmountWithoutVatValue"
         Me.lblTotalAmountWithoutVatValue.Size = New System.Drawing.Size(148, 16)
         Me.lblTotalAmountWithoutVatValue.TabIndex = 4
@@ -910,7 +910,7 @@ Partial Class frmSaleOrder
         Me.tlayRight.Controls.Add(Me.grpOrderStatus, 0, 0)
         Me.tlayRight.Controls.Add(Me.grpSubscription, 0, 2)
         Me.tlayRight.Controls.Add(Me.grpOrderNote, 0, 1)
-        Me.tlayRight.Location = New System.Drawing.Point(666, 30)
+        Me.tlayRight.Location = New System.Drawing.Point(440, 30)
         Me.tlayRight.Name = "tlayRight"
         Me.tlayRight.RowCount = 3
         Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
@@ -955,7 +955,7 @@ Partial Class frmSaleOrder
         Me.Panel1.Controls.Add(Me.cboPrintReceiptOnSave)
         Me.Panel1.Controls.Add(Me.cboIsPayed)
         Me.Panel1.Controls.Add(Me.btnSaveOrder)
-        Me.Panel1.Location = New System.Drawing.Point(666, 544)
+        Me.Panel1.Location = New System.Drawing.Point(440, 544)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(304, 104)
         Me.Panel1.TabIndex = 11
@@ -971,21 +971,19 @@ Partial Class frmSaleOrder
         Me.Panel2.Controls.Add(Me.grpCommodity)
         Me.Panel2.Location = New System.Drawing.Point(0, 27)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(660, 629)
+        Me.Panel2.Size = New System.Drawing.Size(434, 629)
         Me.Panel2.TabIndex = 12
         '
         'frmSaleOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(973, 687)
+        Me.ClientSize = New System.Drawing.Size(747, 687)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
         Me.Controls.Add(Me.tlayRight)
+        Me.MinimumSize = New System.Drawing.Size(763, 725)
         Me.Name = "frmSaleOrder"
         Me.Text = "Ordre"
-        Me.Controls.SetChildIndex(Me.tlayRight, 0)
-        Me.Controls.SetChildIndex(Me.Panel1, 0)
-        Me.Controls.SetChildIndex(Me.Panel2, 0)
         Me.grpDelivery.ResumeLayout(False)
         Me.grpDelivery.PerformLayout()
         Me.grpCommodity.ResumeLayout(False)
@@ -1010,7 +1008,6 @@ Partial Class frmSaleOrder
         Me.Panel1.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents lblCustomer As System.Windows.Forms.Label
