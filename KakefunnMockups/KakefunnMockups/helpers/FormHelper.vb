@@ -8,6 +8,10 @@
                     AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
                 ElseIf TypeOf c Is ComboBox Then
                     AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is RadioButton Then
+                    AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is DataGridView Then
+                    AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
                 End If
             End If
         Next
