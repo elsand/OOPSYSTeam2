@@ -46,7 +46,7 @@ Public Class frmSaleOrder
         txtDeliveryName.Text = order.deliveryFirstName.ToString() & " " _
                                 & order.deliveryLastName.ToString()
         txtAddress.Text = order.Address.address1.ToString()
-        txtZip.Text = order.Address.Zip.zip1.ToString()
+        txtZip.Text = order.Address.Zip.zip1.ToString("D4")
         txtTelephone.Text = order.deliveryPhone.ToString()
         txtEmail.Text = order.deliveryEmail.ToString()
 
@@ -192,7 +192,7 @@ Public Class frmSaleOrder
             r.StartDefintionList()
             r.AddDefiniton("Kunde", .Customer.fullName)
             r.AddDefiniton("Leveres", .deliveryFirstName & " " & .deliveryLastName)
-            r.AddDefiniton("Adresse", .Address.address1 & ", " & .Address.Zip.zip1 & " " & .Address.Zip.city)
+            r.AddDefiniton("Adresse", .Address.address1 & ", " & .Address.Zip.zip1.ToString("D4") & " " & .Address.Zip.city)
             r.AddDefiniton("E-post", .deliveryEmail)
             r.AddDefiniton("Telefon", .deliveryPhone)
             r.AddDefiniton("Leveringsdato", .deliveryDate)
@@ -284,7 +284,7 @@ Public Class frmSaleOrder
     Private Sub SetDeliveryToCustomer(customer As Customer)
         txtDeliveryName.Text = customer.fullName
         txtAddress.Text = customer.Address.address1
-        txtZip.Text = customer.Address.Zip.zip1
+        txtZip.Text = customer.Address.Zip.zip1.ToString("D4")
         lblCity.Text = customer.Address.Zip.city.ToUpper()
         txtTelephone.Text = customer.phone
         txtEmail.Text = customer.email

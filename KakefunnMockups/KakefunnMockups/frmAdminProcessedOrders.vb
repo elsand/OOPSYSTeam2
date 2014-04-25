@@ -65,7 +65,7 @@ Public Class frmAdminProcessedOrders
                     e.Value = c.firstName & " " & c.lastName
                 Case "dcOrderAddress" 'Adds customer address to datagridview.
                     Dim a As Address = CType(e.Value, Address)
-                    e.Value = a.address1 & ", " & a.Zip.zip1 & " " & a.Zip.city
+                    e.Value = a.address1 & ", " & a.Zip.zip1.ToString("D4") & " " & a.Zip.city
                 Case "dcOrderTotalPrice" 'Adds order total price to datagridview.
                     Dim row As DataGridViewRow = dtgProcessedOrders.Rows(e.RowIndex)
                     Dim o As Order = CType(row.DataBoundItem, Order)
@@ -121,7 +121,7 @@ Public Class frmAdminProcessedOrders
                         writer.WriteElementString("customerID", selectedOrder.Customer.id.ToString())
                         writer.WriteElementString("invoiceName", selectedOrder.Customer.fullName.ToString())
                         writer.WriteElementString("invoiceAddress", selectedOrder.Customer.Address.address1.ToString())
-                        writer.WriteElementString("invoiceZip", selectedOrder.Customer.Address.Zip.zip1.ToString())
+                        writer.WriteElementString("invoiceZip", selectedOrder.Customer.Address.Zip.zip1.ToString("D4"))
                         writer.WriteElementString("invoiceCity", selectedOrder.Customer.Address.Zip.city.ToString())
                         writer.WriteStartElement("articles")
                         For Each ingRow In ingredientsOnOrder

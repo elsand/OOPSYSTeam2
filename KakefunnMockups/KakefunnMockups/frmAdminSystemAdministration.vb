@@ -40,7 +40,7 @@
         txtEmail.Text = em.email
         txtPhone.Text = em.Phone.phonenumber
         txtAddress.Text = em.Address.address1
-        txtZip.Text = em.Address.Zip.zip1
+        txtZip.Text = em.Address.Zip.zip1.ToString("D4")
         lblCity.Text = em.Address.Zip.city
         txtPassword.Text = ""
         txtRepeatPassword.Text = ""

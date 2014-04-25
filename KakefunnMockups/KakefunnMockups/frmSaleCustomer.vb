@@ -41,7 +41,7 @@ Public Class frmSaleCustomer
         ' Set static fields
         txtName.Text = currentRecord.fullName
         txtAddress.Text = currentRecord.Address.address1
-        txtZip.Text = currentRecord.Address.Zip.zip1
+        txtZip.Text = currentRecord.Address.Zip.zip1.ToString("D4")
         txtEmail.Text = currentRecord.email
         txtTelephone.Text = currentRecord.phone
         txtNote.Text = currentRecord.note

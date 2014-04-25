@@ -43,7 +43,7 @@ Public Class frmSaleMain
             Case "dcOrderAddress"
                 ' Show address concated with zip and city
                 Dim a As Address = CType(e.Value, Address)
-                e.Value = a.address1 & ", " & a.Zip.zip1 & " " & a.Zip.city
+                e.Value = a.address1 & ", " & a.Zip.zip1.ToString("D4") & " " & a.Zip.city
             Case "dcOrderTotalPrice"
                 ' Find total price for this order
                 Dim row As DataGridViewRow = dgvOrder.Rows(e.RowIndex)
