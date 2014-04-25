@@ -7,11 +7,13 @@
     Private Sub dtgSearchResultsOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgSearchResultsOrders.CellDoubleClick
         Dim order As Order = CType(dtgSearchResultsOrders.Rows(e.RowIndex).DataBoundItem, Order)
         OrderManager.EditOrder(order)
+        Close()
     End Sub
 
     Private Sub dtgSearchResultsCustomers_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgSearchResultsCustomers.CellDoubleClick
         Dim customer As Customer = CType(dtgSearchResultsCustomers.Rows(e.RowIndex).DataBoundItem, Customer)
         CustomerManager.EditCustomer(customer)
+        Close()
     End Sub
 
     Private Sub dtgSearchResultsCustomers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgSearchResultsCustomers.CellContentClick
