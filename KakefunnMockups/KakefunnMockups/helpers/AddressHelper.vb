@@ -1,4 +1,16 @@
-﻿Public Class AddressHelper
+﻿''' <summary>
+''' Helper for geting and if needed creating address entries in the address table
+''' </summary>
+''' <remarks></remarks>
+Public Class AddressHelper
+    ''' <summary>
+    ''' Returns an address object for the supplied zip and address. Both must be supplied, and zip must be present in the
+    ''' zip-table. Will return the first existing, or create a new one if needed (which is not commited)
+    ''' </summary>
+    ''' <param name="zip"></param>
+    ''' <param name="address"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetAddress(zip As Integer, address As String) As Address
         If zip = 0 OrElse address = "" Then
             Return Nothing
@@ -16,8 +28,14 @@
         Return a
     End Function
 
+    ''' <summary>
+    ''' Helper that takes a textbos and a label and sets up autofill of zip-codes. If a invalid zip-code is supplied,
+    ''' the label will be set to "UGYLDIG"
+    ''' </summary>
+    ''' <param name="txtZip"></param>
+    ''' <param name="lblCity"></param>
+    ''' <remarks></remarks>
     Public Shared Sub SetupAutoCityFill(txtZip As TextBox, lblCity As Label)
-
         AddHandler txtZip.TextChanged, Sub()
                                            Dim z As Integer
                                            If txtZip.Text.Length <> 4 Then

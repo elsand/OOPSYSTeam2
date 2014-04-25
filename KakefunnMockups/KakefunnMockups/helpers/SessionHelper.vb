@@ -1,5 +1,8 @@
-﻿Public Class SessionHelper
-
+﻿''' <summary>
+''' Helper for the current session, implemented as a singleton
+''' </summary>
+''' <remarks></remarks>
+Public Class SessionHelper
 
 #Region "SingletonImplementation"
 
@@ -147,14 +150,23 @@
         Return Not loggedInEmployee Is Nothing
     End Function
 
+    ''' <summary>
+    ''' Shows the default for the logged in user
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub ShowDefaultFormForLoggedInUser()
         If Not IsLoggedIn() Then
             Throw New UnauthorizedAccessException("User is not logged in")
         End If
 
-        ShowDefaultFormForRole(User.roles.First.name)
+        ShowDefaultFormForRole(User.Roles.First.name)
     End Sub
 
+    ''' <summary>
+    ''' Shows the default form for the supplied role
+    ''' </summary>
+    ''' <param name="role"></param>
+    ''' <remarks></remarks>
     Public Sub ShowDefaultFormForRole(role As String)
         Select Case role
             Case "Admin"
@@ -166,11 +178,19 @@
         End Select
     End Sub
 
+    ''' <summary>
+    ''' Shows the supplied form. If the form is on another aspect, it is opened
+    ''' </summary>
+    ''' <param name="frm"></param>
+    ''' <remarks></remarks>
     Public Sub ShowForm(frm As Form)
         Dim aspect As String = frmSuperTabContainer.GetAspectForForm(frm)
         Dim f As Form = frmSuperTabContainer.GetContainerForAspect(aspect)
         f.Show()
+        f.Focus()
 
+        ' Walk through the tabcontrols and find the tabpage containing the supploed form,
+        ' and set it active
         For Each c As Control In f.Controls
             If TypeOf c Is TabControl Then
                 For Each t As TabPage In CType(c, TabControl).TabPages
@@ -181,8 +201,8 @@
             End If
         Next
 
-        HideDialog()
-
+        ' If callback was registered, invoke it now with the previous and 
+        ' current form as arguments
         If callback IsNot Nothing Then
             callback.Invoke(currentForm, frm)
             callback = Nothing
@@ -191,10 +211,20 @@
         currentForm = frm
     End Sub
 
+    ''' <summary>
+    ''' Sets a callback function that is invoked when we switch forms
+    ''' </summary>
+    ''' <param name="f"></param>
+    ''' <remarks></remarks>
     Public Sub RegisterCallback(f As System.Func(Of Form, Form, Boolean))
         callback = f
     End Sub
 
+    ''' <summary>
+    ''' Opens the supplied dialog window. Only one dialog can be up at any given time.
+    ''' </summary>
+    ''' <param name="dialog"></param>
+    ''' <remarks></remarks>
     Public Sub ShowDialog(dialog As frmDialogBase)
         If Not currentDialog Is Nothing Then
             If dialog.Name = currentDialog.Name Then
@@ -208,6 +238,10 @@
         currentDialog = dialog
     End Sub
 
+    ''' <summary>
+    ''' Hides the currently open dialog, if any
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub HideDialog()
         If Not currentDialog Is Nothing Then
             currentDialog.Hide()
@@ -215,6 +249,12 @@
         End If
     End Sub
 
+    ''' <summary>
+    ''' Returns true if the currently logged in user has the supplied role
+    ''' </summary>
+    ''' <param name="role"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function HasRole(role As String) As Boolean
         If Not IsLoggedIn() Then
             Throw New UnauthorizedAccessException("User is not logged in")
