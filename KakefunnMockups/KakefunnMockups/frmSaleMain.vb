@@ -47,7 +47,7 @@ Public Class frmSaleMain
                 ' Find total price for this order
                 Dim row As DataGridViewRow = dgvOrder.Rows(e.RowIndex)
                 Dim o As Order = CType(row.DataBoundItem, Order)
-                e.Value = FormatHelper.Currency(OrderManager.GetOrderPrice(o))
+                e.Value = FormatHelper.Currency(OrderHelper.GetOrderPrice(o))
         End Select
     End Sub
 
@@ -85,7 +85,7 @@ Public Class frmSaleMain
     ''' <remarks></remarks>
     Private Sub dgvOrder_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvOrder.CellDoubleClick
         Dim order As Order = CType(dgvOrder.Rows(e.RowIndex).DataBoundItem, Order)
-        OrderManager.EditOrder(order)
+        OrderHelper.EditOrder(order)
     End Sub
 
     ''' <summary>
@@ -96,7 +96,7 @@ Public Class frmSaleMain
     ''' <remarks></remarks>
     Private Sub dgvCustomer_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dgvCustomer.CellDoubleClick
         Dim customer As Customer = CType(dgvCustomer.Rows(e.RowIndex).DataBoundItem, Customer)
-        CustomerManager.EditCustomer(customer)
+        CustomerHelper.EditCustomer(customer)
     End Sub
 
 

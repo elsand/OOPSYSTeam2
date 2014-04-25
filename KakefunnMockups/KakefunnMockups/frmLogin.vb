@@ -16,7 +16,7 @@ Public Class frmLogin
         Application.DoEvents() ' Needed for the above commands to be processed before MySQL/EF freezes our only thread :(
 
         Try
-            SessionManager.Instance.Login(txtEmail.Text, txtPassword.Text)
+            SessionHelper.Instance.Login(txtEmail.Text, txtPassword.Text)
         Catch ex As Exception
             MessageBox.Show("Du oppga en ugyldig e-post og/eller passord", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
@@ -25,8 +25,8 @@ Public Class frmLogin
         txtEmail.Enabled = True
         txtPassword.Enabled = True
 
-        If SessionManager.Instance.IsLoggedIn Then
-            SessionManager.Instance.ShowDefaultFormForLoggedInUser()
+        If SessionHelper.Instance.IsLoggedIn Then
+            SessionHelper.Instance.ShowDefaultFormForLoggedInUser()
         End If
 
     End Sub

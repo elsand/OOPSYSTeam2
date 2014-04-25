@@ -1,4 +1,4 @@
-﻿Public Class CustomerManager
+﻿Public Class CustomerHelper
     ''' <summary>
     ''' finds and returns a customer 
     ''' </summary>
@@ -15,7 +15,7 @@
     End Function
 
     Public Shared Sub NewCustomer()
-        SessionManager.Instance.ShowForm(frmSaleCustomer)
+        SessionHelper.Instance.ShowForm(frmSaleCustomer)
         frmSaleCustomer.NewCustomer()
     End Sub
 
@@ -26,7 +26,7 @@
 
     Public Shared Sub NewCustomerAndReturnTo(returnToForm As Form, callback As System.Func(Of Form, Form, Boolean))
         NewCustomerAndReturnTo(returnToForm)
-        SessionManager.Instance.RegisterCallback(callback)
+        SessionHelper.Instance.RegisterCallback(callback)
     End Sub
 
     Public Shared Sub EditCustomer(id As Integer)
@@ -34,7 +34,7 @@
     End Sub
 
     Public Shared Sub EditCustomer(customer As Customer)
-        SessionManager.Instance.ShowForm(frmSaleCustomer)
+        SessionHelper.Instance.ShowForm(frmSaleCustomer)
         frmSaleCustomer.LoadCustomer(customer)
     End Sub
 End Class

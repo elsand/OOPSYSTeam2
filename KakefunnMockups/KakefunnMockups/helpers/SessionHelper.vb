@@ -1,4 +1,4 @@
-﻿Public Class SessionManager
+﻿Public Class SessionHelper
 
 
 #Region "SingletonImplementation"
@@ -7,7 +7,7 @@
     ''' Holds the instance of SessionManager. Uses Lazy() to defer initialization until requested.
     ''' </summary>
     ''' <remarks></remarks>
-    Private Shared ReadOnly _instance As New Lazy(Of SessionManager)(Function() New SessionManager, System.Threading.LazyThreadSafetyMode.ExecutionAndPublication)
+    Private Shared ReadOnly _instance As New Lazy(Of SessionHelper)(Function() New SessionHelper, System.Threading.LazyThreadSafetyMode.ExecutionAndPublication)
 
     ''' <summary>
     ''' Implement singleton pattern. Make constructor private and no-op
@@ -22,7 +22,7 @@
     ''' <value></value>
     ''' <returns>SessionManager</returns>
     ''' <remarks></remarks>
-    Public Shared ReadOnly Property Instance() As SessionManager
+    Public Shared ReadOnly Property Instance() As SessionHelper
         Get
             Return _instance.Value
         End Get

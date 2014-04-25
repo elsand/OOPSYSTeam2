@@ -26,16 +26,16 @@
     End Sub
 
     Protected Sub UpdateLoginStatus()
-        If Not SessionManager.Instance.IsLoggedIn Then
+        If Not SessionHelper.Instance.IsLoggedIn Then
             frmSuperTabContainer.statusLogin.Text = "Ikke innlogget"
             Exit Sub
         End If
         Dim roles As String = ""
-        For Each r In SessionManager.Instance.User.Roles
+        For Each r In SessionHelper.Instance.User.Roles
             roles = roles & r.name & ", "
         Next
         roles = roles.Substring(0, roles.Length - 2)
-        frmSuperTabContainer.statusLogin.Text = "Innlogget: " & SessionManager.Instance.User.firstName & " " & SessionManager.Instance.User.lastName & " (" & roles & ")"
+        frmSuperTabContainer.statusLogin.Text = "Innlogget: " & SessionHelper.Instance.User.firstName & " " & SessionHelper.Instance.User.lastName & " (" & roles & ")"
     End Sub
 
 End Class

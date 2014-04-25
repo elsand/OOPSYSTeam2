@@ -29,7 +29,7 @@ Public Class frmAdminIngredient
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles btnNew.Click
         frmDialogAdminIngredientDetails.grpStock.Enabled = False
         frmDialogAdminIngredientDetails.newIngr = True
-        SessionManager.Instance.ShowDialog(frmDialogAdminIngredientDetails)
+        SessionHelper.Instance.ShowDialog(frmDialogAdminIngredientDetails)
 
     End Sub
 
@@ -64,16 +64,16 @@ Public Class frmAdminIngredient
                                    Select x.markUpPercentage).FirstOrDefault()
 
             'Calculates cheapest, most expensive and average price for purchase and sale.
-            Dim bi As String = CStr(StockManager.getPurchasingPrice(row.id, "low", batchQuery))
-            Dim di As String = CStr(StockManager.getPurchasingPrice(row.id, "high", batchQuery))
-            Dim gi As String = CStr(StockManager.getPurchasingPrice(row.id, "avg", batchQuery))
+            Dim bi As String = CStr(StockHelper.getPurchasingPrice(row.id, "low", batchQuery))
+            Dim di As String = CStr(StockHelper.getPurchasingPrice(row.id, "high", batchQuery))
+            Dim gi As String = CStr(StockHelper.getPurchasingPrice(row.id, "avg", batchQuery))
             Dim bdgi As String = CStr(bi) & "/" & CStr(di) & "/" & CStr(gi)
             Dim bdgu As String = CStr(Format(bi * ((profit / 100) + 1), "0.00") & "/" & _
                                     CStr(Format(di * ((profit / 100) + 1), "0.00") & "/" & _
                                     CStr(Format(gi * ((profit / 100) + 1), "0.00"))))
 
             'Adds results to dtgResults.
-            dtgResults.Rows.Add(row.id, row.name, StockManager.getInStock(row.id, batchQuery), _
+            dtgResults.Rows.Add(row.id, row.name, StockHelper.getInStock(row.id, batchQuery), _
                                 bdgi, bdgu, profit, row.deleted)
         Next
 
@@ -93,7 +93,7 @@ Public Class frmAdminIngredient
         Dim varenr As Integer = dtgResults.SelectedRows(0).Cells(colID.Index).Value
         frmDialogAdminIngredientDetails.varenr = varenr
         frmDialogAdminIngredientDetails.newIngr = False
-        SessionManager.Instance.ShowDialog(frmDialogAdminIngredientDetails)
+        SessionHelper.Instance.ShowDialog(frmDialogAdminIngredientDetails)
     End Sub
 
     ''' <summary>

@@ -69,7 +69,7 @@ Public Class frmAdminProcessedOrders
                 Case "dcOrderTotalPrice" 'Adds order total price to datagridview.
                     Dim row As DataGridViewRow = dtgProcessedOrders.Rows(e.RowIndex)
                     Dim o As Order = CType(row.DataBoundItem, Order)
-                    e.Value = OrderManager.GetOrderPrice(o)
+                    e.Value = OrderHelper.GetOrderPrice(o)
             End Select
         End If
 
@@ -113,7 +113,7 @@ Public Class frmAdminProcessedOrders
                         Dim selectedOrder = DBM.Instance.Orders.Find(orderID)
                         Dim ingredientsOnOrder = (From x In DBM.Instance.OrderLines Where x.Order.id = orderID _
                         Select x).ToList()
-                        Dim totals As OrderTotals = OrderManager.CalculateTotals(selectedOrder)
+                        Dim totals As OrderTotals = OrderHelper.CalculateTotals(selectedOrder)
 
                         'Writing elements to xml.
                         writer.WriteStartElement("order")
@@ -220,7 +220,7 @@ Public Class frmAdminProcessedOrders
         If e.RowIndex >= 0 Then
             Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
             Dim order = DBM.Instance.Orders.Find(orderNr)
-            OrderManager.EditOrder(order, Me)
+            OrderHelper.EditOrder(order, Me)
         End If
     End Sub
 

@@ -186,10 +186,10 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="helpers\AddressHelper.vb" />
-    <Compile Include="controllers\CustomerManager.vb" />
-    <Compile Include="controllers\DatabaseManager.vb" />
-    <Compile Include="controllers\DocumentPrinter.vb" />
-    <Compile Include="controllers\OrderManager.vb" />
+    <Compile Include="helpers\CustomerHelper.vb" />
+    <Compile Include="helpers\DatabaseHelper.vb" />
+    <Compile Include="helpers\DocumentPrinter.vb" />
+    <Compile Include="helpers\OrderHelper.vb" />
     <Compile Include="helpers\AutoCompleteHelper.vb" />
     <Compile Include="helpers\FormatHelper.vb" />
     <Compile Include="helpers\FormHelper.vb" />
@@ -197,9 +197,9 @@
     <Compile Include="helpers\OrderTotals.vb" />
     <Compile Include="helpers\PhoneHelper.vb" />
     <Compile Include="helpers\SearchHelper.vb" />
-    <Compile Include="controllers\SessionManager.vb" />
-    <Compile Include="controllers\StockManager.vb" />
-    <Compile Include="controllers\SubscriptionManager.vb" />
+    <Compile Include="helpers\SessionHelper.vb" />
+    <Compile Include="helpers\StockHelper.vb" />
+    <Compile Include="helpers\SubscriptionHelper.vb" />
     <Compile Include="controls\NumericTextbox.Designer.vb">
       <DependentUpon>NumericTextbox.vb</DependentUpon>
     </Compile>
@@ -684,7 +684,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\kakefunn.ico" />
-    <Content Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

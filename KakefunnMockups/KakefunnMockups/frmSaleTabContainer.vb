@@ -1,5 +1,15 @@
-﻿Public Class frmSaleTabContainer
+﻿''' <summary>
+''' Form containing the tabcontrol for the sale aspect
+''' </summary>
+''' <remarks></remarks>
+Public Class frmSaleTabContainer
 
+    ''' <summary>
+    ''' Set up the tab container
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub frmSaleTabContainer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         PopulateTabs(GetFormsForAspect("SALE"), tabSale)
     End Sub

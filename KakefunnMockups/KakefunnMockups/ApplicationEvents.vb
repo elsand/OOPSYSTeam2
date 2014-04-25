@@ -10,7 +10,7 @@ Namespace My
     ' NetworkAvailabilityChanged: Raised when the network connection is connected or disconnected.
     Partial Friend Class MyApplication
         Public Sub Me_Startup(ByVal sender As Object, ByVal e As StartupEventArgs) Handles Me.Startup
-            SessionManager.Instance.Init()
+            SessionHelper.Instance.Init()
         End Sub
     End Class
 

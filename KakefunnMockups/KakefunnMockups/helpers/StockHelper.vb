@@ -1,6 +1,6 @@
 ﻿Imports System.Configuration
 
-Public Class StockManager
+Public Class StockHelper
     Public Shared Function getInStock(varenr As Integer, list As List(Of Kakefunn.Batch)) As Integer 'Finds amount of an ingredient in stock.
         Dim batches = From x In list Where x.Ingredient.id = varenr _
                       And x.registered IsNot Nothing Select x.unitCount
@@ -171,7 +171,7 @@ Public Class StockManager
     ''' <remarks></remarks>
     Shared Sub ReduceInventory(ingredient As Ingredient, ByVal amount As Integer, deliveryDate As Date)
 
-         Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(StockManager.GetExpiryGraceDays())
+        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(StockHelper.GetExpiryGraceDays())
 
         Dim batches = From b In DBM.Instance.Batches _
               Where b.Ingredient.id = ingredient.id _
@@ -211,7 +211,7 @@ Public Class StockManager
     ''' <remarks></remarks>
     Public Shared Sub IncreaseInventory(ingredient As Ingredient, ByVal amount As Integer, deliveryDate As Date)
 
-        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(StockManager.GetExpiryGraceDays())
+        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(StockHelper.GetExpiryGraceDays())
 
         ' Note that we reverse the order this time, so that we fill back the newest ones first
         Dim batches = From b In DBM.Instance.Batches _

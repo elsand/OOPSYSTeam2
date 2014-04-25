@@ -130,9 +130,9 @@ Public Class frmSaleOrder
         End If
         Try
             If isNewRecord Then
-                currentRecord.Employee = SessionManager.Instance.User
+                currentRecord.Employee = SessionHelper.Instance.User
                 currentRecord.created = Date.Now()
-                DBM.Instance.Orders.Add(currentRecord)                
+                DBM.Instance.Orders.Add(currentRecord)
             End If
             currentRecord.modified = Date.Now()
             DBM.Instance.SaveChanges()
@@ -144,16 +144,16 @@ Public Class frmSaleOrder
             For Each row As DataGridViewRow In dtgOrderLines.Rows
                 ol = CType(row.DataBoundItem, OrderLine)
                 If isNewRecord Then
-                    StockManager.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)
+                    StockHelper.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)
                 Else
                     ' We saved the original count in the Tag-property of the datagridviewrow
                     If Not row.Tag Is Nothing Then
                         ' This means we've reduced the orderline by some amount, increase the stock
                         reduction = row.Tag - ol.amount
-                        StockManager.IncreaseInventory(ol.Ingredient, reduction, currentRecord.deliveryDate)
+                        StockHelper.IncreaseInventory(ol.Ingredient, reduction, currentRecord.deliveryDate)
                     Else
                         ' New row, reduce by full amount
-                        StockManager.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)
+                        StockHelper.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)
                     End If
                 End If
             Next
@@ -203,7 +203,7 @@ Public Class frmSaleOrder
             Next
             r.AddRow({""})
 
-            Dim totals As OrderTotals = OrderManager.CalculateTotals(currentRecord)
+            Dim totals As OrderTotals = OrderHelper.CalculateTotals(currentRecord)
             r.AddRow({"Totalt eks.mva", "", FormatHelper.Currency(totals.totalPriceExVat)})
             r.AddRow({"Rabatt", "", FormatHelper.Currency(-totals.totalDiscount)})
             r.AddRow({"Frakt", "", FormatHelper.Currency(totals.shipping)})
@@ -358,7 +358,7 @@ Public Class frmSaleOrder
                 Dim ol As OrderLine = New OrderLine
                 ol.Ingredient = DBM.Instance.Ingredients.Find(id)
                 ol.amount = 1
-                ol.totalPrice = ol.amount * StockManager.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+                ol.totalPrice = ol.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
                 OrderLinesBindingSource.Add(ol)
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical, "Feil")
@@ -375,7 +375,7 @@ Public Class frmSaleOrder
                     ol = New OrderLine
                     ol.Ingredient = r.Ingredient
                     ol.amount = r.amount
-                    ol.totalPrice = r.amount * StockManager.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+                    ol.totalPrice = r.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
                     ol.cakeId = cake.id
                     ols.Add(ol)
                 Next
@@ -401,7 +401,7 @@ Public Class frmSaleOrder
     Private Sub UpdateTotalPrice()
 
         Dim totals As OrderTotals
-        totals = OrderManager.CalculateTotals(currentRecord)
+        totals = OrderHelper.CalculateTotals(currentRecord)
 
         lblTotalAmountWithoutVatValue.Text = FormatHelper.Currency(totals.totalPriceExVat)
         lblDiscountValue.Text = FormatHelper.Currency(totals.totalDiscount)
@@ -461,7 +461,7 @@ Public Class frmSaleOrder
                 Else
                     ' New order line, attempt to calculate a new selling price. Throw an exception if the selected ingredient and/or amount/deliverydate cannot
                     ' be satisfied
-                    ol.totalPrice = amount * StockManager.GetSellingPriceFor(ol.Ingredient, amount, dtpDeliveryDate.Value)
+                    ol.totalPrice = amount * StockHelper.GetSellingPriceFor(ol.Ingredient, amount, dtpDeliveryDate.Value)
                 End If
             Catch ex As Exception
                 err = ex.Message
@@ -532,7 +532,7 @@ Public Class frmSaleOrder
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnNewCustomer_Click(sender As Object, e As EventArgs) Handles btnNewCustomer.Click
-        CustomerManager.NewCustomerAndReturnTo(Me,
+        CustomerHelper.NewCustomerAndReturnTo(Me,
             Function(customerForm, orderForm)
                 Dim customer As Customer = CType(customerForm, frmSaleCustomer).currentCustomer
                 ' Check if it got saved
@@ -556,7 +556,7 @@ Public Class frmSaleOrder
     Private Sub cbCustomerName_Leave(sender As Object, e As EventArgs) Handles cbCustomerName.Leave
         If cbCustomerName.SelectedValue Is Nothing AndAlso Not cbCustomerName.Text = "" Then
             If MessageBox.Show("Denne kunden finnes ikke. Opprette?", "Ukjent kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                CustomerManager.NewCustomerAndReturnTo(Me)
+                CustomerHelper.NewCustomerAndReturnTo(Me)
             Else
                 ' User selected no, re-set focus to the customer selection field so that the user can select another customer
                 cbCustomerName.Focus()
@@ -598,7 +598,7 @@ Public Class frmSaleOrder
         If Not FormHelper.ContinueIfDirty(Me) Then
             Exit Sub
         End If
-        SessionManager.Instance.ShowForm(returnToForm)
+        SessionHelper.Instance.ShowForm(returnToForm)
     End Sub
 
     ''' <summary>

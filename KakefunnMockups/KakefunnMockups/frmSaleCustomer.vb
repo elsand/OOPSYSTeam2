@@ -56,12 +56,12 @@ Public Class frmSaleCustomer
         lblLastEditedDateAndTimeValue.Text = currentRecord.modified.Value
 
         ' Find orders for this customer and display count and value
-        Dim orders As List(Of Order) = OrderManager.FindOrdersForCustomer(currentRecord)
+        Dim orders As List(Of Order) = OrderHelper.FindOrdersForCustomer(currentRecord)
         lblNumberOfOrdersValue.Text = orders.Count
 
         Dim totalValue As Decimal = 0
         For Each o As Order In orders
-            totalValue = totalValue + OrderManager.CalculateTotals(o).totalToPay
+            totalValue = totalValue + OrderHelper.CalculateTotals(o).totalToPay
         Next
         lblTotalOrderValueValue.Text = FormatHelper.Currency(totalValue)
 
@@ -109,7 +109,7 @@ Public Class frmSaleCustomer
         End Try
 
         MessageBox.Show("Kunden ble lagret", "Lagret", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        SessionManager.Instance.ShowForm(returnToForm)
+        SessionHelper.Instance.ShowForm(returnToForm)
 
     End Sub
 
@@ -183,7 +183,7 @@ Public Class frmSaleCustomer
         If Not FormHelper.ContinueIfDirty(Me) Then
             Exit Sub
         End If
-        SessionManager.Instance.ShowForm(returnToForm)
+        SessionHelper.Instance.ShowForm(returnToForm)
     End Sub
 
     ''' <summary>

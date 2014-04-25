@@ -42,7 +42,7 @@ Public Class frmDialogAdminNotExported
                 r("modified") = row.modified
                 r("deliveryAdress") = row.Customer.Address.address1 & ", " & row.Customer.Address.Zip.zip1.ToString("D4") & " " & row.Customer.Address.Zip.city
                 r("name") = row.Customer.firstName & " " & row.Customer.lastName
-                r("totalPrice") = OrderManager.CalculateTotals(row).totalToPay()
+                r("totalPrice") = OrderHelper.CalculateTotals(row).totalToPay()
 
 
                 t.Rows.Add(r)

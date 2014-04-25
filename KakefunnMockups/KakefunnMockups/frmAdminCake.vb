@@ -62,7 +62,7 @@ Public Class frmAdminCakes
 
             'Traverses ingredient list and sums ingredient prices.
             For Each row In ingList
-                Dim purchasingPrice As Double = StockManager.getPurchasingPrice(row.IngredientId, "avg", batchQuery)
+                Dim purchasingPrice As Double = StockHelper.getPurchasingPrice(row.IngredientId, "avg", batchQuery)
                 Dim ingMarkUp As Double = (From x In priceQuery _
                                            Where x.id = row.IngredientId _
                                            Order By x.date Descending _
@@ -246,7 +246,7 @@ Public Class frmAdminCakes
         Dim unitAmount As Double = numAmount.Text
         Dim priceMarkup As Double = (From x In priceQuery Where x.id = selIndex _
                                      Order By x.date Descending Select x.markUpPercentage).FirstOrDefault()
-        Dim ingPrice As Double = CDbl(StockManager.getPurchasingPrice(selIndex, "avg", batchQuery))
+        Dim ingPrice As Double = CDbl(StockHelper.getPurchasingPrice(selIndex, "avg", batchQuery))
 
         'Calls fillSelList with the variables to add to the selection list.
         fillSelList(selIndex, selName, unitType, unitAmount, priceMarkup, ingPrice)
@@ -491,7 +491,7 @@ Public Class frmAdminCakes
                 Dim ingAmount As Double = CDbl(row.amount.ToString())
                 Dim ingMarkup As Double = (From x In priceQuery Where x.id = ingID _
                                              Order By x.date Descending Select x.markUpPercentage).FirstOrDefault()
-                Dim ingPrice As Double = CDbl(StockManager.getPurchasingPrice(ingID, "avg", batchQuery))
+                Dim ingPrice As Double = CDbl(StockHelper.getPurchasingPrice(ingID, "avg", batchQuery))
 
                 fillSelList(ingID, ingName, unitType, ingAmount, ingMarkup, ingPrice)
             Next
