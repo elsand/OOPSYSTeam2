@@ -152,7 +152,7 @@ Partial Class frmAdminCakes
         Me.txtProcedure.MinimumSize = New System.Drawing.Size(357, 94)
         Me.txtProcedure.Multiline = True
         Me.txtProcedure.Name = "txtProcedure"
-        Me.txtProcedure.Size = New System.Drawing.Size(357, 94)
+        Me.txtProcedure.Size = New System.Drawing.Size(357, 104)
         Me.txtProcedure.TabIndex = 13
         '
         'lblProcedure
@@ -180,7 +180,7 @@ Partial Class frmAdminCakes
         Me.grpIngredients.Controls.Add(Me.lblMeasureUnit)
         Me.grpIngredients.Location = New System.Drawing.Point(6, 46)
         Me.grpIngredients.Name = "grpIngredients"
-        Me.grpIngredients.Size = New System.Drawing.Size(358, 257)
+        Me.grpIngredients.Size = New System.Drawing.Size(358, 267)
         Me.grpIngredients.TabIndex = 15
         Me.grpIngredients.TabStop = False
         Me.grpIngredients.Text = "Ingredienser"
@@ -218,7 +218,7 @@ Partial Class frmAdminCakes
         Me.MarkUps.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.MarkUps.AutoSize = True
-        Me.MarkUps.Location = New System.Drawing.Point(10, 433)
+        Me.MarkUps.Location = New System.Drawing.Point(10, 443)
         Me.MarkUps.Name = "MarkUps"
         Me.MarkUps.Size = New System.Drawing.Size(71, 13)
         Me.MarkUps.TabIndex = 19
@@ -229,7 +229,7 @@ Partial Class frmAdminCakes
         Me.lblIngredientsPrice.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblIngredientsPrice.AutoSize = True
-        Me.lblIngredientsPrice.Location = New System.Drawing.Point(225, 433)
+        Me.lblIngredientsPrice.Location = New System.Drawing.Point(225, 443)
         Me.lblIngredientsPrice.Name = "lblIngredientsPrice"
         Me.lblIngredientsPrice.Size = New System.Drawing.Size(84, 13)
         Me.lblIngredientsPrice.TabIndex = 20
@@ -240,7 +240,7 @@ Partial Class frmAdminCakes
         Me.lblSalePrice.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSalePrice.AutoSize = True
-        Me.lblSalePrice.Location = New System.Drawing.Point(248, 455)
+        Me.lblSalePrice.Location = New System.Drawing.Point(248, 465)
         Me.lblSalePrice.Name = "lblSalePrice"
         Me.lblSalePrice.Size = New System.Drawing.Size(61, 13)
         Me.lblSalePrice.TabIndex = 21
@@ -250,7 +250,7 @@ Partial Class frmAdminCakes
         '
         Me.btnSave.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnSave.Location = New System.Drawing.Point(288, 480)
+        Me.btnSave.Location = New System.Drawing.Point(288, 490)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 23)
         Me.btnSave.TabIndex = 22
@@ -276,7 +276,7 @@ Partial Class frmAdminCakes
         Me.dtgCake.ReadOnly = True
         Me.dtgCake.RowHeadersVisible = False
         Me.dtgCake.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgCake.Size = New System.Drawing.Size(522, 492)
+        Me.dtgCake.Size = New System.Drawing.Size(522, 502)
         Me.dtgCake.TabIndex = 23
         '
         'IdDataGridViewTextBoxColumn
@@ -353,19 +353,21 @@ Partial Class frmAdminCakes
         'BindingNavigator1
         '
         Me.BindingNavigator1.AddNewItem = Nothing
+        Me.BindingNavigator1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.BindingNavigator1.BindingSource = Me.CakeBindingSource
         Me.BindingNavigator1.CountItem = Me.BindingNavigatorCountItem
         Me.BindingNavigator1.DeleteItem = Nothing
-        Me.BindingNavigator1.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.BindingNavigator1.Dock = System.Windows.Forms.DockStyle.None
         Me.BindingNavigator1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.btnToolStripCakeNew, Me.btnToolStripCakeDelete})
-        Me.BindingNavigator1.Location = New System.Drawing.Point(0, 547)
+        Me.BindingNavigator1.Location = New System.Drawing.Point(12, 546)
         Me.BindingNavigator1.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
         Me.BindingNavigator1.MoveLastItem = Me.BindingNavigatorMoveLastItem
         Me.BindingNavigator1.MoveNextItem = Me.BindingNavigatorMoveNextItem
         Me.BindingNavigator1.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.BindingNavigator1.Name = "BindingNavigator1"
         Me.BindingNavigator1.PositionItem = Me.BindingNavigatorPositionItem
-        Me.BindingNavigator1.Size = New System.Drawing.Size(929, 25)
+        Me.BindingNavigator1.Size = New System.Drawing.Size(355, 25)
         Me.BindingNavigator1.TabIndex = 26
         Me.BindingNavigator1.Text = "BindingNavigator1"
         '
@@ -459,7 +461,7 @@ Partial Class frmAdminCakes
         Me.numMarkUps.AllowSpace = False
         Me.numMarkUps.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.numMarkUps.Location = New System.Drawing.Point(87, 430)
+        Me.numMarkUps.Location = New System.Drawing.Point(87, 440)
         Me.numMarkUps.Name = "numMarkUps"
         Me.numMarkUps.Size = New System.Drawing.Size(35, 20)
         Me.numMarkUps.TabIndex = 27
@@ -469,7 +471,7 @@ Partial Class frmAdminCakes
         Me.chkPublished.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.chkPublished.AutoSize = True
-        Me.chkPublished.Location = New System.Drawing.Point(13, 454)
+        Me.chkPublished.Location = New System.Drawing.Point(13, 464)
         Me.chkPublished.Name = "chkPublished"
         Me.chkPublished.Size = New System.Drawing.Size(66, 17)
         Me.chkPublished.TabIndex = 28
@@ -495,7 +497,7 @@ Partial Class frmAdminCakes
         Me.grpCakeEdit.Enabled = False
         Me.grpCakeEdit.Location = New System.Drawing.Point(540, 12)
         Me.grpCakeEdit.Name = "grpCakeEdit"
-        Me.grpCakeEdit.Size = New System.Drawing.Size(377, 521)
+        Me.grpCakeEdit.Size = New System.Drawing.Size(377, 531)
         Me.grpCakeEdit.TabIndex = 29
         Me.grpCakeEdit.TabStop = False
         Me.grpCakeEdit.Text = "Kakedetaljer"
@@ -504,7 +506,7 @@ Partial Class frmAdminCakes
         '
         Me.btnAvbryt.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.btnAvbryt.Location = New System.Drawing.Point(207, 480)
+        Me.btnAvbryt.Location = New System.Drawing.Point(207, 490)
         Me.btnAvbryt.Name = "btnAvbryt"
         Me.btnAvbryt.Size = New System.Drawing.Size(75, 23)
         Me.btnAvbryt.TabIndex = 29
@@ -524,14 +526,14 @@ Partial Class frmAdminCakes
         'frmAdminCakes
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(929, 572)
+        Me.ClientSize = New System.Drawing.Size(929, 618)
+        Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.btnNewCake)
         Me.Controls.Add(Me.grpCakeEdit)
-        Me.Controls.Add(Me.BindingNavigator1)
         Me.Controls.Add(Me.lblFilterCake)
         Me.Controls.Add(Me.txtFilterCake)
         Me.Controls.Add(Me.dtgCake)
-        Me.MinimumSize = New System.Drawing.Size(945, 611)
+        Me.MinimumSize = New System.Drawing.Size(945, 657)
         Me.Name = "frmAdminCakes"
         Me.Text = "Kaker"
         Me.grpIngredients.ResumeLayout(False)

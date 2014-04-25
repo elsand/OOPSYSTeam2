@@ -117,6 +117,8 @@ Public Class frmAdminCakes
         Next
 
         isDirty = False
+
+        'BindingNavigator1.BringToFront()
     End Sub
 
     ''' <summary>
