@@ -124,6 +124,49 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminTabContainer.Designer.vb">
+      <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogLogisticsExpired.Designer.vb">
+      <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogLogisticsExpired.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDialogAdminNotExported.Designer.vb">
+      <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogAdminNotExported.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogisticsTabContainer.Designer.vb">
+      <DependentUpon>frmLogisticsTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaleTabContainer.Designer.vb">
+      <DependentUpon>frmSaleTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaleTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuperTabContainer.Designer.vb">
+      <DependentUpon>frmSuperTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuperTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="helpers\HtmlReport.vb" />
+    <Compile Include="helpers\IngredientHelper.vb" />
+    <Compile Include="helpers\KakefunnEvent.vb" />
+    <Compile Include="helpers\LocalSystemHelper.vb" />
+    <Compile Include="helpers\PackingListHelper.vb" />
+    <Compile Include="helpers\RawPrinterHelper.vb" />
+    <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -142,25 +185,6 @@
     <Compile Include="FrequencyType.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="frmDialogLogisticsExpired.Designer.vb">
-      <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDialogLogisticsExpired.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmDialogAdminNotExported.Designer.vb">
-      <DependentUpon>frmDialogAdminNotExported.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmDialogAdminNotExported.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="helpers\HtmlReport.vb" />
-    <Compile Include="helpers\IngredientHelper.vb" />
-    <Compile Include="helpers\KakefunnEvent.vb" />
-    <Compile Include="helpers\LocalSystemHelper.vb" />
-    <Compile Include="helpers\PackingListHelper.vb" />
-    <Compile Include="helpers\RawPrinterHelper.vb" />
-    <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="helpers\AddressHelper.vb" />
     <Compile Include="controllers\CustomerManager.vb" />
     <Compile Include="controllers\DatabaseManager.vb" />
@@ -334,18 +358,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
-    <Compile Include="Order.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderLine.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Phone.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RecipeLine.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="report\ExpiredBatches.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -372,6 +384,18 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ObservableListSource.vb" />
+    <Compile Include="Order.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderLine.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phone.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeLine.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="ReportTest.Designer.vb">
       <DependentUpon>ReportTest.vb</DependentUpon>
     </Compile>
@@ -450,6 +474,9 @@
     <EmbeddedResource Include="frmAdminSystemAdministration.resx">
       <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminTabContainer.resx">
+      <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
       <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -480,6 +507,9 @@
     <EmbeddedResource Include="frmLogisticsReports.resx">
       <DependentUpon>frmLogisticsReports.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsTabContainer.resx">
+      <DependentUpon>frmLogisticsTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSaleCustomer.resx">
       <DependentUpon>frmSaleCustomer.vb</DependentUpon>
     </EmbeddedResource>
@@ -489,8 +519,14 @@
     <EmbeddedResource Include="frmSaleOrder.resx">
       <DependentUpon>frmSaleOrder.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSaleTabContainer.resx">
+      <DependentUpon>frmSaleTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSuperBase.resx">
       <DependentUpon>frmSuperBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuperTabContainer.resx">
+      <DependentUpon>frmSuperTabContainer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -648,6 +684,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="resources\kakefunn.ico" />
+    <Content Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
