@@ -45,6 +45,10 @@ Partial Class frmSaleOrder
         Me.lblChooseIngredientOrCake = New System.Windows.Forms.Label()
         Me.cbIngredientOrCake = New System.Windows.Forms.ComboBox()
         Me.dtgOrderLines = New System.Windows.Forms.DataGridView()
+        Me.dcIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcCake = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcTotalPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.OrderLinesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.grpOrderingCustomer = New System.Windows.Forms.GroupBox()
         Me.cbCustomerName = New System.Windows.Forms.ComboBox()
@@ -98,10 +102,6 @@ Partial Class frmSaleOrder
         Me.btnClear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.dcIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dcCake = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dcAmount = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dcTotalPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.grpDelivery.SuspendLayout()
         Me.grpCommodity.SuspendLayout()
         CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -367,6 +367,39 @@ Partial Class frmSaleOrder
         Me.dtgOrderLines.Name = "dtgOrderLines"
         Me.dtgOrderLines.Size = New System.Drawing.Size(630, 150)
         Me.dtgOrderLines.TabIndex = 0
+        '
+        'dcIngredient
+        '
+        Me.dcIngredient.DataPropertyName = "Ingredient"
+        Me.dcIngredient.HeaderText = "Ingrediens"
+        Me.dcIngredient.Name = "dcIngredient"
+        Me.dcIngredient.ReadOnly = True
+        '
+        'dcCake
+        '
+        Me.dcCake.DataPropertyName = "cakeId"
+        Me.dcCake.HeaderText = "Tilhører kake"
+        Me.dcCake.Name = "dcCake"
+        Me.dcCake.ReadOnly = True
+        '
+        'dcAmount
+        '
+        Me.dcAmount.DataPropertyName = "amount"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
+        Me.dcAmount.FillWeight = 60.0!
+        Me.dcAmount.HeaderText = "Antall"
+        Me.dcAmount.Name = "dcAmount"
+        '
+        'dcTotalPrice
+        '
+        Me.dcTotalPrice.DataPropertyName = "totalPrice"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
+        Me.dcTotalPrice.FillWeight = 70.0!
+        Me.dcTotalPrice.HeaderText = "Totalpris"
+        Me.dcTotalPrice.Name = "dcTotalPrice"
+        Me.dcTotalPrice.ReadOnly = True
         '
         'OrderLinesBindingSource
         '
@@ -698,7 +731,7 @@ Partial Class frmSaleOrder
         '
         'btnSaveOrder
         '
-        Me.btnSaveOrder.Location = New System.Drawing.Point(204, 59)
+        Me.btnSaveOrder.Location = New System.Drawing.Point(204, 58)
         Me.btnSaveOrder.Name = "btnSaveOrder"
         Me.btnSaveOrder.Size = New System.Drawing.Size(91, 34)
         Me.btnSaveOrder.TabIndex = 10
@@ -898,7 +931,7 @@ Partial Class frmSaleOrder
         '
         'btnCancel
         '
-        Me.btnCancel.Location = New System.Drawing.Point(6, 58)
+        Me.btnCancel.Location = New System.Drawing.Point(9, 58)
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(91, 34)
         Me.btnCancel.TabIndex = 8
@@ -940,39 +973,6 @@ Partial Class frmSaleOrder
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(660, 629)
         Me.Panel2.TabIndex = 12
-        '
-        'dcIngredient
-        '
-        Me.dcIngredient.DataPropertyName = "Ingredient"
-        Me.dcIngredient.HeaderText = "Ingrediens"
-        Me.dcIngredient.Name = "dcIngredient"
-        Me.dcIngredient.ReadOnly = True
-        '
-        'dcCake
-        '
-        Me.dcCake.DataPropertyName = "cakeId"
-        Me.dcCake.HeaderText = "Tilhører kake"
-        Me.dcCake.Name = "dcCake"
-        Me.dcCake.ReadOnly = True
-        '
-        'dcAmount
-        '
-        Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
-        Me.dcAmount.FillWeight = 60.0!
-        Me.dcAmount.HeaderText = "Antall"
-        Me.dcAmount.Name = "dcAmount"
-        '
-        'dcTotalPrice
-        '
-        Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
-        Me.dcTotalPrice.FillWeight = 70.0!
-        Me.dcTotalPrice.HeaderText = "Totalpris"
-        Me.dcTotalPrice.Name = "dcTotalPrice"
-        Me.dcTotalPrice.ReadOnly = True
         '
         'frmSaleOrder
         '

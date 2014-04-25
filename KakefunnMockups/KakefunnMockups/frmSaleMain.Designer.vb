@@ -66,7 +66,7 @@ Partial Class frmSaleMain
         'btnNewOrder
         '
         Me.btnNewOrder.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNewOrder.Location = New System.Drawing.Point(20, 27)
+        Me.btnNewOrder.Location = New System.Drawing.Point(15, 28)
         Me.btnNewOrder.Name = "btnNewOrder"
         Me.btnNewOrder.Size = New System.Drawing.Size(105, 31)
         Me.btnNewOrder.TabIndex = 0
@@ -75,7 +75,7 @@ Partial Class frmSaleMain
         '
         'btnNewCustomer
         '
-        Me.btnNewCustomer.Location = New System.Drawing.Point(144, 28)
+        Me.btnNewCustomer.Location = New System.Drawing.Point(141, 28)
         Me.btnNewCustomer.Name = "btnNewCustomer"
         Me.btnNewCustomer.Size = New System.Drawing.Size(105, 31)
         Me.btnNewCustomer.TabIndex = 1
