@@ -71,7 +71,7 @@ Public Class frmAdminBatch
             Exit Sub
         End If
         If ddlPricePer.SelectedIndex = 0 Then
-            txtPurchasingPrice.Text = CType(Math.Round(txtPurchasingPrice.DecimalValue / txtNumUnits.IntValue, 2), String)
+            txtPurchasingPrice.Text = CType(Math.Max(0.01, Math.Round(txtPurchasingPrice.DecimalValue / txtNumUnits.IntValue, 2)), String)
         Else
             txtPurchasingPrice.Text = CType(Math.Round(txtPurchasingPrice.DecimalValue * txtNumUnits.IntValue, 2), String)
         End If
@@ -231,7 +231,7 @@ Public Class frmAdminBatch
             If ddlPricePer.SelectedIndex = 0 Then
                 b.unitPurchasingPrice = txtPurchasingPrice.DecimalValue
             Else
-                b.unitPurchasingPrice = Math.Round(txtPurchasingPrice.DecimalValue / txtNumUnits.IntValue, 2)
+                b.unitPurchasingPrice = Math.Max(0.01, Math.Round(txtPurchasingPrice.DecimalValue / txtNumUnits.IntValue, 2))
             End If
         End If
 
