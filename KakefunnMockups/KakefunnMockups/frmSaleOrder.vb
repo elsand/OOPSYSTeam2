@@ -7,9 +7,7 @@
 ''' TODO
 ''' - Subscriptions are not handled
 ''' - Stock does not increase if order rows are deleted on exisiting orders
-''' - Stock calculation does not take into account 
-'''   - that an order has already reserved inventory when editing an order
-'''   - multiple rows of the same ingredient
+''' - Stock calculation does not take into account multiple rows of the same ingredient
 ''' </remarks>
 Public Class frmSaleOrder
 
@@ -150,9 +148,9 @@ Public Class frmSaleOrder
                 Else
                     ' We saved the original count in the Tag-property of the datagridviewrow
                     If Not row.Tag Is Nothing Then
-                        ' This means we've reduced it by some amount
+                        ' This means we've reduced the orderline by some amount, increase the stock
                         reduction = row.Tag - ol.amount
-                        StockManager.ReduceInventory(ol.Ingredient, reduction, currentRecord.deliveryDate)
+                        StockManager.IncreaseInventory(ol.Ingredient, reduction, currentRecord.deliveryDate)
                     Else
                         ' New row, reduce by full amount
                         StockManager.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)

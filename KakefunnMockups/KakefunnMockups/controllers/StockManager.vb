@@ -163,21 +163,15 @@ Public Class StockManager
 
     ''' <summary>
     ''' Reduces the inventory of the supplied ingredient by amount. Deliverydate must be supplied, as that will determine what batches
-    ''' to pick from (with regards to expected delivery and expiry date)
+    ''' to pick from (with regards to expected delivery and expiry date). 
     ''' </summary>
     ''' <param name="ingredient"></param>
     ''' <param name="amount"></param>
     ''' <param name="deliveryDate"></param>
     ''' <remarks></remarks>
-    Shared Sub ReduceInventory(ingredient As Ingredient, ByVal amount As Double, deliveryDate As Date)
+    Shared Sub ReduceInventory(ingredient As Ingredient, ByVal amount As Integer, deliveryDate As Date)
 
-        Dim expiryGraceDaysString As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
-        Dim expiryGraceDays As Integer
-        If Not Integer.TryParse(expiryGraceDaysString, expiryGraceDays) Then
-            expiryGraceDays = 0
-        End If
-
-        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(expiryGraceDays)
+         Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(StockManager.GetExpiryGraceDays())
 
         Dim batches = From b In DBM.Instance.Batches _
               Where b.Ingredient.id = ingredient.id _
@@ -206,5 +200,54 @@ Public Class StockManager
         DBM.Instance.SaveChanges()
 
     End Sub
+
+    ''' <summary>
+    ''' Increases the inventory of the supplied ingredient by amount. Deliverydate must be supplied, as that will determine what batches
+    ''' to add to from (with regards to expected delivery date). 
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <param name="amount"></param>
+    ''' <param name="deliveryDate"></param>
+    ''' <remarks></remarks>
+    Public Shared Sub IncreaseInventory(ingredient As Ingredient, ByVal amount As Integer, deliveryDate As Date)
+
+        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(StockManager.GetExpiryGraceDays())
+
+        ' Note that we reverse the order this time, so that we fill back the newest ones first
+        Dim batches = From b In DBM.Instance.Batches _
+              Where b.Ingredient.id = ingredient.id _
+              And b.deleted Is Nothing _
+              And (b.registered IsNot Nothing OrElse b.expected < deliveryDate) _
+              And (b.expires Is Nothing OrElse b.expires > deliveryDateWithGraceDays) _
+              Order By b.registered Descending _
+              Select b
+
+        For Each b As Batch In batches
+            ' Enough "room" in this batch?
+            If b.unitCount + amount <= b.origUnitCount Then
+                ' Yes, fill it with amount and call it a day
+                b.unitCount = b.unitCount + amount
+                amount = 0
+                Exit For
+            End If
+            ' No, we need to fill this one to the top and put the rest in the next batch
+            amount = amount - b.origUnitCount - b.unitCount
+            b.unitCount = b.origUnitCount
+        Next
+
+        ' At this point we assert that amount = 0. There is a race condition where two orders are placed at nearly the same time, where
+        ' both are assuming that all the stock is available to them
+
+        DBM.Instance.SaveChanges()
+    End Sub
+
+    Public Shared Function GetExpiryGraceDays() As Integer
+        Dim expiryGraceDaysString As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
+        Dim expiryGraceDays As Integer
+        If Not Integer.TryParse(expiryGraceDaysString, expiryGraceDays) Then
+            expiryGraceDays = 0
+        End If
+        Return expiryGraceDays
+    End Function
 
 End Class
