@@ -124,6 +124,24 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Customer.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CustomerType.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveryMethod.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DiscountPlan.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Employee.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrequencyType.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="frmDialogLogisticsExpired.Designer.vb">
       <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
     </Compile>
@@ -143,24 +161,6 @@
     <Compile Include="helpers\PackingListHelper.vb" />
     <Compile Include="helpers\RawPrinterHelper.vb" />
     <Compile Include="helpers\ReportHelper.vb" />
-    <Compile Include="Customer.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CustomerType.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DeliveryMethod.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DiscountPlan.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employee.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FrequencyType.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="helpers\AddressHelper.vb" />
     <Compile Include="controllers\CustomerManager.vb" />
     <Compile Include="controllers\DatabaseManager.vb" />
@@ -334,6 +334,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="Order.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderLine.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Phone.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecipeLine.vb">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="report\ExpiredBatches.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -360,18 +372,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ObservableListSource.vb" />
-    <Compile Include="Order.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="OrderLine.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Phone.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
-    <Compile Include="RecipeLine.vb">
-      <DependentUpon>Model.tt</DependentUpon>
-    </Compile>
     <Compile Include="ReportTest.Designer.vb">
       <DependentUpon>ReportTest.vb</DependentUpon>
     </Compile>
