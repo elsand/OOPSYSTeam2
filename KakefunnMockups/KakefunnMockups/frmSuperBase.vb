@@ -16,12 +16,12 @@
     End Sub
 
 
-    Protected Sub UpdateActionStatus(status As String)
+    Public Sub UpdateActionStatus(status As String)
         frmSuperTabContainer.statusAction.Text = status
         Application.DoEvents()
     End Sub
 
-    Protected Sub UpdateActionStatus()
+    Public Sub UpdateActionStatus()
         UpdateActionStatus("")
     End Sub
 

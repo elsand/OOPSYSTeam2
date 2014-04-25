@@ -297,4 +297,16 @@ Public Class frmSaleCustomer
         SearchHelper.SearchOrders(Function(o) o.Customer.id = currentRecord.id And o.isSubscriptionOrder = True)
     End Sub
 
+    ''' <summary>
+    ''' Handles the clear button. Prompt if the form has been edited.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
+        End If
+        NewCustomer()
+    End Sub
 End Class

@@ -63,7 +63,6 @@
 
 
     Public Function GetContainerForAspect(aspect As String) As Form
-
         Select Case aspect
             Case "ADMIN"
                 Return frmAdminTabContainer
@@ -72,8 +71,6 @@
             Case "LOGISTICS"
                 Return frmLogisticsTabContainer
         End Select
-
-
         Return Nothing
     End Function
 
@@ -155,7 +152,23 @@
                                                Return Nothing
                                            End Function
         Next
+
+        AddHandler tabContainer.SelectedIndexChanged, AddressOf OnTabChange
+        AddHandler tabContainer.VisibleChanged, AddressOf OnTabChange
+
     End Sub
 
+    Protected Sub OnTabChange(s As Object, e As EventArgs)
+        SetParentFormMinimumsizeToSelectedTab(CType(s, TabControl))
+    End Sub
+
+    Protected Sub SetParentFormMinimumsizeToSelectedTab(tabControl As TabControl)
+        Dim ms As Size = CType(tabControl.SelectedTab.Controls.Item(0), Form).MinimumSize
+        ' Add some room for padding on the right side
+        ms.Width = ms.Width + 15
+        ' If the tabcontrol is offset from the top (as in sale), account for that here
+        ms.Height = ms.Height + tabControl.Top
+        Me.MinimumSize = ms
+    End Sub
 
 End Class
