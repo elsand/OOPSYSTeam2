@@ -36,4 +36,10 @@ Public Class frmLogin
             btnDoLogin_Click(Me, New EventArgs())
         End If
     End Sub
+
+    Protected Overrides Sub OnFormGetsForeground()
+        txtEmail.Text = ""
+        txtPassword.Text = ""
+    End Sub
+
 End Class
