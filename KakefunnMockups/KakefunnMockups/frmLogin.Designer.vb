@@ -103,8 +103,6 @@ Partial Class frmLogin
         Me.Controls.Add(Me.Label11)
         Me.Name = "frmLogin"
         Me.Text = "Innlogging"
-        Me.Controls.SetChildIndex(Me.Label11, 0)
-        Me.Controls.SetChildIndex(Me.grpLogin, 0)
         Me.grpLogin.ResumeLayout(False)
         Me.grpLogin.PerformLayout()
         Me.ResumeLayout(False)

@@ -27,6 +27,7 @@ Public Class frmLogin
 
         If SessionHelper.Instance.IsLoggedIn Then
             SessionHelper.Instance.ShowDefaultFormForLoggedInUser()
+            Me.Hide()
         End If
 
     End Sub
@@ -42,4 +43,7 @@ Public Class frmLogin
         txtPassword.Text = ""
     End Sub
 
+    Private Sub frmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        Application.Exit()
+    End Sub
 End Class

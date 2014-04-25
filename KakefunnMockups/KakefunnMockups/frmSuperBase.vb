@@ -17,7 +17,9 @@
 
 
     Public Sub UpdateActionStatus(status As String)
-        frmSuperTabContainer.statusAction.Text = status
+        frmSaleTabContainer.statusAction.Text = status
+        frmAdminTabContainer.statusAction.Text = status
+        frmLogisticsTabContainer.statusAction.Text = status
         Application.DoEvents()
     End Sub
 
@@ -26,16 +28,24 @@
     End Sub
 
     Protected Sub UpdateLoginStatus()
+        Dim statusText As String = ""
         If Not SessionHelper.Instance.IsLoggedIn Then
-            frmSuperTabContainer.statusLogin.Text = "Ikke innlogget"
-            Exit Sub
+            statusText = "Ikke innlogget"
+        Else
+
+            Dim roles As String = ""
+            For Each r In SessionHelper.Instance.User.Roles
+                roles = roles & r.name & ", "
+            Next
+            roles = roles.Substring(0, roles.Length - 2)
+            statusText = "Innlogget: " & SessionHelper.Instance.User.firstName & " " & SessionHelper.Instance.User.lastName & " (" & roles & ")"
         End If
-        Dim roles As String = ""
-        For Each r In SessionHelper.Instance.User.Roles
-            roles = roles & r.name & ", "
-        Next
-        roles = roles.Substring(0, roles.Length - 2)
-        frmSuperTabContainer.statusLogin.Text = "Innlogget: " & SessionHelper.Instance.User.firstName & " " & SessionHelper.Instance.User.lastName & " (" & roles & ")"
+
+        frmSaleTabContainer.statusLogin.Text = statusText
+        frmAdminTabContainer.statusLogin.Text = statusText
+        frmLogisticsTabContainer.statusLogin.Text = statusText
+        Application.DoEvents()
+
     End Sub
 
 End Class

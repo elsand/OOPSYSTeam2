@@ -123,9 +123,19 @@
         Return loggedInEmployee
     End Function
 
+    ''' <summary>
+    ''' Handle logging out. We need to hide all windows, and show the frmLogin manually
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub Logout()
         loggedInEmployee = Nothing
-        ShowForm(frmLogin)
+        HideDialog()
+        For Each frm As Form In Application.OpenForms
+            If frm.TopLevel = True Then
+                frm.Hide()
+            End If
+        Next
+        frmLogin.Show()
     End Sub
 
     ''' <summary>
@@ -157,8 +167,6 @@
     End Sub
 
     Public Sub ShowForm(frm As Form)
-
-
         Dim aspect As String = frmSuperTabContainer.GetAspectForForm(frm)
         Dim f As Form = frmSuperTabContainer.GetContainerForAspect(aspect)
         f.Show()

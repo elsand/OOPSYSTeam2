@@ -245,7 +245,6 @@ Public Class frmSuperTabContainer
         ' any actual tab changes)
         AddHandler tabContainer.SelectedIndexChanged, AddressOf OnTabChange
         AddHandler tabContainer.VisibleChanged, AddressOf OnTabChange
-
     End Sub
 
     ''' <summary>
@@ -256,6 +255,7 @@ Public Class frmSuperTabContainer
     ''' <remarks></remarks>
     Protected Sub OnTabChange(s As Object, e As EventArgs)
         SetParentFormMinimumsizeToSelectedTab(CType(s, TabControl))
+        statusMain.BringToFront()
     End Sub
 
     ''' <summary>
@@ -265,11 +265,12 @@ Public Class frmSuperTabContainer
     ''' <param name="tabControl"></param>
     ''' <remarks></remarks>
     Protected Sub SetParentFormMinimumsizeToSelectedTab(tabControl As TabControl)
+        Dim padding As Integer = 15
         Dim ms As Size = CType(tabControl.SelectedTab.Controls.Item(0), Form).MinimumSize
         ' Add some room for padding on the right side
-        ms.Width = ms.Width + 15
+        ms.Width = ms.Width + padding
         ' If the tabcontrol is offset from the top (as in sale), account for that here
-        ms.Height = ms.Height + tabControl.Top
+        ms.Height = ms.Height + tabControl.Top + padding
         Me.MinimumSize = ms
     End Sub
 
