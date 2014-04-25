@@ -4,7 +4,9 @@
 
     Private Sub frmSuperBase_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         If Me.Visible Then
-            frmSuperTabContainer.UpdateAspectMenu()
+            frmSaleTabContainer.UpdateAspectMenu()
+            frmAdminTabContainer.UpdateAspectMenu()
+            frmLogisticsTabContainer.UpdateAspectMenu()
             UpdateLoginStatus()
             UpdateActionStatus()
             OnFormGetsForeground()

@@ -197,7 +197,7 @@ Public Class frmSuperTabContainer
     Private Sub frmSuperBase_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Dim topLevelFormsOpen As Integer = 0
         For Each f As Form In Application.OpenForms
-            If f.TopLevel Then
+            If f.TopLevel And f.Visible = True Then
                 topLevelFormsOpen = topLevelFormsOpen + 1
             End If
         Next

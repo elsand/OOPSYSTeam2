@@ -20,14 +20,14 @@ Public Class frmLogin
         Catch ex As Exception
             MessageBox.Show("Du oppga en ugyldig e-post og/eller passord", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End Try
-        btnDoLogin.Text = origBtnText
-        btnDoLogin.Enabled = True
-        txtEmail.Enabled = True
-        txtPassword.Enabled = True
 
         If SessionHelper.Instance.IsLoggedIn Then
             SessionHelper.Instance.ShowDefaultFormForLoggedInUser()
             Me.Hide()
+            btnDoLogin.Text = origBtnText
+            btnDoLogin.Enabled = True
+            txtEmail.Enabled = True
+            txtPassword.Enabled = True
         End If
 
     End Sub
@@ -41,6 +41,7 @@ Public Class frmLogin
     Protected Overrides Sub OnFormGetsForeground()
         txtEmail.Text = ""
         txtPassword.Text = ""
+        txtEmail.Focus()
     End Sub
 
     Private Sub frmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
