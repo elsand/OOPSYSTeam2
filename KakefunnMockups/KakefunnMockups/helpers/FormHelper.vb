@@ -1,12 +1,14 @@
 ﻿Public Class FormHelper
     Public Shared Sub SetupDirtyTracking(frm As frmSuperBase)
         For Each c As Control In frm.Controls
-            If TypeOf c Is TextBox Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
-            ElseIf TypeOf c Is CheckBox Then
-                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
-            ElseIf TypeOf c Is ComboBox Then
-                AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+            If c.Tag <> "noDirty" Then
+                If TypeOf c Is TextBox Then
+                    AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is CheckBox Then
+                    AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is ComboBox Then
+                    AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+                End If
             End If
         Next
     End Sub
