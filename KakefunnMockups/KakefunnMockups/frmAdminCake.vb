@@ -98,27 +98,14 @@ Public Class frmAdminCakes
         bindCake()
         loadPrices()
 
-        For Each c As Control In Me.grpCakeEdit.Controls
-            If c.GetType().Name = "TextBox" Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.isDirty = True
-            ElseIf c.GetType().Name = "CheckBox" Then
-                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) Me.isDirty = True
-            ElseIf c.GetType().Name = "NumericTextbox" Then
-                AddHandler CType(c, NumericTextbox).TextChanged, Sub(s, ev) Me.isDirty = True
-            End If
-        Next
+        If dtgCake.RowCount = 0 Then
+            btnToolStripCakeDelete.Enabled = False
+            btnToolStripCakeEdit.Enabled = False
+        End If
 
-        For Each c As Control In Me.grpIngredients.Controls
-            If c.GetType().Name = "TextBox" Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.isDirty = True
-            ElseIf c.GetType().Name = "NumericTextbox" Then
-                AddHandler CType(c, NumericTextbox).TextChanged, Sub(s, ev) Me.isDirty = True
-            End If
-        Next
-
+        FormHelper.SetupDirtyTracking(Me)
         isDirty = False
-
-        End Sub
+    End Sub
 
     ''' <summary>
     ''' Resets the cake registration form.
@@ -143,6 +130,7 @@ Public Class frmAdminCakes
             End If
         Next
         selList.Clear()
+        lstSelectedIngredients.DataSource = selList
         lblIngredientsPrice.Text = "Ingredienspris: 0"
         lblSalePrice.Text = "Salgspris: 0"
     End Sub
@@ -427,6 +415,13 @@ Public Class frmAdminCakes
     ''' <remarks></remarks>
     Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
         filter()
+        If dtgCake.RowCount > 0 Then
+            btnToolStripCakeDelete.Enabled = True
+            btnToolStripCakeEdit.Enabled = True
+        Else
+            btnToolStripCakeDelete.Enabled = False
+            btnToolStripCakeEdit.Enabled = False
+        End If
     End Sub
 
     ''' <summary>
@@ -436,12 +431,16 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnNewCake_Click(sender As Object, e As EventArgs) Handles btnNewCake.Click, btnToolStripCakeNew.Click
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
+        End If
         ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         grpCakeEdit.Enabled = True
         btnAddIngredients.Enabled = False
         numAmount.Enabled = False
         cakeNew = True
         structureSelList()
+        clearRegForm()
         isDirty = False
     End Sub
 
@@ -449,10 +448,12 @@ Public Class frmAdminCakes
     ''' Collects data about a cake from db, and displays it in the registration form.
     ''' See detailed comments in the sub.
     ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub dtgCake_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseDoubleClick
+    Private Sub editCake()
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
+        End If
+
         ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         grpCakeEdit.Enabled = True
         cakeNew = False
@@ -499,6 +500,14 @@ Public Class frmAdminCakes
         End If
         showPrices()
         isDirty = False
+
+
+    End Sub
+
+    Private Sub dtgCake_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseDoubleClick
+        If dtgCake.RowCount > 0 Then
+            editCake()
+        End If
     End Sub
 
     ''' <summary>
@@ -511,9 +520,9 @@ Public Class frmAdminCakes
         'Prompts user: are you sure?
         Dim result As Integer = MessageBox.Show("Er du sikker på at du vil slette kaken? Operasjonen kan ikke reverseres.", _
                                                 "Bekreft sletting", MessageBoxButtons.YesNo)
-        UpdateActionStatus("Sletter kake...")
 
         If result = 6 Then
+            UpdateActionStatus("Sletter kake...")
             Dim delIdx As Integer = dtgCake.SelectedRows(0).Cells(IdDataGridViewTextBoxColumn.Index).Value
             Dim delCake = DBM.Instance.Cakes.Find(delIdx)
             delCake.deleted = Date.Today
@@ -567,18 +576,13 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnAvbryt_Click(sender As Object, e As EventArgs) Handles btnAvbryt.Click
-        If isDirty Then
-            Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du avslutte kakeregistreringen likevel?", _
-                                           "Bekreft lukking", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If response = 6 Then
-                clearRegForm()
-                grpCakeEdit.Enabled = False
-            End If
-        Else
-            clearRegForm()
-            grpCakeEdit.Enabled = False
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
         End If
 
+        clearRegForm()
+        grpCakeEdit.Enabled = False
+        isDirty = False
     End Sub
 
     ''' <summary>
@@ -588,10 +592,20 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtgCake_MouseClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseClick
-        If dtgCake.SelectedRows(0).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
-            btnToolStripCakeDelete.Enabled = False
-        Else
-            btnToolStripCakeDelete.Enabled = True
+        If dtgCake.RowCount > 0 Then
+            If dtgCake.SelectedRows(0).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
+                btnToolStripCakeDelete.Enabled = False
+            Else
+                btnToolStripCakeDelete.Enabled = True
+            End If
         End If
     End Sub
+
+    Private Sub btnToolStripCakeEdit_Click(sender As Object, e As EventArgs) Handles btnToolStripCakeEdit.Click
+        If dtgCake.RowCount > 0 Then
+            editCake()
+        End If
+    End Sub
+
+
 End Class

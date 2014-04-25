@@ -682,6 +682,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\edit-29.png" />
     <Content Include="resources\kakefunn.ico" />
   </ItemGroup>
   <ItemGroup>
