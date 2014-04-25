@@ -22,12 +22,6 @@ Partial Class frmAdminProcessedOrders
         Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.dtgProcessedOrders = New System.Windows.Forms.DataGridView()
-        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.btnPrintProcessedOrders = New System.Windows.Forms.Button()
-        Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
-        Me.rdoCheckAll = New System.Windows.Forms.RadioButton()
-        Me.rdoCheckNone = New System.Windows.Forms.RadioButton()
-        Me.btnUpdateList = New System.Windows.Forms.Button()
         Me.exported = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ModifiedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,6 +29,12 @@ Partial Class frmAdminProcessedOrders
         Me.dcCustomerId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcOrderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.btnPrintProcessedOrders = New System.Windows.Forms.Button()
+        Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
+        Me.rdoCheckAll = New System.Windows.Forms.RadioButton()
+        Me.rdoCheckNone = New System.Windows.Forms.RadioButton()
+        Me.btnUpdateList = New System.Windows.Forms.Button()
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -44,74 +44,24 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.AllowUserToAddRows = False
         Me.dtgProcessedOrders.AllowUserToDeleteRows = False
         Me.dtgProcessedOrders.AllowUserToOrderColumns = True
+        Me.dtgProcessedOrders.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgProcessedOrders.AutoGenerateColumns = False
         Me.dtgProcessedOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgProcessedOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dtgProcessedOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.exported, Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcOrderTotalPrice, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress})
         Me.dtgProcessedOrders.DataSource = Me.OrderBindingSource
-        Me.dtgProcessedOrders.Location = New System.Drawing.Point(12, 66)
+        Me.dtgProcessedOrders.Location = New System.Drawing.Point(12, 12)
         Me.dtgProcessedOrders.Name = "dtgProcessedOrders"
         Me.dtgProcessedOrders.RowHeadersVisible = False
         DataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.GradientInactiveCaption
         DataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black
         Me.dtgProcessedOrders.RowsDefaultCellStyle = DataGridViewCellStyle1
         Me.dtgProcessedOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgProcessedOrders.Size = New System.Drawing.Size(696, 306)
+        Me.dtgProcessedOrders.Size = New System.Drawing.Size(905, 503)
         Me.dtgProcessedOrders.TabIndex = 8
-        '
-        'OrderBindingSource
-        '
-        Me.OrderBindingSource.DataSource = GetType(Kakefunn.Order)
-        '
-        'btnPrintProcessedOrders
-        '
-        Me.btnPrintProcessedOrders.Location = New System.Drawing.Point(437, 378)
-        Me.btnPrintProcessedOrders.Name = "btnPrintProcessedOrders"
-        Me.btnPrintProcessedOrders.Size = New System.Drawing.Size(132, 38)
-        Me.btnPrintProcessedOrders.TabIndex = 9
-        Me.btnPrintProcessedOrders.Text = "Skriv ut rapport"
-        Me.btnPrintProcessedOrders.UseVisualStyleBackColor = True
-        '
-        'btnTransferToBillingSystem
-        '
-        Me.btnTransferToBillingSystem.Location = New System.Drawing.Point(576, 378)
-        Me.btnTransferToBillingSystem.Name = "btnTransferToBillingSystem"
-        Me.btnTransferToBillingSystem.Size = New System.Drawing.Size(132, 38)
-        Me.btnTransferToBillingSystem.TabIndex = 10
-        Me.btnTransferToBillingSystem.Text = "Overfør til fakturasystem"
-        Me.btnTransferToBillingSystem.UseVisualStyleBackColor = True
-        '
-        'rdoCheckAll
-        '
-        Me.rdoCheckAll.AutoSize = True
-        Me.rdoCheckAll.Location = New System.Drawing.Point(13, 378)
-        Me.rdoCheckAll.Name = "rdoCheckAll"
-        Me.rdoCheckAll.Size = New System.Drawing.Size(68, 17)
-        Me.rdoCheckAll.TabIndex = 11
-        Me.rdoCheckAll.TabStop = True
-        Me.rdoCheckAll.Text = "Merk alle"
-        Me.rdoCheckAll.UseVisualStyleBackColor = True
-        '
-        'rdoCheckNone
-        '
-        Me.rdoCheckNone.AutoSize = True
-        Me.rdoCheckNone.Location = New System.Drawing.Point(87, 378)
-        Me.rdoCheckNone.Name = "rdoCheckNone"
-        Me.rdoCheckNone.Size = New System.Drawing.Size(78, 17)
-        Me.rdoCheckNone.TabIndex = 12
-        Me.rdoCheckNone.TabStop = True
-        Me.rdoCheckNone.Text = "Merk ingen"
-        Me.rdoCheckNone.UseVisualStyleBackColor = True
-        '
-        'btnUpdateList
-        '
-        Me.btnUpdateList.Location = New System.Drawing.Point(299, 378)
-        Me.btnUpdateList.Name = "btnUpdateList"
-        Me.btnUpdateList.Size = New System.Drawing.Size(132, 38)
-        Me.btnUpdateList.TabIndex = 13
-        Me.btnUpdateList.Text = "Oppdater liste"
-        Me.btnUpdateList.UseVisualStyleBackColor = True
         '
         'exported
         '
@@ -164,24 +114,77 @@ Partial Class frmAdminProcessedOrders
         Me.dcOrderAddress.Name = "dcOrderAddress"
         Me.dcOrderAddress.ReadOnly = True
         '
+        'OrderBindingSource
+        '
+        Me.OrderBindingSource.DataSource = GetType(Kakefunn.Order)
+        '
+        'btnPrintProcessedOrders
+        '
+        Me.btnPrintProcessedOrders.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnPrintProcessedOrders.Location = New System.Drawing.Point(646, 521)
+        Me.btnPrintProcessedOrders.Name = "btnPrintProcessedOrders"
+        Me.btnPrintProcessedOrders.Size = New System.Drawing.Size(132, 38)
+        Me.btnPrintProcessedOrders.TabIndex = 9
+        Me.btnPrintProcessedOrders.Text = "Skriv ut rapport"
+        Me.btnPrintProcessedOrders.UseVisualStyleBackColor = True
+        '
+        'btnTransferToBillingSystem
+        '
+        Me.btnTransferToBillingSystem.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnTransferToBillingSystem.Location = New System.Drawing.Point(785, 521)
+        Me.btnTransferToBillingSystem.Name = "btnTransferToBillingSystem"
+        Me.btnTransferToBillingSystem.Size = New System.Drawing.Size(132, 38)
+        Me.btnTransferToBillingSystem.TabIndex = 10
+        Me.btnTransferToBillingSystem.Text = "Overfør til fakturasystem"
+        Me.btnTransferToBillingSystem.UseVisualStyleBackColor = True
+        '
+        'rdoCheckAll
+        '
+        Me.rdoCheckAll.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rdoCheckAll.AutoSize = True
+        Me.rdoCheckAll.Location = New System.Drawing.Point(13, 521)
+        Me.rdoCheckAll.Name = "rdoCheckAll"
+        Me.rdoCheckAll.Size = New System.Drawing.Size(68, 17)
+        Me.rdoCheckAll.TabIndex = 11
+        Me.rdoCheckAll.TabStop = True
+        Me.rdoCheckAll.Text = "Merk alle"
+        Me.rdoCheckAll.UseVisualStyleBackColor = True
+        '
+        'rdoCheckNone
+        '
+        Me.rdoCheckNone.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.rdoCheckNone.AutoSize = True
+        Me.rdoCheckNone.Location = New System.Drawing.Point(87, 521)
+        Me.rdoCheckNone.Name = "rdoCheckNone"
+        Me.rdoCheckNone.Size = New System.Drawing.Size(78, 17)
+        Me.rdoCheckNone.TabIndex = 12
+        Me.rdoCheckNone.TabStop = True
+        Me.rdoCheckNone.Text = "Merk ingen"
+        Me.rdoCheckNone.UseVisualStyleBackColor = True
+        '
+        'btnUpdateList
+        '
+        Me.btnUpdateList.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnUpdateList.Location = New System.Drawing.Point(508, 521)
+        Me.btnUpdateList.Name = "btnUpdateList"
+        Me.btnUpdateList.Size = New System.Drawing.Size(132, 38)
+        Me.btnUpdateList.TabIndex = 13
+        Me.btnUpdateList.Text = "Oppdater liste"
+        Me.btnUpdateList.UseVisualStyleBackColor = True
+        '
         'frmAdminProcessedOrders
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(720, 441)
+        Me.ClientSize = New System.Drawing.Size(929, 621)
         Me.Controls.Add(Me.btnUpdateList)
         Me.Controls.Add(Me.rdoCheckNone)
         Me.Controls.Add(Me.rdoCheckAll)
         Me.Controls.Add(Me.btnTransferToBillingSystem)
         Me.Controls.Add(Me.btnPrintProcessedOrders)
         Me.Controls.Add(Me.dtgProcessedOrders)
+        Me.MinimumSize = New System.Drawing.Size(945, 660)
         Me.Name = "frmAdminProcessedOrders"
         Me.Text = "Effektuerte ordrer"
-        Me.Controls.SetChildIndex(Me.dtgProcessedOrders, 0)
-        Me.Controls.SetChildIndex(Me.btnPrintProcessedOrders, 0)
-        Me.Controls.SetChildIndex(Me.btnTransferToBillingSystem, 0)
-        Me.Controls.SetChildIndex(Me.rdoCheckAll, 0)
-        Me.Controls.SetChildIndex(Me.rdoCheckNone, 0)
-        Me.Controls.SetChildIndex(Me.btnUpdateList, 0)
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
