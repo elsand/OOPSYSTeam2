@@ -31,6 +31,7 @@ Partial Class frmLogin
         '
         'grpLogin
         '
+        Me.grpLogin.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.grpLogin.Controls.Add(Me.btnDoLogin)
         Me.grpLogin.Controls.Add(Me.txtPassword)
         Me.grpLogin.Controls.Add(Me.txtEmail)
@@ -45,6 +46,8 @@ Partial Class frmLogin
         '
         'btnDoLogin
         '
+        Me.btnDoLogin.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.btnDoLogin.Location = New System.Drawing.Point(97, 119)
         Me.btnDoLogin.Name = "btnDoLogin"
         Me.btnDoLogin.Size = New System.Drawing.Size(134, 23)
@@ -54,6 +57,8 @@ Partial Class frmLogin
         '
         'txtPassword
         '
+        Me.txtPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtPassword.Location = New System.Drawing.Point(97, 80)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(134, 20)
@@ -62,6 +67,8 @@ Partial Class frmLogin
         '
         'txtEmail
         '
+        Me.txtEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtEmail.Location = New System.Drawing.Point(97, 41)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(137, 20)
@@ -69,6 +76,8 @@ Partial Class frmLogin
         '
         'lblPassword
         '
+        Me.lblPassword.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPassword.AutoSize = True
         Me.lblPassword.Location = New System.Drawing.Point(46, 83)
         Me.lblPassword.Name = "lblPassword"
@@ -78,6 +87,8 @@ Partial Class frmLogin
         '
         'lblEmail
         '
+        Me.lblEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblEmail.AutoSize = True
         Me.lblEmail.Location = New System.Drawing.Point(53, 44)
         Me.lblEmail.Name = "lblEmail"
@@ -87,6 +98,7 @@ Partial Class frmLogin
         '
         'Label11
         '
+        Me.Label11.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.Label11.AutoSize = True
         Me.Label11.Font = New System.Drawing.Font("Microsoft Sans Serif", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label11.Location = New System.Drawing.Point(35, 37)
@@ -94,13 +106,15 @@ Partial Class frmLogin
         Me.Label11.Size = New System.Drawing.Size(492, 31)
         Me.Label11.TabIndex = 24
         Me.Label11.Text = "Velkommen til AS Kakefunn InfoSystem"
+        Me.Label11.TextAlign = System.Drawing.ContentAlignment.TopCenter
         '
         'frmLogin
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(563, 335)
+        Me.ClientSize = New System.Drawing.Size(577, 341)
         Me.Controls.Add(Me.grpLogin)
         Me.Controls.Add(Me.Label11)
+        Me.MinimumSize = New System.Drawing.Size(593, 380)
         Me.Name = "frmLogin"
         Me.Text = "Innlogging"
         Me.grpLogin.ResumeLayout(False)
