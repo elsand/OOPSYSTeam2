@@ -44,7 +44,11 @@ Public Class frmSuperBase
     ''' <remarks></remarks>
     Public Sub UpdateActionStatus(status As String)
         With frmSuperTabContainer
-            CType(.GetContainerForAspect(.GetAspectForForm(Me)), frmSuperTabContainer).statusAction.Text = status
+            Dim frm As Form = .GetContainerForAspect(.GetAspectForForm(Me))
+            If frm Is Nothing Then
+                Exit Sub
+            End If
+            CType(frm, frmSuperTabContainer).statusAction.Text = status
         End With
         Application.DoEvents()
     End Sub
