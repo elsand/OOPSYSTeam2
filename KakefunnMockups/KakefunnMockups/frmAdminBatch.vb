@@ -206,7 +206,7 @@ Public Class frmAdminBatch
 
         Dim b As Batch
         If IsNewRecord Then
-            b = New Batch()
+            b = DBM.Instance.Batches.Create(Of Batch)()
             b.ordered = DateTime.Now
         Else
             b = currentRecord
