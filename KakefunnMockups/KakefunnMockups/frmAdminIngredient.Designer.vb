@@ -112,39 +112,50 @@ Partial Class frmAdminIngredient
         '
         'colID
         '
+        Me.colID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
         Me.colID.HeaderText = "Varenr"
         Me.colID.Name = "colID"
         Me.colID.ReadOnly = True
+        Me.colID.Width = 63
         '
         'colName
         '
+        Me.colName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.colName.HeaderText = "Navn"
         Me.colName.Name = "colName"
         Me.colName.ReadOnly = True
         '
         'colStock
         '
+        Me.colStock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.colStock.HeaderText = "Antall på lager"
         Me.colStock.Name = "colStock"
         Me.colStock.ReadOnly = True
+        Me.colStock.Width = 99
         '
         'colBDGIn
         '
+        Me.colBDGIn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.colBDGIn.HeaderText = "B/D/G* innkjøp"
         Me.colBDGIn.Name = "colBDGIn"
         Me.colBDGIn.ReadOnly = True
+        Me.colBDGIn.Width = 97
         '
         'colBDGOut
         '
+        Me.colBDGOut.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.colBDGOut.HeaderText = "B/D/G* utsalg"
         Me.colBDGOut.Name = "colBDGOut"
         Me.colBDGOut.ReadOnly = True
+        Me.colBDGOut.Width = 92
         '
         'colProfig
         '
+        Me.colProfig.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
         Me.colProfig.HeaderText = "Avanse i %"
         Me.colProfig.Name = "colProfig"
         Me.colProfig.ReadOnly = True
+        Me.colProfig.Width = 70
         '
         'colDeleted
         '

@@ -117,6 +117,7 @@ Public Class frmAdminIngredient
                               Where x.id = delIdx _
                               Select x).FirstOrDefault()
                 delIng.deleted = Date.Now
+                delIng.name &= " (slettet)"
 
                 Try
                     DBM.Instance.SaveChanges()
@@ -139,7 +140,7 @@ Public Class frmAdminIngredient
         If dtgResults.Rows(e.RowIndex).Cells(colDeleted.Index).Value <= Date.Now And _
             dtgResults.Rows(e.RowIndex).Cells(colDeleted.Index).Value > CDate("2000-01-01 00:00:00") Then
             dtgResults.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
-            dtgResults.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
+            dtgResults.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.LightYellow
         End If
     End Sub
 End Class
