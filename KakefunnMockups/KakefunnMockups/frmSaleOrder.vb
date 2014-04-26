@@ -36,7 +36,6 @@ Public Class frmSaleOrder
         DBM.Instance.Orders.Attach(currentRecord)
 
         isNewRecord = False
-        isDirty = False
 
         '  Set static fields
         cbCustomerName.Text = order.Customer.fullName.ToString()
@@ -98,7 +97,16 @@ Public Class frmSaleOrder
 
         UpdateTotalPrice()
 
+        ' Now that the order is loaded fully, we check if it is already sent. If it is, we disable everything
+        If currentRecord.sent IsNot Nothing Then
+            FormHelper.DisableControls(Me)
+            UpdateActionStatus("Denne ordren er sent og kan ikke redigeres.")
+        Else
+            UpdateActionStatus("Redigerer ordre #" & currentRecord.id)
+        End If
+
         isLoadingOrder = False
+        isDirty = False
 
     End Sub
 
@@ -116,6 +124,7 @@ Public Class frmSaleOrder
         OrderLinesBindingSource.DataSource = currentRecord.OrderLines.ToBindingList
         ToggleSubscriptionGroup()
         UpdateTotalPrice()
+        UpdateActionStatus()
         isDirty = False
 
     End Sub

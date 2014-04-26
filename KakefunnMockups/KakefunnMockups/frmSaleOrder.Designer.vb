@@ -20,8 +20,8 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
@@ -102,6 +102,7 @@ Partial Class frmSaleOrder
         Me.btnClear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.grpDelivery.SuspendLayout()
         Me.grpCommodity.SuspendLayout()
         CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -312,6 +313,7 @@ Partial Class frmSaleOrder
         '
         Me.grpCommodity.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpCommodity.Controls.Add(Me.Label3)
         Me.grpCommodity.Controls.Add(Me.btnAddIngredientOrCake)
         Me.grpCommodity.Controls.Add(Me.lblChooseIngredientOrCake)
         Me.grpCommodity.Controls.Add(Me.cbIngredientOrCake)
@@ -363,9 +365,10 @@ Partial Class frmSaleOrder
         Me.dtgOrderLines.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgOrderLines.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.dcIngredient, Me.dcCake, Me.dcAmount, Me.dcTotalPrice})
         Me.dtgOrderLines.DataSource = Me.OrderLinesBindingSource
+        Me.dtgOrderLines.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.dtgOrderLines.Location = New System.Drawing.Point(8, 19)
         Me.dtgOrderLines.Name = "dtgOrderLines"
-        Me.dtgOrderLines.Size = New System.Drawing.Size(404, 150)
+        Me.dtgOrderLines.Size = New System.Drawing.Size(404, 140)
         Me.dtgOrderLines.TabIndex = 0
         '
         'dcIngredient
@@ -385,8 +388,8 @@ Partial Class frmSaleOrder
         'dcAmount
         '
         Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle7
         Me.dcAmount.FillWeight = 60.0!
         Me.dcAmount.HeaderText = "Antall"
         Me.dcAmount.Name = "dcAmount"
@@ -394,8 +397,8 @@ Partial Class frmSaleOrder
         'dcTotalPrice
         '
         Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle8
         Me.dcTotalPrice.FillWeight = 70.0!
         Me.dcTotalPrice.HeaderText = "Totalpris"
         Me.dcTotalPrice.Name = "dcTotalPrice"
@@ -453,6 +456,7 @@ Partial Class frmSaleOrder
         Me.grpOrderStatus.Size = New System.Drawing.Size(292, 121)
         Me.grpOrderStatus.TabIndex = 0
         Me.grpOrderStatus.TabStop = False
+        Me.grpOrderStatus.Tag = "noDisable"
         Me.grpOrderStatus.Text = "Status"
         '
         'lblOrderSentValue
@@ -608,6 +612,7 @@ Partial Class frmSaleOrder
         Me.grpPayment.Size = New System.Drawing.Size(416, 104)
         Me.grpPayment.TabIndex = 4
         Me.grpPayment.TabStop = False
+        Me.grpPayment.Tag = "noDisable"
         Me.grpPayment.Text = "Betaling"
         '
         'lblShippingValue
@@ -935,6 +940,7 @@ Partial Class frmSaleOrder
         Me.btnCancel.Name = "btnCancel"
         Me.btnCancel.Size = New System.Drawing.Size(91, 34)
         Me.btnCancel.TabIndex = 8
+        Me.btnCancel.Tag = "noDisable"
         Me.btnCancel.Text = "Avbryt"
         Me.btnCancel.UseVisualStyleBackColor = True
         '
@@ -944,6 +950,7 @@ Partial Class frmSaleOrder
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(91, 34)
         Me.btnClear.TabIndex = 9
+        Me.btnClear.Tag = "noDisable"
         Me.btnClear.Text = "Tøm felter"
         Me.btnClear.UseVisualStyleBackColor = True
         '
@@ -973,6 +980,15 @@ Partial Class frmSaleOrder
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(434, 629)
         Me.Panel2.TabIndex = 12
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(223, 162)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(188, 13)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Trykk Delete for å slette valgt varelinje"
         '
         'frmSaleOrder
         '
@@ -1090,5 +1106,6 @@ Partial Class frmSaleOrder
     Friend WithEvents dcCake As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcAmount As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents Label3 As System.Windows.Forms.Label
 
 End Class
