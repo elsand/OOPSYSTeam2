@@ -81,7 +81,7 @@
 
         Dim em As Employee
         If IsNewRecord Then
-            em = New Employee()
+            em = DBM.Instance.Employees.Create(Of Employee)()
         Else
             em = currentRecord
         End If
