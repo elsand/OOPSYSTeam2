@@ -306,7 +306,7 @@ Public Class frmSaleOrder
         Dim deliveryDate As String = dtpDeliveryDate.Value.ToString("yyyy-MM-dd")
 
         Dim dt As DataTable = DBM.Instance.GetDataTableFromQuery( _
-            "SELECT CONCAT('i', i.id) as id, CONCAT(name, ' (x', IFNULL(SUM(b.unitCount), 0), ')') as name FROM Ingredient i " & _
+            "SELECT 1 as isIngredient, CONCAT('i', i.id) as id, CONCAT(name, ' (x', IFNULL(SUM(b.unitCount), 0), ')') as name FROM Ingredient i " & _
             "LEFT JOIN Batch b ON (" & _
             "	b.ingredientId = i.id " & _
             "	AND b.deleted IS NULL " & _
@@ -317,9 +317,9 @@ Public Class frmSaleOrder
             "WHERE i.deleted IS NULL and published = 1 " & _
             "GROUP BY name " & _
             "UNION " & _
-            "SELECT CONCAT('c', id) as id, CONCAT(name, ' (Kake)') as name FROM Cake " & _
+            "SELECT 0 as isIngredient, CONCAT('c', id) as id, CONCAT(name, ' (Kake)') as name FROM Cake " & _
             "WHERE deleted IS NULL AND published = 1 " & _
-            "ORDER BY name "
+            "ORDER BY isIngredient, name "
         )
 
         With cbIngredientOrCake
