@@ -1,14 +1,14 @@
-﻿''' <summary>
-''' As the name says... this is the dialog for the orders that is not exported.. just i case anyone
-''' wants to print it, use more paper and make squirrels homeless.. not that i really care about the squirrels, but chip 'n' dale are quite funny.  
+﻿Imports Microsoft.Reporting.WinForms
+''' <summary>
+'''Creates and displays a report for orders not exported. 
+'''
 ''' </summary>
-''' <remarks>Nah. not really.. </remarks>
-
-Imports Microsoft.Reporting.WinForms
-
+''' <remarks></remarks>
 
 Public Class frmDialogAdminNotExported
+
     Public reportDataSource As ReportDataSource
+
     Private Sub frmDialogAdminNotExported_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
@@ -53,20 +53,6 @@ Public Class frmDialogAdminNotExported
 
 
 
-
-
-            ' Prøve å laste fra databasen, men får da feil pris... .i forhold til ordrelilnjene.... NB NB NB
-            'Dim query = "select o.id, o.deliveryFirstName, o.deliveryLastName , o.created from `Order` o where o.exported IS NULL ;"
-
-            '
-            'Dim t = Kakefunn.DBM.Instance.GetDataTableFromQuery(query)
-
-
-
-
-
-            'Creating the the datasource
-
             reportDataSource = New ReportDataSource("NotExportedOrders", t)
 
             'manipulating the localreport. 
@@ -76,12 +62,12 @@ Public Class frmDialogAdminNotExported
                 .ReportEmbeddedResource = "Kakefunn.notExportedOrders.rdlc"
             End With
 
-            'refreshing the report
+
             Me.rptNotExportedOrders.RefreshReport()
 
 
         Catch ex As Exception
-            'if my code f.up the might show... but it hasn't so far... even if the report faild... WHY !!!!! 
+
             MsgBox("Noe gikk galt... " & ex.Message)
 
 
