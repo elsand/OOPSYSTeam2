@@ -274,10 +274,11 @@ Partial Class frmAdminReports
         'frmAdminReports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(723, 405)
+        Me.ClientSize = New System.Drawing.Size(723, 406)
         Me.Controls.Add(Me.grpAdminReports)
         Me.MinimumSize = New System.Drawing.Size(739, 444)
         Me.Name = "frmAdminReports"
+        Me.Text = "Rapporter"
         CType(Me.LastYearMonthSaleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Ingredien, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IngredientHistoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
