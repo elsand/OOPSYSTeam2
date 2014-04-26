@@ -187,7 +187,7 @@
         Next
         DBM.Instance.SaveChanges()
 
-        KakefunnEvent.saveSystemEvent("updateOrderStatus", sc & s)
+        KakefunnEvent.saveSystemEvent("Ordrestatus", sc & s)
 
 
         start()

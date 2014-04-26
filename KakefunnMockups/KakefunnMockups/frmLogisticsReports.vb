@@ -110,7 +110,7 @@
     End Sub
 
     Private Sub btbDeleteCheckedIngredientsInStock_Click(sender As Object, e As EventArgs) Handles btbDeleteCheckedIngredientsInStock.Click
-
+        Dim ingredientIDs As String = ""
 
         For Each r As DataGridViewRow In dtgExpiredIngredients.Rows
 
@@ -118,12 +118,13 @@
 
                 Dim b = CType(r.DataBoundItem, Batch)
                 b.deleted = DateTime.Now
-
+                ingredientIDs &= b.id & ", "
             End If
 
         Next
 
         DBM.Instance.SaveChanges()
+        KakefunnEvent.saveSystemEvent("Utgåtte varer", "Slettet utgått vare: " & ingredientIDs)
         start()
 
 

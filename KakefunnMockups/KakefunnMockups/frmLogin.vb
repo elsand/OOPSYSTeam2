@@ -30,6 +30,7 @@ Public Class frmLogin
             SessionHelper.Instance.Login(txtEmail.Text, txtPassword.Text)
         Catch ex As Exception
             MessageBox.Show("Du oppga en ugyldig e-post og/eller passord", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            KakefunnEvent.saveSystemEvent("Innlogging", "Innlogging feilet for bruker: " & txtEmail.Text)
         End Try
 
         ' Login successful, open the default form for this user and hide the login windows
@@ -40,6 +41,7 @@ Public Class frmLogin
             btnDoLogin.Enabled = True
             txtEmail.Enabled = True
             txtPassword.Enabled = True
+            KakefunnEvent.saveSystemEvent("Innlogging", "Vellykket innlogging for bruker: " & txtEmail.Text)
         End If
 
     End Sub

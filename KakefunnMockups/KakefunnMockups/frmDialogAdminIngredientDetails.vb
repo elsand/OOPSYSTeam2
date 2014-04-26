@@ -144,7 +144,11 @@ Public Class frmDialogAdminIngredientDetails
         End Try
 
         'Logging the event
-        KakefunnEvent.saveSystemEvent("Ingredienser", "Lagret ingrediensen:" & i.id & " " & i.name)
+        If newIngr Then
+            KakefunnEvent.saveSystemEvent("Ingredienser", "Opprettet ny ingrediens: " & i.id & " " & i.name)
+        Else
+            KakefunnEvent.saveSystemEvent("Ingredienser", "Endret ingrediensen: " & i.id & " " & i.name)
+        End If
 
         newIngr = False
         varenr = (From x In DBM.Instance.Ingredients _

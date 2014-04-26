@@ -168,6 +168,12 @@ Public Class frmSaleOrder
 
         MsgBox("Ordren ble lagret", MsgBoxStyle.Information)
 
+        If isNewRecord Then
+            KakefunnEvent.saveSystemEvent("Ordrer", "Lagret ny ordre: " & currentRecord.id)
+        Else
+            KakefunnEvent.saveSystemEvent("Ordrer", "Oppdatert ordre: " & currentRecord.id)
+        End If
+
         If cboPrintReceiptOnSave.Checked Then
             PrintReceipt()
         End If

@@ -126,6 +126,12 @@
             Exit Sub
         End Try
 
+        If IsNewRecord Then
+            KakefunnEvent.saveSystemEvent("Systembrukere", "Opprettet ny systembruker: " & em.fullName)
+        Else
+            KakefunnEvent.saveSystemEvent("Systembrukere", "Oppdatert systembruker: " & em.fullName)
+        End If
+
         IsNewRecord = False
         IsDirty = False
         currentRecord = em

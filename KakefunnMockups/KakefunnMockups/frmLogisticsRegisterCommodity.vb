@@ -213,7 +213,9 @@ Public Class frmLogisticsRegisterCommodity
                 MsgBox("Noe gikk galt under registrering av batchen - " & ex.ToString)
             End Try
 
-        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
+            KakefunnEvent.saveSystemEvent("Varemottak", "Mottatt parti: " & batchToRegister.id)
+
+            BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
                                             Not b.registered.HasValue And b.deleted Is Nothing)
         Else
             MsgBox("Lokasjon er opptatt. Du kan velge lokasjon manuelt, eller be systemet " _

@@ -329,7 +329,11 @@ Public Class frmAdminCakes
             End Try
 
             'logs operation to event log.
-            KakefunnEvent.saveSystemEvent("Kaker", "Lagret/oppdatert " & cake.name)
+            If cakeNew Then
+                KakefunnEvent.saveSystemEvent("Kaker", "Lagret ny kake: " & cake.name)
+            Else
+                KakefunnEvent.saveSystemEvent("Kaker", "Endret kake: " & cake.name)
+            End If
 
             bindCake()
             loadPrices()
