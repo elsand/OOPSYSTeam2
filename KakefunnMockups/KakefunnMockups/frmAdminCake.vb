@@ -285,7 +285,7 @@ Public Class frmAdminCakes
 
             'Checks if it's a new cake or one to be edited.
             If cakeNew Then
-                cake = New Cake() 'New cake.
+                cake = DBM.Instance.Cakes.Create(Of Cake)() 'New cake.
             Else
                 cake = existingCake 'Loads existing data from db.
 
