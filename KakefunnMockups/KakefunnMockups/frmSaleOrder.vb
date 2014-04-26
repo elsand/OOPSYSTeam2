@@ -14,7 +14,7 @@ Public Class frmSaleOrder
     ' Flag used to trigger logic specific to either saved or new orders
     Private isNewRecord = False
     ' Holds the order currently being edited, either new or existing
-    Private currentRecord As Order = New Order()
+    Private currentRecord As Order = DBM.Instance.Orders.Create(Of Order)()
     ' Flag to tell event handlers if we're currently loading a record
     Private isLoadingOrder = False
     ' Holds which form we are to return to. Default to frmSaleMain
@@ -110,7 +110,8 @@ Public Class frmSaleOrder
 
         isDirty = False
         isNewRecord = True
-        currentRecord = New Order() With {.deliveryDate = Date.Today}
+        currentRecord = DBM.Instance.Orders.Create(Of Order)()
+        currentRecord.deliveryDate = Date.Today
         grpOrderStatus.Hide()
         FormHelper.ResetControls(Me)
         OrderLinesBindingSource.DataSource = currentRecord.OrderLines.ToBindingList
