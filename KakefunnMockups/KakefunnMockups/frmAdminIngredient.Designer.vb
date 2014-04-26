@@ -166,6 +166,7 @@ Partial Class frmAdminIngredient
         '
         'frmAdminIngredient
         '
+        Me.AcceptButton = Me.btnSearch
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(929, 621)
         Me.Controls.Add(Me.btnDel)
