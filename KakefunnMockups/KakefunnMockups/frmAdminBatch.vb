@@ -356,4 +356,23 @@ Public Class frmAdminBatch
 
 
     End Sub
+
+    Private Sub btnChangeSelection_Click(sender As Object, e As EventArgs) Handles btnChangeSelection.Click
+        ' Get how many days we should show received batches in the list from app settings
+        Dim showRegisteredBatchesForDays As Integer = CType(ConfigurationManager.AppSettings.Get("admin.batch.showRegisteredBatchesForDays"), Integer)
+        Dim cutoffDate As Date = Date.Now().AddDays(-showRegisteredBatchesForDays)
+
+        If btnChangeSelection.Tag = 0 Then
+            batchBindingListView.ApplyFilter(Function(b) b.deleted Is Nothing And Not b.registered.HasValue)
+            btnChangeSelection.Tag = 1
+            btnChangeSelection.Text = "Vanlig visning"
+        ElseIf btnChangeSelection.Tag = 1 Then
+            batchBindingListView.ApplyFilter(Function(b) _
+                                     b.deleted Is Nothing _
+                                     And (b.registered Is Nothing OrElse b.registered > cutoffDate) _
+                                )
+            btnChangeSelection.Tag = 0
+            btnChangeSelection.Text = "Vis åpne bestillinger"
+        End If
+    End Sub
 End Class

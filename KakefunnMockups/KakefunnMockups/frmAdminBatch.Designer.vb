@@ -22,6 +22,14 @@ Partial Class frmAdminBatch
         Me.components = New System.ComponentModel.Container()
         Me.lblEditExplanation = New System.Windows.Forms.Label()
         Me.dtgBatch = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.expected = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.dcUnitPurchasingPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.BatchBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.btnPrintOrderList = New System.Windows.Forms.Button()
         Me.btnDeleteBatch = New System.Windows.Forms.Button()
@@ -41,14 +49,7 @@ Partial Class frmAdminBatch
         Me.txtIngredient = New System.Windows.Forms.TextBox()
         Me.btnSaveBatch = New System.Windows.Forms.Button()
         Me.lblPurchasingPrice = New System.Windows.Forms.Label()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dcIngredient = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.expected = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.dcUnitPurchasingPrice = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnChangeSelection = New System.Windows.Forms.Button()
         CType(Me.dtgBatch, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BatchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpBatch.SuspendLayout()
@@ -56,9 +57,9 @@ Partial Class frmAdminBatch
         '
         'lblEditExplanation
         '
-        Me.lblEditExplanation.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblEditExplanation.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.lblEditExplanation.AutoSize = True
-        Me.lblEditExplanation.Location = New System.Drawing.Point(471, 140)
+        Me.lblEditExplanation.Location = New System.Drawing.Point(7, 145)
         Me.lblEditExplanation.Name = "lblEditExplanation"
         Me.lblEditExplanation.Size = New System.Drawing.Size(193, 13)
         Me.lblEditExplanation.TabIndex = 15
@@ -81,8 +82,60 @@ Partial Class frmAdminBatch
         Me.dtgBatch.Name = "dtgBatch"
         Me.dtgBatch.RowHeadersVisible = False
         Me.dtgBatch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgBatch.Size = New System.Drawing.Size(654, 117)
+        Me.dtgBatch.Size = New System.Drawing.Size(654, 130)
         Me.dtgBatch.TabIndex = 8
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
+        Me.DataGridViewTextBoxColumn1.FillWeight = 50.0!
+        Me.DataGridViewTextBoxColumn1.HeaderText = "Partinr"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'dcIngredient
+        '
+        Me.dcIngredient.DataPropertyName = "Ingredient"
+        Me.dcIngredient.FillWeight = 120.0!
+        Me.dcIngredient.HeaderText = "Ingrediens"
+        Me.dcIngredient.Name = "dcIngredient"
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "unitCount"
+        Me.DataGridViewTextBoxColumn5.FillWeight = 75.0!
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Antall"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ordered"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Bestilt"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        '
+        'expected
+        '
+        Me.expected.DataPropertyName = "expected"
+        Me.expected.HeaderText = "Ventet på lager"
+        Me.expected.Name = "expected"
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "registered"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Registrert"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        '
+        'dcUnitPurchasingPrice
+        '
+        Me.dcUnitPurchasingPrice.DataPropertyName = "unitPurchasingPrice"
+        Me.dcUnitPurchasingPrice.HeaderText = "Innkjøpspris"
+        Me.dcUnitPurchasingPrice.Name = "dcUnitPurchasingPrice"
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "expires"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Utløpsdato"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
         'BatchBindingSource
         '
@@ -91,9 +144,9 @@ Partial Class frmAdminBatch
         'btnPrintOrderList
         '
         Me.btnPrintOrderList.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnPrintOrderList.Location = New System.Drawing.Point(254, 135)
+        Me.btnPrintOrderList.Location = New System.Drawing.Point(256, 171)
         Me.btnPrintOrderList.Name = "btnPrintOrderList"
-        Me.btnPrintOrderList.Size = New System.Drawing.Size(133, 23)
+        Me.btnPrintOrderList.Size = New System.Drawing.Size(117, 23)
         Me.btnPrintOrderList.TabIndex = 11
         Me.btnPrintOrderList.Text = "Skriv ut bestillingsliste"
         Me.btnPrintOrderList.UseVisualStyleBackColor = True
@@ -101,9 +154,9 @@ Partial Class frmAdminBatch
         'btnDeleteBatch
         '
         Me.btnDeleteBatch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnDeleteBatch.Location = New System.Drawing.Point(121, 135)
+        Me.btnDeleteBatch.Location = New System.Drawing.Point(133, 171)
         Me.btnDeleteBatch.Name = "btnDeleteBatch"
-        Me.btnDeleteBatch.Size = New System.Drawing.Size(114, 23)
+        Me.btnDeleteBatch.Size = New System.Drawing.Size(117, 23)
         Me.btnDeleteBatch.TabIndex = 10
         Me.btnDeleteBatch.Text = "Slett parti/bestilling"
         Me.btnDeleteBatch.UseVisualStyleBackColor = True
@@ -111,9 +164,9 @@ Partial Class frmAdminBatch
         'btnNewBatch
         '
         Me.btnNewBatch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnNewBatch.Location = New System.Drawing.Point(10, 135)
+        Me.btnNewBatch.Location = New System.Drawing.Point(10, 171)
         Me.btnNewBatch.Name = "btnNewBatch"
-        Me.btnNewBatch.Size = New System.Drawing.Size(92, 23)
+        Me.btnNewBatch.Size = New System.Drawing.Size(117, 23)
         Me.btnNewBatch.TabIndex = 9
         Me.btnNewBatch.Text = "Ny bestilling"
         Me.btnNewBatch.UseVisualStyleBackColor = True
@@ -136,7 +189,7 @@ Partial Class frmAdminBatch
         Me.grpBatch.Controls.Add(Me.txtIngredient)
         Me.grpBatch.Controls.Add(Me.btnSaveBatch)
         Me.grpBatch.Controls.Add(Me.lblPurchasingPrice)
-        Me.grpBatch.Location = New System.Drawing.Point(10, 164)
+        Me.grpBatch.Location = New System.Drawing.Point(10, 200)
         Me.grpBatch.Name = "grpBatch"
         Me.grpBatch.Size = New System.Drawing.Size(654, 154)
         Me.grpBatch.TabIndex = 12
@@ -296,69 +349,29 @@ Partial Class frmAdminBatch
         Me.lblPurchasingPrice.TabIndex = 7
         Me.lblPurchasingPrice.Text = "Innkjøpspris"
         '
-        'DataGridViewTextBoxColumn1
+        'btnChangeSelection
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
-        Me.DataGridViewTextBoxColumn1.FillWeight = 50.0!
-        Me.DataGridViewTextBoxColumn1.HeaderText = "Partinr"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        '
-        'dcIngredient
-        '
-        Me.dcIngredient.DataPropertyName = "Ingredient"
-        Me.dcIngredient.FillWeight = 120.0!
-        Me.dcIngredient.HeaderText = "Ingrediens"
-        Me.dcIngredient.Name = "dcIngredient"
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "unitCount"
-        Me.DataGridViewTextBoxColumn5.FillWeight = 75.0!
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Antall"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ordered"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Bestilt"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        '
-        'expected
-        '
-        Me.expected.DataPropertyName = "expected"
-        Me.expected.HeaderText = "Ventet på lager"
-        Me.expected.Name = "expected"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "registered"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Registrert"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        '
-        'dcUnitPurchasingPrice
-        '
-        Me.dcUnitPurchasingPrice.DataPropertyName = "unitPurchasingPrice"
-        Me.dcUnitPurchasingPrice.HeaderText = "Innkjøpspris"
-        Me.dcUnitPurchasingPrice.Name = "dcUnitPurchasingPrice"
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "expires"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Utløpsdato"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.btnChangeSelection.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.btnChangeSelection.Location = New System.Drawing.Point(379, 171)
+        Me.btnChangeSelection.Name = "btnChangeSelection"
+        Me.btnChangeSelection.Size = New System.Drawing.Size(117, 23)
+        Me.btnChangeSelection.TabIndex = 16
+        Me.btnChangeSelection.Tag = "0"
+        Me.btnChangeSelection.Text = "Vis åpne bestillinger"
+        Me.btnChangeSelection.UseVisualStyleBackColor = True
         '
         'frmAdminBatch
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(683, 335)
+        Me.ClientSize = New System.Drawing.Size(683, 371)
+        Me.Controls.Add(Me.btnChangeSelection)
         Me.Controls.Add(Me.lblEditExplanation)
         Me.Controls.Add(Me.dtgBatch)
         Me.Controls.Add(Me.btnPrintOrderList)
         Me.Controls.Add(Me.btnDeleteBatch)
         Me.Controls.Add(Me.btnNewBatch)
         Me.Controls.Add(Me.grpBatch)
-        Me.MinimumSize = New System.Drawing.Size(685, 373)
+        Me.MinimumSize = New System.Drawing.Size(685, 400)
         Me.Name = "frmAdminBatch"
         Me.Text = "Varebestilling og partier"
         CType(Me.dtgBatch, System.ComponentModel.ISupportInitialize).EndInit()
@@ -399,5 +412,6 @@ Partial Class frmAdminBatch
     Friend WithEvents DataGridViewTextBoxColumn3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcUnitPurchasingPrice As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents btnChangeSelection As System.Windows.Forms.Button
 
 End Class

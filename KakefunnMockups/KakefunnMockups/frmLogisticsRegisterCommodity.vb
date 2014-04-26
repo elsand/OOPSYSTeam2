@@ -37,7 +37,7 @@ Public Class frmLogisticsRegisterCommodity
         'Gets settings from config-file and sets number of inventory rows and shelves.
         'Settings can be changed in the Kakefunn.exe.config file in the program folder.
         With ConfigurationManager.AppSettings
-            'Presets expire days in fifteen days.
+            'Gets expire date from app.config and presets expire date selector.
             dtpExpireDate.Text = DateTime.Today.AddDays(Integer.Parse(.Item("sale.order.expiryGraceDays")))
 
             rowMax = .Item("logistics.rowMax")
