@@ -103,10 +103,10 @@ Public Class frmAdminBatch
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub BatchDataGridView_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgBatch.CellFormatting
-        Select Case dtgBatch.Columns(e.ColumnIndex).DataPropertyName
-            Case "ingredient"
+        Select Case dtgBatch.Columns(e.ColumnIndex).Name
+            Case "dcIngredient"
                 e.Value = CType(e.Value, Ingredient).name
-            Case "unitPurchasingPrice"
+            Case "dcUnitPurchasingPrice"
                 e.Value = FormatHelper.Currency(e.Value)
         End Select
     End Sub
