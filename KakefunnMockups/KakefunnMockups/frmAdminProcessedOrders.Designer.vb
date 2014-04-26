@@ -28,6 +28,7 @@ Partial Class frmAdminProcessedOrders
         Me.btnTransferToBillingSystem = New System.Windows.Forms.Button()
         Me.btnPrintProcessedOrders = New System.Windows.Forms.Button()
         Me.dtgProcessedOrders = New System.Windows.Forms.DataGridView()
+        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.exported = New System.Windows.Forms.DataGridViewCheckBoxColumn()
         Me.ModifiedDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -35,7 +36,7 @@ Partial Class frmAdminProcessedOrders
         Me.dcCustomerId = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcCustomerName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.dcOrderAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.OrderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.sent = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.dtgProcessedOrders, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -115,7 +116,7 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgProcessedOrders.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.[Single]
         Me.dtgProcessedOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.exported, Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcOrderTotalPrice, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress})
+        Me.dtgProcessedOrders.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.exported, Me.ModifiedDataGridViewTextBoxColumn, Me.IdDataGridViewTextBoxColumn, Me.dcOrderTotalPrice, Me.dcCustomerId, Me.dcCustomerName, Me.dcOrderAddress, Me.sent})
         Me.dtgProcessedOrders.DataSource = Me.OrderBindingSource
         Me.dtgProcessedOrders.Location = New System.Drawing.Point(14, 25)
         Me.dtgProcessedOrders.Name = "dtgProcessedOrders"
@@ -126,6 +127,10 @@ Partial Class frmAdminProcessedOrders
         Me.dtgProcessedOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgProcessedOrders.Size = New System.Drawing.Size(905, 489)
         Me.dtgProcessedOrders.TabIndex = 8
+        '
+        'OrderBindingSource
+        '
+        Me.OrderBindingSource.DataSource = GetType(Kakefunn.Order)
         '
         'exported
         '
@@ -178,9 +183,11 @@ Partial Class frmAdminProcessedOrders
         Me.dcOrderAddress.Name = "dcOrderAddress"
         Me.dcOrderAddress.ReadOnly = True
         '
-        'OrderBindingSource
+        'sent
         '
-        Me.OrderBindingSource.DataSource = GetType(Kakefunn.Order)
+        Me.sent.DataPropertyName = "sent"
+        Me.sent.HeaderText = "Sendt dato"
+        Me.sent.Name = "sent"
         '
         'frmAdminProcessedOrders
         '
@@ -209,6 +216,7 @@ Partial Class frmAdminProcessedOrders
     Friend WithEvents rdoCheckAll As System.Windows.Forms.RadioButton
     Friend WithEvents rdoCheckNone As System.Windows.Forms.RadioButton
     Friend WithEvents btnUpdateList As System.Windows.Forms.Button
+    Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents exported As System.Windows.Forms.DataGridViewCheckBoxColumn
     Friend WithEvents ModifiedDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
@@ -216,6 +224,6 @@ Partial Class frmAdminProcessedOrders
     Friend WithEvents dcCustomerId As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcCustomerName As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcOrderAddress As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents sent As System.Windows.Forms.DataGridViewTextBoxColumn
 
 End Class
