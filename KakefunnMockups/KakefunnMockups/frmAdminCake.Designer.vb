@@ -458,7 +458,7 @@ Partial Class frmAdminCakes
         '
         'btnToolStripCakeEdit
         '
-        Me.btnToolStripCakeEdit.Image = Global.Kakefunn.My.Resources.Resources.edit_29
+        Me.btnToolStripCakeEdit.Image = Global.Kakefunn.My.Resources.Resources.EditIcon
         Me.btnToolStripCakeEdit.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.btnToolStripCakeEdit.Name = "btnToolStripCakeEdit"
         Me.btnToolStripCakeEdit.Size = New System.Drawing.Size(94, 22)
