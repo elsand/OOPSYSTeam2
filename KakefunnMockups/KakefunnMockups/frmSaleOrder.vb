@@ -1,7 +1,14 @@
-﻿''' <summary>
+﻿Imports System.Configuration
+
+''' <summary>
 ''' Form handler for registering and editing of orders
 ''' </summary>
-''' <remarks></remarks>
+''' <remarks>
+''' TODO
+''' - Subscriptions are not handled
+''' - Stock does not increase if order rows are deleted on exisiting orders
+''' - Stock calculation does not take into account multiple rows of the same ingredient
+''' </remarks>
 Public Class frmSaleOrder
 
     ' Flag used to trigger logic specific to either saved or new orders
@@ -37,7 +44,7 @@ Public Class frmSaleOrder
         txtDeliveryName.Text = order.deliveryFirstName.ToString() & " " _
                                 & order.deliveryLastName.ToString()
         txtAddress.Text = order.Address.address1.ToString()
-        txtZip.Text = order.Address.Zip.zip1.ToString()
+        txtZip.Text = order.Address.Zip.zip1.ToString("D4")
         txtTelephone.Text = order.deliveryPhone.ToString()
         txtEmail.Text = order.deliveryEmail.ToString()
 
@@ -103,7 +110,7 @@ Public Class frmSaleOrder
 
         isDirty = False
         isNewRecord = True
-        currentRecord = New Order()
+        currentRecord = New Order() With {.deliveryDate = Date.Today}
         grpOrderStatus.Hide()
         FormHelper.ResetControls(Me)
         OrderLinesBindingSource.DataSource = currentRecord.OrderLines.ToBindingList
@@ -123,11 +130,36 @@ Public Class frmSaleOrder
         End If
         Try
             If isNewRecord Then
-                currentRecord.Employee = SessionManager.Instance.User
+                currentRecord.Employee = SessionHelper.Instance.User
+                currentRecord.created = Date.Now()
                 DBM.Instance.Orders.Add(currentRecord)
             End If
             currentRecord.modified = Date.Now()
             DBM.Instance.SaveChanges()
+
+            ' Update inventory, if this is a new order, we reduce inventories reflecting the orderlines
+            ' If editing an old order, we must loop through all orderlines and handle any changes manually
+            Dim ol As OrderLine
+            Dim reduction As Integer
+            For Each row As DataGridViewRow In dtgOrderLines.Rows
+                ol = CType(row.DataBoundItem, OrderLine)
+                If isNewRecord Then
+                    StockHelper.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)
+                Else
+                    ' We saved the original count in the Tag-property of the datagridviewrow
+                    If Not row.Tag Is Nothing Then
+                        ' This means we've reduced the orderline by some amount, increase the stock
+                        reduction = row.Tag - ol.amount
+                        StockHelper.IncreaseInventory(ol.Ingredient, reduction, currentRecord.deliveryDate)
+                    Else
+                        ' New row, reduce by full amount
+                        StockHelper.ReduceInventory(ol.Ingredient, ol.amount, currentRecord.deliveryDate)
+                    End If
+                End If
+            Next
+
+            ' TODO! Deal with deleted rows ...
+
         Catch ex As Exception
             MessageBox.Show("Det oppstod en feil under lagring av ordre. " & ex.Message, "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -135,8 +167,54 @@ Public Class frmSaleOrder
 
         MsgBox("Ordren ble lagret", MsgBoxStyle.Information)
 
+        If cboPrintReceiptOnSave.Checked Then
+            PrintReceipt()
+        End If
+
+
         ' Re-load the order in order to trigger saved record logic
         LoadOrder(currentRecord)
+
+    End Sub
+
+    ''' <summary>
+    ''' Creates a simple HTML receipt
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub PrintReceipt()
+
+        Dim r As HtmlReport = New HtmlReport() With {.Title = "Kvittering ordre #" & currentRecord.id}
+        r.Init()
+
+        With currentRecord
+            r.StartDefintionList()
+            r.AddDefiniton("Kunde", .Customer.fullName)
+            r.AddDefiniton("Leveres", .deliveryFirstName & " " & .deliveryLastName)
+            r.AddDefiniton("Adresse", .Address.address1 & ", " & .Address.Zip.zip1.ToString("D4") & " " & .Address.Zip.city)
+            r.AddDefiniton("E-post", .deliveryEmail)
+            r.AddDefiniton("Telefon", .deliveryPhone)
+            r.AddDefiniton("Leveringsdato", .deliveryDate)
+            r.AddDefiniton("Leveringsmetode", .DeliveryMethod.name)
+            r.EndDefinitionList()
+
+            r.StartTable({"Ingrediens", "Antall", "Beløp"})
+            For Each ol As OrderLine In .OrderLines
+                r.AddRow({ol.Ingredient.name, ol.amount, FormatHelper.Currency(ol.totalPrice)})
+            Next
+            r.AddRow({""})
+
+            Dim totals As OrderTotals = OrderHelper.CalculateTotals(currentRecord)
+            r.AddRow({"Totalt eks.mva", "", FormatHelper.Currency(totals.totalPriceExVat)})
+            r.AddRow({"Rabatt", "", FormatHelper.Currency(-totals.totalDiscount)})
+            r.AddRow({"Frakt", "", FormatHelper.Currency(totals.shipping)})
+            r.AddRow({"MVA", "", FormatHelper.Currency(totals.totalVat)})
+            r.AddRow({""})
+            r.AddRow({"Å betale", "", FormatHelper.Currency(totals.totalToPay)})
+
+            r.OpenInBrowser()
+
+        End With
+
 
     End Sub
 
@@ -146,7 +224,41 @@ Public Class frmSaleOrder
     ''' <returns></returns>
     ''' <remarks></remarks>
     Private Function ValidOrder() As Boolean
-        ' TODO! Implement
+        Dim err As String = ""
+        With currentRecord
+            If .Customer Is Nothing Then
+                err = "Du må velge en kunde som bestiller."
+            ElseIf .deliveryFirstName Is Nothing Or .deliveryLastName Is Nothing Then
+                err = "Du må oppgi leveringsnavn."
+            ElseIf .Address Is Nothing Then
+                err = "Du må oppgi en leveringsaddresse."
+            ElseIf .deliveryEmail Is Nothing Then
+                err = "Du må oppgi en e-post."
+            ElseIf .deliveryPhone Is Nothing Then
+                err = "Du må oppgi et telefonnummer"
+            ElseIf .deliveryDate.Date < Date.Today Then
+                err = "Du må oppgi en fremtidig leveringsdato."
+            ElseIf .DeliveryMethod Is Nothing Then
+                err = "Du må velge en leveringsmetode."
+            ElseIf .deliveryDate.DayOfWeek = DayOfWeek.Sunday Then
+                err = "Du har oppgitt levering på en søndag, dette kan ikke utføres."
+            ElseIf dtgOrderLines.Rows.Count = 0 Then
+                err = "Ordren inneholder ingen ingredienser."
+            Else
+                For Each row As DataGridViewRow In dtgOrderLines.Rows
+                    If Not row.ErrorText = "" Then
+                        err = "Ordren har en eller flere varelinjer med feil."
+                        Exit For
+                    End If
+                Next
+            End If
+        End With
+
+        If Not err = "" Then
+            MessageBox.Show(err, "Feil ved lagring av ordre", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return False
+        End If
+
         Return True
     End Function
 
@@ -170,26 +282,44 @@ Public Class frmSaleOrder
     Private Sub SetDeliveryToCustomer(customer As Customer)
         txtDeliveryName.Text = customer.fullName
         txtAddress.Text = customer.Address.address1
-        txtZip.Text = customer.Address.Zip.zip1
+        txtZip.Text = customer.Address.Zip.zip1.ToString("D4")
         lblCity.Text = customer.Address.Zip.city.ToUpper()
         txtTelephone.Text = customer.phone
         txtEmail.Text = customer.email
+        currentRecord.Address = customer.Address
     End Sub
 
     ''' <summary>
     ''' Populates the dropdown list for ingredients and cakes. This is done via a UNION select, where we prefix the primary ids. 
     ''' AttemptAddIngredientOrCakeToOrder() uses this index to determine if we're trying to add a single ingredient or a cake
+    ''' Uses delivery date to determine whether or not the ingredient has expired (with a configurable grace period). Note that
+    ''' we do not exclude ingredients not in stock at the selected delivery date point, these are shown with unitCount at 0. Upon adding, the
+    ''' StockManager will inform the user if any stocks are expected in the future, and the order will not be able to save.
+    ''' Note that ingredients going into cakes are not checked here, but are validated upon adding. Only cakes with all its ingredients available 
+    ''' will be added.
     ''' </summary>
     ''' <remarks>
-    ''' TODO: Query should be expanded to not include ingredients not present (now or future) in the database, or unpublished ingredients
     ''' </remarks>
     Private Sub SetupIngredientOrCakeSelection()
 
+        Dim expiryGraceDays As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
+        Dim deliveryDate As String = dtpDeliveryDate.Value.ToString("yyyy-MM-dd")
+
         Dim dt As DataTable = DBM.Instance.GetDataTableFromQuery( _
-            "SELECT CONCAT('i', id) as id, name FROM Ingredient " & _
+            "SELECT CONCAT('i', i.id) as id, CONCAT(name, ' (x', IFNULL(SUM(b.unitCount), 0), ')') as name FROM Ingredient i " & _
+            "LEFT JOIN Batch b ON (" & _
+            "	b.ingredientId = i.id " & _
+            "	AND b.deleted IS NULL " & _
+            "   AND (b.registered IS NOT NULL OR b.expected <= '" & deliveryDate & "') " & _
+            "	AND (b.expires IS NULL OR b.expires > DATE_ADD('" & deliveryDate & "', INTERVAL " & expiryGraceDays & " DAY)) " & _
+            "	AND unitCount > 0 " & _
+            ") " & _
+            "WHERE i.deleted IS NULL and published = 1 " & _
+            "GROUP BY name " & _
             "UNION " & _
             "SELECT CONCAT('c', id) as id, CONCAT(name, ' (Kake)') as name FROM Cake " & _
-            "ORDER BY name" _
+            "WHERE deleted IS NULL AND published = 1 " & _
+            "ORDER BY name "
         )
 
         With cbIngredientOrCake
@@ -228,7 +358,7 @@ Public Class frmSaleOrder
                 Dim ol As OrderLine = New OrderLine
                 ol.Ingredient = DBM.Instance.Ingredients.Find(id)
                 ol.amount = 1
-                ol.totalPrice = ol.amount * StockManager.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+                ol.totalPrice = ol.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
                 OrderLinesBindingSource.Add(ol)
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical, "Feil")
@@ -245,7 +375,7 @@ Public Class frmSaleOrder
                     ol = New OrderLine
                     ol.Ingredient = r.Ingredient
                     ol.amount = r.amount
-                    ol.totalPrice = r.amount * StockManager.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+                    ol.totalPrice = r.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
                     ol.cakeId = cake.id
                     ols.Add(ol)
                 Next
@@ -271,7 +401,7 @@ Public Class frmSaleOrder
     Private Sub UpdateTotalPrice()
 
         Dim totals As OrderTotals
-        totals = OrderManager.CalculateTotals(currentRecord)
+        totals = OrderHelper.CalculateTotals(currentRecord)
 
         lblTotalAmountWithoutVatValue.Text = FormatHelper.Currency(totals.totalPriceExVat)
         lblDiscountValue.Text = FormatHelper.Currency(totals.totalDiscount)
@@ -288,6 +418,87 @@ Public Class frmSaleOrder
     Private Sub SetupDeliveryTypeDropdown()
         ddlDeliveryMethod.DisplayMember = "name"
         ddlDeliveryMethod.DataSource = DBM.Instance.DeliveryMethods.ToList()
+    End Sub
+
+    ''' <summary>
+    ''' Validates a row in the ingredientlist, returns a empty string if no error or a string explaining the error
+    ''' </summary>
+    ''' <param name="row"></param>
+    ''' <paran name="newCount"></paran>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function ValidateIngredientCount(row As DataGridViewRow, val As String) As String
+
+        ' Simple sanity checks. We need a positive non-zero integer
+        Dim amount As Integer = 0
+        Dim err As String = ""
+        If val.Trim() = "" Then
+            err = "Du må oppgi et antall."
+        ElseIf Integer.TryParse(val, amount) = False Then
+            err = "Du må oppgi et tall"
+        ElseIf amount < 1 Then
+            err = "Du må oppgi minst 1"
+        Else
+            Try
+                ' Init a orderline from the selected row
+                Dim ol = CType(row.DataBoundItem, OrderLine)
+
+                ' If we're editing a record, we do not allow the user to increase the unitcount, as the price is fixed in time. Reduction/deletion is allowed.
+                ' If the user wants to add more of the same ingredient, it must be done in a separate orderline where new price calcuation can take place
+                If Not isNewRecord AndAlso ol.id > 0 Then
+                    ' We save the original unit count in the generic "Tag" property, and check against it whenever the unit count is changed
+                    If row.Tag Is Nothing Then
+                        row.Tag = ol.amount
+                    End If
+                    ' Forbid increase of unitcount
+                    If row.Tag < amount Then
+                        err = "Ordrelinjer på eksisterende ordrer kan ikke økes, kun reduseres ellers slettes. Maks antall for denne varelinjen er " & row.Tag & ". For å legge til flere enheter av denne ingrediensen, legg til en ny varelinje."
+                    Else
+                        ' Do not calculate a new price (the stock situation might very well have changed since the order was originally placed)
+                        Dim orderlineSellingPrice As Decimal = ol.totalPrice / ol.amount
+                        ol.totalPrice = amount * orderlineSellingPrice
+                    End If
+                Else
+                    ' New order line, attempt to calculate a new selling price. Throw an exception if the selected ingredient and/or amount/deliverydate cannot
+                    ' be satisfied
+                    ol.totalPrice = amount * StockHelper.GetSellingPriceFor(ol.Ingredient, amount, dtpDeliveryDate.Value)
+                End If
+            Catch ex As Exception
+                err = ex.Message
+            End Try
+        End If
+
+        Return err
+
+    End Function
+
+    ''' <summary>
+    ''' Overload of above, re-validates existing value
+    ''' </summary>
+    ''' <param name="row"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Function ValidateIngredientCount(row As DataGridViewRow) As String
+        Dim value As String = row.Cells("dcAmount").FormattedValue
+        Return ValidateIngredientCount(row, value)
+    End Function
+
+    ''' <summary>
+    ''' Resets the action status if there is no other grid errors left, if there is, it sets to the last of them
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub ResetActionStatusIfNoGridErrors()
+        ' If no other rows have error texts, remove the action status
+        Dim hasError As Boolean = False
+        For Each row As DataGridViewRow In dtgOrderLines.Rows
+            If Not row.ErrorText = "" Then
+                hasError = True
+                UpdateActionStatus(row.ErrorText)
+            End If
+        Next
+        If Not hasError Then
+            UpdateActionStatus()
+        End If
     End Sub
 
     '''''''''''''''''''''''''''''''''''' BELOW THIS POINT ARE EVENT HANDLERS ''''''''''''''''''''''''''''''''''''''''''''''''''
@@ -321,7 +532,7 @@ Public Class frmSaleOrder
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnNewCustomer_Click(sender As Object, e As EventArgs) Handles btnNewCustomer.Click
-        CustomerManager.NewCustomerAndReturnTo(Me,
+        CustomerHelper.NewCustomerAndReturnTo(Me,
             Function(customerForm, orderForm)
                 Dim customer As Customer = CType(customerForm, frmSaleCustomer).currentCustomer
                 ' Check if it got saved
@@ -345,7 +556,7 @@ Public Class frmSaleOrder
     Private Sub cbCustomerName_Leave(sender As Object, e As EventArgs) Handles cbCustomerName.Leave
         If cbCustomerName.SelectedValue Is Nothing AndAlso Not cbCustomerName.Text = "" Then
             If MessageBox.Show("Denne kunden finnes ikke. Opprette?", "Ukjent kunde", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.Yes Then
-                CustomerManager.NewCustomerAndReturnTo(Me)
+                CustomerHelper.NewCustomerAndReturnTo(Me)
             Else
                 ' User selected no, re-set focus to the customer selection field so that the user can select another customer
                 cbCustomerName.Focus()
@@ -387,7 +598,7 @@ Public Class frmSaleOrder
         If Not FormHelper.ContinueIfDirty(Me) Then
             Exit Sub
         End If
-        SessionManager.Instance.ShowForm(returnToForm)
+        SessionHelper.Instance.ShowForm(returnToForm)
     End Sub
 
     ''' <summary>
@@ -464,63 +675,19 @@ Public Class frmSaleOrder
             Exit Sub
         End If
 
-        ' Simple sanity checks. We need a positive non-zero integer
-        Dim val As String = e.FormattedValue.ToString()
-        Dim amount As Integer = 0
-        Dim err As String = ""
-        If val.Trim() = "" Then
-            err = "Du må oppgi et antall."
-        ElseIf Integer.TryParse(val, amount) = False Then
-            err = "Du må oppgi et tall"
-        ElseIf amount < 1 Then
-            err = "Du må oppgi minst 1"
-        Else
-            Try
-                ' Init a orderline from the selected row
-                Dim row As DataGridViewRow = dtgOrderLines.Rows(e.RowIndex)
-                Dim ol = CType(row.DataBoundItem, OrderLine)
+        dtgOrderLines.Rows(e.RowIndex).ErrorText = ""
 
-                ' If we're editing a record, we do not allow the user to increase the unitcount, as the price is fixed in time. Reduction/deletion is allowed.
-                ' If the user wants to add more of the same ingredient, it must be done in a separate orderline where new price calcuation can take place
-                If Not isNewRecord AndAlso ol.id > 0 Then
-                    ' We save the original unit count in the generic "Tag" property, and check against it whenever the unit count is changed
-                    If row.Tag Is Nothing Then
-                        row.Tag = ol.amount
-                    End If
-                    ' Forbid increase of unitcount
-                    If row.Tag < amount Then
-                        err = "Ordrelinjer på eksisterende ordrer kan ikke økes, kun reduseres ellers slettes. Maks antall for denne varelinjen er " & row.Tag & ". For å legge til flere enheter av denne ingrediensen, legg til en ny varelinje."
-                    Else
-                        ' Do not calculate a new price (the stock situation might very well have changed since the order was originally placed)
-                        Dim orderlineSellingPrice As Decimal = ol.totalPrice / ol.amount
-                        ol.totalPrice = amount * orderlineSellingPrice
-                    End If
-                Else
-                    ' New order line, attempt to calculate a new selling price. Throw an exception if the selected ingredient and/or amount/deliverydate cannot
-                    ' be satisfied
-                    ol.totalPrice = amount * StockManager.GetSellingPriceFor(ol.Ingredient, amount, dtpDeliveryDate.Value)
-                End If
-            Catch ex As Exception
-                err = ex.Message
-            End Try
-        End If
-        ' We cannot add this ingredient, show an error box explaining why and mark the row as invalid, cancelling the edit
+        Dim err As String = ValidateIngredientCount(dtgOrderLines.Rows(e.RowIndex), e.FormattedValue)
+
+        ' We cannot delivery this amount of this ingredient at the selected date
+        ' As this error may happen if the delivery date is changed after lines are entered, we do not cancel the 
+        ' event or hinder the edit. But the order cannot be saved with any rows having errortext.
         If Not err Is "" Then
             dtgOrderLines.Rows(e.RowIndex).ErrorText = err
-            e.Cancel = True
-            MessageBox.Show(err, "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            UpdateActionStatus(err)
+        Else
+            ResetActionStatusIfNoGridErrors()
         End If
-    End Sub
-
-    ''' <summary>
-    ''' Handles the user escaping the cell, reset the errortext 
-    ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub dtgOrderLines_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles dtgOrderLines.CellEndEdit
-        dtgOrderLines.Rows(e.RowIndex).ErrorText = ""
-        UpdateTotalPrice()
     End Sub
 
     ''' <summary>
@@ -624,13 +791,25 @@ Public Class frmSaleOrder
     End Sub
 
     ''' <summary>
-    ''' Handle delivery date being set
+    ''' Handle delivery date being set. This triggers the ingredient list to be rebuilt, and will cause all all added ingredients to be re-validated.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtpDeliveryDate_ValueChanged(sender As Object, e As EventArgs) Handles dtpDeliveryDate.ValueChanged
         currentRecord.deliveryDate = dtpDeliveryDate.Value
+        SetupIngredientOrCakeSelection()
+        Dim err = ""
+        For Each row As DataGridViewRow In dtgOrderLines.Rows
+            err = ValidateIngredientCount(row)
+            If Not err = "" Then
+                row.ErrorText = err
+                UpdateActionStatus(err)
+            Else
+                row.ErrorText = ""
+            End If
+        Next
+        ResetActionStatusIfNoGridErrors()
     End Sub
 
     ''' <summary>
@@ -665,4 +844,17 @@ Public Class frmSaleOrder
         End If
         SearchHelper.SearchOrders(Function(o) o.subscriptionId = currentRecord.id)
     End Sub
+
+    ''' <summary>
+    ''' Sets whether or not the order has been paid (usually the case with over-the-counter orders)
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub cboIsPayed_CheckedChanged(sender As Object, e As EventArgs) Handles cboIsPayed.CheckedChanged
+        currentRecord.isPaid = cboIsPayed.Checked
+    End Sub
+
+
+
 End Class

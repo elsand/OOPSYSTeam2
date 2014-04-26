@@ -90,6 +90,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
@@ -124,6 +125,12 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="frmAdminTabContainer.Designer.vb">
+      <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdminTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDialogLogisticsExpired.Designer.vb">
       <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
     </Compile>
@@ -136,12 +143,29 @@
     <Compile Include="frmDialogAdminNotExported.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmLogisticsTabContainer.Designer.vb">
+      <DependentUpon>frmLogisticsTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogisticsTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSaleTabContainer.Designer.vb">
+      <DependentUpon>frmSaleTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSaleTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuperTabContainer.Designer.vb">
+      <DependentUpon>frmSuperTabContainer.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuperTabContainer.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="helpers\HtmlReport.vb" />
     <Compile Include="helpers\IngredientHelper.vb" />
     <Compile Include="helpers\KakefunnEvent.vb" />
     <Compile Include="helpers\LocalSystemHelper.vb" />
     <Compile Include="helpers\PackingListHelper.vb" />
-    <Compile Include="helpers\RawPrinterHelper.vb" />
     <Compile Include="helpers\ReportHelper.vb" />
     <Compile Include="Customer.vb">
       <DependentUpon>Model.tt</DependentUpon>
@@ -162,10 +186,10 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="helpers\AddressHelper.vb" />
-    <Compile Include="controllers\CustomerManager.vb" />
-    <Compile Include="controllers\DatabaseManager.vb" />
-    <Compile Include="controllers\DocumentPrinter.vb" />
-    <Compile Include="controllers\OrderManager.vb" />
+    <Compile Include="helpers\CustomerHelper.vb" />
+    <Compile Include="helpers\DatabaseHelper.vb" />
+    <Compile Include="helpers\DocumentPrinter.vb" />
+    <Compile Include="helpers\OrderHelper.vb" />
     <Compile Include="helpers\AutoCompleteHelper.vb" />
     <Compile Include="helpers\FormatHelper.vb" />
     <Compile Include="helpers\FormHelper.vb" />
@@ -173,9 +197,9 @@
     <Compile Include="helpers\OrderTotals.vb" />
     <Compile Include="helpers\PhoneHelper.vb" />
     <Compile Include="helpers\SearchHelper.vb" />
-    <Compile Include="controllers\SessionManager.vb" />
-    <Compile Include="controllers\StockManager.vb" />
-    <Compile Include="controllers\SubscriptionManager.vb" />
+    <Compile Include="helpers\SessionHelper.vb" />
+    <Compile Include="helpers\StockHelper.vb" />
+    <Compile Include="helpers\SubscriptionHelper.vb" />
     <Compile Include="controls\NumericTextbox.Designer.vb">
       <DependentUpon>NumericTextbox.vb</DependentUpon>
     </Compile>
@@ -450,6 +474,9 @@
     <EmbeddedResource Include="frmAdminSystemAdministration.resx">
       <DependentUpon>frmAdminSystemAdministration.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdminTabContainer.resx">
+      <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
       <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
     </EmbeddedResource>
@@ -480,6 +507,9 @@
     <EmbeddedResource Include="frmLogisticsReports.resx">
       <DependentUpon>frmLogisticsReports.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmLogisticsTabContainer.resx">
+      <DependentUpon>frmLogisticsTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSaleCustomer.resx">
       <DependentUpon>frmSaleCustomer.vb</DependentUpon>
     </EmbeddedResource>
@@ -489,8 +519,14 @@
     <EmbeddedResource Include="frmSaleOrder.resx">
       <DependentUpon>frmSaleOrder.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSaleTabContainer.resx">
+      <DependentUpon>frmSaleTabContainer.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSuperBase.resx">
       <DependentUpon>frmSuperBase.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuperTabContainer.resx">
+      <DependentUpon>frmSuperTabContainer.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -647,8 +683,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="resources\edit-29.png" />
     <Content Include="resources\kakefunn.ico" />
-    <Content Include="README.txt" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

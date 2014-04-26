@@ -10,7 +10,7 @@ Public Class KakefunnEvent
 
         DBM.Instance.GetDataSetFromQuery( _
          "INSERT INTO SystemEvent (eventName, eventTime, employeeId, eventData)" & _
-         "VALUES ('" & logEventName & "', NOW(),'" & SessionManager.Instance.User.id & "', '" & logEventData & "')" _
+         "VALUES ('" & logEventName & "', NOW(),'" & SessionHelper.Instance.User.id & "', '" & logEventData & "')" _
          )
 
     End Sub

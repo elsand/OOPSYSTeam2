@@ -65,11 +65,11 @@ Public Class frmAdminProcessedOrders
                     e.Value = c.firstName & " " & c.lastName
                 Case "dcOrderAddress" 'Adds customer address to datagridview.
                     Dim a As Address = CType(e.Value, Address)
-                    e.Value = a.address1 & ", " & a.Zip.zip1 & " " & a.Zip.city
+                    e.Value = a.address1 & ", " & a.Zip.zip1.ToString("D4") & " " & a.Zip.city
                 Case "dcOrderTotalPrice" 'Adds order total price to datagridview.
                     Dim row As DataGridViewRow = dtgProcessedOrders.Rows(e.RowIndex)
                     Dim o As Order = CType(row.DataBoundItem, Order)
-                    e.Value = OrderManager.GetOrderPrice(o)
+                    e.Value = OrderHelper.GetOrderPrice(o)
             End Select
         End If
 
@@ -113,7 +113,7 @@ Public Class frmAdminProcessedOrders
                         Dim selectedOrder = DBM.Instance.Orders.Find(orderID)
                         Dim ingredientsOnOrder = (From x In DBM.Instance.OrderLines Where x.Order.id = orderID _
                         Select x).ToList()
-                        Dim totals As OrderTotals = OrderManager.CalculateTotals(selectedOrder)
+                        Dim totals As OrderTotals = OrderHelper.CalculateTotals(selectedOrder)
 
                         'Writing elements to xml.
                         writer.WriteStartElement("order")
@@ -121,7 +121,7 @@ Public Class frmAdminProcessedOrders
                         writer.WriteElementString("customerID", selectedOrder.Customer.id.ToString())
                         writer.WriteElementString("invoiceName", selectedOrder.Customer.fullName.ToString())
                         writer.WriteElementString("invoiceAddress", selectedOrder.Customer.Address.address1.ToString())
-                        writer.WriteElementString("invoiceZip", selectedOrder.Customer.Address.Zip.zip1.ToString())
+                        writer.WriteElementString("invoiceZip", selectedOrder.Customer.Address.Zip.zip1.ToString("D4"))
                         writer.WriteElementString("invoiceCity", selectedOrder.Customer.Address.Zip.city.ToString())
                         writer.WriteStartElement("articles")
                         For Each ingRow In ingredientsOnOrder
@@ -216,10 +216,11 @@ Public Class frmAdminProcessedOrders
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub dtgProcessedOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgProcessedOrders.CellDoubleClick
+        'rdoCheckNone.PerformClick()
         If e.RowIndex >= 0 Then
             Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
             Dim order = DBM.Instance.Orders.Find(orderNr)
-            OrderManager.EditOrder(order, Me)
+            OrderHelper.EditOrder(order, Me)
         End If
     End Sub
 

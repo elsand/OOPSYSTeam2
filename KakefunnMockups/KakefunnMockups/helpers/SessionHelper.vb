@@ -1,5 +1,8 @@
-﻿Public Class SessionManager
-
+﻿''' <summary>
+''' Helper for the current session, implemented as a singleton
+''' </summary>
+''' <remarks></remarks>
+Public Class SessionHelper
 
 #Region "SingletonImplementation"
 
@@ -7,7 +10,7 @@
     ''' Holds the instance of SessionManager. Uses Lazy() to defer initialization until requested.
     ''' </summary>
     ''' <remarks></remarks>
-    Private Shared ReadOnly _instance As New Lazy(Of SessionManager)(Function() New SessionManager, System.Threading.LazyThreadSafetyMode.ExecutionAndPublication)
+    Private Shared ReadOnly _instance As New Lazy(Of SessionHelper)(Function() New SessionHelper, System.Threading.LazyThreadSafetyMode.ExecutionAndPublication)
 
     ''' <summary>
     ''' Implement singleton pattern. Make constructor private and no-op
@@ -22,7 +25,7 @@
     ''' <value></value>
     ''' <returns>SessionManager</returns>
     ''' <remarks></remarks>
-    Public Shared ReadOnly Property Instance() As SessionManager
+    Public Shared ReadOnly Property Instance() As SessionHelper
         Get
             Return _instance.Value
         End Get
@@ -36,6 +39,7 @@
     ''' <value></value>
     ''' <returns></returns>
     ''' <remarks></remarks>
+    ''' 
     Public ReadOnly Property User As Employee
         Get
             Return loggedInEmployee
@@ -56,8 +60,15 @@
     Private Property currentForm As frmSuperBase
         Get
             If _currentForm Is Nothing Then
-                For Each frm As frmSuperBase In Application.OpenForms
-                    Return frm
+                For Each frm As Form In Application.OpenForms
+
+                    ' Find first tabcontrol
+                    For Each c As Control In frm.Controls
+                        If TypeOf c Is TabControl Then
+                            Return CType(c, TabControl).SelectedTab.Controls.Item(0)
+                        End If
+                    Next
+
                 Next
             End If
             Return _currentForm
@@ -115,9 +126,19 @@
         Return loggedInEmployee
     End Function
 
+    ''' <summary>
+    ''' Handle logging out. We need to hide all windows, and show the frmLogin manually
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub Logout()
         loggedInEmployee = Nothing
-        ShowForm(frmLogin)
+        HideDialog()
+        For Each frm As Form In Application.OpenForms
+            If frm.TopLevel = True Then
+                frm.Hide()
+            End If
+        Next
+        frmLogin.Show()
     End Sub
 
     ''' <summary>
@@ -129,16 +150,25 @@
         Return Not loggedInEmployee Is Nothing
     End Function
 
+    ''' <summary>
+    ''' Shows the default for the logged in user
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub ShowDefaultFormForLoggedInUser()
         If Not IsLoggedIn() Then
             Throw New UnauthorizedAccessException("User is not logged in")
         End If
 
-        ShowDefaultFormForRole(User.roles.First.name)
+        ShowDefaultFormForRole(User.Roles.First.name)
     End Sub
 
+    ''' <summary>
+    ''' Shows the default form for the supplied role
+    ''' </summary>
+    ''' <param name="role"></param>
+    ''' <remarks></remarks>
     Public Sub ShowDefaultFormForRole(role As String)
-        Select role
+        Select Case role
             Case "Admin"
                 ShowForm(frmAdminReports)
             Case "Sale"
@@ -148,17 +178,31 @@
         End Select
     End Sub
 
-    Public Sub ShowForm(frm As frmSuperBase)
-        If frm.Name = currentForm.Name Then
-            frm.Focus()
-            Exit Sub
-        End If
-        currentForm.Hide()
-        frm.Show()
-        frm.Focus()
+    ''' <summary>
+    ''' Shows the supplied form. If the form is on another aspect, it is opened
+    ''' </summary>
+    ''' <param name="frm"></param>
+    ''' <remarks></remarks>
+    Public Sub ShowForm(frm As Form)
+        Dim aspect As String = frmSuperTabContainer.GetAspectForForm(frm)
+        Dim f As Form = frmSuperTabContainer.GetContainerForAspect(aspect)
+        f.Show()
+        f.Focus()
 
-        HideDialog()
+        ' Walk through the tabcontrols and find the tabpage containing the supploed form,
+        ' and set it active
+        For Each c As Control In f.Controls
+            If TypeOf c Is TabControl Then
+                For Each t As TabPage In CType(c, TabControl).TabPages
+                    If t.Controls.Item(0).Name = frm.Name Then
+                        CType(c, TabControl).SelectedTab = t
+                    End If
+                Next
+            End If
+        Next
 
+        ' If callback was registered, invoke it now with the previous and 
+        ' current form as arguments
         If callback IsNot Nothing Then
             callback.Invoke(currentForm, frm)
             callback = Nothing
@@ -167,10 +211,20 @@
         currentForm = frm
     End Sub
 
+    ''' <summary>
+    ''' Sets a callback function that is invoked when we switch forms
+    ''' </summary>
+    ''' <param name="f"></param>
+    ''' <remarks></remarks>
     Public Sub RegisterCallback(f As System.Func(Of Form, Form, Boolean))
         callback = f
     End Sub
 
+    ''' <summary>
+    ''' Opens the supplied dialog window. Only one dialog can be up at any given time.
+    ''' </summary>
+    ''' <param name="dialog"></param>
+    ''' <remarks></remarks>
     Public Sub ShowDialog(dialog As frmDialogBase)
         If Not currentDialog Is Nothing Then
             If dialog.Name = currentDialog.Name Then
@@ -184,6 +238,10 @@
         currentDialog = dialog
     End Sub
 
+    ''' <summary>
+    ''' Hides the currently open dialog, if any
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub HideDialog()
         If Not currentDialog Is Nothing Then
             currentDialog.Hide()
@@ -191,6 +249,12 @@
         End If
     End Sub
 
+    ''' <summary>
+    ''' Returns true if the currently logged in user has the supplied role
+    ''' </summary>
+    ''' <param name="role"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function HasRole(role As String) As Boolean
         If Not IsLoggedIn() Then
             Throw New UnauthorizedAccessException("User is not logged in")

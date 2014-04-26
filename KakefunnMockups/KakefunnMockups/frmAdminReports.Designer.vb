@@ -48,6 +48,7 @@ Partial Class frmAdminReports
         Me._14vfu_t02DataSet = New Kakefunn._14vfu_t02DataSet()
         Me.IngredientTableAdapter1 = New Kakefunn._14vfu_t02DataSetTableAdapters.IngredientTableAdapter()
         Me.lblSelectIngredient = New System.Windows.Forms.Label()
+        Me.grpAdminReports = New System.Windows.Forms.GroupBox()
         CType(Me.LastYearMonthSaleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Ingredien, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientHistoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -58,6 +59,7 @@ Partial Class frmAdminReports
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me._14vfu_t02DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpAdminReports.SuspendLayout()
         Me.SuspendLayout()
         '
         'LastYearMonthSaleBindingSource
@@ -101,17 +103,19 @@ Partial Class frmAdminReports
         '
         'cboSelectReportForm
         '
+        Me.cboSelectReportForm.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboSelectReportForm.FormattingEnabled = True
         Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Ingrediens siste år", "Forventet salg neste mnd", "Hendelseslogg"})
-        Me.cboSelectReportForm.Location = New System.Drawing.Point(108, 69)
+        Me.cboSelectReportForm.Location = New System.Drawing.Point(102, 13)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
-        Me.cboSelectReportForm.Size = New System.Drawing.Size(121, 21)
+        Me.cboSelectReportForm.Size = New System.Drawing.Size(87, 21)
         Me.cboSelectReportForm.TabIndex = 8
         '
         'lblSelectReportForm
         '
         Me.lblSelectReportForm.AutoSize = True
-        Me.lblSelectReportForm.Location = New System.Drawing.Point(12, 72)
+        Me.lblSelectReportForm.Location = New System.Drawing.Point(6, 16)
         Me.lblSelectReportForm.Name = "lblSelectReportForm"
         Me.lblSelectReportForm.Size = New System.Drawing.Size(90, 13)
         Me.lblSelectReportForm.TabIndex = 8
@@ -119,7 +123,8 @@ Partial Class frmAdminReports
         '
         'btnGetReport
         '
-        Me.btnGetReport.Location = New System.Drawing.Point(538, 67)
+        Me.btnGetReport.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnGetReport.Location = New System.Drawing.Point(517, 11)
         Me.btnGetReport.Name = "btnGetReport"
         Me.btnGetReport.Size = New System.Drawing.Size(157, 23)
         Me.btnGetReport.TabIndex = 11
@@ -128,6 +133,9 @@ Partial Class frmAdminReports
         '
         'rptReports
         '
+        Me.rptReports.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         ReportDataSource1.Name = "IngredientsPrMonth"
         ReportDataSource1.Value = Me.LastYearMonthSaleBindingSource
         ReportDataSource2.Name = "IngredientHistory"
@@ -135,7 +143,8 @@ Partial Class frmAdminReports
         Me.rptReports.LocalReport.DataSources.Add(ReportDataSource1)
         Me.rptReports.LocalReport.DataSources.Add(ReportDataSource2)
         Me.rptReports.LocalReport.ReportEmbeddedResource = "Kakefunn.IngredientMonth.rdlc"
-        Me.rptReports.Location = New System.Drawing.Point(15, 96)
+        Me.rptReports.Location = New System.Drawing.Point(9, 40)
+        Me.rptReports.MinimumSize = New System.Drawing.Size(665, 273)
         Me.rptReports.Name = "rptReports"
         Me.rptReports.ShowBackButton = False
         Me.rptReports.ShowContextMenu = False
@@ -146,29 +155,32 @@ Partial Class frmAdminReports
         Me.rptReports.ShowRefreshButton = False
         Me.rptReports.ShowStopButton = False
         Me.rptReports.ShowZoomControl = False
-        Me.rptReports.Size = New System.Drawing.Size(681, 326)
+        Me.rptReports.Size = New System.Drawing.Size(665, 294)
         Me.rptReports.TabIndex = 12
         '
         'dtpTimePeriodFrom
         '
+        Me.dtpTimePeriodFrom.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpTimePeriodFrom.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpTimePeriodFrom.Location = New System.Drawing.Point(313, 70)
+        Me.dtpTimePeriodFrom.Location = New System.Drawing.Point(292, 14)
         Me.dtpTimePeriodFrom.Name = "dtpTimePeriodFrom"
         Me.dtpTimePeriodFrom.Size = New System.Drawing.Size(96, 20)
         Me.dtpTimePeriodFrom.TabIndex = 11
         '
         'dtpTimePeriodTo
         '
+        Me.dtpTimePeriodTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpTimePeriodTo.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpTimePeriodTo.Location = New System.Drawing.Point(436, 70)
+        Me.dtpTimePeriodTo.Location = New System.Drawing.Point(415, 14)
         Me.dtpTimePeriodTo.Name = "dtpTimePeriodTo"
         Me.dtpTimePeriodTo.Size = New System.Drawing.Size(96, 20)
         Me.dtpTimePeriodTo.TabIndex = 10
         '
         'lblTimePeriod
         '
+        Me.lblTimePeriod.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblTimePeriod.AutoSize = True
-        Me.lblTimePeriod.Location = New System.Drawing.Point(235, 72)
+        Me.lblTimePeriod.Location = New System.Drawing.Point(207, 16)
         Me.lblTimePeriod.Name = "lblTimePeriod"
         Me.lblTimePeriod.Size = New System.Drawing.Size(72, 13)
         Me.lblTimePeriod.TabIndex = 13
@@ -176,8 +188,9 @@ Partial Class frmAdminReports
         '
         'Label3
         '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(416, 72)
+        Me.Label3.Location = New System.Drawing.Point(395, 16)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(14, 13)
         Me.Label3.TabIndex = 14
@@ -201,14 +214,15 @@ Partial Class frmAdminReports
         '
         'cboSelectIngredient
         '
+        Me.cboSelectIngredient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboSelectIngredient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.cboSelectIngredient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
         Me.cboSelectIngredient.DataSource = Me.IngredientBindingSource1
         Me.cboSelectIngredient.DisplayMember = "name"
         Me.cboSelectIngredient.FormattingEnabled = True
-        Me.cboSelectIngredient.Location = New System.Drawing.Point(321, 69)
+        Me.cboSelectIngredient.Location = New System.Drawing.Point(292, 13)
         Me.cboSelectIngredient.Name = "cboSelectIngredient"
-        Me.cboSelectIngredient.Size = New System.Drawing.Size(211, 21)
+        Me.cboSelectIngredient.Size = New System.Drawing.Size(219, 21)
         Me.cboSelectIngredient.TabIndex = 9
         Me.cboSelectIngredient.ValueMember = "id"
         '
@@ -228,38 +242,42 @@ Partial Class frmAdminReports
         '
         'lblSelectIngredient
         '
+        Me.lblSelectIngredient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblSelectIngredient.AutoSize = True
-        Me.lblSelectIngredient.Location = New System.Drawing.Point(236, 72)
+        Me.lblSelectIngredient.Location = New System.Drawing.Point(207, 16)
         Me.lblSelectIngredient.Name = "lblSelectIngredient"
         Me.lblSelectIngredient.Size = New System.Drawing.Size(79, 13)
         Me.lblSelectIngredient.TabIndex = 16
         Me.lblSelectIngredient.Text = "Velg ingrediens"
         '
+        'grpAdminReports
+        '
+        Me.grpAdminReports.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpAdminReports.Controls.Add(Me.lblSelectReportForm)
+        Me.grpAdminReports.Controls.Add(Me.cboSelectIngredient)
+        Me.grpAdminReports.Controls.Add(Me.lblSelectIngredient)
+        Me.grpAdminReports.Controls.Add(Me.cboSelectReportForm)
+        Me.grpAdminReports.Controls.Add(Me.btnGetReport)
+        Me.grpAdminReports.Controls.Add(Me.Label3)
+        Me.grpAdminReports.Controls.Add(Me.rptReports)
+        Me.grpAdminReports.Controls.Add(Me.lblTimePeriod)
+        Me.grpAdminReports.Controls.Add(Me.dtpTimePeriodFrom)
+        Me.grpAdminReports.Controls.Add(Me.dtpTimePeriodTo)
+        Me.grpAdminReports.Location = New System.Drawing.Point(12, 12)
+        Me.grpAdminReports.Name = "grpAdminReports"
+        Me.grpAdminReports.Size = New System.Drawing.Size(687, 340)
+        Me.grpAdminReports.TabIndex = 17
+        Me.grpAdminReports.TabStop = False
+        '
         'frmAdminReports
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(707, 458)
-        Me.Controls.Add(Me.lblSelectIngredient)
-        Me.Controls.Add(Me.cboSelectIngredient)
-        Me.Controls.Add(Me.Label3)
-        Me.Controls.Add(Me.lblTimePeriod)
-        Me.Controls.Add(Me.dtpTimePeriodTo)
-        Me.Controls.Add(Me.dtpTimePeriodFrom)
-        Me.Controls.Add(Me.rptReports)
-        Me.Controls.Add(Me.btnGetReport)
-        Me.Controls.Add(Me.lblSelectReportForm)
-        Me.Controls.Add(Me.cboSelectReportForm)
+        Me.ClientSize = New System.Drawing.Size(723, 405)
+        Me.Controls.Add(Me.grpAdminReports)
+        Me.MinimumSize = New System.Drawing.Size(739, 444)
         Me.Name = "frmAdminReports"
-        Me.Controls.SetChildIndex(Me.cboSelectReportForm, 0)
-        Me.Controls.SetChildIndex(Me.lblSelectReportForm, 0)
-        Me.Controls.SetChildIndex(Me.btnGetReport, 0)
-        Me.Controls.SetChildIndex(Me.rptReports, 0)
-        Me.Controls.SetChildIndex(Me.dtpTimePeriodFrom, 0)
-        Me.Controls.SetChildIndex(Me.dtpTimePeriodTo, 0)
-        Me.Controls.SetChildIndex(Me.lblTimePeriod, 0)
-        Me.Controls.SetChildIndex(Me.Label3, 0)
-        Me.Controls.SetChildIndex(Me.cboSelectIngredient, 0)
-        Me.Controls.SetChildIndex(Me.lblSelectIngredient, 0)
         CType(Me.LastYearMonthSaleBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Ingredien, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IngredientHistoryBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -270,8 +288,9 @@ Partial Class frmAdminReports
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IngredientBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._14vfu_t02DataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpAdminReports.ResumeLayout(False)
+        Me.grpAdminReports.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents cboSelectReportForm As System.Windows.Forms.ComboBox
@@ -300,5 +319,6 @@ Partial Class frmAdminReports
     Friend WithEvents IngredientBindingSource1 As System.Windows.Forms.BindingSource
     Friend WithEvents IngredientTableAdapter1 As Kakefunn._14vfu_t02DataSetTableAdapters.IngredientTableAdapter
     Friend WithEvents lblSelectIngredient As System.Windows.Forms.Label
+    Friend WithEvents grpAdminReports As System.Windows.Forms.GroupBox
 
 End Class

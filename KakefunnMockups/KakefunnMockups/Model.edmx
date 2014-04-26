@@ -11,7 +11,7 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="address" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="zip" Type="int" Nullable="false" />
+          <Property Name="zip" Type="uint" Nullable="false" />
         </EntityType>
         <EntityType Name="Batch">
           <Key>
@@ -228,7 +228,7 @@
           <Key>
             <PropertyRef Name="zip" />
           </Key>
-          <Property Name="zip" Type="int" Nullable="false" />
+          <Property Name="zip" Type="uint" Nullable="false" />
           <Property Name="city" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
         <Association Name="fk_address_zip1">
@@ -831,7 +831,7 @@
           <Key>
             <PropertyRef Name="zip1" />
           </Key>
-          <Property Name="zip1" Type="Int32" Nullable="false" />
+          <Property Name="zip1" Type="Int64" Nullable="false" />
           <Property Name="city" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Addresses" Relationship="Self.fk_address_zip1" FromRole="Zip" ToRole="Address" />
         </EntityType>

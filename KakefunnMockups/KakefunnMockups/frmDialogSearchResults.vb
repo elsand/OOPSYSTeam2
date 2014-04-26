@@ -6,12 +6,14 @@
 
     Private Sub dtgSearchResultsOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgSearchResultsOrders.CellDoubleClick
         Dim order As Order = CType(dtgSearchResultsOrders.Rows(e.RowIndex).DataBoundItem, Order)
-        OrderManager.EditOrder(order)
+        OrderHelper.EditOrder(order)
+        Close()
     End Sub
 
     Private Sub dtgSearchResultsCustomers_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgSearchResultsCustomers.CellDoubleClick
         Dim customer As Customer = CType(dtgSearchResultsCustomers.Rows(e.RowIndex).DataBoundItem, Customer)
-        CustomerManager.EditCustomer(customer)
+        CustomerHelper.EditCustomer(customer)
+        Close()
     End Sub
 
     Private Sub dtgSearchResultsCustomers_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgSearchResultsCustomers.CellContentClick
@@ -28,7 +30,7 @@
             Case "dcOrderPrice"
                 Dim row As DataGridViewRow = dtgSearchResultsOrders.Rows(e.RowIndex)
                 Dim o As Order = CType(row.DataBoundItem, Order)
-                e.Value = FormatHelper.Currency(OrderManager.GetOrderPrice(o))
+                e.Value = FormatHelper.Currency(OrderHelper.GetOrderPrice(o))
         End Select
     End Sub
 End Class

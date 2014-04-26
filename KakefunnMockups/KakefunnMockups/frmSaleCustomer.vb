@@ -41,7 +41,7 @@ Public Class frmSaleCustomer
         ' Set static fields
         txtName.Text = currentRecord.fullName
         txtAddress.Text = currentRecord.Address.address1
-        txtZip.Text = currentRecord.Address.Zip.zip1
+        txtZip.Text = currentRecord.Address.Zip.zip1.ToString("D4")
         txtEmail.Text = currentRecord.email
         txtTelephone.Text = currentRecord.phone
         txtNote.Text = currentRecord.note
@@ -56,12 +56,12 @@ Public Class frmSaleCustomer
         lblLastEditedDateAndTimeValue.Text = currentRecord.modified.Value
 
         ' Find orders for this customer and display count and value
-        Dim orders As List(Of Order) = OrderManager.FindOrdersForCustomer(currentRecord)
+        Dim orders As List(Of Order) = OrderHelper.FindOrdersForCustomer(currentRecord)
         lblNumberOfOrdersValue.Text = orders.Count
 
         Dim totalValue As Decimal = 0
         For Each o As Order In orders
-            totalValue = totalValue + OrderManager.CalculateTotals(o).totalToPay
+            totalValue = totalValue + OrderHelper.CalculateTotals(o).totalToPay
         Next
         lblTotalOrderValueValue.Text = FormatHelper.Currency(totalValue)
 
@@ -109,7 +109,7 @@ Public Class frmSaleCustomer
         End Try
 
         MessageBox.Show("Kunden ble lagret", "Lagret", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        SessionManager.Instance.ShowForm(returnToForm)
+        SessionHelper.Instance.ShowForm(returnToForm)
 
     End Sub
 
@@ -183,7 +183,7 @@ Public Class frmSaleCustomer
         If Not FormHelper.ContinueIfDirty(Me) Then
             Exit Sub
         End If
-        SessionManager.Instance.ShowForm(returnToForm)
+        SessionHelper.Instance.ShowForm(returnToForm)
     End Sub
 
     ''' <summary>
@@ -297,4 +297,16 @@ Public Class frmSaleCustomer
         SearchHelper.SearchOrders(Function(o) o.Customer.id = currentRecord.id And o.isSubscriptionOrder = True)
     End Sub
 
+    ''' <summary>
+    ''' Handles the clear button. Prompt if the form has been edited.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
+        End If
+        NewCustomer()
+    End Sub
 End Class

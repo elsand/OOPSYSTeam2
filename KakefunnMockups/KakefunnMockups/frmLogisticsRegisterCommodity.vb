@@ -98,7 +98,7 @@ Public Class frmLogisticsRegisterCommodity
         While Not gotLocation
             For row = 1 To rowMax
                 For shelf = 1 To shelfMax
-                    gotLocation = StockManager.checkFreeLocation(row, shelf)
+                    gotLocation = StockHelper.checkFreeLocation(row, shelf)
                     If gotLocation Then
                         numRow.Text = row
                         numShelf.Text = shelf
@@ -132,7 +132,7 @@ Public Class frmLogisticsRegisterCommodity
         Dim ingLocInfo As String
 
         If ingredientName <> String.Empty Then
-            Dim batchLoc = StockManager.getLocation(ingredientName)
+            Dim batchLoc = StockHelper.getLocation(ingredientName)
             Select Case batchLoc.Count
                 Case Is < 1
                     MsgBox("Ingrediensen ligger ikke på lager fra før. Foreslår første ledige lokasjon.")
@@ -148,13 +148,13 @@ Public Class frmLogisticsRegisterCommodity
 
                         Select Case shelf
                             Case shelfMax
-                                If StockManager.checkFreeLocation(row, shelf - 1) Then
+                                If StockHelper.checkFreeLocation(row, shelf - 1) Then
                                     numRow.Text = row
                                     numShelf.Text = shelf - 1
                                     gotLocation = True
                                 End If
                             Case 1
-                                If StockManager.checkFreeLocation(row, shelf + 1) Then
+                                If StockHelper.checkFreeLocation(row, shelf + 1) Then
                                     numRow.Text = row
                                     numShelf.Text = shelf + 1
                                     gotLocation = True
@@ -162,7 +162,7 @@ Public Class frmLogisticsRegisterCommodity
                             Case 2 To shelfMax - 1
                                 Dim i As Integer
                                 For i = shelf - 1 To shelf + 1
-                                    If StockManager.checkFreeLocation(row, i) Then
+                                    If StockHelper.checkFreeLocation(row, i) Then
                                         numRow.Text = row
                                         numShelf.Text = i
                                         gotLocation = True
@@ -199,7 +199,7 @@ Public Class frmLogisticsRegisterCommodity
     Private Sub btnRegisterBatchInStock_Click(sender As Object, e As EventArgs) Handles btnRegisterBatchInStock.Click
         '
         '
-        If StockManager.checkFreeLocation(numRow.Text, numShelf.Text) Then
+        If StockHelper.checkFreeLocation(numRow.Text, numShelf.Text) Then
             Dim batchToRegister = DBM.Instance.Batches.Find(dtgLogisticsRegisterCommodity.SelectedRows(0).Cells(0).Value)
             With batchToRegister
                 .locationRow = numRow.Text

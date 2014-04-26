@@ -11,7 +11,7 @@ Imports System
 Imports System.Collections.Generic
 
 Partial Public Class Zip
-    Public Property zip1 As Integer
+    Public Property zip1 As Long
     Public Property city As String
 
     Public Overridable Property Addresses As ObservableListSource(Of Address) = New ObservableListSource(Of Address)

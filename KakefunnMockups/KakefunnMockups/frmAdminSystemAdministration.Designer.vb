@@ -45,17 +45,20 @@ Partial Class frmAdminSystemAdministration
         Me.cbLogistics = New System.Windows.Forms.CheckBox()
         Me.txtPhone = New Kakefunn.NumericTextbox()
         Me.txtZip = New Kakefunn.NumericTextbox()
+        Me.grpSystemAdministration = New System.Windows.Forms.GroupBox()
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpSystemAdministration.SuspendLayout()
         Me.SuspendLayout()
         '
         'ddlEmployees
         '
         Me.ddlEmployees.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ddlEmployees.FormattingEnabled = True
-        Me.ddlEmployees.Location = New System.Drawing.Point(158, 70)
+        Me.ddlEmployees.Location = New System.Drawing.Point(152, 28)
         Me.ddlEmployees.Name = "ddlEmployees"
         Me.ddlEmployees.Size = New System.Drawing.Size(150, 21)
         Me.ddlEmployees.TabIndex = 8
+        Me.ddlEmployees.Tag = "noDirty"
         '
         'DBMBindingSource
         '
@@ -64,7 +67,7 @@ Partial Class frmAdminSystemAdministration
         'lblEditEmployee
         '
         Me.lblEditEmployee.AutoSize = True
-        Me.lblEditEmployee.Location = New System.Drawing.Point(12, 73)
+        Me.lblEditEmployee.Location = New System.Drawing.Point(6, 31)
         Me.lblEditEmployee.Name = "lblEditEmployee"
         Me.lblEditEmployee.Size = New System.Drawing.Size(140, 13)
         Me.lblEditEmployee.TabIndex = 8
@@ -73,7 +76,7 @@ Partial Class frmAdminSystemAdministration
         'lblName
         '
         Me.lblName.AutoSize = True
-        Me.lblName.Location = New System.Drawing.Point(12, 129)
+        Me.lblName.Location = New System.Drawing.Point(6, 87)
         Me.lblName.Name = "lblName"
         Me.lblName.Size = New System.Drawing.Size(33, 13)
         Me.lblName.TabIndex = 9
@@ -81,14 +84,14 @@ Partial Class frmAdminSystemAdministration
         '
         'txtName
         '
-        Me.txtName.Location = New System.Drawing.Point(158, 126)
+        Me.txtName.Location = New System.Drawing.Point(152, 84)
         Me.txtName.Name = "txtName"
         Me.txtName.Size = New System.Drawing.Size(150, 20)
         Me.txtName.TabIndex = 10
         '
         'btnSaveChanges
         '
-        Me.btnSaveChanges.Location = New System.Drawing.Point(420, 360)
+        Me.btnSaveChanges.Location = New System.Drawing.Point(414, 292)
         Me.btnSaveChanges.Name = "btnSaveChanges"
         Me.btnSaveChanges.Size = New System.Drawing.Size(114, 23)
         Me.btnSaveChanges.TabIndex = 22
@@ -97,9 +100,9 @@ Partial Class frmAdminSystemAdministration
         '
         'btnNewUser
         '
-        Me.btnNewUser.Location = New System.Drawing.Point(15, 360)
+        Me.btnNewUser.Location = New System.Drawing.Point(9, 292)
         Me.btnNewUser.Name = "btnNewUser"
-        Me.btnNewUser.Size = New System.Drawing.Size(75, 23)
+        Me.btnNewUser.Size = New System.Drawing.Size(114, 23)
         Me.btnNewUser.TabIndex = 21
         Me.btnNewUser.Text = "Ny bruker"
         Me.btnNewUser.UseVisualStyleBackColor = True
@@ -107,7 +110,7 @@ Partial Class frmAdminSystemAdministration
         'lblRoles
         '
         Me.lblRoles.AutoSize = True
-        Me.lblRoles.Location = New System.Drawing.Point(12, 152)
+        Me.lblRoles.Location = New System.Drawing.Point(6, 110)
         Me.lblRoles.Name = "lblRoles"
         Me.lblRoles.Size = New System.Drawing.Size(34, 13)
         Me.lblRoles.TabIndex = 14
@@ -116,7 +119,7 @@ Partial Class frmAdminSystemAdministration
         'lblPhone
         '
         Me.lblPhone.AutoSize = True
-        Me.lblPhone.Location = New System.Drawing.Point(12, 210)
+        Me.lblPhone.Location = New System.Drawing.Point(6, 168)
         Me.lblPhone.Name = "lblPhone"
         Me.lblPhone.Size = New System.Drawing.Size(43, 13)
         Me.lblPhone.TabIndex = 15
@@ -124,7 +127,7 @@ Partial Class frmAdminSystemAdministration
         '
         'txtEmail
         '
-        Me.txtEmail.Location = New System.Drawing.Point(158, 233)
+        Me.txtEmail.Location = New System.Drawing.Point(152, 191)
         Me.txtEmail.Name = "txtEmail"
         Me.txtEmail.Size = New System.Drawing.Size(150, 20)
         Me.txtEmail.TabIndex = 15
@@ -132,7 +135,7 @@ Partial Class frmAdminSystemAdministration
         'lblEmail
         '
         Me.lblEmail.AutoSize = True
-        Me.lblEmail.Location = New System.Drawing.Point(12, 236)
+        Me.lblEmail.Location = New System.Drawing.Point(6, 194)
         Me.lblEmail.Name = "lblEmail"
         Me.lblEmail.Size = New System.Drawing.Size(37, 13)
         Me.lblEmail.TabIndex = 17
@@ -140,15 +143,16 @@ Partial Class frmAdminSystemAdministration
         '
         'txtPassword
         '
-        Me.txtPassword.Location = New System.Drawing.Point(158, 259)
+        Me.txtPassword.Location = New System.Drawing.Point(152, 217)
         Me.txtPassword.Name = "txtPassword"
         Me.txtPassword.Size = New System.Drawing.Size(150, 20)
         Me.txtPassword.TabIndex = 16
+        Me.txtPassword.UseSystemPasswordChar = True
         '
         'lblPassword
         '
         Me.lblPassword.AutoSize = True
-        Me.lblPassword.Location = New System.Drawing.Point(12, 262)
+        Me.lblPassword.Location = New System.Drawing.Point(6, 220)
         Me.lblPassword.Name = "lblPassword"
         Me.lblPassword.Size = New System.Drawing.Size(45, 13)
         Me.lblPassword.TabIndex = 19
@@ -156,15 +160,16 @@ Partial Class frmAdminSystemAdministration
         '
         'txtRepeatPassword
         '
-        Me.txtRepeatPassword.Location = New System.Drawing.Point(158, 285)
+        Me.txtRepeatPassword.Location = New System.Drawing.Point(152, 243)
         Me.txtRepeatPassword.Name = "txtRepeatPassword"
         Me.txtRepeatPassword.Size = New System.Drawing.Size(150, 20)
         Me.txtRepeatPassword.TabIndex = 17
+        Me.txtRepeatPassword.UseSystemPasswordChar = True
         '
         'lblRepeatPassword
         '
         Me.lblRepeatPassword.AutoSize = True
-        Me.lblRepeatPassword.Location = New System.Drawing.Point(12, 288)
+        Me.lblRepeatPassword.Location = New System.Drawing.Point(6, 246)
         Me.lblRepeatPassword.Name = "lblRepeatPassword"
         Me.lblRepeatPassword.Size = New System.Drawing.Size(78, 13)
         Me.lblRepeatPassword.TabIndex = 21
@@ -172,7 +177,7 @@ Partial Class frmAdminSystemAdministration
         '
         'btnEditEmployee
         '
-        Me.btnEditEmployee.Location = New System.Drawing.Point(314, 68)
+        Me.btnEditEmployee.Location = New System.Drawing.Point(308, 26)
         Me.btnEditEmployee.Name = "btnEditEmployee"
         Me.btnEditEmployee.Size = New System.Drawing.Size(75, 23)
         Me.btnEditEmployee.TabIndex = 9
@@ -181,7 +186,7 @@ Partial Class frmAdminSystemAdministration
         '
         'txtAddress
         '
-        Me.txtAddress.Location = New System.Drawing.Point(384, 210)
+        Me.txtAddress.Location = New System.Drawing.Point(378, 168)
         Me.txtAddress.Multiline = True
         Me.txtAddress.Name = "txtAddress"
         Me.txtAddress.Size = New System.Drawing.Size(150, 43)
@@ -190,7 +195,7 @@ Partial Class frmAdminSystemAdministration
         'lblAddress
         '
         Me.lblAddress.AutoSize = True
-        Me.lblAddress.Location = New System.Drawing.Point(333, 213)
+        Me.lblAddress.Location = New System.Drawing.Point(327, 171)
         Me.lblAddress.Name = "lblAddress"
         Me.lblAddress.Size = New System.Drawing.Size(45, 13)
         Me.lblAddress.TabIndex = 25
@@ -199,7 +204,7 @@ Partial Class frmAdminSystemAdministration
         'lblZip
         '
         Me.lblZip.AutoSize = True
-        Me.lblZip.Location = New System.Drawing.Point(341, 267)
+        Me.lblZip.Location = New System.Drawing.Point(335, 225)
         Me.lblZip.Name = "lblZip"
         Me.lblZip.Size = New System.Drawing.Size(37, 13)
         Me.lblZip.TabIndex = 27
@@ -208,7 +213,7 @@ Partial Class frmAdminSystemAdministration
         'lblCity
         '
         Me.lblCity.AutoSize = True
-        Me.lblCity.Location = New System.Drawing.Point(437, 267)
+        Me.lblCity.Location = New System.Drawing.Point(431, 225)
         Me.lblCity.Name = "lblCity"
         Me.lblCity.Size = New System.Drawing.Size(36, 13)
         Me.lblCity.TabIndex = 20
@@ -217,7 +222,7 @@ Partial Class frmAdminSystemAdministration
         'cbAdmin
         '
         Me.cbAdmin.AutoSize = True
-        Me.cbAdmin.Location = New System.Drawing.Point(158, 153)
+        Me.cbAdmin.Location = New System.Drawing.Point(152, 111)
         Me.cbAdmin.Name = "cbAdmin"
         Me.cbAdmin.Size = New System.Drawing.Size(55, 17)
         Me.cbAdmin.TabIndex = 11
@@ -227,7 +232,7 @@ Partial Class frmAdminSystemAdministration
         'cbSale
         '
         Me.cbSale.AutoSize = True
-        Me.cbSale.Location = New System.Drawing.Point(158, 170)
+        Me.cbSale.Location = New System.Drawing.Point(152, 128)
         Me.cbSale.Name = "cbSale"
         Me.cbSale.Size = New System.Drawing.Size(47, 17)
         Me.cbSale.TabIndex = 12
@@ -237,7 +242,7 @@ Partial Class frmAdminSystemAdministration
         'cbLogistics
         '
         Me.cbLogistics.AutoSize = True
-        Me.cbLogistics.Location = New System.Drawing.Point(158, 187)
+        Me.cbLogistics.Location = New System.Drawing.Point(152, 145)
         Me.cbLogistics.Name = "cbLogistics"
         Me.cbLogistics.Size = New System.Drawing.Size(68, 17)
         Me.cbLogistics.TabIndex = 13
@@ -249,7 +254,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtPhone.AllowDecimal = False
         Me.txtPhone.AllowNegative = False
         Me.txtPhone.AllowSpace = False
-        Me.txtPhone.Location = New System.Drawing.Point(158, 208)
+        Me.txtPhone.Location = New System.Drawing.Point(152, 166)
         Me.txtPhone.Name = "txtPhone"
         Me.txtPhone.Size = New System.Drawing.Size(150, 20)
         Me.txtPhone.TabIndex = 14
@@ -259,68 +264,59 @@ Partial Class frmAdminSystemAdministration
         Me.txtZip.AllowDecimal = False
         Me.txtZip.AllowNegative = False
         Me.txtZip.AllowSpace = False
-        Me.txtZip.Location = New System.Drawing.Point(385, 262)
+        Me.txtZip.Location = New System.Drawing.Point(379, 220)
         Me.txtZip.Name = "txtZip"
         Me.txtZip.Size = New System.Drawing.Size(46, 20)
         Me.txtZip.TabIndex = 19
         '
+        'grpSystemAdministration
+        '
+        Me.grpSystemAdministration.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpSystemAdministration.Controls.Add(Me.btnSaveChanges)
+        Me.grpSystemAdministration.Controls.Add(Me.txtZip)
+        Me.grpSystemAdministration.Controls.Add(Me.btnNewUser)
+        Me.grpSystemAdministration.Controls.Add(Me.txtPhone)
+        Me.grpSystemAdministration.Controls.Add(Me.lblEditEmployee)
+        Me.grpSystemAdministration.Controls.Add(Me.cbLogistics)
+        Me.grpSystemAdministration.Controls.Add(Me.ddlEmployees)
+        Me.grpSystemAdministration.Controls.Add(Me.cbSale)
+        Me.grpSystemAdministration.Controls.Add(Me.lblName)
+        Me.grpSystemAdministration.Controls.Add(Me.cbAdmin)
+        Me.grpSystemAdministration.Controls.Add(Me.txtName)
+        Me.grpSystemAdministration.Controls.Add(Me.lblCity)
+        Me.grpSystemAdministration.Controls.Add(Me.lblRoles)
+        Me.grpSystemAdministration.Controls.Add(Me.lblZip)
+        Me.grpSystemAdministration.Controls.Add(Me.lblPhone)
+        Me.grpSystemAdministration.Controls.Add(Me.lblAddress)
+        Me.grpSystemAdministration.Controls.Add(Me.lblEmail)
+        Me.grpSystemAdministration.Controls.Add(Me.txtAddress)
+        Me.grpSystemAdministration.Controls.Add(Me.txtEmail)
+        Me.grpSystemAdministration.Controls.Add(Me.btnEditEmployee)
+        Me.grpSystemAdministration.Controls.Add(Me.lblPassword)
+        Me.grpSystemAdministration.Controls.Add(Me.txtRepeatPassword)
+        Me.grpSystemAdministration.Controls.Add(Me.txtPassword)
+        Me.grpSystemAdministration.Controls.Add(Me.lblRepeatPassword)
+        Me.grpSystemAdministration.Location = New System.Drawing.Point(12, 12)
+        Me.grpSystemAdministration.Name = "grpSystemAdministration"
+        Me.grpSystemAdministration.Size = New System.Drawing.Size(543, 321)
+        Me.grpSystemAdministration.TabIndex = 28
+        Me.grpSystemAdministration.TabStop = False
+        Me.grpSystemAdministration.Text = "Administrasjon av brukere"
+        '
         'frmAdminSystemAdministration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(630, 424)
-        Me.Controls.Add(Me.txtZip)
-        Me.Controls.Add(Me.txtPhone)
-        Me.Controls.Add(Me.cbLogistics)
-        Me.Controls.Add(Me.cbSale)
-        Me.Controls.Add(Me.cbAdmin)
-        Me.Controls.Add(Me.lblCity)
-        Me.Controls.Add(Me.lblZip)
-        Me.Controls.Add(Me.lblAddress)
-        Me.Controls.Add(Me.txtAddress)
-        Me.Controls.Add(Me.btnEditEmployee)
-        Me.Controls.Add(Me.txtRepeatPassword)
-        Me.Controls.Add(Me.lblRepeatPassword)
-        Me.Controls.Add(Me.txtPassword)
-        Me.Controls.Add(Me.lblPassword)
-        Me.Controls.Add(Me.txtEmail)
-        Me.Controls.Add(Me.lblEmail)
-        Me.Controls.Add(Me.lblPhone)
-        Me.Controls.Add(Me.lblRoles)
-        Me.Controls.Add(Me.btnNewUser)
-        Me.Controls.Add(Me.btnSaveChanges)
-        Me.Controls.Add(Me.txtName)
-        Me.Controls.Add(Me.lblName)
-        Me.Controls.Add(Me.lblEditEmployee)
-        Me.Controls.Add(Me.ddlEmployees)
+        Me.ClientSize = New System.Drawing.Size(567, 350)
+        Me.Controls.Add(Me.grpSystemAdministration)
+        Me.MinimumSize = New System.Drawing.Size(583, 389)
         Me.Name = "frmAdminSystemAdministration"
+        Me.Padding = New System.Windows.Forms.Padding(0, 0, 0, 5)
         Me.Text = "Systemadministrasjon"
-        Me.Controls.SetChildIndex(Me.ddlEmployees, 0)
-        Me.Controls.SetChildIndex(Me.lblEditEmployee, 0)
-        Me.Controls.SetChildIndex(Me.lblName, 0)
-        Me.Controls.SetChildIndex(Me.txtName, 0)
-        Me.Controls.SetChildIndex(Me.btnSaveChanges, 0)
-        Me.Controls.SetChildIndex(Me.btnNewUser, 0)
-        Me.Controls.SetChildIndex(Me.lblRoles, 0)
-        Me.Controls.SetChildIndex(Me.lblPhone, 0)
-        Me.Controls.SetChildIndex(Me.lblEmail, 0)
-        Me.Controls.SetChildIndex(Me.txtEmail, 0)
-        Me.Controls.SetChildIndex(Me.lblPassword, 0)
-        Me.Controls.SetChildIndex(Me.txtPassword, 0)
-        Me.Controls.SetChildIndex(Me.lblRepeatPassword, 0)
-        Me.Controls.SetChildIndex(Me.txtRepeatPassword, 0)
-        Me.Controls.SetChildIndex(Me.btnEditEmployee, 0)
-        Me.Controls.SetChildIndex(Me.txtAddress, 0)
-        Me.Controls.SetChildIndex(Me.lblAddress, 0)
-        Me.Controls.SetChildIndex(Me.lblZip, 0)
-        Me.Controls.SetChildIndex(Me.lblCity, 0)
-        Me.Controls.SetChildIndex(Me.cbAdmin, 0)
-        Me.Controls.SetChildIndex(Me.cbSale, 0)
-        Me.Controls.SetChildIndex(Me.cbLogistics, 0)
-        Me.Controls.SetChildIndex(Me.txtPhone, 0)
-        Me.Controls.SetChildIndex(Me.txtZip, 0)
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpSystemAdministration.ResumeLayout(False)
+        Me.grpSystemAdministration.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents ddlEmployees As System.Windows.Forms.ComboBox
@@ -348,5 +344,6 @@ Partial Class frmAdminSystemAdministration
     Friend WithEvents cbLogistics As System.Windows.Forms.CheckBox
     Friend WithEvents txtPhone As Kakefunn.NumericTextbox
     Friend WithEvents txtZip As Kakefunn.NumericTextbox
+    Friend WithEvents grpSystemAdministration As System.Windows.Forms.GroupBox
 
 End Class

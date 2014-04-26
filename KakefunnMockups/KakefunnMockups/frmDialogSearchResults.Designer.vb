@@ -20,9 +20,9 @@ Partial Class frmDialogSearchResults
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblHitsInOrders = New System.Windows.Forms.Label()
         Me.lblHitsInCustomers = New System.Windows.Forms.Label()
         Me.btnClose = New System.Windows.Forms.Button()
@@ -65,6 +65,7 @@ Partial Class frmDialogSearchResults
         '
         'btnClose
         '
+        Me.btnClose.Anchor = System.Windows.Forms.AnchorStyles.Top
         Me.btnClose.Location = New System.Drawing.Point(236, 559)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(75, 23)
@@ -74,6 +75,8 @@ Partial Class frmDialogSearchResults
         '
         'grpSearchResults
         '
+        Me.grpSearchResults.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grpSearchResults.Controls.Add(Me.dtgSearchResultsCustomers)
         Me.grpSearchResults.Controls.Add(Me.dtgSearchResultsOrders)
         Me.grpSearchResults.Controls.Add(Me.lblHitsInOrders)
@@ -89,6 +92,7 @@ Partial Class frmDialogSearchResults
         '
         Me.dtgSearchResultsCustomers.AllowUserToAddRows = False
         Me.dtgSearchResultsCustomers.AllowUserToDeleteRows = False
+        Me.dtgSearchResultsCustomers.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgSearchResultsCustomers.AutoGenerateColumns = False
         Me.dtgSearchResultsCustomers.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgSearchResultsCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -104,8 +108,8 @@ Partial Class frmDialogSearchResults
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "id"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn2.FillWeight = 45.0!
         Me.DataGridViewTextBoxColumn2.HeaderText = "Kundenr"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
@@ -122,8 +126,8 @@ Partial Class frmDialogSearchResults
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "phone"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn4.HeaderText = "Telefon"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         '
@@ -136,6 +140,7 @@ Partial Class frmDialogSearchResults
         Me.dtgSearchResultsOrders.AllowUserToAddRows = False
         Me.dtgSearchResultsOrders.AllowUserToDeleteRows = False
         Me.dtgSearchResultsOrders.AllowUserToResizeRows = False
+        Me.dtgSearchResultsOrders.Anchor = CType((System.Windows.Forms.AnchorStyles.Left Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtgSearchResultsOrders.AutoGenerateColumns = False
         Me.dtgSearchResultsOrders.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgSearchResultsOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
@@ -152,8 +157,8 @@ Partial Class frmDialogSearchResults
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "id"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn1.FillWeight = 45.0!
         Me.DataGridViewTextBoxColumn1.HeaderText = "Ordrenr"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
@@ -184,9 +189,10 @@ Partial Class frmDialogSearchResults
         'frmDialogSearchResults
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(566, 594)
+        Me.ClientSize = New System.Drawing.Size(566, 615)
         Me.Controls.Add(Me.grpSearchResults)
         Me.Controls.Add(Me.btnClose)
+        Me.MinimumSize = New System.Drawing.Size(582, 654)
         Me.Name = "frmDialogSearchResults"
         Me.Text = "Søk etter ""xxxx"""
         Me.grpSearchResults.ResumeLayout(False)

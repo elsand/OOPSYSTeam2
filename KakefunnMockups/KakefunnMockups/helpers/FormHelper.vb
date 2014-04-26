@@ -1,13 +1,54 @@
 ﻿Public Class FormHelper
     Public Shared Sub SetupDirtyTracking(frm As frmSuperBase)
         For Each c As Control In frm.Controls
-            If TypeOf c Is TextBox Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
-            ElseIf TypeOf c Is CheckBox Then
-                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
-            ElseIf TypeOf c Is ComboBox Then
-                AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+            If c.Tag <> "noDirty" Then
+                If TypeOf c Is TextBox Then
+                    AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is CheckBox Then
+                    AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is ComboBox Then
+                    AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is RadioButton Then
+                    AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                ElseIf TypeOf c Is DataGridView Then
+                    AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
+                End If
             End If
+        Next
+
+        For Each gb As GroupBox In frm.Controls.OfType(Of GroupBox)()
+            For Each c As Control In gb.Controls.OfType(Of Control)()
+                If c.Tag <> "noDirty" Then
+                    If TypeOf c Is TextBox Then
+                        AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
+                    ElseIf TypeOf c Is CheckBox Then
+                        AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                    ElseIf TypeOf c Is ComboBox Then
+                        AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+                    ElseIf TypeOf c Is RadioButton Then
+                        AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                    ElseIf TypeOf c Is DataGridView Then
+                        AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
+                    End If
+                End If
+            Next
+            For Each gb2 As GroupBox In gb.Controls.OfType(Of GroupBox)()
+                For Each c As Control In gb2.Controls.OfType(Of Control)()
+                    If c.Tag <> "noDirty" Then
+                        If TypeOf c Is TextBox Then
+                            AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
+                        ElseIf TypeOf c Is CheckBox Then
+                            AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                        ElseIf TypeOf c Is ComboBox Then
+                            AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+                        ElseIf TypeOf c Is RadioButton Then
+                            AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                        ElseIf TypeOf c Is DataGridView Then
+                            AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
+                        End If
+                    End If
+                Next
+            Next
         Next
     End Sub
 

@@ -62,7 +62,7 @@ Public Class frmAdminCakes
 
             'Traverses ingredient list and sums ingredient prices.
             For Each row In ingList
-                Dim purchasingPrice As Double = StockManager.getPurchasingPrice(row.IngredientId, "avg", batchQuery)
+                Dim purchasingPrice As Double = StockHelper.getPurchasingPrice(row.IngredientId, "avg", batchQuery)
                 Dim ingMarkUp As Double = (From x In priceQuery _
                                            Where x.id = row.IngredientId _
                                            Order By x.date Descending _
@@ -98,24 +98,12 @@ Public Class frmAdminCakes
         bindCake()
         loadPrices()
 
-        For Each c As Control In Me.grpCakeEdit.Controls
-            If c.GetType().Name = "TextBox" Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.isDirty = True
-            ElseIf c.GetType().Name = "CheckBox" Then
-                AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) Me.isDirty = True
-            ElseIf c.GetType().Name = "NumericTextbox" Then
-                AddHandler CType(c, NumericTextbox).TextChanged, Sub(s, ev) Me.isDirty = True
-            End If
-        Next
+        If dtgCake.RowCount = 0 Then
+            btnToolStripCakeDelete.Enabled = False
+            btnToolStripCakeEdit.Enabled = False
+        End If
 
-        For Each c As Control In Me.grpIngredients.Controls
-            If c.GetType().Name = "TextBox" Then
-                AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) Me.isDirty = True
-            ElseIf c.GetType().Name = "NumericTextbox" Then
-                AddHandler CType(c, NumericTextbox).TextChanged, Sub(s, ev) Me.isDirty = True
-            End If
-        Next
-
+        FormHelper.SetupDirtyTracking(Me)
         isDirty = False
     End Sub
 
@@ -142,6 +130,7 @@ Public Class frmAdminCakes
             End If
         Next
         selList.Clear()
+        lstSelectedIngredients.DataSource = selList
         lblIngredientsPrice.Text = "Ingredienspris: 0"
         lblSalePrice.Text = "Salgspris: 0"
     End Sub
@@ -246,7 +235,7 @@ Public Class frmAdminCakes
         Dim unitAmount As Double = numAmount.Text
         Dim priceMarkup As Double = (From x In priceQuery Where x.id = selIndex _
                                      Order By x.date Descending Select x.markUpPercentage).FirstOrDefault()
-        Dim ingPrice As Double = CDbl(StockManager.getPurchasingPrice(selIndex, "avg", batchQuery))
+        Dim ingPrice As Double = CDbl(StockHelper.getPurchasingPrice(selIndex, "avg", batchQuery))
 
         'Calls fillSelList with the variables to add to the selection list.
         fillSelList(selIndex, selName, unitType, unitAmount, priceMarkup, ingPrice)
@@ -426,6 +415,13 @@ Public Class frmAdminCakes
     ''' <remarks></remarks>
     Private Sub txtFilterCake_TextChanged(sender As Object, e As EventArgs) Handles txtFilterCake.TextChanged
         filter()
+        If dtgCake.RowCount > 0 Then
+            btnToolStripCakeDelete.Enabled = True
+            btnToolStripCakeEdit.Enabled = True
+        Else
+            btnToolStripCakeDelete.Enabled = False
+            btnToolStripCakeEdit.Enabled = False
+        End If
     End Sub
 
     ''' <summary>
@@ -435,12 +431,16 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnNewCake_Click(sender As Object, e As EventArgs) Handles btnNewCake.Click, btnToolStripCakeNew.Click
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
+        End If
         ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         grpCakeEdit.Enabled = True
         btnAddIngredients.Enabled = False
         numAmount.Enabled = False
         cakeNew = True
         structureSelList()
+        clearRegForm()
         isDirty = False
     End Sub
 
@@ -448,10 +448,12 @@ Public Class frmAdminCakes
     ''' Collects data about a cake from db, and displays it in the registration form.
     ''' See detailed comments in the sub.
     ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub dtgCake_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseDoubleClick
+    Private Sub editCake()
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
+        End If
+
         ingQuery = (From x In DBM.Instance.Ingredients Select x).ToList()
         grpCakeEdit.Enabled = True
         cakeNew = False
@@ -491,13 +493,21 @@ Public Class frmAdminCakes
                 Dim ingAmount As Double = CDbl(row.amount.ToString())
                 Dim ingMarkup As Double = (From x In priceQuery Where x.id = ingID _
                                              Order By x.date Descending Select x.markUpPercentage).FirstOrDefault()
-                Dim ingPrice As Double = CDbl(StockManager.getPurchasingPrice(ingID, "avg", batchQuery))
+                Dim ingPrice As Double = CDbl(StockHelper.getPurchasingPrice(ingID, "avg", batchQuery))
 
                 fillSelList(ingID, ingName, unitType, ingAmount, ingMarkup, ingPrice)
             Next
         End If
         showPrices()
         isDirty = False
+
+
+    End Sub
+
+    Private Sub dtgCake_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseDoubleClick
+        If dtgCake.RowCount > 0 Then
+            editCake()
+        End If
     End Sub
 
     ''' <summary>
@@ -510,9 +520,9 @@ Public Class frmAdminCakes
         'Prompts user: are you sure?
         Dim result As Integer = MessageBox.Show("Er du sikker på at du vil slette kaken? Operasjonen kan ikke reverseres.", _
                                                 "Bekreft sletting", MessageBoxButtons.YesNo)
-        UpdateActionStatus("Sletter kake...")
 
         If result = 6 Then
+            UpdateActionStatus("Sletter kake...")
             Dim delIdx As Integer = dtgCake.SelectedRows(0).Cells(IdDataGridViewTextBoxColumn.Index).Value
             Dim delCake = DBM.Instance.Cakes.Find(delIdx)
             delCake.deleted = Date.Today
@@ -566,18 +576,13 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub btnAvbryt_Click(sender As Object, e As EventArgs) Handles btnAvbryt.Click
-        If isDirty Then
-            Dim response = MessageBox.Show("Du har ulagrede endringer. Vil du avslutte kakeregistreringen likevel?", _
-                                           "Bekreft lukking", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-            If response = 6 Then
-                clearRegForm()
-                grpCakeEdit.Enabled = False
-            End If
-        Else
-            clearRegForm()
-            grpCakeEdit.Enabled = False
+        If Not FormHelper.ContinueIfDirty(Me) Then
+            Exit Sub
         End If
 
+        clearRegForm()
+        grpCakeEdit.Enabled = False
+        isDirty = False
     End Sub
 
     ''' <summary>
@@ -587,10 +592,20 @@ Public Class frmAdminCakes
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtgCake_MouseClick(sender As Object, e As MouseEventArgs) Handles dtgCake.MouseClick
-        If dtgCake.SelectedRows(0).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
-            btnToolStripCakeDelete.Enabled = False
-        Else
-            btnToolStripCakeDelete.Enabled = True
+        If dtgCake.RowCount > 0 Then
+            If dtgCake.SelectedRows(0).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
+                btnToolStripCakeDelete.Enabled = False
+            Else
+                btnToolStripCakeDelete.Enabled = True
+            End If
         End If
     End Sub
+
+    Private Sub btnToolStripCakeEdit_Click(sender As Object, e As EventArgs) Handles btnToolStripCakeEdit.Click
+        If dtgCake.RowCount > 0 Then
+            editCake()
+        End If
+    End Sub
+
+
 End Class

@@ -1,7 +1,7 @@
 ﻿Public Class SearchHelper
     Public Shared Sub SearchFreeText(query As String, searchOrders As Boolean, searchCustomers As Boolean)
 
-        SessionManager.Instance.ShowDialog(frmDialogSearchResults)
+        SessionHelper.Instance.ShowDialog(frmDialogSearchResults)
         Dim numericQuery As Integer
 
         With frmDialogSearchResults
@@ -55,7 +55,7 @@
 
     Public Shared Sub SearchOrders(predicate As System.Func(Of Order, Boolean))
 
-        SessionManager.Instance.ShowDialog(frmDialogSearchResults)
+        SessionHelper.Instance.ShowDialog(frmDialogSearchResults)
 
         Dim orderQueryResult As List(Of Order)
         orderQueryResult = DBM.Instance.Orders.Where(predicate).ToList()

@@ -12,11 +12,9 @@
     End Sub
 
     Private Sub frmAdminSystemAdministration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         UpdateEmployeeDDL()
         FormHelper.SetupDirtyTracking(Me)
         AddressHelper.SetupAutoCityFill(txtZip, lblCity)
-
     End Sub
 
     Private Sub UpdateEmployeeDDL()
@@ -30,8 +28,7 @@
     End Sub
 
     Private Sub btnEditEmployee_Click(sender As Object, e As EventArgs) Handles btnEditEmployee.Click
-
-        If IsDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
+        If isDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
         End If
 
@@ -43,7 +40,7 @@
         txtEmail.Text = em.email
         txtPhone.Text = em.Phone.phonenumber
         txtAddress.Text = em.Address.address1
-        txtZip.Text = em.Address.Zip.zip1
+        txtZip.Text = em.Address.Zip.zip1.ToString("D4")
         lblCity.Text = em.Address.Zip.city
         txtPassword.Text = ""
         txtRepeatPassword.Text = ""
@@ -78,7 +75,6 @@
 
 
     Private Sub btnSaveChanges_Click(sender As Object, e As EventArgs) Handles btnSaveChanges.Click
-
         If Not ValidSubmission() Then
             Exit Sub
         End If
@@ -137,7 +133,8 @@
 
         UpdateActionStatus("Redigerer " & em.firstName & " " & em.lastName)
         MessageBox.Show("Oppføringen er lagret", "Suksess", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+        resetForm()
+        lblCity.Text = ""
     End Sub
 
     Function ValidSubmission() As Boolean
@@ -176,25 +173,36 @@
         Return True
     End Function
 
+    ''' <summary>
+    ''' Resets form after editing existing or saving new users.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub resetForm()
+        For Each c As Control In grpSystemAdministration.Controls
+            Select Case c.GetType().Name
+                Case "TextBox"
+                    CType(c, TextBox).Text = ""
+                Case "CheckBox"
+                    CType(c, CheckBox).Checked = False
+                Case "NumericTextbox"
+                    CType(c, NumericTextbox).Text = ""
+            End Select
+        Next
+    End Sub
+
     Private Sub btnNewUser_Click(sender As Object, e As EventArgs) Handles btnNewUser.Click
-        If IsDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
+        MsgBox(isDirty)
+        If isDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
         End If
 
-        For Each c As Control In Me.Controls
-            If c.GetType().Name = "TextBox" Then
-                CType(c, TextBox).Text = ""
-            ElseIf c.GetType().Name = "CheckBox" Then
-                CType(c, CheckBox).Checked = False
-            End If
-        Next
+        resetForm()
         lblCity.Text = ""
         IsNewRecord = True
-        IsDirty = False
         currentRecord = Nothing
         lblPassword.Text = "Passord"
         btnSaveChanges.Text = "Lagre ny bruker"
-
+        isDirty = False
         UpdateActionStatus()
     End Sub
 End Class

@@ -36,7 +36,7 @@ Public Class PackingListHelper
               "</div>" & _
                "<div class='cell'> " & _
               "</div>" & _
-               "<div class='cell'> Leveres til: <br>" & o.Customer.firstName & " " & o.Customer.lastName & "<br>" & o.Address.address1 & "<br>" & o.Address.Zip.zip1 & " " & o.Address.Zip.city & _
+               "<div class='cell'> Leveres til: <br>" & o.Customer.firstName & " " & o.Customer.lastName & "<br>" & o.Address.address1 & "<br>" & o.Address.Zip.zip1.ToString("D4") & " " & o.Address.Zip.city & _
               "</div>" & _
               "</div>" & _
                "<div style='display: table-row'>" & _

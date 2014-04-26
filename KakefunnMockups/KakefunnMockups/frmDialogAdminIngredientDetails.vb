@@ -58,7 +58,7 @@ Public Class frmDialogAdminIngredientDetails
             Dim batchQuery = (From x In DBM.Instance.Batches _
                               Select x).ToList()
 
-            lblNumInStockValue.Text = StockManager.getInStock(varenr, batchQuery)
+            lblNumInStockValue.Text = StockHelper.getInStock(varenr, batchQuery)
 
             Dim batches = From x In DBM.Instance.Batches Where x.Ingredient.id = varenr Select x
             dtgBatches.Rows.Clear()

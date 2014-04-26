@@ -19,13 +19,13 @@ Partial Class frmAdminIngredient
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.dtgResults = New System.Windows.Forms.DataGridView()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.txtSearch = New System.Windows.Forms.TextBox()
-        Me.lblSearch = New System.Windows.Forms.Label()
-        Me.btnSearch = New System.Windows.Forms.Button()
-        Me.btnNew = New System.Windows.Forms.Button()
         Me.btnDel = New System.Windows.Forms.Button()
+        Me.btnNew = New System.Windows.Forms.Button()
+        Me.btnSearch = New System.Windows.Forms.Button()
+        Me.lblSearch = New System.Windows.Forms.Label()
+        Me.txtSearch = New System.Windows.Forms.TextBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.dtgResults = New System.Windows.Forms.DataGridView()
         Me.colID = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colStock = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -36,73 +36,79 @@ Partial Class frmAdminIngredient
         CType(Me.dtgResults, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'dtgResults
+        'btnDel
         '
-        Me.dtgResults.AllowUserToAddRows = False
-        Me.dtgResults.AllowUserToDeleteRows = False
-        Me.dtgResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
-        Me.dtgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colID, Me.colName, Me.colStock, Me.colBDGIn, Me.colBDGOut, Me.colProfig, Me.colDeleted})
-        Me.dtgResults.Location = New System.Drawing.Point(13, 90)
-        Me.dtgResults.Name = "dtgResults"
-        Me.dtgResults.ReadOnly = True
-        Me.dtgResults.RowHeadersVisible = False
-        Me.dtgResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgResults.ShowEditingIcon = False
-        Me.dtgResults.Size = New System.Drawing.Size(643, 365)
-        Me.dtgResults.TabIndex = 10
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(12, 467)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(168, 13)
-        Me.Label1.TabIndex = 8
-        Me.Label1.Text = "* Billigste / Dyreste / Gjennomsnitt"
-        '
-        'txtSearch
-        '
-        Me.txtSearch.Location = New System.Drawing.Point(120, 63)
-        Me.txtSearch.Name = "txtSearch"
-        Me.txtSearch.Size = New System.Drawing.Size(136, 20)
-        Me.txtSearch.TabIndex = 8
-        '
-        'lblSearch
-        '
-        Me.lblSearch.AutoSize = True
-        Me.lblSearch.Location = New System.Drawing.Point(13, 67)
-        Me.lblSearch.Name = "lblSearch"
-        Me.lblSearch.Size = New System.Drawing.Size(101, 13)
-        Me.lblSearch.TabIndex = 10
-        Me.lblSearch.Text = "Søk etter ingrediens"
-        '
-        'btnSearch
-        '
-        Me.btnSearch.Location = New System.Drawing.Point(262, 61)
-        Me.btnSearch.Name = "btnSearch"
-        Me.btnSearch.Size = New System.Drawing.Size(75, 23)
-        Me.btnSearch.TabIndex = 9
-        Me.btnSearch.Text = "Søk"
-        Me.btnSearch.UseVisualStyleBackColor = True
+        Me.btnDel.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnDel.Location = New System.Drawing.Point(735, 10)
+        Me.btnDel.Name = "btnDel"
+        Me.btnDel.Size = New System.Drawing.Size(75, 23)
+        Me.btnDel.TabIndex = 11
+        Me.btnDel.Text = "Slett"
+        Me.btnDel.UseVisualStyleBackColor = True
         '
         'btnNew
         '
-        Me.btnNew.Location = New System.Drawing.Point(553, 61)
+        Me.btnNew.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.btnNew.Location = New System.Drawing.Point(816, 10)
         Me.btnNew.Name = "btnNew"
         Me.btnNew.Size = New System.Drawing.Size(99, 23)
         Me.btnNew.TabIndex = 12
         Me.btnNew.Text = "Ny ingrediens ..."
         Me.btnNew.UseVisualStyleBackColor = True
         '
-        'btnDel
+        'btnSearch
         '
-        Me.btnDel.Location = New System.Drawing.Point(472, 61)
-        Me.btnDel.Name = "btnDel"
-        Me.btnDel.Size = New System.Drawing.Size(75, 23)
-        Me.btnDel.TabIndex = 11
-        Me.btnDel.Text = "Slett"
-        Me.btnDel.UseVisualStyleBackColor = True
+        Me.btnSearch.Location = New System.Drawing.Point(260, 10)
+        Me.btnSearch.Name = "btnSearch"
+        Me.btnSearch.Size = New System.Drawing.Size(75, 23)
+        Me.btnSearch.TabIndex = 9
+        Me.btnSearch.Text = "Søk"
+        Me.btnSearch.UseVisualStyleBackColor = True
+        '
+        'lblSearch
+        '
+        Me.lblSearch.AutoSize = True
+        Me.lblSearch.Location = New System.Drawing.Point(11, 16)
+        Me.lblSearch.Name = "lblSearch"
+        Me.lblSearch.Size = New System.Drawing.Size(101, 13)
+        Me.lblSearch.TabIndex = 10
+        Me.lblSearch.Text = "Søk etter ingrediens"
+        '
+        'txtSearch
+        '
+        Me.txtSearch.Location = New System.Drawing.Point(118, 12)
+        Me.txtSearch.Name = "txtSearch"
+        Me.txtSearch.Size = New System.Drawing.Size(136, 20)
+        Me.txtSearch.TabIndex = 8
+        '
+        'Label1
+        '
+        Me.Label1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(8, 554)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(168, 13)
+        Me.Label1.TabIndex = 8
+        Me.Label1.Text = "* Billigste / Dyreste / Gjennomsnitt"
+        '
+        'dtgResults
+        '
+        Me.dtgResults.AllowUserToAddRows = False
+        Me.dtgResults.AllowUserToDeleteRows = False
+        Me.dtgResults.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+            Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.dtgResults.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.dtgResults.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dtgResults.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.colID, Me.colName, Me.colStock, Me.colBDGIn, Me.colBDGOut, Me.colProfig, Me.colDeleted})
+        Me.dtgResults.Location = New System.Drawing.Point(11, 39)
+        Me.dtgResults.Name = "dtgResults"
+        Me.dtgResults.ReadOnly = True
+        Me.dtgResults.RowHeadersVisible = False
+        Me.dtgResults.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.dtgResults.ShowEditingIcon = False
+        Me.dtgResults.Size = New System.Drawing.Size(904, 512)
+        Me.dtgResults.TabIndex = 10
         '
         'colID
         '
@@ -150,7 +156,7 @@ Partial Class frmAdminIngredient
         'frmAdminIngredient
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(664, 516)
+        Me.ClientSize = New System.Drawing.Size(929, 621)
         Me.Controls.Add(Me.btnDel)
         Me.Controls.Add(Me.btnNew)
         Me.Controls.Add(Me.btnSearch)
@@ -158,15 +164,9 @@ Partial Class frmAdminIngredient
         Me.Controls.Add(Me.txtSearch)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.dtgResults)
+        Me.MinimumSize = New System.Drawing.Size(945, 660)
         Me.Name = "frmAdminIngredient"
         Me.Text = "Ingredienser"
-        Me.Controls.SetChildIndex(Me.dtgResults, 0)
-        Me.Controls.SetChildIndex(Me.Label1, 0)
-        Me.Controls.SetChildIndex(Me.txtSearch, 0)
-        Me.Controls.SetChildIndex(Me.lblSearch, 0)
-        Me.Controls.SetChildIndex(Me.btnSearch, 0)
-        Me.Controls.SetChildIndex(Me.btnNew, 0)
-        Me.Controls.SetChildIndex(Me.btnDel, 0)
         CType(Me.dtgResults, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

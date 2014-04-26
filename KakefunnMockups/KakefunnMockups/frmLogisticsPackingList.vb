@@ -81,7 +81,7 @@
 
 
                 Case "cnZip" 'add orderID to the dgv
-                    e.Value = CType(e.Value, Address).Zip.zip1
+                    e.Value = CType(e.Value, Address).Zip.zip1.ToString("D4")
 
 
                 Case "cnStatus" 'add orderID to the dgv

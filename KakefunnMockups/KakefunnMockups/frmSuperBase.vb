@@ -1,90 +1,89 @@
-﻿Public Class frmSuperBase
+﻿''' <summary>
+''' Base form from which all forms inside tabs inherit
+''' </summary>
+''' <remarks></remarks>
+Public Class frmSuperBase
 
+    ''' <summary>
+    ''' Used for tracking dirty state in forms
+    ''' </summary>
+    ''' <remarks></remarks>
     Public isDirty As Boolean = False
-    Private Shared IsClosingEventHandled As Boolean = False
 
-    Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
-        Application.Exit()
-    End Sub
-
-    Private Sub LogOutToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogOutToolStripMenuItem.Click
-        If Not SessionManager.Instance.IsLoggedIn Then
-            Exit Sub
-        End If
-        If MsgBox("Er du sikker på du vil logge ut?", MsgBoxStyle.YesNo, "Logg ut") = MsgBoxResult.Yes Then
-            SessionManager.Instance.Logout()
-        End If
-    End Sub
-
+    ''' <summary>
+    ''' Used whenever a tab is changed, updates the menu and sets login status. Also clears action status and calls the OnFormGetsForeground() method
+    ''' which may be overridden in inheriting forms
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub frmSuperBase_VisibleChanged(sender As Object, e As EventArgs) Handles MyBase.VisibleChanged
         If Me.Visible Then
-            UpdateAspectMenu()
+            ' All three windows may be open at the same time, so update them all
+            frmSaleTabContainer.UpdateAspectMenu()
+            frmAdminTabContainer.UpdateAspectMenu()
+            frmLogisticsTabContainer.UpdateAspectMenu()
             UpdateLoginStatus()
             UpdateActionStatus()
             OnFormGetsForeground()
         End If
     End Sub
 
+    ''' <summary>
+    ''' Like a form_load, but called everytime the form gets loaded
+    ''' </summary>
+    ''' <remarks></remarks>
     Protected Overridable Sub OnFormGetsForeground()
         ' Implemented in subclasses
     End Sub
 
-    Private Sub UpdateAspectMenu()
-        If Not SessionManager.Instance.IsLoggedIn Then
-            AspectToolStripMenuItem.Enabled = False
-            Exit Sub
-        End If
-        AspectToolStripMenuItem.Enabled = True
-
-        AdminToolStripMenuItem.Enabled = SessionManager.Instance.HasRole("Admin")
-        SaleToolStripMenuItem.Enabled = SessionManager.Instance.HasRole("Sale")
-        LogisticsToolStripMenuItem.Enabled = SessionManager.Instance.HasRole("Logistics")
-
-    End Sub
-
-    Private Sub UpdateLoginStatus()
-        If Not SessionManager.Instance.IsLoggedIn Then
-            statusLogin.Text = "Ikke innlogget"
-            Exit Sub
-        End If
-        Dim roles As String = ""
-        For Each r In SessionManager.Instance.User.Roles
-            roles = roles & r.name & ", "
-        Next
-        roles = roles.Substring(0, roles.Length - 2)
-        statusLogin.Text = "Innlogget: " & SessionManager.Instance.User.firstName & " " & SessionManager.Instance.User.lastName & " (" & roles & ")"
-    End Sub
-
-    Protected Sub UpdateActionStatus(status As String)
-        statusAction.Text = status
+    ''' <summary>
+    ''' Used by inheriting forms to set the action status for the form of which it is contained
+    ''' </summary>
+    ''' <param name="status"></param>
+    ''' <remarks></remarks>
+    Public Sub UpdateActionStatus(status As String)
+        With frmSuperTabContainer
+            Dim frm As Form = .GetContainerForAspect(.GetAspectForForm(Me))
+            If frm Is Nothing Then
+                Exit Sub
+            End If
+            CType(frm, frmSuperTabContainer).statusAction.Text = status
+        End With
         Application.DoEvents()
     End Sub
 
-    Protected Sub UpdateActionStatus()
+    ''' <summary>
+    ''' Overload that clears the action status
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub UpdateActionStatus()
         UpdateActionStatus("")
     End Sub
 
-    Private Sub SaleToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SaleToolStripMenuItem.Click
-        SessionManager.Instance.ShowDefaultFormForRole("Sale")
-    End Sub
+    ''' <summary>
+    ''' Sets the login status for all open windows. Displays the full name of the logged in employee and his/her roles.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Protected Sub UpdateLoginStatus()
+        Dim statusText As String = ""
+        If Not SessionHelper.Instance.IsLoggedIn Then
+            statusText = "Ikke innlogget"
+        Else
 
-    Private Sub AdminToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdminToolStripMenuItem.Click
-        SessionManager.Instance.ShowDefaultFormForRole("Admin")
-    End Sub
-
-    Private Sub LogisticsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LogisticsToolStripMenuItem.Click
-        SessionManager.Instance.ShowDefaultFormForRole("Logistics")
-    End Sub
-
-    Private Sub frmSuperBase_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-        If Not IsClosingEventHandled Then
-            Select Case MessageBox.Show("Er du sikker på du vil avslutte?", "Bekreft lukk program", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
-                Case Windows.Forms.DialogResult.Yes
-                    IsClosingEventHandled = True
-                    Application.Exit()
-                Case Windows.Forms.DialogResult.No
-                    e.Cancel = True
-            End Select
+            Dim roles As String = ""
+            For Each r In SessionHelper.Instance.User.Roles
+                roles = roles & r.name & ", "
+            Next
+            roles = roles.Substring(0, roles.Length - 2)
+            statusText = "Innlogget: " & SessionHelper.Instance.User.firstName & " " & SessionHelper.Instance.User.lastName & " (" & roles & ")"
         End If
+
+        frmSaleTabContainer.statusLogin.Text = statusText
+        frmAdminTabContainer.statusLogin.Text = statusText
+        frmLogisticsTabContainer.statusLogin.Text = statusText
+        Application.DoEvents()
+
     End Sub
+
 End Class

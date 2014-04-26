@@ -1,4 +1,4 @@
-﻿Public Class OrderManager
+﻿Public Class OrderHelper
 
     ''' <summary>
     ''' Finds and returns an order based on orderId
@@ -11,7 +11,7 @@
     End Function
 
     Public Shared Sub NewOrder()
-        SessionManager.Instance.ShowForm(frmSaleOrder)
+        SessionHelper.Instance.ShowForm(frmSaleOrder)
         frmSaleOrder.NewOrder()
     End Sub
 
@@ -25,7 +25,7 @@
     End Sub
 
     Public Shared Sub EditOrder(order As Order)
-        SessionManager.Instance.ShowForm(frmSaleOrder)
+        SessionHelper.Instance.ShowForm(frmSaleOrder)
         frmSaleOrder.LoadOrder(order)
     End Sub
 
