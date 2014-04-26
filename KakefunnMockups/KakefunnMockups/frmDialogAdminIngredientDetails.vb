@@ -81,7 +81,7 @@ Public Class frmDialogAdminIngredientDetails
 
         'Deklaring i as a new ingredient, or equal to a selected ingredient.
         If newIngr Then
-            i = New Ingredient()
+            i = DBM.Instance.Ingredients.Create(Of Ingredient)()
         Else
             i = existingItem
         End If

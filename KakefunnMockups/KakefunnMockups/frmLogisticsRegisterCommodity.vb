@@ -30,6 +30,10 @@ Public Class frmLogisticsRegisterCommodity
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub frmLogisticsRegisterCommodity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DBM.Instance.Batches.Load()
+        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) _
+                                         Not b.registered.HasValue And b.deleted Is Nothing).ToList()
+
         'Gets settings from config-file and sets number of inventory rows and shelves.
         'Settings can be changed in the Kakefunn.exe.config file in the program folder.
         With ConfigurationManager.AppSettings
@@ -41,13 +45,6 @@ Public Class frmLogisticsRegisterCommodity
         End With
 
     End Sub
-
-    Protected Overrides Sub OnFormGetsForeground()
-        DBM.Instance.Batches.Load()
-        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) _
-                                            Not b.registered.HasValue And b.deleted Is Nothing).ToList()
-    End Sub
-
 
     ''' <summary>
     ''' Adds ingredient name to datagridview.
@@ -216,8 +213,8 @@ Public Class frmLogisticsRegisterCommodity
                 MsgBox("Noe gikk galt under registrering av batchen - " & ex.ToString)
             End Try
 
-            BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
-                                            Not b.registered.HasValue)
+        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
+                                            Not b.registered.HasValue And b.deleted Is Nothing)
         Else
             MsgBox("Lokasjon er opptatt. Du kan velge lokasjon manuelt, eller be systemet " _
                    & "finne en automatisk.")
