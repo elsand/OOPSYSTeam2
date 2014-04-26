@@ -73,12 +73,12 @@ Partial Class frmLogisticsPackingList
         Me.dtgPackingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dtgPackingList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cnOrderId, Me.cnDeliveryTo, Me.cnAddress, Me.cnZip, Me.cnStatus, Me.IdDataGridViewTextBoxColumn, Me.DeliveryFirstNameDataGridViewTextBoxColumn, Me.DeliveryLastNameDataGridViewTextBoxColumn, Me.DeliveryPhoneDataGridViewTextBoxColumn, Me.DeliveryEmailDataGridViewTextBoxColumn, Me.DeliveryDateDataGridViewTextBoxColumn, Me.SubscriptionIdDataGridViewTextBoxColumn, Me.ShippingPriceDataGridViewTextBoxColumn, Me.DiscountPercentageDataGridViewTextBoxColumn, Me.DiscountAbsoluteDataGridViewTextBoxColumn, Me.NoteDataGridViewTextBoxColumn, Me.IsPaidDataGridViewCheckBoxColumn, Me.SentDataGridViewTextBoxColumn, Me.ExportedDataGridViewTextBoxColumn, Me.CreatedDataGridViewTextBoxColumn, Me.ModifiedDataGridViewTextBoxColumn, Me.IsSubscriptionOrderDataGridViewCheckBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.CustomerDataGridViewTextBoxColumn, Me.DeliveryMethodDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn})
         Me.dtgPackingList.DataSource = Me.OrderBindingSource
-        Me.dtgPackingList.Location = New System.Drawing.Point(12, 90)
+        Me.dtgPackingList.Location = New System.Drawing.Point(12, 38)
         Me.dtgPackingList.Name = "dtgPackingList"
         Me.dtgPackingList.ReadOnly = True
         Me.dtgPackingList.RowHeadersVisible = False
         Me.dtgPackingList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgPackingList.Size = New System.Drawing.Size(611, 348)
+        Me.dtgPackingList.Size = New System.Drawing.Size(610, 351)
         Me.dtgPackingList.TabIndex = 6
         '
         'cnOrderId
@@ -291,7 +291,7 @@ Partial Class frmLogisticsPackingList
         'lblOrdersToEnvoyDate
         '
         Me.lblOrdersToEnvoyDate.AutoSize = True
-        Me.lblOrdersToEnvoyDate.Location = New System.Drawing.Point(12, 71)
+        Me.lblOrdersToEnvoyDate.Location = New System.Drawing.Point(12, 19)
         Me.lblOrdersToEnvoyDate.Name = "lblOrdersToEnvoyDate"
         Me.lblOrdersToEnvoyDate.Size = New System.Drawing.Size(167, 13)
         Me.lblOrdersToEnvoyDate.TabIndex = 6
@@ -301,7 +301,7 @@ Partial Class frmLogisticsPackingList
         '
         Me.dtpPackingList.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpPackingList.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpPackingList.Location = New System.Drawing.Point(525, 64)
+        Me.dtpPackingList.Location = New System.Drawing.Point(524, 12)
         Me.dtpPackingList.Name = "dtpPackingList"
         Me.dtpPackingList.Size = New System.Drawing.Size(98, 20)
         Me.dtpPackingList.TabIndex = 5
@@ -310,7 +310,7 @@ Partial Class frmLogisticsPackingList
         '
         Me.lblPickDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPickDate.AutoSize = True
-        Me.lblPickDate.Location = New System.Drawing.Point(467, 67)
+        Me.lblPickDate.Location = New System.Drawing.Point(466, 15)
         Me.lblPickDate.Name = "lblPickDate"
         Me.lblPickDate.Size = New System.Drawing.Size(52, 13)
         Me.lblPickDate.TabIndex = 9
@@ -319,7 +319,7 @@ Partial Class frmLogisticsPackingList
         'btnMarkUnsent
         '
         Me.btnMarkUnsent.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnMarkUnsent.Location = New System.Drawing.Point(12, 462)
+        Me.btnMarkUnsent.Location = New System.Drawing.Point(12, 413)
         Me.btnMarkUnsent.Name = "btnMarkUnsent"
         Me.btnMarkUnsent.Size = New System.Drawing.Size(104, 23)
         Me.btnMarkUnsent.TabIndex = 7
@@ -341,7 +341,7 @@ Partial Class frmLogisticsPackingList
         Me.grpPerformOnOrders.Controls.Add(Me.btnSetStatus)
         Me.grpPerformOnOrders.Controls.Add(Me.cboStatusSetOrder)
         Me.grpPerformOnOrders.Controls.Add(Me.btnPrintPackingList)
-        Me.grpPerformOnOrders.Location = New System.Drawing.Point(304, 444)
+        Me.grpPerformOnOrders.Location = New System.Drawing.Point(303, 395)
         Me.grpPerformOnOrders.Name = "grpPerformOnOrders"
         Me.grpPerformOnOrders.Size = New System.Drawing.Size(319, 54)
         Me.grpPerformOnOrders.TabIndex = 8
@@ -370,22 +370,16 @@ Partial Class frmLogisticsPackingList
         'frmLogisticsPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(635, 557)
+        Me.ClientSize = New System.Drawing.Size(634, 511)
         Me.Controls.Add(Me.grpPerformOnOrders)
         Me.Controls.Add(Me.btnMarkUnsent)
         Me.Controls.Add(Me.lblPickDate)
         Me.Controls.Add(Me.dtpPackingList)
         Me.Controls.Add(Me.lblOrdersToEnvoyDate)
         Me.Controls.Add(Me.dtgPackingList)
-        Me.MinimumSize = New System.Drawing.Size(651, 596)
+        Me.MinimumSize = New System.Drawing.Size(650, 550)
         Me.Name = "frmLogisticsPackingList"
         Me.Text = "Pakkseddel"
-        Me.Controls.SetChildIndex(Me.dtgPackingList, 0)
-        Me.Controls.SetChildIndex(Me.lblOrdersToEnvoyDate, 0)
-        Me.Controls.SetChildIndex(Me.dtpPackingList, 0)
-        Me.Controls.SetChildIndex(Me.lblPickDate, 0)
-        Me.Controls.SetChildIndex(Me.btnMarkUnsent, 0)
-        Me.Controls.SetChildIndex(Me.grpPerformOnOrders, 0)
         CType(Me.dtgPackingList, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpPerformOnOrders.ResumeLayout(False)
