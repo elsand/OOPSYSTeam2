@@ -527,6 +527,7 @@ Public Class frmAdminCakes
             Dim delCake = DBM.Instance.Cakes.Find(delIdx)
             delCake.deleted = Date.Today
             delCake.published = False
+            delCake.name &= " (slettet)"
 
             Try
                 DBM.Instance.SaveChanges()
@@ -556,7 +557,7 @@ Public Class frmAdminCakes
         If dtgCake.Rows(e.RowIndex).Cells(DeletedDataGridViewTextBoxColumn.Index).Value <= Date.Today And _
             dtgCake.Rows(e.RowIndex).Cells(DeletedDataGridViewTextBoxColumn.Index).Value > CDate("2000-01-01") Then
             dtgCake.Rows(e.RowIndex).DefaultCellStyle.ForeColor = Color.Red
-            dtgCake.Rows(e.RowIndex).DefaultCellStyle.Font = New Font(Font, FontStyle.Strikeout)
+            dtgCake.Rows(e.RowIndex).DefaultCellStyle.BackColor = Color.LightYellow
         End If
 
         If dtgCake.Columns(e.ColumnIndex).Name = "price" Then
@@ -566,6 +567,7 @@ Public Class frmAdminCakes
                     e.Value = Format(cakePriceArray(i), "0.00")
                 End If
             Next
+            dtgCake.Columns(price.Index).AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells
         End If
     End Sub
 
