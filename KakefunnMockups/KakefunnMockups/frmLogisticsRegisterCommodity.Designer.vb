@@ -227,11 +227,11 @@ Partial Class frmLogisticsRegisterCommodity
         '
         Me.lblShowBatchExpectedInStock.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblShowBatchExpectedInStock.AutoSize = True
-        Me.lblShowBatchExpectedInStock.Location = New System.Drawing.Point(464, 17)
+        Me.lblShowBatchExpectedInStock.Location = New System.Drawing.Point(435, 17)
         Me.lblShowBatchExpectedInStock.Name = "lblShowBatchExpectedInStock"
-        Me.lblShowBatchExpectedInStock.Size = New System.Drawing.Size(127, 13)
+        Me.lblShowBatchExpectedInStock.Size = New System.Drawing.Size(156, 13)
         Me.lblShowBatchExpectedInStock.TabIndex = 21
-        Me.lblShowBatchExpectedInStock.Text = "Vis partier ventet på lager"
+        Me.lblShowBatchExpectedInStock.Text = "Vis partier ventet på lager innen"
         '
         'dtpBatchExpectedInStock
         '
@@ -264,7 +264,7 @@ Partial Class frmLogisticsRegisterCommodity
         'frmLogisticsRegisterCommodity
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(714, 511)
+        Me.ClientSize = New System.Drawing.Size(714, 512)
         Me.Controls.Add(Me.btnShowAll)
         Me.Controls.Add(Me.numSearchBatch)
         Me.Controls.Add(Me.dtpBatchExpectedInStock)

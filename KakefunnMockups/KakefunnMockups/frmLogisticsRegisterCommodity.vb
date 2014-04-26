@@ -1,5 +1,4 @@
-﻿Imports System.Collections.Specialized
-Imports System.Configuration
+﻿Imports System.Configuration
 
 ''' <summary>
 ''' Register received goods in warehouse. There has to be an order in the system.
@@ -20,7 +19,7 @@ Public Class frmLogisticsRegisterCommodity
     Private Sub btnSearchBatch_Click(sender As Object, e As EventArgs) Handles btnSearchBatch.Click
         If numSearchBatch.Text IsNot "" Then
             BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
-                                            b.id = numSearchBatch.Text)
+                                            b.id = numSearchBatch.Text And b.deleted Is Nothing)
         End If
     End Sub
 
@@ -31,21 +30,24 @@ Public Class frmLogisticsRegisterCommodity
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub frmLogisticsRegisterCommodity_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'Gets records from the database and displays them in the dgv.
-        DBM.Instance.Batches.Load()
-        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
-                                        Not b.registered.HasValue)
-
-        'Presets expire days in fifteen days.
-        dtpExpireDate.Text = DateTime.Today.AddDays(15)
-
         'Gets settings from config-file and sets number of inventory rows and shelves.
         'Settings can be changed in the Kakefunn.exe.config file in the program folder.
-        Dim appSettings As NameValueCollection
-        appSettings = ConfigurationManager.AppSettings
-        rowMax = appSettings.Item("rowMax")
-        shelfMax = appSettings.Item("shelfMax")
+        With ConfigurationManager.AppSettings
+            'Presets expire days in fifteen days.
+            dtpExpireDate.Text = DateTime.Today.AddDays(Integer.Parse(.Item("sale.order.expiryGraceDays")))
+
+            rowMax = .Item("logistics.rowMax")
+            shelfMax = .Item("logistics.shelfMax")
+        End With
+
     End Sub
+
+    Protected Overrides Sub OnFormGetsForeground()
+        DBM.Instance.Batches.Load()
+        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) _
+                                            Not b.registered.HasValue And b.deleted Is Nothing).ToList()
+    End Sub
+
 
     ''' <summary>
     ''' Adds ingredient name to datagridview.
@@ -71,19 +73,19 @@ Public Class frmLogisticsRegisterCommodity
     ''' <remarks></remarks>
     Private Sub btnShowAll_Click(sender As Object, e As EventArgs) Handles btnShowAll.Click
         BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
-                                        Not b.registered.HasValue)
+                                        Not b.registered.HasValue And b.deleted Is Nothing)
     End Sub
 
     ''' <summary>
-    ''' On change of selected date shows batches with ETA on selected date.
+    ''' On change of selected date shows batches with ETA before or on selected date.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtpBatchExpectedInStock_ValueChanged(sender As Object, e As EventArgs) Handles dtpBatchExpectedInStock.ValueChanged
         BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList().Where(Function(b) _
-                                        b.expected = dtpBatchExpectedInStock.Value.ToShortDateString _
-                                        And Not b.registered.HasValue)
+                                        b.expected <= dtpBatchExpectedInStock.Value.ToShortDateString _
+                                        And Not b.registered.HasValue And b.deleted Is Nothing)
     End Sub
 
     ''' <summary>

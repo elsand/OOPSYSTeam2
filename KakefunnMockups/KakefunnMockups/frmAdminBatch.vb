@@ -311,7 +311,7 @@ Public Class frmAdminBatch
         KakefunnEvent.saveSystemEvent("Batches", "Deleted batch #" & b.id)
 
         ' If the batch we deleted is the one we were editing, start a new one
-        If currentRecord.id = b.id Then
+        If currentRecord IsNot Nothing AndAlso currentRecord.id = b.id Then
             NewBatch()
         End If
 
