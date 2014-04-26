@@ -14,11 +14,23 @@ Public Class frmSaleOrder
     ' Flag used to trigger logic specific to either saved or new orders
     Private isNewRecord = False
     ' Holds the order currently being edited, either new or existing
-    Private currentRecord As Order = DBM.Instance.Orders.Create(Of Order)()
+    Private currentRecord As Order
     ' Flag to tell event handlers if we're currently loading a record
     Private isLoadingOrder = False
     ' Holds which form we are to return to. Default to frmSaleMain
     Public returnToForm As Form
+
+    ''' <summary>
+    ''' We need to init currentRecord before anything, since things rely on this being an instance before form_load
+    ''' The designer breaks if we set this in the property directly, so we have to do it in a constructor
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub New()
+        currentRecord = DBM.Instance.Orders.Create(Of Order)()
+
+        ' This call is required by the designer.
+        InitializeComponent()
+    End Sub
 
     ''' <summary>
     ''' Loads an exisiting order and populates all the fields
@@ -108,7 +120,6 @@ Public Class frmSaleOrder
     ''' <remarks></remarks>
     Public Sub NewOrder()
 
-        isDirty = False
         isNewRecord = True
         currentRecord = DBM.Instance.Orders.Create(Of Order)()
         currentRecord.deliveryDate = Date.Today
@@ -117,6 +128,7 @@ Public Class frmSaleOrder
         OrderLinesBindingSource.DataSource = currentRecord.OrderLines.ToBindingList
         ToggleSubscriptionGroup()
         UpdateTotalPrice()
+        isDirty = False
 
     End Sub
 
@@ -515,9 +527,9 @@ Public Class frmSaleOrder
         DBM.Instance.Customers.Load()
         CustomerBindingSource.DataSource = DBM.Instance.Customers.Local.ToBindingList()
         AddressHelper.SetupAutoCityFill(txtZip, lblCity)
-        FormHelper.SetupDirtyTracking(Me)
         SetupIngredientOrCakeSelection()
         SetupDeliveryTypeDropdown()
+        FormHelper.SetupDirtyTracking(Me)
         ' Start with a new order
         NewOrder()
     End Sub

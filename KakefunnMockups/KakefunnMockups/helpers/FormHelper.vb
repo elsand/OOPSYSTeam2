@@ -1,54 +1,21 @@
 ﻿Public Class FormHelper
-    Public Shared Sub SetupDirtyTracking(frm As frmSuperBase)
-        For Each c As Control In frm.Controls
+    Public Shared Sub SetupDirtyTracking(ctrl As Control)
+        For Each c As Control In ctrl.Controls
             If c.Tag <> "noDirty" Then
-                If TypeOf c Is TextBox Then
-                    AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
+                If c.HasChildren Then
+                    SetupDirtyTracking(c)
+                ElseIf TypeOf c Is TextBox Then
+                    AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) FormHelper.EnableDirtyTrackingOnContainingForm(ctrl)
                 ElseIf TypeOf c Is CheckBox Then
-                    AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                    AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) FormHelper.EnableDirtyTrackingOnContainingForm(ctrl)
                 ElseIf TypeOf c Is ComboBox Then
-                    AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
+                    AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) FormHelper.EnableDirtyTrackingOnContainingForm(ctrl)
                 ElseIf TypeOf c Is RadioButton Then
-                    AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
+                    AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) FormHelper.EnableDirtyTrackingOnContainingForm(ctrl)
                 ElseIf TypeOf c Is DataGridView Then
-                    AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
+                    AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) FormHelper.EnableDirtyTrackingOnContainingForm(ctrl)
                 End If
             End If
-        Next
-
-        For Each gb As GroupBox In frm.Controls.OfType(Of GroupBox)()
-            For Each c As Control In gb.Controls.OfType(Of Control)()
-                If c.Tag <> "noDirty" Then
-                    If TypeOf c Is TextBox Then
-                        AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
-                    ElseIf TypeOf c Is CheckBox Then
-                        AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
-                    ElseIf TypeOf c Is ComboBox Then
-                        AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
-                    ElseIf TypeOf c Is RadioButton Then
-                        AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
-                    ElseIf TypeOf c Is DataGridView Then
-                        AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
-                    End If
-                End If
-            Next
-            For Each gb2 As GroupBox In gb.Controls.OfType(Of GroupBox)()
-                For Each c As Control In gb2.Controls.OfType(Of Control)()
-                    If c.Tag <> "noDirty" Then
-                        If TypeOf c Is TextBox Then
-                            AddHandler CType(c, TextBox).TextChanged, Sub(s, ev) frm.isDirty = True
-                        ElseIf TypeOf c Is CheckBox Then
-                            AddHandler CType(c, CheckBox).CheckedChanged, Sub(s, ev) frm.isDirty = True
-                        ElseIf TypeOf c Is ComboBox Then
-                            AddHandler CType(c, ComboBox).SelectedIndexChanged, Sub(s, ev) frm.isDirty = True
-                        ElseIf TypeOf c Is RadioButton Then
-                            AddHandler CType(c, RadioButton).CheckedChanged, Sub(s, ev) frm.isDirty = True
-                        ElseIf TypeOf c Is DataGridView Then
-                            AddHandler CType(c, DataGridView).CellValueChanged, Sub(s, ev) frm.isDirty = True
-                        End If
-                    End If
-                Next
-            Next
         Next
     End Sub
 
@@ -75,4 +42,14 @@
         End If
         Return False
     End Function
+
+    Public Shared Sub EnableDirtyTrackingOnContainingForm(ctrl As Control)
+        Dim p As Control = ctrl
+        If Not p.GetType().IsSubclassOf(frmSuperBase.GetType()) Then
+            Do
+                p = p.Parent
+            Loop Until p.GetType().IsSubclassOf(frmSuperBase.GetType())
+        End If
+        CType(p, frmSuperBase).isDirty = True
+    End Sub
 End Class
