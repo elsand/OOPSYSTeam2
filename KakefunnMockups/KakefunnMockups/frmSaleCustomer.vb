@@ -7,7 +7,7 @@ Public Class frmSaleCustomer
     ' Flag used to trigger logic specific to either saved or new customers
     Private isNewRecord = False
     ' Holds the customer currently being edited, either new or existing
-    Private currentRecord As Customer = DBM.Instance.Customers.Create(Of Customer)()
+    Private currentRecord As New Customer
     ' Flag to tell event handlers if we're currently loading a record
     Private isLoadingCustomer = False
     ' Holds which form we are to return to. Default to frmSaleMain

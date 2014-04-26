@@ -14,23 +14,11 @@ Public Class frmSaleOrder
     ' Flag used to trigger logic specific to either saved or new orders
     Private isNewRecord = False
     ' Holds the order currently being edited, either new or existing
-    Private currentRecord As Order
+    Private currentRecord As New Order
     ' Flag to tell event handlers if we're currently loading a record
     Private isLoadingOrder = False
     ' Holds which form we are to return to. Default to frmSaleMain
     Public returnToForm As Form
-
-    ''' <summary>
-    ''' We need to init currentRecord before anything, since things rely on this being an instance before form_load
-    ''' The designer breaks if we set this in the property directly, so we have to do it in a constructor
-    ''' </summary>
-    ''' <remarks></remarks>
-    Public Sub New()
-        currentRecord = DBM.Instance.Orders.Create(Of Order)()
-
-        ' This call is required by the designer.
-        InitializeComponent()
-    End Sub
 
     ''' <summary>
     ''' Loads an exisiting order and populates all the fields
