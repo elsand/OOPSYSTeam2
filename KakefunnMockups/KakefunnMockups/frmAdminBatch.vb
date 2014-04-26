@@ -243,6 +243,10 @@ Public Class frmAdminBatch
 
         DBM.Instance.SaveChanges()
 
+        Me.clearForm()
+
+
+
         If IsNewRecord Then
             KakefunnEvent.saveSystemEvent("Batches", "Created new batch #" & b.id)
         Else
@@ -328,12 +332,28 @@ Public Class frmAdminBatch
         Dim r As HtmlReport = New HtmlReport() With {.Title = "Bestillingsliste"}
         r.Init()
         r.StartTable({"Bestilt i KF", "Ingrediens", "Antall", "Innkjøpspris"})
+        Try
+            For Each b As Batch In batchesToOrder
+                r.AddRow({b.ordered, b.Ingredient.name, b.unitCount, FormatHelper.Currency(b.unitPurchasingPrice)})
+            Next
+        Catch ex As Exception
+            MsgBox("Ingenting å skrive ut")
 
-        For Each b As Batch In batchesToOrder
-            r.AddRow({b.ordered, b.Ingredient.name, b.unitCount, FormatHelper.Currency(b.unitPurchasingPrice)})
-        Next
+            Exit Sub
+
+        End Try
+        
 
         r.OpenInBrowser()
+
+    End Sub
+
+    Private Sub clearForm()
+        Me.txtIngredient.Text = ""
+        Me.txtNumUnits.Text = ""
+        Me.txtPurchasingPrice.Text = ""
+        Me.dtpExpected.Value = Date.Now
+
 
     End Sub
 End Class
