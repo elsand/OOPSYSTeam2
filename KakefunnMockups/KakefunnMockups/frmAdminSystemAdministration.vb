@@ -178,7 +178,7 @@
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub resetForm()
-        For Each c As Control In Me.Controls
+        For Each c As Control In grpSystemAdministration.Controls
             Select Case c.GetType().Name
                 Case "TextBox"
                     CType(c, TextBox).Text = ""
@@ -191,7 +191,8 @@
     End Sub
 
     Private Sub btnNewUser_Click(sender As Object, e As EventArgs) Handles btnNewUser.Click
-        If IsDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
+        MsgBox(isDirty)
+        If isDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
         End If
 
