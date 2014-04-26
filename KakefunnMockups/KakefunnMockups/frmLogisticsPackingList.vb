@@ -15,7 +15,10 @@
 
 
     End Sub
-
+    ''' <summary>
+    ''' Loads the orders and binds them to the datagrid view.
+    ''' </summary>
+    ''' <remarks>Can be called to reload the form. </remarks>
     Private Sub start()
 
         'sets the correct date  on label and datetime picker.. 
@@ -58,8 +61,15 @@
 
 
 
-    
+    ''' <summary>
+    ''' When formatting a cell in the dgv , this method is called. 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgPackingList_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgPackingList.CellFormatting
+        Console.WriteLine(sender.ToString & e.ToString)
+
 
         If e.Value IsNot Nothing Then
             Select Case dtgPackingList.Columns(e.ColumnIndex).Name
@@ -87,14 +97,20 @@
                 Case "cnStatus" 'add orderID to the dgv
                    
                         e.Value = "Sendt"
-                   
+                Case "cnDeliveryMethod"
+                    Dim dm = CType(e.Value, DeliveryMethod)
+
+                    e.Value = dm.name
+
+
 
 
             End Select
         End If
 
         If e.Value Is Nothing Then
-            If e.ColumnIndex = 4 Then
+
+            If e.ColumnIndex = 6 Then
                 e.Value = "Ikke sendt"
             End If
         End If
@@ -119,33 +135,50 @@
 
     Private Sub btnPrintPackingList_Click(sender As Object, e As EventArgs) Handles btnPrintPackingList.Click
 
+        Dim l = New List(Of Order)
+
 
         For Each r As DataGridViewRow In dtgPackingList.Rows
             If r.Selected Then
-                PackingListHelper.CreatePackingList(r.DataBoundItem)
+                l.Add(r.DataBoundItem)
+
+
 
             End If
 
         Next
 
+        Dim pklh = New PackingListHelper()
+        pklh.CreatePackingLists(l)
+
+
 
 
     End Sub
-
+    ''' <summary>
+    ''' Updates current marked rows to status selected in combobox. Handles the button event
+    ''' </summary>
+    ''' <param name="sender">The sender button</param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnSetStatus_Click(sender As Object, e As EventArgs) Handles btnSetStatus.Click
+        Dim sc = "UpdateStatus  on order: "
+        Dim s = ""
         For Each r As DataGridViewRow In dtgPackingList.Rows
-
+           
             If r.Selected Then
                 Dim o As Order
                 o = r.DataBoundItem
+                sc &= o.id & ","
                 If cboStatusSetOrder.SelectedIndex = 0 Then
-                  
+
                     o.sent = DateTime.Now
+                    s = "sendt"
 
                 Else
 
                     o.sent = Nothing
-
+                    s = "Not sendt"
 
                 End If
 
@@ -153,6 +186,10 @@
             End If
         Next
         DBM.Instance.SaveChanges()
+
+        KakefunnEvent.saveSystemEvent("updateOrderStatus", sc & s)
+
+
         start()
 
 

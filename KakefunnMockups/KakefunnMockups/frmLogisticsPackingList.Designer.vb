@@ -25,6 +25,8 @@ Partial Class frmLogisticsPackingList
         Me.cnDeliveryTo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cnAddress = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cnZip = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnDeliveryDate = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cnDeliveryMethod = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cnStatus = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DeliveryFirstNameDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -71,14 +73,14 @@ Partial Class frmLogisticsPackingList
         Me.dtgPackingList.AutoGenerateColumns = False
         Me.dtgPackingList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
         Me.dtgPackingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dtgPackingList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cnOrderId, Me.cnDeliveryTo, Me.cnAddress, Me.cnZip, Me.cnStatus, Me.IdDataGridViewTextBoxColumn, Me.DeliveryFirstNameDataGridViewTextBoxColumn, Me.DeliveryLastNameDataGridViewTextBoxColumn, Me.DeliveryPhoneDataGridViewTextBoxColumn, Me.DeliveryEmailDataGridViewTextBoxColumn, Me.DeliveryDateDataGridViewTextBoxColumn, Me.SubscriptionIdDataGridViewTextBoxColumn, Me.ShippingPriceDataGridViewTextBoxColumn, Me.DiscountPercentageDataGridViewTextBoxColumn, Me.DiscountAbsoluteDataGridViewTextBoxColumn, Me.NoteDataGridViewTextBoxColumn, Me.IsPaidDataGridViewCheckBoxColumn, Me.SentDataGridViewTextBoxColumn, Me.ExportedDataGridViewTextBoxColumn, Me.CreatedDataGridViewTextBoxColumn, Me.ModifiedDataGridViewTextBoxColumn, Me.IsSubscriptionOrderDataGridViewCheckBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.CustomerDataGridViewTextBoxColumn, Me.DeliveryMethodDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn})
+        Me.dtgPackingList.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.cnOrderId, Me.cnDeliveryTo, Me.cnAddress, Me.cnZip, Me.cnDeliveryDate, Me.cnDeliveryMethod, Me.cnStatus, Me.IdDataGridViewTextBoxColumn, Me.DeliveryFirstNameDataGridViewTextBoxColumn, Me.DeliveryLastNameDataGridViewTextBoxColumn, Me.DeliveryPhoneDataGridViewTextBoxColumn, Me.DeliveryEmailDataGridViewTextBoxColumn, Me.DeliveryDateDataGridViewTextBoxColumn, Me.SubscriptionIdDataGridViewTextBoxColumn, Me.ShippingPriceDataGridViewTextBoxColumn, Me.DiscountPercentageDataGridViewTextBoxColumn, Me.DiscountAbsoluteDataGridViewTextBoxColumn, Me.NoteDataGridViewTextBoxColumn, Me.IsPaidDataGridViewCheckBoxColumn, Me.SentDataGridViewTextBoxColumn, Me.ExportedDataGridViewTextBoxColumn, Me.CreatedDataGridViewTextBoxColumn, Me.ModifiedDataGridViewTextBoxColumn, Me.IsSubscriptionOrderDataGridViewCheckBoxColumn, Me.AddressDataGridViewTextBoxColumn, Me.CustomerDataGridViewTextBoxColumn, Me.DeliveryMethodDataGridViewTextBoxColumn, Me.EmployeeDataGridViewTextBoxColumn})
         Me.dtgPackingList.DataSource = Me.OrderBindingSource
         Me.dtgPackingList.Location = New System.Drawing.Point(12, 38)
         Me.dtgPackingList.Name = "dtgPackingList"
         Me.dtgPackingList.ReadOnly = True
         Me.dtgPackingList.RowHeadersVisible = False
         Me.dtgPackingList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.dtgPackingList.Size = New System.Drawing.Size(610, 351)
+        Me.dtgPackingList.Size = New System.Drawing.Size(769, 351)
         Me.dtgPackingList.TabIndex = 6
         '
         'cnOrderId
@@ -108,6 +110,20 @@ Partial Class frmLogisticsPackingList
         Me.cnZip.HeaderText = "Postnr/sted"
         Me.cnZip.Name = "cnZip"
         Me.cnZip.ReadOnly = True
+        '
+        'cnDeliveryDate
+        '
+        Me.cnDeliveryDate.DataPropertyName = "deliveryDate"
+        Me.cnDeliveryDate.HeaderText = "Leveringdato"
+        Me.cnDeliveryDate.Name = "cnDeliveryDate"
+        Me.cnDeliveryDate.ReadOnly = True
+        '
+        'cnDeliveryMethod
+        '
+        Me.cnDeliveryMethod.DataPropertyName = "DeliveryMethod"
+        Me.cnDeliveryMethod.HeaderText = "Leveringsmetode"
+        Me.cnDeliveryMethod.Name = "cnDeliveryMethod"
+        Me.cnDeliveryMethod.ReadOnly = True
         '
         'cnStatus
         '
@@ -301,7 +317,7 @@ Partial Class frmLogisticsPackingList
         '
         Me.dtpPackingList.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.dtpPackingList.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtpPackingList.Location = New System.Drawing.Point(524, 12)
+        Me.dtpPackingList.Location = New System.Drawing.Point(683, 12)
         Me.dtpPackingList.Name = "dtpPackingList"
         Me.dtpPackingList.Size = New System.Drawing.Size(98, 20)
         Me.dtpPackingList.TabIndex = 5
@@ -310,7 +326,7 @@ Partial Class frmLogisticsPackingList
         '
         Me.lblPickDate.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.lblPickDate.AutoSize = True
-        Me.lblPickDate.Location = New System.Drawing.Point(466, 15)
+        Me.lblPickDate.Location = New System.Drawing.Point(625, 15)
         Me.lblPickDate.Name = "lblPickDate"
         Me.lblPickDate.Size = New System.Drawing.Size(52, 13)
         Me.lblPickDate.TabIndex = 9
@@ -341,7 +357,7 @@ Partial Class frmLogisticsPackingList
         Me.grpPerformOnOrders.Controls.Add(Me.btnSetStatus)
         Me.grpPerformOnOrders.Controls.Add(Me.cboStatusSetOrder)
         Me.grpPerformOnOrders.Controls.Add(Me.btnPrintPackingList)
-        Me.grpPerformOnOrders.Location = New System.Drawing.Point(303, 395)
+        Me.grpPerformOnOrders.Location = New System.Drawing.Point(462, 395)
         Me.grpPerformOnOrders.Name = "grpPerformOnOrders"
         Me.grpPerformOnOrders.Size = New System.Drawing.Size(319, 54)
         Me.grpPerformOnOrders.TabIndex = 8
@@ -370,7 +386,7 @@ Partial Class frmLogisticsPackingList
         'frmLogisticsPackingList
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(634, 511)
+        Me.ClientSize = New System.Drawing.Size(793, 511)
         Me.Controls.Add(Me.grpPerformOnOrders)
         Me.Controls.Add(Me.btnMarkUnsent)
         Me.Controls.Add(Me.lblPickDate)
@@ -401,6 +417,8 @@ Partial Class frmLogisticsPackingList
     Friend WithEvents cnDeliveryTo As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cnAddress As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cnZip As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnDeliveryDate As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents cnDeliveryMethod As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents cnStatus As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents IdDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents DeliveryFirstNameDataGridViewTextBoxColumn As System.Windows.Forms.DataGridViewTextBoxColumn

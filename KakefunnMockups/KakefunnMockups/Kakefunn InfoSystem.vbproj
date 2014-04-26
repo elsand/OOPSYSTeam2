@@ -131,6 +131,12 @@
     <Compile Include="frmAdminTabContainer.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmDialogPackingListPreview.Designer.vb">
+      <DependentUpon>frmDialogPackingListPreview.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmDialogPackingListPreview.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmDialogLogisticsExpired.Designer.vb">
       <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
     </Compile>
@@ -479,6 +485,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmDialogAdminIngredientDetails.resx">
       <DependentUpon>frmDialogAdminIngredientDetails.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDialogPackingListPreview.resx">
+      <DependentUpon>frmDialogPackingListPreview.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDialogLogisticsExpired.resx">
       <DependentUpon>frmDialogLogisticsExpired.vb</DependentUpon>
