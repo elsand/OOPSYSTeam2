@@ -17,7 +17,7 @@ Public Class PackingListHelper
 
 
     ''' <summary>
-    ''' Creates a set of packinglists from all orders in the argument 
+    ''' Creates a set of packinglists from all orders in the argument (list of orders) 
     ''' </summary>
     ''' <param name="orders">Lost of Kakefunn.Orders</param>
     ''' <returns></returns>
@@ -147,7 +147,10 @@ Public Class PackingListHelper
 
     End Sub
 
-   
+    ''' <summary>
+    ''' Creates the closing tags of the packinglist document
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub endPackinglist()
         Me.Footer = "</body></html>"
     End Sub
@@ -157,7 +160,10 @@ Public Class PackingListHelper
 
 
 
-
+    ''' <summary>
+    ''' Constructor
+    ''' </summary>
+    ''' <remarks></remarks>
 
     Public Sub New()
         Me.init()

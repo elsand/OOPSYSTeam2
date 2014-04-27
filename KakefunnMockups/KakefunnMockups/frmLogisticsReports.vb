@@ -9,6 +9,10 @@
     End Sub
 
 
+    ''' <summary>
+    ''' Loads the batches and binds them to the dgv
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub start()
 
         'Loads the batches
@@ -24,11 +28,18 @@
             dtgExpiredIngredients.Refresh()
 
         Catch ex As Exception
+            MsgBox("En eller flere datoer har blitt satt til null i tabellen:  Kakefunn.batch. Gi beskjed til administrator om dette. ")
             System.Console.WriteLine("##En operasjon mislyktes: Trolig er dette en dato i batch som er null.")
             System.Console.WriteLine("## Feilmelding:" & ex.ToString)
         End Try
     End Sub
 
+    ''' <summary>
+    ''' Selecting the right value for the cell when displaying the dgv
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgExpiredIngredients_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgExpiredIngredients.CellFormatting
         If e.Value IsNot Nothing Then
             Select Case dtgExpiredIngredients.Columns(e.ColumnIndex).Name
@@ -79,6 +90,12 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Selects all rows int the dgv
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnCheckAll_Click(sender As Object, e As EventArgs) Handles btnCheckAll.Click
 
         For Each r As DataGridViewRow In dtgExpiredIngredients.Rows
@@ -91,6 +108,12 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Deletes the selected rows from available batches. 
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btbDeleteCheckedIngredientsInStock_Click(sender As Object, e As EventArgs) Handles btbDeleteCheckedIngredientsInStock.Click
         Dim ingredientIDs As String = ""
 
@@ -112,14 +135,32 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Creates and displays a report of the checked ingredients
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnPrintExpiredIngredients_Click(sender As Object, e As EventArgs) Handles btnPrintExpiredIngredients.Click
         frmDialogExpiredBatches.ShowDialog()
 
     End Sub
 
+
+    ''' <summary>
+    ''' When clicking a cell the whole row gets selected. Ignores column select.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub dtgExpiredIngredients_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgExpiredIngredients.CellClick
 
-        dtgExpiredIngredients.Rows(e.RowIndex).Selected = True
+        Try
+            dtgExpiredIngredients.Rows(e.RowIndex).Selected = True
+        Catch ex As Exception
+            System.Console.WriteLine(e)
+        End Try
+
 
 
     End Sub
