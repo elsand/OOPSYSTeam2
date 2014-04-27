@@ -98,6 +98,4 @@ Public Class frmSaleMain
         Dim customer As Customer = CType(dgvCustomer.Rows(e.RowIndex).DataBoundItem, Customer)
         CustomerHelper.EditCustomer(customer)
     End Sub
-
-
 End Class
