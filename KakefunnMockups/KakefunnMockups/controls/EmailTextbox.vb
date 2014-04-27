@@ -8,12 +8,13 @@ Public Class EmailTextBox
         If Not String.IsNullOrEmpty(Me.Text) Then
             If Me.EmailAddressChecker(Me.Text) Then
                 Me.BackColor = Color.FromArgb(200, 255, 200)
-                frmLogin.btnDoLogin.Enabled = True
+
             Else
 
                 Me.BackColor = Color.FromArgb(255, 200, 200)
-                frmLogin.btnDoLogin.Enabled = False
+
                 MsgBox("Skriv inn en gyldig epostadresse.")
+                Me.Focus()
             End If
         End If
 
@@ -21,7 +22,7 @@ Public Class EmailTextBox
 
     End Sub
 
-    Function EmailAddressChecker(ByVal emailAddress As String) As Boolean
+    Private Function EmailAddressChecker(ByVal emailAddress As String) As Boolean
         Dim r As Regex = Nothing
 
         Dim regExPattern As String = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
