@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.Reporting.WinForms
 
-
+'Redundant? frmLogisticsPackingList calls the packing list helper..
 Public Class frmDialogPackingListPreview
 
 
