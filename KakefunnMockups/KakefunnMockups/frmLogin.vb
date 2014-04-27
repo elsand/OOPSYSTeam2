@@ -75,4 +75,10 @@ Public Class frmLogin
     Private Sub frmLogin_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
         Application.Exit()
     End Sub
+
+    
+    Private Sub frmLogin_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        txtEmail = New EmailTextBox()
+
+    End Sub
 End Class

@@ -16,123 +16,12 @@ Public Class PackingListHelper
 
 
 
-    Public Shared Sub CreatePackingList(ByVal o As Order)
-
-
-
-        Dim css = "<style type='text/css'>.main{border:1px solid #aaa; width:200mm; height:280mm; margin-left:auto;margin-right:auto}.table{display: table; margin-bottom:10mm}.row{display: table-row}.cell{display: table-cell; padding: 4mm 10mm 2mm 10mm}</style>"
-                  
-
-        Dim html = "<html >" & _
-                    "<head>" & _
-                    "<title>Pakkseddel</title>" & _
-                    "<meta charset='UTF-8'>" & css & _
-                    "<meta name='viewport' content='width=device-width, initial-scale=1.0'>" & _
-                    "</head>" & _
-                    "<body onload='window.print()'>"
-
-        'add the ordervalues 
-
-        html = html & "<div class='main'><h2>Pakkseddel</h2>" & _
-          "<div class='table'> " & _
-          "<div style='display: table-row'>" & _
-              "<div class='cell'> Ordre: " & o.id & _
-              "</div>" & _
-               "<div class='cell'> Ordredato: " & Format(o.created, "yyyy-MM-dd") & _
-              "</div>" & _
-              "<div class='cell'> " & _
-              "</div>" & _
-               "<div class='cell'> " & _
-              "</div>" & _
-               "<div class='cell'> Leveres til: <br>" & o.Customer.firstName & " " & o.Customer.lastName & "<br>" & o.Address.address1 & "<br>" & o.Address.Zip.zip1.ToString("D4") & " " & o.Address.Zip.city & _
-              "</div>" & _
-              "</div>" & _
-               "<div style='display: table-row'>" & _
-              "<div class='cell'>" & _
-              "</div>" & _
-               "<div class='cell'>" & _
-              "</div>" & _
-               "<div class='cell'>" & _
-              "</div>" & _
-               "<div class='cell'>" & _
-              "</div>" & _
-              "<div class='cell'>Selger: <br>" & NameHelper.getFullName(o.Employee) & _
-              "</div>" & _
-              "</div>" & _
-              "</div><hr>"
-
-
-        ' add the orderlines
-
-        html = html & " <div class='table'>"
-
-        For Each ol As OrderLine In o.OrderLines
-            html = html & "<div style='display:table-row'>" & _
-                          "<div class='cell'>" & ol.Ingredient.name & "</div> " & _
-                          "<div class='cell'>" & ol.amount & "</div> " & _
-                          "<div class='cell'>" & ol.Ingredient.Unit.name & "</div> " & _
-                          "<div class='cell'>" & IngredientHelper.getIngredientLocation(ol) & "</div> " & _
-                          "<div class='cell'><input type='checkbox'/></div> " & _
-                          "</div>"
-
-
-
-        Next
-        html = html & "</div>" 'end of table... 
-
-        html = html & _
-            "</div><div style='text-align:center'>copyright&copy;Kakefunn.no</div></body>" & _
-            "</html>"
-
-
-
-        Dim mydocpath As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
-
-        Dim filename = "pakkliste_" & o.id & ".html"
-
-        Dim path = mydocpath & "\" & filename
-
-
-
-        If File.Exists(path) = False Then
-            File.WriteAllText(path, html)
-
-
-        Else
-            MsgBox("Pakkseddelen eksisterer")
-
-        End If
-
-
-        'This does not work.. using web prowser... 
-
-        ''Process.Start(LocalSystemHelper.getDefaultBrowser(), path)
-
-        Dim u = New Uri(path)
-
-
-        frmDialogPackingListPreview.wbrPackingListView.Url = u
-
-
-        frmDialogPackingListPreview.ShowDialog()
-
-
-
-
-
-        'Dim d As New DocumentPrinter()
-
-        ' d.printDocument(path)
-
-
-
-
-
-
-
-
-    End Sub
-
+    ''' <summary>
+    ''' Creates a set of packinglists from all orders in the argument 
+    ''' </summary>
+    ''' <param name="orders">Lost of Kakefunn.Orders</param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Function CreatePackingLists(ByVal orders As List(Of Order)) As Boolean
         Dim ret = False
         For Each o As Order In orders
@@ -140,8 +29,12 @@ Public Class PackingListHelper
 
         Next
 
+        Me.endPackinglist()
+
+
         Dim html = Me.Head & Me.Body & Me.Footer
 
+        'Creates and saves the html file
         Dim mydocpath As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
 
         Dim filename = "pakklister_" & Format(DateTime.Now, "yyyy_mm_dd_h_m_s") & ".html"
@@ -152,7 +45,7 @@ Public Class PackingListHelper
 
         If File.Exists(path) = False Then
             File.WriteAllText(path, html)
-
+            ret = True
 
         Else
             MsgBox("Pakkseddelen eksisterer")
@@ -160,10 +53,7 @@ Public Class PackingListHelper
         End If
 
 
-        'This does not work.. using web prowser... 
-
-        ''Process.Start(LocalSystemHelper.getDefaultBrowser(), path)
-
+       
         Dim u = New Uri(path)
 
 
@@ -178,7 +68,10 @@ Public Class PackingListHelper
 
     End Function
 
-
+    ''' <summary>
+    ''' Creates the first part of the packing list html document. 
+    ''' </summary>
+    ''' <remarks></remarks>
     Public Sub init()
         Dim css = "<style type='text/css'>.main{border:1px solid #aaa; width:200mm; height:280mm; margin-left:auto;margin-right:auto; padding:10px} table{margin-bottom:10mm; border:collapse; width:100%}.row{display: table-row} td{padding: 4mm 10mm 2mm 10mm; vertical-align:top} footer{width:100%;text-align:center;page-break-after:always;}</style>"
 
@@ -193,6 +86,11 @@ Public Class PackingListHelper
 
     End Sub
 
+    ''' <summary>
+    ''' Creates a packing list for one order, ready to be be appended to the packinglist document
+    ''' </summary>
+    ''' <param name="o"> Object of Kakefunn.Order</param>
+    ''' <remarks></remarks>
     Public Sub createAPackingList(ByVal o As Order)
 
 
@@ -250,7 +148,9 @@ Public Class PackingListHelper
     End Sub
 
    
-
+    Private Sub endPackinglist()
+        Me.Footer = "</body></html>"
+    End Sub
 
 
 

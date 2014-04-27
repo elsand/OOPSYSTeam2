@@ -125,6 +125,9 @@
     <Compile Include="Cake.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="controls\EmailTextbox.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="frmAdminTabContainer.Designer.vb">
       <DependentUpon>frmAdminTabContainer.vb</DependentUpon>
     </Compile>
