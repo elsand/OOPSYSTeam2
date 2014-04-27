@@ -62,7 +62,7 @@ Public Class frmLogin
     ''' If we logout and we get focus again, reset the fields and set focus to the email field
     ''' </summary>
     ''' <remarks></remarks>
-    Protected Overrides Sub OnFormGetsForeground()
+    Public Overrides Sub OnFormGetsForeground()
         txtEmail.Text = ""
         txtPassword.Text = ""
         txtEmail.Focus()

@@ -3,7 +3,7 @@
     Private IsNewRecord As Boolean = True
     Private currentRecord As Employee
 
-    Protected Overrides Sub OnFormGetsForeground()
+    Public Overrides Sub OnFormGetsForeground()
         If IsNewRecord Then
             UpdateActionStatus()
         Else

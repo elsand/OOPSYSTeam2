@@ -251,6 +251,7 @@ Public Class frmSuperTabContainer
         ' any actual tab changes)
         AddHandler tabContainer.SelectedIndexChanged, AddressOf OnTabChange
         AddHandler tabContainer.VisibleChanged, AddressOf OnTabChange
+        AddHandler tabContainer.FindForm().Activated, AddressOf OnTabFormActivated
     End Sub
 
     ''' <summary>
@@ -279,4 +280,22 @@ Public Class frmSuperTabContainer
         ms.Height = ms.Height + tabControl.Top + padding + statusMain.Height
         Me.MinimumSize = ms
     End Sub
+
+    ''' <summary>
+    ''' Finds the tabcontrol on form, and fires onFormGetsForeground on the active page
+    ''' </summary>
+    ''' <param name="s"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Protected Sub OnTabFormActivated(s As Object, e As EventArgs)
+        Dim cf As Form = CType(s, Form)
+        For Each c As Control In cf.Controls
+            If TypeOf c Is TabControl Then
+                Dim f As frmSuperBase
+                f = CType(CType(c, TabControl).SelectedTab.Controls.Item(0), frmSuperBase)
+                f.OnFormGetsForeground()
+            End If
+        Next
+    End Sub
+
 End Class

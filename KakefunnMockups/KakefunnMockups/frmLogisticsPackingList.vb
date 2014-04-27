@@ -40,10 +40,6 @@
         OrderBindingSource.DataSource = DBM.Instance.Orders.Local.ToBindingList().Where(Function(o) o.deliveryDate.CompareTo(Me.deliveryDate) <= 0)
 
 
-        System.Console.WriteLine("Antall rader: " & OrderBindingSource.Count)
-
-
-
         If OrderBindingSource.Count > 1 Then
 
             dtgPackingList.Enabled = True
@@ -68,8 +64,6 @@
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub dtgPackingList_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgPackingList.CellFormatting
-        Console.WriteLine(sender.ToString & e.ToString)
-
 
         If e.Value IsNot Nothing Then
             Select Case dtgPackingList.Columns(e.ColumnIndex).Name
@@ -84,7 +78,6 @@
 
                 Case "cnAddress" 'add address
                     Dim a = CType(e.Value, Address)
-                    System.Console.WriteLine(a.ToString)
 
                     e.Value = a.address1
 
