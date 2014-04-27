@@ -69,10 +69,10 @@ Public Class PackingListHelper
     End Function
 
     ''' <summary>
-    ''' Creates the first part of the packing list html document. 
+    ''' Creates the first part of the packing list html document. Called in the constructor
     ''' </summary>
     ''' <remarks></remarks>
-    Public Sub init()
+    Private Sub init()
         Dim css = "<style type='text/css'>.main{border:1px solid #aaa; width:200mm; height:280mm; margin-left:auto;margin-right:auto; padding:10px} table{margin-bottom:10mm; border:collapse; width:100%}.row{display: table-row} td{padding: 4mm 10mm 2mm 10mm; vertical-align:top} footer{width:100%;text-align:center;page-break-after:always;}</style>"
 
         Me.Head = "<html >" & _
@@ -192,8 +192,9 @@ Public Class PackingListHelper
 
 
     End Sub
+
     ''' <summary>
-    ''' 
+    ''' Creates and returns an html recipie for a given cake 
     ''' </summary>
     ''' <param name="i">cakeId</param>
     ''' <returns>The recipie in html</returns>
