@@ -149,7 +149,6 @@ Partial Class frmAdminReports
         Me.rptReports.ShowBackButton = False
         Me.rptReports.ShowContextMenu = False
         Me.rptReports.ShowCredentialPrompts = False
-        Me.rptReports.ShowPageNavigationControls = False
         Me.rptReports.ShowParameterPrompts = False
         Me.rptReports.ShowPromptAreaButton = False
         Me.rptReports.ShowRefreshButton = False
