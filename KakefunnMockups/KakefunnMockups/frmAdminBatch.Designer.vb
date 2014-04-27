@@ -144,19 +144,19 @@ Partial Class frmAdminBatch
         'btnPrintOrderList
         '
         Me.btnPrintOrderList.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnPrintOrderList.Location = New System.Drawing.Point(256, 171)
+        Me.btnPrintOrderList.Location = New System.Drawing.Point(322, 171)
         Me.btnPrintOrderList.Name = "btnPrintOrderList"
-        Me.btnPrintOrderList.Size = New System.Drawing.Size(117, 23)
+        Me.btnPrintOrderList.Size = New System.Drawing.Size(150, 23)
         Me.btnPrintOrderList.TabIndex = 11
-        Me.btnPrintOrderList.Text = "Skriv ut bestillingsliste"
+        Me.btnPrintOrderList.Text = "Vis ikke mottatte bestillinger"
         Me.btnPrintOrderList.UseVisualStyleBackColor = True
         '
         'btnDeleteBatch
         '
         Me.btnDeleteBatch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnDeleteBatch.Location = New System.Drawing.Point(133, 171)
+        Me.btnDeleteBatch.Location = New System.Drawing.Point(166, 171)
         Me.btnDeleteBatch.Name = "btnDeleteBatch"
-        Me.btnDeleteBatch.Size = New System.Drawing.Size(117, 23)
+        Me.btnDeleteBatch.Size = New System.Drawing.Size(150, 23)
         Me.btnDeleteBatch.TabIndex = 10
         Me.btnDeleteBatch.Text = "Slett parti/bestilling"
         Me.btnDeleteBatch.UseVisualStyleBackColor = True
@@ -166,7 +166,7 @@ Partial Class frmAdminBatch
         Me.btnNewBatch.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.btnNewBatch.Location = New System.Drawing.Point(10, 171)
         Me.btnNewBatch.Name = "btnNewBatch"
-        Me.btnNewBatch.Size = New System.Drawing.Size(117, 23)
+        Me.btnNewBatch.Size = New System.Drawing.Size(150, 23)
         Me.btnNewBatch.TabIndex = 9
         Me.btnNewBatch.Text = "Ny bestilling"
         Me.btnNewBatch.UseVisualStyleBackColor = True
@@ -352,9 +352,9 @@ Partial Class frmAdminBatch
         'btnChangeSelection
         '
         Me.btnChangeSelection.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.btnChangeSelection.Location = New System.Drawing.Point(379, 171)
+        Me.btnChangeSelection.Location = New System.Drawing.Point(478, 171)
         Me.btnChangeSelection.Name = "btnChangeSelection"
-        Me.btnChangeSelection.Size = New System.Drawing.Size(117, 23)
+        Me.btnChangeSelection.Size = New System.Drawing.Size(150, 23)
         Me.btnChangeSelection.TabIndex = 16
         Me.btnChangeSelection.Tag = "0"
         Me.btnChangeSelection.Text = "Vis åpne bestillinger"
