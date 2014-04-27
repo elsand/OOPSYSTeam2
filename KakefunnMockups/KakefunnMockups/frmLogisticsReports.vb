@@ -8,6 +8,16 @@
         start()
     End Sub
 
+    ''' <summary>
+    ''' Makes the dgv update when changing tabs.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Overrides Sub OnFormGetsForeground()
+        DBM.Instance.Batches.Load()
+        BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) b.deleted Is Nothing _
+                                                                                           And (b.expires.HasValue _
+                                                                                                AndAlso b.expires.Value.CompareTo(Me.expireDate) <= 0))
+    End Sub
 
     ''' <summary>
     ''' Loads the batches and binds them to the dgv
@@ -18,12 +28,13 @@
         'Loads the batches
         Try
             DBM.Instance.Batches.Load()
-            BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) b.expires.Value.CompareTo(Me.expireDate) <= 0 And b.deleted Is Nothing)
+            BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) b.deleted Is Nothing _
+                                                                                               And (b.expires.HasValue _
+                                                                                                    AndAlso b.expires.Value.CompareTo(Me.expireDate) <= 0))
 
             If BatchBindingSource.Count > 1 Then
                 dtgExpiredIngredients.Enabled = True
                 dtgExpiredIngredients.DataSource = BatchBindingSource
-
             End If
             dtgExpiredIngredients.Refresh()
 
