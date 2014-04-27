@@ -1,4 +1,4 @@
 ﻿Public Class SubscriptionHelper
-    'Skal holde orden på subscriptions.. '
+    'Will keep track of subscriptions. Not implemented.
 
 End Class

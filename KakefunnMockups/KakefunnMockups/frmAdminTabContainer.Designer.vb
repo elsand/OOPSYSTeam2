@@ -37,6 +37,7 @@ Partial Class frmAdminTabContainer
         Me.ClientSize = New System.Drawing.Size(850, 571)
         Me.Controls.Add(Me.tabAdmin)
         Me.Name = "frmAdminTabContainer"
+        Me.Text = "Administrasjon"
         Me.Controls.SetChildIndex(Me.tabAdmin, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()

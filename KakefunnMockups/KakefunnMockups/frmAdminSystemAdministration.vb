@@ -3,7 +3,11 @@
     Private IsNewRecord As Boolean = True
     Private currentRecord As Employee
 
-    Protected Overrides Sub OnFormGetsForeground()
+    ''' <summary>
+    ''' Runs on changing tabs an updates status in lower right corner.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Overrides Sub OnFormGetsForeground()
         If IsNewRecord Then
             UpdateActionStatus()
         Else
@@ -11,14 +15,23 @@
         End If
     End Sub
 
+    ''' <summary>
+    ''' Initial settings for system administration.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub frmAdminSystemAdministration_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         UpdateEmployeeDDL()
         FormHelper.SetupDirtyTracking(Me)
         AddressHelper.SetupAutoCityFill(txtZip, lblCity)
     End Sub
 
+    ''' <summary>
+    ''' Updates employee drop down lost from database.
+    ''' </summary>
+    ''' <remarks></remarks>
     Private Sub UpdateEmployeeDDL()
-
         Dim employees As DataTable = DBM.Instance.GetDataTableFromQuery("SELECT id, CONCAT(firstName, ' ', lastName) as fullName from Employee ORDER BY lastName")
         With ddlEmployees
             .DataSource = employees
@@ -27,6 +40,13 @@
         End With
     End Sub
 
+    ''' <summary>
+    ''' Loads the selected system users info, except the password, 
+    ''' in the form for editing.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnEditEmployee_Click(sender As Object, e As EventArgs) Handles btnEditEmployee.Click
         If isDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
@@ -73,7 +93,13 @@
 
     End Sub
 
-
+    ''' <summary>
+    ''' Saves a new system user, or changes to an existing one, 
+    ''' in the database.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnSaveChanges_Click(sender As Object, e As EventArgs) Handles btnSaveChanges.Click
         If Not ValidSubmission() Then
             Exit Sub
@@ -81,7 +107,7 @@
 
         Dim em As Employee
         If IsNewRecord Then
-            em = New Employee()
+            em = DBM.Instance.Employees.Create(Of Employee)()
         Else
             em = currentRecord
         End If
@@ -126,6 +152,12 @@
             Exit Sub
         End Try
 
+        If IsNewRecord Then
+            KakefunnEvent.saveSystemEvent("Systembrukere", "Opprettet ny systembruker: " & em.fullName)
+        Else
+            KakefunnEvent.saveSystemEvent("Systembrukere", "Oppdatert systembruker: " & em.fullName)
+        End If
+
         IsNewRecord = False
         IsDirty = False
         currentRecord = em
@@ -137,6 +169,11 @@
         lblCity.Text = ""
     End Sub
 
+    ''' <summary>
+    ''' Validates entered data in the form. Basically checks for empty fields.
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Function ValidSubmission() As Boolean
         If txtName.Text = "" Then
             MsgBox("Du må oppgi navn")
@@ -190,8 +227,13 @@
         Next
     End Sub
 
+    ''' <summary>
+    ''' Clears the registration form and sets isNewRecord true. Ready to enter info for new user.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnNewUser_Click(sender As Object, e As EventArgs) Handles btnNewUser.Click
-        MsgBox(isDirty)
         If isDirty AndAlso MsgBox("Du har ulagrede endringer. Vil du fortsette?", MsgBoxStyle.YesNo, "Ulagrede endringer") = MsgBoxResult.No Then
             Exit Sub
         End If

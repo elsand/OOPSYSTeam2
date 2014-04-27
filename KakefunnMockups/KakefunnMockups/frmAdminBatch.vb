@@ -14,7 +14,8 @@ Public Class frmAdminBatch
     Dim batchBindingListView As BindingListView(Of Batch)
 
     ''' <summary>
-    ''' 
+    ''' Loads frmAdminBatch and displays initial data in the form.
+    ''' Detailed description in the sub.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -103,10 +104,10 @@ Public Class frmAdminBatch
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub BatchDataGridView_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgBatch.CellFormatting
-        Select Case dtgBatch.Columns(e.ColumnIndex).DataPropertyName
-            Case "ingredient"
+        Select Case dtgBatch.Columns(e.ColumnIndex).Name
+            Case "dcIngredient"
                 e.Value = CType(e.Value, Ingredient).name
-            Case "unitPurchasingPrice"
+            Case "dcUnitPurchasingPrice"
                 e.Value = FormatHelper.Currency(e.Value)
         End Select
     End Sub
@@ -206,7 +207,7 @@ Public Class frmAdminBatch
 
         Dim b As Batch
         If IsNewRecord Then
-            b = New Batch()
+            b = DBM.Instance.Batches.Create(Of Batch)()
             b.ordered = DateTime.Now
         Else
             b = currentRecord
@@ -246,7 +247,7 @@ Public Class frmAdminBatch
         Me.clearForm()
 
 
-
+        'Logging
         If IsNewRecord Then
             KakefunnEvent.saveSystemEvent("Batches", "Created new batch #" & b.id)
         Else
@@ -311,7 +312,7 @@ Public Class frmAdminBatch
         KakefunnEvent.saveSystemEvent("Batches", "Deleted batch #" & b.id)
 
         ' If the batch we deleted is the one we were editing, start a new one
-        If currentRecord.id = b.id Then
+        If currentRecord IsNot Nothing AndAlso currentRecord.id = b.id Then
             NewBatch()
         End If
 
@@ -355,5 +356,31 @@ Public Class frmAdminBatch
         Me.dtpExpected.Value = Date.Now
 
 
+    End Sub
+
+    ''' <summary>
+    ''' Toggles between only showing open batch orders and showing open and received batches
+    ''' within the specified cutoff date.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub btnChangeSelection_Click(sender As Object, e As EventArgs) Handles btnChangeSelection.Click
+        ' Get how many days we should show received batches in the list from app settings
+        Dim showRegisteredBatchesForDays As Integer = CType(ConfigurationManager.AppSettings.Get("admin.batch.showRegisteredBatchesForDays"), Integer)
+        Dim cutoffDate As Date = Date.Now().AddDays(-showRegisteredBatchesForDays)
+
+        If btnChangeSelection.Tag = 0 Then
+            batchBindingListView.ApplyFilter(Function(b) b.deleted Is Nothing And Not b.registered.HasValue)
+            btnChangeSelection.Tag = 1
+            btnChangeSelection.Text = "Vanlig visning"
+        ElseIf btnChangeSelection.Tag = 1 Then
+            batchBindingListView.ApplyFilter(Function(b) _
+                                     b.deleted Is Nothing _
+                                     And (b.registered Is Nothing OrElse b.registered > cutoffDate) _
+                                )
+            btnChangeSelection.Tag = 0
+            btnChangeSelection.Text = "Vis åpne bestillinger"
+        End If
     End Sub
 End Class

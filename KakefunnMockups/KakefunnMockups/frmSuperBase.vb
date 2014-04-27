@@ -33,7 +33,7 @@ Public Class frmSuperBase
     ''' Like a form_load, but called everytime the form gets loaded
     ''' </summary>
     ''' <remarks></remarks>
-    Protected Overridable Sub OnFormGetsForeground()
+    Public Overridable Sub OnFormGetsForeground()
         ' Implemented in subclasses
     End Sub
 

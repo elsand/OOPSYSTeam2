@@ -69,7 +69,7 @@ Public Class frmAdminProcessedOrders
                 Case "dcOrderTotalPrice" 'Adds order total price to datagridview.
                     Dim row As DataGridViewRow = dtgProcessedOrders.Rows(e.RowIndex)
                     Dim o As Order = CType(row.DataBoundItem, Order)
-                    e.Value = OrderHelper.GetOrderPrice(o)
+                    e.Value = "kr. " & Format(OrderHelper.GetOrderPrice(o), "0.00")
             End Select
         End If
 
@@ -216,8 +216,11 @@ Public Class frmAdminProcessedOrders
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub dtgProcessedOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgProcessedOrders.CellDoubleClick
-        'rdoCheckNone.PerformClick()
         If e.RowIndex >= 0 Then
+            If dtgProcessedOrders.Rows(e.RowIndex).Cells(sent.Index).Value IsNot Nothing Then
+                MsgBox("Du kan ikke redigere en sendt ordre. Ordren åpnes skrivebeskyttet.", _
+                       MsgBoxStyle.Information, "Informasjon")
+            End If
             Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
             Dim order = DBM.Instance.Orders.Find(orderNr)
             OrderHelper.EditOrder(order, Me)

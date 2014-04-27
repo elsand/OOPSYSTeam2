@@ -234,9 +234,15 @@ Public Class frmSuperTabContainer
 
             tabContainer.TabPages.Add(tabPage)
 
-            ' Whenever we change to a form, set the title of the aspect window to the same
+            ' Whenever we change to a form, set the title of the aspect window to the same, after the name of the aspect, 
+            ' defined by the Text property of the containing form
             AddHandler frm.VisibleChanged, Function(s As Object, e As EventArgs)
-                                               CType(s, Form).Parent.Parent.Parent.Text = s.Text
+                                               Dim cf As Form = Me.GetContainerForAspect(Me.GetAspectForForm(CType(s, Form)))
+                                               ' If we already have added the form suffix, remove it before we add the new one
+                                               If cf.Text.IndexOf("-") > -1 Then
+                                                   cf.Text = cf.Text.Substring(0, cf.Text.IndexOf("-") - 1)
+                                               End If
+                                               cf.Text = cf.Text & " - " & CType(s, Form).Text
                                                Return Nothing
                                            End Function
         Next
@@ -245,6 +251,7 @@ Public Class frmSuperTabContainer
         ' any actual tab changes)
         AddHandler tabContainer.SelectedIndexChanged, AddressOf OnTabChange
         AddHandler tabContainer.VisibleChanged, AddressOf OnTabChange
+        AddHandler tabContainer.FindForm().Activated, AddressOf OnTabFormActivated
     End Sub
 
     ''' <summary>
@@ -273,4 +280,22 @@ Public Class frmSuperTabContainer
         ms.Height = ms.Height + tabControl.Top + padding + statusMain.Height
         Me.MinimumSize = ms
     End Sub
+
+    ''' <summary>
+    ''' Finds the tabcontrol on form, and fires onFormGetsForeground on the active page
+    ''' </summary>
+    ''' <param name="s"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Protected Sub OnTabFormActivated(s As Object, e As EventArgs)
+        Dim cf As Form = CType(s, Form)
+        For Each c As Control In cf.Controls
+            If TypeOf c Is TabControl Then
+                Dim f As frmSuperBase
+                f = CType(CType(c, TabControl).SelectedTab.Controls.Item(0), frmSuperBase)
+                f.OnFormGetsForeground()
+            End If
+        Next
+    End Sub
+
 End Class

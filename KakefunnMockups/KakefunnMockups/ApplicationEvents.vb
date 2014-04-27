@@ -14,7 +14,5 @@ Namespace My
             SessionHelper.Instance.Init()
         End Sub
     End Class
-
-
 End Namespace
 

@@ -1,7 +1,18 @@
 ﻿Imports System.Configuration
 
+''' <summary>
+''' Helper for dealing with stock related things
+''' </summary>
+''' <remarks></remarks>
 Public Class StockHelper
-    Public Shared Function getInStock(varenr As Integer, list As List(Of Kakefunn.Batch)) As Integer 'Finds amount of an ingredient in stock.
+    ''' <summary>
+    ''' Finds amount of an ingredient in stock.
+    ''' </summary>
+    ''' <param name="varenr"></param>
+    ''' <param name="list"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Public Shared Function getInStock(varenr As Integer, list As List(Of Kakefunn.Batch)) As Integer
         Dim batches = From x In list Where x.Ingredient.id = varenr _
                       And x.registered IsNot Nothing Select x.unitCount
         If batches.Any Then
@@ -33,44 +44,53 @@ Public Class StockHelper
         Return 0
     End Function
 
+    ''' <summary>
+    ''' Gets selling price for the given ingredient
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetSellingPriceFor(ingredient As Ingredient) As Decimal
         Return GetSellingPriceFor(ingredient, 1)
     End Function
 
+    ''' <summary>
+    ''' Gets selling price for the given ingredient, given a unit count (which may span several batches, affecting the price)
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <param name="requestedUnitCount"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetSellingPriceFor(ingredient As Ingredient, requestedUnitCount As Integer) As Decimal
         Return GetSellingPriceFor(ingredient, 1, Date.Today)
     End Function
 
+    ''' <summary>
+    ''' Gets selling price for the given ingredient, given a unit count (which may span several batches, affecting the price)
+    ''' and deliverydate (may affect available batches due to expected arrival in storage and batch expiry)
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <param name="requestedUnitCount"></param>
+    ''' <param name="deliveryDate"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetSellingPriceFor(ingredient As Ingredient, requestedUnitCount As Integer, deliveryDate As Date) As Decimal
         Dim batchUnits As New List(Of Integer)
         Dim batchPrices As New List(Of Decimal)
         Dim unitsFound As Integer
         Dim markupAtDeliveryDate As Decimal
 
-        Dim expiryGraceDaysString As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
-        Dim expiryGraceDays As Integer
-        If Not Integer.TryParse(expiryGraceDaysString, expiryGraceDays) Then
-            expiryGraceDays = 0
-        End If
-
-        Dim deliveryDateWithGraceDays As Date = deliveryDate.AddDays(expiryGraceDays)
-
-        Console.WriteLine("-----------------")
-        Console.WriteLine("GetSellingPrice(" & ingredient.name & ", " & requestedUnitCount & ", " & deliveryDate & ")")
-
         Dim batches = From b In DBM.Instance.Batches _
                       Where b.Ingredient.id = ingredient.id _
                       And b.deleted Is Nothing _
                       And (b.registered IsNot Nothing OrElse b.expected < deliveryDate) _
-                      And (b.expires Is Nothing OrElse b.expires > deliveryDateWithGraceDays) _
+                      And (b.expires Is Nothing OrElse b.expires > deliveryDate) _
                       And b.unitCount > 0 _
                       Order By b.registered _
                       Select b
 
-        Console.WriteLine("Batches: " & batches.ToString)
-
+        ' If no batches is available at the selected delivery date
         If batches.Count = 0 Then
-            Console.WriteLine("Batches = Nothing")
             ' Check if we're expectingit to store at a later date
             Dim batch = (From b In DBM.Instance.Batches _
                       Where b.Ingredient.id = ingredient.id _
@@ -88,24 +108,16 @@ Public Class StockHelper
 
         End If
 
-        markupAtDeliveryDate = GetIngredientMarkupForDate(ingredient, deliveryDate)
-        Console.WriteLine("Markup: " & markupAtDeliveryDate)
-
 
         For Each b As Batch In batches
-
-            Console.WriteLine("Checking batch " & b.id & ", has " & b.unitCount & " units at pp " & b.unitPurchasingPrice)
-
             ' Get the price for this batch
             batchPrices.Add(b.unitPurchasingPrice * (markupAtDeliveryDate / 100 + 1))
             ' Does this batch have enough units?
             If requestedUnitCount > b.unitCount + unitsFound Then
                 ' No, we need it all
-                Console.WriteLine("Not enough with this batch (requested: " & requestedUnitCount & ", batch: " & b.unitCount & ", already found: " & unitsFound)
                 batchUnits.Add(b.unitCount)
             Else
                 ' Yes, we don't need to pick from any more batches
-                Console.WriteLine("Found enough in this batch")
                 batchUnits.Add(requestedUnitCount)
             End If
             unitsFound = unitsFound + b.unitCount
@@ -117,7 +129,6 @@ Public Class StockHelper
         ' Do we have enough in stock at the delivery time?
         If unitsFound < requestedUnitCount Then
             ' We do not have enough at stock at the request time, return nothing to indicate error
-            Console.WriteLine("Not enough in stock, only has " & unitsFound & " units, " & requestedUnitCount & " requested")
             Throw New Exception("Vi har bare " & unitsFound & " " & ingredient.Unit.name & " av " & ingredient.name & " på lager " & _
                                 deliveryDate & ", trenger " & requestedUnitCount & " " & ingredient.Unit.name)
 
@@ -131,12 +142,17 @@ Public Class StockHelper
             count = batchUnits(i) + count
         Next
 
-        Console.WriteLine("sum: " & sum & ", count: " & count)
-
         Return sum / count
 
     End Function
 
+    ''' <summary>
+    ''' Return the markup percentage for the ingredient at the supplied date
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <param name="atDate"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetIngredientMarkupForDate(ingredient As Ingredient, atDate As Date) As Decimal
         Return (From p In DBM.Instance.IngredientPrices _
                Where p.id = ingredient.id _
@@ -144,6 +160,7 @@ Public Class StockHelper
                Order By p.date Descending
                Select p.markUpPercentage).FirstOrDefault()
     End Function
+
 
     Public Shared Function getLocation(ByVal ingredientName As String) As List(Of Batch)
         Dim batchLoc = (From x In DBM.Instance.Batches Where x.Ingredient.name = ingredientName _
@@ -241,6 +258,11 @@ Public Class StockHelper
         DBM.Instance.SaveChanges()
     End Sub
 
+    ''' <summary>
+    ''' Returns the grace date on batches
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function GetExpiryGraceDays() As Integer
         Dim expiryGraceDaysString As String = ConfigurationManager.AppSettings.Get("sale.order.expiryGraceDays")
         Dim expiryGraceDays As Integer

@@ -30,6 +30,7 @@ Public Class frmLogin
             SessionHelper.Instance.Login(txtEmail.Text, txtPassword.Text)
         Catch ex As Exception
             MessageBox.Show("Du oppga en ugyldig e-post og/eller passord", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+            KakefunnEvent.saveSystemEvent("Innlogging", "Innlogging feilet for bruker: " & txtEmail.Text)
         End Try
 
         ' Login successful, open the default form for this user and hide the login windows
@@ -40,6 +41,7 @@ Public Class frmLogin
             btnDoLogin.Enabled = True
             txtEmail.Enabled = True
             txtPassword.Enabled = True
+            KakefunnEvent.saveSystemEvent("Innlogging", "Vellykket innlogging for bruker: " & txtEmail.Text)
         End If
 
     End Sub
@@ -60,7 +62,7 @@ Public Class frmLogin
     ''' If we logout and we get focus again, reset the fields and set focus to the email field
     ''' </summary>
     ''' <remarks></remarks>
-    Protected Overrides Sub OnFormGetsForeground()
+    Public Overrides Sub OnFormGetsForeground()
         txtEmail.Text = ""
         txtPassword.Text = ""
         txtEmail.Focus()

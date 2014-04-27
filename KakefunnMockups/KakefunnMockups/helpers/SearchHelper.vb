@@ -1,6 +1,18 @@
-﻿Public Class SearchHelper
+﻿''' <summary>
+''' Helper class for dealing with searches
+''' </summary>
+''' <remarks></remarks>
+Public Class SearchHelper
+    ''' <summary>
+    ''' Free text search for orders and/or customers
+    ''' </summary>
+    ''' <param name="query"></param>
+    ''' <param name="searchOrders"></param>
+    ''' <param name="searchCustomers"></param>
+    ''' <remarks></remarks>
     Public Shared Sub SearchFreeText(query As String, searchOrders As Boolean, searchCustomers As Boolean)
 
+        ' Set up and show the search results dialog
         SessionHelper.Instance.ShowDialog(frmDialogSearchResults)
         Dim numericQuery As Integer
 
@@ -14,6 +26,8 @@
         End With
 
         If searchOrders Then
+            ' If numeric query, assume either ID or phonenumner
+            ' if alphanum, search for customer/delivery name and email
             Dim orderQueryResult As List(Of Order)
             If Integer.TryParse(query, numericQuery) Then
                 orderQueryResult = DBM.Instance.Orders.Where(Function(o) _
@@ -34,6 +48,8 @@
         End If
 
         If searchCustomers Then
+            ' If numeric query, assume either ID or phonenumner
+            ' if alphanum, search for  name and email
             Dim customerQueryResult As List(Of Customer)
             If Integer.TryParse(query, numericQuery) Then
                 customerQueryResult = DBM.Instance.Customers.Where(Function(c) _
@@ -53,6 +69,11 @@
 
     End Sub
 
+    ''' <summary>
+    ''' Search for orders given the supplied predicate (Linq)
+    ''' </summary>
+    ''' <param name="predicate"></param>
+    ''' <remarks></remarks>
     Public Shared Sub SearchOrders(predicate As System.Func(Of Order, Boolean))
 
         SessionHelper.Instance.ShowDialog(frmDialogSearchResults)
@@ -72,13 +93,5 @@
             .dtgSearchResultsCustomers.Enabled = False
 
         End With
-    End Sub
-
-    Public Shared Sub SearchCustomer(query As String)
-        SearchFreeText(query, False, True)
-    End Sub
-
-    Public Shared Sub SearchOrder(query As String)
-        SearchFreeText(query, True, False)
     End Sub
 End Class

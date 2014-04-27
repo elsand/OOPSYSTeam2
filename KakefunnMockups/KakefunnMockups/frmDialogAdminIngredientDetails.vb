@@ -81,7 +81,7 @@ Public Class frmDialogAdminIngredientDetails
 
         'Deklaring i as a new ingredient, or equal to a selected ingredient.
         If newIngr Then
-            i = New Ingredient()
+            i = DBM.Instance.Ingredients.Create(Of Ingredient)()
         Else
             i = existingItem
         End If
@@ -144,7 +144,11 @@ Public Class frmDialogAdminIngredientDetails
         End Try
 
         'Logging the event
-        KakefunnEvent.saveSystemEvent("Ingredienser", "Lagret ingrediensen:" & i.id & " " & i.name)
+        If newIngr Then
+            KakefunnEvent.saveSystemEvent("Ingredienser", "Opprettet ny ingrediens: " & i.id & " " & i.name)
+        Else
+            KakefunnEvent.saveSystemEvent("Ingredienser", "Endret ingrediensen: " & i.id & " " & i.name)
+        End If
 
         newIngr = False
         varenr = (From x In DBM.Instance.Ingredients _

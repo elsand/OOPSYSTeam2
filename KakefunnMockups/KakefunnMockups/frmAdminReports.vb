@@ -1,15 +1,16 @@
 ﻿Imports Microsoft.Reporting.WinForms
-
 Public Class frmAdminReports
-
-
     Dim reportDataSource As ReportDataSource
 
+    ''' <summary>
+    ''' Initial settings for the report form.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub frmAdminReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         Me.cboSelectIngredient.Visible = False
         Me.lblSelectIngredient.Visible = False
-
 
         'TODO: This line of code loads data into the '_14vfu_t02DataSet.Ingredient' table. You can move, or remove it, as needed.
         'Me.IngredientTableAdapter1.Fill(Me._14vfu_t02DataSet.Ingredient)
@@ -26,13 +27,16 @@ Public Class frmAdminReports
         'Me.EmployeeTableAdapter.Fill(Me.EmployeeTest.Employee)
 
         'Me.rptReports.RefreshReport()
-
     End Sub
 
+    ''' <summary>
+    ''' Manipulates visible controls based on what report is selected in the ddl.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub cboSelectReportForm_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSelectReportForm.SelectedIndexChanged
         If cboSelectReportForm.SelectedIndex = 2 Then
-            ' MsgBox(cboSelectIngredient.SelectedValue)
-
             Me.dtpTimePeriodFrom.Visible = False
             Me.dtpTimePeriodTo.Visible = False
             Me.lblTimePeriod.Visible = False
@@ -44,16 +48,18 @@ Public Class frmAdminReports
             Me.lblTimePeriod.Visible = True
             Me.lblSelectIngredient.Visible = False
             Me.cboSelectIngredient.Visible = False
-
         End If
     End Sub
 
+    ''' <summary>
+    ''' Displays selected report in the reportwiever by calling ReportHelper
+    ''' with relevant parameters.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnGetReport_Click(sender As Object, e As EventArgs) Handles btnGetReport.Click
-
         Dim rph = New ReportHelper()
-
-        ' MsgBox(cboSelectReportForm.SelectedIndex)
-
         Select Case cboSelectReportForm.SelectedIndex
             Case 0
                 Return
@@ -68,31 +74,12 @@ Public Class frmAdminReports
                 rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
                 rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
                 reportDataSource = New ReportDataSource("SystemEvent", rph.getDataTable("SystemEvent"))
-
         End Select
-
-
-
-
-
-
-
-
-
         With Me.rptReports.LocalReport
-
             .DataSources.Clear()
             .DataSources.Add(reportDataSource)
             .ReportEmbeddedResource = rph.rdf
-
         End With
-
         Me.rptReports.RefreshReport()
-
-
-
-
-
-
     End Sub
 End Class

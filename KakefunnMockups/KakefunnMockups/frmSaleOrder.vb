@@ -7,14 +7,14 @@
 ''' TODO
 ''' - Subscriptions are not handled
 ''' - Stock does not increase if order rows are deleted on exisiting orders
-''' - Stock calculation does not take into account multiple rows of the same ingredient
+''' - Extra markup on cakes are not taken into account
 ''' </remarks>
 Public Class frmSaleOrder
 
     ' Flag used to trigger logic specific to either saved or new orders
     Private isNewRecord = False
     ' Holds the order currently being edited, either new or existing
-    Private currentRecord As Order = New Order()
+    Private currentRecord As New Order
     ' Flag to tell event handlers if we're currently loading a record
     Private isLoadingOrder = False
     ' Holds which form we are to return to. Default to frmSaleMain
@@ -36,7 +36,6 @@ Public Class frmSaleOrder
         DBM.Instance.Orders.Attach(currentRecord)
 
         isNewRecord = False
-        isDirty = False
 
         '  Set static fields
         cbCustomerName.Text = order.Customer.fullName.ToString()
@@ -98,7 +97,16 @@ Public Class frmSaleOrder
 
         UpdateTotalPrice()
 
+        ' Now that the order is loaded fully, we check if it is already sent. If it is, we disable everything
+        If currentRecord.sent IsNot Nothing Then
+            FormHelper.DisableControls(Me)
+            UpdateActionStatus("Denne ordren er sent og kan ikke redigeres.")
+        Else
+            UpdateActionStatus("Redigerer ordre #" & currentRecord.id)
+        End If
+
         isLoadingOrder = False
+        isDirty = False
 
     End Sub
 
@@ -108,14 +116,16 @@ Public Class frmSaleOrder
     ''' <remarks></remarks>
     Public Sub NewOrder()
 
-        isDirty = False
         isNewRecord = True
-        currentRecord = New Order() With {.deliveryDate = Date.Today}
+        currentRecord = DBM.Instance.Orders.Create(Of Order)()
+        currentRecord.deliveryDate = Date.Today
         grpOrderStatus.Hide()
         FormHelper.ResetControls(Me)
         OrderLinesBindingSource.DataSource = currentRecord.OrderLines.ToBindingList
         ToggleSubscriptionGroup()
         UpdateTotalPrice()
+        UpdateActionStatus()
+        isDirty = False
 
     End Sub
 
@@ -166,6 +176,12 @@ Public Class frmSaleOrder
         End Try
 
         MsgBox("Ordren ble lagret", MsgBoxStyle.Information)
+
+        If isNewRecord Then
+            KakefunnEvent.saveSystemEvent("Ordrer", "Lagret ny ordre: " & currentRecord.id)
+        Else
+            KakefunnEvent.saveSystemEvent("Ordrer", "Oppdatert ordre: " & currentRecord.id)
+        End If
 
         If cboPrintReceiptOnSave.Checked Then
             PrintReceipt()
@@ -306,7 +322,7 @@ Public Class frmSaleOrder
         Dim deliveryDate As String = dtpDeliveryDate.Value.ToString("yyyy-MM-dd")
 
         Dim dt As DataTable = DBM.Instance.GetDataTableFromQuery( _
-            "SELECT CONCAT('i', i.id) as id, CONCAT(name, ' (x', IFNULL(SUM(b.unitCount), 0), ')') as name FROM Ingredient i " & _
+            "SELECT 1 as isIngredient, CONCAT('i', i.id) as id, CONCAT(name, ' (x', IFNULL(SUM(b.unitCount), 0), ')') as name FROM Ingredient i " & _
             "LEFT JOIN Batch b ON (" & _
             "	b.ingredientId = i.id " & _
             "	AND b.deleted IS NULL " & _
@@ -317,9 +333,9 @@ Public Class frmSaleOrder
             "WHERE i.deleted IS NULL and published = 1 " & _
             "GROUP BY name " & _
             "UNION " & _
-            "SELECT CONCAT('c', id) as id, CONCAT(name, ' (Kake)') as name FROM Cake " & _
+            "SELECT 0 as isIngredient, CONCAT('c', id) as id, CONCAT(name, ' (Kake)') as name FROM Cake " & _
             "WHERE deleted IS NULL AND published = 1 " & _
-            "ORDER BY name "
+            "ORDER BY isIngredient, name "
         )
 
         With cbIngredientOrCake
@@ -344,22 +360,37 @@ Public Class frmSaleOrder
         ' Figure out if we have a ingredient or cake id
         Dim prefixedId As String
         Dim id As Integer
-        prefixedId = System.Text.Encoding.Default.GetString(cbIngredientOrCake.SelectedValue)
 
+        If TypeOf cbIngredientOrCake.SelectedValue Is String Then
+            prefixedId = cbIngredientOrCake.SelectedValue
+        Else
+            prefixedId = System.Text.Encoding.Default.GetString(cbIngredientOrCake.SelectedValue)
+        End If
         Integer.TryParse(prefixedId.Substring(1), id)
         If id = Nothing Then
             Exit Sub ' Should not happen
         End If
 
-        ' TODO! If the ingredient is already present in other orderlines, they must be taken into account when determining if we have enough in stock
         If prefixedId.Substring(0, 1) = "i" Then
             ' We have a single ingredient
             Try
-                Dim ol As OrderLine = New OrderLine
-                ol.Ingredient = DBM.Instance.Ingredients.Find(id)
-                ol.amount = 1
+                Dim ing As Ingredient = DBM.Instance.Ingredients.Find(id)
+                Dim ol = GetOrderLineForIngredient(ing)
+                Dim add As Boolean = True
+                If ol.amount = 0 Then
+                    add = True
+                Else
+                    add = False
+                End If
+                ol.Ingredient = ing
+                ol.amount = ol.amount + 1
                 ol.totalPrice = ol.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
-                OrderLinesBindingSource.Add(ol)
+
+                If add Then
+                    OrderLinesBindingSource.Add(ol)
+                Else
+                    dtgOrderLines.Refresh()
+                End If
             Catch ex As Exception
                 MsgBox(ex.Message, MsgBoxStyle.Critical, "Feil")
             End Try
@@ -370,15 +401,23 @@ Public Class frmSaleOrder
                 Dim cake As Cake = DBM.Instance.Cakes.Find(id)
                 Dim ols As New List(Of OrderLine)
                 Dim ol As OrderLine
-
+                Dim add As Boolean = True
                 For Each r As RecipeLine In cake.RecipeLines
-                    ol = New OrderLine
+                    ol = GetOrderLineForIngredient(r.Ingredient)
+                    If ol.amount = 0 Then
+                        add = True
+                    Else
+                        add = False
+                    End If
                     ol.Ingredient = r.Ingredient
-                    ol.amount = r.amount
-                    ol.totalPrice = r.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
+                    ol.amount = ol.amount + r.amount
+                    ol.totalPrice = ol.amount * StockHelper.GetSellingPriceFor(ol.Ingredient, ol.amount, dtpDeliveryDate.Value)
                     ol.cakeId = cake.id
-                    ols.Add(ol)
+                    If add Then
+                        ols.Add(ol)
+                    End If
                 Next
+                dtgOrderLines.Refresh()
 
                 ' Sync with current order
                 For Each ol In ols
@@ -393,6 +432,23 @@ Public Class frmSaleOrder
         UpdateTotalPrice()
 
     End Sub
+
+    ''' <summary>
+    ''' Checks if the ingredient is already present in a non-saved orderline. If so, return that instead
+    ''' </summary>
+    ''' <param name="ingredient"></param>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+    Private Function GetOrderLineForIngredient(ingredient As Ingredient) As OrderLine
+        Dim ol As OrderLine
+        For Each row As DataGridViewRow In dtgOrderLines.Rows
+            ol = CType(row.DataBoundItem, OrderLine)
+            If ol.Ingredient.id = ingredient.id AndAlso ol.id = 0 Then
+                Return ol
+            End If
+        Next
+        Return New OrderLine
+    End Function
 
     ''' <summary>
     ''' Updates the labels on the bottom of the form with the totals
@@ -514,9 +570,9 @@ Public Class frmSaleOrder
         DBM.Instance.Customers.Load()
         CustomerBindingSource.DataSource = DBM.Instance.Customers.Local.ToBindingList()
         AddressHelper.SetupAutoCityFill(txtZip, lblCity)
-        FormHelper.SetupDirtyTracking(Me)
         SetupIngredientOrCakeSelection()
         SetupDeliveryTypeDropdown()
+        FormHelper.SetupDirtyTracking(Me)
         ' Start with a new order
         NewOrder()
     End Sub
@@ -857,4 +913,7 @@ Public Class frmSaleOrder
 
 
 
+    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
+
+    End Sub
 End Class

@@ -19,7 +19,7 @@ Public Class frmSaleMain
     ''' We reload this every time this for gets re-focused since we're not able to get a binding list
     ''' </summary>
     ''' <remarks></remarks>
-    Protected Overrides Sub OnFormGetsForeground()
+    Public Overrides Sub OnFormGetsForeground()
         OrderBindingSource.DataSource = DBM.Instance.Orders.OrderByDescending(Function(o) o.modified).Take(5).ToList()
         CustomerBindingSource.DataSource = DBM.Instance.Customers.OrderByDescending(Function(c) c.modified).Take(5).ToList()
     End Sub
@@ -98,6 +98,4 @@ Public Class frmSaleMain
         Dim customer As Customer = CType(dgvCustomer.Rows(e.RowIndex).DataBoundItem, Customer)
         CustomerHelper.EditCustomer(customer)
     End Sub
-
-
 End Class

@@ -1,15 +1,9 @@
-﻿Public NotInheritable Class SplashScreen
-
-    'TODO: This form can easily be set as the splash screen for the application by going to the "Application" tab
-    '  of the Project Designer ("Properties" under the "Project" menu).
-
-
+﻿''' <summary>
+''' Shows a splashscreen on starting the program.
+''' </summary>
+''' <remarks></remarks>
+Public NotInheritable Class SplashScreen
     Private Sub SplashScreen_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'Set up the dialog text at runtime according to the application's assembly information.  
-
-        'TODO: Customize the application's assembly information in the "Application" pane of the project 
-        '  properties dialog (under the "Project" menu).
-
         'Application title
         If My.Application.Info.Title <> "" Then
             ApplicationTitle.Text = My.Application.Info.Title
@@ -31,5 +25,4 @@
         'Copyright info
         Copyright.Text = My.Application.Info.Copyright
     End Sub
-
 End Class
