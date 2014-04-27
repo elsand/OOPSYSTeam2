@@ -29,7 +29,6 @@ Partial Class frmAdminSystemAdministration
         Me.btnNewUser = New System.Windows.Forms.Button()
         Me.lblRoles = New System.Windows.Forms.Label()
         Me.lblPhone = New System.Windows.Forms.Label()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.txtPassword = New System.Windows.Forms.TextBox()
         Me.lblPassword = New System.Windows.Forms.Label()
@@ -46,6 +45,7 @@ Partial Class frmAdminSystemAdministration
         Me.txtPhone = New Kakefunn.NumericTextbox()
         Me.txtZip = New Kakefunn.NumericTextbox()
         Me.grpSystemAdministration = New System.Windows.Forms.GroupBox()
+        Me.txtEmail = New Kakefunn.EmailTextBox()
         CType(Me.DBMBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpSystemAdministration.SuspendLayout()
         Me.SuspendLayout()
@@ -124,13 +124,6 @@ Partial Class frmAdminSystemAdministration
         Me.lblPhone.Size = New System.Drawing.Size(43, 13)
         Me.lblPhone.TabIndex = 15
         Me.lblPhone.Text = "Telefon"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Location = New System.Drawing.Point(152, 191)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(150, 20)
-        Me.txtEmail.TabIndex = 15
         '
         'lblEmail
         '
@@ -273,6 +266,7 @@ Partial Class frmAdminSystemAdministration
         '
         Me.grpSystemAdministration.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpSystemAdministration.Controls.Add(Me.txtEmail)
         Me.grpSystemAdministration.Controls.Add(Me.btnSaveChanges)
         Me.grpSystemAdministration.Controls.Add(Me.txtZip)
         Me.grpSystemAdministration.Controls.Add(Me.btnNewUser)
@@ -291,7 +285,6 @@ Partial Class frmAdminSystemAdministration
         Me.grpSystemAdministration.Controls.Add(Me.lblAddress)
         Me.grpSystemAdministration.Controls.Add(Me.lblEmail)
         Me.grpSystemAdministration.Controls.Add(Me.txtAddress)
-        Me.grpSystemAdministration.Controls.Add(Me.txtEmail)
         Me.grpSystemAdministration.Controls.Add(Me.btnEditEmployee)
         Me.grpSystemAdministration.Controls.Add(Me.lblPassword)
         Me.grpSystemAdministration.Controls.Add(Me.txtRepeatPassword)
@@ -304,10 +297,17 @@ Partial Class frmAdminSystemAdministration
         Me.grpSystemAdministration.TabStop = False
         Me.grpSystemAdministration.Text = "Administrasjon av brukere"
         '
+        'txtEmail
+        '
+        Me.txtEmail.Location = New System.Drawing.Point(152, 191)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(150, 20)
+        Me.txtEmail.TabIndex = 28
+        '
         'frmAdminSystemAdministration
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
-        Me.ClientSize = New System.Drawing.Size(567, 350)
+        Me.ClientSize = New System.Drawing.Size(567, 351)
         Me.Controls.Add(Me.grpSystemAdministration)
         Me.MinimumSize = New System.Drawing.Size(583, 389)
         Me.Name = "frmAdminSystemAdministration"
@@ -327,7 +327,6 @@ Partial Class frmAdminSystemAdministration
     Friend WithEvents btnNewUser As System.Windows.Forms.Button
     Friend WithEvents lblRoles As System.Windows.Forms.Label
     Friend WithEvents lblPhone As System.Windows.Forms.Label
-    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
     Friend WithEvents lblPassword As System.Windows.Forms.Label
@@ -345,5 +344,6 @@ Partial Class frmAdminSystemAdministration
     Friend WithEvents txtPhone As Kakefunn.NumericTextbox
     Friend WithEvents txtZip As Kakefunn.NumericTextbox
     Friend WithEvents grpSystemAdministration As System.Windows.Forms.GroupBox
+    Friend WithEvents txtEmail As Kakefunn.EmailTextBox
 
 End Class

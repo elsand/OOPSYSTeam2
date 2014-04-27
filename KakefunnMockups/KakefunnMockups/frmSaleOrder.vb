@@ -5,7 +5,6 @@
 ''' </summary>
 ''' <remarks>
 ''' TODO
-''' - Subscriptions are not handled
 ''' - Stock does not increase if order rows are deleted on exisiting orders
 ''' - Extra markup on cakes are not taken into account
 ''' </remarks>
@@ -83,6 +82,20 @@ Public Class frmSaleOrder
         ' Bind the orderlines in the order to the datasource
         OrderLinesBindingSource.DataSource = order.OrderLines.ToBindingList
 
+        ' Handle subscriptions
+        Dim subscription As Subscription = DBM.Instance.Subscriptions.Where(Function(s) s.Order.id = order.id).FirstOrDefault
+        If subscription IsNot Nothing Then
+            chkSubscriptionIsActivated.Checked = subscription.isActive
+            ddlFrequencyType.SelectedItem = subscription.FrequencyType
+            ddlFrequency.SelectedIndex = subscription.frequency - 1
+            If subscription.stopDate Is Nothing Then
+                cboHasEndDate.Checked = False
+            Else
+                cboHasEndDate.Checked = True
+                dtpEndDate.Value = subscription.stopDate
+            End If
+        End If
+
         ' Show order status
         grpOrderStatus.Show()
         lblOrderNumberValue.Text = currentRecord.id
@@ -93,7 +106,6 @@ Public Class frmSaleOrder
         Else
             lblOrderSentValue.Text = "(ikke sendt)"
         End If
-
 
         UpdateTotalPrice()
 
@@ -139,13 +151,62 @@ Public Class frmSaleOrder
             Exit Sub
         End If
         Try
+
+            Dim subscription As Subscription
+            subscription = DBM.Instance.Subscriptions.Where(Function(s) s.Order.id = currentRecord.id).FirstOrDefault()
+
+            If chkSubscriptionIsActivated.Checked Then
+                ' Mark the order as a subscription ordre. This causes it to be treated only as a template
+                ' for automatically generated orders, and not as an order in and of itself
+                currentRecord.isSubscriptionOrder = True
+                If isNewRecord Then
+                    subscription = DBM.Instance.Subscriptions.Create(Of Subscription)()
+                Else
+                    ' Do we have one from before?
+                    If subscription Is Nothing Then
+                        ' Nope, create a new one
+                        subscription = DBM.Instance.Subscriptions.Create(Of Subscription)()
+                    End If
+                End If
+
+                ' Set subscription fields
+                With subscription
+                    .Order = currentRecord
+                    .startDate = currentRecord.deliveryDate
+                    If cboHasEndDate.Checked Then
+                        .stopDate = dtpEndDate.Value
+                    Else
+                        .stopDate = Nothing
+                    End If
+                    .FrequencyType = ddlFrequencyType.SelectedItem
+                    .frequency = ddlFrequency.SelectedIndex + 1
+                    .isActive = True
+                    .modified = Date.Now() ' Fixme: The subscription may not have changed (use EF changetracker?)
+                End With
+            Else
+                ' The order will always be a subscription order, but we can deactivate the automatic order creation
+                If subscription IsNot Nothing AndAlso subscription.isActive = True Then
+                    subscription.isActive = False
+                    subscription.modified = Date.Now()
+                End If
+            End If
+
             If isNewRecord Then
                 currentRecord.Employee = SessionHelper.Instance.User
                 currentRecord.created = Date.Now()
                 DBM.Instance.Orders.Add(currentRecord)
             End If
+
             currentRecord.modified = Date.Now()
             DBM.Instance.SaveChanges()
+
+            ' If the subscription is a new one, we must not add it until the order
+            ' is saved in order to get the foreign id set
+            If subscription.id = 0 Then
+                DBM.Instance.Subscriptions.Add(subscription)
+                subscription.created = Date.Now()
+                DBM.Instance.SaveChanges()
+            End If
 
             ' Update inventory, if this is a new order, we reduce inventories reflecting the orderlines
             ' If editing an old order, we must loop through all orderlines and handle any changes manually
@@ -260,6 +321,10 @@ Public Class frmSaleOrder
                 err = "Du har oppgitt levering på en søndag, dette kan ikke utføres."
             ElseIf dtgOrderLines.Rows.Count = 0 Then
                 err = "Ordren inneholder ingen ingredienser."
+            ElseIf chkSubscriptionIsActivated.Checked Then
+                If ddlFrequencyType.SelectedIndex = -1 OrElse ddlFrequency.SelectedIndex = -1 Then
+                    err = "Du må velge et intervall for abonnementet"
+                End If
             Else
                 For Each row As DataGridViewRow In dtgOrderLines.Rows
                     If Not row.ErrorText = "" Then
@@ -284,10 +349,13 @@ Public Class frmSaleOrder
     ''' <remarks></remarks>
     Private Sub ToggleSubscriptionGroup()
         For Each c As Control In grpSubscription.Controls
-            If Not c Is chkIsActivated Then
-                c.Enabled = chkIsActivated.Checked
+            If Not c Is chkSubscriptionIsActivated Then
+                c.Enabled = chkSubscriptionIsActivated.Checked
             End If
         Next
+        If chkSubscriptionIsActivated.Checked Then
+            dtpEndDate.Enabled = cboHasEndDate.Checked
+        End If
     End Sub
 
     ''' <summary>
@@ -477,6 +545,16 @@ Public Class frmSaleOrder
     End Sub
 
     ''' <summary>
+    ''' Popluates the frequency type dropdown with available options
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub SetupFrequencyTypeDropDown()
+        ddlFrequencyType.DisplayMember = "name"
+        ddlFrequencyType.DataSource = DBM.Instance.FrequencyTypes.ToList()
+    End Sub
+
+
+    ''' <summary>
     ''' Validates a row in the ingredientlist, returns a empty string if no error or a string explaining the error
     ''' </summary>
     ''' <param name="row"></param>
@@ -572,6 +650,7 @@ Public Class frmSaleOrder
         AddressHelper.SetupAutoCityFill(txtZip, lblCity)
         SetupIngredientOrCakeSelection()
         SetupDeliveryTypeDropdown()
+        SetupFrequencyTypeDropDown()
         FormHelper.SetupDirtyTracking(Me)
         ' Start with a new order
         NewOrder()
@@ -640,7 +719,7 @@ Public Class frmSaleOrder
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub chkIsActivated_CheckedChanged(sender As Object, e As EventArgs) Handles chkIsActivated.CheckedChanged
+    Private Sub chkIsActivated_CheckedChanged(sender As Object, e As EventArgs) Handles chkSubscriptionIsActivated.CheckedChanged
         ToggleSubscriptionGroup()
     End Sub
 
@@ -865,6 +944,9 @@ Public Class frmSaleOrder
                 row.ErrorText = ""
             End If
         Next
+        ' Set minimum end date for subscriptions to that of delivery date
+        dtpEndDate.MinDate = dtpDeliveryDate.Value
+
         ResetActionStatusIfNoGridErrors()
     End Sub
 
@@ -874,7 +956,7 @@ Public Class frmSaleOrder
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
+    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs)
         currentRecord.deliveryEmail = txtEmail.Text
     End Sub
 
@@ -911,9 +993,13 @@ Public Class frmSaleOrder
         currentRecord.isPaid = cboIsPayed.Checked
     End Sub
 
-
-
-    Private Sub Panel2_Paint(sender As Object, e As PaintEventArgs) Handles Panel2.Paint
-
+    ''' <summary>
+    ''' Enables/disabled end-date
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub cboHasEndDate_CheckedChanged(sender As Object, e As EventArgs) Handles cboHasEndDate.CheckedChanged
+        dtpEndDate.Enabled = cboHasEndDate.Checked
     End Sub
 End Class

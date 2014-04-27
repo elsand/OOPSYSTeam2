@@ -37,12 +37,13 @@ Public Class frmLogin
         If SessionHelper.Instance.IsLoggedIn Then
             SessionHelper.Instance.ShowDefaultFormForLoggedInUser()
             Me.Hide()
-            btnDoLogin.Text = origBtnText
-            btnDoLogin.Enabled = True
-            txtEmail2.Enabled = True
-            txtPassword.Enabled = True
             KakefunnEvent.saveSystemEvent("Innlogging", "Vellykket innlogging for bruker: " & txtEmail2.Text)
         End If
+
+        btnDoLogin.Text = origBtnText
+        btnDoLogin.Enabled = True
+        txtEmail2.Enabled = True
+        txtPassword.Enabled = True
 
     End Sub
 

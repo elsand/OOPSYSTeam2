@@ -20,8 +20,8 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
@@ -31,7 +31,6 @@ Partial Class frmSaleOrder
         Me.ddlDeliveryMethod = New System.Windows.Forms.ComboBox()
         Me.dtpDeliveryDate = New System.Windows.Forms.DateTimePicker()
         Me.lblDate = New System.Windows.Forms.Label()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblTelephone = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
@@ -41,6 +40,7 @@ Partial Class frmSaleOrder
         Me.txtDeliveryName = New System.Windows.Forms.TextBox()
         Me.lblName = New System.Windows.Forms.Label()
         Me.grpCommodity = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
         Me.btnAddIngredientOrCake = New System.Windows.Forms.Button()
         Me.lblChooseIngredientOrCake = New System.Windows.Forms.Label()
         Me.cbIngredientOrCake = New System.Windows.Forms.ComboBox()
@@ -84,25 +84,21 @@ Partial Class frmSaleOrder
         Me.txtInternalNote = New System.Windows.Forms.TextBox()
         Me.grpSubscription = New System.Windows.Forms.GroupBox()
         Me.btnShowOrderForSubscription = New System.Windows.Forms.Button()
-        Me.lblNextShipments = New System.Windows.Forms.Label()
-        Me.lstNextShipments = New System.Windows.Forms.ListBox()
         Me.lblEndDate = New System.Windows.Forms.Label()
         Me.dtpEndDate = New System.Windows.Forms.DateTimePicker()
         Me.cboHasEndDate = New System.Windows.Forms.CheckBox()
-        Me.lblStartDate = New System.Windows.Forms.Label()
-        Me.dtpStartDate = New System.Windows.Forms.DateTimePicker()
-        Me.cboFrequency = New System.Windows.Forms.ComboBox()
+        Me.ddlFrequency = New System.Windows.Forms.ComboBox()
         Me.lblFrequency = New System.Windows.Forms.Label()
-        Me.cboTypeInterval = New System.Windows.Forms.ComboBox()
+        Me.ddlFrequencyType = New System.Windows.Forms.ComboBox()
         Me.lblTypeInterval = New System.Windows.Forms.Label()
-        Me.chkIsActivated = New System.Windows.Forms.CheckBox()
+        Me.chkSubscriptionIsActivated = New System.Windows.Forms.CheckBox()
         Me.tlayRight = New System.Windows.Forms.TableLayoutPanel()
         Me.grpOrderNote = New System.Windows.Forms.GroupBox()
         Me.btnCancel = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.txtEmail = New Kakefunn.EmailTextBox()
         Me.grpDelivery.SuspendLayout()
         Me.grpCommodity.SuspendLayout()
         CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -142,13 +138,13 @@ Partial Class frmSaleOrder
         '
         Me.grpDelivery.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.txtTelephone)
         Me.grpDelivery.Controls.Add(Me.txtZip)
         Me.grpDelivery.Controls.Add(Me.lblDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.ddlDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.dtpDeliveryDate)
         Me.grpDelivery.Controls.Add(Me.lblDate)
-        Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.lblEmail)
         Me.grpDelivery.Controls.Add(Me.lblTelephone)
         Me.grpDelivery.Controls.Add(Me.lblCity)
@@ -225,14 +221,6 @@ Partial Class frmSaleOrder
         Me.lblDate.Size = New System.Drawing.Size(33, 13)
         Me.lblDate.TabIndex = 14
         Me.lblDate.Text = "Dato:"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEmail.Location = New System.Drawing.Point(333, 91)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(145, 20)
-        Me.txtEmail.TabIndex = 4
         '
         'lblEmail
         '
@@ -326,6 +314,16 @@ Partial Class frmSaleOrder
         Me.grpCommodity.TabStop = False
         Me.grpCommodity.Text = "Varer"
         '
+        'Label3
+        '
+        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.Label3.AutoSize = True
+        Me.Label3.Location = New System.Drawing.Point(297, 182)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(188, 13)
+        Me.Label3.TabIndex = 7
+        Me.Label3.Text = "Trykk Delete for å slette valgt varelinje"
+        '
         'btnAddIngredientOrCake
         '
         Me.btnAddIngredientOrCake.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
@@ -390,8 +388,8 @@ Partial Class frmSaleOrder
         'dcAmount
         '
         Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
         Me.dcAmount.FillWeight = 60.0!
         Me.dcAmount.HeaderText = "Antall"
         Me.dcAmount.Name = "dcAmount"
@@ -399,8 +397,8 @@ Partial Class frmSaleOrder
         'dcTotalPrice
         '
         Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
         Me.dcTotalPrice.FillWeight = 70.0!
         Me.dcTotalPrice.HeaderText = "Totalpris"
         Me.dcTotalPrice.Name = "dcTotalPrice"
@@ -768,21 +766,17 @@ Partial Class frmSaleOrder
         'grpSubscription
         '
         Me.grpSubscription.Controls.Add(Me.btnShowOrderForSubscription)
-        Me.grpSubscription.Controls.Add(Me.lblNextShipments)
-        Me.grpSubscription.Controls.Add(Me.lstNextShipments)
         Me.grpSubscription.Controls.Add(Me.lblEndDate)
         Me.grpSubscription.Controls.Add(Me.dtpEndDate)
         Me.grpSubscription.Controls.Add(Me.cboHasEndDate)
-        Me.grpSubscription.Controls.Add(Me.lblStartDate)
-        Me.grpSubscription.Controls.Add(Me.dtpStartDate)
-        Me.grpSubscription.Controls.Add(Me.cboFrequency)
+        Me.grpSubscription.Controls.Add(Me.ddlFrequency)
         Me.grpSubscription.Controls.Add(Me.lblFrequency)
-        Me.grpSubscription.Controls.Add(Me.cboTypeInterval)
+        Me.grpSubscription.Controls.Add(Me.ddlFrequencyType)
         Me.grpSubscription.Controls.Add(Me.lblTypeInterval)
-        Me.grpSubscription.Controls.Add(Me.chkIsActivated)
+        Me.grpSubscription.Controls.Add(Me.chkSubscriptionIsActivated)
         Me.grpSubscription.Location = New System.Drawing.Point(3, 216)
         Me.grpSubscription.Name = "grpSubscription"
-        Me.grpSubscription.Size = New System.Drawing.Size(292, 276)
+        Me.grpSubscription.Size = New System.Drawing.Size(292, 166)
         Me.grpSubscription.TabIndex = 2
         Me.grpSubscription.TabStop = False
         Me.grpSubscription.Text = "Abonnement"
@@ -796,32 +790,11 @@ Partial Class frmSaleOrder
         Me.btnShowOrderForSubscription.Text = "Vis ordrer for dette abo."
         Me.btnShowOrderForSubscription.UseVisualStyleBackColor = True
         '
-        'lblNextShipments
-        '
-        Me.lblNextShipments.AutoSize = True
-        Me.lblNextShipments.Location = New System.Drawing.Point(13, 201)
-        Me.lblNextShipments.Name = "lblNextShipments"
-        Me.lblNextShipments.Size = New System.Drawing.Size(92, 13)
-        Me.lblNextShipments.TabIndex = 6
-        Me.lblNextShipments.Text = "Neste utsendelser"
-        '
-        'lstNextShipments
-        '
-        Me.lstNextShipments.BackColor = System.Drawing.SystemColors.Control
-        Me.lstNextShipments.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.lstNextShipments.Enabled = False
-        Me.lstNextShipments.FormattingEnabled = True
-        Me.lstNextShipments.Items.AddRange(New Object() {"(liste over neste X leveringer utfra valgt intervall)"})
-        Me.lstNextShipments.Location = New System.Drawing.Point(14, 217)
-        Me.lstNextShipments.Name = "lstNextShipments"
-        Me.lstNextShipments.Size = New System.Drawing.Size(270, 52)
-        Me.lstNextShipments.TabIndex = 7
-        '
         'lblEndDate
         '
         Me.lblEndDate.AutoSize = True
         Me.lblEndDate.Enabled = False
-        Me.lblEndDate.Location = New System.Drawing.Point(13, 168)
+        Me.lblEndDate.Location = New System.Drawing.Point(13, 133)
         Me.lblEndDate.Name = "lblEndDate"
         Me.lblEndDate.Size = New System.Drawing.Size(52, 13)
         Me.lblEndDate.TabIndex = 23
@@ -830,7 +803,7 @@ Partial Class frmSaleOrder
         'dtpEndDate
         '
         Me.dtpEndDate.Enabled = False
-        Me.dtpEndDate.Location = New System.Drawing.Point(84, 165)
+        Me.dtpEndDate.Location = New System.Drawing.Point(84, 130)
         Me.dtpEndDate.Name = "dtpEndDate"
         Me.dtpEndDate.Size = New System.Drawing.Size(200, 20)
         Me.dtpEndDate.TabIndex = 6
@@ -838,7 +811,7 @@ Partial Class frmSaleOrder
         'cboHasEndDate
         '
         Me.cboHasEndDate.AutoSize = True
-        Me.cboHasEndDate.Location = New System.Drawing.Point(10, 138)
+        Me.cboHasEndDate.Location = New System.Drawing.Point(10, 105)
         Me.cboHasEndDate.Name = "cboHasEndDate"
         Me.cboHasEndDate.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.cboHasEndDate.Size = New System.Drawing.Size(86, 17)
@@ -846,68 +819,54 @@ Partial Class frmSaleOrder
         Me.cboHasEndDate.Text = "Har sluttdato"
         Me.cboHasEndDate.UseVisualStyleBackColor = True
         '
-        'lblStartDate
+        'ddlFrequency
         '
-        Me.lblStartDate.AutoSize = True
-        Me.lblStartDate.Location = New System.Drawing.Point(11, 109)
-        Me.lblStartDate.Name = "lblStartDate"
-        Me.lblStartDate.Size = New System.Drawing.Size(53, 13)
-        Me.lblStartDate.TabIndex = 20
-        Me.lblStartDate.Text = "Start-dato"
-        '
-        'dtpStartDate
-        '
-        Me.dtpStartDate.Location = New System.Drawing.Point(82, 107)
-        Me.dtpStartDate.Name = "dtpStartDate"
-        Me.dtpStartDate.Size = New System.Drawing.Size(200, 20)
-        Me.dtpStartDate.TabIndex = 4
-        '
-        'cboFrequency
-        '
-        Me.cboFrequency.FormattingEnabled = True
-        Me.cboFrequency.Items.AddRange(New Object() {"Ukentlig", "Daglig", "Månedlig"})
-        Me.cboFrequency.Location = New System.Drawing.Point(84, 77)
-        Me.cboFrequency.Name = "cboFrequency"
-        Me.cboFrequency.Size = New System.Drawing.Size(52, 21)
-        Me.cboFrequency.TabIndex = 3
+        Me.ddlFrequency.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ddlFrequency.FormattingEnabled = True
+        Me.ddlFrequency.Items.AddRange(New Object() {"Hver(t)", "Annenhver(t)", "Hver(t) 3.", "Hver(t) 4.", "Hver(t) 5.", "Hver(t) 6.", "Hver(t) 7."})
+        Me.ddlFrequency.Location = New System.Drawing.Point(85, 46)
+        Me.ddlFrequency.Name = "ddlFrequency"
+        Me.ddlFrequency.Size = New System.Drawing.Size(120, 21)
+        Me.ddlFrequency.TabIndex = 3
         '
         'lblFrequency
         '
         Me.lblFrequency.AutoSize = True
-        Me.lblFrequency.Location = New System.Drawing.Point(9, 80)
+        Me.lblFrequency.Location = New System.Drawing.Point(10, 49)
         Me.lblFrequency.Name = "lblFrequency"
         Me.lblFrequency.Size = New System.Drawing.Size(55, 13)
         Me.lblFrequency.TabIndex = 17
         Me.lblFrequency.Text = "Hyppighet"
         '
-        'cboTypeInterval
+        'ddlFrequencyType
         '
-        Me.cboTypeInterval.FormattingEnabled = True
-        Me.cboTypeInterval.Items.AddRange(New Object() {"Ukentlig", "Daglig", "Månedlig"})
-        Me.cboTypeInterval.Location = New System.Drawing.Point(83, 47)
-        Me.cboTypeInterval.Name = "cboTypeInterval"
-        Me.cboTypeInterval.Size = New System.Drawing.Size(121, 21)
-        Me.cboTypeInterval.TabIndex = 2
+        Me.ddlFrequencyType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.ddlFrequencyType.FormattingEnabled = True
+        Me.ddlFrequencyType.Items.AddRange(New Object() {"Ukentlig", "Daglig", "Månedlig"})
+        Me.ddlFrequencyType.Location = New System.Drawing.Point(84, 76)
+        Me.ddlFrequencyType.Name = "ddlFrequencyType"
+        Me.ddlFrequencyType.Size = New System.Drawing.Size(121, 21)
+        Me.ddlFrequencyType.TabIndex = 2
         '
         'lblTypeInterval
         '
         Me.lblTypeInterval.AutoSize = True
-        Me.lblTypeInterval.Location = New System.Drawing.Point(9, 50)
+        Me.lblTypeInterval.Location = New System.Drawing.Point(10, 79)
         Me.lblTypeInterval.Name = "lblTypeInterval"
         Me.lblTypeInterval.Size = New System.Drawing.Size(70, 13)
         Me.lblTypeInterval.TabIndex = 14
         Me.lblTypeInterval.Text = "Type intervall"
         '
-        'chkIsActivated
+        'chkSubscriptionIsActivated
         '
-        Me.chkIsActivated.AutoSize = True
-        Me.chkIsActivated.Location = New System.Drawing.Point(10, 19)
-        Me.chkIsActivated.Name = "chkIsActivated"
-        Me.chkIsActivated.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.chkIsActivated.Size = New System.Drawing.Size(74, 17)
-        Me.chkIsActivated.TabIndex = 0
-        Me.chkIsActivated.Text = "Er aktivert"
-        Me.chkIsActivated.UseVisualStyleBackColor = True
+        Me.chkSubscriptionIsActivated.AutoSize = True
+        Me.chkSubscriptionIsActivated.Location = New System.Drawing.Point(10, 19)
+        Me.chkSubscriptionIsActivated.Name = "chkSubscriptionIsActivated"
+        Me.chkSubscriptionIsActivated.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.chkSubscriptionIsActivated.Size = New System.Drawing.Size(74, 17)
+        Me.chkSubscriptionIsActivated.TabIndex = 0
+        Me.chkSubscriptionIsActivated.Text = "Er aktivert"
+        Me.chkSubscriptionIsActivated.UseVisualStyleBackColor = True
         '
         'tlayRight
         '
@@ -923,7 +882,7 @@ Partial Class frmSaleOrder
         Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
         Me.tlayRight.RowStyles.Add(New System.Windows.Forms.RowStyle())
-        Me.tlayRight.Size = New System.Drawing.Size(304, 508)
+        Me.tlayRight.Size = New System.Drawing.Size(304, 395)
         Me.tlayRight.TabIndex = 5
         '
         'grpOrderNote
@@ -984,15 +943,13 @@ Partial Class frmSaleOrder
         Me.Panel2.Size = New System.Drawing.Size(508, 649)
         Me.Panel2.TabIndex = 12
         '
-        'Label3
+        'txtEmail
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(297, 182)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(188, 13)
-        Me.Label3.TabIndex = 7
-        Me.Label3.Text = "Trykk Delete for å slette valgt varelinje"
+        Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEmail.Location = New System.Drawing.Point(333, 90)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(142, 20)
+        Me.txtEmail.TabIndex = 18
         '
         'frmSaleOrder
         '
@@ -1041,7 +998,6 @@ Partial Class frmSaleOrder
     Friend WithEvents lblTelephone As System.Windows.Forms.Label
     Friend WithEvents lblCity As System.Windows.Forms.Label
     Friend WithEvents lblZip As System.Windows.Forms.Label
-    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents grpOrderingCustomer As System.Windows.Forms.GroupBox
     Friend WithEvents grpCommodity As System.Windows.Forms.GroupBox
@@ -1070,18 +1026,14 @@ Partial Class frmSaleOrder
     Friend WithEvents cboPrintReceiptOnSave As System.Windows.Forms.CheckBox
     Friend WithEvents txtInternalNote As System.Windows.Forms.TextBox
     Friend WithEvents grpSubscription As System.Windows.Forms.GroupBox
-    Friend WithEvents lblNextShipments As System.Windows.Forms.Label
-    Friend WithEvents lstNextShipments As System.Windows.Forms.ListBox
     Friend WithEvents lblEndDate As System.Windows.Forms.Label
     Friend WithEvents dtpEndDate As System.Windows.Forms.DateTimePicker
     Friend WithEvents cboHasEndDate As System.Windows.Forms.CheckBox
-    Friend WithEvents lblStartDate As System.Windows.Forms.Label
-    Friend WithEvents dtpStartDate As System.Windows.Forms.DateTimePicker
-    Friend WithEvents cboFrequency As System.Windows.Forms.ComboBox
+    Friend WithEvents ddlFrequency As System.Windows.Forms.ComboBox
     Friend WithEvents lblFrequency As System.Windows.Forms.Label
-    Friend WithEvents cboTypeInterval As System.Windows.Forms.ComboBox
+    Friend WithEvents ddlFrequencyType As System.Windows.Forms.ComboBox
     Friend WithEvents lblTypeInterval As System.Windows.Forms.Label
-    Friend WithEvents chkIsActivated As System.Windows.Forms.CheckBox
+    Friend WithEvents chkSubscriptionIsActivated As System.Windows.Forms.CheckBox
     Friend WithEvents btnShowOrderForSubscription As System.Windows.Forms.Button
     Friend WithEvents cbCustomerName As System.Windows.Forms.ComboBox
     Friend WithEvents CustomerBindingSource As System.Windows.Forms.BindingSource
@@ -1112,5 +1064,6 @@ Partial Class frmSaleOrder
     Friend WithEvents dcAmount As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtEmail As Kakefunn.EmailTextBox
 
 End Class

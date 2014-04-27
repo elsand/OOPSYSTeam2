@@ -22,6 +22,7 @@ Partial Class frmSuperTabContainer
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmSuperTabContainer))
         Me.statusMain = New System.Windows.Forms.StatusStrip()
         Me.statusLogin = New System.Windows.Forms.ToolStripStatusLabel()
         Me.statusAction = New System.Windows.Forms.ToolStripStatusLabel()
@@ -136,6 +137,7 @@ Partial Class frmSuperTabContainer
         Me.ClientSize = New System.Drawing.Size(840, 558)
         Me.Controls.Add(Me.statusMain)
         Me.Controls.Add(Me.mnuMain)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "frmSuperTabContainer"
         Me.Text = "frmSuperTabContainer"
         Me.statusMain.ResumeLayout(False)
