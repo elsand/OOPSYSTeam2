@@ -1,4 +1,10 @@
 ﻿Public Class LocalSystemHelper
+    ''' <summary>
+    ''' Simple helper to get default browser on a Microsoft Windows system.
+    ''' See detailed comments in sub.
+    ''' </summary>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Public Shared Function getDefaultBrowser() As String
         'Gets default web browser.
         Dim browser As String = String.Empty
@@ -18,5 +24,4 @@
         End Try
         Return browser
     End Function
-
 End Class
