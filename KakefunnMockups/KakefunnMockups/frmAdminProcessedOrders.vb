@@ -33,6 +33,7 @@ Public Class frmAdminProcessedOrders
     Private Sub startUp()
         Dim orderQuery = (From x In DBM.Instance.Orders _
                          Where Not x.exported.HasValue _
+                         And x.isSubscriptionOrder = False _
                         Select x).ToList()
         OrderBindingSource.DataSource = orderQuery
 

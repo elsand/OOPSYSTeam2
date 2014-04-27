@@ -20,7 +20,7 @@ Public Class frmSaleMain
     ''' </summary>
     ''' <remarks></remarks>
     Public Overrides Sub OnFormGetsForeground()
-        OrderBindingSource.DataSource = DBM.Instance.Orders.OrderByDescending(Function(o) o.modified).Take(5).ToList()
+        OrderBindingSource.DataSource = DBM.Instance.Orders.Where(Function(o) o.isSubscriptionOrder = False).OrderByDescending(Function(o) o.modified).Take(5).ToList()
         CustomerBindingSource.DataSource = DBM.Instance.Customers.OrderByDescending(Function(c) c.modified).Take(5).ToList()
     End Sub
 

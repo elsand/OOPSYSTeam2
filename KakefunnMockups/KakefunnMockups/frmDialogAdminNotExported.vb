@@ -16,7 +16,7 @@ Public Class frmDialogAdminNotExported
     Private Sub frmDialogAdminNotExported_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Try
             'Crate an orderList.. 
-            Dim orders = DBM.Instance.Orders.Local.ToList().Where(Function(o) Not o.exported.HasValue)
+            Dim orders = DBM.Instance.Orders.Local.ToList().Where(Function(o) Not o.exported.HasValue And o.isSubscriptionOrder = False)
 
             'Create a datatable for the report, predefined in the report definition file. (The dataset connected to the report is just a dummy ... 
             Dim t As New DataTable

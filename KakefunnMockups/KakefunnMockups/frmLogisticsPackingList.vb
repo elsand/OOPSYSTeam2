@@ -37,7 +37,7 @@
 
 
         'find the orders that is not sent and deliverydate is today.... . 
-        OrderBindingSource.DataSource = DBM.Instance.Orders.Local.ToBindingList().Where(Function(o) o.deliveryDate.CompareTo(Me.deliveryDate) <= 0)
+        OrderBindingSource.DataSource = DBM.Instance.Orders.Local.ToBindingList().Where(Function(o) o.isSubscriptionOrder = False And o.deliveryDate.CompareTo(Me.deliveryDate) <= 0)
 
 
         If OrderBindingSource.Count > 1 Then
