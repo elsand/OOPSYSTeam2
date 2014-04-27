@@ -37,6 +37,7 @@ Partial Class frmLogisticsTabContainer
         Me.ClientSize = New System.Drawing.Size(840, 558)
         Me.Controls.Add(Me.tabLogistics)
         Me.Name = "frmLogisticsTabContainer"
+        Me.Text = "Logistikk"
         Me.Controls.SetChildIndex(Me.tabLogistics, 0)
         Me.ResumeLayout(False)
         Me.PerformLayout()

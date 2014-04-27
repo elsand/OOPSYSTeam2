@@ -71,6 +71,7 @@ Partial Class frmSaleTabContainer
         Me.Controls.Add(Me.tabSale)
         Me.Controls.Add(Me.txtSearchInformation)
         Me.Name = "frmSaleTabContainer"
+        Me.Text = "Salg"
         Me.Controls.SetChildIndex(Me.txtSearchInformation, 0)
         Me.Controls.SetChildIndex(Me.tabSale, 0)
         Me.Controls.SetChildIndex(Me.btnSearch, 0)

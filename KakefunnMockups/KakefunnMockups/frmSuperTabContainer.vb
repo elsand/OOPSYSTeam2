@@ -234,9 +234,15 @@ Public Class frmSuperTabContainer
 
             tabContainer.TabPages.Add(tabPage)
 
-            ' Whenever we change to a form, set the title of the aspect window to the same
+            ' Whenever we change to a form, set the title of the aspect window to the same, after the name of the aspect, 
+            ' defined by the Text property of the containing form
             AddHandler frm.VisibleChanged, Function(s As Object, e As EventArgs)
-                                               CType(s, Form).Parent.Parent.Parent.Text = s.Text
+                                               Dim cf As Form = Me.GetContainerForAspect(Me.GetAspectForForm(CType(s, Form)))
+                                               ' If we already have added the form suffix, remove it before we add the new one
+                                               If cf.Text.IndexOf("-") > -1 Then
+                                                   cf.Text = cf.Text.Substring(0, cf.Text.IndexOf("-") - 1)
+                                               End If
+                                               cf.Text = cf.Text & " - " & CType(s, Form).Text
                                                Return Nothing
                                            End Function
         Next
