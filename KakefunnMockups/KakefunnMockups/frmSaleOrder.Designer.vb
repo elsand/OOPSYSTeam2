@@ -20,8 +20,8 @@ Partial Class frmSaleOrder
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
@@ -31,7 +31,6 @@ Partial Class frmSaleOrder
         Me.ddlDeliveryMethod = New System.Windows.Forms.ComboBox()
         Me.dtpDeliveryDate = New System.Windows.Forms.DateTimePicker()
         Me.lblDate = New System.Windows.Forms.Label()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblTelephone = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
@@ -99,6 +98,7 @@ Partial Class frmSaleOrder
         Me.btnClear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
+        Me.txtEmail = New Kakefunn.EmailTextBox()
         Me.grpDelivery.SuspendLayout()
         Me.grpCommodity.SuspendLayout()
         CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -138,13 +138,13 @@ Partial Class frmSaleOrder
         '
         Me.grpDelivery.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.txtTelephone)
         Me.grpDelivery.Controls.Add(Me.txtZip)
         Me.grpDelivery.Controls.Add(Me.lblDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.ddlDeliveryMethod)
         Me.grpDelivery.Controls.Add(Me.dtpDeliveryDate)
         Me.grpDelivery.Controls.Add(Me.lblDate)
-        Me.grpDelivery.Controls.Add(Me.txtEmail)
         Me.grpDelivery.Controls.Add(Me.lblEmail)
         Me.grpDelivery.Controls.Add(Me.lblTelephone)
         Me.grpDelivery.Controls.Add(Me.lblCity)
@@ -221,14 +221,6 @@ Partial Class frmSaleOrder
         Me.lblDate.Size = New System.Drawing.Size(33, 13)
         Me.lblDate.TabIndex = 14
         Me.lblDate.Text = "Dato:"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEmail.Location = New System.Drawing.Point(333, 91)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(145, 20)
-        Me.txtEmail.TabIndex = 4
         '
         'lblEmail
         '
@@ -396,8 +388,8 @@ Partial Class frmSaleOrder
         'dcAmount
         '
         Me.dcAmount.DataPropertyName = "amount"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcAmount.DefaultCellStyle = DataGridViewCellStyle1
         Me.dcAmount.FillWeight = 60.0!
         Me.dcAmount.HeaderText = "Antall"
         Me.dcAmount.Name = "dcAmount"
@@ -405,8 +397,8 @@ Partial Class frmSaleOrder
         'dcTotalPrice
         '
         Me.dcTotalPrice.DataPropertyName = "totalPrice"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.dcTotalPrice.DefaultCellStyle = DataGridViewCellStyle2
         Me.dcTotalPrice.FillWeight = 70.0!
         Me.dcTotalPrice.HeaderText = "Totalpris"
         Me.dcTotalPrice.Name = "dcTotalPrice"
@@ -951,6 +943,14 @@ Partial Class frmSaleOrder
         Me.Panel2.Size = New System.Drawing.Size(508, 649)
         Me.Panel2.TabIndex = 12
         '
+        'txtEmail
+        '
+        Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEmail.Location = New System.Drawing.Point(333, 90)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(142, 20)
+        Me.txtEmail.TabIndex = 18
+        '
         'frmSaleOrder
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -998,7 +998,6 @@ Partial Class frmSaleOrder
     Friend WithEvents lblTelephone As System.Windows.Forms.Label
     Friend WithEvents lblCity As System.Windows.Forms.Label
     Friend WithEvents lblZip As System.Windows.Forms.Label
-    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents grpOrderingCustomer As System.Windows.Forms.GroupBox
     Friend WithEvents grpCommodity As System.Windows.Forms.GroupBox
@@ -1065,5 +1064,6 @@ Partial Class frmSaleOrder
     Friend WithEvents dcAmount As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents dcTotalPrice As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents txtEmail As Kakefunn.EmailTextBox
 
 End Class

@@ -247,4 +247,5 @@
         isDirty = False
         UpdateActionStatus()
     End Sub
+
 End Class

@@ -27,7 +27,6 @@ Partial Class frmSaleCustomer
         Me.lblDiscount = New System.Windows.Forms.Label()
         Me.txtTelephone = New System.Windows.Forms.TextBox()
         Me.lblTelephone = New System.Windows.Forms.Label()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.lblCity = New System.Windows.Forms.Label()
         Me.lblZip = New System.Windows.Forms.Label()
@@ -55,6 +54,7 @@ Partial Class frmSaleCustomer
         Me.tlayCustomer = New System.Windows.Forms.TableLayoutPanel()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.btnClear = New System.Windows.Forms.Button()
+        Me.txtEmail = New Kakefunn.EmailTextBox()
         Me.grpCustomerInformation.SuspendLayout()
         Me.grpCustomerStatus.SuspendLayout()
         Me.grpNote.SuspendLayout()
@@ -66,6 +66,7 @@ Partial Class frmSaleCustomer
         '
         Me.grpCustomerInformation.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.grpCustomerInformation.Controls.Add(Me.txtEmail)
         Me.grpCustomerInformation.Controls.Add(Me.ddlDiscountPlan)
         Me.grpCustomerInformation.Controls.Add(Me.txtZip)
         Me.grpCustomerInformation.Controls.Add(Me.Label1)
@@ -73,7 +74,6 @@ Partial Class frmSaleCustomer
         Me.grpCustomerInformation.Controls.Add(Me.lblDiscount)
         Me.grpCustomerInformation.Controls.Add(Me.txtTelephone)
         Me.grpCustomerInformation.Controls.Add(Me.lblTelephone)
-        Me.grpCustomerInformation.Controls.Add(Me.txtEmail)
         Me.grpCustomerInformation.Controls.Add(Me.lblEmail)
         Me.grpCustomerInformation.Controls.Add(Me.lblCity)
         Me.grpCustomerInformation.Controls.Add(Me.lblZip)
@@ -158,15 +158,6 @@ Partial Class frmSaleCustomer
         Me.lblTelephone.Size = New System.Drawing.Size(43, 13)
         Me.lblTelephone.TabIndex = 10
         Me.lblTelephone.Text = "Telefon"
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEmail.Location = New System.Drawing.Point(84, 138)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(348, 20)
-        Me.txtEmail.TabIndex = 4
         '
         'lblEmail
         '
@@ -455,6 +446,15 @@ Partial Class frmSaleCustomer
         Me.btnClear.Text = "Tøm felter"
         Me.btnClear.UseVisualStyleBackColor = True
         '
+        'txtEmail
+        '
+        Me.txtEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEmail.Location = New System.Drawing.Point(83, 139)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(349, 20)
+        Me.txtEmail.TabIndex = 15
+        '
         'frmSaleCustomer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -483,7 +483,6 @@ Partial Class frmSaleCustomer
     Friend WithEvents lblName As System.Windows.Forms.Label
     Friend WithEvents txtTelephone As System.Windows.Forms.TextBox
     Friend WithEvents lblTelephone As System.Windows.Forms.Label
-    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents grpCustomerStatus As System.Windows.Forms.GroupBox
     Friend WithEvents lblTotalOrderValue As System.Windows.Forms.Label
@@ -510,5 +509,6 @@ Partial Class frmSaleCustomer
     Friend WithEvents lblLastEditedDateAndTimeValue As System.Windows.Forms.Label
     Friend WithEvents lblCreatedDateAndTimeValue As System.Windows.Forms.Label
     Friend WithEvents btnClear As System.Windows.Forms.Button
+    Friend WithEvents txtEmail As Kakefunn.EmailTextBox
 
 End Class

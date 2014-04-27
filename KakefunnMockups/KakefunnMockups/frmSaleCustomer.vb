@@ -229,7 +229,7 @@ Public Class frmSaleCustomer
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
+    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs)
         currentRecord.email = txtEmail.Text
     End Sub
 
