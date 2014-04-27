@@ -12,21 +12,7 @@ Public Class frmAdminReports
         Me.cboSelectIngredient.Visible = False
         Me.lblSelectIngredient.Visible = False
 
-        'TODO: This line of code loads data into the '_14vfu_t02DataSet.Ingredient' table. You can move, or remove it, as needed.
-        'Me.IngredientTableAdapter1.Fill(Me._14vfu_t02DataSet.Ingredient)
-        'TODO: This line of code loads data into the 'Ingredien.LastYearMonthSale' table. You can move, or remove it, as needed.
-        ' Me.LastYearMonthSaleTableAdapter.Fill(Me.Ingredien.LastYearMonthSale)
-        'TODO: This line of code loads data into the 'Ingredien.IngredientHistory' table. You can move, or remove it, as needed.
-        ' Me.IngredientHistoryTableAdapter.Fill(Me.Ingredien.IngredientHistory)
-
-        ' Me.cboSelectReportForm.SelectedIndex = 0
-
-        'TODO: This line of code loads data into the 'Turnover.Ingredient' table. You can move, or remove it, as needed.
-        'Me.IngredientTableAdapter.Fill(Me.Turnover.Ingredient)
-        'TODO: This line of code loads data into the 'EmployeeTest.Employee' table. You can move, or remove it, as needed.
-        'Me.EmployeeTableAdapter.Fill(Me.EmployeeTest.Employee)
-
-        'Me.rptReports.RefreshReport()
+       
     End Sub
 
     ''' <summary>

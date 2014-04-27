@@ -366,6 +366,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
     </Compile>
+    <Compile Include="report\CakeStats.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CakeStats.xsd</DependentUpon>
+    </Compile>
     <Compile Include="report\ExpiredBatches.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -539,6 +544,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="report\Cakes.rdlc" />
     <EmbeddedResource Include="report\Customer.rdlc" />
     <EmbeddedResource Include="report\IngredientHistory.rdlc" />
     <EmbeddedResource Include="report\LastYearNextMonth.rdlc" />
@@ -588,6 +594,17 @@
     <None Include="My Project\DataSources\Cake.datasource" />
     <None Include="My Project\DataSources\Customer.datasource" />
     <None Include="My Project\DataSources\Order.datasource" />
+    <None Include="report\CakeStats.xsc">
+      <DependentUpon>CakeStats.xsd</DependentUpon>
+    </None>
+    <None Include="report\CakeStats.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CakeStats.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="report\CakeStats.xss">
+      <DependentUpon>CakeStats.xsd</DependentUpon>
+    </None>
     <None Include="report\ExpiredBatches.xsc">
       <DependentUpon>ExpiredBatches.xsd</DependentUpon>
     </None>
