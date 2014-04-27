@@ -5,7 +5,6 @@
 ''' </summary>
 ''' <remarks>
 ''' TODO
-''' - Subscriptions are not handled
 ''' - Stock does not increase if order rows are deleted on exisiting orders
 ''' - Extra markup on cakes are not taken into account
 ''' </remarks>
