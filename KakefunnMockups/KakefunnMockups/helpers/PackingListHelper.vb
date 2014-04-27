@@ -92,6 +92,11 @@ Public Class PackingListHelper
     ''' <param name="o"> Object of Kakefunn.Order</param>
     ''' <remarks></remarks>
     Public Sub createAPackingList(ByVal o As Order)
+        Dim recipie = ""
+        Dim cIds As List(Of Integer) = New List(Of Integer)
+
+
+
 
 
         Me.Buffer = "<div class='main'><h2>Pakkseddel</h2>" & _
@@ -121,9 +126,21 @@ Public Class PackingListHelper
 
         ' add the orderlines
 
-        Me.Buffer = Me.Buffer & " <table>"
+        Me.Buffer &= " <table>"
+
+
 
         For Each ol As OrderLine In o.OrderLines
+
+            'if order has a cake, then we need recipies...
+            If ol.cakeId IsNot Nothing Then
+                If Not cIds.Contains(ol.cakeId) Then
+                    cIds.Add(ol.cakeId)
+                    recipie &= Me.createRecipe(ol.cakeId)
+
+                End If
+            End If
+
             Me.Buffer = Me.Buffer & "<tr>" & _
                           "<td>" & ol.Ingredient.name & "</td> " & _
                           "<td>" & ol.amount & "</td> " & _
@@ -135,13 +152,18 @@ Public Class PackingListHelper
 
 
         Next
-        Me.Buffer = Me.Buffer & "</table>" 'end of table... 
+        Me.Buffer &= "</table>" 'end of table... 
 
-        Me.Buffer = Me.Buffer & _
-            "</div><footer>copyright&copy;Kakefunn.no</footer>"
+        Me.Buffer &= "</div><footer>copyright&copy;Kakefunn.no</footer>"
+
+       
+
 
 
         Me.Body &= Me.Buffer
+        Me.Body &= recipie
+
+
 
         Me.Buffer = ""
 
@@ -170,6 +192,42 @@ Public Class PackingListHelper
 
 
     End Sub
+    ''' <summary>
+    ''' 
+    ''' </summary>
+    ''' <param name="i">cakeId</param>
+    ''' <returns>The recipie in html</returns>
+    ''' <remarks></remarks>
+    Private Function createRecipe(ByVal i As Integer) As String
+
+        Dim c As Cake = DBM.Instance.Cakes.Find(i)
+
+        Console.WriteLine(c.ToString)
+
+        Dim html = "<div class='main'>"
+
+        html &= "<div class='cakeHeader'>"
+        html &= "<h2>" & c.name & "</h2>"
+
+        html &= "</div><div><ul>"
+
+        For Each rl As RecipeLine In c.RecipeLines
+
+            html &= "<li>" & rl.Ingredient.name & " " & rl.amount & " " & rl.Ingredient.Unit.name & "</li> "
+
+        Next
+
+        html &= "</ul></div>"
+        html &= "<div><p>" & c.recipe & "</p></div>"
+
+        html &= "<h3>Lykke til..!! :):) </h3></div><footer>" & c.name & " is copyright&copy;Kakefunn.no</footer>"
+
+
+        
+
+
+        Return html
+    End Function
 
 
 
