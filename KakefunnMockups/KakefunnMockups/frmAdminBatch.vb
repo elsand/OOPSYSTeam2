@@ -14,7 +14,8 @@ Public Class frmAdminBatch
     Dim batchBindingListView As BindingListView(Of Batch)
 
     ''' <summary>
-    ''' 
+    ''' Loads frmAdminBatch and displays initial data in the form.
+    ''' Detailed description in the sub.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
@@ -246,7 +247,7 @@ Public Class frmAdminBatch
         Me.clearForm()
 
 
-
+        'Logging
         If IsNewRecord Then
             KakefunnEvent.saveSystemEvent("Batches", "Created new batch #" & b.id)
         Else
@@ -357,6 +358,13 @@ Public Class frmAdminBatch
 
     End Sub
 
+    ''' <summary>
+    ''' Toggles between only showing open batch orders and showing open and received batches
+    ''' within the specified cutoff date.
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
     Private Sub btnChangeSelection_Click(sender As Object, e As EventArgs) Handles btnChangeSelection.Click
         ' Get how many days we should show received batches in the list from app settings
         Dim showRegisteredBatchesForDays As Integer = CType(ConfigurationManager.AppSettings.Get("admin.batch.showRegisteredBatchesForDays"), Integer)
