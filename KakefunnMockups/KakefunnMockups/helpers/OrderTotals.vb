@@ -1,4 +1,8 @@
-﻿Public Class OrderTotals
+﻿''' <summary>
+''' POCO for holding the various totals for an order
+''' </summary>
+''' <remarks></remarks>
+Public Class OrderTotals
     Property totalPriceExVat As Decimal = 0
     Property totalVat As Decimal = 0
     Property totalDiscount As Decimal = 0

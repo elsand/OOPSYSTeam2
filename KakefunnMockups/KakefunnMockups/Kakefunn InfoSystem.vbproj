@@ -194,7 +194,6 @@
     <Compile Include="helpers\AddressHelper.vb" />
     <Compile Include="helpers\CustomerHelper.vb" />
     <Compile Include="helpers\DatabaseHelper.vb" />
-    <Compile Include="helpers\DocumentPrinter.vb" />
     <Compile Include="helpers\OrderHelper.vb" />
     <Compile Include="helpers\AutoCompleteHelper.vb" />
     <Compile Include="helpers\FormatHelper.vb" />

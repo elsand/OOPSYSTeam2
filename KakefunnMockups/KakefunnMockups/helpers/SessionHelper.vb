@@ -78,6 +78,12 @@ Public Class SessionHelper
         End Set
     End Property
 
+    ''' <summary>
+    ''' Same as _currentDialig, but checks for frmDialogBase instead
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
     Private Property currentDialog As frmDialogBase
         Get
             If _currentDialog Is Nothing Then
