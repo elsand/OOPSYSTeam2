@@ -3,11 +3,9 @@
 
     Private Sub frmLogisticsReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.expireDate = Date.Now
+        'Add this to app.config?
         Me.expireDate = Me.expireDate.AddDays(5)
-
-
         start()
-
     End Sub
 
 
@@ -16,15 +14,7 @@
         'Loads the batches
         Try
             DBM.Instance.Batches.Load()
-
-            
-
             BatchBindingSource.DataSource = DBM.Instance.Batches.Local.ToBindingList.Where(Function(b) b.expires.Value.CompareTo(Me.expireDate) <= 0 And b.deleted Is Nothing)
-
-
-
-
-
 
             If BatchBindingSource.Count > 1 Then
                 dtgExpiredIngredients.Enabled = True
@@ -37,14 +27,6 @@
             System.Console.WriteLine("##En operasjon mislyktes: Trolig er dette en dato i batch som er null.")
             System.Console.WriteLine("## Feilmelding:" & ex.ToString)
         End Try
-        
-
-
-
-
-
-
-
     End Sub
 
     Private Sub dtgExpiredIngredients_CellFormatting(sender As Object, e As DataGridViewCellFormattingEventArgs) Handles dtgExpiredIngredients.CellFormatting

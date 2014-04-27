@@ -41,12 +41,13 @@ Partial Class frmDialogExpiredBatches
         Me.rptExpiredBatches.Size = New System.Drawing.Size(718, 415)
         Me.rptExpiredBatches.TabIndex = 0
         '
-        'frmDialogAdminNotExported
+        'frmDialogExpiredBatches
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.ClientSize = New System.Drawing.Size(742, 439)
         Me.Controls.Add(Me.rptExpiredBatches)
-        Me.Name = "frmDialogAdminNotExported"
+        Me.Name = "frmDialogExpiredBatches"
+        Me.Text = "Utgåtte varer"
         CType(Me.OrderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
