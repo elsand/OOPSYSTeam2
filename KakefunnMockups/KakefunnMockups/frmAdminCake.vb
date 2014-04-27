@@ -7,7 +7,7 @@
 ''' </summary>
 ''' <remarks>
 ''' Sorting on price column is not working, mostly because of limitations with datagridview
-''' bound to a datasource combined with manual columns.
+''' bound to a datasource, combined with manual columns.
 ''' </remarks>
 Public Class frmAdminCakes
     'Variables for preloading some content from database to make things
@@ -33,7 +33,7 @@ Public Class frmAdminCakes
     Private existingCake As Cake
 
     ''' <summary>
-    ''' Loads cakes sorted on the deleted-column, as we want delted cakes at the bottom.
+    ''' Loads cakes sorted on the deleted-column, as we want deleted cakes at the bottom.
     ''' Displays the cake list in a datagridview.
     ''' </summary>
     ''' <remarks></remarks>
@@ -43,7 +43,8 @@ Public Class frmAdminCakes
     End Sub
 
     ''' <summary>
-    ''' Calculates prices for the cakes in the datagridview. See detailed comments within the sub.
+    ''' Calculates prices for the cakes in the datagridview. 
+    ''' See detailed comments within the sub.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub loadPrices()
@@ -136,7 +137,7 @@ Public Class frmAdminCakes
     End Sub
 
     ''' <summary>
-    ''' Creates structures i the datatable selList, used to add ingredients to cakes.
+    ''' Creates structures in the datatable selList, used to add ingredients to cakes.
     ''' </summary>
     ''' <remarks></remarks>
     Private Sub structureSelList()
