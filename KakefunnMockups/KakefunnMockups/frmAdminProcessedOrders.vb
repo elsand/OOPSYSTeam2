@@ -217,13 +217,13 @@ Public Class frmAdminProcessedOrders
     ''' <remarks></remarks>
     Private Sub dtgProcessedOrders_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles dtgProcessedOrders.CellDoubleClick
         If e.RowIndex >= 0 Then
-            If dtgProcessedOrders.Rows(e.RowIndex).Cells(sent.Index).Value Is Nothing Then
-                Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
-                Dim order = DBM.Instance.Orders.Find(orderNr)
-                OrderHelper.EditOrder(order, Me)
-            Else
-                MsgBox("Du kan ikke redigere en sendt ordre.", MsgBoxStyle.Information, "Advarsel")
+            If dtgProcessedOrders.Rows(e.RowIndex).Cells(sent.Index).Value IsNot Nothing Then
+                MsgBox("Du kan ikke redigere en sendt ordre. Ordren åpnes skrivebeskyttet.", _
+                       MsgBoxStyle.Information, "Informasjon")
             End If
+            Dim orderNr As Integer = CInt(dtgProcessedOrders.Rows(e.RowIndex).Cells(IdDataGridViewTextBoxColumn.Index).Value)
+            Dim order = DBM.Instance.Orders.Find(orderNr)
+            OrderHelper.EditOrder(order, Me)
         End If
     End Sub
 
