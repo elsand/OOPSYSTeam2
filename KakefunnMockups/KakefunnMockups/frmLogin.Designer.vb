@@ -20,9 +20,9 @@ Partial Class frmLogin
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.grpLogin = New System.Windows.Forms.GroupBox()
+        Me.txtEmail2 = New Kakefunn.EmailTextBox()
         Me.btnDoLogin = New System.Windows.Forms.Button()
         Me.txtPassword = New System.Windows.Forms.TextBox()
-        Me.txtEmail = New System.Windows.Forms.TextBox()
         Me.lblPassword = New System.Windows.Forms.Label()
         Me.lblEmail = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -32,9 +32,9 @@ Partial Class frmLogin
         'grpLogin
         '
         Me.grpLogin.Anchor = System.Windows.Forms.AnchorStyles.Top
+        Me.grpLogin.Controls.Add(Me.txtEmail2)
         Me.grpLogin.Controls.Add(Me.btnDoLogin)
         Me.grpLogin.Controls.Add(Me.txtPassword)
-        Me.grpLogin.Controls.Add(Me.txtEmail)
         Me.grpLogin.Controls.Add(Me.lblPassword)
         Me.grpLogin.Controls.Add(Me.lblEmail)
         Me.grpLogin.Location = New System.Drawing.Point(136, 96)
@@ -43,6 +43,13 @@ Partial Class frmLogin
         Me.grpLogin.TabIndex = 2
         Me.grpLogin.TabStop = False
         Me.grpLogin.Text = "Innlogging"
+        '
+        'txtEmail2
+        '
+        Me.txtEmail2.Location = New System.Drawing.Point(94, 41)
+        Me.txtEmail2.Name = "txtEmail2"
+        Me.txtEmail2.Size = New System.Drawing.Size(137, 20)
+        Me.txtEmail2.TabIndex = 1
         '
         'btnDoLogin
         '
@@ -61,18 +68,9 @@ Partial Class frmLogin
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txtPassword.Location = New System.Drawing.Point(97, 80)
         Me.txtPassword.Name = "txtPassword"
-        Me.txtPassword.Size = New System.Drawing.Size(134, 20)
+        Me.txtPassword.Size = New System.Drawing.Size(137, 20)
         Me.txtPassword.TabIndex = 1
         Me.txtPassword.UseSystemPasswordChar = True
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEmail.Location = New System.Drawing.Point(97, 41)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(137, 20)
-        Me.txtEmail.TabIndex = 0
         '
         'lblPassword
         '
@@ -126,9 +124,9 @@ Partial Class frmLogin
     Friend WithEvents grpLogin As System.Windows.Forms.GroupBox
     Friend WithEvents btnDoLogin As System.Windows.Forms.Button
     Friend WithEvents txtPassword As System.Windows.Forms.TextBox
-    Friend WithEvents txtEmail As System.Windows.Forms.TextBox
     Friend WithEvents lblPassword As System.Windows.Forms.Label
     Friend WithEvents lblEmail As System.Windows.Forms.Label
     Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents txtEmail2 As Kakefunn.EmailTextBox
 
 End Class

@@ -5,14 +5,18 @@ Public Class EmailTextBox
     Protected Overrides Sub OnLostFocus(e As EventArgs)
 
         MyBase.OnLostFocus(e)
+        If Not String.IsNullOrEmpty(Me.Text) Then
+            If Me.EmailAddressChecker(Me.Text) Then
+                Me.BackColor = Color.FromArgb(200, 255, 200)
+                frmLogin.btnDoLogin.Enabled = True
+            Else
 
-        If Me.EmailAddressChecker(Me.Text) Then
-            Me.BackColor = System.Drawing.Color.FromArgb(RGB(200, 255, 200))
-        Else
-
-            Me.BackColor = System.Drawing.Color.FromArgb(RGB(255, 200, 200))
-            MsgBox("Skriv inn en gyldig epostadresse.")
+                Me.BackColor = Color.FromArgb(255, 200, 200)
+                frmLogin.btnDoLogin.Enabled = False
+                MsgBox("Skriv inn en gyldig epostadresse.")
+            End If
         End If
+
 
 
     End Sub
