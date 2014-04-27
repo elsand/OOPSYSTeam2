@@ -8,9 +8,16 @@ Public Class KakefunnEvent
     Private logEventName As String
     Private logEventData As String
     Public Shared Sub saveSystemEvent(ByVal logEventName As String, logEventData As String)
+
+        ' Handle events from not logged in users
+        Dim userId As Integer = 0
+        If SessionHelper.Instance.User IsNot Nothing Then
+            userId = SessionHelper.Instance.User.id
+        End If
+
         DBM.Instance.GetDataSetFromQuery( _
          "INSERT INTO SystemEvent (eventName, eventTime, employeeId, eventData)" & _
-         "VALUES ('" & logEventName & "', NOW(),'" & SessionHelper.Instance.User.id & "', '" & logEventData & "')" _
+         "VALUES ('" & logEventName & "', NOW(),'" & userId & "', '" & logEventData & "')" _
          )
     End Sub
 End Class

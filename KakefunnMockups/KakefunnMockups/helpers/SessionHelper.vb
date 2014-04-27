@@ -103,12 +103,12 @@ Public Class SessionHelper
 
     Public Sub Init()
         ' Start up code goes here
-#If DEBUG Then
-        ' In debug-mode, we usually don't login before testing, so return the first employee
-        If loggedInEmployee Is Nothing Then
-            loggedInEmployee = DBM.Instance.Employees.First()
-        End If
-#End If
+        '#If DEBUG Then
+        '        ' In debug-mode, we usually don't login before testing, so return the first employee
+        '        If loggedInEmployee Is Nothing Then
+        '            loggedInEmployee = DBM.Instance.Employees.First()
+        '        End If
+        '#End If
     End Sub
 
 
@@ -122,14 +122,13 @@ Public Class SessionHelper
     ''' <remarks></remarks>
     Public Function Login(email As String, password As String) As Employee
         Dim employee As Employee = DBM.Instance.Employees.Where(Function(x) x.email = email And x.password = password).FirstOrDefault()
-        ' LINQ version
-        'Dim employee2 As employee = From e In DBM.Instance.employees Where e.email = email And e.password = password Select e
 
         If employee Is Nothing Then
             Throw New DataException("User not found or invalid password")
+        Else
+            loggedInEmployee = employee
+            Return loggedInEmployee
         End If
-        loggedInEmployee = employee
-        Return loggedInEmployee
     End Function
 
     ''' <summary>
