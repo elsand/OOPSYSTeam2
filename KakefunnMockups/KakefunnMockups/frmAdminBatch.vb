@@ -308,6 +308,8 @@ Public Class frmAdminBatch
         UpdateActionStatus("Sletter parti #" & b.id)
         DBM.Instance.Batches.Attach(b)
         b.deleted = Date.Now()
+        b.locationShelf = Nothing
+        b.locationRow = Nothing
         DBM.Instance.SaveChanges()
         KakefunnEvent.saveSystemEvent("Batches", "Deleted batch #" & b.id)
 

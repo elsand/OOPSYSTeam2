@@ -128,22 +128,23 @@
     Private Sub btbDeleteCheckedIngredientsInStock_Click(sender As Object, e As EventArgs) Handles btbDeleteCheckedIngredientsInStock.Click
         Dim ingredientIDs As String = ""
 
+        If MessageBox.Show("Er du sikker på du vil slette valgte partier?", "Bekreft sletting", MessageBoxButtons.YesNo, MessageBoxIcon.Question) = Windows.Forms.DialogResult.No Then
+            Exit Sub
+        End If
+
         For Each r As DataGridViewRow In dtgExpiredIngredients.Rows
-
             If r.Selected Then
-
                 Dim b = CType(r.DataBoundItem, Batch)
                 b.deleted = DateTime.Now
+                b.locationShelf = Nothing
+                b.locationRow = Nothing
                 ingredientIDs &= b.id & ", "
             End If
-
         Next
 
         DBM.Instance.SaveChanges()
         KakefunnEvent.saveSystemEvent("Utgåtte varer", "Slettet utgått vare: " & ingredientIDs)
         start()
-
-
     End Sub
 
     ''' <summary>

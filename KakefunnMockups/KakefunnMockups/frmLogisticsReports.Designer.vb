@@ -62,6 +62,7 @@ Partial Class frmLogisticsReports
         Me.dtgExpiredIngredients.Location = New System.Drawing.Point(12, 12)
         Me.dtgExpiredIngredients.Name = "dtgExpiredIngredients"
         Me.dtgExpiredIngredients.RowHeadersVisible = False
+        Me.dtgExpiredIngredients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.dtgExpiredIngredients.Size = New System.Drawing.Size(682, 407)
         Me.dtgExpiredIngredients.TabIndex = 5
         '
