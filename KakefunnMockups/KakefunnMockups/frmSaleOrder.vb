@@ -227,9 +227,6 @@ Public Class frmSaleOrder
                     End If
                 End If
             Next
-
-            ' TODO! Deal with deleted rows ...
-
         Catch ex As Exception
             MessageBox.Show("Det oppstod en feil under lagring av ordre. " & ex.Message, "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
