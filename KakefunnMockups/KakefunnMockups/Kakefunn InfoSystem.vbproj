@@ -555,7 +555,7 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="report\Cakes.rdlc" />
+    <EmbeddedResource Include="report\Cake.rdlc" />
     <EmbeddedResource Include="report\Customer.rdlc" />
     <EmbeddedResource Include="report\IngredientHistory.rdlc" />
     <EmbeddedResource Include="report\LastYearNextMonth.rdlc" />

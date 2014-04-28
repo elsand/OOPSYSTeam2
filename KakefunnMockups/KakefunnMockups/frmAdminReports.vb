@@ -68,7 +68,9 @@ Public Class frmAdminReports
             Case 3
                 reportDataSource = New ReportDataSource("LastYearNextMonth", rph.getDataTable("lastYearNextMonth"))
             Case 4
-                MsgBox("TODO: Not implemented yet, kommer ila dagen")
+                rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
+                rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
+                reportDataSource = New ReportDataSource("CakeStats", rph.getDataTable("cakeStats"))
             Case 5
                 rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
                 rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")

@@ -30,6 +30,10 @@
             Case "expiredBatches"
                 Me.rdf = "Kakefunn.ExpiredBatches.rdlc"
                 Return Me._createExpiredBatches()
+
+            Case "cakeStats"
+                Me.rdf = "Kakefunn.Cake.rdlc"
+                Return Me._createCakeReport()
         End Select
         Return Nothing
     End Function
@@ -112,5 +116,25 @@
             "inner join Ingredient i on i.id = b.ingredientId " & _
             "inner join Unit u on u.id = i.unitId " & _
             "where DATEDIFF(b.expires,now()) < 5 AND b.deleted IS NULL")
+    End Function
+
+
+    ''' <summary>
+    ''' Creates a simple cakereport that counts how times there has been placed an order with a certain cake... 
+    ''' </summary>
+    ''' <returns> Datatable </returns>
+    ''' <remarks></remarks>
+    Private Function _createCakeReport() As DataTable
+
+        Return DBM.Instance.GetDataTableFromQuery( _
+           "select count(x.orderId) as  antall ,x.cakeId, c.`name`  from " & _
+            " ( select distinct orderId, cakeId from OrderLine ol where cakeId is not null )  x " & _
+            " inner join Cake c on c.id = x.cakeId  " & _
+            " inner join OrderLine ord on ord.id = c.id " & _
+            " inner join `Order` o on o.id = x.orderId " & _
+            " where (o.created BETWEEN '" & Me.startDate & "' AND '" & Me.stopDate & "') AND o.isSubscriptionOrder = FALSE " & _
+            " group by cakeId ;")
+
+
     End Function
 End Class
