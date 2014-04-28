@@ -202,7 +202,7 @@ Public Class frmSaleOrder
 
             ' If the subscription is a new one, we must not add it until the order
             ' is saved in order to get the foreign id set
-            If subscription.id = 0 Then
+            If subscription IsNot Nothing AndAlso subscription.id = 0 Then
                 DBM.Instance.Subscriptions.Add(subscription)
                 subscription.created = Date.Now()
                 DBM.Instance.SaveChanges()
