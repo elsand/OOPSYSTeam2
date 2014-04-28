@@ -9,7 +9,7 @@ Public Class frmAdminReports
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub frmAdminReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.cboSelectReportForm.SelectedIndex = 0
         Me.IngredientTableAdapter2.Fill(Me.IngredientCombo.Ingredient)
         Me.cboSelectIngredient.Visible = False
         Me.lblSelectIngredient.Visible = False
