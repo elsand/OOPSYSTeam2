@@ -5,7 +5,6 @@
 ''' </summary>
 ''' <remarks>
 ''' TODO
-''' - Stock does not increase if order rows are deleted on exisiting orders
 ''' - Extra markup on cakes are not taken into account
 ''' </remarks>
 Public Class frmSaleOrder
@@ -202,7 +201,7 @@ Public Class frmSaleOrder
 
             ' If the subscription is a new one, we must not add it until the order
             ' is saved in order to get the foreign id set
-            If subscription.id = 0 Then
+            If subscription IsNot Nothing AndAlso subscription.id = 0 Then
                 DBM.Instance.Subscriptions.Add(subscription)
                 subscription.created = Date.Now()
                 DBM.Instance.SaveChanges()
@@ -228,9 +227,6 @@ Public Class frmSaleOrder
                     End If
                 End If
             Next
-
-            ' TODO! Deal with deleted rows ...
-
         Catch ex As Exception
             MessageBox.Show("Det oppstod en feil under lagring av ordre. " & ex.Message, "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
             Exit Sub
@@ -570,8 +566,8 @@ Public Class frmSaleOrder
             err = "Du må oppgi et antall."
         ElseIf Integer.TryParse(val, amount) = False Then
             err = "Du må oppgi et tall"
-        ElseIf amount < 1 Then
-            err = "Du må oppgi minst 1"
+        ElseIf amount < 0 Then
+            err = "Du må oppgi minst 0"
         Else
             Try
                 ' Init a orderline from the selected row
@@ -586,7 +582,7 @@ Public Class frmSaleOrder
                     End If
                     ' Forbid increase of unitcount
                     If row.Tag < amount Then
-                        err = "Ordrelinjer på eksisterende ordrer kan ikke økes, kun reduseres ellers slettes. Maks antall for denne varelinjen er " & row.Tag & ". For å legge til flere enheter av denne ingrediensen, legg til en ny varelinje."
+                        err = "Ordrelinjer på eksisterende ordrer kan ikke økes, kun reduseres evt. til 0. Maks antall for denne varelinjen er " & row.Tag & ". For å legge til flere enheter av denne ingrediensen, legg til en ny varelinje."
                     Else
                         ' Do not calculate a new price (the stock situation might very well have changed since the order was originally placed)
                         Dim orderlineSellingPrice As Decimal = ol.totalPrice / ol.amount
@@ -600,6 +596,10 @@ Public Class frmSaleOrder
             Catch ex As Exception
                 err = ex.Message
             End Try
+        End If
+
+        If err = "" Then
+            UpdateTotalPrice()
         End If
 
         Return err
@@ -733,6 +733,7 @@ Public Class frmSaleOrder
         If Not FormHelper.ContinueIfDirty(Me) Then
             Exit Sub
         End If
+        NewOrder()
         SessionHelper.Instance.ShowForm(returnToForm)
     End Sub
 
@@ -857,14 +858,30 @@ Public Class frmSaleOrder
     End Sub
 
     ''' <summary>
-    ''' Handle the user deleting a row from the datagridview
+    ''' Handle the user deleting a row from the datagridview. We do not allow removal or orderrows on existing orders,
+    ''' as that is complicated with EF (EF only removes the relation, not the actual ordreline, which cannot exist without
+    ''' the relation, causing a save error). Also simplifies stock handling, since we do not have to keep track of deleted rows.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub dtgOrderLines_UserDeletingRow(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dtgOrderLines.RowsRemoved
+    Private Sub dtgOrderLines_UserDeletingRow(sender As Object, e As DataGridViewRowCancelEventArgs) Handles dtgOrderLines.UserDeletingRow
+        If CType(e.Row.DataBoundItem, OrderLine).id > 0 Then
+            MessageBox.Show("Du kan ikke slette ordrelinjer fra eksisterende ordrer, kun redusere antall", "Feil", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            e.Cancel = True
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' After the row is removed, update the total price
+    ''' </summary>
+    ''' <param name="sender"></param>
+    ''' <param name="e"></param>
+    ''' <remarks></remarks>
+    Private Sub dtgOrderLines_RowsRemoved(sender As Object, e As DataGridViewRowsRemovedEventArgs) Handles dtgOrderLines.RowsRemoved
         UpdateTotalPrice()
     End Sub
+
 
     ''' <summary>
     ''' Handle the user selecting different delivery methods.
@@ -957,8 +974,6 @@ Public Class frmSaleOrder
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
-
-
         currentRecord.deliveryEmail = txtEmail.Text
     End Sub
 

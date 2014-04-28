@@ -44,7 +44,7 @@
             "SELECT i.name AS name, SUM(ol.amount) AS totalAmount, " & _
             "SUM(ol.totalPrice) AS tPrice, SUM(ol.totalPrice) / SUM(ol.amount) AS pricePrUnit " & _
             "FROM `Order` o INNER JOIN OrderLine ol ON ol.orderId = o.id " & _
-            "INNER JOIN Ingredient i ON ol.ingredientId = i.id WHERE(DateDiff(Now(), o.created) < 31) " & _
+            "INNER JOIN Ingredient i ON ol.ingredientId = i.id WHERE (DateDiff(Now(), o.created) < 31) AND o.isSubscriptionOrder = False  " & _
             "GROUP BY i.id" _
         )
     End Function
@@ -61,7 +61,7 @@
                         "OrderLine ol ON ol.orderId = o.id INNER JOIN " & _
                         "Ingredient i ON ol.ingredientId = i.id INNER JOIN " & _
                         "Unit u ON u.id = i.unitId " & _
-                        "WHERE (i.id = " & Me.id & ") AND (DATEDIFF(NOW(), o.created) < 365 + DAYOFMONTH(NOW())) " & _
+                        "WHERE (i.id = " & Me.id & ") AND (DATEDIFF(NOW(), o.created) < 365 + DAYOFMONTH(NOW())) AND o.isSubscriptionOrder = False " & _
                         "GROUP BY year, month " & _
                         "ORDER BY year, month" _
         )
@@ -80,7 +80,7 @@
                         "Ingredient i ON ol.ingredientId = i.id INNER JOIN " & _
                         " Unit u ON u.id = i.unitId LEFT OUTER JOIN " & _
                         " Batch b ON b.ingredientId = i.id " & _
-                        "WHERE        (MONTH(o.created) = MONTH(NOW()) + 1) AND (YEAR(o.created) = YEAR(NOW()) - 1) AND b.deleted IS NULL " & _
+                        "WHERE        (MONTH(o.created) = MONTH(NOW()) + 1) AND (YEAR(o.created) = YEAR(NOW()) - 1) AND b.deleted IS NULL  AND  o.isSubscriptionOrder = False " & _
                         "GROUP BY i.id, MONTH(o.created) " & _
                         "ORDER BY toOrder DESC ; " _
         )

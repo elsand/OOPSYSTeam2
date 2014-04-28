@@ -67,7 +67,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>Total mengde solgt</Value>
+                              <Value>Forventet salg</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -578,7 +578,7 @@
         </Paragraphs>
         <rd:DefaultName>Textbox16</rd:DefaultName>
         <Top>2.09558cm</Top>
-        <Left>10.60662cm</Left>
+        <Left>9.86578cm</Left>
         <Height>0.6cm</Height>
         <Width>2.5cm</Width>
         <ZIndex>6</ZIndex>
@@ -638,9 +638,9 @@
         </Paragraphs>
         <rd:DefaultName>ExecutionTime</rd:DefaultName>
         <Top>0.34078cm</Top>
-        <Left>13.18064cm</Left>
+        <Left>10.60662cm</Left>
         <Height>0.6cm</Height>
-        <Width>2.5cm</Width>
+        <Width>5.07402cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <Border>
