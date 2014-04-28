@@ -297,4 +297,8 @@ Public Class frmSuperTabContainer
             End If
         Next
     End Sub
+
+    Private Sub HelpToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenuItem.Click
+        Process.Start(System.IO.Path.Combine(Application.StartupPath, "resources\KakeFunn_Veileder.chm"))
+    End Sub
 End Class
