@@ -172,7 +172,7 @@ Public Class frmAdminProcessedOrders
             End Try
 
             KakefunnEvent.saveSystemEvent("Ordre-eksporter", "Eksporterte følgende ordre: " & exportedOrders)
-            MsgBox("Eksporterte " & j & " ordre.")
+            MsgBox("Eksporterte " & j & " ordre til " & strFolder & "\" & fileName)
             startUp()
         Else
             MsgBox("Ingen ordre er valgt")
