@@ -297,5 +297,4 @@ Public Class frmSuperTabContainer
             End If
         Next
     End Sub
-
 End Class
