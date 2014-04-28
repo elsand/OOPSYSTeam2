@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ExpiredBatches" targetNamespace="http://tempuri.org/ExpiredBatches.xsd" xmlns:mstns="http://tempuri.org/ExpiredBatches.xsd" xmlns="http://tempuri.org/ExpiredBatches.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="_14vfu_t02ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="_14vfu_t02ConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Kakefunn.My.MySettings.GlobalReference.Default._14vfu_t02ConnectionString" Provider="MySql.Data.MySqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="_14vfu_t02ConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        i.id, b.registered, b.expires, b.unitCount, u.name, b.locationRow, b.locationShelf
+FROM            Batch b INNER JOIN
+                         Ingredient i ON i.id = b.ingredientId INNER JOIN
+                         Unit u ON u.id = i.unitId
+WHERE        (DATEDIFF(b.expires, NOW()) &lt; 5) AND (b.deleted IS NULL)</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="registered" DataSetColumn="registered" />
+              <Mapping SourceColumn="expires" DataSetColumn="expires" />
+              <Mapping SourceColumn="unitCount" DataSetColumn="unitCount" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="locationRow" DataSetColumn="locationRow" />
+              <Mapping SourceColumn="locationShelf" DataSetColumn="locationShelf" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ExpiredBatches" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ExpiredBatches" msprop:Generator_UserDSName="ExpiredBatches">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" type="xs:int" />
+              <xs:element name="registered" msprop:Generator_ColumnVarNameInTable="columnregistered" msprop:Generator_ColumnPropNameInRow="registered" msprop:Generator_ColumnPropNameInTable="registeredColumn" msprop:Generator_UserColumnName="registered" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="expires" msprop:Generator_ColumnVarNameInTable="columnexpires" msprop:Generator_ColumnPropNameInRow="expires" msprop:Generator_ColumnPropNameInTable="expiresColumn" msprop:Generator_UserColumnName="expires" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="unitCount" msprop:Generator_ColumnVarNameInTable="columnunitCount" msprop:Generator_ColumnPropNameInRow="unitCount" msprop:Generator_ColumnPropNameInTable="unitCountColumn" msprop:Generator_UserColumnName="unitCount" type="xs:int" />
+              <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="45" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="locationRow" msprop:Generator_ColumnVarNameInTable="columnlocationRow" msprop:Generator_ColumnPropNameInRow="locationRow" msprop:Generator_ColumnPropNameInTable="locationRowColumn" msprop:Generator_UserColumnName="locationRow" type="xs:int" minOccurs="0" />
+              <xs:element name="locationShelf" msprop:Generator_ColumnVarNameInTable="columnlocationShelf" msprop:Generator_ColumnPropNameInRow="locationShelf" msprop:Generator_ColumnPropNameInTable="locationShelfColumn" msprop:Generator_UserColumnName="locationShelf" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:DataTable1" />
+      <xs:field xpath="mstns:id" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
