@@ -12,29 +12,84 @@ Public Class frmAdminReports
         Me.cboSelectIngredient.Visible = False
         Me.lblSelectIngredient.Visible = False
 
-       
+        fillIngredientDDL()
     End Sub
 
+    Public Overrides Sub OnFormGetsForeground()
+
+    End Sub
+
+    ''' <summary>
+    ''' Fills the ingredient list with data fram db.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub fillIngredientDDL()
+        Dim ingredientQuery = (From i In DBM.Instance.Ingredients Select i.id, i.name Order By id Ascending).ToList()
+        With cboSelectIngredient
+            .DataSource = ingredientQuery
+            .DisplayMember = "name"
+            .ValueMember = "id"
+        End With
+    End Sub
     ''' <summary>
     ''' Manipulates visible controls based on what report is selected in the ddl.
     ''' </summary>
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
+    'Private Sub cboSelectReportForm_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSelectReportForm.SelectedIndexChanged
+    '    If cboSelectReportForm.SelectedIndex = 2 Then
+    '       Me.dtpTimePeriodFrom.Visible = False
+    '      Me.dtpTimePeriodTo.Visible = False
+    '     Me.lblTimePeriod.Visible = False
+    '    Me.lblSelectIngredient.Visible = True
+    '   Me.cboSelectIngredient.Visible = True
+    'Else
+    '   Me.dtpTimePeriodFrom.Visible = True
+    '  Me.dtpTimePeriodTo.Visible = True
+    ' Me.lblTimePeriod.Visible = True
+    'Me.lblSelectIngredient.Visible = False
+    'Me.cboSelectIngredient.Visible = False
+    'End If
+    'End Sub
+
+
+    'Velg rapport
+    'Salgsrapport
+    'Ingrediens siste år
+    'Forventet salg neste mnd
+    'Hendelseslogg
     Private Sub cboSelectReportForm_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cboSelectReportForm.SelectedIndexChanged
+        Select Case cboSelectReportForm.SelectedIndex
+            Case 1
+                Me.dtpTimePeriodFrom.Visible = True
+                Me.dtpTimePeriodTo.Visible = True
+                Me.lblTimePeriod.Visible = True
+                Me.lblSelectIngredient.Visible = False
+                Me.cboSelectIngredient.Visible = False
+            Case 2
+                Me.dtpTimePeriodFrom.Visible = False
+                Me.dtpTimePeriodTo.Visible = False
+                Me.lblTimePeriod.Visible = False
+                Me.lblSelectIngredient.Visible = True
+                Me.cboSelectIngredient.Visible = True
+            Case 3
+                Me.dtpTimePeriodFrom.Visible = True
+                Me.dtpTimePeriodTo.Visible = True
+                Me.lblTimePeriod.Visible = True
+                Me.lblSelectIngredient.Visible = False
+                Me.cboSelectIngredient.Visible = False
+            Case 4
+
+            Case 5
+
+            Case 6
+        End Select
+
         If cboSelectReportForm.SelectedIndex = 2 Then
-            Me.dtpTimePeriodFrom.Visible = False
-            Me.dtpTimePeriodTo.Visible = False
-            Me.lblTimePeriod.Visible = False
-            Me.lblSelectIngredient.Visible = True
-            Me.cboSelectIngredient.Visible = True
         Else
-            Me.dtpTimePeriodFrom.Visible = True
-            Me.dtpTimePeriodTo.Visible = True
-            Me.lblTimePeriod.Visible = True
-            Me.lblSelectIngredient.Visible = False
-            Me.cboSelectIngredient.Visible = False
         End If
+
     End Sub
 
     ''' <summary>

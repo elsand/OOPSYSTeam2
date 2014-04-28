@@ -111,6 +111,7 @@ Partial Class frmAdminReports
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(87, 21)
         Me.cboSelectReportForm.TabIndex = 8
+        Me.cboSelectReportForm.Text = "Velg rapport"
         '
         'lblSelectReportForm
         '
