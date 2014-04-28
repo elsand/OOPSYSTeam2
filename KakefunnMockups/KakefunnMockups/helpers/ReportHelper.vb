@@ -80,7 +80,7 @@
                         "Ingredient i ON ol.ingredientId = i.id INNER JOIN " & _
                         " Unit u ON u.id = i.unitId LEFT OUTER JOIN " & _
                         " Batch b ON b.ingredientId = i.id " & _
-                        "WHERE        (MONTH(o.created) = MONTH(NOW()) + 1) AND (YEAR(o.created) = YEAR(NOW()) - 1) " & _
+                        "WHERE        (MONTH(o.created) = MONTH(NOW()) + 1) AND (YEAR(o.created) = YEAR(NOW()) - 1) AND b.deleted IS NULL " & _
                         "GROUP BY i.id, MONTH(o.created) " & _
                         "ORDER BY toOrder DESC ; " _
         )
