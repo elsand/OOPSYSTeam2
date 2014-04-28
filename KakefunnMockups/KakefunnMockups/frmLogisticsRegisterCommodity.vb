@@ -42,7 +42,38 @@ Public Class frmLogisticsRegisterCommodity
 
             rowMax = .Item("logistics.rowMax")
             shelfMax = .Item("logistics.shelfMax")
+
         End With
+    End Sub
+
+    Public Overrides Sub OnFormGetsForeground()
+        deleteZeroBatches()
+    End Sub
+
+    ''' <summary>
+    ''' Releasing rows and shelves for batches with unitcount 0.
+    ''' Only happens if orders connected to those batches are delivered in case of cancellations.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub deleteZeroBatches()
+        Dim ids As String = ""
+        Dim zeroBatches As DataTable = DBM.Instance.GetDataTableFromQuery("SELECT DISTINCT b.id FROM Batch b, Ingredient i, OrderLine ol, `Order` o" & _
+                                                                          " WHERE b.unitCount = 0" & _
+                                                                          " AND b.ingredientId = i.id" & _
+                                                                          " AND ol.ingredientId = i.id" & _
+                                                                          " AND ol.orderId = o.id" & _
+                                                                          " AND o.sent IS NOT NULL;")
+        If zeroBatches.Rows.Count < 1 Then
+            Exit Sub
+        Else
+
+            For Each row As DataRow In zeroBatches.Rows
+                ids &= row.Item(0) & ","
+            Next
+            ids = ids.Substring(0, ids.Length - 1)
+            DBM.Instance.Database.ExecuteSqlCommand("UPDATE Batch SET deleted = NOW(), locationShelf = NULL, locationRow = NULL WHERE id IN (" & ids & _
+                                                    ") AND deleted IS NULL")
+        End If
 
     End Sub
 
