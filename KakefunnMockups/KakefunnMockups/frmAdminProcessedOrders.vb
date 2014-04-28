@@ -13,6 +13,8 @@ Imports System.IO
 '''</remarks>
 Public Class frmAdminProcessedOrders
     Private fileName As String = "KakeOrderExport_1_" & Date.Today & ".xml"
+    Private strFolder As String = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments).ToString() & "\KakeFunnXML"
+
 
     ''' <summary>
     ''' Loading the form with selected data from the database.
@@ -94,13 +96,18 @@ Public Class frmAdminProcessedOrders
             checkFileName()
             Dim i, j As Integer
             Dim exportedOrders As String = ""
+
+            If Not System.IO.Directory.Exists(strFolder) Then
+                System.IO.Directory.CreateDirectory(strFolder)
+            End If
+
             'Create XmlWriterSettings
             Dim settings As XmlWriterSettings = New XmlWriterSettings()
             settings.Indent = True
 
             'Create XmlWriter
             'File gets saved in program catalog.
-            Using writer As XmlWriter = XmlWriter.Create(fileName)
+            Using writer As XmlWriter = XmlWriter.Create(strFolder & "\" & fileName)
                 'Begin writing
                 writer.WriteStartDocument()
                 writer.WriteStartElement("Orders") 'XML Root
@@ -154,7 +161,7 @@ Public Class frmAdminProcessedOrders
                 writer.WriteEndDocument()
 
                 'Shows xml in web-browser, basically to show that something is happening.
-                Process.Start(LocalSystemHelper.getDefaultBrowser(), fileName)
+                Process.Start(LocalSystemHelper.getDefaultBrowser(), strFolder & "\" & fileName)
             End Using
 
             'Writes changes to db.
@@ -165,7 +172,7 @@ Public Class frmAdminProcessedOrders
             End Try
 
             KakefunnEvent.saveSystemEvent("Ordre-eksporter", "Eksporterte følgende ordre: " & exportedOrders)
-            MsgBox("Eksporterte " & j & " ordre.")
+            MsgBox("Eksporterte " & j & " ordre til " & strFolder & "\" & fileName)
             startUp()
         Else
             MsgBox("Ingen ordre er valgt")
@@ -248,7 +255,7 @@ Public Class frmAdminProcessedOrders
     ''' <remarks></remarks>
     Private Sub checkFileName()
         Dim i As Integer = 0
-        While File.Exists(fileName)
+        While File.Exists(strFolder & "\" & fileName)
             i += 1
             fileName = "KakeOrderExport_" & i & "_" & Date.Today & ".xml"
         End While
