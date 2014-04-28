@@ -351,6 +351,7 @@ Public Class frmSaleOrder
         Next
         If chkSubscriptionIsActivated.Checked Then
             dtpEndDate.Enabled = cboHasEndDate.Checked
+            btnShowOrderForSubscription.Enabled = currentRecord.isSubscriptionOrder
         End If
     End Sub
 
@@ -997,7 +998,7 @@ Public Class frmSaleOrder
         If isNewRecord Then
             Exit Sub
         End If
-        SearchHelper.SearchOrders(Function(o) o.subscriptionId = currentRecord.id)
+        SearchHelper.SearchOrders(Function(o) o.subscriptionId IsNot Nothing AndAlso o.subscriptionId = currentRecord.id)
     End Sub
 
     ''' <summary>
