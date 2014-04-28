@@ -9,6 +9,8 @@ Public Class frmAdminReports
     ''' <param name="e"></param>
     ''' <remarks></remarks>
     Private Sub frmAdminReports_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        Me.IngredientTableAdapter2.Fill(Me.IngredientCombo.Ingredient)
         Me.cboSelectIngredient.Visible = False
         Me.lblSelectIngredient.Visible = False
 
@@ -26,9 +28,18 @@ Public Class frmAdminReports
             Me.dtpTimePeriodFrom.Visible = False
             Me.dtpTimePeriodTo.Visible = False
             Me.lblTimePeriod.Visible = False
+            Me.lblDateTo.Visible = False
             Me.lblSelectIngredient.Visible = True
             Me.cboSelectIngredient.Visible = True
+        ElseIf cboSelectReportForm.SelectedIndex = 1 Or cboSelectReportForm.SelectedIndex = 3 Then
+            Me.dtpTimePeriodFrom.Visible = False
+            Me.dtpTimePeriodTo.Visible = False
+            Me.lblTimePeriod.Visible = False
+            Me.lblDateTo.Visible = False
+            Me.lblSelectIngredient.Visible = False
+            Me.cboSelectIngredient.Visible = False
         Else
+
             Me.dtpTimePeriodFrom.Visible = True
             Me.dtpTimePeriodTo.Visible = True
             Me.lblTimePeriod.Visible = True
@@ -57,6 +68,8 @@ Public Class frmAdminReports
             Case 3
                 reportDataSource = New ReportDataSource("LastYearNextMonth", rph.getDataTable("lastYearNextMonth"))
             Case 4
+                MsgBox("TODO: Not implemented yet, kommer ila dagen")
+            Case 5
                 rph.startDate = Format(dtpTimePeriodFrom.Value, "yyyy-MM-dd")
                 rph.stopDate = Format(dtpTimePeriodTo.Value, "yyyy-MM-dd")
                 reportDataSource = New ReportDataSource("SystemEvent", rph.getDataTable("SystemEvent"))

@@ -25,6 +25,7 @@ Partial Class frmSaleOrder
         Me.lblCustomer = New System.Windows.Forms.Label()
         Me.btnNewCustomer = New System.Windows.Forms.Button()
         Me.grpDelivery = New System.Windows.Forms.GroupBox()
+        Me.txtEmail = New Kakefunn.EmailTextBox()
         Me.txtTelephone = New Kakefunn.NumericTextbox()
         Me.txtZip = New Kakefunn.NumericTextbox()
         Me.lblDeliveryMethod = New System.Windows.Forms.Label()
@@ -98,7 +99,6 @@ Partial Class frmSaleOrder
         Me.btnClear = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Panel2 = New System.Windows.Forms.Panel()
-        Me.txtEmail = New Kakefunn.EmailTextBox()
         Me.grpDelivery.SuspendLayout()
         Me.grpCommodity.SuspendLayout()
         CType(Me.dtgOrderLines, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -159,6 +159,14 @@ Partial Class frmSaleOrder
         Me.grpDelivery.TabIndex = 2
         Me.grpDelivery.TabStop = False
         Me.grpDelivery.Text = "Levering"
+        '
+        'txtEmail
+        '
+        Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.txtEmail.Location = New System.Drawing.Point(333, 90)
+        Me.txtEmail.Name = "txtEmail"
+        Me.txtEmail.Size = New System.Drawing.Size(142, 20)
+        Me.txtEmail.TabIndex = 18
         '
         'txtTelephone
         '
@@ -942,14 +950,6 @@ Partial Class frmSaleOrder
         Me.Panel2.Name = "Panel2"
         Me.Panel2.Size = New System.Drawing.Size(508, 649)
         Me.Panel2.TabIndex = 12
-        '
-        'txtEmail
-        '
-        Me.txtEmail.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.txtEmail.Location = New System.Drawing.Point(333, 90)
-        Me.txtEmail.Name = "txtEmail"
-        Me.txtEmail.Size = New System.Drawing.Size(142, 20)
-        Me.txtEmail.TabIndex = 18
         '
         'frmSaleOrder
         '

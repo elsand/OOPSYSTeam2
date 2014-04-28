@@ -37,18 +37,21 @@ Partial Class frmAdminReports
         Me.dtpTimePeriodFrom = New System.Windows.Forms.DateTimePicker()
         Me.dtpTimePeriodTo = New System.Windows.Forms.DateTimePicker()
         Me.lblTimePeriod = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
+        Me.lblDateTo = New System.Windows.Forms.Label()
         Me.EmployeeTableAdapter = New Kakefunn.EmployeeTestTableAdapters.EmployeeTableAdapter()
         Me.IngredientTableAdapter = New Kakefunn.TurnoverTableAdapters.IngredientTableAdapter()
         Me.fpdFindReportFolder = New System.Windows.Forms.FolderBrowserDialog()
         Me.LastYearMonthSaleTableAdapter = New Kakefunn.IngredienTableAdapters.LastYearMonthSaleTableAdapter()
         Me.IngredientHistoryTableAdapter = New Kakefunn.IngredienTableAdapters.IngredientHistoryTableAdapter()
         Me.cboSelectIngredient = New System.Windows.Forms.ComboBox()
+        Me.IngredientBindingSource2 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.IngredientCombo = New Kakefunn.IngredientCombo()
         Me.IngredientBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
         Me._14vfu_t02DataSet = New Kakefunn._14vfu_t02DataSet()
         Me.IngredientTableAdapter1 = New Kakefunn._14vfu_t02DataSetTableAdapters.IngredientTableAdapter()
         Me.lblSelectIngredient = New System.Windows.Forms.Label()
         Me.grpAdminReports = New System.Windows.Forms.GroupBox()
+        Me.IngredientTableAdapter2 = New Kakefunn.IngredientComboTableAdapters.IngredientTableAdapter()
         CType(Me.LastYearMonthSaleBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Ingredien, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientHistoryBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -57,6 +60,8 @@ Partial Class frmAdminReports
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IngredientBindingSource2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.IngredientCombo, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.IngredientBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me._14vfu_t02DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpAdminReports.SuspendLayout()
@@ -106,7 +111,7 @@ Partial Class frmAdminReports
         Me.cboSelectReportForm.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboSelectReportForm.FormattingEnabled = True
-        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport", "Ingrediens siste år", "Forventet salg neste mnd", "Hendelseslogg"})
+        Me.cboSelectReportForm.Items.AddRange(New Object() {"Velg rapport", "Salgsrapport siste 30 døgn", "Ingrediens siste år", "Forventet salg neste mnd", "Kakesalg i valgt periode", "Hendelseslogg"})
         Me.cboSelectReportForm.Location = New System.Drawing.Point(102, 13)
         Me.cboSelectReportForm.Name = "cboSelectReportForm"
         Me.cboSelectReportForm.Size = New System.Drawing.Size(87, 21)
@@ -185,15 +190,15 @@ Partial Class frmAdminReports
         Me.lblTimePeriod.TabIndex = 13
         Me.lblTimePeriod.Text = "for tidsrommet"
         '
-        'Label3
+        'lblDateTo
         '
-        Me.Label3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(395, 16)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(14, 13)
-        Me.Label3.TabIndex = 14
-        Me.Label3.Text = "til"
+        Me.lblDateTo.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.lblDateTo.AutoSize = True
+        Me.lblDateTo.Location = New System.Drawing.Point(395, 16)
+        Me.lblDateTo.Name = "lblDateTo"
+        Me.lblDateTo.Size = New System.Drawing.Size(14, 13)
+        Me.lblDateTo.TabIndex = 14
+        Me.lblDateTo.Text = "til"
         '
         'EmployeeTableAdapter
         '
@@ -216,14 +221,24 @@ Partial Class frmAdminReports
         Me.cboSelectIngredient.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.cboSelectIngredient.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest
         Me.cboSelectIngredient.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems
-        Me.cboSelectIngredient.DataSource = Me.IngredientBindingSource1
+        Me.cboSelectIngredient.DataSource = Me.IngredientBindingSource2
         Me.cboSelectIngredient.DisplayMember = "name"
         Me.cboSelectIngredient.FormattingEnabled = True
-        Me.cboSelectIngredient.Location = New System.Drawing.Point(292, 13)
+        Me.cboSelectIngredient.Location = New System.Drawing.Point(292, 14)
         Me.cboSelectIngredient.Name = "cboSelectIngredient"
         Me.cboSelectIngredient.Size = New System.Drawing.Size(219, 21)
         Me.cboSelectIngredient.TabIndex = 9
         Me.cboSelectIngredient.ValueMember = "id"
+        '
+        'IngredientBindingSource2
+        '
+        Me.IngredientBindingSource2.DataMember = "Ingredient"
+        Me.IngredientBindingSource2.DataSource = Me.IngredientCombo
+        '
+        'IngredientCombo
+        '
+        Me.IngredientCombo.DataSetName = "IngredientCombo"
+        Me.IngredientCombo.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'IngredientBindingSource1
         '
@@ -259,7 +274,7 @@ Partial Class frmAdminReports
         Me.grpAdminReports.Controls.Add(Me.lblSelectIngredient)
         Me.grpAdminReports.Controls.Add(Me.cboSelectReportForm)
         Me.grpAdminReports.Controls.Add(Me.btnGetReport)
-        Me.grpAdminReports.Controls.Add(Me.Label3)
+        Me.grpAdminReports.Controls.Add(Me.lblDateTo)
         Me.grpAdminReports.Controls.Add(Me.rptReports)
         Me.grpAdminReports.Controls.Add(Me.lblTimePeriod)
         Me.grpAdminReports.Controls.Add(Me.dtpTimePeriodFrom)
@@ -269,6 +284,10 @@ Partial Class frmAdminReports
         Me.grpAdminReports.Size = New System.Drawing.Size(687, 340)
         Me.grpAdminReports.TabIndex = 17
         Me.grpAdminReports.TabStop = False
+        '
+        'IngredientTableAdapter2
+        '
+        Me.IngredientTableAdapter2.ClearBeforeFill = True
         '
         'frmAdminReports
         '
@@ -286,6 +305,8 @@ Partial Class frmAdminReports
         CType(Me.EmployeeBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.EmployeeTest, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.batchBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IngredientBindingSource2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.IngredientCombo, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.IngredientBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me._14vfu_t02DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.grpAdminReports.ResumeLayout(False)
@@ -300,7 +321,7 @@ Partial Class frmAdminReports
     Friend WithEvents dtpTimePeriodFrom As System.Windows.Forms.DateTimePicker
     Friend WithEvents dtpTimePeriodTo As System.Windows.Forms.DateTimePicker
     Friend WithEvents lblTimePeriod As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents lblDateTo As System.Windows.Forms.Label
     Friend WithEvents batchBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents EmployeeBindingSource As System.Windows.Forms.BindingSource
     Friend WithEvents EmployeeTest As Kakefunn.EmployeeTest
@@ -320,5 +341,8 @@ Partial Class frmAdminReports
     Friend WithEvents IngredientTableAdapter1 As Kakefunn._14vfu_t02DataSetTableAdapters.IngredientTableAdapter
     Friend WithEvents lblSelectIngredient As System.Windows.Forms.Label
     Friend WithEvents grpAdminReports As System.Windows.Forms.GroupBox
+    Friend WithEvents IngredientCombo As Kakefunn.IngredientCombo
+    Friend WithEvents IngredientBindingSource2 As System.Windows.Forms.BindingSource
+    Friend WithEvents IngredientTableAdapter2 As Kakefunn.IngredientComboTableAdapters.IngredientTableAdapter
 
 End Class

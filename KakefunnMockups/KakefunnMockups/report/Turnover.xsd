@@ -9,7 +9,7 @@
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="IngredientTableAdapter" GeneratorDataComponentClassName="IngredientTableAdapter" Name="Ingredient" UserDataComponentName="IngredientTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="_14vfu_t02ConnectionString (MySettings)" DbObjectName="`***REMOVED***`.Ingredient" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="_14vfu_t02ConnectionString (MySettings)" DbObjectName="`***REMOVED***`.Ingredient" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT i.`name` , sum(ol.amount) as totalAmount,sum(ol.totalPrice) as tPrice ,(sum(ol.totalPrice)/sum(ol.amount)) as pricePrUnit from `Order` o 
@@ -18,7 +18,7 @@ INNER JOIN Ingredient i on ol.ingredientId = i.id
 
 where DATEDIFF(LOCALTIME,o.created) &lt; 31
 
-group by i.id</CommandText>
+group by i.id order by totalAmount</CommandText>
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
@@ -40,7 +40,7 @@ group by i.id</CommandText>
   <xs:element name="Turnover" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Turnover" msprop:Generator_UserDSName="Turnover">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Ingredient" msprop:Generator_TableClassName="IngredientDataTable" msprop:Generator_TableVarName="tableIngredient" msprop:Generator_TablePropName="Ingredient" msprop:Generator_RowDeletingName="IngredientRowDeleting" msprop:Generator_RowChangingName="IngredientRowChanging" msprop:Generator_RowEvHandlerName="IngredientRowChangeEventHandler" msprop:Generator_RowDeletedName="IngredientRowDeleted" msprop:Generator_UserTableName="Ingredient" msprop:Generator_RowChangedName="IngredientRowChanged" msprop:Generator_RowEvArgName="IngredientRowChangeEvent" msprop:Generator_RowClassName="IngredientRow">
+        <xs:element name="Ingredient" msprop:Generator_TableClassName="IngredientDataTable" msprop:Generator_TableVarName="tableIngredient" msprop:Generator_RowChangedName="IngredientRowChanged" msprop:Generator_TablePropName="Ingredient" msprop:Generator_RowDeletingName="IngredientRowDeleting" msprop:Generator_RowChangingName="IngredientRowChanging" msprop:Generator_RowEvHandlerName="IngredientRowChangeEventHandler" msprop:Generator_RowDeletedName="IngredientRowDeleted" msprop:Generator_RowClassName="IngredientRow" msprop:Generator_UserTableName="Ingredient" msprop:Generator_RowEvArgName="IngredientRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name">

@@ -74,7 +74,7 @@
     ''' <remarks></remarks>
     Private Function _createLastYearNextMonthReport() As DataTable
         Return DBM.Instance.GetDataTableFromQuery( _
-                        "SELECT i.name, MONTH(o.created) AS month, YEAR(o.created) AS year, SUM(ol.amount) AS totalAmount, u.name AS uName, SUM(b.unitCount) AS currAmount , COALESCE(SUM(b.unitCount) - SUM(ol.amount),SUM(ol.amount)) AS toOrder " & _
+                        "SELECT i.name, MONTH(o.created) AS month, YEAR(o.created) AS year, SUM(ol.amount) AS totalAmount, u.name AS uName, SUM(b.unitCount) AS currAmount , ABS(LEAST(COALESCE(SUM(b.unitCount) - SUM(ol.amount),SUM(ol.amount)),0)) AS toOrder " & _
                         "FROM   `Order` o INNER JOIN " & _
                         "OrderLine ol ON ol.orderId = o.id INNER JOIN " & _
                         "Ingredient i ON ol.ingredientId = i.id INNER JOIN " & _
@@ -82,7 +82,7 @@
                         " Batch b ON b.ingredientId = i.id " & _
                         "WHERE        (MONTH(o.created) = MONTH(NOW()) + 1) AND (YEAR(o.created) = YEAR(NOW()) - 1) " & _
                         "GROUP BY i.id, MONTH(o.created) " & _
-                        "ORDER BY totalAmount DESC ; " _
+                        "ORDER BY toOrder DESC ; " _
         )
     End Function
 

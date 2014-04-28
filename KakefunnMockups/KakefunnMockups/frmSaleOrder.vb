@@ -956,7 +956,9 @@ Public Class frmSaleOrder
     ''' <param name="sender"></param>
     ''' <param name="e"></param>
     ''' <remarks></remarks>
-    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs)
+    Private Sub txtEmail_TextChanged(sender As Object, e As EventArgs) Handles txtEmail.TextChanged
+
+
         currentRecord.deliveryEmail = txtEmail.Text
     End Sub
 
@@ -1002,4 +1004,5 @@ Public Class frmSaleOrder
     Private Sub cboHasEndDate_CheckedChanged(sender As Object, e As EventArgs) Handles cboHasEndDate.CheckedChanged
         dtpEndDate.Enabled = cboHasEndDate.Checked
     End Sub
+
 End Class

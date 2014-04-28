@@ -343,6 +343,11 @@
     <Compile Include="Ingredient.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="IngredientCombo.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IngredientCombo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="IngredientPrice.vb">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -572,6 +577,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model.Designer.vb</LastGenOutput>
     </EntityDeploy>
+    <None Include="IngredientCombo.xsc">
+      <DependentUpon>IngredientCombo.xsd</DependentUpon>
+    </None>
+    <None Include="IngredientCombo.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>IngredientCombo.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="IngredientCombo.xss">
+      <DependentUpon>IngredientCombo.xsd</DependentUpon>
+    </None>
     <None Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
