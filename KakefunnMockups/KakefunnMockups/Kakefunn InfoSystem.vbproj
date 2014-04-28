@@ -588,6 +588,9 @@
     <None Include="IngredientCombo.xss">
       <DependentUpon>IngredientCombo.xsd</DependentUpon>
     </None>
+    <Content Include="resources\KakeFunn_Veileder.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
