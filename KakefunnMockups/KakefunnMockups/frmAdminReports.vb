@@ -74,9 +74,9 @@ Public Class frmAdminReports
                 Me.lblSelectIngredient.Visible = True
                 Me.cboSelectIngredient.Visible = True
             Case 3
-                Me.dtpTimePeriodFrom.Visible = True
-                Me.dtpTimePeriodTo.Visible = True
-                Me.lblTimePeriod.Visible = True
+                Me.dtpTimePeriodFrom.Visible = False
+                Me.dtpTimePeriodTo.Visible = False
+                Me.lblTimePeriod.Visible = False
                 Me.lblSelectIngredient.Visible = False
                 Me.cboSelectIngredient.Visible = False
             Case 4
