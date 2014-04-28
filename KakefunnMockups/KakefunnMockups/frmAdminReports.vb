@@ -57,7 +57,10 @@ Public Class frmAdminReports
     ''' <remarks></remarks>
     Private Sub btnGetReport_Click(sender As Object, e As EventArgs) Handles btnGetReport.Click
         Dim rph = New ReportHelper()
+
+
         Select Case cboSelectReportForm.SelectedIndex
+
             Case 0
                 Return
             Case 1
